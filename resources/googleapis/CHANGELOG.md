@@ -1,3 +1,10 @@
+## 11.3.0
+
+- `blockchainnodeengine` - new!
+- `cloudsupport` - new!
+- `doubleclickbidmanager` - Removed v1.1 (v2 still exists)
+- `mybusinessbusinesscalls` - Removed!
+
 ## 11.2.0
 
 - Add back in `library` directives to improve documentation.

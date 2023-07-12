@@ -555,6 +555,7 @@ api.Listing buildListing() {
     o.primaryContact = 'foo';
     o.publisher = buildPublisher();
     o.requestAccess = 'foo';
+    o.restrictedExportConfig = buildRestrictedExportConfig();
     o.state = 'foo';
   }
   buildCounterListing--;
@@ -596,6 +597,7 @@ void checkListing(api.Listing o) {
       o.requestAccess!,
       unittest.equals('foo'),
     );
+    checkRestrictedExportConfig(o.restrictedExportConfig!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -682,6 +684,29 @@ void checkPublisher(api.Publisher o) {
     );
   }
   buildCounterPublisher--;
+}
+
+core.int buildCounterRestrictedExportConfig = 0;
+api.RestrictedExportConfig buildRestrictedExportConfig() {
+  final o = api.RestrictedExportConfig();
+  buildCounterRestrictedExportConfig++;
+  if (buildCounterRestrictedExportConfig < 3) {
+    o.enabled = true;
+    o.restrictDirectTableAccess = true;
+    o.restrictQueryResult = true;
+  }
+  buildCounterRestrictedExportConfig--;
+  return o;
+}
+
+void checkRestrictedExportConfig(api.RestrictedExportConfig o) {
+  buildCounterRestrictedExportConfig++;
+  if (buildCounterRestrictedExportConfig < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+    unittest.expect(o.restrictDirectTableAccess!, unittest.isTrue);
+    unittest.expect(o.restrictQueryResult!, unittest.isTrue);
+  }
+  buildCounterRestrictedExportConfig--;
 }
 
 core.int buildCounterSetIamPolicyRequest = 0;
@@ -992,6 +1017,16 @@ void main() {
       final od =
           api.Publisher.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPublisher(od);
+    });
+  });
+
+  unittest.group('obj-schema-RestrictedExportConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRestrictedExportConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RestrictedExportConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRestrictedExportConfig(od);
     });
   });
 

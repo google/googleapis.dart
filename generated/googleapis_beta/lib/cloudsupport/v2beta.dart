@@ -79,8 +79,12 @@ class CaseClassificationsResource {
   /// Retrieve valid classifications to be used when creating a support case.
   ///
   /// The classications are hierarchical, with each classification containing
-  /// all levels of the hierarchy, separated by " \> ". For example "Technical
-  /// Issue \> Compute \> Compute Engine".
+  /// all levels of the hierarchy, separated by `" > "`. For example `"Technical
+  /// Issue > Compute > Compute Engine"`. Classification IDs returned by
+  /// `caseClassifications.search` are guaranteed to be valid for at least 6
+  /// months. If a given classification is deactiveated, it will immediately
+  /// stop being returned. After 6 months, `case.create` requests using the
+  /// classification ID will fail.
   ///
   /// Request parameters:
   ///
@@ -432,6 +436,9 @@ class CasesResource {
   /// [pageToken] - A token identifying the page of results to return. If
   /// unspecified, the first page is retrieved.
   ///
+  /// [parent] - The fully qualified name of parent resource to search cases
+  /// under.
+  ///
   /// [query] - An expression written in filter language. A query uses the
   /// following fields with the operators equals (`=`) and `AND`: -
   /// `organization`: An organization name in the form `organizations/`. -
@@ -468,12 +475,14 @@ class CasesResource {
   async.Future<SearchCasesResponse> search({
     core.int? pageSize,
     core.String? pageToken,
+    core.String? parent,
     core.String? query,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (parent != null) 'parent': [parent],
       if (query != null) 'query': [query],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1146,13 +1155,21 @@ class Case {
 
 /// A classification object with a product type and value.
 class CaseClassification {
-  /// The display name of the classification.
+  /// A display name for the classification.
+  ///
+  /// The display name is not static and can change. To uniquely and
+  /// consistently identify classifications, use the `CaseClassification.id`
+  /// field.
   core.String? displayName;
 
   /// The unique ID for a classification.
   ///
   /// Must be specified for case creation. To retrieve valid classification IDs
-  /// for case creation, use `caseClassifications.search`.
+  /// for case creation, use `caseClassifications.search`. Classification IDs
+  /// returned by `caseClassifications.search` are guaranteed to be valid for at
+  /// least 6 months. If a given classification is deactiveated, it will
+  /// immediately stop being returned. After 6 months, `case.create` requests
+  /// using the classification ID will fail.
   core.String? id;
 
   CaseClassification({

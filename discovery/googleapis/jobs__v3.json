@@ -27,6 +27,13 @@
     "name": "jobs",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230711",
+    "rootUrl": "https://jobs.googleapis.com/",
+    "servicePath": "",
+    "title": "Cloud Talent Solution API",
+    "version": "v3",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -104,7 +111,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "methods": {
@@ -649,8 +655,6 @@
             }
         }
     },
-    "revision": "20230425",
-    "rootUrl": "https://jobs.googleapis.com/",
     "schemas": {
         "ApplicationInfo": {
             "description": "Application related details of a job posting.",
@@ -2783,9 +2787,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Cloud Talent Solution API",
-    "version": "v3",
-    "version_module": true
+    }
 }

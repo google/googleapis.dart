@@ -8172,173 +8172,12 @@ void checkOrderContact(api.OrderContact o) {
   buildCounterOrderContact--;
 }
 
-core.List<core.String> buildUnnamed130() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed130(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed131() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed131(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterOrderDocument = 0;
-api.OrderDocument buildOrderDocument() {
-  final o = api.OrderDocument();
-  buildCounterOrderDocument++;
-  if (buildCounterOrderDocument < 3) {
-    o.accountId = 'foo';
-    o.advertiserId = 'foo';
-    o.amendedOrderDocumentId = 'foo';
-    o.approvedByUserProfileIds = buildUnnamed130();
-    o.cancelled = true;
-    o.createdInfo = buildLastModifiedInfo();
-    o.effectiveDate = core.DateTime.parse('2002-02-27T14:01:02Z');
-    o.id = 'foo';
-    o.kind = 'foo';
-    o.lastSentRecipients = buildUnnamed131();
-    o.lastSentTime = core.DateTime.parse('2002-02-27T14:01:02Z');
-    o.orderId = 'foo';
-    o.projectId = 'foo';
-    o.signed = true;
-    o.subaccountId = 'foo';
-    o.title = 'foo';
-    o.type = 'foo';
-  }
-  buildCounterOrderDocument--;
-  return o;
-}
-
-void checkOrderDocument(api.OrderDocument o) {
-  buildCounterOrderDocument++;
-  if (buildCounterOrderDocument < 3) {
-    unittest.expect(
-      o.accountId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.advertiserId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.amendedOrderDocumentId!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed130(o.approvedByUserProfileIds!);
-    unittest.expect(o.cancelled!, unittest.isTrue);
-    checkLastModifiedInfo(o.createdInfo!);
-    unittest.expect(
-      o.effectiveDate!,
-      unittest.equals(core.DateTime.parse('2002-02-27T00:00:00')),
-    );
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.kind!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed131(o.lastSentRecipients!);
-    unittest.expect(
-      o.lastSentTime!,
-      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
-    );
-    unittest.expect(
-      o.orderId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.projectId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(o.signed!, unittest.isTrue);
-    unittest.expect(
-      o.subaccountId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.title!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterOrderDocument--;
-}
-
-core.List<api.OrderDocument> buildUnnamed132() => [
-      buildOrderDocument(),
-      buildOrderDocument(),
-    ];
-
-void checkUnnamed132(core.List<api.OrderDocument> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkOrderDocument(o[0]);
-  checkOrderDocument(o[1]);
-}
-
-core.int buildCounterOrderDocumentsListResponse = 0;
-api.OrderDocumentsListResponse buildOrderDocumentsListResponse() {
-  final o = api.OrderDocumentsListResponse();
-  buildCounterOrderDocumentsListResponse++;
-  if (buildCounterOrderDocumentsListResponse < 3) {
-    o.kind = 'foo';
-    o.nextPageToken = 'foo';
-    o.orderDocuments = buildUnnamed132();
-  }
-  buildCounterOrderDocumentsListResponse--;
-  return o;
-}
-
-void checkOrderDocumentsListResponse(api.OrderDocumentsListResponse o) {
-  buildCounterOrderDocumentsListResponse++;
-  if (buildCounterOrderDocumentsListResponse < 3) {
-    unittest.expect(
-      o.kind!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed132(o.orderDocuments!);
-  }
-  buildCounterOrderDocumentsListResponse--;
-}
-
-core.List<api.Order> buildUnnamed133() => [
+core.List<api.Order> buildUnnamed130() => [
       buildOrder(),
       buildOrder(),
     ];
 
-void checkUnnamed133(core.List<api.Order> o) {
+void checkUnnamed130(core.List<api.Order> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrder(o[0]);
   checkOrder(o[1]);
@@ -8351,7 +8190,7 @@ api.OrdersListResponse buildOrdersListResponse() {
   if (buildCounterOrdersListResponse < 3) {
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.orders = buildUnnamed133();
+    o.orders = buildUnnamed130();
   }
   buildCounterOrdersListResponse--;
   return o;
@@ -8368,17 +8207,17 @@ void checkOrdersListResponse(api.OrdersListResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed133(o.orders!);
+    checkUnnamed130(o.orders!);
   }
   buildCounterOrdersListResponse--;
 }
 
-core.List<api.EventFilter> buildUnnamed134() => [
+core.List<api.EventFilter> buildUnnamed131() => [
       buildEventFilter(),
       buildEventFilter(),
     ];
 
-void checkUnnamed134(core.List<api.EventFilter> o) {
+void checkUnnamed131(core.List<api.EventFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventFilter(o[0]);
   checkEventFilter(o[1]);
@@ -8389,7 +8228,7 @@ api.PathFilter buildPathFilter() {
   final o = api.PathFilter();
   buildCounterPathFilter++;
   if (buildCounterPathFilter < 3) {
-    o.eventFilters = buildUnnamed134();
+    o.eventFilters = buildUnnamed131();
     o.kind = 'foo';
     o.pathMatchPosition = 'foo';
   }
@@ -8400,7 +8239,7 @@ api.PathFilter buildPathFilter() {
 void checkPathFilter(api.PathFilter o) {
   buildCounterPathFilter++;
   if (buildCounterPathFilter < 3) {
-    checkUnnamed134(o.eventFilters!);
+    checkUnnamed131(o.eventFilters!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -8411,6 +8250,39 @@ void checkPathFilter(api.PathFilter o) {
     );
   }
   buildCounterPathFilter--;
+}
+
+core.List<api.Dimension> buildUnnamed132() => [
+      buildDimension(),
+      buildDimension(),
+    ];
+
+void checkUnnamed132(core.List<api.Dimension> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkDimension(o[0]);
+  checkDimension(o[1]);
+}
+
+core.List<api.Dimension> buildUnnamed133() => [
+      buildDimension(),
+      buildDimension(),
+    ];
+
+void checkUnnamed133(core.List<api.Dimension> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkDimension(o[0]);
+  checkDimension(o[1]);
+}
+
+core.List<api.Metric> buildUnnamed134() => [
+      buildMetric(),
+      buildMetric(),
+    ];
+
+void checkUnnamed134(core.List<api.Metric> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMetric(o[0]);
+  checkMetric(o[1]);
 }
 
 core.List<api.Dimension> buildUnnamed135() => [
@@ -8424,49 +8296,16 @@ void checkUnnamed135(core.List<api.Dimension> o) {
   checkDimension(o[1]);
 }
 
-core.List<api.Dimension> buildUnnamed136() => [
-      buildDimension(),
-      buildDimension(),
-    ];
-
-void checkUnnamed136(core.List<api.Dimension> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkDimension(o[0]);
-  checkDimension(o[1]);
-}
-
-core.List<api.Metric> buildUnnamed137() => [
-      buildMetric(),
-      buildMetric(),
-    ];
-
-void checkUnnamed137(core.List<api.Metric> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkMetric(o[0]);
-  checkMetric(o[1]);
-}
-
-core.List<api.Dimension> buildUnnamed138() => [
-      buildDimension(),
-      buildDimension(),
-    ];
-
-void checkUnnamed138(core.List<api.Dimension> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkDimension(o[0]);
-  checkDimension(o[1]);
-}
-
 core.int buildCounterPathReportCompatibleFields = 0;
 api.PathReportCompatibleFields buildPathReportCompatibleFields() {
   final o = api.PathReportCompatibleFields();
   buildCounterPathReportCompatibleFields++;
   if (buildCounterPathReportCompatibleFields < 3) {
-    o.channelGroupings = buildUnnamed135();
-    o.dimensions = buildUnnamed136();
+    o.channelGroupings = buildUnnamed132();
+    o.dimensions = buildUnnamed133();
     o.kind = 'foo';
-    o.metrics = buildUnnamed137();
-    o.pathFilters = buildUnnamed138();
+    o.metrics = buildUnnamed134();
+    o.pathFilters = buildUnnamed135();
   }
   buildCounterPathReportCompatibleFields--;
   return o;
@@ -8475,24 +8314,24 @@ api.PathReportCompatibleFields buildPathReportCompatibleFields() {
 void checkPathReportCompatibleFields(api.PathReportCompatibleFields o) {
   buildCounterPathReportCompatibleFields++;
   if (buildCounterPathReportCompatibleFields < 3) {
-    checkUnnamed135(o.channelGroupings!);
-    checkUnnamed136(o.dimensions!);
+    checkUnnamed132(o.channelGroupings!);
+    checkUnnamed133(o.dimensions!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed137(o.metrics!);
-    checkUnnamed138(o.pathFilters!);
+    checkUnnamed134(o.metrics!);
+    checkUnnamed135(o.pathFilters!);
   }
   buildCounterPathReportCompatibleFields--;
 }
 
-core.List<core.String> buildUnnamed139() => [
+core.List<core.String> buildUnnamed136() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed139(core.List<core.String> o) {
+void checkUnnamed136(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -8504,12 +8343,12 @@ void checkUnnamed139(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed140() => [
+core.List<core.String> buildUnnamed137() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed140(core.List<core.String> o) {
+void checkUnnamed137(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -8527,10 +8366,10 @@ api.PathReportDimensionValue buildPathReportDimensionValue() {
   buildCounterPathReportDimensionValue++;
   if (buildCounterPathReportDimensionValue < 3) {
     o.dimensionName = 'foo';
-    o.ids = buildUnnamed139();
+    o.ids = buildUnnamed136();
     o.kind = 'foo';
     o.matchType = 'foo';
-    o.values = buildUnnamed140();
+    o.values = buildUnnamed137();
   }
   buildCounterPathReportDimensionValue--;
   return o;
@@ -8543,7 +8382,7 @@ void checkPathReportDimensionValue(api.PathReportDimensionValue o) {
       o.dimensionName!,
       unittest.equals('foo'),
     );
-    checkUnnamed139(o.ids!);
+    checkUnnamed136(o.ids!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -8552,9 +8391,42 @@ void checkPathReportDimensionValue(api.PathReportDimensionValue o) {
       o.matchType!,
       unittest.equals('foo'),
     );
-    checkUnnamed140(o.values!);
+    checkUnnamed137(o.values!);
   }
   buildCounterPathReportDimensionValue--;
+}
+
+core.List<api.Dimension> buildUnnamed138() => [
+      buildDimension(),
+      buildDimension(),
+    ];
+
+void checkUnnamed138(core.List<api.Dimension> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkDimension(o[0]);
+  checkDimension(o[1]);
+}
+
+core.List<api.Dimension> buildUnnamed139() => [
+      buildDimension(),
+      buildDimension(),
+    ];
+
+void checkUnnamed139(core.List<api.Dimension> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkDimension(o[0]);
+  checkDimension(o[1]);
+}
+
+core.List<api.Metric> buildUnnamed140() => [
+      buildMetric(),
+      buildMetric(),
+    ];
+
+void checkUnnamed140(core.List<api.Metric> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMetric(o[0]);
+  checkMetric(o[1]);
 }
 
 core.List<api.Dimension> buildUnnamed141() => [
@@ -8568,50 +8440,17 @@ void checkUnnamed141(core.List<api.Dimension> o) {
   checkDimension(o[1]);
 }
 
-core.List<api.Dimension> buildUnnamed142() => [
-      buildDimension(),
-      buildDimension(),
-    ];
-
-void checkUnnamed142(core.List<api.Dimension> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkDimension(o[0]);
-  checkDimension(o[1]);
-}
-
-core.List<api.Metric> buildUnnamed143() => [
-      buildMetric(),
-      buildMetric(),
-    ];
-
-void checkUnnamed143(core.List<api.Metric> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkMetric(o[0]);
-  checkMetric(o[1]);
-}
-
-core.List<api.Dimension> buildUnnamed144() => [
-      buildDimension(),
-      buildDimension(),
-    ];
-
-void checkUnnamed144(core.List<api.Dimension> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkDimension(o[0]);
-  checkDimension(o[1]);
-}
-
 core.int buildCounterPathToConversionReportCompatibleFields = 0;
 api.PathToConversionReportCompatibleFields
     buildPathToConversionReportCompatibleFields() {
   final o = api.PathToConversionReportCompatibleFields();
   buildCounterPathToConversionReportCompatibleFields++;
   if (buildCounterPathToConversionReportCompatibleFields < 3) {
-    o.conversionDimensions = buildUnnamed141();
-    o.customFloodlightVariables = buildUnnamed142();
+    o.conversionDimensions = buildUnnamed138();
+    o.customFloodlightVariables = buildUnnamed139();
     o.kind = 'foo';
-    o.metrics = buildUnnamed143();
-    o.perInteractionDimensions = buildUnnamed144();
+    o.metrics = buildUnnamed140();
+    o.perInteractionDimensions = buildUnnamed141();
   }
   buildCounterPathToConversionReportCompatibleFields--;
   return o;
@@ -8621,35 +8460,35 @@ void checkPathToConversionReportCompatibleFields(
     api.PathToConversionReportCompatibleFields o) {
   buildCounterPathToConversionReportCompatibleFields++;
   if (buildCounterPathToConversionReportCompatibleFields < 3) {
-    checkUnnamed141(o.conversionDimensions!);
-    checkUnnamed142(o.customFloodlightVariables!);
+    checkUnnamed138(o.conversionDimensions!);
+    checkUnnamed139(o.customFloodlightVariables!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed143(o.metrics!);
-    checkUnnamed144(o.perInteractionDimensions!);
+    checkUnnamed140(o.metrics!);
+    checkUnnamed141(o.perInteractionDimensions!);
   }
   buildCounterPathToConversionReportCompatibleFields--;
 }
 
-core.List<api.Size> buildUnnamed145() => [
+core.List<api.Size> buildUnnamed142() => [
       buildSize(),
       buildSize(),
     ];
 
-void checkUnnamed145(core.List<api.Size> o) {
+void checkUnnamed142(core.List<api.Size> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSize(o[0]);
   checkSize(o[1]);
 }
 
-core.List<core.String> buildUnnamed146() => [
+core.List<core.String> buildUnnamed143() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed146(core.List<core.String> o) {
+void checkUnnamed143(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -8669,7 +8508,7 @@ api.Placement buildPlacement() {
     o.accountId = 'foo';
     o.activeStatus = 'foo';
     o.adBlockingOptOut = true;
-    o.additionalSizes = buildUnnamed145();
+    o.additionalSizes = buildUnnamed142();
     o.advertiserId = 'foo';
     o.advertiserIdDimensionValue = buildDimensionValue();
     o.campaignId = 'foo';
@@ -8703,7 +8542,7 @@ api.Placement buildPlacement() {
     o.sslRequired = true;
     o.status = 'foo';
     o.subaccountId = 'foo';
-    o.tagFormats = buildUnnamed146();
+    o.tagFormats = buildUnnamed143();
     o.tagSetting = buildTagSetting();
     o.videoActiveViewOptOut = true;
     o.videoSettings = buildVideoSettings();
@@ -8726,7 +8565,7 @@ void checkPlacement(api.Placement o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.adBlockingOptOut!, unittest.isTrue);
-    checkUnnamed145(o.additionalSizes!);
+    checkUnnamed142(o.additionalSizes!);
     unittest.expect(
       o.advertiserId!,
       unittest.equals('foo'),
@@ -8811,7 +8650,7 @@ void checkPlacement(api.Placement o) {
       o.subaccountId!,
       unittest.equals('foo'),
     );
-    checkUnnamed146(o.tagFormats!);
+    checkUnnamed143(o.tagFormats!);
     checkTagSetting(o.tagSetting!);
     unittest.expect(o.videoActiveViewOptOut!, unittest.isTrue);
     checkVideoSettings(o.videoSettings!);
@@ -8852,12 +8691,12 @@ void checkPlacementAssignment(api.PlacementAssignment o) {
   buildCounterPlacementAssignment--;
 }
 
-core.List<core.String> buildUnnamed147() => [
+core.List<core.String> buildUnnamed144() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed147(core.List<core.String> o) {
+void checkUnnamed144(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -8880,7 +8719,7 @@ api.PlacementGroup buildPlacementGroup() {
     o.advertiserIdDimensionValue = buildDimensionValue();
     o.campaignId = 'foo';
     o.campaignIdDimensionValue = buildDimensionValue();
-    o.childPlacementIds = buildUnnamed147();
+    o.childPlacementIds = buildUnnamed144();
     o.comment = 'foo';
     o.contentCategoryId = 'foo';
     o.createInfo = buildLastModifiedInfo();
@@ -8926,7 +8765,7 @@ void checkPlacementGroup(api.PlacementGroup o) {
       unittest.equals('foo'),
     );
     checkDimensionValue(o.campaignIdDimensionValue!);
-    checkUnnamed147(o.childPlacementIds!);
+    checkUnnamed144(o.childPlacementIds!);
     unittest.expect(
       o.comment!,
       unittest.equals('foo'),
@@ -8986,12 +8825,12 @@ void checkPlacementGroup(api.PlacementGroup o) {
   buildCounterPlacementGroup--;
 }
 
-core.List<api.PlacementGroup> buildUnnamed148() => [
+core.List<api.PlacementGroup> buildUnnamed145() => [
       buildPlacementGroup(),
       buildPlacementGroup(),
     ];
 
-void checkUnnamed148(core.List<api.PlacementGroup> o) {
+void checkUnnamed145(core.List<api.PlacementGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlacementGroup(o[0]);
   checkPlacementGroup(o[1]);
@@ -9004,7 +8843,7 @@ api.PlacementGroupsListResponse buildPlacementGroupsListResponse() {
   if (buildCounterPlacementGroupsListResponse < 3) {
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.placementGroups = buildUnnamed148();
+    o.placementGroups = buildUnnamed145();
   }
   buildCounterPlacementGroupsListResponse--;
   return o;
@@ -9021,17 +8860,17 @@ void checkPlacementGroupsListResponse(api.PlacementGroupsListResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed148(o.placementGroups!);
+    checkUnnamed145(o.placementGroups!);
   }
   buildCounterPlacementGroupsListResponse--;
 }
 
-core.List<api.PlacementStrategy> buildUnnamed149() => [
+core.List<api.PlacementStrategy> buildUnnamed146() => [
       buildPlacementStrategy(),
       buildPlacementStrategy(),
     ];
 
-void checkUnnamed149(core.List<api.PlacementStrategy> o) {
+void checkUnnamed146(core.List<api.PlacementStrategy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlacementStrategy(o[0]);
   checkPlacementStrategy(o[1]);
@@ -9044,7 +8883,7 @@ api.PlacementStrategiesListResponse buildPlacementStrategiesListResponse() {
   if (buildCounterPlacementStrategiesListResponse < 3) {
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.placementStrategies = buildUnnamed149();
+    o.placementStrategies = buildUnnamed146();
   }
   buildCounterPlacementStrategiesListResponse--;
   return o;
@@ -9062,7 +8901,7 @@ void checkPlacementStrategiesListResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed149(o.placementStrategies!);
+    checkUnnamed146(o.placementStrategies!);
   }
   buildCounterPlacementStrategiesListResponse--;
 }
@@ -9104,12 +8943,12 @@ void checkPlacementStrategy(api.PlacementStrategy o) {
   buildCounterPlacementStrategy--;
 }
 
-core.List<api.TagData> buildUnnamed150() => [
+core.List<api.TagData> buildUnnamed147() => [
       buildTagData(),
       buildTagData(),
     ];
 
-void checkUnnamed150(core.List<api.TagData> o) {
+void checkUnnamed147(core.List<api.TagData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTagData(o[0]);
   checkTagData(o[1]);
@@ -9121,7 +8960,7 @@ api.PlacementTag buildPlacementTag() {
   buildCounterPlacementTag++;
   if (buildCounterPlacementTag < 3) {
     o.placementId = 'foo';
-    o.tagDatas = buildUnnamed150();
+    o.tagDatas = buildUnnamed147();
   }
   buildCounterPlacementTag--;
   return o;
@@ -9134,17 +8973,17 @@ void checkPlacementTag(api.PlacementTag o) {
       o.placementId!,
       unittest.equals('foo'),
     );
-    checkUnnamed150(o.tagDatas!);
+    checkUnnamed147(o.tagDatas!);
   }
   buildCounterPlacementTag--;
 }
 
-core.List<api.PlacementTag> buildUnnamed151() => [
+core.List<api.PlacementTag> buildUnnamed148() => [
       buildPlacementTag(),
       buildPlacementTag(),
     ];
 
-void checkUnnamed151(core.List<api.PlacementTag> o) {
+void checkUnnamed148(core.List<api.PlacementTag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlacementTag(o[0]);
   checkPlacementTag(o[1]);
@@ -9156,7 +8995,7 @@ api.PlacementsGenerateTagsResponse buildPlacementsGenerateTagsResponse() {
   buildCounterPlacementsGenerateTagsResponse++;
   if (buildCounterPlacementsGenerateTagsResponse < 3) {
     o.kind = 'foo';
-    o.placementTags = buildUnnamed151();
+    o.placementTags = buildUnnamed148();
   }
   buildCounterPlacementsGenerateTagsResponse--;
   return o;
@@ -9169,17 +9008,17 @@ void checkPlacementsGenerateTagsResponse(api.PlacementsGenerateTagsResponse o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed151(o.placementTags!);
+    checkUnnamed148(o.placementTags!);
   }
   buildCounterPlacementsGenerateTagsResponse--;
 }
 
-core.List<api.Placement> buildUnnamed152() => [
+core.List<api.Placement> buildUnnamed149() => [
       buildPlacement(),
       buildPlacement(),
     ];
 
-void checkUnnamed152(core.List<api.Placement> o) {
+void checkUnnamed149(core.List<api.Placement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlacement(o[0]);
   checkPlacement(o[1]);
@@ -9192,7 +9031,7 @@ api.PlacementsListResponse buildPlacementsListResponse() {
   if (buildCounterPlacementsListResponse < 3) {
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.placements = buildUnnamed152();
+    o.placements = buildUnnamed149();
   }
   buildCounterPlacementsListResponse--;
   return o;
@@ -9209,7 +9048,7 @@ void checkPlacementsListResponse(api.PlacementsListResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed152(o.placements!);
+    checkUnnamed149(o.placements!);
   }
   buildCounterPlacementsListResponse--;
 }
@@ -9246,12 +9085,12 @@ void checkPlatformType(api.PlatformType o) {
   buildCounterPlatformType--;
 }
 
-core.List<api.PlatformType> buildUnnamed153() => [
+core.List<api.PlatformType> buildUnnamed150() => [
       buildPlatformType(),
       buildPlatformType(),
     ];
 
-void checkUnnamed153(core.List<api.PlatformType> o) {
+void checkUnnamed150(core.List<api.PlatformType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlatformType(o[0]);
   checkPlatformType(o[1]);
@@ -9263,7 +9102,7 @@ api.PlatformTypesListResponse buildPlatformTypesListResponse() {
   buildCounterPlatformTypesListResponse++;
   if (buildCounterPlatformTypesListResponse < 3) {
     o.kind = 'foo';
-    o.platformTypes = buildUnnamed153();
+    o.platformTypes = buildUnnamed150();
   }
   buildCounterPlatformTypesListResponse--;
   return o;
@@ -9276,7 +9115,7 @@ void checkPlatformTypesListResponse(api.PlatformTypesListResponse o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed153(o.platformTypes!);
+    checkUnnamed150(o.platformTypes!);
   }
   buildCounterPlatformTypesListResponse--;
 }
@@ -9364,12 +9203,12 @@ void checkPostalCode(api.PostalCode o) {
   buildCounterPostalCode--;
 }
 
-core.List<api.PostalCode> buildUnnamed154() => [
+core.List<api.PostalCode> buildUnnamed151() => [
       buildPostalCode(),
       buildPostalCode(),
     ];
 
-void checkUnnamed154(core.List<api.PostalCode> o) {
+void checkUnnamed151(core.List<api.PostalCode> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPostalCode(o[0]);
   checkPostalCode(o[1]);
@@ -9381,7 +9220,7 @@ api.PostalCodesListResponse buildPostalCodesListResponse() {
   buildCounterPostalCodesListResponse++;
   if (buildCounterPostalCodesListResponse < 3) {
     o.kind = 'foo';
-    o.postalCodes = buildUnnamed154();
+    o.postalCodes = buildUnnamed151();
   }
   buildCounterPostalCodesListResponse--;
   return o;
@@ -9394,17 +9233,17 @@ void checkPostalCodesListResponse(api.PostalCodesListResponse o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed154(o.postalCodes!);
+    checkUnnamed151(o.postalCodes!);
   }
   buildCounterPostalCodesListResponse--;
 }
 
-core.List<api.Flight> buildUnnamed155() => [
+core.List<api.Flight> buildUnnamed152() => [
       buildFlight(),
       buildFlight(),
     ];
 
-void checkUnnamed155(core.List<api.Flight> o) {
+void checkUnnamed152(core.List<api.Flight> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFlight(o[0]);
   checkFlight(o[1]);
@@ -9417,7 +9256,7 @@ api.Pricing buildPricing() {
   if (buildCounterPricing < 3) {
     o.capCostType = 'foo';
     o.endDate = core.DateTime.parse('2002-02-27T14:01:02Z');
-    o.flights = buildUnnamed155();
+    o.flights = buildUnnamed152();
     o.groupType = 'foo';
     o.pricingType = 'foo';
     o.startDate = core.DateTime.parse('2002-02-27T14:01:02Z');
@@ -9437,7 +9276,7 @@ void checkPricing(api.Pricing o) {
       o.endDate!,
       unittest.equals(core.DateTime.parse('2002-02-27T00:00:00')),
     );
-    checkUnnamed155(o.flights!);
+    checkUnnamed152(o.flights!);
     unittest.expect(
       o.groupType!,
       unittest.equals('foo'),
@@ -9454,12 +9293,12 @@ void checkPricing(api.Pricing o) {
   buildCounterPricing--;
 }
 
-core.List<api.PricingSchedulePricingPeriod> buildUnnamed156() => [
+core.List<api.PricingSchedulePricingPeriod> buildUnnamed153() => [
       buildPricingSchedulePricingPeriod(),
       buildPricingSchedulePricingPeriod(),
     ];
 
-void checkUnnamed156(core.List<api.PricingSchedulePricingPeriod> o) {
+void checkUnnamed153(core.List<api.PricingSchedulePricingPeriod> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPricingSchedulePricingPeriod(o[0]);
   checkPricingSchedulePricingPeriod(o[1]);
@@ -9474,7 +9313,7 @@ api.PricingSchedule buildPricingSchedule() {
     o.endDate = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.flighted = true;
     o.floodlightActivityId = 'foo';
-    o.pricingPeriods = buildUnnamed156();
+    o.pricingPeriods = buildUnnamed153();
     o.pricingType = 'foo';
     o.startDate = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.testingStartDate = core.DateTime.parse('2002-02-27T14:01:02Z');
@@ -9499,7 +9338,7 @@ void checkPricingSchedule(api.PricingSchedule o) {
       o.floodlightActivityId!,
       unittest.equals('foo'),
     );
-    checkUnnamed156(o.pricingPeriods!);
+    checkUnnamed153(o.pricingPeriods!);
     unittest.expect(
       o.pricingType!,
       unittest.equals('foo'),
@@ -9682,12 +9521,12 @@ void checkProject(api.Project o) {
   buildCounterProject--;
 }
 
-core.List<api.Project> buildUnnamed157() => [
+core.List<api.Project> buildUnnamed154() => [
       buildProject(),
       buildProject(),
     ];
 
-void checkUnnamed157(core.List<api.Project> o) {
+void checkUnnamed154(core.List<api.Project> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProject(o[0]);
   checkProject(o[1]);
@@ -9700,7 +9539,7 @@ api.ProjectsListResponse buildProjectsListResponse() {
   if (buildCounterProjectsListResponse < 3) {
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.projects = buildUnnamed157();
+    o.projects = buildUnnamed154();
   }
   buildCounterProjectsListResponse--;
   return o;
@@ -9717,61 +9556,61 @@ void checkProjectsListResponse(api.ProjectsListResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed157(o.projects!);
+    checkUnnamed154(o.projects!);
   }
   buildCounterProjectsListResponse--;
 }
 
-core.List<api.Dimension> buildUnnamed158() => [
+core.List<api.Dimension> buildUnnamed155() => [
       buildDimension(),
       buildDimension(),
     ];
 
-void checkUnnamed158(core.List<api.Dimension> o) {
+void checkUnnamed155(core.List<api.Dimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimension(o[0]);
   checkDimension(o[1]);
 }
 
-core.List<api.Dimension> buildUnnamed159() => [
+core.List<api.Dimension> buildUnnamed156() => [
       buildDimension(),
       buildDimension(),
     ];
 
-void checkUnnamed159(core.List<api.Dimension> o) {
+void checkUnnamed156(core.List<api.Dimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimension(o[0]);
   checkDimension(o[1]);
 }
 
-core.List<api.Metric> buildUnnamed160() => [
+core.List<api.Metric> buildUnnamed157() => [
       buildMetric(),
       buildMetric(),
     ];
 
-void checkUnnamed160(core.List<api.Metric> o) {
+void checkUnnamed157(core.List<api.Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetric(o[0]);
   checkMetric(o[1]);
 }
 
-core.List<api.Metric> buildUnnamed161() => [
+core.List<api.Metric> buildUnnamed158() => [
       buildMetric(),
       buildMetric(),
     ];
 
-void checkUnnamed161(core.List<api.Metric> o) {
+void checkUnnamed158(core.List<api.Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetric(o[0]);
   checkMetric(o[1]);
 }
 
-core.List<api.Metric> buildUnnamed162() => [
+core.List<api.Metric> buildUnnamed159() => [
       buildMetric(),
       buildMetric(),
     ];
 
-void checkUnnamed162(core.List<api.Metric> o) {
+void checkUnnamed159(core.List<api.Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetric(o[0]);
   checkMetric(o[1]);
@@ -9782,12 +9621,12 @@ api.ReachReportCompatibleFields buildReachReportCompatibleFields() {
   final o = api.ReachReportCompatibleFields();
   buildCounterReachReportCompatibleFields++;
   if (buildCounterReachReportCompatibleFields < 3) {
-    o.dimensionFilters = buildUnnamed158();
-    o.dimensions = buildUnnamed159();
+    o.dimensionFilters = buildUnnamed155();
+    o.dimensions = buildUnnamed156();
     o.kind = 'foo';
-    o.metrics = buildUnnamed160();
-    o.pivotedActivityMetrics = buildUnnamed161();
-    o.reachByFrequencyMetrics = buildUnnamed162();
+    o.metrics = buildUnnamed157();
+    o.pivotedActivityMetrics = buildUnnamed158();
+    o.reachByFrequencyMetrics = buildUnnamed159();
   }
   buildCounterReachReportCompatibleFields--;
   return o;
@@ -9796,15 +9635,15 @@ api.ReachReportCompatibleFields buildReachReportCompatibleFields() {
 void checkReachReportCompatibleFields(api.ReachReportCompatibleFields o) {
   buildCounterReachReportCompatibleFields++;
   if (buildCounterReachReportCompatibleFields < 3) {
-    checkUnnamed158(o.dimensionFilters!);
-    checkUnnamed159(o.dimensions!);
+    checkUnnamed155(o.dimensionFilters!);
+    checkUnnamed156(o.dimensions!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed160(o.metrics!);
-    checkUnnamed161(o.pivotedActivityMetrics!);
-    checkUnnamed162(o.reachByFrequencyMetrics!);
+    checkUnnamed157(o.metrics!);
+    checkUnnamed158(o.pivotedActivityMetrics!);
+    checkUnnamed159(o.reachByFrequencyMetrics!);
   }
   buildCounterReachReportCompatibleFields--;
 }
@@ -9888,12 +9727,12 @@ void checkRegion(api.Region o) {
   buildCounterRegion--;
 }
 
-core.List<api.Region> buildUnnamed163() => [
+core.List<api.Region> buildUnnamed160() => [
       buildRegion(),
       buildRegion(),
     ];
 
-void checkUnnamed163(core.List<api.Region> o) {
+void checkUnnamed160(core.List<api.Region> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRegion(o[0]);
   checkRegion(o[1]);
@@ -9905,7 +9744,7 @@ api.RegionsListResponse buildRegionsListResponse() {
   buildCounterRegionsListResponse++;
   if (buildCounterRegionsListResponse < 3) {
     o.kind = 'foo';
-    o.regions = buildUnnamed163();
+    o.regions = buildUnnamed160();
   }
   buildCounterRegionsListResponse--;
   return o;
@@ -9918,7 +9757,7 @@ void checkRegionsListResponse(api.RegionsListResponse o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed163(o.regions!);
+    checkUnnamed160(o.regions!);
   }
   buildCounterRegionsListResponse--;
 }
@@ -9996,12 +9835,12 @@ void checkRemarketingList(api.RemarketingList o) {
   buildCounterRemarketingList--;
 }
 
-core.List<core.String> buildUnnamed164() => [
+core.List<core.String> buildUnnamed161() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed164(core.List<core.String> o) {
+void checkUnnamed161(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10013,12 +9852,12 @@ void checkUnnamed164(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed165() => [
+core.List<core.String> buildUnnamed162() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed165(core.List<core.String> o) {
+void checkUnnamed162(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10037,8 +9876,8 @@ api.RemarketingListShare buildRemarketingListShare() {
   if (buildCounterRemarketingListShare < 3) {
     o.kind = 'foo';
     o.remarketingListId = 'foo';
-    o.sharedAccountIds = buildUnnamed164();
-    o.sharedAdvertiserIds = buildUnnamed165();
+    o.sharedAccountIds = buildUnnamed161();
+    o.sharedAdvertiserIds = buildUnnamed162();
   }
   buildCounterRemarketingListShare--;
   return o;
@@ -10055,18 +9894,18 @@ void checkRemarketingListShare(api.RemarketingListShare o) {
       o.remarketingListId!,
       unittest.equals('foo'),
     );
-    checkUnnamed164(o.sharedAccountIds!);
-    checkUnnamed165(o.sharedAdvertiserIds!);
+    checkUnnamed161(o.sharedAccountIds!);
+    checkUnnamed162(o.sharedAdvertiserIds!);
   }
   buildCounterRemarketingListShare--;
 }
 
-core.List<api.RemarketingList> buildUnnamed166() => [
+core.List<api.RemarketingList> buildUnnamed163() => [
       buildRemarketingList(),
       buildRemarketingList(),
     ];
 
-void checkUnnamed166(core.List<api.RemarketingList> o) {
+void checkUnnamed163(core.List<api.RemarketingList> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRemarketingList(o[0]);
   checkRemarketingList(o[1]);
@@ -10079,7 +9918,7 @@ api.RemarketingListsListResponse buildRemarketingListsListResponse() {
   if (buildCounterRemarketingListsListResponse < 3) {
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.remarketingLists = buildUnnamed166();
+    o.remarketingLists = buildUnnamed163();
   }
   buildCounterRemarketingListsListResponse--;
   return o;
@@ -10096,39 +9935,39 @@ void checkRemarketingListsListResponse(api.RemarketingListsListResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed166(o.remarketingLists!);
+    checkUnnamed163(o.remarketingLists!);
   }
   buildCounterRemarketingListsListResponse--;
 }
 
-core.List<api.DimensionValue> buildUnnamed167() => [
+core.List<api.DimensionValue> buildUnnamed164() => [
       buildDimensionValue(),
       buildDimensionValue(),
     ];
 
-void checkUnnamed167(core.List<api.DimensionValue> o) {
+void checkUnnamed164(core.List<api.DimensionValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimensionValue(o[0]);
   checkDimensionValue(o[1]);
 }
 
-core.List<api.SortedDimension> buildUnnamed168() => [
+core.List<api.SortedDimension> buildUnnamed165() => [
       buildSortedDimension(),
       buildSortedDimension(),
     ];
 
-void checkUnnamed168(core.List<api.SortedDimension> o) {
+void checkUnnamed165(core.List<api.SortedDimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSortedDimension(o[0]);
   checkSortedDimension(o[1]);
 }
 
-core.List<core.String> buildUnnamed169() => [
+core.List<core.String> buildUnnamed166() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed169(core.List<core.String> o) {
+void checkUnnamed166(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10148,9 +9987,9 @@ api.ReportCriteria buildReportCriteria() {
     o.activities = buildActivities();
     o.customRichMediaEvents = buildCustomRichMediaEvents();
     o.dateRange = buildDateRange();
-    o.dimensionFilters = buildUnnamed167();
-    o.dimensions = buildUnnamed168();
-    o.metricNames = buildUnnamed169();
+    o.dimensionFilters = buildUnnamed164();
+    o.dimensions = buildUnnamed165();
+    o.metricNames = buildUnnamed166();
   }
   buildCounterReportCriteria--;
   return o;
@@ -10162,41 +10001,41 @@ void checkReportCriteria(api.ReportCriteria o) {
     checkActivities(o.activities!);
     checkCustomRichMediaEvents(o.customRichMediaEvents!);
     checkDateRange(o.dateRange!);
-    checkUnnamed167(o.dimensionFilters!);
-    checkUnnamed168(o.dimensions!);
-    checkUnnamed169(o.metricNames!);
+    checkUnnamed164(o.dimensionFilters!);
+    checkUnnamed165(o.dimensions!);
+    checkUnnamed166(o.metricNames!);
   }
   buildCounterReportCriteria--;
 }
 
-core.List<api.SortedDimension> buildUnnamed170() => [
+core.List<api.SortedDimension> buildUnnamed167() => [
       buildSortedDimension(),
       buildSortedDimension(),
     ];
 
-void checkUnnamed170(core.List<api.SortedDimension> o) {
+void checkUnnamed167(core.List<api.SortedDimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSortedDimension(o[0]);
   checkSortedDimension(o[1]);
 }
 
-core.List<api.DimensionValue> buildUnnamed171() => [
+core.List<api.DimensionValue> buildUnnamed168() => [
       buildDimensionValue(),
       buildDimensionValue(),
     ];
 
-void checkUnnamed171(core.List<api.DimensionValue> o) {
+void checkUnnamed168(core.List<api.DimensionValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimensionValue(o[0]);
   checkDimensionValue(o[1]);
 }
 
-core.List<core.String> buildUnnamed172() => [
+core.List<core.String> buildUnnamed169() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed172(core.List<core.String> o) {
+void checkUnnamed169(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10208,12 +10047,12 @@ void checkUnnamed172(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed173() => [
+core.List<core.String> buildUnnamed170() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed173(core.List<core.String> o) {
+void checkUnnamed170(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10230,12 +10069,12 @@ api.ReportCrossDimensionReachCriteria buildReportCrossDimensionReachCriteria() {
   final o = api.ReportCrossDimensionReachCriteria();
   buildCounterReportCrossDimensionReachCriteria++;
   if (buildCounterReportCrossDimensionReachCriteria < 3) {
-    o.breakdown = buildUnnamed170();
+    o.breakdown = buildUnnamed167();
     o.dateRange = buildDateRange();
     o.dimension = 'foo';
-    o.dimensionFilters = buildUnnamed171();
-    o.metricNames = buildUnnamed172();
-    o.overlapMetricNames = buildUnnamed173();
+    o.dimensionFilters = buildUnnamed168();
+    o.metricNames = buildUnnamed169();
+    o.overlapMetricNames = buildUnnamed170();
     o.pivoted = true;
   }
   buildCounterReportCrossDimensionReachCriteria--;
@@ -10246,26 +10085,26 @@ void checkReportCrossDimensionReachCriteria(
     api.ReportCrossDimensionReachCriteria o) {
   buildCounterReportCrossDimensionReachCriteria++;
   if (buildCounterReportCrossDimensionReachCriteria < 3) {
-    checkUnnamed170(o.breakdown!);
+    checkUnnamed167(o.breakdown!);
     checkDateRange(o.dateRange!);
     unittest.expect(
       o.dimension!,
       unittest.equals('foo'),
     );
-    checkUnnamed171(o.dimensionFilters!);
-    checkUnnamed172(o.metricNames!);
-    checkUnnamed173(o.overlapMetricNames!);
+    checkUnnamed168(o.dimensionFilters!);
+    checkUnnamed169(o.metricNames!);
+    checkUnnamed170(o.overlapMetricNames!);
     unittest.expect(o.pivoted!, unittest.isTrue);
   }
   buildCounterReportCrossDimensionReachCriteria--;
 }
 
-core.List<api.Recipient> buildUnnamed174() => [
+core.List<api.Recipient> buildUnnamed171() => [
       buildRecipient(),
       buildRecipient(),
     ];
 
-void checkUnnamed174(core.List<api.Recipient> o) {
+void checkUnnamed171(core.List<api.Recipient> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRecipient(o[0]);
   checkRecipient(o[1]);
@@ -10279,7 +10118,7 @@ api.ReportDelivery buildReportDelivery() {
     o.emailOwner = true;
     o.emailOwnerDeliveryType = 'foo';
     o.message = 'foo';
-    o.recipients = buildUnnamed174();
+    o.recipients = buildUnnamed171();
   }
   buildCounterReportDelivery--;
   return o;
@@ -10297,50 +10136,50 @@ void checkReportDelivery(api.ReportDelivery o) {
       o.message!,
       unittest.equals('foo'),
     );
-    checkUnnamed174(o.recipients!);
+    checkUnnamed171(o.recipients!);
   }
   buildCounterReportDelivery--;
 }
 
-core.List<api.DimensionValue> buildUnnamed175() => [
+core.List<api.DimensionValue> buildUnnamed172() => [
       buildDimensionValue(),
       buildDimensionValue(),
     ];
 
-void checkUnnamed175(core.List<api.DimensionValue> o) {
+void checkUnnamed172(core.List<api.DimensionValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimensionValue(o[0]);
   checkDimensionValue(o[1]);
 }
 
-core.List<api.DimensionValue> buildUnnamed176() => [
+core.List<api.DimensionValue> buildUnnamed173() => [
       buildDimensionValue(),
       buildDimensionValue(),
     ];
 
-void checkUnnamed176(core.List<api.DimensionValue> o) {
+void checkUnnamed173(core.List<api.DimensionValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimensionValue(o[0]);
   checkDimensionValue(o[1]);
 }
 
-core.List<api.SortedDimension> buildUnnamed177() => [
+core.List<api.SortedDimension> buildUnnamed174() => [
       buildSortedDimension(),
       buildSortedDimension(),
     ];
 
-void checkUnnamed177(core.List<api.SortedDimension> o) {
+void checkUnnamed174(core.List<api.SortedDimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSortedDimension(o[0]);
   checkSortedDimension(o[1]);
 }
 
-core.List<core.String> buildUnnamed178() => [
+core.List<core.String> buildUnnamed175() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed178(core.List<core.String> o) {
+void checkUnnamed175(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10382,12 +10221,12 @@ api.ReportFloodlightCriteria buildReportFloodlightCriteria() {
   final o = api.ReportFloodlightCriteria();
   buildCounterReportFloodlightCriteria++;
   if (buildCounterReportFloodlightCriteria < 3) {
-    o.customRichMediaEvents = buildUnnamed175();
+    o.customRichMediaEvents = buildUnnamed172();
     o.dateRange = buildDateRange();
-    o.dimensionFilters = buildUnnamed176();
-    o.dimensions = buildUnnamed177();
+    o.dimensionFilters = buildUnnamed173();
+    o.dimensions = buildUnnamed174();
     o.floodlightConfigId = buildDimensionValue();
-    o.metricNames = buildUnnamed178();
+    o.metricNames = buildUnnamed175();
     o.reportProperties = buildReportFloodlightCriteriaReportProperties();
   }
   buildCounterReportFloodlightCriteria--;
@@ -10397,45 +10236,45 @@ api.ReportFloodlightCriteria buildReportFloodlightCriteria() {
 void checkReportFloodlightCriteria(api.ReportFloodlightCriteria o) {
   buildCounterReportFloodlightCriteria++;
   if (buildCounterReportFloodlightCriteria < 3) {
-    checkUnnamed175(o.customRichMediaEvents!);
+    checkUnnamed172(o.customRichMediaEvents!);
     checkDateRange(o.dateRange!);
-    checkUnnamed176(o.dimensionFilters!);
-    checkUnnamed177(o.dimensions!);
+    checkUnnamed173(o.dimensionFilters!);
+    checkUnnamed174(o.dimensions!);
     checkDimensionValue(o.floodlightConfigId!);
-    checkUnnamed178(o.metricNames!);
+    checkUnnamed175(o.metricNames!);
     checkReportFloodlightCriteriaReportProperties(o.reportProperties!);
   }
   buildCounterReportFloodlightCriteria--;
 }
 
-core.List<api.DimensionValue> buildUnnamed179() => [
+core.List<api.DimensionValue> buildUnnamed176() => [
       buildDimensionValue(),
       buildDimensionValue(),
     ];
 
-void checkUnnamed179(core.List<api.DimensionValue> o) {
+void checkUnnamed176(core.List<api.DimensionValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimensionValue(o[0]);
   checkDimensionValue(o[1]);
 }
 
-core.List<api.SortedDimension> buildUnnamed180() => [
+core.List<api.SortedDimension> buildUnnamed177() => [
       buildSortedDimension(),
       buildSortedDimension(),
     ];
 
-void checkUnnamed180(core.List<api.SortedDimension> o) {
+void checkUnnamed177(core.List<api.SortedDimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSortedDimension(o[0]);
   checkSortedDimension(o[1]);
 }
 
-core.List<core.String> buildUnnamed181() => [
+core.List<core.String> buildUnnamed178() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed181(core.List<core.String> o) {
+void checkUnnamed178(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10447,12 +10286,12 @@ void checkUnnamed181(core.List<core.String> o) {
   );
 }
 
-core.List<api.PathFilter> buildUnnamed182() => [
+core.List<api.PathFilter> buildUnnamed179() => [
       buildPathFilter(),
       buildPathFilter(),
     ];
 
-void checkUnnamed182(core.List<api.PathFilter> o) {
+void checkUnnamed179(core.List<api.PathFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPathFilter(o[0]);
   checkPathFilter(o[1]);
@@ -10463,13 +10302,13 @@ api.ReportPathAttributionCriteria buildReportPathAttributionCriteria() {
   final o = api.ReportPathAttributionCriteria();
   buildCounterReportPathAttributionCriteria++;
   if (buildCounterReportPathAttributionCriteria < 3) {
-    o.activityFilters = buildUnnamed179();
+    o.activityFilters = buildUnnamed176();
     o.customChannelGrouping = buildChannelGrouping();
     o.dateRange = buildDateRange();
-    o.dimensions = buildUnnamed180();
+    o.dimensions = buildUnnamed177();
     o.floodlightConfigId = buildDimensionValue();
-    o.metricNames = buildUnnamed181();
-    o.pathFilters = buildUnnamed182();
+    o.metricNames = buildUnnamed178();
+    o.pathFilters = buildUnnamed179();
   }
   buildCounterReportPathAttributionCriteria--;
   return o;
@@ -10478,45 +10317,45 @@ api.ReportPathAttributionCriteria buildReportPathAttributionCriteria() {
 void checkReportPathAttributionCriteria(api.ReportPathAttributionCriteria o) {
   buildCounterReportPathAttributionCriteria++;
   if (buildCounterReportPathAttributionCriteria < 3) {
-    checkUnnamed179(o.activityFilters!);
+    checkUnnamed176(o.activityFilters!);
     checkChannelGrouping(o.customChannelGrouping!);
     checkDateRange(o.dateRange!);
-    checkUnnamed180(o.dimensions!);
+    checkUnnamed177(o.dimensions!);
     checkDimensionValue(o.floodlightConfigId!);
-    checkUnnamed181(o.metricNames!);
-    checkUnnamed182(o.pathFilters!);
+    checkUnnamed178(o.metricNames!);
+    checkUnnamed179(o.pathFilters!);
   }
   buildCounterReportPathAttributionCriteria--;
 }
 
-core.List<api.DimensionValue> buildUnnamed183() => [
+core.List<api.DimensionValue> buildUnnamed180() => [
       buildDimensionValue(),
       buildDimensionValue(),
     ];
 
-void checkUnnamed183(core.List<api.DimensionValue> o) {
+void checkUnnamed180(core.List<api.DimensionValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimensionValue(o[0]);
   checkDimensionValue(o[1]);
 }
 
-core.List<api.SortedDimension> buildUnnamed184() => [
+core.List<api.SortedDimension> buildUnnamed181() => [
       buildSortedDimension(),
       buildSortedDimension(),
     ];
 
-void checkUnnamed184(core.List<api.SortedDimension> o) {
+void checkUnnamed181(core.List<api.SortedDimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSortedDimension(o[0]);
   checkSortedDimension(o[1]);
 }
 
-core.List<core.String> buildUnnamed185() => [
+core.List<core.String> buildUnnamed182() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed185(core.List<core.String> o) {
+void checkUnnamed182(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10528,12 +10367,12 @@ void checkUnnamed185(core.List<core.String> o) {
   );
 }
 
-core.List<api.PathFilter> buildUnnamed186() => [
+core.List<api.PathFilter> buildUnnamed183() => [
       buildPathFilter(),
       buildPathFilter(),
     ];
 
-void checkUnnamed186(core.List<api.PathFilter> o) {
+void checkUnnamed183(core.List<api.PathFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPathFilter(o[0]);
   checkPathFilter(o[1]);
@@ -10544,13 +10383,13 @@ api.ReportPathCriteria buildReportPathCriteria() {
   final o = api.ReportPathCriteria();
   buildCounterReportPathCriteria++;
   if (buildCounterReportPathCriteria < 3) {
-    o.activityFilters = buildUnnamed183();
+    o.activityFilters = buildUnnamed180();
     o.customChannelGrouping = buildChannelGrouping();
     o.dateRange = buildDateRange();
-    o.dimensions = buildUnnamed184();
+    o.dimensions = buildUnnamed181();
     o.floodlightConfigId = buildDimensionValue();
-    o.metricNames = buildUnnamed185();
-    o.pathFilters = buildUnnamed186();
+    o.metricNames = buildUnnamed182();
+    o.pathFilters = buildUnnamed183();
   }
   buildCounterReportPathCriteria--;
   return o;
@@ -10559,15 +10398,48 @@ api.ReportPathCriteria buildReportPathCriteria() {
 void checkReportPathCriteria(api.ReportPathCriteria o) {
   buildCounterReportPathCriteria++;
   if (buildCounterReportPathCriteria < 3) {
-    checkUnnamed183(o.activityFilters!);
+    checkUnnamed180(o.activityFilters!);
     checkChannelGrouping(o.customChannelGrouping!);
     checkDateRange(o.dateRange!);
-    checkUnnamed184(o.dimensions!);
+    checkUnnamed181(o.dimensions!);
     checkDimensionValue(o.floodlightConfigId!);
-    checkUnnamed185(o.metricNames!);
-    checkUnnamed186(o.pathFilters!);
+    checkUnnamed182(o.metricNames!);
+    checkUnnamed183(o.pathFilters!);
   }
   buildCounterReportPathCriteria--;
+}
+
+core.List<api.DimensionValue> buildUnnamed184() => [
+      buildDimensionValue(),
+      buildDimensionValue(),
+    ];
+
+void checkUnnamed184(core.List<api.DimensionValue> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkDimensionValue(o[0]);
+  checkDimensionValue(o[1]);
+}
+
+core.List<api.SortedDimension> buildUnnamed185() => [
+      buildSortedDimension(),
+      buildSortedDimension(),
+    ];
+
+void checkUnnamed185(core.List<api.SortedDimension> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSortedDimension(o[0]);
+  checkSortedDimension(o[1]);
+}
+
+core.List<api.SortedDimension> buildUnnamed186() => [
+      buildSortedDimension(),
+      buildSortedDimension(),
+    ];
+
+void checkUnnamed186(core.List<api.SortedDimension> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSortedDimension(o[0]);
+  checkSortedDimension(o[1]);
 }
 
 core.List<api.DimensionValue> buildUnnamed187() => [
@@ -10581,45 +10453,12 @@ void checkUnnamed187(core.List<api.DimensionValue> o) {
   checkDimensionValue(o[1]);
 }
 
-core.List<api.SortedDimension> buildUnnamed188() => [
-      buildSortedDimension(),
-      buildSortedDimension(),
-    ];
-
-void checkUnnamed188(core.List<api.SortedDimension> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkSortedDimension(o[0]);
-  checkSortedDimension(o[1]);
-}
-
-core.List<api.SortedDimension> buildUnnamed189() => [
-      buildSortedDimension(),
-      buildSortedDimension(),
-    ];
-
-void checkUnnamed189(core.List<api.SortedDimension> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkSortedDimension(o[0]);
-  checkSortedDimension(o[1]);
-}
-
-core.List<api.DimensionValue> buildUnnamed190() => [
-      buildDimensionValue(),
-      buildDimensionValue(),
-    ];
-
-void checkUnnamed190(core.List<api.DimensionValue> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkDimensionValue(o[0]);
-  checkDimensionValue(o[1]);
-}
-
-core.List<core.String> buildUnnamed191() => [
+core.List<core.String> buildUnnamed188() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed191(core.List<core.String> o) {
+void checkUnnamed188(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10631,12 +10470,12 @@ void checkUnnamed191(core.List<core.String> o) {
   );
 }
 
-core.List<api.SortedDimension> buildUnnamed192() => [
+core.List<api.SortedDimension> buildUnnamed189() => [
       buildSortedDimension(),
       buildSortedDimension(),
     ];
 
-void checkUnnamed192(core.List<api.SortedDimension> o) {
+void checkUnnamed189(core.List<api.SortedDimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSortedDimension(o[0]);
   checkSortedDimension(o[1]);
@@ -10699,14 +10538,14 @@ api.ReportPathToConversionCriteria buildReportPathToConversionCriteria() {
   final o = api.ReportPathToConversionCriteria();
   buildCounterReportPathToConversionCriteria++;
   if (buildCounterReportPathToConversionCriteria < 3) {
-    o.activityFilters = buildUnnamed187();
-    o.conversionDimensions = buildUnnamed188();
-    o.customFloodlightVariables = buildUnnamed189();
-    o.customRichMediaEvents = buildUnnamed190();
+    o.activityFilters = buildUnnamed184();
+    o.conversionDimensions = buildUnnamed185();
+    o.customFloodlightVariables = buildUnnamed186();
+    o.customRichMediaEvents = buildUnnamed187();
     o.dateRange = buildDateRange();
     o.floodlightConfigId = buildDimensionValue();
-    o.metricNames = buildUnnamed191();
-    o.perInteractionDimensions = buildUnnamed192();
+    o.metricNames = buildUnnamed188();
+    o.perInteractionDimensions = buildUnnamed189();
     o.reportProperties = buildReportPathToConversionCriteriaReportProperties();
   }
   buildCounterReportPathToConversionCriteria--;
@@ -10716,47 +10555,47 @@ api.ReportPathToConversionCriteria buildReportPathToConversionCriteria() {
 void checkReportPathToConversionCriteria(api.ReportPathToConversionCriteria o) {
   buildCounterReportPathToConversionCriteria++;
   if (buildCounterReportPathToConversionCriteria < 3) {
-    checkUnnamed187(o.activityFilters!);
-    checkUnnamed188(o.conversionDimensions!);
-    checkUnnamed189(o.customFloodlightVariables!);
-    checkUnnamed190(o.customRichMediaEvents!);
+    checkUnnamed184(o.activityFilters!);
+    checkUnnamed185(o.conversionDimensions!);
+    checkUnnamed186(o.customFloodlightVariables!);
+    checkUnnamed187(o.customRichMediaEvents!);
     checkDateRange(o.dateRange!);
     checkDimensionValue(o.floodlightConfigId!);
-    checkUnnamed191(o.metricNames!);
-    checkUnnamed192(o.perInteractionDimensions!);
+    checkUnnamed188(o.metricNames!);
+    checkUnnamed189(o.perInteractionDimensions!);
     checkReportPathToConversionCriteriaReportProperties(o.reportProperties!);
   }
   buildCounterReportPathToConversionCriteria--;
 }
 
-core.List<api.DimensionValue> buildUnnamed193() => [
+core.List<api.DimensionValue> buildUnnamed190() => [
       buildDimensionValue(),
       buildDimensionValue(),
     ];
 
-void checkUnnamed193(core.List<api.DimensionValue> o) {
+void checkUnnamed190(core.List<api.DimensionValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimensionValue(o[0]);
   checkDimensionValue(o[1]);
 }
 
-core.List<api.SortedDimension> buildUnnamed194() => [
+core.List<api.SortedDimension> buildUnnamed191() => [
       buildSortedDimension(),
       buildSortedDimension(),
     ];
 
-void checkUnnamed194(core.List<api.SortedDimension> o) {
+void checkUnnamed191(core.List<api.SortedDimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSortedDimension(o[0]);
   checkSortedDimension(o[1]);
 }
 
-core.List<core.String> buildUnnamed195() => [
+core.List<core.String> buildUnnamed192() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed195(core.List<core.String> o) {
+void checkUnnamed192(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10768,12 +10607,12 @@ void checkUnnamed195(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed196() => [
+core.List<core.String> buildUnnamed193() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed196(core.List<core.String> o) {
+void checkUnnamed193(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10793,11 +10632,11 @@ api.ReportReachCriteria buildReportReachCriteria() {
     o.activities = buildActivities();
     o.customRichMediaEvents = buildCustomRichMediaEvents();
     o.dateRange = buildDateRange();
-    o.dimensionFilters = buildUnnamed193();
-    o.dimensions = buildUnnamed194();
+    o.dimensionFilters = buildUnnamed190();
+    o.dimensions = buildUnnamed191();
     o.enableAllDimensionCombinations = true;
-    o.metricNames = buildUnnamed195();
-    o.reachByFrequencyMetricNames = buildUnnamed196();
+    o.metricNames = buildUnnamed192();
+    o.reachByFrequencyMetricNames = buildUnnamed193();
   }
   buildCounterReportReachCriteria--;
   return o;
@@ -10809,21 +10648,21 @@ void checkReportReachCriteria(api.ReportReachCriteria o) {
     checkActivities(o.activities!);
     checkCustomRichMediaEvents(o.customRichMediaEvents!);
     checkDateRange(o.dateRange!);
-    checkUnnamed193(o.dimensionFilters!);
-    checkUnnamed194(o.dimensions!);
+    checkUnnamed190(o.dimensionFilters!);
+    checkUnnamed191(o.dimensions!);
     unittest.expect(o.enableAllDimensionCombinations!, unittest.isTrue);
-    checkUnnamed195(o.metricNames!);
-    checkUnnamed196(o.reachByFrequencyMetricNames!);
+    checkUnnamed192(o.metricNames!);
+    checkUnnamed193(o.reachByFrequencyMetricNames!);
   }
   buildCounterReportReachCriteria--;
 }
 
-core.List<core.String> buildUnnamed197() => [
+core.List<core.String> buildUnnamed194() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed197(core.List<core.String> o) {
+void checkUnnamed194(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10844,7 +10683,7 @@ api.ReportSchedule buildReportSchedule() {
     o.every = 42;
     o.expirationDate = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.repeats = 'foo';
-    o.repeatsOnWeekDays = buildUnnamed197();
+    o.repeatsOnWeekDays = buildUnnamed194();
     o.runsOnDayOfMonth = 'foo';
     o.startDate = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.timezone = 'foo';
@@ -10869,7 +10708,7 @@ void checkReportSchedule(api.ReportSchedule o) {
       o.repeats!,
       unittest.equals('foo'),
     );
-    checkUnnamed197(o.repeatsOnWeekDays!);
+    checkUnnamed194(o.repeatsOnWeekDays!);
     unittest.expect(
       o.runsOnDayOfMonth!,
       unittest.equals('foo'),
@@ -10976,45 +10815,45 @@ void checkReport(api.Report o) {
   buildCounterReport--;
 }
 
-core.List<api.Dimension> buildUnnamed198() => [
+core.List<api.Dimension> buildUnnamed195() => [
       buildDimension(),
       buildDimension(),
     ];
 
-void checkUnnamed198(core.List<api.Dimension> o) {
+void checkUnnamed195(core.List<api.Dimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimension(o[0]);
   checkDimension(o[1]);
 }
 
-core.List<api.Dimension> buildUnnamed199() => [
+core.List<api.Dimension> buildUnnamed196() => [
       buildDimension(),
       buildDimension(),
     ];
 
-void checkUnnamed199(core.List<api.Dimension> o) {
+void checkUnnamed196(core.List<api.Dimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDimension(o[0]);
   checkDimension(o[1]);
 }
 
-core.List<api.Metric> buildUnnamed200() => [
+core.List<api.Metric> buildUnnamed197() => [
       buildMetric(),
       buildMetric(),
     ];
 
-void checkUnnamed200(core.List<api.Metric> o) {
+void checkUnnamed197(core.List<api.Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetric(o[0]);
   checkMetric(o[1]);
 }
 
-core.List<api.Metric> buildUnnamed201() => [
+core.List<api.Metric> buildUnnamed198() => [
       buildMetric(),
       buildMetric(),
     ];
 
-void checkUnnamed201(core.List<api.Metric> o) {
+void checkUnnamed198(core.List<api.Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetric(o[0]);
   checkMetric(o[1]);
@@ -11025,11 +10864,11 @@ api.ReportCompatibleFields buildReportCompatibleFields() {
   final o = api.ReportCompatibleFields();
   buildCounterReportCompatibleFields++;
   if (buildCounterReportCompatibleFields < 3) {
-    o.dimensionFilters = buildUnnamed198();
-    o.dimensions = buildUnnamed199();
+    o.dimensionFilters = buildUnnamed195();
+    o.dimensions = buildUnnamed196();
     o.kind = 'foo';
-    o.metrics = buildUnnamed200();
-    o.pivotedActivityMetrics = buildUnnamed201();
+    o.metrics = buildUnnamed197();
+    o.pivotedActivityMetrics = buildUnnamed198();
   }
   buildCounterReportCompatibleFields--;
   return o;
@@ -11038,24 +10877,24 @@ api.ReportCompatibleFields buildReportCompatibleFields() {
 void checkReportCompatibleFields(api.ReportCompatibleFields o) {
   buildCounterReportCompatibleFields++;
   if (buildCounterReportCompatibleFields < 3) {
-    checkUnnamed198(o.dimensionFilters!);
-    checkUnnamed199(o.dimensions!);
+    checkUnnamed195(o.dimensionFilters!);
+    checkUnnamed196(o.dimensions!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed200(o.metrics!);
-    checkUnnamed201(o.pivotedActivityMetrics!);
+    checkUnnamed197(o.metrics!);
+    checkUnnamed198(o.pivotedActivityMetrics!);
   }
   buildCounterReportCompatibleFields--;
 }
 
-core.List<api.Report> buildUnnamed202() => [
+core.List<api.Report> buildUnnamed199() => [
       buildReport(),
       buildReport(),
     ];
 
-void checkUnnamed202(core.List<api.Report> o) {
+void checkUnnamed199(core.List<api.Report> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReport(o[0]);
   checkReport(o[1]);
@@ -11067,7 +10906,7 @@ api.ReportList buildReportList() {
   buildCounterReportList++;
   if (buildCounterReportList < 3) {
     o.etag = 'foo';
-    o.items = buildUnnamed202();
+    o.items = buildUnnamed199();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -11082,7 +10921,7 @@ void checkReportList(api.ReportList o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed202(o.items!);
+    checkUnnamed199(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -11179,12 +11018,12 @@ void checkRule(api.Rule o) {
   buildCounterRule--;
 }
 
-core.List<api.SiteContact> buildUnnamed203() => [
+core.List<api.SiteContact> buildUnnamed200() => [
       buildSiteContact(),
       buildSiteContact(),
     ];
 
-void checkUnnamed203(core.List<api.SiteContact> o) {
+void checkUnnamed200(core.List<api.SiteContact> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSiteContact(o[0]);
   checkSiteContact(o[1]);
@@ -11204,7 +11043,7 @@ api.Site buildSite() {
     o.keyName = 'foo';
     o.kind = 'foo';
     o.name = 'foo';
-    o.siteContacts = buildUnnamed203();
+    o.siteContacts = buildUnnamed200();
     o.siteSettings = buildSiteSettings();
     o.subaccountId = 'foo';
     o.videoSettings = buildSiteVideoSettings();
@@ -11243,7 +11082,7 @@ void checkSite(api.Site o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed203(o.siteContacts!);
+    checkUnnamed200(o.siteContacts!);
     checkSiteSettings(o.siteSettings!);
     unittest.expect(
       o.subaccountId!,
@@ -11254,12 +11093,12 @@ void checkSite(api.Site o) {
   buildCounterSite--;
 }
 
-core.List<api.Size> buildUnnamed204() => [
+core.List<api.Size> buildUnnamed201() => [
       buildSize(),
       buildSize(),
     ];
 
-void checkUnnamed204(core.List<api.Size> o) {
+void checkUnnamed201(core.List<api.Size> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSize(o[0]);
   checkSize(o[1]);
@@ -11271,7 +11110,7 @@ api.SiteCompanionSetting buildSiteCompanionSetting() {
   buildCounterSiteCompanionSetting++;
   if (buildCounterSiteCompanionSetting < 3) {
     o.companionsDisabled = true;
-    o.enabledSizes = buildUnnamed204();
+    o.enabledSizes = buildUnnamed201();
     o.imageOnly = true;
     o.kind = 'foo';
   }
@@ -11283,7 +11122,7 @@ void checkSiteCompanionSetting(api.SiteCompanionSetting o) {
   buildCounterSiteCompanionSetting++;
   if (buildCounterSiteCompanionSetting < 3) {
     unittest.expect(o.companionsDisabled!, unittest.isTrue);
-    checkUnnamed204(o.enabledSizes!);
+    checkUnnamed201(o.enabledSizes!);
     unittest.expect(o.imageOnly!, unittest.isTrue);
     unittest.expect(
       o.kind!,
@@ -11410,12 +11249,12 @@ void checkSiteSkippableSetting(api.SiteSkippableSetting o) {
   buildCounterSiteSkippableSetting--;
 }
 
-core.List<core.int> buildUnnamed205() => [
+core.List<core.int> buildUnnamed202() => [
       42,
       42,
     ];
 
-void checkUnnamed205(core.List<core.int> o) {
+void checkUnnamed202(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -11432,7 +11271,7 @@ api.SiteTranscodeSetting buildSiteTranscodeSetting() {
   final o = api.SiteTranscodeSetting();
   buildCounterSiteTranscodeSetting++;
   if (buildCounterSiteTranscodeSetting < 3) {
-    o.enabledVideoFormats = buildUnnamed205();
+    o.enabledVideoFormats = buildUnnamed202();
     o.kind = 'foo';
   }
   buildCounterSiteTranscodeSetting--;
@@ -11442,7 +11281,7 @@ api.SiteTranscodeSetting buildSiteTranscodeSetting() {
 void checkSiteTranscodeSetting(api.SiteTranscodeSetting o) {
   buildCounterSiteTranscodeSetting++;
   if (buildCounterSiteTranscodeSetting < 3) {
-    checkUnnamed205(o.enabledVideoFormats!);
+    checkUnnamed202(o.enabledVideoFormats!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -11493,12 +11332,12 @@ void checkSiteVideoSettings(api.SiteVideoSettings o) {
   buildCounterSiteVideoSettings--;
 }
 
-core.List<api.Site> buildUnnamed206() => [
+core.List<api.Site> buildUnnamed203() => [
       buildSite(),
       buildSite(),
     ];
 
-void checkUnnamed206(core.List<api.Site> o) {
+void checkUnnamed203(core.List<api.Site> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSite(o[0]);
   checkSite(o[1]);
@@ -11511,7 +11350,7 @@ api.SitesListResponse buildSitesListResponse() {
   if (buildCounterSitesListResponse < 3) {
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.sites = buildUnnamed206();
+    o.sites = buildUnnamed203();
   }
   buildCounterSitesListResponse--;
   return o;
@@ -11528,7 +11367,7 @@ void checkSitesListResponse(api.SitesListResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed206(o.sites!);
+    checkUnnamed203(o.sites!);
   }
   buildCounterSitesListResponse--;
 }
@@ -11572,12 +11411,12 @@ void checkSize(api.Size o) {
   buildCounterSize--;
 }
 
-core.List<api.Size> buildUnnamed207() => [
+core.List<api.Size> buildUnnamed204() => [
       buildSize(),
       buildSize(),
     ];
 
-void checkUnnamed207(core.List<api.Size> o) {
+void checkUnnamed204(core.List<api.Size> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSize(o[0]);
   checkSize(o[1]);
@@ -11589,7 +11428,7 @@ api.SizesListResponse buildSizesListResponse() {
   buildCounterSizesListResponse++;
   if (buildCounterSizesListResponse < 3) {
     o.kind = 'foo';
-    o.sizes = buildUnnamed207();
+    o.sizes = buildUnnamed204();
   }
   buildCounterSizesListResponse--;
   return o;
@@ -11602,7 +11441,7 @@ void checkSizesListResponse(api.SizesListResponse o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed207(o.sizes!);
+    checkUnnamed204(o.sizes!);
   }
   buildCounterSizesListResponse--;
 }
@@ -11667,12 +11506,12 @@ void checkSortedDimension(api.SortedDimension o) {
   buildCounterSortedDimension--;
 }
 
-core.List<core.String> buildUnnamed208() => [
+core.List<core.String> buildUnnamed205() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed208(core.List<core.String> o) {
+void checkUnnamed205(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -11690,7 +11529,7 @@ api.Subaccount buildSubaccount() {
   buildCounterSubaccount++;
   if (buildCounterSubaccount < 3) {
     o.accountId = 'foo';
-    o.availablePermissionIds = buildUnnamed208();
+    o.availablePermissionIds = buildUnnamed205();
     o.id = 'foo';
     o.kind = 'foo';
     o.name = 'foo';
@@ -11706,7 +11545,7 @@ void checkSubaccount(api.Subaccount o) {
       o.accountId!,
       unittest.equals('foo'),
     );
-    checkUnnamed208(o.availablePermissionIds!);
+    checkUnnamed205(o.availablePermissionIds!);
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -11723,12 +11562,12 @@ void checkSubaccount(api.Subaccount o) {
   buildCounterSubaccount--;
 }
 
-core.List<api.Subaccount> buildUnnamed209() => [
+core.List<api.Subaccount> buildUnnamed206() => [
       buildSubaccount(),
       buildSubaccount(),
     ];
 
-void checkUnnamed209(core.List<api.Subaccount> o) {
+void checkUnnamed206(core.List<api.Subaccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubaccount(o[0]);
   checkSubaccount(o[1]);
@@ -11741,7 +11580,7 @@ api.SubaccountsListResponse buildSubaccountsListResponse() {
   if (buildCounterSubaccountsListResponse < 3) {
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.subaccounts = buildUnnamed209();
+    o.subaccounts = buildUnnamed206();
   }
   buildCounterSubaccountsListResponse--;
   return o;
@@ -11758,7 +11597,7 @@ void checkSubaccountsListResponse(api.SubaccountsListResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed209(o.subaccounts!);
+    checkUnnamed206(o.subaccounts!);
   }
   buildCounterSubaccountsListResponse--;
 }
@@ -11955,12 +11794,12 @@ void checkTargetableRemarketingList(api.TargetableRemarketingList o) {
   buildCounterTargetableRemarketingList--;
 }
 
-core.List<api.TargetableRemarketingList> buildUnnamed210() => [
+core.List<api.TargetableRemarketingList> buildUnnamed207() => [
       buildTargetableRemarketingList(),
       buildTargetableRemarketingList(),
     ];
 
-void checkUnnamed210(core.List<api.TargetableRemarketingList> o) {
+void checkUnnamed207(core.List<api.TargetableRemarketingList> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTargetableRemarketingList(o[0]);
   checkTargetableRemarketingList(o[1]);
@@ -11974,7 +11813,7 @@ api.TargetableRemarketingListsListResponse
   if (buildCounterTargetableRemarketingListsListResponse < 3) {
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.targetableRemarketingLists = buildUnnamed210();
+    o.targetableRemarketingLists = buildUnnamed207();
   }
   buildCounterTargetableRemarketingListsListResponse--;
   return o;
@@ -11992,7 +11831,7 @@ void checkTargetableRemarketingListsListResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed210(o.targetableRemarketingLists!);
+    checkUnnamed207(o.targetableRemarketingLists!);
   }
   buildCounterTargetableRemarketingListsListResponse--;
 }
@@ -12058,12 +11897,12 @@ void checkTargetingTemplate(api.TargetingTemplate o) {
   buildCounterTargetingTemplate--;
 }
 
-core.List<api.TargetingTemplate> buildUnnamed211() => [
+core.List<api.TargetingTemplate> buildUnnamed208() => [
       buildTargetingTemplate(),
       buildTargetingTemplate(),
     ];
 
-void checkUnnamed211(core.List<api.TargetingTemplate> o) {
+void checkUnnamed208(core.List<api.TargetingTemplate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTargetingTemplate(o[0]);
   checkTargetingTemplate(o[1]);
@@ -12076,7 +11915,7 @@ api.TargetingTemplatesListResponse buildTargetingTemplatesListResponse() {
   if (buildCounterTargetingTemplatesListResponse < 3) {
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.targetingTemplates = buildUnnamed211();
+    o.targetingTemplates = buildUnnamed208();
   }
   buildCounterTargetingTemplatesListResponse--;
   return o;
@@ -12093,72 +11932,72 @@ void checkTargetingTemplatesListResponse(api.TargetingTemplatesListResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed211(o.targetingTemplates!);
+    checkUnnamed208(o.targetingTemplates!);
   }
   buildCounterTargetingTemplatesListResponse--;
 }
 
-core.List<api.Browser> buildUnnamed212() => [
+core.List<api.Browser> buildUnnamed209() => [
       buildBrowser(),
       buildBrowser(),
     ];
 
-void checkUnnamed212(core.List<api.Browser> o) {
+void checkUnnamed209(core.List<api.Browser> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBrowser(o[0]);
   checkBrowser(o[1]);
 }
 
-core.List<api.ConnectionType> buildUnnamed213() => [
+core.List<api.ConnectionType> buildUnnamed210() => [
       buildConnectionType(),
       buildConnectionType(),
     ];
 
-void checkUnnamed213(core.List<api.ConnectionType> o) {
+void checkUnnamed210(core.List<api.ConnectionType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkConnectionType(o[0]);
   checkConnectionType(o[1]);
 }
 
-core.List<api.MobileCarrier> buildUnnamed214() => [
+core.List<api.MobileCarrier> buildUnnamed211() => [
       buildMobileCarrier(),
       buildMobileCarrier(),
     ];
 
-void checkUnnamed214(core.List<api.MobileCarrier> o) {
+void checkUnnamed211(core.List<api.MobileCarrier> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMobileCarrier(o[0]);
   checkMobileCarrier(o[1]);
 }
 
-core.List<api.OperatingSystemVersion> buildUnnamed215() => [
+core.List<api.OperatingSystemVersion> buildUnnamed212() => [
       buildOperatingSystemVersion(),
       buildOperatingSystemVersion(),
     ];
 
-void checkUnnamed215(core.List<api.OperatingSystemVersion> o) {
+void checkUnnamed212(core.List<api.OperatingSystemVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperatingSystemVersion(o[0]);
   checkOperatingSystemVersion(o[1]);
 }
 
-core.List<api.OperatingSystem> buildUnnamed216() => [
+core.List<api.OperatingSystem> buildUnnamed213() => [
       buildOperatingSystem(),
       buildOperatingSystem(),
     ];
 
-void checkUnnamed216(core.List<api.OperatingSystem> o) {
+void checkUnnamed213(core.List<api.OperatingSystem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperatingSystem(o[0]);
   checkOperatingSystem(o[1]);
 }
 
-core.List<api.PlatformType> buildUnnamed217() => [
+core.List<api.PlatformType> buildUnnamed214() => [
       buildPlatformType(),
       buildPlatformType(),
     ];
 
-void checkUnnamed217(core.List<api.PlatformType> o) {
+void checkUnnamed214(core.List<api.PlatformType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlatformType(o[0]);
   checkPlatformType(o[1]);
@@ -12169,12 +12008,12 @@ api.TechnologyTargeting buildTechnologyTargeting() {
   final o = api.TechnologyTargeting();
   buildCounterTechnologyTargeting++;
   if (buildCounterTechnologyTargeting < 3) {
-    o.browsers = buildUnnamed212();
-    o.connectionTypes = buildUnnamed213();
-    o.mobileCarriers = buildUnnamed214();
-    o.operatingSystemVersions = buildUnnamed215();
-    o.operatingSystems = buildUnnamed216();
-    o.platformTypes = buildUnnamed217();
+    o.browsers = buildUnnamed209();
+    o.connectionTypes = buildUnnamed210();
+    o.mobileCarriers = buildUnnamed211();
+    o.operatingSystemVersions = buildUnnamed212();
+    o.operatingSystems = buildUnnamed213();
+    o.platformTypes = buildUnnamed214();
   }
   buildCounterTechnologyTargeting--;
   return o;
@@ -12183,12 +12022,12 @@ api.TechnologyTargeting buildTechnologyTargeting() {
 void checkTechnologyTargeting(api.TechnologyTargeting o) {
   buildCounterTechnologyTargeting++;
   if (buildCounterTechnologyTargeting < 3) {
-    checkUnnamed212(o.browsers!);
-    checkUnnamed213(o.connectionTypes!);
-    checkUnnamed214(o.mobileCarriers!);
-    checkUnnamed215(o.operatingSystemVersions!);
-    checkUnnamed216(o.operatingSystems!);
-    checkUnnamed217(o.platformTypes!);
+    checkUnnamed209(o.browsers!);
+    checkUnnamed210(o.connectionTypes!);
+    checkUnnamed211(o.mobileCarriers!);
+    checkUnnamed212(o.operatingSystemVersions!);
+    checkUnnamed213(o.operatingSystems!);
+    checkUnnamed214(o.platformTypes!);
   }
   buildCounterTechnologyTargeting--;
 }
@@ -12247,12 +12086,12 @@ void checkThirdPartyTrackingUrl(api.ThirdPartyTrackingUrl o) {
   buildCounterThirdPartyTrackingUrl--;
 }
 
-core.List<core.int> buildUnnamed218() => [
+core.List<core.int> buildUnnamed215() => [
       42,
       42,
     ];
 
-void checkUnnamed218(core.List<core.int> o) {
+void checkUnnamed215(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -12269,7 +12108,7 @@ api.TranscodeSetting buildTranscodeSetting() {
   final o = api.TranscodeSetting();
   buildCounterTranscodeSetting++;
   if (buildCounterTranscodeSetting < 3) {
-    o.enabledVideoFormats = buildUnnamed218();
+    o.enabledVideoFormats = buildUnnamed215();
     o.kind = 'foo';
   }
   buildCounterTranscodeSetting--;
@@ -12279,7 +12118,7 @@ api.TranscodeSetting buildTranscodeSetting() {
 void checkTranscodeSetting(api.TranscodeSetting o) {
   buildCounterTranscodeSetting++;
   if (buildCounterTranscodeSetting < 3) {
-    checkUnnamed218(o.enabledVideoFormats!);
+    checkUnnamed215(o.enabledVideoFormats!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -12434,12 +12273,12 @@ void checkUserProfile(api.UserProfile o) {
   buildCounterUserProfile--;
 }
 
-core.List<api.UserProfile> buildUnnamed219() => [
+core.List<api.UserProfile> buildUnnamed216() => [
       buildUserProfile(),
       buildUserProfile(),
     ];
 
-void checkUnnamed219(core.List<api.UserProfile> o) {
+void checkUnnamed216(core.List<api.UserProfile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserProfile(o[0]);
   checkUserProfile(o[1]);
@@ -12451,7 +12290,7 @@ api.UserProfileList buildUserProfileList() {
   buildCounterUserProfileList++;
   if (buildCounterUserProfileList < 3) {
     o.etag = 'foo';
-    o.items = buildUnnamed219();
+    o.items = buildUnnamed216();
     o.kind = 'foo';
   }
   buildCounterUserProfileList--;
@@ -12465,7 +12304,7 @@ void checkUserProfileList(api.UserProfileList o) {
       o.etag!,
       unittest.equals('foo'),
     );
-    checkUnnamed219(o.items!);
+    checkUnnamed216(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -12474,12 +12313,12 @@ void checkUserProfileList(api.UserProfileList o) {
   buildCounterUserProfileList--;
 }
 
-core.List<api.UserRolePermission> buildUnnamed220() => [
+core.List<api.UserRolePermission> buildUnnamed217() => [
       buildUserRolePermission(),
       buildUserRolePermission(),
     ];
 
-void checkUnnamed220(core.List<api.UserRolePermission> o) {
+void checkUnnamed217(core.List<api.UserRolePermission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserRolePermission(o[0]);
   checkUserRolePermission(o[1]);
@@ -12496,7 +12335,7 @@ api.UserRole buildUserRole() {
     o.kind = 'foo';
     o.name = 'foo';
     o.parentUserRoleId = 'foo';
-    o.permissions = buildUnnamed220();
+    o.permissions = buildUnnamed217();
     o.subaccountId = 'foo';
   }
   buildCounterUserRole--;
@@ -12527,7 +12366,7 @@ void checkUserRole(api.UserRole o) {
       o.parentUserRoleId!,
       unittest.equals('foo'),
     );
-    checkUnnamed220(o.permissions!);
+    checkUnnamed217(o.permissions!);
     unittest.expect(
       o.subaccountId!,
       unittest.equals('foo'),
@@ -12610,12 +12449,12 @@ void checkUserRolePermissionGroup(api.UserRolePermissionGroup o) {
   buildCounterUserRolePermissionGroup--;
 }
 
-core.List<api.UserRolePermissionGroup> buildUnnamed221() => [
+core.List<api.UserRolePermissionGroup> buildUnnamed218() => [
       buildUserRolePermissionGroup(),
       buildUserRolePermissionGroup(),
     ];
 
-void checkUnnamed221(core.List<api.UserRolePermissionGroup> o) {
+void checkUnnamed218(core.List<api.UserRolePermissionGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserRolePermissionGroup(o[0]);
   checkUserRolePermissionGroup(o[1]);
@@ -12628,7 +12467,7 @@ api.UserRolePermissionGroupsListResponse
   buildCounterUserRolePermissionGroupsListResponse++;
   if (buildCounterUserRolePermissionGroupsListResponse < 3) {
     o.kind = 'foo';
-    o.userRolePermissionGroups = buildUnnamed221();
+    o.userRolePermissionGroups = buildUnnamed218();
   }
   buildCounterUserRolePermissionGroupsListResponse--;
   return o;
@@ -12642,17 +12481,17 @@ void checkUserRolePermissionGroupsListResponse(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed221(o.userRolePermissionGroups!);
+    checkUnnamed218(o.userRolePermissionGroups!);
   }
   buildCounterUserRolePermissionGroupsListResponse--;
 }
 
-core.List<api.UserRolePermission> buildUnnamed222() => [
+core.List<api.UserRolePermission> buildUnnamed219() => [
       buildUserRolePermission(),
       buildUserRolePermission(),
     ];
 
-void checkUnnamed222(core.List<api.UserRolePermission> o) {
+void checkUnnamed219(core.List<api.UserRolePermission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserRolePermission(o[0]);
   checkUserRolePermission(o[1]);
@@ -12664,7 +12503,7 @@ api.UserRolePermissionsListResponse buildUserRolePermissionsListResponse() {
   buildCounterUserRolePermissionsListResponse++;
   if (buildCounterUserRolePermissionsListResponse < 3) {
     o.kind = 'foo';
-    o.userRolePermissions = buildUnnamed222();
+    o.userRolePermissions = buildUnnamed219();
   }
   buildCounterUserRolePermissionsListResponse--;
   return o;
@@ -12678,17 +12517,17 @@ void checkUserRolePermissionsListResponse(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed222(o.userRolePermissions!);
+    checkUnnamed219(o.userRolePermissions!);
   }
   buildCounterUserRolePermissionsListResponse--;
 }
 
-core.List<api.UserRole> buildUnnamed223() => [
+core.List<api.UserRole> buildUnnamed220() => [
       buildUserRole(),
       buildUserRole(),
     ];
 
-void checkUnnamed223(core.List<api.UserRole> o) {
+void checkUnnamed220(core.List<api.UserRole> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserRole(o[0]);
   checkUserRole(o[1]);
@@ -12701,7 +12540,7 @@ api.UserRolesListResponse buildUserRolesListResponse() {
   if (buildCounterUserRolesListResponse < 3) {
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.userRoles = buildUnnamed223();
+    o.userRoles = buildUnnamed220();
   }
   buildCounterUserRolesListResponse--;
   return o;
@@ -12718,17 +12557,17 @@ void checkUserRolesListResponse(api.UserRolesListResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed223(o.userRoles!);
+    checkUnnamed220(o.userRoles!);
   }
   buildCounterUserRolesListResponse--;
 }
 
-core.List<core.String> buildUnnamed224() => [
+core.List<core.String> buildUnnamed221() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed224(core.List<core.String> o) {
+void checkUnnamed221(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -12749,7 +12588,7 @@ api.UvarFilter buildUvarFilter() {
     o.index = 'foo';
     o.kind = 'foo';
     o.match = 'foo';
-    o.values = buildUnnamed224();
+    o.values = buildUnnamed221();
   }
   buildCounterUvarFilter--;
   return o;
@@ -12771,7 +12610,7 @@ void checkUvarFilter(api.UvarFilter o) {
       o.match!,
       unittest.equals('foo'),
     );
-    checkUnnamed224(o.values!);
+    checkUnnamed221(o.values!);
   }
   buildCounterUvarFilter--;
 }
@@ -12815,12 +12654,12 @@ void checkVideoFormat(api.VideoFormat o) {
   buildCounterVideoFormat--;
 }
 
-core.List<api.VideoFormat> buildUnnamed225() => [
+core.List<api.VideoFormat> buildUnnamed222() => [
       buildVideoFormat(),
       buildVideoFormat(),
     ];
 
-void checkUnnamed225(core.List<api.VideoFormat> o) {
+void checkUnnamed222(core.List<api.VideoFormat> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVideoFormat(o[0]);
   checkVideoFormat(o[1]);
@@ -12832,7 +12671,7 @@ api.VideoFormatsListResponse buildVideoFormatsListResponse() {
   buildCounterVideoFormatsListResponse++;
   if (buildCounterVideoFormatsListResponse < 3) {
     o.kind = 'foo';
-    o.videoFormats = buildUnnamed225();
+    o.videoFormats = buildUnnamed222();
   }
   buildCounterVideoFormatsListResponse--;
   return o;
@@ -12845,7 +12684,7 @@ void checkVideoFormatsListResponse(api.VideoFormatsListResponse o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed225(o.videoFormats!);
+    checkUnnamed222(o.videoFormats!);
   }
   buildCounterVideoFormatsListResponse--;
 }
@@ -12922,6 +12761,57 @@ void checkVideoSettings(api.VideoSettings o) {
     checkTranscodeSetting(o.transcodeSettings!);
   }
   buildCounterVideoSettings--;
+}
+
+core.List<core.String> buildUnnamed223() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed223(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed224() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed224(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed225() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed225(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed226() => [
@@ -14443,108 +14333,6 @@ core.List<core.String> buildUnnamed315() => [
     ];
 
 void checkUnnamed315(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed316() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed316(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed317() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed317(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed318() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed318(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed319() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed319(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed320() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed320(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed321() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed321(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -16156,26 +15944,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-OrderDocument', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildOrderDocument();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.OrderDocument.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkOrderDocument(od);
-    });
-  });
-
-  unittest.group('obj-schema-OrderDocumentsListResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildOrderDocumentsListResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.OrderDocumentsListResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkOrderDocumentsListResponse(od);
-    });
-  });
-
   unittest.group('obj-schema-OrdersListResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildOrdersListResponse();
@@ -17104,26 +16872,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/accountActiveAdSummaries/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 26),
-          unittest.equals('/accountActiveAdSummaries/'),
-        );
-        pathOffset += 26;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_summaryAccountId'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -17184,26 +16933,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/accountPermissionGroups/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 25),
-          unittest.equals('/accountPermissionGroups/'),
-        );
-        pathOffset += 25;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -17261,20 +16991,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/accountPermissionGroups', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 24),
-          unittest.equals('/accountPermissionGroups'),
-        );
-        pathOffset += 24;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -17336,26 +17053,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/accountPermissions/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 20),
-          unittest.equals('/accountPermissions/'),
-        );
-        pathOffset += 20;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -17413,20 +17111,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/accountPermissions', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 19),
-          unittest.equals('/accountPermissions'),
-        );
-        pathOffset += 19;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -17501,12 +17186,7 @@ void main() {
           unittest.equals('/accountUserProfiles/'),
         );
         pathOffset += 21;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -17569,20 +17249,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/accountUserProfiles', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 20),
-          unittest.equals('/accountUserProfiles'),
-        );
-        pathOffset += 20;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -17620,7 +17287,7 @@ void main() {
       final res = api.DfareportingApi(mock).accountUserProfiles;
       final arg_profileId = 'foo';
       final arg_active = true;
-      final arg_ids = buildUnnamed226();
+      final arg_ids = buildUnnamed223();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -17649,20 +17316,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/accountUserProfiles', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 20),
-          unittest.equals('/accountUserProfiles'),
-        );
-        pathOffset += 20;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -17773,20 +17427,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/accountUserProfiles', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 20),
-          unittest.equals('/accountUserProfiles'),
-        );
-        pathOffset += 20;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -17853,20 +17494,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/accountUserProfiles', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 20),
-          unittest.equals('/accountUserProfiles'),
-        );
-        pathOffset += 20;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -17927,26 +17555,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/accounts/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/accounts/'),
-        );
-        pathOffset += 10;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -17984,7 +17593,7 @@ void main() {
       final res = api.DfareportingApi(mock).accounts;
       final arg_profileId = 'foo';
       final arg_active = true;
-      final arg_ids = buildUnnamed227();
+      final arg_ids = buildUnnamed224();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -18011,20 +17620,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/accounts', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 9),
-          unittest.equals('/accounts'),
-        );
-        pathOffset += 9;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -18123,20 +17719,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/accounts', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 9),
-          unittest.equals('/accounts'),
-        );
-        pathOffset += 9;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -18203,20 +17786,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/accounts', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 9),
-          unittest.equals('/accounts'),
-        );
-        pathOffset += 9;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -18277,26 +17847,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/ads/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 5),
-          unittest.equals('/ads/'),
-        );
-        pathOffset += 5;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -18359,20 +17910,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/ads', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 4),
-          unittest.equals('/ads'),
-        );
-        pathOffset += 4;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -18412,26 +17950,26 @@ void main() {
       final arg_active = true;
       final arg_advertiserId = 'foo';
       final arg_archived = true;
-      final arg_audienceSegmentIds = buildUnnamed228();
-      final arg_campaignIds = buildUnnamed229();
+      final arg_audienceSegmentIds = buildUnnamed225();
+      final arg_campaignIds = buildUnnamed226();
       final arg_compatibility = 'foo';
-      final arg_creativeIds = buildUnnamed230();
-      final arg_creativeOptimizationConfigurationIds = buildUnnamed231();
+      final arg_creativeIds = buildUnnamed227();
+      final arg_creativeOptimizationConfigurationIds = buildUnnamed228();
       final arg_dynamicClickTracker = true;
-      final arg_ids = buildUnnamed232();
-      final arg_landingPageIds = buildUnnamed233();
+      final arg_ids = buildUnnamed229();
+      final arg_landingPageIds = buildUnnamed230();
       final arg_maxResults = 42;
       final arg_overriddenEventTagId = 'foo';
       final arg_pageToken = 'foo';
-      final arg_placementIds = buildUnnamed234();
-      final arg_remarketingListIds = buildUnnamed235();
+      final arg_placementIds = buildUnnamed231();
+      final arg_remarketingListIds = buildUnnamed232();
       final arg_searchString = 'foo';
-      final arg_sizeIds = buildUnnamed236();
+      final arg_sizeIds = buildUnnamed233();
       final arg_sortField = 'foo';
       final arg_sortOrder = 'foo';
       final arg_sslCompliant = true;
       final arg_sslRequired = true;
-      final arg_type = buildUnnamed237();
+      final arg_type = buildUnnamed234();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -18453,20 +17991,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/ads', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 4),
-          unittest.equals('/ads'),
-        );
-        pathOffset += 4;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -18646,20 +18171,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/ads', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 4),
-          unittest.equals('/ads'),
-        );
-        pathOffset += 4;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -18726,20 +18238,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/ads', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 4),
-          unittest.equals('/ads'),
-        );
-        pathOffset += 4;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -18800,26 +18299,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/advertiserGroups/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 18),
-          unittest.equals('/advertiserGroups/'),
-        );
-        pathOffset += 18;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -18876,26 +18356,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/advertiserGroups/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 18),
-          unittest.equals('/advertiserGroups/'),
-        );
-        pathOffset += 18;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -18958,20 +18419,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/advertiserGroups', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 17),
-          unittest.equals('/advertiserGroups'),
-        );
-        pathOffset += 17;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -19008,7 +18456,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).advertiserGroups;
       final arg_profileId = 'foo';
-      final arg_ids = buildUnnamed238();
+      final arg_ids = buildUnnamed235();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -19035,20 +18483,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/advertiserGroups', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 17),
-          unittest.equals('/advertiserGroups'),
-        );
-        pathOffset += 17;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -19143,20 +18578,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/advertiserGroups', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 17),
-          unittest.equals('/advertiserGroups'),
-        );
-        pathOffset += 17;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -19223,20 +18645,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/advertiserGroups', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 17),
-          unittest.equals('/advertiserGroups'),
-        );
-        pathOffset += 17;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -19300,34 +18709,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/advertisers/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 13),
-          unittest.equals('/advertisers/'),
-        );
-        pathOffset += 13;
-        index = path.indexOf('/invoices', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_advertiserId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 9),
-          unittest.equals('/invoices'),
-        );
-        pathOffset += 9;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -19404,26 +18786,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/advertiserLandingPages/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 24),
-          unittest.equals('/advertiserLandingPages/'),
-        );
-        pathOffset += 24;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -19486,20 +18849,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/advertiserLandingPages', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 23),
-          unittest.equals('/advertiserLandingPages'),
-        );
-        pathOffset += 23;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -19536,10 +18886,10 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).advertiserLandingPages;
       final arg_profileId = 'foo';
-      final arg_advertiserIds = buildUnnamed239();
+      final arg_advertiserIds = buildUnnamed236();
       final arg_archived = true;
-      final arg_campaignIds = buildUnnamed240();
-      final arg_ids = buildUnnamed241();
+      final arg_campaignIds = buildUnnamed237();
+      final arg_ids = buildUnnamed238();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -19567,20 +18917,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/advertiserLandingPages', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 23),
-          unittest.equals('/advertiserLandingPages'),
-        );
-        pathOffset += 23;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -19696,20 +19033,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/advertiserLandingPages', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 23),
-          unittest.equals('/advertiserLandingPages'),
-        );
-        pathOffset += 23;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -19776,20 +19100,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/advertiserLandingPages', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 23),
-          unittest.equals('/advertiserLandingPages'),
-        );
-        pathOffset += 23;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -19850,26 +19161,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/advertisers/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 13),
-          unittest.equals('/advertisers/'),
-        );
-        pathOffset += 13;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -19932,20 +19224,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/advertisers', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals('/advertisers'),
-        );
-        pathOffset += 12;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -19982,9 +19261,9 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).advertisers;
       final arg_profileId = 'foo';
-      final arg_advertiserGroupIds = buildUnnamed242();
-      final arg_floodlightConfigurationIds = buildUnnamed243();
-      final arg_ids = buildUnnamed244();
+      final arg_advertiserGroupIds = buildUnnamed239();
+      final arg_floodlightConfigurationIds = buildUnnamed240();
+      final arg_ids = buildUnnamed241();
       final arg_includeAdvertisersWithoutGroupsOnly = true;
       final arg_maxResults = 42;
       final arg_onlyParent = true;
@@ -20015,20 +19294,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/advertisers', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals('/advertisers'),
-        );
-        pathOffset += 12;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -20153,20 +19419,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/advertisers', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals('/advertisers'),
-        );
-        pathOffset += 12;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -20233,20 +19486,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/advertisers', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals('/advertisers'),
-        );
-        pathOffset += 12;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -20312,34 +19552,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/billingProfiles/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 17),
-          unittest.equals('/billingProfiles/'),
-        );
-        pathOffset += 17;
-        index = path.indexOf('/billingAssignments', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_billingProfileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 19),
-          unittest.equals('/billingAssignments'),
-        );
-        pathOffset += 19;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -20399,34 +19612,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/billingProfiles/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 17),
-          unittest.equals('/billingProfiles/'),
-        );
-        pathOffset += 17;
-        index = path.indexOf('/billingAssignments', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_billingProfileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 19),
-          unittest.equals('/billingAssignments'),
-        );
-        pathOffset += 19;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -20488,26 +19674,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/billingProfiles/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 17),
-          unittest.equals('/billingProfiles/'),
-        );
-        pathOffset += 17;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -20545,15 +19712,15 @@ void main() {
       final res = api.DfareportingApi(mock).billingProfiles;
       final arg_profileId = 'foo';
       final arg_currencyCode = 'foo';
-      final arg_ids = buildUnnamed245();
+      final arg_ids = buildUnnamed242();
       final arg_maxResults = 42;
       final arg_name = 'foo';
       final arg_onlySuggestion = true;
       final arg_pageToken = 'foo';
       final arg_sortField = 'foo';
       final arg_sortOrder = 'foo';
-      final arg_status = buildUnnamed246();
-      final arg_subaccountIds = buildUnnamed247();
+      final arg_status = buildUnnamed243();
+      final arg_subaccountIds = buildUnnamed244();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -20575,20 +19742,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/billingProfiles', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('/billingProfiles'),
-        );
-        pathOffset += 16;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -20702,20 +19856,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/billingProfiles', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('/billingProfiles'),
-        );
-        pathOffset += 16;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -20776,34 +19917,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/billingProfiles/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 17),
-          unittest.equals('/billingProfiles/'),
-        );
-        pathOffset += 17;
-        index = path.indexOf('/billingRates', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_billingProfileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 13),
-          unittest.equals('/billingRates'),
-        );
-        pathOffset += 13;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -20863,20 +19977,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/browsers', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 9),
-          unittest.equals('/browsers'),
-        );
-        pathOffset += 9;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -20941,34 +20042,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/campaigns/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 11),
-          unittest.equals('/campaigns/'),
-        );
-        pathOffset += 11;
-        index = path.indexOf('/campaignCreativeAssociations', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_campaignId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('/campaignCreativeAssociations'),
-        );
-        pathOffset += 29;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -21032,34 +20106,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/campaigns/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 11),
-          unittest.equals('/campaigns/'),
-        );
-        pathOffset += 11;
-        index = path.indexOf('/campaignCreativeAssociations', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_campaignId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('/campaignCreativeAssociations'),
-        );
-        pathOffset += 29;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -21137,26 +20184,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/campaigns/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 11),
-          unittest.equals('/campaigns/'),
-        );
-        pathOffset += 11;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -21219,20 +20247,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/campaigns', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/campaigns'),
-        );
-        pathOffset += 10;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -21269,12 +20284,12 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).campaigns;
       final arg_profileId = 'foo';
-      final arg_advertiserGroupIds = buildUnnamed248();
-      final arg_advertiserIds = buildUnnamed249();
+      final arg_advertiserGroupIds = buildUnnamed245();
+      final arg_advertiserIds = buildUnnamed246();
       final arg_archived = true;
       final arg_atLeastOneOptimizationActivity = true;
-      final arg_excludedIds = buildUnnamed250();
-      final arg_ids = buildUnnamed251();
+      final arg_excludedIds = buildUnnamed247();
+      final arg_ids = buildUnnamed248();
       final arg_maxResults = 42;
       final arg_overriddenEventTagId = 'foo';
       final arg_pageToken = 'foo';
@@ -21303,20 +20318,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/campaigns', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/campaigns'),
-        );
-        pathOffset += 10;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -21445,20 +20447,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/campaigns', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/campaigns'),
-        );
-        pathOffset += 10;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -21525,20 +20514,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/campaigns', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/campaigns'),
-        );
-        pathOffset += 10;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -21599,26 +20575,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/changeLogs/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals('/changeLogs/'),
-        );
-        pathOffset += 12;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -21656,15 +20613,15 @@ void main() {
       final res = api.DfareportingApi(mock).changeLogs;
       final arg_profileId = 'foo';
       final arg_action = 'foo';
-      final arg_ids = buildUnnamed252();
+      final arg_ids = buildUnnamed249();
       final arg_maxChangeTime = 'foo';
       final arg_maxResults = 42;
       final arg_minChangeTime = 'foo';
-      final arg_objectIds = buildUnnamed253();
+      final arg_objectIds = buildUnnamed250();
       final arg_objectType = 'foo';
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
-      final arg_userProfileIds = buildUnnamed254();
+      final arg_userProfileIds = buildUnnamed251();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -21686,20 +20643,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/changeLogs', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 11),
-          unittest.equals('/changeLogs'),
-        );
-        pathOffset += 11;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -21788,10 +20732,10 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).cities;
       final arg_profileId = 'foo';
-      final arg_countryDartIds = buildUnnamed255();
-      final arg_dartIds = buildUnnamed256();
+      final arg_countryDartIds = buildUnnamed252();
+      final arg_dartIds = buildUnnamed253();
       final arg_namePrefix = 'foo';
-      final arg_regionDartIds = buildUnnamed257();
+      final arg_regionDartIds = buildUnnamed254();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -21813,20 +20757,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/cities', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 7),
-          unittest.equals('/cities'),
-        );
-        pathOffset += 7;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -21907,26 +20838,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/connectionTypes/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 17),
-          unittest.equals('/connectionTypes/'),
-        );
-        pathOffset += 17;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -21984,20 +20896,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/connectionTypes', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('/connectionTypes'),
-        );
-        pathOffset += 16;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -22058,26 +20957,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/contentCategories/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 19),
-          unittest.equals('/contentCategories/'),
-        );
-        pathOffset += 19;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -22134,26 +21014,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/contentCategories/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 19),
-          unittest.equals('/contentCategories/'),
-        );
-        pathOffset += 19;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -22216,20 +21077,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/contentCategories', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 18),
-          unittest.equals('/contentCategories'),
-        );
-        pathOffset += 18;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -22266,7 +21114,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).contentCategories;
       final arg_profileId = 'foo';
-      final arg_ids = buildUnnamed258();
+      final arg_ids = buildUnnamed255();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -22293,20 +21141,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/contentCategories', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 18),
-          unittest.equals('/contentCategories'),
-        );
-        pathOffset += 18;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -22401,20 +21236,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/contentCategories', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 18),
-          unittest.equals('/contentCategories'),
-        );
-        pathOffset += 18;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -22481,20 +21303,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/contentCategories', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 18),
-          unittest.equals('/contentCategories'),
-        );
-        pathOffset += 18;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -22711,26 +21520,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/countries/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 11),
-          unittest.equals('/countries/'),
-        );
-        pathOffset += 11;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_dartId'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -22788,20 +21578,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/countries', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/countries'),
-        );
-        pathOffset += 10;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -22869,34 +21646,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/creativeAssets/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('/creativeAssets/'),
-        );
-        pathOffset += 16;
-        index = path.indexOf('/creativeAssets', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_advertiserId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 15),
-          unittest.equals('/creativeAssets'),
-        );
-        pathOffset += 15;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -22959,40 +21709,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/creativeFields/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('/creativeFields/'),
-        );
-        pathOffset += 16;
-        index = path.indexOf('/creativeFieldValues/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_creativeFieldId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 21),
-          unittest.equals('/creativeFieldValues/'),
-        );
-        pathOffset += 21;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -23051,40 +21768,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/creativeFields/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('/creativeFields/'),
-        );
-        pathOffset += 16;
-        index = path.indexOf('/creativeFieldValues/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_creativeFieldId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 21),
-          unittest.equals('/creativeFieldValues/'),
-        );
-        pathOffset += 21;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -23148,34 +21832,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/creativeFields/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('/creativeFields/'),
-        );
-        pathOffset += 16;
-        index = path.indexOf('/creativeFieldValues', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_creativeFieldId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 20),
-          unittest.equals('/creativeFieldValues'),
-        );
-        pathOffset += 20;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -23214,7 +21871,7 @@ void main() {
       final res = api.DfareportingApi(mock).creativeFieldValues;
       final arg_profileId = 'foo';
       final arg_creativeFieldId = 'foo';
-      final arg_ids = buildUnnamed259();
+      final arg_ids = buildUnnamed256();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -23241,34 +21898,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/creativeFields/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('/creativeFields/'),
-        );
-        pathOffset += 16;
-        index = path.indexOf('/creativeFieldValues', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_creativeFieldId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 20),
-          unittest.equals('/creativeFieldValues'),
-        );
-        pathOffset += 20;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -23365,34 +21995,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/creativeFields/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('/creativeFields/'),
-        );
-        pathOffset += 16;
-        index = path.indexOf('/creativeFieldValues', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_creativeFieldId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 20),
-          unittest.equals('/creativeFieldValues'),
-        );
-        pathOffset += 20;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -23461,34 +22064,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/creativeFields/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('/creativeFields/'),
-        );
-        pathOffset += 16;
-        index = path.indexOf('/creativeFieldValues', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_creativeFieldId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 20),
-          unittest.equals('/creativeFieldValues'),
-        );
-        pathOffset += 20;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -23550,26 +22126,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/creativeFields/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('/creativeFields/'),
-        );
-        pathOffset += 16;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -23626,26 +22183,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/creativeFields/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('/creativeFields/'),
-        );
-        pathOffset += 16;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -23708,20 +22246,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/creativeFields', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 15),
-          unittest.equals('/creativeFields'),
-        );
-        pathOffset += 15;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -23758,8 +22283,8 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).creativeFields;
       final arg_profileId = 'foo';
-      final arg_advertiserIds = buildUnnamed260();
-      final arg_ids = buildUnnamed261();
+      final arg_advertiserIds = buildUnnamed257();
+      final arg_ids = buildUnnamed258();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -23786,20 +22311,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/creativeFields', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 15),
-          unittest.equals('/creativeFields'),
-        );
-        pathOffset += 15;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -23899,20 +22411,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/creativeFields', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 15),
-          unittest.equals('/creativeFields'),
-        );
-        pathOffset += 15;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -23979,20 +22478,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/creativeFields', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 15),
-          unittest.equals('/creativeFields'),
-        );
-        pathOffset += 15;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -24053,26 +22539,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/creativeGroups/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('/creativeGroups/'),
-        );
-        pathOffset += 16;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -24135,20 +22602,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/creativeGroups', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 15),
-          unittest.equals('/creativeGroups'),
-        );
-        pathOffset += 15;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -24185,9 +22639,9 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).creativeGroups;
       final arg_profileId = 'foo';
-      final arg_advertiserIds = buildUnnamed262();
+      final arg_advertiserIds = buildUnnamed259();
       final arg_groupNumber = 42;
-      final arg_ids = buildUnnamed263();
+      final arg_ids = buildUnnamed260();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -24214,20 +22668,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/creativeGroups', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 15),
-          unittest.equals('/creativeGroups'),
-        );
-        pathOffset += 15;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -24332,20 +22773,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/creativeGroups', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 15),
-          unittest.equals('/creativeGroups'),
-        );
-        pathOffset += 15;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -24412,20 +22840,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/creativeGroups', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 15),
-          unittest.equals('/creativeGroups'),
-        );
-        pathOffset += 15;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -24486,26 +22901,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/creatives/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 11),
-          unittest.equals('/creatives/'),
-        );
-        pathOffset += 11;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -24568,20 +22964,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/creatives', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/creatives'),
-        );
-        pathOffset += 10;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -24622,18 +23005,18 @@ void main() {
       final arg_advertiserId = 'foo';
       final arg_archived = true;
       final arg_campaignId = 'foo';
-      final arg_companionCreativeIds = buildUnnamed264();
-      final arg_creativeFieldIds = buildUnnamed265();
-      final arg_ids = buildUnnamed266();
+      final arg_companionCreativeIds = buildUnnamed261();
+      final arg_creativeFieldIds = buildUnnamed262();
+      final arg_ids = buildUnnamed263();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
-      final arg_renderingIds = buildUnnamed267();
+      final arg_renderingIds = buildUnnamed264();
       final arg_searchString = 'foo';
-      final arg_sizeIds = buildUnnamed268();
+      final arg_sizeIds = buildUnnamed265();
       final arg_sortField = 'foo';
       final arg_sortOrder = 'foo';
       final arg_studioCreativeId = 'foo';
-      final arg_types = buildUnnamed269();
+      final arg_types = buildUnnamed266();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -24655,20 +23038,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/creatives', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/creatives'),
-        );
-        pathOffset += 10;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -24812,20 +23182,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/creatives', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/creatives'),
-        );
-        pathOffset += 10;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -24892,20 +23249,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/creatives', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/creatives'),
-        );
-        pathOffset += 10;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -25056,26 +23400,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/directorySites/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('/directorySites/'),
-        );
-        pathOffset += 16;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -25138,20 +23463,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/directorySites', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 15),
-          unittest.equals('/directorySites'),
-        );
-        pathOffset += 15;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -25193,7 +23505,7 @@ void main() {
       final arg_acceptsPublisherPaidPlacements = true;
       final arg_active = true;
       final arg_dfpNetworkCode = 'foo';
-      final arg_ids = buildUnnamed270();
+      final arg_ids = buildUnnamed267();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -25220,20 +23532,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/directorySites', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 15),
-          unittest.equals('/directorySites'),
-        );
-        pathOffset += 15;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -25352,26 +23651,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/dynamicTargetingKeys/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 22),
-          unittest.equals('/dynamicTargetingKeys/'),
-        );
-        pathOffset += 22;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_objectId'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -25441,20 +23721,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/dynamicTargetingKeys', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 21),
-          unittest.equals('/dynamicTargetingKeys'),
-        );
-        pathOffset += 21;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -25492,7 +23759,7 @@ void main() {
       final res = api.DfareportingApi(mock).dynamicTargetingKeys;
       final arg_profileId = 'foo';
       final arg_advertiserId = 'foo';
-      final arg_names = buildUnnamed271();
+      final arg_names = buildUnnamed268();
       final arg_objectId = 'foo';
       final arg_objectType = 'foo';
       final arg_$fields = 'foo';
@@ -25516,20 +23783,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/dynamicTargetingKeys', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 21),
-          unittest.equals('/dynamicTargetingKeys'),
-        );
-        pathOffset += 21;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -25612,26 +23866,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/eventTags/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 11),
-          unittest.equals('/eventTags/'),
-        );
-        pathOffset += 11;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -25688,26 +23923,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/eventTags/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 11),
-          unittest.equals('/eventTags/'),
-        );
-        pathOffset += 11;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -25770,20 +23986,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/eventTags', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/eventTags'),
-        );
-        pathOffset += 10;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -25825,8 +24028,8 @@ void main() {
       final arg_campaignId = 'foo';
       final arg_definitionsOnly = true;
       final arg_enabled = true;
-      final arg_eventTagTypes = buildUnnamed272();
-      final arg_ids = buildUnnamed273();
+      final arg_eventTagTypes = buildUnnamed269();
+      final arg_ids = buildUnnamed270();
       final arg_searchString = 'foo';
       final arg_sortField = 'foo';
       final arg_sortOrder = 'foo';
@@ -25851,20 +24054,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/eventTags', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/eventTags'),
-        );
-        pathOffset += 10;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -25978,20 +24168,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/eventTags', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/eventTags'),
-        );
-        pathOffset += 10;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -26058,20 +24235,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/eventTags', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/eventTags'),
-        );
-        pathOffset += 10;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -26316,26 +24480,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/floodlightActivities/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 22),
-          unittest.equals('/floodlightActivities/'),
-        );
-        pathOffset += 22;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -26392,20 +24537,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/floodlightActivities/generatetag', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 33),
-          unittest.equals('/floodlightActivities/generatetag'),
-        );
-        pathOffset += 33;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -26470,26 +24602,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/floodlightActivities/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 22),
-          unittest.equals('/floodlightActivities/'),
-        );
-        pathOffset += 22;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -26552,20 +24665,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/floodlightActivities', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 21),
-          unittest.equals('/floodlightActivities'),
-        );
-        pathOffset += 21;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -26603,12 +24703,12 @@ void main() {
       final res = api.DfareportingApi(mock).floodlightActivities;
       final arg_profileId = 'foo';
       final arg_advertiserId = 'foo';
-      final arg_floodlightActivityGroupIds = buildUnnamed274();
+      final arg_floodlightActivityGroupIds = buildUnnamed271();
       final arg_floodlightActivityGroupName = 'foo';
       final arg_floodlightActivityGroupTagString = 'foo';
       final arg_floodlightActivityGroupType = 'foo';
       final arg_floodlightConfigurationId = 'foo';
-      final arg_ids = buildUnnamed275();
+      final arg_ids = buildUnnamed272();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -26636,20 +24736,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/floodlightActivities', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 21),
-          unittest.equals('/floodlightActivities'),
-        );
-        pathOffset += 21;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -26781,20 +24868,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/floodlightActivities', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 21),
-          unittest.equals('/floodlightActivities'),
-        );
-        pathOffset += 21;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -26861,20 +24935,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/floodlightActivities', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 21),
-          unittest.equals('/floodlightActivities'),
-        );
-        pathOffset += 21;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -26935,26 +24996,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/floodlightActivityGroups/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 26),
-          unittest.equals('/floodlightActivityGroups/'),
-        );
-        pathOffset += 26;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -27017,20 +25059,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/floodlightActivityGroups', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 25),
-          unittest.equals('/floodlightActivityGroups'),
-        );
-        pathOffset += 25;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -27069,7 +25098,7 @@ void main() {
       final arg_profileId = 'foo';
       final arg_advertiserId = 'foo';
       final arg_floodlightConfigurationId = 'foo';
-      final arg_ids = buildUnnamed276();
+      final arg_ids = buildUnnamed273();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -27097,20 +25126,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/floodlightActivityGroups', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 25),
-          unittest.equals('/floodlightActivityGroups'),
-        );
-        pathOffset += 25;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -27221,20 +25237,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/floodlightActivityGroups', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 25),
-          unittest.equals('/floodlightActivityGroups'),
-        );
-        pathOffset += 25;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -27301,20 +25304,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/floodlightActivityGroups', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 25),
-          unittest.equals('/floodlightActivityGroups'),
-        );
-        pathOffset += 25;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -27375,26 +25365,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/floodlightConfigurations/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 26),
-          unittest.equals('/floodlightConfigurations/'),
-        );
-        pathOffset += 26;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -27431,7 +25402,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).floodlightConfigurations;
       final arg_profileId = 'foo';
-      final arg_ids = buildUnnamed277();
+      final arg_ids = buildUnnamed274();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -27453,20 +25424,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/floodlightConfigurations', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 25),
-          unittest.equals('/floodlightConfigurations'),
-        );
-        pathOffset += 25;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -27536,20 +25494,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/floodlightConfigurations', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 25),
-          unittest.equals('/floodlightConfigurations'),
-        );
-        pathOffset += 25;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -27616,20 +25561,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/floodlightConfigurations', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 25),
-          unittest.equals('/floodlightConfigurations'),
-        );
-        pathOffset += 25;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -27691,40 +25623,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/projects/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/projects/'),
-        );
-        pathOffset += 10;
-        index = path.indexOf('/inventoryItems/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_projectId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('/inventoryItems/'),
-        );
-        pathOffset += 16;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -27762,12 +25661,12 @@ void main() {
       final res = api.DfareportingApi(mock).inventoryItems;
       final arg_profileId = 'foo';
       final arg_projectId = 'foo';
-      final arg_ids = buildUnnamed278();
+      final arg_ids = buildUnnamed275();
       final arg_inPlan = true;
       final arg_maxResults = 42;
-      final arg_orderId = buildUnnamed279();
+      final arg_orderId = buildUnnamed276();
       final arg_pageToken = 'foo';
-      final arg_siteId = buildUnnamed280();
+      final arg_siteId = buildUnnamed277();
       final arg_sortField = 'foo';
       final arg_sortOrder = 'foo';
       final arg_type = 'foo';
@@ -27792,34 +25691,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/projects/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/projects/'),
-        );
-        pathOffset += 10;
-        index = path.indexOf('/inventoryItems', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_projectId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 15),
-          unittest.equals('/inventoryItems'),
-        );
-        pathOffset += 15;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -27925,20 +25797,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/languages', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/languages'),
-        );
-        pathOffset += 10;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -27997,20 +25856,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/metros', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 7),
-          unittest.equals('/metros'),
-        );
-        pathOffset += 7;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -28070,26 +25916,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/mobileApps/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals('/mobileApps/'),
-        );
-        pathOffset += 12;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -28126,8 +25953,8 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).mobileApps;
       final arg_profileId = 'foo';
-      final arg_directories = buildUnnamed281();
-      final arg_ids = buildUnnamed282();
+      final arg_directories = buildUnnamed278();
+      final arg_ids = buildUnnamed279();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -28152,20 +25979,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/mobileApps', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 11),
-          unittest.equals('/mobileApps'),
-        );
-        pathOffset += 11;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -28251,26 +26065,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/mobileCarriers/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('/mobileCarriers/'),
-        );
-        pathOffset += 16;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -28328,20 +26123,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/mobileCarriers', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 15),
-          unittest.equals('/mobileCarriers'),
-        );
-        pathOffset += 15;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -28402,26 +26184,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/operatingSystemVersions/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 25),
-          unittest.equals('/operatingSystemVersions/'),
-        );
-        pathOffset += 25;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -28479,20 +26242,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/operatingSystemVersions', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 24),
-          unittest.equals('/operatingSystemVersions'),
-        );
-        pathOffset += 24;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -28554,26 +26304,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/operatingSystems/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 18),
-          unittest.equals('/operatingSystems/'),
-        );
-        pathOffset += 18;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_dartId'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -28631,20 +26362,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/operatingSystems', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 17),
-          unittest.equals('/operatingSystems'),
-        );
-        pathOffset += 17;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -28678,242 +26396,6 @@ void main() {
     });
   });
 
-  unittest.group('resource-OrderDocumentsResource', () {
-    unittest.test('method--get', () async {
-      final mock = HttpServerMock();
-      final res = api.DfareportingApi(mock).orderDocuments;
-      final arg_profileId = 'foo';
-      final arg_projectId = 'foo';
-      final arg_id = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('dfareporting/v4/'),
-        );
-        pathOffset += 16;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 13),
-          unittest.equals('userprofiles/'),
-        );
-        pathOffset += 13;
-        index = path.indexOf('/projects/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/projects/'),
-        );
-        pathOffset += 10;
-        index = path.indexOf('/orderDocuments/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_projectId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('/orderDocuments/'),
-        );
-        pathOffset += 16;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
-
-        final query = (req.url).query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOrderDocument());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.get(arg_profileId, arg_projectId, arg_id,
-          $fields: arg_$fields);
-      checkOrderDocument(response as api.OrderDocument);
-    });
-
-    unittest.test('method--list', () async {
-      final mock = HttpServerMock();
-      final res = api.DfareportingApi(mock).orderDocuments;
-      final arg_profileId = 'foo';
-      final arg_projectId = 'foo';
-      final arg_approved = true;
-      final arg_ids = buildUnnamed283();
-      final arg_maxResults = 42;
-      final arg_orderId = buildUnnamed284();
-      final arg_pageToken = 'foo';
-      final arg_searchString = 'foo';
-      final arg_siteId = buildUnnamed285();
-      final arg_sortField = 'foo';
-      final arg_sortOrder = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('dfareporting/v4/'),
-        );
-        pathOffset += 16;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 13),
-          unittest.equals('userprofiles/'),
-        );
-        pathOffset += 13;
-        index = path.indexOf('/projects/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/projects/'),
-        );
-        pathOffset += 10;
-        index = path.indexOf('/orderDocuments', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_projectId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 15),
-          unittest.equals('/orderDocuments'),
-        );
-        pathOffset += 15;
-
-        final query = (req.url).query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['approved']!.first,
-          unittest.equals('$arg_approved'),
-        );
-        unittest.expect(
-          queryMap['ids']!,
-          unittest.equals(arg_ids),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['maxResults']!.first),
-          unittest.equals(arg_maxResults),
-        );
-        unittest.expect(
-          queryMap['orderId']!,
-          unittest.equals(arg_orderId),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['searchString']!.first,
-          unittest.equals(arg_searchString),
-        );
-        unittest.expect(
-          queryMap['siteId']!,
-          unittest.equals(arg_siteId),
-        );
-        unittest.expect(
-          queryMap['sortField']!.first,
-          unittest.equals(arg_sortField),
-        );
-        unittest.expect(
-          queryMap['sortOrder']!.first,
-          unittest.equals(arg_sortOrder),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildOrderDocumentsListResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_profileId, arg_projectId,
-          approved: arg_approved,
-          ids: arg_ids,
-          maxResults: arg_maxResults,
-          orderId: arg_orderId,
-          pageToken: arg_pageToken,
-          searchString: arg_searchString,
-          siteId: arg_siteId,
-          sortField: arg_sortField,
-          sortOrder: arg_sortOrder,
-          $fields: arg_$fields);
-      checkOrderDocumentsListResponse(
-          response as api.OrderDocumentsListResponse);
-    });
-  });
-
   unittest.group('resource-OrdersResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
@@ -28942,40 +26424,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/projects/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/projects/'),
-        );
-        pathOffset += 10;
-        index = path.indexOf('/orders/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_projectId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('/orders/'),
-        );
-        pathOffset += 8;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -29013,11 +26462,11 @@ void main() {
       final res = api.DfareportingApi(mock).orders;
       final arg_profileId = 'foo';
       final arg_projectId = 'foo';
-      final arg_ids = buildUnnamed286();
+      final arg_ids = buildUnnamed280();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
-      final arg_siteId = buildUnnamed287();
+      final arg_siteId = buildUnnamed281();
       final arg_sortField = 'foo';
       final arg_sortOrder = 'foo';
       final arg_$fields = 'foo';
@@ -29041,34 +26490,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/projects/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/projects/'),
-        );
-        pathOffset += 10;
-        index = path.indexOf('/orders', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_projectId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 7),
-          unittest.equals('/orders'),
-        );
-        pathOffset += 7;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -29164,26 +26586,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/placementGroups/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 17),
-          unittest.equals('/placementGroups/'),
-        );
-        pathOffset += 17;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -29246,20 +26649,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/placementGroups', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('/placementGroups'),
-        );
-        pathOffset += 16;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -29296,12 +26686,12 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).placementGroups;
       final arg_profileId = 'foo';
-      final arg_activeStatus = buildUnnamed288();
-      final arg_advertiserIds = buildUnnamed289();
-      final arg_campaignIds = buildUnnamed290();
-      final arg_contentCategoryIds = buildUnnamed291();
-      final arg_directorySiteIds = buildUnnamed292();
-      final arg_ids = buildUnnamed293();
+      final arg_activeStatus = buildUnnamed282();
+      final arg_advertiserIds = buildUnnamed283();
+      final arg_campaignIds = buildUnnamed284();
+      final arg_contentCategoryIds = buildUnnamed285();
+      final arg_directorySiteIds = buildUnnamed286();
+      final arg_ids = buildUnnamed287();
       final arg_maxEndDate = 'foo';
       final arg_maxResults = 42;
       final arg_maxStartDate = 'foo';
@@ -29309,10 +26699,10 @@ void main() {
       final arg_minStartDate = 'foo';
       final arg_pageToken = 'foo';
       final arg_placementGroupType = 'foo';
-      final arg_placementStrategyIds = buildUnnamed294();
-      final arg_pricingTypes = buildUnnamed295();
+      final arg_placementStrategyIds = buildUnnamed288();
+      final arg_pricingTypes = buildUnnamed289();
       final arg_searchString = 'foo';
-      final arg_siteIds = buildUnnamed296();
+      final arg_siteIds = buildUnnamed290();
       final arg_sortField = 'foo';
       final arg_sortOrder = 'foo';
       final arg_$fields = 'foo';
@@ -29336,20 +26726,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/placementGroups', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('/placementGroups'),
-        );
-        pathOffset += 16;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -29509,20 +26886,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/placementGroups', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('/placementGroups'),
-        );
-        pathOffset += 16;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -29589,20 +26953,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/placementGroups', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 16),
-          unittest.equals('/placementGroups'),
-        );
-        pathOffset += 16;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -29663,26 +27014,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/placementStrategies/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 21),
-          unittest.equals('/placementStrategies/'),
-        );
-        pathOffset += 21;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -29739,26 +27071,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/placementStrategies/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 21),
-          unittest.equals('/placementStrategies/'),
-        );
-        pathOffset += 21;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -29821,20 +27134,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/placementStrategies', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 20),
-          unittest.equals('/placementStrategies'),
-        );
-        pathOffset += 20;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -29871,7 +27171,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).placementStrategies;
       final arg_profileId = 'foo';
-      final arg_ids = buildUnnamed297();
+      final arg_ids = buildUnnamed291();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -29898,20 +27198,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/placementStrategies', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 20),
-          unittest.equals('/placementStrategies'),
-        );
-        pathOffset += 20;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -30007,20 +27294,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/placementStrategies', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 20),
-          unittest.equals('/placementStrategies'),
-        );
-        pathOffset += 20;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -30087,20 +27361,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/placementStrategies', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 20),
-          unittest.equals('/placementStrategies'),
-        );
-        pathOffset += 20;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -30140,8 +27401,8 @@ void main() {
       final res = api.DfareportingApi(mock).placements;
       final arg_profileId = 'foo';
       final arg_campaignId = 'foo';
-      final arg_placementIds = buildUnnamed298();
-      final arg_tagFormats = buildUnnamed299();
+      final arg_placementIds = buildUnnamed292();
+      final arg_tagFormats = buildUnnamed293();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -30163,20 +27424,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/placements/generatetags', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 24),
-          unittest.equals('/placements/generatetags'),
-        );
-        pathOffset += 24;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -30251,26 +27499,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/placements/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals('/placements/'),
-        );
-        pathOffset += 12;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -30333,20 +27562,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/placements', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 11),
-          unittest.equals('/placements'),
-        );
-        pathOffset += 11;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -30383,14 +27599,14 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).placements;
       final arg_profileId = 'foo';
-      final arg_activeStatus = buildUnnamed300();
-      final arg_advertiserIds = buildUnnamed301();
-      final arg_campaignIds = buildUnnamed302();
-      final arg_compatibilities = buildUnnamed303();
-      final arg_contentCategoryIds = buildUnnamed304();
-      final arg_directorySiteIds = buildUnnamed305();
-      final arg_groupIds = buildUnnamed306();
-      final arg_ids = buildUnnamed307();
+      final arg_activeStatus = buildUnnamed294();
+      final arg_advertiserIds = buildUnnamed295();
+      final arg_campaignIds = buildUnnamed296();
+      final arg_compatibilities = buildUnnamed297();
+      final arg_contentCategoryIds = buildUnnamed298();
+      final arg_directorySiteIds = buildUnnamed299();
+      final arg_groupIds = buildUnnamed300();
+      final arg_ids = buildUnnamed301();
       final arg_maxEndDate = 'foo';
       final arg_maxResults = 42;
       final arg_maxStartDate = 'foo';
@@ -30398,11 +27614,11 @@ void main() {
       final arg_minStartDate = 'foo';
       final arg_pageToken = 'foo';
       final arg_paymentSource = 'foo';
-      final arg_placementStrategyIds = buildUnnamed308();
-      final arg_pricingTypes = buildUnnamed309();
+      final arg_placementStrategyIds = buildUnnamed302();
+      final arg_pricingTypes = buildUnnamed303();
       final arg_searchString = 'foo';
-      final arg_siteIds = buildUnnamed310();
-      final arg_sizeIds = buildUnnamed311();
+      final arg_siteIds = buildUnnamed304();
+      final arg_sizeIds = buildUnnamed305();
       final arg_sortField = 'foo';
       final arg_sortOrder = 'foo';
       final arg_$fields = 'foo';
@@ -30426,20 +27642,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/placements', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 11),
-          unittest.equals('/placements'),
-        );
-        pathOffset += 11;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -30613,20 +27816,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/placements', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 11),
-          unittest.equals('/placements'),
-        );
-        pathOffset += 11;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -30693,20 +27883,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/placements', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 11),
-          unittest.equals('/placements'),
-        );
-        pathOffset += 11;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -30767,26 +27944,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/platformTypes/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 15),
-          unittest.equals('/platformTypes/'),
-        );
-        pathOffset += 15;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -30844,20 +28002,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/platformTypes', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 14),
-          unittest.equals('/platformTypes'),
-        );
-        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -30917,26 +28062,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/postalCodes/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 13),
-          unittest.equals('/postalCodes/'),
-        );
-        pathOffset += 13;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_code'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -30994,20 +28120,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/postalCodes', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals('/postalCodes'),
-        );
-        pathOffset += 12;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -31067,26 +28180,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/projects/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/projects/'),
-        );
-        pathOffset += 10;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -31123,8 +28217,8 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).projects;
       final arg_profileId = 'foo';
-      final arg_advertiserIds = buildUnnamed312();
-      final arg_ids = buildUnnamed313();
+      final arg_advertiserIds = buildUnnamed306();
+      final arg_ids = buildUnnamed307();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -31151,20 +28245,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/projects', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 9),
-          unittest.equals('/projects'),
-        );
-        pathOffset += 9;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -31259,20 +28340,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/regions', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 8),
-          unittest.equals('/regions'),
-        );
-        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -31332,26 +28400,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/remarketingListShares/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 23),
-          unittest.equals('/remarketingListShares/'),
-        );
-        pathOffset += 23;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_remarketingListId'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -31415,20 +28464,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/remarketingListShares', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 22),
-          unittest.equals('/remarketingListShares'),
-        );
-        pathOffset += 22;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -31495,20 +28531,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/remarketingListShares', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 22),
-          unittest.equals('/remarketingListShares'),
-        );
-        pathOffset += 22;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -31569,26 +28592,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/remarketingLists/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 18),
-          unittest.equals('/remarketingLists/'),
-        );
-        pathOffset += 18;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -31651,20 +28655,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/remarketingLists', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 17),
-          unittest.equals('/remarketingLists'),
-        );
-        pathOffset += 17;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -31730,20 +28721,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/remarketingLists', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 17),
-          unittest.equals('/remarketingLists'),
-        );
-        pathOffset += 17;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -31847,20 +28825,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/remarketingLists', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 17),
-          unittest.equals('/remarketingLists'),
-        );
-        pathOffset += 17;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -31927,20 +28892,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/remarketingLists', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 17),
-          unittest.equals('/remarketingLists'),
-        );
-        pathOffset += 17;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -32878,26 +29830,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/sites/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 7),
-          unittest.equals('/sites/'),
-        );
-        pathOffset += 7;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -32960,20 +29893,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/sites', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 6),
-          unittest.equals('/sites'),
-        );
-        pathOffset += 6;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -33015,9 +29935,9 @@ void main() {
       final arg_acceptsPublisherPaidPlacements = true;
       final arg_adWordsSite = true;
       final arg_approved = true;
-      final arg_campaignIds = buildUnnamed314();
-      final arg_directorySiteIds = buildUnnamed315();
-      final arg_ids = buildUnnamed316();
+      final arg_campaignIds = buildUnnamed308();
+      final arg_directorySiteIds = buildUnnamed309();
+      final arg_ids = buildUnnamed310();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -33046,20 +29966,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/sites', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 6),
-          unittest.equals('/sites'),
-        );
-        pathOffset += 6;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -33198,20 +30105,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/sites', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 6),
-          unittest.equals('/sites'),
-        );
-        pathOffset += 6;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -33278,20 +30172,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/sites', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 6),
-          unittest.equals('/sites'),
-        );
-        pathOffset += 6;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -33352,26 +30233,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/sizes/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 7),
-          unittest.equals('/sizes/'),
-        );
-        pathOffset += 7;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -33434,20 +30296,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/sizes', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 6),
-          unittest.equals('/sizes'),
-        );
-        pathOffset += 6;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -33486,7 +30335,7 @@ void main() {
       final arg_profileId = 'foo';
       final arg_height = 42;
       final arg_iabStandard = true;
-      final arg_ids = buildUnnamed317();
+      final arg_ids = buildUnnamed311();
       final arg_width = 42;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -33509,20 +30358,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/sizes', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 6),
-          unittest.equals('/sizes'),
-        );
-        pathOffset += 6;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -33603,26 +30439,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/subaccounts/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 13),
-          unittest.equals('/subaccounts/'),
-        );
-        pathOffset += 13;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -33685,20 +30502,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/subaccounts', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals('/subaccounts'),
-        );
-        pathOffset += 12;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -33735,7 +30539,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).subaccounts;
       final arg_profileId = 'foo';
-      final arg_ids = buildUnnamed318();
+      final arg_ids = buildUnnamed312();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -33762,20 +30566,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/subaccounts', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals('/subaccounts'),
-        );
-        pathOffset += 12;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -33869,20 +30660,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/subaccounts', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals('/subaccounts'),
-        );
-        pathOffset += 12;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -33949,20 +30727,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/subaccounts', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals('/subaccounts'),
-        );
-        pathOffset += 12;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -34023,26 +30788,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/targetableRemarketingLists/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 28),
-          unittest.equals('/targetableRemarketingLists/'),
-        );
-        pathOffset += 28;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -34107,20 +30853,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/targetableRemarketingLists', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 27),
-          unittest.equals('/targetableRemarketingLists'),
-        );
-        pathOffset += 27;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -34217,26 +30950,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/targetingTemplates/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 20),
-          unittest.equals('/targetingTemplates/'),
-        );
-        pathOffset += 20;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -34299,20 +31013,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/targetingTemplates', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 19),
-          unittest.equals('/targetingTemplates'),
-        );
-        pathOffset += 19;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -34350,7 +31051,7 @@ void main() {
       final res = api.DfareportingApi(mock).targetingTemplates;
       final arg_profileId = 'foo';
       final arg_advertiserId = 'foo';
-      final arg_ids = buildUnnamed319();
+      final arg_ids = buildUnnamed313();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -34377,20 +31078,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/targetingTemplates', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 19),
-          unittest.equals('/targetingTemplates'),
-        );
-        pathOffset += 19;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -34490,20 +31178,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/targetingTemplates', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 19),
-          unittest.equals('/targetingTemplates'),
-        );
-        pathOffset += 19;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -34570,20 +31245,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/targetingTemplates', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 19),
-          unittest.equals('/targetingTemplates'),
-        );
-        pathOffset += 19;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -34763,26 +31425,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/userRolePermissionGroups/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 26),
-          unittest.equals('/userRolePermissionGroups/'),
-        );
-        pathOffset += 26;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -34840,20 +31483,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/userRolePermissionGroups', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 25),
-          unittest.equals('/userRolePermissionGroups'),
-        );
-        pathOffset += 25;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -34915,26 +31545,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/userRolePermissions/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 21),
-          unittest.equals('/userRolePermissions/'),
-        );
-        pathOffset += 21;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -34971,7 +31582,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DfareportingApi(mock).userRolePermissions;
       final arg_profileId = 'foo';
-      final arg_ids = buildUnnamed320();
+      final arg_ids = buildUnnamed314();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -34993,20 +31604,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/userRolePermissions', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 20),
-          unittest.equals('/userRolePermissions'),
-        );
-        pathOffset += 20;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -35073,26 +31671,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/userRoles/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 11),
-          unittest.equals('/userRoles/'),
-        );
-        pathOffset += 11;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -35149,26 +31728,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/userRoles/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 11),
-          unittest.equals('/userRoles/'),
-        );
-        pathOffset += 11;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -35231,20 +31791,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/userRoles', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/userRoles'),
-        );
-        pathOffset += 10;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -35282,7 +31829,7 @@ void main() {
       final res = api.DfareportingApi(mock).userRoles;
       final arg_profileId = 'foo';
       final arg_accountUserRoleOnly = true;
-      final arg_ids = buildUnnamed321();
+      final arg_ids = buildUnnamed315();
       final arg_maxResults = 42;
       final arg_pageToken = 'foo';
       final arg_searchString = 'foo';
@@ -35310,20 +31857,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/userRoles', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/userRoles'),
-        );
-        pathOffset += 10;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -35427,20 +31961,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/userRoles', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/userRoles'),
-        );
-        pathOffset += 10;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -35507,20 +32028,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/userRoles', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 10),
-          unittest.equals('/userRoles'),
-        );
-        pathOffset += 10;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -35581,26 +32089,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/videoFormats/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 14),
-          unittest.equals('/videoFormats/'),
-        );
-        pathOffset += 14;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_id'),
-        );
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;
@@ -35658,20 +32147,7 @@ void main() {
           unittest.equals('userprofiles/'),
         );
         pathOffset += 13;
-        index = path.indexOf('/videoFormats', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_profileId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 13),
-          unittest.equals('/videoFormats'),
-        );
-        pathOffset += 13;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         final query = (req.url).query;
         var queryOffset = 0;

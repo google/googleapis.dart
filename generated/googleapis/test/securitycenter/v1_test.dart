@@ -48,6 +48,7 @@ api.Access buildAccess() {
     o.serviceAccountDelegationInfo = buildUnnamed0();
     o.serviceAccountKeyName = 'foo';
     o.serviceName = 'foo';
+    o.userAgent = 'foo';
     o.userAgentFamily = 'foo';
     o.userName = 'foo';
   }
@@ -82,6 +83,10 @@ void checkAccess(api.Access o) {
     );
     unittest.expect(
       o.serviceName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.userAgent!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -818,6 +823,7 @@ api.Database buildDatabase() {
     o.name = 'foo';
     o.query = 'foo';
     o.userName = 'foo';
+    o.version = 'foo';
   }
   buildCounterDatabase--;
   return o;
@@ -841,6 +847,10 @@ void checkDatabase(api.Database o) {
     );
     unittest.expect(
       o.userName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
       unittest.equals('foo'),
     );
   }

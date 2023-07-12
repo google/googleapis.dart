@@ -875,6 +875,9 @@ class ProjectsLocationsConversionWorkspacesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
   ///
+  /// [force] - Force delete the conversion workspace, even if there's a running
+  /// migration that is using the workspace.
+  ///
   /// [requestId] - A unique ID used to identify the request. If the server
   /// receives two requests with the same ID, then the second request is
   /// ignored. It is recommended to always set this value to a UUID. The ID must
@@ -893,10 +896,12 @@ class ProjectsLocationsConversionWorkspacesResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
+    core.bool? force,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
     };
@@ -973,31 +978,47 @@ class ProjectsLocationsConversionWorkspacesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
   ///
-  /// [commitId] - Request a specific commit ID. If not specified, the entities
-  /// from the latest commit are returned.
+  /// [commitId] - Optional. Request a specific commit ID. If not specified, the
+  /// entities from the latest commit are returned.
   ///
-  /// [filter] - Filter the returned entities based on AIP-160 standard.
+  /// [filter] - Optional. Filter the returned entities based on AIP-160
+  /// standard.
   ///
-  /// [pageSize] - The maximum number of entities to return. The service may
-  /// return fewer entities than the value specifies.
+  /// [pageSize] - Optional. The maximum number of entities to return. The
+  /// service may return fewer entities than the value specifies.
   ///
-  /// [pageToken] - The nextPageToken value received in the previous call to
-  /// conversionWorkspace.describeDatabaseEntities, used in the subsequent
-  /// request to retrieve the next page of results. On first call this should be
-  /// left blank. When paginating, all other parameters provided to
-  /// conversionWorkspace.describeDatabaseEntities must match the call that
+  /// [pageToken] - Optional. The nextPageToken value received in the previous
+  /// call to conversionWorkspace.describeDatabaseEntities, used in the
+  /// subsequent request to retrieve the next page of results. On first call
+  /// this should be left blank. When paginating, all other parameters provided
+  /// to conversionWorkspace.describeDatabaseEntities must match the call that
   /// provided the page token.
   ///
-  /// [tree] - The tree to fetch.
+  /// [tree] - Required. The tree to fetch.
   /// Possible string values are:
   /// - "DB_TREE_TYPE_UNSPECIFIED" : Unspecified tree type.
   /// - "SOURCE_TREE" : The source database tree.
   /// - "DRAFT_TREE" : The draft database tree.
   /// - "DESTINATION_TREE" : The destination database tree.
   ///
-  /// [uncommitted] - Whether to retrieve the latest committed version of the
-  /// entities or the latest version. This field is ignored if a specific
+  /// [uncommitted] - Optional. Whether to retrieve the latest committed version
+  /// of the entities or the latest version. This field is ignored if a specific
   /// commit_id is specified.
+  ///
+  /// [view] - Optional. Results view based on AIP-157
+  /// Possible string values are:
+  /// - "DATABASE_ENTITY_VIEW_UNSPECIFIED" : Unspecified view. Defaults to basic
+  /// view.
+  /// - "DATABASE_ENTITY_VIEW_BASIC" : Default view. Does not return DDLs or
+  /// Issues.
+  /// - "DATABASE_ENTITY_VIEW_FULL" : Return full entity details including
+  /// mappings, ddl and issues.
+  /// - "DATABASE_ENTITY_VIEW_ROOT_SUMMARY" : Top-most (Database, Schema) nodes
+  /// which are returned contains summary details for their decendents such as
+  /// the number of entities per type and issues rollups. When this view is
+  /// used, only a single page of result is returned and the page_size property
+  /// of the request is ignored. The returned page will only include the
+  /// top-most node types.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1017,6 +1038,7 @@ class ProjectsLocationsConversionWorkspacesResource {
     core.String? pageToken,
     core.String? tree,
     core.bool? uncommitted,
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -1026,6 +1048,7 @@ class ProjectsLocationsConversionWorkspacesResource {
       if (pageToken != null) 'pageToken': [pageToken],
       if (tree != null) 'tree': [tree],
       if (uncommitted != null) 'uncommitted': ['${uncommitted}'],
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1509,6 +1532,146 @@ class ProjectsLocationsConversionWorkspacesMappingRulesResource {
       commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates a new mapping rule for a given conversion workspace.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent which owns this collection of mapping
+  /// rules.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
+  ///
+  /// [mappingRuleId] - Required. The ID of the rule to create.
+  ///
+  /// [requestId] - A unique ID used to identify the request. If the server
+  /// receives two requests with the same ID, then the second request is
+  /// ignored. It is recommended to always set this value to a UUID. The ID must
+  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MappingRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MappingRule> create(
+    MappingRule request,
+    core.String parent, {
+    core.String? mappingRuleId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert_1.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (mappingRuleId != null) 'mappingRuleId': [mappingRuleId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/mappingRules';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return MappingRule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single mapping rule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the mapping rule resource to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+/mappingRules/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A unique ID used to identify the request. If the
+  /// server receives two requests with the same ID, then the second request is
+  /// ignored. It is recommended to always set this value to a UUID. The ID must
+  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the details of a mapping rule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the mapping rule resource to get. Example:
+  /// conversionWorkspaces/123/mappingRules/rule123 In order to retrieve a
+  /// previous revision of the mapping rule, also provide the revision ID.
+  /// Example:
+  /// conversionWorkspace/123/mappingRules/rule123@c7cfa2a8c7cfa2a8c7cfa2a8c7cfa2a8
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+/mappingRules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MappingRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MappingRule> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return MappingRule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Imports the mapping rules for a given conversion workspace.
   ///
   /// Supports various formats of external rules files.
@@ -1554,6 +1717,58 @@ class ProjectsLocationsConversionWorkspacesMappingRulesResource {
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Lists the mapping rules for a specific conversion workspace.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the conversion workspace resource whose
+  /// mapping rules are listed in the form of:
+  /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/conversionWorkspaces/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of rules to return. The service may return
+  /// fewer than this value.
+  ///
+  /// [pageToken] - The nextPageToken value received in the previous call to
+  /// mappingRules.list, used in the subsequent request to retrieve the next
+  /// page of results. On first call this should be left blank. When paginating,
+  /// all other parameters provided to mappingRules.list must match the call
+  /// that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMappingRulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMappingRulesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/mappingRules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMappingRulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsMigrationJobsResource {
@@ -1574,8 +1789,8 @@ class ProjectsLocationsMigrationJobsResource {
   ///
   /// [migrationJobId] - Required. The ID of the instance to create.
   ///
-  /// [requestId] - A unique ID used to identify the request. If the server
-  /// receives two requests with the same ID, then the second request is
+  /// [requestId] - Optional. A unique ID used to identify the request. If the
+  /// server receives two requests with the same ID, then the second request is
   /// ignored. It is recommended to always set this value to a UUID. The ID must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
@@ -1707,6 +1922,52 @@ class ProjectsLocationsMigrationJobsResource {
       queryParams: queryParams_,
     );
     return SshScript.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Generate a TCP Proxy configuration script to configure a cloud-hosted VM
+  /// running a TCP Proxy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [migrationJob] - Name of the migration job resource to generate the TCP
+  /// Proxy script.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/migrationJobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TcpProxyScript].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TcpProxyScript> generateTcpProxyScript(
+    GenerateTcpProxyScriptRequest request,
+    core.String migrationJob, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert_1.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$migrationJob') +
+        ':generateTcpProxyScript';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TcpProxyScript.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details of a single migration job.
@@ -2947,8 +3208,24 @@ class AlloyDbSettings {
 
 /// Request message for 'ApplyConversionWorkspace' request.
 class ApplyConversionWorkspaceRequest {
+  /// Specifies whether the conversion workspace is to be committed
+  /// automatically after the apply.
+  ///
+  /// Optional.
+  core.bool? autoCommit;
+
   /// Fully qualified (Uri) name of the destination connection profile.
+  ///
+  /// Optional.
   core.String? connectionProfile;
+
+  /// Only validates the apply process, but doesn't change the destination
+  /// database.
+  ///
+  /// Only works for PostgreSQL destination connection profile.
+  ///
+  /// Optional.
+  core.bool? dryRun;
 
   /// Filter which entities to apply.
   ///
@@ -2957,32 +3234,69 @@ class ApplyConversionWorkspaceRequest {
   core.String? filter;
 
   ApplyConversionWorkspaceRequest({
+    this.autoCommit,
     this.connectionProfile,
+    this.dryRun,
     this.filter,
   });
 
   ApplyConversionWorkspaceRequest.fromJson(core.Map json_)
       : this(
+          autoCommit: json_.containsKey('autoCommit')
+              ? json_['autoCommit'] as core.bool
+              : null,
           connectionProfile: json_.containsKey('connectionProfile')
               ? json_['connectionProfile'] as core.String
               : null,
+          dryRun:
+              json_.containsKey('dryRun') ? json_['dryRun'] as core.bool : null,
           filter: json_.containsKey('filter')
               ? json_['filter'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (autoCommit != null) 'autoCommit': autoCommit!,
         if (connectionProfile != null) 'connectionProfile': connectionProfile!,
+        if (dryRun != null) 'dryRun': dryRun!,
         if (filter != null) 'filter': filter!,
+      };
+}
+
+/// Apply a hash function on the value.
+class ApplyHash {
+  /// Generate UUID from the data's byte array
+  ///
+  /// Optional.
+  Empty? uuidFromBytes;
+
+  ApplyHash({
+    this.uuidFromBytes,
+  });
+
+  ApplyHash.fromJson(core.Map json_)
+      : this(
+          uuidFromBytes: json_.containsKey('uuidFromBytes')
+              ? Empty.fromJson(
+                  json_['uuidFromBytes'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uuidFromBytes != null) 'uuidFromBytes': uuidFromBytes!,
       };
 }
 
 /// Details regarding an Apply background job.
 class ApplyJobDetails {
   /// The connection profile which was used for the apply job.
+  ///
+  /// Output only.
   core.String? connectionProfile;
 
   /// AIP-160 based filter used to specify the entities to apply
+  ///
+  /// Output only.
   core.String? filter;
 
   ApplyJobDetails({
@@ -3003,6 +3317,28 @@ class ApplyJobDetails {
   core.Map<core.String, core.dynamic> toJson() => {
         if (connectionProfile != null) 'connectionProfile': connectionProfile!,
         if (filter != null) 'filter': filter!,
+      };
+}
+
+/// Set to a specific value (value is converted to fit the target data type)
+class AssignSpecificValue {
+  /// Specific value to be assigned
+  ///
+  /// Required.
+  core.String? value;
+
+  AssignSpecificValue({
+    this.value,
+  });
+
+  AssignSpecificValue.fromJson(core.Map json_)
+      : this(
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (value != null) 'value': value!,
       };
 }
 
@@ -3068,13 +3404,19 @@ typedef AuditLogConfig = $AuditLogConfig;
 /// Execution log of a background job.
 class BackgroundJobLogEntry {
   /// Apply job details.
+  ///
+  /// Output only.
   ApplyJobDetails? applyJobDetails;
 
   /// Job completion comment, such as how many entities were seeded, how many
   /// warnings were found during conversion, and similar information.
+  ///
+  /// Output only.
   core.String? completionComment;
 
   /// Job completion state, i.e. the final state after the job completed.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "JOB_COMPLETION_STATE_UNSPECIFIED" : The status is not specified. This
   /// state is used when job is not yet finished.
@@ -3083,6 +3425,8 @@ class BackgroundJobLogEntry {
   core.String? completionState;
 
   /// Convert job details.
+  ///
+  /// Output only.
   ConvertJobDetails? convertJobDetails;
 
   /// The timestamp when the background job was finished.
@@ -3092,6 +3436,8 @@ class BackgroundJobLogEntry {
   core.String? id;
 
   /// Import rules job details.
+  ///
+  /// Output only.
   ImportRulesJobDetails? importRulesJobDetails;
 
   /// The type of job that was executed.
@@ -3109,9 +3455,13 @@ class BackgroundJobLogEntry {
 
   /// Whether the client requested the conversion workspace to be committed
   /// after a successful completion of the job.
+  ///
+  /// Output only.
   core.bool? requestAutocommit;
 
   /// Seed job details.
+  ///
+  /// Output only.
   SeedJobDetails? seedJobDetails;
 
   /// The timestamp when the background job was started.
@@ -3415,7 +3765,17 @@ class CloudSqlSettings {
   /// - "POSTGRES_12" : PostgreSQL 12.
   /// - "POSTGRES_13" : PostgreSQL 13.
   /// - "POSTGRES_14" : PostgreSQL 14.
+  /// - "POSTGRES_15" : PostgreSQL 15.
   core.String? databaseVersion;
+
+  /// The edition of the given Cloud SQL instance.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "EDITION_UNSPECIFIED" : The instance did not specify the edition.
+  /// - "ENTERPRISE" : The instance is an enterprise edition.
+  /// - "ENTERPRISE_PLUS" : The instance is an enterprise plus edition.
+  core.String? edition;
 
   /// The settings for IP Management.
   ///
@@ -3481,6 +3841,7 @@ class CloudSqlSettings {
     this.dataDiskType,
     this.databaseFlags,
     this.databaseVersion,
+    this.edition,
     this.ipConfig,
     this.rootPassword,
     this.rootPasswordSet,
@@ -3527,6 +3888,9 @@ class CloudSqlSettings {
           databaseVersion: json_.containsKey('databaseVersion')
               ? json_['databaseVersion'] as core.String
               : null,
+          edition: json_.containsKey('edition')
+              ? json_['edition'] as core.String
+              : null,
           ipConfig: json_.containsKey('ipConfig')
               ? SqlIpConfig.fromJson(
                   json_['ipConfig'] as core.Map<core.String, core.dynamic>)
@@ -3570,6 +3934,7 @@ class CloudSqlSettings {
         if (dataDiskType != null) 'dataDiskType': dataDiskType!,
         if (databaseFlags != null) 'databaseFlags': databaseFlags!,
         if (databaseVersion != null) 'databaseVersion': databaseVersion!,
+        if (edition != null) 'edition': edition!,
         if (ipConfig != null) 'ipConfig': ipConfig!,
         if (rootPassword != null) 'rootPassword': rootPassword!,
         if (rootPasswordSet != null) 'rootPasswordSet': rootPasswordSet!,
@@ -3763,6 +4128,75 @@ class CommitConversionWorkspaceRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (commitName != null) 'commitName': commitName!,
+      };
+}
+
+/// Options to configure rule type ConditionalColumnSetValue.
+///
+/// The rule is used to transform the data which is being replicated/migrated.
+/// The rule filter field can refer to one or more entities. The rule scope can
+/// be one of: Column.
+class ConditionalColumnSetValue {
+  /// Custom engine specific features.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? customFeatures;
+
+  /// Optional filter on source column precision and scale.
+  ///
+  /// Used for fixed point numbers such as NUMERIC/NUMBER data types.
+  ///
+  /// Optional.
+  SourceNumericFilter? sourceNumericFilter;
+
+  /// Optional filter on source column length.
+  ///
+  /// Used for text based data types like varchar.
+  ///
+  /// Optional.
+  SourceTextFilter? sourceTextFilter;
+
+  /// Description of data transformation during migration.
+  ///
+  /// Required.
+  ValueTransformation? valueTransformation;
+
+  ConditionalColumnSetValue({
+    this.customFeatures,
+    this.sourceNumericFilter,
+    this.sourceTextFilter,
+    this.valueTransformation,
+  });
+
+  ConditionalColumnSetValue.fromJson(core.Map json_)
+      : this(
+          customFeatures: json_.containsKey('customFeatures')
+              ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
+              : null,
+          sourceNumericFilter: json_.containsKey('sourceNumericFilter')
+              ? SourceNumericFilter.fromJson(json_['sourceNumericFilter']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sourceTextFilter: json_.containsKey('sourceTextFilter')
+              ? SourceTextFilter.fromJson(json_['sourceTextFilter']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          valueTransformation: json_.containsKey('valueTransformation')
+              ? ValueTransformation.fromJson(json_['valueTransformation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customFeatures != null) 'customFeatures': customFeatures!,
+        if (sourceNumericFilter != null)
+          'sourceNumericFilter': sourceNumericFilter!,
+        if (sourceTextFilter != null) 'sourceTextFilter': sourceTextFilter!,
+        if (valueTransformation != null)
+          'valueTransformation': valueTransformation!,
       };
 }
 
@@ -4022,6 +4456,8 @@ class ConversionWorkspace {
   DatabaseEngineInfo? destination;
 
   /// The display name for the workspace.
+  ///
+  /// Optional.
   core.String? displayName;
 
   /// A generic list of settings for the workspace.
@@ -4030,6 +4466,8 @@ class ConversionWorkspace {
   /// for the mapping rules engine or turn on or off specific features. Such
   /// examples can be: convert_foreign_key_to_interleave=true,
   /// skip_triggers=false, ignore_non_table_synonyms=true
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? globalSettings;
 
   /// Whether the workspace has uncommitted changes (changes which were made
@@ -4161,16 +4599,30 @@ class ConversionWorkspaceInfo {
 class ConvertConversionWorkspaceRequest {
   /// Specifies whether the conversion workspace is to be committed
   /// automatically after the conversion.
+  ///
+  /// Optional.
   core.bool? autoCommit;
+
+  /// Automatically convert the full entity path for each entity specified by
+  /// the filter.
+  ///
+  /// For example, if the filter specifies a table, that table schema (and
+  /// database if there is one) will also be converted.
+  ///
+  /// Optional.
+  core.bool? convertFullPath;
 
   /// Filter the entities to convert.
   ///
   /// Leaving this field empty will convert all of the entities. Supports Google
   /// AIP-160 style filtering.
+  ///
+  /// Optional.
   core.String? filter;
 
   ConvertConversionWorkspaceRequest({
     this.autoCommit,
+    this.convertFullPath,
     this.filter,
   });
 
@@ -4179,6 +4631,9 @@ class ConvertConversionWorkspaceRequest {
           autoCommit: json_.containsKey('autoCommit')
               ? json_['autoCommit'] as core.bool
               : null,
+          convertFullPath: json_.containsKey('convertFullPath')
+              ? json_['convertFullPath'] as core.bool
+              : null,
           filter: json_.containsKey('filter')
               ? json_['filter'] as core.String
               : null,
@@ -4186,6 +4641,7 @@ class ConvertConversionWorkspaceRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoCommit != null) 'autoCommit': autoCommit!,
+        if (convertFullPath != null) 'convertFullPath': convertFullPath!,
         if (filter != null) 'filter': filter!,
       };
 }
@@ -4193,6 +4649,8 @@ class ConvertConversionWorkspaceRequest {
 /// Details regarding a Convert background job.
 class ConvertJobDetails {
   /// AIP-160 based filter used to specify the entities to convert
+  ///
+  /// Output only.
   core.String? filter;
 
   ConvertJobDetails({
@@ -4208,6 +4666,37 @@ class ConvertJobDetails {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (filter != null) 'filter': filter!,
+      };
+}
+
+/// Options to configure rule type ConvertROWIDToColumn.
+///
+/// The rule is used to add column rowid to destination tables based on an
+/// Oracle rowid function/property. The rule filter field can refer to one or
+/// more entities. The rule scope can be one of: Table. This rule requires
+/// additional filter to be specified beyond the basic rule filter field, which
+/// is whether or not to work on tables which already have a primary key
+/// defined.
+class ConvertRowIdToColumn {
+  /// Only work on tables without primary key defined
+  ///
+  /// Required.
+  core.bool? onlyIfNoPrimaryKey;
+
+  ConvertRowIdToColumn({
+    this.onlyIfNoPrimaryKey,
+  });
+
+  ConvertRowIdToColumn.fromJson(core.Map json_)
+      : this(
+          onlyIfNoPrimaryKey: json_.containsKey('onlyIfNoPrimaryKey')
+              ? json_['onlyIfNoPrimaryKey'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (onlyIfNoPrimaryKey != null)
+          'onlyIfNoPrimaryKey': onlyIfNoPrimaryKey!,
       };
 }
 
@@ -4255,11 +4744,21 @@ class DatabaseEngineInfo {
 /// The message contains the entity name, the name of its parent, the entity
 /// type, and the specific details per entity type.
 class DatabaseEntity {
+  /// Database.
+  DatabaseInstanceEntity? database;
+
   /// Function.
   FunctionEntity? databaseFunction;
 
   /// Package.
   PackageEntity? databasePackage;
+
+  /// Details about the entity DDL script.
+  ///
+  /// Multiple DDL scripts are provided for child entities such as a table
+  /// entity will have one DDL for the table with additional DDLs for each
+  /// index, constraint and such.
+  core.List<EntityDdl>? entityDdl;
 
   /// The type of the database entity (table, view, index, ...).
   /// Possible string values are:
@@ -4281,6 +4780,9 @@ class DatabaseEntity {
   /// - "DATABASE_ENTITY_TYPE_DATABASE" : Database.
   core.String? entityType;
 
+  /// Details about the various issues found for the entity.
+  core.List<EntityIssue>? issues;
+
   /// Details about entity mappings.
   ///
   /// For source tree entities, this holds the draft entities which were
@@ -4288,6 +4790,9 @@ class DatabaseEntity {
   /// source entities which were converted to form the draft entity. Destination
   /// entities will have no mapping details.
   core.List<EntityMapping>? mappings;
+
+  /// Materialized view.
+  MaterializedViewEntity? materializedView;
 
   /// The full name of the parent entity (e.g. schema name).
   core.String? parentEntity;
@@ -4319,14 +4824,21 @@ class DatabaseEntity {
   /// - "DESTINATION" : Tree of entities observed on the destination database.
   core.String? tree;
 
+  /// UDT.
+  UDTEntity? udt;
+
   /// View.
   ViewEntity? view;
 
   DatabaseEntity({
+    this.database,
     this.databaseFunction,
     this.databasePackage,
+    this.entityDdl,
     this.entityType,
+    this.issues,
     this.mappings,
+    this.materializedView,
     this.parentEntity,
     this.schema,
     this.sequence,
@@ -4335,11 +4847,16 @@ class DatabaseEntity {
     this.synonym,
     this.table,
     this.tree,
+    this.udt,
     this.view,
   });
 
   DatabaseEntity.fromJson(core.Map json_)
       : this(
+          database: json_.containsKey('database')
+              ? DatabaseInstanceEntity.fromJson(
+                  json_['database'] as core.Map<core.String, core.dynamic>)
+              : null,
           databaseFunction: json_.containsKey('databaseFunction')
               ? FunctionEntity.fromJson(json_['databaseFunction']
                   as core.Map<core.String, core.dynamic>)
@@ -4348,14 +4865,30 @@ class DatabaseEntity {
               ? PackageEntity.fromJson(json_['databasePackage']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          entityDdl: json_.containsKey('entityDdl')
+              ? (json_['entityDdl'] as core.List)
+                  .map((value) => EntityDdl.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           entityType: json_.containsKey('entityType')
               ? json_['entityType'] as core.String
+              : null,
+          issues: json_.containsKey('issues')
+              ? (json_['issues'] as core.List)
+                  .map((value) => EntityIssue.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           mappings: json_.containsKey('mappings')
               ? (json_['mappings'] as core.List)
                   .map((value) => EntityMapping.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          materializedView: json_.containsKey('materializedView')
+              ? MaterializedViewEntity.fromJson(json_['materializedView']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           parentEntity: json_.containsKey('parentEntity')
               ? json_['parentEntity'] as core.String
@@ -4384,6 +4917,10 @@ class DatabaseEntity {
                   json_['table'] as core.Map<core.String, core.dynamic>)
               : null,
           tree: json_.containsKey('tree') ? json_['tree'] as core.String : null,
+          udt: json_.containsKey('udt')
+              ? UDTEntity.fromJson(
+                  json_['udt'] as core.Map<core.String, core.dynamic>)
+              : null,
           view: json_.containsKey('view')
               ? ViewEntity.fromJson(
                   json_['view'] as core.Map<core.String, core.dynamic>)
@@ -4391,10 +4928,14 @@ class DatabaseEntity {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (database != null) 'database': database!,
         if (databaseFunction != null) 'databaseFunction': databaseFunction!,
         if (databasePackage != null) 'databasePackage': databasePackage!,
+        if (entityDdl != null) 'entityDdl': entityDdl!,
         if (entityType != null) 'entityType': entityType!,
+        if (issues != null) 'issues': issues!,
         if (mappings != null) 'mappings': mappings!,
+        if (materializedView != null) 'materializedView': materializedView!,
         if (parentEntity != null) 'parentEntity': parentEntity!,
         if (schema != null) 'schema': schema!,
         if (sequence != null) 'sequence': sequence!,
@@ -4403,9 +4944,13 @@ class DatabaseEntity {
         if (synonym != null) 'synonym': synonym!,
         if (table != null) 'table': table!,
         if (tree != null) 'tree': tree!,
+        if (udt != null) 'udt': udt!,
         if (view != null) 'view': view!,
       };
 }
+
+/// DatabaseInstance acts as a parent entity to other database entities.
+typedef DatabaseInstanceEntity = $Entity;
 
 /// A message defining the database engine and provider.
 class DatabaseType {
@@ -4506,6 +5051,50 @@ class DescribeDatabaseEntitiesResponse {
       };
 }
 
+/// Filter based on relation between source value and compare value of type
+/// double in ConditionalColumnSetValue
+class DoubleComparisonFilter {
+  /// Double compare value to be used
+  ///
+  /// Required.
+  core.double? value;
+
+  /// Relation between source value and compare value
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "VALUE_COMPARISON_UNSPECIFIED" : Value comparison unspecified.
+  /// - "VALUE_COMPARISON_IF_VALUE_SMALLER_THAN" : Value is smaller than the
+  /// Compare value.
+  /// - "VALUE_COMPARISON_IF_VALUE_SMALLER_EQUAL_THAN" : Value is smaller or
+  /// equal than the Compare value.
+  /// - "VALUE_COMPARISON_IF_VALUE_LARGER_THAN" : Value is larger than the
+  /// Compare value.
+  /// - "VALUE_COMPARISON_IF_VALUE_LARGER_EQUAL_THAN" : Value is larger or equal
+  /// than the Compare value.
+  core.String? valueComparison;
+
+  DoubleComparisonFilter({
+    this.value,
+    this.valueComparison,
+  });
+
+  DoubleComparisonFilter.fromJson(core.Map json_)
+      : this(
+          value: json_.containsKey('value')
+              ? (json_['value'] as core.num).toDouble()
+              : null,
+          valueComparison: json_.containsKey('valueComparison')
+              ? json_['valueComparison'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (value != null) 'value': value!,
+        if (valueComparison != null) 'valueComparison': valueComparison!,
+      };
+}
+
 /// Dump flag definition.
 class DumpFlag {
   /// The name of the flag
@@ -4586,6 +5175,173 @@ class EncryptionConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+      };
+}
+
+/// A single DDL statement for a specific entity
+class EntityDdl {
+  /// The actual ddl code.
+  core.String? ddl;
+
+  /// Type of DDL (Create, Alter).
+  core.String? ddlType;
+
+  /// The name of the database entity the ddl refers to.
+  core.String? entity;
+
+  /// The entity type (if the DDL is for a sub entity).
+  /// Possible string values are:
+  /// - "DATABASE_ENTITY_TYPE_UNSPECIFIED" : Unspecified database entity type.
+  /// - "DATABASE_ENTITY_TYPE_SCHEMA" : Schema.
+  /// - "DATABASE_ENTITY_TYPE_TABLE" : Table.
+  /// - "DATABASE_ENTITY_TYPE_COLUMN" : Column.
+  /// - "DATABASE_ENTITY_TYPE_CONSTRAINT" : Constraint.
+  /// - "DATABASE_ENTITY_TYPE_INDEX" : Index.
+  /// - "DATABASE_ENTITY_TYPE_TRIGGER" : Trigger.
+  /// - "DATABASE_ENTITY_TYPE_VIEW" : View.
+  /// - "DATABASE_ENTITY_TYPE_SEQUENCE" : Sequence.
+  /// - "DATABASE_ENTITY_TYPE_STORED_PROCEDURE" : Stored Procedure.
+  /// - "DATABASE_ENTITY_TYPE_FUNCTION" : Function.
+  /// - "DATABASE_ENTITY_TYPE_SYNONYM" : Synonym.
+  /// - "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE" : Package.
+  /// - "DATABASE_ENTITY_TYPE_UDT" : UDT.
+  /// - "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW" : Materialized View.
+  /// - "DATABASE_ENTITY_TYPE_DATABASE" : Database.
+  core.String? entityType;
+
+  /// EntityIssues found for this ddl.
+  core.List<core.String>? issueId;
+
+  EntityDdl({
+    this.ddl,
+    this.ddlType,
+    this.entity,
+    this.entityType,
+    this.issueId,
+  });
+
+  EntityDdl.fromJson(core.Map json_)
+      : this(
+          ddl: json_.containsKey('ddl') ? json_['ddl'] as core.String : null,
+          ddlType: json_.containsKey('ddlType')
+              ? json_['ddlType'] as core.String
+              : null,
+          entity: json_.containsKey('entity')
+              ? json_['entity'] as core.String
+              : null,
+          entityType: json_.containsKey('entityType')
+              ? json_['entityType'] as core.String
+              : null,
+          issueId: json_.containsKey('issueId')
+              ? (json_['issueId'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ddl != null) 'ddl': ddl!,
+        if (ddlType != null) 'ddlType': ddlType!,
+        if (entity != null) 'entity': entity!,
+        if (entityType != null) 'entityType': entityType!,
+        if (issueId != null) 'issueId': issueId!,
+      };
+}
+
+/// Issue related to the entity.
+class EntityIssue {
+  /// Error/Warning code
+  core.String? code;
+
+  /// The ddl which caused the issue, if relevant.
+  core.String? ddl;
+
+  /// The entity type (if the DDL is for a sub entity).
+  /// Possible string values are:
+  /// - "DATABASE_ENTITY_TYPE_UNSPECIFIED" : Unspecified database entity type.
+  /// - "DATABASE_ENTITY_TYPE_SCHEMA" : Schema.
+  /// - "DATABASE_ENTITY_TYPE_TABLE" : Table.
+  /// - "DATABASE_ENTITY_TYPE_COLUMN" : Column.
+  /// - "DATABASE_ENTITY_TYPE_CONSTRAINT" : Constraint.
+  /// - "DATABASE_ENTITY_TYPE_INDEX" : Index.
+  /// - "DATABASE_ENTITY_TYPE_TRIGGER" : Trigger.
+  /// - "DATABASE_ENTITY_TYPE_VIEW" : View.
+  /// - "DATABASE_ENTITY_TYPE_SEQUENCE" : Sequence.
+  /// - "DATABASE_ENTITY_TYPE_STORED_PROCEDURE" : Stored Procedure.
+  /// - "DATABASE_ENTITY_TYPE_FUNCTION" : Function.
+  /// - "DATABASE_ENTITY_TYPE_SYNONYM" : Synonym.
+  /// - "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE" : Package.
+  /// - "DATABASE_ENTITY_TYPE_UDT" : UDT.
+  /// - "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW" : Materialized View.
+  /// - "DATABASE_ENTITY_TYPE_DATABASE" : Database.
+  core.String? entityType;
+
+  /// Unique Issue ID.
+  core.String? id;
+
+  /// Issue detailed message
+  core.String? message;
+
+  /// The position of the issue found, if relevant.
+  Position? position;
+
+  /// Severity of the issue
+  /// Possible string values are:
+  /// - "ISSUE_SEVERITY_UNSPECIFIED" : Unspecified issue severity
+  /// - "ISSUE_SEVERITY_INFO" : Info
+  /// - "ISSUE_SEVERITY_WARNING" : Warning
+  /// - "ISSUE_SEVERITY_ERROR" : Error
+  core.String? severity;
+
+  /// The type of the issue.
+  /// Possible string values are:
+  /// - "ISSUE_TYPE_UNSPECIFIED" : Unspecified issue type.
+  /// - "ISSUE_TYPE_DDL" : Issue originated from the DDL
+  /// - "ISSUE_TYPE_APPLY" : Issue originated during the apply process
+  /// - "ISSUE_TYPE_CONVERT" : Issue originated during the convert process
+  core.String? type;
+
+  EntityIssue({
+    this.code,
+    this.ddl,
+    this.entityType,
+    this.id,
+    this.message,
+    this.position,
+    this.severity,
+    this.type,
+  });
+
+  EntityIssue.fromJson(core.Map json_)
+      : this(
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          ddl: json_.containsKey('ddl') ? json_['ddl'] as core.String : null,
+          entityType: json_.containsKey('entityType')
+              ? json_['entityType'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
+              : null,
+          position: json_.containsKey('position')
+              ? Position.fromJson(
+                  json_['position'] as core.Map<core.String, core.dynamic>)
+              : null,
+          severity: json_.containsKey('severity')
+              ? json_['severity'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (ddl != null) 'ddl': ddl!,
+        if (entityType != null) 'entityType': entityType!,
+        if (id != null) 'id': id!,
+        if (message != null) 'message': message!,
+        if (position != null) 'position': position!,
+        if (severity != null) 'severity': severity!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -4727,6 +5483,34 @@ class EntityMappingLogEntry {
       };
 }
 
+/// Options to configure rule type EntityMove.
+///
+/// The rule is used to move an entity to a new schema. The rule filter field
+/// can refer to one or more entities. The rule scope can be one of: Table,
+/// Column, Constraint, Index, View, Function, Stored Procedure, Materialized
+/// View, Sequence, UDT
+class EntityMove {
+  /// The new schema
+  ///
+  /// Required.
+  core.String? newSchema;
+
+  EntityMove({
+    this.newSchema,
+  });
+
+  EntityMove.fromJson(core.Map json_)
+      : this(
+          newSchema: json_.containsKey('newSchema')
+              ? json_['newSchema'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (newSchema != null) 'newSchema': newSchema!,
+      };
+}
+
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
 ///
@@ -4777,6 +5561,47 @@ class FetchStaticIpsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (staticIps != null) 'staticIps': staticIps!,
+      };
+}
+
+/// Options to configure rule type FilterTableColumns.
+///
+/// The rule is used to filter the list of columns to include or exclude from a
+/// table. The rule filter field can refer to one entity. The rule scope can be:
+/// Table Only one of the two lists can be specified for the rule.
+class FilterTableColumns {
+  /// List of columns to be excluded for a particular table.
+  ///
+  /// Optional.
+  core.List<core.String>? excludeColumns;
+
+  /// List of columns to be included for a particular table.
+  ///
+  /// Optional.
+  core.List<core.String>? includeColumns;
+
+  FilterTableColumns({
+    this.excludeColumns,
+    this.includeColumns,
+  });
+
+  FilterTableColumns.fromJson(core.Map json_)
+      : this(
+          excludeColumns: json_.containsKey('excludeColumns')
+              ? (json_['excludeColumns'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          includeColumns: json_.containsKey('includeColumns')
+              ? (json_['includeColumns'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (excludeColumns != null) 'excludeColumns': excludeColumns!,
+        if (includeColumns != null) 'includeColumns': includeColumns!,
       };
 }
 
@@ -4861,16 +5686,84 @@ class GenerateSshScriptRequest {
       };
 }
 
+/// Request message for 'GenerateTcpProxyScript' request.
+class GenerateTcpProxyScriptRequest {
+  /// The type of the Compute instance that will host the proxy.
+  ///
+  /// Required.
+  core.String? vmMachineType;
+
+  /// The name of the Compute instance that will host the proxy.
+  ///
+  /// Required.
+  core.String? vmName;
+
+  /// The name of the subnet the Compute instance will use for private
+  /// connectivity.
+  ///
+  /// Must be supplied in the form of
+  /// projects/{project}/regions/{region}/subnetworks/{subnetwork}. Note: the
+  /// region for the subnet must match the Compute instance region.
+  ///
+  /// Required.
+  core.String? vmSubnet;
+
+  /// The Google Cloud Platform zone to create the VM in.
+  ///
+  /// The fully qualified name of the zone must be specified, including the
+  /// region name, for example "us-central1-b". If not specified, uses the "-b"
+  /// zone of the destination Connection Profile's region.
+  ///
+  /// Optional.
+  core.String? vmZone;
+
+  GenerateTcpProxyScriptRequest({
+    this.vmMachineType,
+    this.vmName,
+    this.vmSubnet,
+    this.vmZone,
+  });
+
+  GenerateTcpProxyScriptRequest.fromJson(core.Map json_)
+      : this(
+          vmMachineType: json_.containsKey('vmMachineType')
+              ? json_['vmMachineType'] as core.String
+              : null,
+          vmName: json_.containsKey('vmName')
+              ? json_['vmName'] as core.String
+              : null,
+          vmSubnet: json_.containsKey('vmSubnet')
+              ? json_['vmSubnet'] as core.String
+              : null,
+          vmZone: json_.containsKey('vmZone')
+              ? json_['vmZone'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (vmMachineType != null) 'vmMachineType': vmMachineType!,
+        if (vmName != null) 'vmName': vmName!,
+        if (vmSubnet != null) 'vmSubnet': vmSubnet!,
+        if (vmZone != null) 'vmZone': vmZone!,
+      };
+}
+
 /// Request message for 'ImportMappingRules' request.
 class ImportMappingRulesRequest {
   /// Should the conversion workspace be committed automatically after the
   /// import operation.
+  ///
+  /// Required.
   core.bool? autoCommit;
 
   /// One or more rules files.
+  ///
+  /// Required.
   core.List<RulesFile>? rulesFiles;
 
   /// The format of the rules content file.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "IMPORT_RULES_FILE_FORMAT_UNSPECIFIED" : Unspecified rules format.
   /// - "IMPORT_RULES_FILE_FORMAT_HARBOUR_BRIDGE_SESSION_FILE" : HarbourBridge
@@ -4911,6 +5804,8 @@ class ImportMappingRulesRequest {
 /// Details regarding an Import Rules background job.
 class ImportRulesJobDetails {
   /// The requested file format.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "IMPORT_RULES_FILE_FORMAT_UNSPECIFIED" : Unspecified rules format.
   /// - "IMPORT_RULES_FILE_FORMAT_HARBOUR_BRIDGE_SESSION_FILE" : HarbourBridge
@@ -4920,6 +5815,8 @@ class ImportRulesJobDetails {
   core.String? fileFormat;
 
   /// File names used for the import rules job.
+  ///
+  /// Output only.
   core.List<core.String>? files;
 
   ImportRulesJobDetails({
@@ -4997,6 +5894,49 @@ class IndexEntity {
         if (tableColumns != null) 'tableColumns': tableColumns!,
         if (type != null) 'type': type!,
         if (unique != null) 'unique': unique!,
+      };
+}
+
+/// Filter based on relation between source value and compare value of type
+/// integer in ConditionalColumnSetValue
+class IntComparisonFilter {
+  /// Integer compare value to be used
+  ///
+  /// Required.
+  core.String? value;
+
+  /// Relation between source value and compare value
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "VALUE_COMPARISON_UNSPECIFIED" : Value comparison unspecified.
+  /// - "VALUE_COMPARISON_IF_VALUE_SMALLER_THAN" : Value is smaller than the
+  /// Compare value.
+  /// - "VALUE_COMPARISON_IF_VALUE_SMALLER_EQUAL_THAN" : Value is smaller or
+  /// equal than the Compare value.
+  /// - "VALUE_COMPARISON_IF_VALUE_LARGER_THAN" : Value is larger than the
+  /// Compare value.
+  /// - "VALUE_COMPARISON_IF_VALUE_LARGER_EQUAL_THAN" : Value is larger or equal
+  /// than the Compare value.
+  core.String? valueComparison;
+
+  IntComparisonFilter({
+    this.value,
+    this.valueComparison,
+  });
+
+  IntComparisonFilter.fromJson(core.Map json_)
+      : this(
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+          valueComparison: json_.containsKey('valueComparison')
+              ? json_['valueComparison'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (value != null) 'value': value!,
+        if (valueComparison != null) 'valueComparison': valueComparison!,
       };
 }
 
@@ -5118,6 +6058,40 @@ class ListLocationsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (locations != null) 'locations': locations!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for 'ListMappingRulesRequest' request.
+class ListMappingRulesResponse {
+  /// The list of conversion workspace mapping rules.
+  core.List<MappingRule>? mappingRules;
+
+  /// A token which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListMappingRulesResponse({
+    this.mappingRules,
+    this.nextPageToken,
+  });
+
+  ListMappingRulesResponse.fromJson(core.Map json_)
+      : this(
+          mappingRules: json_.containsKey('mappingRules')
+              ? (json_['mappingRules'] as core.List)
+                  .map((value) => MappingRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mappingRules != null) 'mappingRules': mappingRules!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -5264,6 +6238,379 @@ class MachineConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cpuCount != null) 'cpuCount': cpuCount!,
+      };
+}
+
+/// Definition of a transformation that is to be applied to a group of entities
+/// in the source schema.
+///
+/// Several such transformations can be applied to an entity sequentially to
+/// define the corresponding entity in the target schema.
+class MappingRule {
+  /// Rule to specify how the data contained in a column should be transformed
+  /// (such as trimmed, rounded, etc) provided that the data meets certain
+  /// criteria.
+  ///
+  /// Optional.
+  ConditionalColumnSetValue? conditionalColumnSetValue;
+
+  /// Rule to specify how multiple tables should be converted with an additional
+  /// rowid column.
+  ///
+  /// Optional.
+  ConvertRowIdToColumn? convertRowidColumn;
+
+  /// A human readable name
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// Rule to specify how multiple entities should be relocated into a different
+  /// schema.
+  ///
+  /// Optional.
+  EntityMove? entityMove;
+
+  /// The rule filter
+  ///
+  /// Required.
+  MappingRuleFilter? filter;
+
+  /// Rule to specify the list of columns to include or exclude from a table.
+  ///
+  /// Optional.
+  FilterTableColumns? filterTableColumns;
+
+  /// Rule to specify how multiple columns should be converted to a different
+  /// data type.
+  ///
+  /// Optional.
+  MultiColumnDatatypeChange? multiColumnDataTypeChange;
+
+  /// Rule to specify how multiple entities should be renamed.
+  ///
+  /// Optional.
+  MultiEntityRename? multiEntityRename;
+
+  /// Full name of the mapping rule resource, in the form of:
+  /// projects/{project}/locations/{location}/conversionWorkspaces/{set}/mappingRule/{rule}.
+  core.String? name;
+
+  /// The timestamp that the revision was created.
+  ///
+  /// Output only.
+  core.String? revisionCreateTime;
+
+  /// The revision ID of the mapping rule.
+  ///
+  /// A new revision is committed whenever the mapping rule is changed in any
+  /// way. The format is an 8-character hexadecimal string.
+  ///
+  /// Output only.
+  core.String? revisionId;
+
+  /// The order in which the rule is applied.
+  ///
+  /// Lower order rules are applied before higher value rules so they may end up
+  /// being overridden.
+  ///
+  /// Required.
+  core.String? ruleOrder;
+
+  /// The rule scope
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DATABASE_ENTITY_TYPE_UNSPECIFIED" : Unspecified database entity type.
+  /// - "DATABASE_ENTITY_TYPE_SCHEMA" : Schema.
+  /// - "DATABASE_ENTITY_TYPE_TABLE" : Table.
+  /// - "DATABASE_ENTITY_TYPE_COLUMN" : Column.
+  /// - "DATABASE_ENTITY_TYPE_CONSTRAINT" : Constraint.
+  /// - "DATABASE_ENTITY_TYPE_INDEX" : Index.
+  /// - "DATABASE_ENTITY_TYPE_TRIGGER" : Trigger.
+  /// - "DATABASE_ENTITY_TYPE_VIEW" : View.
+  /// - "DATABASE_ENTITY_TYPE_SEQUENCE" : Sequence.
+  /// - "DATABASE_ENTITY_TYPE_STORED_PROCEDURE" : Stored Procedure.
+  /// - "DATABASE_ENTITY_TYPE_FUNCTION" : Function.
+  /// - "DATABASE_ENTITY_TYPE_SYNONYM" : Synonym.
+  /// - "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE" : Package.
+  /// - "DATABASE_ENTITY_TYPE_UDT" : UDT.
+  /// - "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW" : Materialized View.
+  /// - "DATABASE_ENTITY_TYPE_DATABASE" : Database.
+  core.String? ruleScope;
+
+  /// Rule to specify the primary key for a table
+  ///
+  /// Optional.
+  SetTablePrimaryKey? setTablePrimaryKey;
+
+  /// Rule to specify how a single column is converted.
+  ///
+  /// Optional.
+  SingleColumnChange? singleColumnChange;
+
+  /// Rule to specify how a single entity should be renamed.
+  ///
+  /// Optional.
+  SingleEntityRename? singleEntityRename;
+
+  /// Rule to specify how a single package is converted.
+  ///
+  /// Optional.
+  SinglePackageChange? singlePackageChange;
+
+  /// Rule to change the sql code for an entity, for example, function,
+  /// procedure.
+  ///
+  /// Optional.
+  SourceSqlChange? sourceSqlChange;
+
+  /// The mapping rule state
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state of the mapping rule is unknown.
+  /// - "ENABLED" : The rule is enabled.
+  /// - "DISABLED" : The rule is disabled.
+  /// - "DELETED" : The rule is logically deleted.
+  core.String? state;
+
+  MappingRule({
+    this.conditionalColumnSetValue,
+    this.convertRowidColumn,
+    this.displayName,
+    this.entityMove,
+    this.filter,
+    this.filterTableColumns,
+    this.multiColumnDataTypeChange,
+    this.multiEntityRename,
+    this.name,
+    this.revisionCreateTime,
+    this.revisionId,
+    this.ruleOrder,
+    this.ruleScope,
+    this.setTablePrimaryKey,
+    this.singleColumnChange,
+    this.singleEntityRename,
+    this.singlePackageChange,
+    this.sourceSqlChange,
+    this.state,
+  });
+
+  MappingRule.fromJson(core.Map json_)
+      : this(
+          conditionalColumnSetValue:
+              json_.containsKey('conditionalColumnSetValue')
+                  ? ConditionalColumnSetValue.fromJson(
+                      json_['conditionalColumnSetValue']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          convertRowidColumn: json_.containsKey('convertRowidColumn')
+              ? ConvertRowIdToColumn.fromJson(json_['convertRowidColumn']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          entityMove: json_.containsKey('entityMove')
+              ? EntityMove.fromJson(
+                  json_['entityMove'] as core.Map<core.String, core.dynamic>)
+              : null,
+          filter: json_.containsKey('filter')
+              ? MappingRuleFilter.fromJson(
+                  json_['filter'] as core.Map<core.String, core.dynamic>)
+              : null,
+          filterTableColumns: json_.containsKey('filterTableColumns')
+              ? FilterTableColumns.fromJson(json_['filterTableColumns']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          multiColumnDataTypeChange:
+              json_.containsKey('multiColumnDataTypeChange')
+                  ? MultiColumnDatatypeChange.fromJson(
+                      json_['multiColumnDataTypeChange']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          multiEntityRename: json_.containsKey('multiEntityRename')
+              ? MultiEntityRename.fromJson(json_['multiEntityRename']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          revisionCreateTime: json_.containsKey('revisionCreateTime')
+              ? json_['revisionCreateTime'] as core.String
+              : null,
+          revisionId: json_.containsKey('revisionId')
+              ? json_['revisionId'] as core.String
+              : null,
+          ruleOrder: json_.containsKey('ruleOrder')
+              ? json_['ruleOrder'] as core.String
+              : null,
+          ruleScope: json_.containsKey('ruleScope')
+              ? json_['ruleScope'] as core.String
+              : null,
+          setTablePrimaryKey: json_.containsKey('setTablePrimaryKey')
+              ? SetTablePrimaryKey.fromJson(json_['setTablePrimaryKey']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          singleColumnChange: json_.containsKey('singleColumnChange')
+              ? SingleColumnChange.fromJson(json_['singleColumnChange']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          singleEntityRename: json_.containsKey('singleEntityRename')
+              ? SingleEntityRename.fromJson(json_['singleEntityRename']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          singlePackageChange: json_.containsKey('singlePackageChange')
+              ? SinglePackageChange.fromJson(json_['singlePackageChange']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sourceSqlChange: json_.containsKey('sourceSqlChange')
+              ? SourceSqlChange.fromJson(json_['sourceSqlChange']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conditionalColumnSetValue != null)
+          'conditionalColumnSetValue': conditionalColumnSetValue!,
+        if (convertRowidColumn != null)
+          'convertRowidColumn': convertRowidColumn!,
+        if (displayName != null) 'displayName': displayName!,
+        if (entityMove != null) 'entityMove': entityMove!,
+        if (filter != null) 'filter': filter!,
+        if (filterTableColumns != null)
+          'filterTableColumns': filterTableColumns!,
+        if (multiColumnDataTypeChange != null)
+          'multiColumnDataTypeChange': multiColumnDataTypeChange!,
+        if (multiEntityRename != null) 'multiEntityRename': multiEntityRename!,
+        if (name != null) 'name': name!,
+        if (revisionCreateTime != null)
+          'revisionCreateTime': revisionCreateTime!,
+        if (revisionId != null) 'revisionId': revisionId!,
+        if (ruleOrder != null) 'ruleOrder': ruleOrder!,
+        if (ruleScope != null) 'ruleScope': ruleScope!,
+        if (setTablePrimaryKey != null)
+          'setTablePrimaryKey': setTablePrimaryKey!,
+        if (singleColumnChange != null)
+          'singleColumnChange': singleColumnChange!,
+        if (singleEntityRename != null)
+          'singleEntityRename': singleEntityRename!,
+        if (singlePackageChange != null)
+          'singlePackageChange': singlePackageChange!,
+        if (sourceSqlChange != null) 'sourceSqlChange': sourceSqlChange!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// A filter defining the entities that a mapping rule should be applied to.
+///
+/// When more than one field is specified, the rule is applied only to entities
+/// which match all the fields.
+class MappingRuleFilter {
+  /// The rule should be applied to specific entities defined by their fully
+  /// qualified names.
+  ///
+  /// Optional.
+  core.List<core.String>? entities;
+
+  /// The rule should be applied to entities whose non-qualified name contains
+  /// the given string.
+  ///
+  /// Optional.
+  core.String? entityNameContains;
+
+  /// The rule should be applied to entities whose non-qualified name starts
+  /// with the given prefix.
+  ///
+  /// Optional.
+  core.String? entityNamePrefix;
+
+  /// The rule should be applied to entities whose non-qualified name ends with
+  /// the given suffix.
+  ///
+  /// Optional.
+  core.String? entityNameSuffix;
+
+  /// The rule should be applied to entities whose parent entity (fully
+  /// qualified name) matches the given value.
+  ///
+  /// For example, if the rule applies to a table entity, the expected value
+  /// should be a schema (schema). If the rule applies to a column or index
+  /// entity, the expected value can be either a schema (schema) or a table
+  /// (schema.table)
+  ///
+  /// Optional.
+  core.String? parentEntity;
+
+  MappingRuleFilter({
+    this.entities,
+    this.entityNameContains,
+    this.entityNamePrefix,
+    this.entityNameSuffix,
+    this.parentEntity,
+  });
+
+  MappingRuleFilter.fromJson(core.Map json_)
+      : this(
+          entities: json_.containsKey('entities')
+              ? (json_['entities'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          entityNameContains: json_.containsKey('entityNameContains')
+              ? json_['entityNameContains'] as core.String
+              : null,
+          entityNamePrefix: json_.containsKey('entityNamePrefix')
+              ? json_['entityNamePrefix'] as core.String
+              : null,
+          entityNameSuffix: json_.containsKey('entityNameSuffix')
+              ? json_['entityNameSuffix'] as core.String
+              : null,
+          parentEntity: json_.containsKey('parentEntity')
+              ? json_['parentEntity'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (entities != null) 'entities': entities!,
+        if (entityNameContains != null)
+          'entityNameContains': entityNameContains!,
+        if (entityNamePrefix != null) 'entityNamePrefix': entityNamePrefix!,
+        if (entityNameSuffix != null) 'entityNameSuffix': entityNameSuffix!,
+        if (parentEntity != null) 'parentEntity': parentEntity!,
+      };
+}
+
+/// MaterializedView's parent is a schema.
+class MaterializedViewEntity {
+  /// Custom engine specific features.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? customFeatures;
+
+  /// The SQL code which creates the view.
+  core.String? sqlCode;
+
+  MaterializedViewEntity({
+    this.customFeatures,
+    this.sqlCode,
+  });
+
+  MaterializedViewEntity.fromJson(core.Map json_)
+      : this(
+          customFeatures: json_.containsKey('customFeatures')
+              ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
+              : null,
+          sqlCode: json_.containsKey('sqlCode')
+              ? json_['sqlCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customFeatures != null) 'customFeatures': customFeatures!,
+        if (sqlCode != null) 'sqlCode': sqlCode!,
       };
 }
 
@@ -5559,6 +6906,189 @@ class MigrationJob {
       };
 }
 
+/// Options to configure rule type MultiColumnDatatypeChange.
+///
+/// The rule is used to change the data type and associated properties of
+/// multiple columns at once. The rule filter field can refer to one or more
+/// entities. The rule scope can be one of:Column. This rule requires additional
+/// filters to be specified beyond the basic rule filter field, which is the
+/// source data type, but the rule supports additional filtering capabilities
+/// such as the minimum and maximum field length. All additional filters which
+/// are specified are required to be met in order for the rule to be applied
+/// (logical AND between the fields).
+class MultiColumnDatatypeChange {
+  /// Custom engine specific features.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? customFeatures;
+
+  /// New data type.
+  ///
+  /// Required.
+  core.String? newDataType;
+
+  /// Column fractional seconds precision - used only for timestamp based
+  /// datatypes - if not specified and relevant uses the source column
+  /// fractional seconds precision.
+  ///
+  /// Optional.
+  core.int? overrideFractionalSecondsPrecision;
+
+  /// Column length - e.g. varchar (50) - if not specified and relevant uses the
+  /// source column length.
+  ///
+  /// Optional.
+  core.String? overrideLength;
+
+  /// Column precision - when relevant - if not specified and relevant uses the
+  /// source column precision.
+  ///
+  /// Optional.
+  core.int? overridePrecision;
+
+  /// Column scale - when relevant - if not specified and relevant uses the
+  /// source column scale.
+  ///
+  /// Optional.
+  core.int? overrideScale;
+
+  /// Filter on source data type.
+  ///
+  /// Required.
+  core.String? sourceDataTypeFilter;
+
+  /// Filter for fixed point number data types such as NUMERIC/NUMBER.
+  ///
+  /// Optional.
+  SourceNumericFilter? sourceNumericFilter;
+
+  /// Filter for text-based data types like varchar.
+  ///
+  /// Optional.
+  SourceTextFilter? sourceTextFilter;
+
+  MultiColumnDatatypeChange({
+    this.customFeatures,
+    this.newDataType,
+    this.overrideFractionalSecondsPrecision,
+    this.overrideLength,
+    this.overridePrecision,
+    this.overrideScale,
+    this.sourceDataTypeFilter,
+    this.sourceNumericFilter,
+    this.sourceTextFilter,
+  });
+
+  MultiColumnDatatypeChange.fromJson(core.Map json_)
+      : this(
+          customFeatures: json_.containsKey('customFeatures')
+              ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
+              : null,
+          newDataType: json_.containsKey('newDataType')
+              ? json_['newDataType'] as core.String
+              : null,
+          overrideFractionalSecondsPrecision:
+              json_.containsKey('overrideFractionalSecondsPrecision')
+                  ? json_['overrideFractionalSecondsPrecision'] as core.int
+                  : null,
+          overrideLength: json_.containsKey('overrideLength')
+              ? json_['overrideLength'] as core.String
+              : null,
+          overridePrecision: json_.containsKey('overridePrecision')
+              ? json_['overridePrecision'] as core.int
+              : null,
+          overrideScale: json_.containsKey('overrideScale')
+              ? json_['overrideScale'] as core.int
+              : null,
+          sourceDataTypeFilter: json_.containsKey('sourceDataTypeFilter')
+              ? json_['sourceDataTypeFilter'] as core.String
+              : null,
+          sourceNumericFilter: json_.containsKey('sourceNumericFilter')
+              ? SourceNumericFilter.fromJson(json_['sourceNumericFilter']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sourceTextFilter: json_.containsKey('sourceTextFilter')
+              ? SourceTextFilter.fromJson(json_['sourceTextFilter']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customFeatures != null) 'customFeatures': customFeatures!,
+        if (newDataType != null) 'newDataType': newDataType!,
+        if (overrideFractionalSecondsPrecision != null)
+          'overrideFractionalSecondsPrecision':
+              overrideFractionalSecondsPrecision!,
+        if (overrideLength != null) 'overrideLength': overrideLength!,
+        if (overridePrecision != null) 'overridePrecision': overridePrecision!,
+        if (overrideScale != null) 'overrideScale': overrideScale!,
+        if (sourceDataTypeFilter != null)
+          'sourceDataTypeFilter': sourceDataTypeFilter!,
+        if (sourceNumericFilter != null)
+          'sourceNumericFilter': sourceNumericFilter!,
+        if (sourceTextFilter != null) 'sourceTextFilter': sourceTextFilter!,
+      };
+}
+
+/// Options to configure rule type MultiEntityRename.
+///
+/// The rule is used to rename multiple entities. The rule filter field can
+/// refer to one or more entities. The rule scope can be one of: Database,
+/// Schema, Table, Column, Constraint, Index, View, Function, Stored Procedure,
+/// Materialized View, Sequence, UDT
+class MultiEntityRename {
+  /// The pattern used to generate the new entity's name.
+  ///
+  /// This pattern must include the characters '{name}', which will be replaced
+  /// with the name of the original entity. For example, the pattern 't_{name}'
+  /// for an entity name jobs would be converted to 't_jobs'. If unspecified,
+  /// the default value for this field is '{name}'
+  ///
+  /// Optional.
+  core.String? newNamePattern;
+
+  /// Additional transformation that can be done on the source entity name
+  /// before it is being used by the new_name_pattern, for example lower case.
+  ///
+  /// If no transformation is desired, use NO_TRANSFORMATION
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ENTITY_NAME_TRANSFORMATION_UNSPECIFIED" : Entity name transformation
+  /// unspecified.
+  /// - "ENTITY_NAME_TRANSFORMATION_NO_TRANSFORMATION" : No transformation.
+  /// - "ENTITY_NAME_TRANSFORMATION_LOWER_CASE" : Transform to lower case.
+  /// - "ENTITY_NAME_TRANSFORMATION_UPPER_CASE" : Transform to upper case.
+  /// - "ENTITY_NAME_TRANSFORMATION_CAPITALIZED_CASE" : Transform to capitalized
+  /// case.
+  core.String? sourceNameTransformation;
+
+  MultiEntityRename({
+    this.newNamePattern,
+    this.sourceNameTransformation,
+  });
+
+  MultiEntityRename.fromJson(core.Map json_)
+      : this(
+          newNamePattern: json_.containsKey('newNamePattern')
+              ? json_['newNamePattern'] as core.String
+              : null,
+          sourceNameTransformation:
+              json_.containsKey('sourceNameTransformation')
+                  ? json_['sourceNameTransformation'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (newNamePattern != null) 'newNamePattern': newNamePattern!,
+        if (sourceNameTransformation != null)
+          'sourceNameTransformation': sourceNameTransformation!,
+      };
+}
+
 /// Specifies connection parameters required specifically for MySQL databases.
 class MySqlConnectionProfile {
   /// If the source is a Cloud SQL database, use this field to provide the Cloud
@@ -5756,6 +7286,12 @@ class OracleConnectionProfile {
   /// Private connectivity.
   PrivateConnectivity? privateConnectivity;
 
+  /// SSL configuration for the connection to the source Oracle database.
+  ///
+  /// * Only `SERVER_ONLY` configuration is supported for Oracle SSL. * SSL is
+  /// supported for Oracle versions 12 and above.
+  SslConfig? ssl;
+
   /// Static Service IP connectivity.
   StaticServiceIpConnectivity? staticServiceIpConnectivity;
 
@@ -5775,6 +7311,7 @@ class OracleConnectionProfile {
     this.passwordSet,
     this.port,
     this.privateConnectivity,
+    this.ssl,
     this.staticServiceIpConnectivity,
     this.username,
   });
@@ -5801,6 +7338,10 @@ class OracleConnectionProfile {
               ? PrivateConnectivity.fromJson(json_['privateConnectivity']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          ssl: json_.containsKey('ssl')
+              ? SslConfig.fromJson(
+                  json_['ssl'] as core.Map<core.String, core.dynamic>)
+              : null,
           staticServiceIpConnectivity:
               json_.containsKey('staticServiceIpConnectivity')
                   ? StaticServiceIpConnectivity.fromJson(
@@ -5822,6 +7363,7 @@ class OracleConnectionProfile {
         if (port != null) 'port': port!,
         if (privateConnectivity != null)
           'privateConnectivity': privateConnectivity!,
+        if (ssl != null) 'ssl': ssl!,
         if (staticServiceIpConnectivity != null)
           'staticServiceIpConnectivity': staticServiceIpConnectivity!,
         if (username != null) 'username': username!,
@@ -5991,6 +7533,46 @@ class Policy {
         if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// Issue position.
+class Position {
+  /// Issue column number
+  core.int? column;
+
+  /// Issue length
+  core.int? length;
+
+  /// Issue line number
+  core.int? line;
+
+  /// Issue offset
+  core.int? offset;
+
+  Position({
+    this.column,
+    this.length,
+    this.line,
+    this.offset,
+  });
+
+  Position.fromJson(core.Map json_)
+      : this(
+          column:
+              json_.containsKey('column') ? json_['column'] as core.int : null,
+          length:
+              json_.containsKey('length') ? json_['length'] as core.int : null,
+          line: json_.containsKey('line') ? json_['line'] as core.int : null,
+          offset:
+              json_.containsKey('offset') ? json_['offset'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (column != null) 'column': column!,
+        if (length != null) 'length': length!,
+        if (line != null) 'line': line!,
+        if (offset != null) 'offset': offset!,
       };
 }
 
@@ -6413,15 +7995,44 @@ class ReverseSshConnectivity {
 /// Request message for 'RollbackConversionWorkspace' request.
 typedef RollbackConversionWorkspaceRequest = $Empty;
 
+/// This allows the data to change scale, for example if the source is 2 digits
+/// after the decimal point, specify round to scale value = 2.
+///
+/// If for example the value needs to be converted to an integer, use round to
+/// scale value = 0.
+class RoundToScale {
+  /// Scale value to be used
+  ///
+  /// Required.
+  core.int? scale;
+
+  RoundToScale({
+    this.scale,
+  });
+
+  RoundToScale.fromJson(core.Map json_)
+      : this(
+          scale: json_.containsKey('scale') ? json_['scale'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scale != null) 'scale': scale!,
+      };
+}
+
 /// Details of a single rules file.
 class RulesFile {
   /// The text content of the rules that needs to be converted.
+  ///
+  /// Required.
   core.String? rulesContent;
 
   /// The filename of the rules that needs to be converted.
   ///
   /// The filename is used mainly so that future logs of the import rules job
   /// contain it, and can therefore be searched by it.
+  ///
+  /// Required.
   core.String? rulesSourceFilename;
 
   RulesFile({
@@ -6453,28 +8064,7 @@ class RulesFile {
 /// interchangeably when they refer to a namespace or a collection of other
 /// database entities. Can store additional information which is schema
 /// specific.
-class SchemaEntity {
-  /// Custom engine specific features.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? customFeatures;
-
-  SchemaEntity({
-    this.customFeatures,
-  });
-
-  SchemaEntity.fromJson(core.Map json_)
-      : this(
-          customFeatures: json_.containsKey('customFeatures')
-              ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customFeatures != null) 'customFeatures': customFeatures!,
-      };
-}
+typedef SchemaEntity = $Entity;
 
 /// Response message for 'SearchBackgroundJobs' request.
 class SearchBackgroundJobsResponse {
@@ -6507,9 +8097,13 @@ class SeedConversionWorkspaceRequest {
   core.bool? autoCommit;
 
   /// Fully qualified (Uri) name of the destination connection profile.
+  ///
+  /// Optional.
   core.String? destinationConnectionProfile;
 
   /// Fully qualified (Uri) name of the source connection profile.
+  ///
+  /// Optional.
   core.String? sourceConnectionProfile;
 
   SeedConversionWorkspaceRequest({
@@ -6544,6 +8138,8 @@ class SeedConversionWorkspaceRequest {
 /// Details regarding a Seed background job.
 class SeedJobDetails {
   /// The connection profile which was used for the seed job.
+  ///
+  /// Output only.
   core.String? connectionProfile;
 
   SeedJobDetails({
@@ -6697,6 +8293,429 @@ class SetIamPolicyRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!,
         if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
+/// Options to configure rule type SetTablePrimaryKey.
+///
+/// The rule is used to specify the columns and name to configure/alter the
+/// primary key of a table. The rule filter field can refer to one entity. The
+/// rule scope can be one of: Table.
+class SetTablePrimaryKey {
+  /// Name for the primary key
+  ///
+  /// Optional.
+  core.String? primaryKey;
+
+  /// List of column names for the primary key
+  ///
+  /// Required.
+  core.List<core.String>? primaryKeyColumns;
+
+  SetTablePrimaryKey({
+    this.primaryKey,
+    this.primaryKeyColumns,
+  });
+
+  SetTablePrimaryKey.fromJson(core.Map json_)
+      : this(
+          primaryKey: json_.containsKey('primaryKey')
+              ? json_['primaryKey'] as core.String
+              : null,
+          primaryKeyColumns: json_.containsKey('primaryKeyColumns')
+              ? (json_['primaryKeyColumns'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (primaryKey != null) 'primaryKey': primaryKey!,
+        if (primaryKeyColumns != null) 'primaryKeyColumns': primaryKeyColumns!,
+      };
+}
+
+/// Options to configure rule type SingleColumnChange.
+///
+/// The rule is used to change the properties of a column. The rule filter field
+/// can refer to one entity. The rule scope can be one of: Column. When using
+/// this rule, if a field is not specified than the destination column's
+/// configuration will be the same as the one in the source column..
+class SingleColumnChange {
+  /// Is the column of array type.
+  ///
+  /// Optional.
+  core.bool? array;
+
+  /// The length of the array, only relevant if the column type is an array.
+  ///
+  /// Optional.
+  core.int? arrayLength;
+
+  /// Is the column auto-generated/identity.
+  ///
+  /// Optional.
+  core.bool? autoGenerated;
+
+  /// Charset override - instead of table level charset.
+  ///
+  /// Optional.
+  core.String? charset;
+
+  /// Collation override - instead of table level collation.
+  ///
+  /// Optional.
+  core.String? collation;
+
+  /// Comment associated with the column.
+  ///
+  /// Optional.
+  core.String? comment;
+
+  /// Custom engine specific features.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? customFeatures;
+
+  /// Column data type name.
+  ///
+  /// Optional.
+  core.String? dataType;
+
+  /// Column fractional seconds precision - e.g. 2 as in timestamp (2) - when
+  /// relevant.
+  ///
+  /// Optional.
+  core.int? fractionalSecondsPrecision;
+
+  /// Column length - e.g. 50 as in varchar (50) - when relevant.
+  ///
+  /// Optional.
+  core.String? length;
+
+  /// Is the column nullable.
+  ///
+  /// Optional.
+  core.bool? nullable;
+
+  /// Column precision - e.g. 8 as in double (8,2) - when relevant.
+  ///
+  /// Optional.
+  core.int? precision;
+
+  /// Column scale - e.g. 2 as in double (8,2) - when relevant.
+  ///
+  /// Optional.
+  core.int? scale;
+
+  /// Specifies the list of values allowed in the column.
+  ///
+  /// Optional.
+  core.List<core.String>? setValues;
+
+  /// Is the column a UDT (User-defined Type).
+  ///
+  /// Optional.
+  core.bool? udt;
+
+  SingleColumnChange({
+    this.array,
+    this.arrayLength,
+    this.autoGenerated,
+    this.charset,
+    this.collation,
+    this.comment,
+    this.customFeatures,
+    this.dataType,
+    this.fractionalSecondsPrecision,
+    this.length,
+    this.nullable,
+    this.precision,
+    this.scale,
+    this.setValues,
+    this.udt,
+  });
+
+  SingleColumnChange.fromJson(core.Map json_)
+      : this(
+          array:
+              json_.containsKey('array') ? json_['array'] as core.bool : null,
+          arrayLength: json_.containsKey('arrayLength')
+              ? json_['arrayLength'] as core.int
+              : null,
+          autoGenerated: json_.containsKey('autoGenerated')
+              ? json_['autoGenerated'] as core.bool
+              : null,
+          charset: json_.containsKey('charset')
+              ? json_['charset'] as core.String
+              : null,
+          collation: json_.containsKey('collation')
+              ? json_['collation'] as core.String
+              : null,
+          comment: json_.containsKey('comment')
+              ? json_['comment'] as core.String
+              : null,
+          customFeatures: json_.containsKey('customFeatures')
+              ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
+              : null,
+          dataType: json_.containsKey('dataType')
+              ? json_['dataType'] as core.String
+              : null,
+          fractionalSecondsPrecision:
+              json_.containsKey('fractionalSecondsPrecision')
+                  ? json_['fractionalSecondsPrecision'] as core.int
+                  : null,
+          length: json_.containsKey('length')
+              ? json_['length'] as core.String
+              : null,
+          nullable: json_.containsKey('nullable')
+              ? json_['nullable'] as core.bool
+              : null,
+          precision: json_.containsKey('precision')
+              ? json_['precision'] as core.int
+              : null,
+          scale: json_.containsKey('scale') ? json_['scale'] as core.int : null,
+          setValues: json_.containsKey('setValues')
+              ? (json_['setValues'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          udt: json_.containsKey('udt') ? json_['udt'] as core.bool : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (array != null) 'array': array!,
+        if (arrayLength != null) 'arrayLength': arrayLength!,
+        if (autoGenerated != null) 'autoGenerated': autoGenerated!,
+        if (charset != null) 'charset': charset!,
+        if (collation != null) 'collation': collation!,
+        if (comment != null) 'comment': comment!,
+        if (customFeatures != null) 'customFeatures': customFeatures!,
+        if (dataType != null) 'dataType': dataType!,
+        if (fractionalSecondsPrecision != null)
+          'fractionalSecondsPrecision': fractionalSecondsPrecision!,
+        if (length != null) 'length': length!,
+        if (nullable != null) 'nullable': nullable!,
+        if (precision != null) 'precision': precision!,
+        if (scale != null) 'scale': scale!,
+        if (setValues != null) 'setValues': setValues!,
+        if (udt != null) 'udt': udt!,
+      };
+}
+
+/// Options to configure rule type SingleEntityRename.
+///
+/// The rule is used to rename an entity. The rule filter field can refer to
+/// only one entity. The rule scope can be one of: Database, Schema, Table,
+/// Column, Constraint, Index, View, Function, Stored Procedure, Materialized
+/// View, Sequence, UDT, Synonym
+class SingleEntityRename {
+  /// The new name of the destination entity
+  ///
+  /// Required.
+  core.String? newName;
+
+  SingleEntityRename({
+    this.newName,
+  });
+
+  SingleEntityRename.fromJson(core.Map json_)
+      : this(
+          newName: json_.containsKey('newName')
+              ? json_['newName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (newName != null) 'newName': newName!,
+      };
+}
+
+/// Options to configure rule type SinglePackageChange.
+///
+/// The rule is used to alter the sql code for a package entities. The rule
+/// filter field can refer to one entity. The rule scope can be: Package
+class SinglePackageChange {
+  /// Sql code for package body
+  ///
+  /// Optional.
+  core.String? packageBody;
+
+  /// Sql code for package description
+  ///
+  /// Optional.
+  core.String? packageDescription;
+
+  SinglePackageChange({
+    this.packageBody,
+    this.packageDescription,
+  });
+
+  SinglePackageChange.fromJson(core.Map json_)
+      : this(
+          packageBody: json_.containsKey('packageBody')
+              ? json_['packageBody'] as core.String
+              : null,
+          packageDescription: json_.containsKey('packageDescription')
+              ? json_['packageDescription'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (packageBody != null) 'packageBody': packageBody!,
+        if (packageDescription != null)
+          'packageDescription': packageDescription!,
+      };
+}
+
+/// Filter for fixed point number data types such as NUMERIC/NUMBER
+class SourceNumericFilter {
+  /// Enum to set the option defining the datatypes numeric filter has to be
+  /// applied to
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "NUMERIC_FILTER_OPTION_UNSPECIFIED" : Numeric filter option unspecified
+  /// - "NUMERIC_FILTER_OPTION_ALL" : Numeric filter option that matches all
+  /// numeric columns.
+  /// - "NUMERIC_FILTER_OPTION_LIMIT" : Numeric filter option that matches
+  /// columns having numeric datatypes with specified precision and scale within
+  /// the limited range of filter.
+  /// - "NUMERIC_FILTER_OPTION_LIMITLESS" : Numeric filter option that matches
+  /// only the numeric columns with no precision and scale specified.
+  core.String? numericFilterOption;
+
+  /// The filter will match columns with precision smaller than or equal to this
+  /// number.
+  ///
+  /// Optional.
+  core.int? sourceMaxPrecisionFilter;
+
+  /// The filter will match columns with scale smaller than or equal to this
+  /// number.
+  ///
+  /// Optional.
+  core.int? sourceMaxScaleFilter;
+
+  /// The filter will match columns with precision greater than or equal to this
+  /// number.
+  ///
+  /// Optional.
+  core.int? sourceMinPrecisionFilter;
+
+  /// The filter will match columns with scale greater than or equal to this
+  /// number.
+  ///
+  /// Optional.
+  core.int? sourceMinScaleFilter;
+
+  SourceNumericFilter({
+    this.numericFilterOption,
+    this.sourceMaxPrecisionFilter,
+    this.sourceMaxScaleFilter,
+    this.sourceMinPrecisionFilter,
+    this.sourceMinScaleFilter,
+  });
+
+  SourceNumericFilter.fromJson(core.Map json_)
+      : this(
+          numericFilterOption: json_.containsKey('numericFilterOption')
+              ? json_['numericFilterOption'] as core.String
+              : null,
+          sourceMaxPrecisionFilter:
+              json_.containsKey('sourceMaxPrecisionFilter')
+                  ? json_['sourceMaxPrecisionFilter'] as core.int
+                  : null,
+          sourceMaxScaleFilter: json_.containsKey('sourceMaxScaleFilter')
+              ? json_['sourceMaxScaleFilter'] as core.int
+              : null,
+          sourceMinPrecisionFilter:
+              json_.containsKey('sourceMinPrecisionFilter')
+                  ? json_['sourceMinPrecisionFilter'] as core.int
+                  : null,
+          sourceMinScaleFilter: json_.containsKey('sourceMinScaleFilter')
+              ? json_['sourceMinScaleFilter'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (numericFilterOption != null)
+          'numericFilterOption': numericFilterOption!,
+        if (sourceMaxPrecisionFilter != null)
+          'sourceMaxPrecisionFilter': sourceMaxPrecisionFilter!,
+        if (sourceMaxScaleFilter != null)
+          'sourceMaxScaleFilter': sourceMaxScaleFilter!,
+        if (sourceMinPrecisionFilter != null)
+          'sourceMinPrecisionFilter': sourceMinPrecisionFilter!,
+        if (sourceMinScaleFilter != null)
+          'sourceMinScaleFilter': sourceMinScaleFilter!,
+      };
+}
+
+/// Options to configure rule type SourceSqlChange.
+///
+/// The rule is used to alter the sql code for database entities. The rule
+/// filter field can refer to one entity. The rule scope can be:
+/// StoredProcedure, Function, Trigger, View
+class SourceSqlChange {
+  /// Sql code for source (stored procedure, function, trigger or view)
+  ///
+  /// Required.
+  core.String? sqlCode;
+
+  SourceSqlChange({
+    this.sqlCode,
+  });
+
+  SourceSqlChange.fromJson(core.Map json_)
+      : this(
+          sqlCode: json_.containsKey('sqlCode')
+              ? json_['sqlCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sqlCode != null) 'sqlCode': sqlCode!,
+      };
+}
+
+/// Filter for text-based data types like varchar.
+class SourceTextFilter {
+  /// The filter will match columns with length smaller than or equal to this
+  /// number.
+  ///
+  /// Optional.
+  core.String? sourceMaxLengthFilter;
+
+  /// The filter will match columns with length greater than or equal to this
+  /// number.
+  ///
+  /// Optional.
+  core.String? sourceMinLengthFilter;
+
+  SourceTextFilter({
+    this.sourceMaxLengthFilter,
+    this.sourceMinLengthFilter,
+  });
+
+  SourceTextFilter.fromJson(core.Map json_)
+      : this(
+          sourceMaxLengthFilter: json_.containsKey('sourceMaxLengthFilter')
+              ? json_['sourceMaxLengthFilter'] as core.String
+              : null,
+          sourceMinLengthFilter: json_.containsKey('sourceMinLengthFilter')
+              ? json_['sourceMinLengthFilter'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sourceMaxLengthFilter != null)
+          'sourceMaxLengthFilter': sourceMaxLengthFilter!,
+        if (sourceMinLengthFilter != null)
+          'sourceMinLengthFilter': sourceMinLengthFilter!,
       };
 }
 
@@ -7097,6 +9116,27 @@ class TableEntity {
       };
 }
 
+/// Response message for 'GenerateTcpProxyScript' request.
+class TcpProxyScript {
+  /// The TCP Proxy configuration script.
+  core.String? script;
+
+  TcpProxyScript({
+    this.script,
+  });
+
+  TcpProxyScript.fromJson(core.Map json_)
+      : this(
+          script: json_.containsKey('script')
+              ? json_['script'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (script != null) 'script': script!,
+      };
+}
+
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
@@ -7162,6 +9202,46 @@ class TriggerEntity {
       };
 }
 
+/// UDT's parent is a schema.
+class UDTEntity {
+  /// Custom engine specific features.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? customFeatures;
+
+  /// The SQL code which creates the udt body.
+  core.String? udtBody;
+
+  /// The SQL code which creates the udt.
+  core.String? udtSqlCode;
+
+  UDTEntity({
+    this.customFeatures,
+    this.udtBody,
+    this.udtSqlCode,
+  });
+
+  UDTEntity.fromJson(core.Map json_)
+      : this(
+          customFeatures: json_.containsKey('customFeatures')
+              ? json_['customFeatures'] as core.Map<core.String, core.dynamic>
+              : null,
+          udtBody: json_.containsKey('udtBody')
+              ? json_['udtBody'] as core.String
+              : null,
+          udtSqlCode: json_.containsKey('udtSqlCode')
+              ? json_['udtSqlCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customFeatures != null) 'customFeatures': customFeatures!,
+        if (udtBody != null) 'udtBody': udtBody!,
+        if (udtSqlCode != null) 'udtSqlCode': udtSqlCode!,
+      };
+}
+
 /// The username/password for a database user.
 ///
 /// Used for specifying initial users at cluster creation time.
@@ -7201,8 +9281,222 @@ class UserPassword {
       };
 }
 
+/// A list of values to filter by in ConditionalColumnSetValue
+class ValueListFilter {
+  /// Whether to ignore case when filtering by values.
+  ///
+  /// Defaults to false
+  ///
+  /// Required.
+  core.bool? ignoreCase;
+
+  /// Indicates whether the filter matches rows with values that are present in
+  /// the list or those with values not present in it.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "VALUE_PRESENT_IN_LIST_UNSPECIFIED" : Value present in list unspecified
+  /// - "VALUE_PRESENT_IN_LIST_IF_VALUE_LIST" : If the source value is in the
+  /// supplied list at value_list
+  /// - "VALUE_PRESENT_IN_LIST_IF_VALUE_NOT_LIST" : If the source value is not
+  /// in the supplied list at value_list
+  core.String? valuePresentList;
+
+  /// The list to be used to filter by
+  ///
+  /// Required.
+  core.List<core.String>? values;
+
+  ValueListFilter({
+    this.ignoreCase,
+    this.valuePresentList,
+    this.values,
+  });
+
+  ValueListFilter.fromJson(core.Map json_)
+      : this(
+          ignoreCase: json_.containsKey('ignoreCase')
+              ? json_['ignoreCase'] as core.bool
+              : null,
+          valuePresentList: json_.containsKey('valuePresentList')
+              ? json_['valuePresentList'] as core.String
+              : null,
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ignoreCase != null) 'ignoreCase': ignoreCase!,
+        if (valuePresentList != null) 'valuePresentList': valuePresentList!,
+        if (values != null) 'values': values!,
+      };
+}
+
+/// Description of data transformation during migration as part of the
+/// ConditionalColumnSetValue.
+class ValueTransformation {
+  /// Applies a hash function on the data
+  ///
+  /// Optional.
+  ApplyHash? applyHash;
+
+  /// Set to max_value - if integer or numeric, will use int.maxvalue, etc
+  ///
+  /// Optional.
+  Empty? assignMaxValue;
+
+  /// Set to min_value - if integer or numeric, will use int.minvalue, etc
+  ///
+  /// Optional.
+  Empty? assignMinValue;
+
+  /// Set to null
+  ///
+  /// Optional.
+  Empty? assignNull;
+
+  /// Set to a specific value (value is converted to fit the target data type)
+  ///
+  /// Optional.
+  AssignSpecificValue? assignSpecificValue;
+
+  /// Filter on relation between source value and compare value of type double.
+  ///
+  /// Optional.
+  DoubleComparisonFilter? doubleComparison;
+
+  /// Filter on relation between source value and compare value of type integer.
+  ///
+  /// Optional.
+  IntComparisonFilter? intComparison;
+
+  /// Value is null
+  ///
+  /// Optional.
+  Empty? isNull;
+
+  /// Allows the data to change scale
+  ///
+  /// Optional.
+  RoundToScale? roundScale;
+
+  /// Value is found in the specified list.
+  ///
+  /// Optional.
+  ValueListFilter? valueList;
+
+  ValueTransformation({
+    this.applyHash,
+    this.assignMaxValue,
+    this.assignMinValue,
+    this.assignNull,
+    this.assignSpecificValue,
+    this.doubleComparison,
+    this.intComparison,
+    this.isNull,
+    this.roundScale,
+    this.valueList,
+  });
+
+  ValueTransformation.fromJson(core.Map json_)
+      : this(
+          applyHash: json_.containsKey('applyHash')
+              ? ApplyHash.fromJson(
+                  json_['applyHash'] as core.Map<core.String, core.dynamic>)
+              : null,
+          assignMaxValue: json_.containsKey('assignMaxValue')
+              ? Empty.fromJson(json_['assignMaxValue']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          assignMinValue: json_.containsKey('assignMinValue')
+              ? Empty.fromJson(json_['assignMinValue']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          assignNull: json_.containsKey('assignNull')
+              ? Empty.fromJson(
+                  json_['assignNull'] as core.Map<core.String, core.dynamic>)
+              : null,
+          assignSpecificValue: json_.containsKey('assignSpecificValue')
+              ? AssignSpecificValue.fromJson(json_['assignSpecificValue']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          doubleComparison: json_.containsKey('doubleComparison')
+              ? DoubleComparisonFilter.fromJson(json_['doubleComparison']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          intComparison: json_.containsKey('intComparison')
+              ? IntComparisonFilter.fromJson(
+                  json_['intComparison'] as core.Map<core.String, core.dynamic>)
+              : null,
+          isNull: json_.containsKey('isNull')
+              ? Empty.fromJson(
+                  json_['isNull'] as core.Map<core.String, core.dynamic>)
+              : null,
+          roundScale: json_.containsKey('roundScale')
+              ? RoundToScale.fromJson(
+                  json_['roundScale'] as core.Map<core.String, core.dynamic>)
+              : null,
+          valueList: json_.containsKey('valueList')
+              ? ValueListFilter.fromJson(
+                  json_['valueList'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (applyHash != null) 'applyHash': applyHash!,
+        if (assignMaxValue != null) 'assignMaxValue': assignMaxValue!,
+        if (assignMinValue != null) 'assignMinValue': assignMinValue!,
+        if (assignNull != null) 'assignNull': assignNull!,
+        if (assignSpecificValue != null)
+          'assignSpecificValue': assignSpecificValue!,
+        if (doubleComparison != null) 'doubleComparison': doubleComparison!,
+        if (intComparison != null) 'intComparison': intComparison!,
+        if (isNull != null) 'isNull': isNull!,
+        if (roundScale != null) 'roundScale': roundScale!,
+        if (valueList != null) 'valueList': valueList!,
+      };
+}
+
 /// Request message for 'VerifyMigrationJob' request.
-typedef VerifyMigrationJobRequest = $Empty;
+class VerifyMigrationJobRequest {
+  /// The changed migration job parameters to verify.
+  ///
+  /// It will not update the migration job.
+  ///
+  /// Optional.
+  MigrationJob? migrationJob;
+
+  /// Field mask is used to specify the changed fields to be verified.
+  ///
+  /// It will not update the migration job.
+  ///
+  /// Optional.
+  core.String? updateMask;
+
+  VerifyMigrationJobRequest({
+    this.migrationJob,
+    this.updateMask,
+  });
+
+  VerifyMigrationJobRequest.fromJson(core.Map json_)
+      : this(
+          migrationJob: json_.containsKey('migrationJob')
+              ? MigrationJob.fromJson(
+                  json_['migrationJob'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (migrationJob != null) 'migrationJob': migrationJob!,
+        if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
 
 /// View's parent is a schema.
 class ViewEntity {

@@ -2484,18 +2484,14 @@ class AdvertisersInsertionOrdersResource {
   /// Filter expressions are made up of one or more restrictions. * Restrictions
   /// can be combined by `AND` or `OR` logical operators. A sequence of
   /// restrictions implicitly uses `AND`. * A restriction has the form of
-  /// `{field} {operator} {value}`. * The
-  /// `budget.budget_segments.date_range.end_date` field must use the `LESS THAN
-  /// (<)` operator. * The `updateTime` field must use the `GREATER THAN OR
-  /// EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)` operators. * All other
-  /// fields must use the `EQUALS (=)` operator. Supported fields: *
-  /// `campaignId` * `displayName` * `entityStatus` *
-  /// `budget.budget_segments.date_range.end_date` (input in the form of
-  /// `YYYY-MM-DD`) **Deprecated. Not available after June 8, 2023** *
-  /// `updateTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`)
-  /// Examples: * All insertion orders under a campaign: `campaignId="1234"` *
-  /// All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` insertion orders
-  /// under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR
+  /// `{field} {operator} {value}`. * The `updateTime` field must use the
+  /// `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)` operators.
+  /// * All other fields must use the `EQUALS (=)` operator. Supported fields: *
+  /// `campaignId` * `displayName` * `entityStatus` * `updateTime` (input in ISO
+  /// 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`) Examples: * All insertion orders
+  /// under a campaign: `campaignId="1234"` * All `ENTITY_STATUS_ACTIVE` or
+  /// `ENTITY_STATUS_PAUSED` insertion orders under an advertiser:
+  /// `(entityStatus="ENTITY_STATUS_ACTIVE" OR
   /// entityStatus="ENTITY_STATUS_PAUSED")` * All insertion orders with an
   /// update time less than or equal to 2020-11-04T18:54:47Z (format of ISO
   /// 8601): `updateTime<="2020-11-04T18:54:47Z"` * All insertion orders with an
@@ -3505,42 +3501,30 @@ class AdvertisersLineItemsResource {
   /// Filter expressions are made up of one or more restrictions. * Restrictions
   /// can be combined by `AND` or `OR` logical operators. A sequence of
   /// restrictions implicitly uses `AND`. * A restriction has the form of
-  /// `{field} {operator} {value}`. * The `flight.dateRange.endDate` field must
-  /// use the `LESS THAN (<)` operator. * The `updateTime` field must use the
+  /// `{field} {operator} {value}`. * The `updateTime` field must use the
   /// `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)` operators.
-  /// * The `warningMessages` field must use the `HAS (:)` operator. * All other
-  /// fields must use the `EQUALS (=)` operator. Supported fields: *
-  /// `campaignId` * `displayName` * `entityStatus` * `flight.dateRange.endDate`
-  /// (input formatted as `YYYY-MM-DD`) **Deprecated. Not available after June
-  /// 8, 2023** * `flight.triggerId` * `insertionOrderId` * `lineItemId` *
-  /// `lineItemType` * `targetedChannelId` * `targetedNegativeKeywordListId` *
-  /// `updateTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`) *
-  /// `warningMessages` Examples: * All line items under an insertion order:
-  /// `insertionOrderId="1234"` * All `ENTITY_STATUS_ACTIVE` or
+  /// * All other fields must use the `EQUALS (=)` operator. Supported fields: *
+  /// `campaignId` * `displayName` * `entityStatus` * `insertionOrderId` *
+  /// `lineItemId` * `lineItemType` * `updateTime` (input in ISO 8601 format, or
+  /// `YYYY-MM-DDTHH:MM:SSZ`) Examples: * All line items under an insertion
+  /// order: `insertionOrderId="1234"` * All `ENTITY_STATUS_ACTIVE` or
   /// `ENTITY_STATUS_PAUSED` and `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items
   /// under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR
   /// entityStatus="ENTITY_STATUS_PAUSED") AND
-  /// lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` * All line items whose
-  /// flight dates end before March 28, 2019:
-  /// `flight.dateRange.endDate<"2019-03-28"` * All line items that have
-  /// `NO_VALID_CREATIVE` in `warningMessages`:
-  /// `warningMessages:"NO_VALID_CREATIVE"` * All line items with an update time
-  /// less than or equal to 2020-11-04T18:54:47Z (format of ISO 8601):
-  /// `updateTime<="2020-11-04T18:54:47Z"` * All line items with an update time
-  /// greater than or equal to 2020-11-04T18:54:47Z (format of ISO 8601):
-  /// `updateTime>="2020-11-04T18:54:47Z"` * All line items that are using both
-  /// the specified channel and specified negative keyword list in their
-  /// targeting: `targetedNegativeKeywordListId=789 AND targetedChannelId=12345`
-  /// The length of this field should be no more than 500 characters. Reference
-  /// our \[filter `LIST` requests\](/display-video/api/guides/how-tos/filters)
-  /// guide for more information.
+  /// lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` * All line items with an
+  /// update time less than or equal to 2020-11-04T18:54:47Z (format of ISO
+  /// 8601): `updateTime<="2020-11-04T18:54:47Z"` * All line items with an
+  /// update time greater than or equal to 2020-11-04T18:54:47Z (format of ISO
+  /// 8601): `updateTime>="2020-11-04T18:54:47Z"` The length of this field
+  /// should be no more than 500 characters. Reference our \[filter `LIST`
+  /// requests\](/display-video/api/guides/how-tos/filters) guide for more
+  /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// `displayName` (default) * `entityStatus` * `flight.dateRange.endDate`
-  /// **Deprecated. Not available after June 8, 2023** * `updateTime` The
-  /// default sorting order is ascending. To specify descending order for a
-  /// field, a suffix "desc" should be added to the field name. Example:
-  /// `displayName desc`.
+  /// `displayName` (default) * `entityStatus` * `updateTime` The default
+  /// sorting order is ascending. To specify descending order for a field, a
+  /// suffix "desc" should be added to the field name. Example: `displayName
+  /// desc`.
   ///
   /// [pageSize] - Requested page size. Must be between `1` and `200`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
@@ -4915,8 +4899,8 @@ class AdvertisersManualTriggersResource {
   ///
   /// Each activation of the manual trigger must be at least 5 minutes apart,
   /// otherwise an error will be returned. **Warning:** Line Items using manual
-  /// triggers will stop serving in Display & Video 360 on **May 17, 2023**.
-  /// Read our \[feature deprecation
+  /// triggers no longer serve in Display & Video 360. This method will sunset
+  /// on August 1, 2023. Read our \[feature deprecation
   /// announcement\](/display-video/api/deprecations#features.manual_triggers)
   /// for more information.
   ///
@@ -4971,8 +4955,8 @@ class AdvertisersManualTriggersResource {
   /// Creates a new manual trigger.
   ///
   /// Returns the newly created manual trigger if successful. **Warning:** Line
-  /// Items using manual triggers will stop serving in Display & Video 360 on
-  /// **May 17, 2023**. Read our \[feature deprecation
+  /// Items using manual triggers no longer serve in Display & Video 360. This
+  /// method will sunset on August 1, 2023. Read our \[feature deprecation
   /// announcement\](/display-video/api/deprecations#features.manual_triggers)
   /// for more information.
   ///
@@ -5020,8 +5004,9 @@ class AdvertisersManualTriggersResource {
 
   /// Deactivates a manual trigger.
   ///
-  /// **Warning:** Line Items using manual triggers will stop serving in Display
-  /// & Video 360 on **May 17, 2023**. Read our \[feature deprecation
+  /// **Warning:** Line Items using manual triggers no longer serve in Display &
+  /// Video 360. This method will sunset on August 1, 2023. Read our \[feature
+  /// deprecation
   /// announcement\](/display-video/api/deprecations#features.manual_triggers)
   /// for more information.
   ///
@@ -5075,8 +5060,9 @@ class AdvertisersManualTriggersResource {
 
   /// Gets a manual trigger.
   ///
-  /// **Warning:** Line Items using manual triggers will stop serving in Display
-  /// & Video 360 on **May 17, 2023**. Read our \[feature deprecation
+  /// **Warning:** Line Items using manual triggers no longer serve in Display &
+  /// Video 360. This method will sunset on August 1, 2023. Read our \[feature
+  /// deprecation
   /// announcement\](/display-video/api/deprecations#features.manual_triggers)
   /// for more information.
   ///
@@ -5126,8 +5112,9 @@ class AdvertisersManualTriggersResource {
   /// advertiser ID.
   ///
   /// The order is defined by the order_by parameter. A single advertiser_id is
-  /// required. **Warning:** Line Items using manual triggers will stop serving
-  /// in Display & Video 360 on **May 17, 2023**. Read our \[feature deprecation
+  /// required. **Warning:** Line Items using manual triggers no longer serve in
+  /// Display & Video 360. This method will sunset on August 1, 2023. Read our
+  /// \[feature deprecation
   /// announcement\](/display-video/api/deprecations#features.manual_triggers)
   /// for more information.
   ///
@@ -5203,8 +5190,8 @@ class AdvertisersManualTriggersResource {
   /// Updates a manual trigger.
   ///
   /// Returns the updated manual trigger if successful. **Warning:** Line Items
-  /// using manual triggers will stop serving in Display & Video 360 on **May
-  /// 17, 2023**. Read our \[feature deprecation
+  /// using manual triggers no longer serve in Display & Video 360. This method
+  /// will sunset on August 1, 2023. Read our \[feature deprecation
   /// announcement\](/display-video/api/deprecations#features.manual_triggers)
   /// for more information.
   ///
@@ -8634,6 +8621,9 @@ class InventorySourcesResource {
   /// [inventorySourceId] - Required. The ID of the inventory source to fetch.
   /// Value must have pattern `^\[^/\]+$`.
   ///
+  /// [advertiserId] - Optional. The advertiser_id is optional, when it is
+  /// provided, the advertiser access is used.
+  ///
   /// [partnerId] - Required. The ID of the DV360 partner to which the fetched
   /// inventory source is permissioned.
   ///
@@ -8649,10 +8639,12 @@ class InventorySourcesResource {
   /// this method will complete with the same error.
   async.Future<InventorySource> get(
     core.String inventorySourceId, {
+    core.String? advertiserId,
     core.String? partnerId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (advertiserId != null) 'advertiserId': [advertiserId],
       if (partnerId != null) 'partnerId': [partnerId],
       if ($fields != null) 'fields': [$fields],
     };
@@ -12536,11 +12528,6 @@ class AudienceGroupAssignedTargetingOptionDetails {
   /// Used for negative targeting. The COMPLEMENT of the UNION of this group and
   /// other excluded audience groups is used as an INTERSECTION to any positive
   /// audience targeting. All items are logically ‘OR’ of each other.
-  /// **Warning:** `ACTIVITY_BASED` and `FREQUENCY_CAP` audience types will be
-  /// deprecated on **May 20, 2023**. After this date, these audiences will not
-  /// be able to be added to resource targeting. Read our \[feature deprecation
-  /// announcement\](/display-video/api/deprecations#features.first_and_third_party_audience_types)
-  /// for more information.
   FirstAndThirdPartyAudienceGroup? excludedFirstAndThirdPartyAudienceGroup;
 
   /// The Google audience ids of the excluded Google audience group.
@@ -12549,12 +12536,6 @@ class AudienceGroupAssignedTargetingOptionDetails {
   /// other excluded audience groups is used as an INTERSECTION to any positive
   /// audience targeting. Only contains Affinity, In-market and Installed-apps
   /// type Google audiences. All items are logically ‘OR’ of each other.
-  /// **Warning:** `GOOGLE_AUDIENCE_TYPE_INSTALLED_APPS` and
-  /// `GOOGLE_AUDIENCE_TYPE_NEW_MOBILE_DEVICES` audience types will be
-  /// deprecated on **May 20, 2023**. After this date, these audiences will not
-  /// be able to be added to resource targeting. Read our \[feature deprecation
-  /// announcement\](/display-video/api/deprecations#features.google_audience_types)
-  /// for more information.
   GoogleAudienceGroup? excludedGoogleAudienceGroup;
 
   /// The combined audience ids of the included combined audience group.
@@ -12574,23 +12555,12 @@ class AudienceGroupAssignedTargetingOptionDetails {
   /// audience ids only. The relation between each first and third party
   /// audience group is INTERSECTION, and the result is UNION'ed with other
   /// audience groups. Repeated groups with same settings will be ignored.
-  /// **Warning:** `ACTIVITY_BASED` and `FREQUENCY_CAP` audience types will be
-  /// deprecated on **May 20, 2023**. After this date, these audiences will not
-  /// be able to be added to resource targeting. Read our \[feature deprecation
-  /// announcement\](/display-video/api/deprecations#features.first_and_third_party_audience_types)
-  /// for more information.
   core.List<FirstAndThirdPartyAudienceGroup>?
       includedFirstAndThirdPartyAudienceGroups;
 
   /// The Google audience ids of the included Google audience group.
   ///
-  /// Contains Google audience ids only. **Warning:**
-  /// `GOOGLE_AUDIENCE_TYPE_INSTALLED_APPS` and
-  /// `GOOGLE_AUDIENCE_TYPE_NEW_MOBILE_DEVICES` audience types will be
-  /// deprecated on **May 20, 2023**. After this date, these audiences will not
-  /// be able to be added to resource targeting. Read our \[feature deprecation
-  /// announcement\](/display-video/api/deprecations#features.google_audience_types)
-  /// for more information.
+  /// Contains Google audience ids only.
   GoogleAudienceGroup? includedGoogleAudienceGroup;
 
   AudienceGroupAssignedTargetingOptionDetails({
@@ -14048,7 +14018,7 @@ typedef CategoryTargetingOptionDetails = $CategoryTargetingOptionDetails;
 /// A single channel.
 ///
 /// Channels are custom groups of related websites and apps.
-typedef Channel = $Channel01;
+typedef Channel = $Channel00;
 
 /// Details for assigned channel targeting option.
 ///
@@ -14603,6 +14573,7 @@ class CreateSdfDownloadTaskRequest {
   /// - "SDF_VERSION_5_3" : SDF version 5.3
   /// - "SDF_VERSION_5_4" : SDF version 5.4
   /// - "SDF_VERSION_5_5" : SDF version 5.5
+  /// - "SDF_VERSION_6" : SDF version 6
   core.String? version;
 
   CreateSdfDownloadTaskRequest({
@@ -16603,17 +16574,8 @@ class FirstAndThirdPartyAudience {
   /// - "CUSTOMER_MATCH_USER_ID" : Audience was generated through matching
   /// customers to known User IDs.
   /// - "ACTIVITY_BASED" : Audience was created based on campaign activity.
-  /// **Warning:** This audience type will be deprecated on **May 20, 2023**.
-  /// After this date, these audiences will not be able to be added to resource
-  /// targeting. Read our \[feature deprecation
-  /// announcement\](/display-video/api/deprecations#features.first_and_third_party_audience_types)
-  /// for more information.
   /// - "FREQUENCY_CAP" : Audience was created based on excluding the number of
-  /// impressions they were served. **Warning:** This audience type will be
-  /// deprecated on **May 20, 2023**. After this date, these audiences will not
-  /// be able to be added to resource targeting. Read our \[feature deprecation
-  /// announcement\](/display-video/api/deprecations#features.first_and_third_party_audience_types)
-  /// for more information.
+  /// impressions they were served.
   /// - "TAG_BASED" : Audience was created based on custom variables attached to
   /// pixel.
   /// - "YOUTUBE_USERS" : Audience was created based on past interactions with
@@ -18188,11 +18150,6 @@ class InventorySource {
   /// The status settings of the inventory source.
   InventorySourceStatus? status;
 
-  /// The unique ID of the sub-site property assigned to this inventory source.
-  ///
-  /// Immutable.
-  core.String? subSitePropertyId;
-
   /// The time range when this inventory source starts and stops serving.
   TimeRange? timeRange;
 
@@ -18221,7 +18178,6 @@ class InventorySource {
     this.readPartnerIds,
     this.readWriteAccessors,
     this.status,
-    this.subSitePropertyId,
     this.timeRange,
     this.updateTime,
   });
@@ -18288,9 +18244,6 @@ class InventorySource {
               ? InventorySourceStatus.fromJson(
                   json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
-          subSitePropertyId: json_.containsKey('subSitePropertyId')
-              ? json_['subSitePropertyId'] as core.String
-              : null,
           timeRange: json_.containsKey('timeRange')
               ? TimeRange.fromJson(
                   json_['timeRange'] as core.Map<core.String, core.dynamic>)
@@ -18321,7 +18274,6 @@ class InventorySource {
         if (readWriteAccessors != null)
           'readWriteAccessors': readWriteAccessors!,
         if (status != null) 'status': status!,
-        if (subSitePropertyId != null) 'subSitePropertyId': subSitePropertyId!,
         if (timeRange != null) 'timeRange': timeRange!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -18837,16 +18789,12 @@ class LineItem {
   /// inventory source.
   core.String? reservationType;
 
-  /// The \[targeting
-  /// expansion\](//support.google.com/displayvideo/answer/10191558) settings of
+  /// The \[optimized
+  /// targeting\](//support.google.com/displayvideo/answer/12060859) settings of
   /// the line item.
   ///
-  /// This config is only applicable when eligible audience list targeting is
-  /// assigned to the line item. Beginning **March 25, 2023**, these settings
-  /// may represent the \[optimized targeting
-  /// feature\](//support.google.com/displayvideo/answer/12060859) in place of
-  /// targeting expansion. This feature will be rolled out to all partners by
-  /// early May 2023.
+  /// This config is only applicable for display, video, or audio line items
+  /// that use automated bidding and positively target eligible audience lists.
   TargetingExpansionConfig? targetingExpansion;
 
   /// The timestamp when the line item was last updated.
@@ -19049,8 +18997,9 @@ class LineItemFlight {
   /// - "LINE_ITEM_FLIGHT_DATE_TYPE_CUSTOM" : The line item uses its own custom
   /// flight dates.
   /// - "LINE_ITEM_FLIGHT_DATE_TYPE_TRIGGER" : The line item uses a trigger.
-  /// **Warning:** Line Items using manual triggers will stop serving in Display
-  /// & Video 360 on **May 17, 2023**. Read our \[feature deprecation
+  /// **Warning:** Line Items using manual triggers no longer serve in Display &
+  /// Video 360. This value will sunset on August 1, 2023. Read our \[feature
+  /// deprecation
   /// announcement\](/display-video/api/deprecations#features.manual_triggers)
   /// for more information.
   core.String? flightDateType;
@@ -19061,9 +19010,9 @@ class LineItemFlight {
   /// Must not be set otherwise. * When set, the line item's flight dates are
   /// inherited from its parent insertion order. * Active line items will spend
   /// when the selected trigger is activated within the parent insertion order's
-  /// flight dates. **Warning:** Line Items using manual triggers will stop
-  /// serving in Display & Video 360 on **May 17, 2023**. Read our \[feature
-  /// deprecation
+  /// flight dates. **Warning:** Line Items using manual triggers no longer
+  /// serve in Display & Video 360. This field will sunset on August 1, 2023.
+  /// Read our \[feature deprecation
   /// announcement\](/display-video/api/deprecations#features.manual_triggers)
   /// for more information.
   core.String? triggerId;
@@ -20269,8 +20218,9 @@ typedef LookupInvoiceCurrencyResponse = $LookupInvoiceCurrencyResponse;
 
 /// A single manual trigger in Display & Video 360.
 ///
-/// **Warning:** Line Items using manual triggers will stop serving in Display &
-/// Video 360 on **May 17, 2023**. Read our \[feature deprecation
+/// **Warning:** Line Items using manual triggers no longer serve in Display &
+/// Video 360. This resource will sunset on August 1, 2023. Read our \[feature
+/// deprecation
 /// announcement\](/display-video/api/deprecations#features.manual_triggers) for
 /// more information.
 typedef ManualTrigger = $ManualTrigger;
@@ -20283,7 +20233,7 @@ typedef MaximizeSpendBidStrategy = $MaximizeSpendBidStrategy;
 typedef MeasurementConfig = $MeasurementConfig;
 
 /// A mobile app promoted by a mobile app install line item.
-typedef MobileApp = $MobileApp01;
+typedef MobileApp = $MobileApp;
 
 /// Wrapper message for a list of mobile device IDs defining Customer Match
 /// audience members.
@@ -21597,14 +21547,9 @@ typedef SubExchangeAssignedTargetingOptionDetails
 /// TargetingOption when targeting_type is `TARGETING_TYPE_SUB_EXCHANGE`.
 typedef SubExchangeTargetingOptionDetails = $SubExchangeTargetingOptionDetails;
 
-/// Settings that control the targeting expansion of the line item.
-///
-/// Targeting expansion allows the line item to reach a larger audience based on
-/// the original audience list and the targeting expansion level. Beginning
-/// **March 25, 2023**, these settings may represent the \[optimized targeting
-/// feature\](//support.google.com/displayvideo/answer/12060859) in place of
-/// targeting expansion. This feature will be rolled out to all partners by
-/// early May 2023.
+/// Settings that control the \[optimized
+/// targeting\](//support.google.com/displayvideo/answer/12060859) settings of
+/// the line item.
 typedef TargetingExpansionConfig = $TargetingExpansionConfig;
 
 /// Represents a single targeting option, which is a targetable concept in
@@ -22251,7 +22196,7 @@ class Transcode {
 /// platforms.
 ///
 /// This is part of the VAST 4.0 standard.
-typedef UniversalAdId = $UniversalAdId01;
+typedef UniversalAdId = $UniversalAdId;
 
 /// Details for assigned URL targeting option.
 ///

@@ -24,6 +24,13 @@
     "name": "datastream",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230620",
+    "rootUrl": "https://datastream.googleapis.com/",
+    "servicePath": "",
+    "title": "Datastream API",
+    "version": "v1alpha1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -1194,8 +1200,6 @@
             }
         }
     },
-    "revision": "20230425",
-    "rootUrl": "https://datastream.googleapis.com/",
     "schemas": {
         "AvroFileFormat": {
             "description": "AVRO file format configuration.",
@@ -2680,9 +2684,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Datastream API",
-    "version": "v1alpha1",
-    "version_module": true
+    }
 }

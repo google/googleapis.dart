@@ -1779,9 +1779,10 @@ class CloseMatterResponse {
 class CloudStorageFile {
   /// The name of the Cloud Storage bucket for the export file.
   ///
-  /// You can use this value in the
-  /// [Cloud Storage JSON or XML APIs](https://cloud.google.com/storage/docs/apis),
-  /// but not to list the bucket contents. Instead, you can
+  /// You can use this value in the Cloud Storage
+  /// [JSON API](https://cloud.google.com/storage/docs/json_api) or
+  /// [XML API](https://cloud.google.com/storage/docs/xml-api), but not to list
+  /// the bucket contents. Instead, you can
   /// [get individual export files](https://cloud.google.com/storage/docs/json_api/v1/objects/get)
   /// by object name.
   core.String? bucketName;
@@ -1791,8 +1792,9 @@ class CloudStorageFile {
 
   /// The name of the Cloud Storage object for the export file.
   ///
-  /// You can use this value in the
-  /// [Cloud Storage JSON or XML APIs](https://cloud.google.com/storage/docs/apis).
+  /// You can use this value in the Cloud Storage
+  /// [JSON API](https://cloud.google.com/storage/docs/json_api) or
+  /// [XML API](https://cloud.google.com/storage/docs/xml-api).
   core.String? objectName;
 
   /// The export file size.

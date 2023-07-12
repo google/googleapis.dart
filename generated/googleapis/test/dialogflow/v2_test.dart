@@ -615,6 +615,7 @@ api.GoogleCloudDialogflowV2AutomatedAgentConfig
   buildCounterGoogleCloudDialogflowV2AutomatedAgentConfig++;
   if (buildCounterGoogleCloudDialogflowV2AutomatedAgentConfig < 3) {
     o.agent = 'foo';
+    o.sessionTtl = 'foo';
   }
   buildCounterGoogleCloudDialogflowV2AutomatedAgentConfig--;
   return o;
@@ -626,6 +627,10 @@ void checkGoogleCloudDialogflowV2AutomatedAgentConfig(
   if (buildCounterGoogleCloudDialogflowV2AutomatedAgentConfig < 3) {
     unittest.expect(
       o.agent!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sessionTtl!,
       unittest.equals('foo'),
     );
   }

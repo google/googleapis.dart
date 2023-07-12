@@ -24,6 +24,13 @@
     "name": "retail",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230706",
+    "rootUrl": "https://retail.googleapis.com/",
+    "servicePath": "",
+    "title": "Retail API",
+    "version": "v2",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -783,6 +789,34 @@
                                                     },
                                                     "response": {
                                                         "$ref": "GoogleCloudRetailV2Product"
+                                                    },
+                                                    "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                    ]
+                                                },
+                                                "purge": {
+                                                    "description": "Permanently deletes all selected Products under a branch. This process is asynchronous. If the request is valid, the removal will be enqueued and processed offline. Depending on the number of Products, this operation could take hours to complete. Before the operation completes, some Products may still be returned by ProductService.GetProduct or ProductService.ListProducts. Depending on the number of Products, this operation could take hours to complete. To get a sample of Products that would be deleted, set PurgeProductsRequest.force to false.",
+                                                    "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/branches/{branchesId}/products:purge",
+                                                    "httpMethod": "POST",
+                                                    "id": "retail.projects.locations.catalogs.branches.products.purge",
+                                                    "parameterOrder": [
+                                                        "parent"
+                                                    ],
+                                                    "parameters": {
+                                                        "parent": {
+                                                            "description": "Required. The resource name of the branch under which the products are created. The format is `projects/${projectId}/locations/global/catalogs/${catalogId}/branches/${branchId}`",
+                                                            "location": "path",
+                                                            "pattern": "^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/branches/[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "v2/{+parent}/products:purge",
+                                                    "request": {
+                                                        "$ref": "GoogleCloudRetailV2PurgeProductsRequest"
+                                                    },
+                                                    "response": {
+                                                        "$ref": "GoogleLongrunningOperation"
                                                     },
                                                     "scopes": [
                                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -2029,8 +2063,6 @@
             }
         }
     },
-    "revision": "20230504",
-    "rootUrl": "https://retail.googleapis.com/",
     "schemas": {
         "GoogleApiHttpBody": {
             "description": "Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged.",
@@ -2425,7 +2457,7 @@
                     "type": "boolean"
                 },
                 "indexableOption": {
-                    "description": "When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, if INDEXABLE_ENABLED attribute values are indexed so that it can be filtered, faceted, or boosted in SearchService.Search. Must be specified, otherwise throws INVALID_FORMAT error.",
+                    "description": "When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, if INDEXABLE_ENABLED attribute values are indexed so that it can be filtered, faceted, or boosted in SearchService.Search. Must be specified when AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, otherwise throws INVALID_FORMAT error.",
                     "enum": [
                         "INDEXABLE_OPTION_UNSPECIFIED",
                         "INDEXABLE_ENABLED",
@@ -2457,7 +2489,7 @@
                     "type": "string"
                 },
                 "searchableOption": {
-                    "description": "When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, if SEARCHABLE_ENABLED, attribute values are searchable by text queries in SearchService.Search. If SEARCHABLE_ENABLED but attribute type is numerical, attribute values will not be searchable by text queries in SearchService.Search, as there are no text values associated to numerical attributes. Must be specified, otherwise throws INVALID_FORMAT error.",
+                    "description": "When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, if SEARCHABLE_ENABLED, attribute values are searchable by text queries in SearchService.Search. If SEARCHABLE_ENABLED but attribute type is numerical, attribute values will not be searchable by text queries in SearchService.Search, as there are no text values associated to numerical attributes. Must be specified, when AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, otherwise throws INVALID_FORMAT error.",
                     "enum": [
                         "SEARCHABLE_OPTION_UNSPECIFIED",
                         "SEARCHABLE_ENABLED",
@@ -2525,7 +2557,7 @@
                     "type": "array"
                 },
                 "recentSearchResults": {
-                    "description": "Matched recent searches of this user. The maximum number of recent searches is 10. This field is a restricted feature. If you want to enable it, contact Retail Search support. This feature is only available when CompleteQueryRequest.visitor_id field is set and UserEvent is imported. The recent searches satisfy the follow rules: * They are ordered from latest to oldest. * They are matched with CompleteQueryRequest.query case insensitively. * They are transformed to lower case. * They are UTF-8 safe. Recent searches are deduplicated. More recent searches will be reserved when duplication happens.",
+                    "description": "Deprecated. Matched recent searches of this user. The maximum number of recent searches is 10. This field is a restricted feature. If you want to enable it, contact Retail Search support. This feature is only available when CompleteQueryRequest.visitor_id field is set and UserEvent is imported. The recent searches satisfy the follow rules: * They are ordered from latest to oldest. * They are matched with CompleteQueryRequest.query case insensitively. * They are transformed to lower case. * They are UTF-8 safe. Recent searches are deduplicated. More recent searches will be reserved when duplication happens.",
                     "items": {
                         "$ref": "GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult"
                     },
@@ -3608,7 +3640,7 @@
                     "type": "string"
                 },
                 "brands": {
-                    "description": "The brands of the product. A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).",
+                    "description": "The brands of the product. A maximum of 30 brands are allowed unless overridden via pantheon UI. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).",
                     "items": {
                         "type": "string"
                     },
@@ -3892,6 +3924,67 @@
             "description": "Metadata related to the progress of the Purge operation. This will be returned by the google.longrunning.Operation.metadata field.",
             "id": "GoogleCloudRetailV2PurgeMetadata",
             "properties": {},
+            "type": "object"
+        },
+        "GoogleCloudRetailV2PurgeProductsMetadata": {
+            "description": "Metadata related to the progress of the PurgeProducts operation. This will be returned by the google.longrunning.Operation.metadata field.",
+            "id": "GoogleCloudRetailV2PurgeProductsMetadata",
+            "properties": {
+                "createTime": {
+                    "description": "Operation create time.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "failureCount": {
+                    "description": "Count of entries that encountered errors while processing.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "successCount": {
+                    "description": "Count of entries that were deleted successfully.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "Operation last update time. If the operation is done, this is also the finish time.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRetailV2PurgeProductsRequest": {
+            "description": "Request message for PurgeProducts method.",
+            "id": "GoogleCloudRetailV2PurgeProductsRequest",
+            "properties": {
+                "filter": {
+                    "description": "Required. The filter string to specify the products to be deleted with a length limit of 5,000 characters. Empty string filter is not allowed. \"*\" implies delete all items in a branch. The eligible fields for filtering are: * `availability`: Double quoted Product.availability string. * `create_time` : in ISO 8601 \"zulu\" format. Supported syntax: * Comparators (\">\", \"<\", \">=\", \"<=\", \"=\"). Examples: * create_time <= \"2015-02-13T17:05:46Z\" * availability = \"IN_STOCK\" * Conjunctions (\"AND\") Examples: * create_time <= \"2015-02-13T17:05:46Z\" AND availability = \"PREORDER\" * Disjunctions (\"OR\") Examples: * create_time <= \"2015-02-13T17:05:46Z\" OR availability = \"IN_STOCK\" * Can support nested queries. Examples: * (create_time <= \"2015-02-13T17:05:46Z\" AND availability = \"PREORDER\") OR (create_time >= \"2015-02-14T13:03:32Z\" AND availability = \"IN_STOCK\") * Filter Limits: * Filter should not contain more than 6 conditions. * Max nesting depth should not exceed 2 levels. Examples queries: * Delete back order products created before a timestamp. create_time <= \"2015-02-13T17:05:46Z\" OR availability = \"BACKORDER\"",
+                    "type": "string"
+                },
+                "force": {
+                    "description": "Actually perform the purge. If `force` is set to false, the method will return the expected purge count without deleting any products.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRetailV2PurgeProductsResponse": {
+            "description": "Response of the PurgeProductsRequest. If the long running operation is successfully done, then this message is returned by the google.longrunning.Operations.response field.",
+            "id": "GoogleCloudRetailV2PurgeProductsResponse",
+            "properties": {
+                "purgeCount": {
+                    "description": "The total count of products purged as a result of the operation.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "purgeSample": {
+                    "description": "A sample of the product names that will be deleted. Only populated if `force` is set to false. A max of 100 names will be returned and the names are chosen at random.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
             "type": "object"
         },
         "GoogleCloudRetailV2PurgeUserEventsRequest": {
@@ -5243,6 +5336,47 @@
             },
             "type": "object"
         },
+        "GoogleCloudRetailV2alphaEnrollSolutionMetadata": {
+            "description": "Metadata related to the EnrollSolution method. This will be returned by the google.longrunning.Operation.metadata field.",
+            "id": "GoogleCloudRetailV2alphaEnrollSolutionMetadata",
+            "properties": {},
+            "type": "object"
+        },
+        "GoogleCloudRetailV2alphaEnrollSolutionResponse": {
+            "description": "Response for EnrollSolution method.",
+            "id": "GoogleCloudRetailV2alphaEnrollSolutionResponse",
+            "properties": {
+                "enrolledSolution": {
+                    "description": "Retail API solution that the project has enrolled.",
+                    "enum": [
+                        "SOLUTION_TYPE_UNSPECIFIED",
+                        "SOLUTION_TYPE_RECOMMENDATION",
+                        "SOLUTION_TYPE_SEARCH"
+                    ],
+                    "enumDescriptions": [
+                        "Default value.",
+                        "Used for Recommendations AI.",
+                        "Used for Retail Search."
+                    ],
+                    "type": "string"
+                },
+                "searchSolutionUseCase": {
+                    "description": "Search solution use case that the project has enrolled.",
+                    "enum": [
+                        "SEARCH_SOLUTION_USE_CASE_UNSPECIFIED",
+                        "SEARCH_SOLUTION_USE_CASE_SEARCH",
+                        "SEARCH_SOLUTION_USE_CASE_BROWSE"
+                    ],
+                    "enumDescriptions": [
+                        "The value when it's unspecified. In this case, server behavior defaults to SEARCH_SOLUTION_USE_CASE_SEARCH.",
+                        "Search use case. Expects the traffic has a non-empty query.",
+                        "Browse use case. Expects the traffic has an empty query."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudRetailV2alphaExportErrorsConfig": {
             "description": "Configuration of destination for Export related errors.",
             "id": "GoogleCloudRetailV2alphaExportErrorsConfig",
@@ -5471,6 +5605,10 @@
                 "projectId": {
                     "description": "Output only. Google Cloud project ID.",
                     "readOnly": true,
+                    "type": "string"
+                },
+                "source": {
+                    "description": "Optional. An optional arbitrary string that could be used as a tag for tracking link source.",
                     "type": "string"
                 },
                 "state": {
@@ -6245,6 +6383,10 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "source": {
+                    "description": "Optional. An optional arbitrary string that could be used as a tag for tracking link source.",
+                    "type": "string"
+                },
                 "state": {
                     "description": "Output only. Represents the state of the link.",
                     "enum": [
@@ -6488,6 +6630,52 @@
             "properties": {},
             "type": "object"
         },
+        "GoogleCloudRetailV2betaPurgeProductsMetadata": {
+            "description": "Metadata related to the progress of the PurgeProducts operation. This will be returned by the google.longrunning.Operation.metadata field.",
+            "id": "GoogleCloudRetailV2betaPurgeProductsMetadata",
+            "properties": {
+                "createTime": {
+                    "description": "Operation create time.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "failureCount": {
+                    "description": "Count of entries that encountered errors while processing.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "successCount": {
+                    "description": "Count of entries that were deleted successfully.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "Operation last update time. If the operation is done, this is also the finish time.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRetailV2betaPurgeProductsResponse": {
+            "description": "Response of the PurgeProductsRequest. If the long running operation is successfully done, then this message is returned by the google.longrunning.Operations.response field.",
+            "id": "GoogleCloudRetailV2betaPurgeProductsResponse",
+            "properties": {
+                "purgeCount": {
+                    "description": "The total count of products purged as a result of the operation.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "purgeSample": {
+                    "description": "A sample of the product names that will be deleted. Only populated if `force` is set to false. A max of 100 names will be returned and the names are chosen at random.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudRetailV2betaPurgeUserEventsResponse": {
             "description": "Response of the PurgeUserEventsRequest. If the long running operation is successfully done, then this message is returned by the google.longrunning.Operations.response field.",
             "id": "GoogleCloudRetailV2betaPurgeUserEventsResponse",
@@ -6696,9 +6884,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Retail API",
-    "version": "v2",
-    "version_module": true
+    }
 }

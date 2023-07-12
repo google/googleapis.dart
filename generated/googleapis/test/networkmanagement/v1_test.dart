@@ -951,6 +951,33 @@ void checkGKEMasterInfo(api.GKEMasterInfo o) {
   buildCounterGKEMasterInfo--;
 }
 
+core.int buildCounterGoogleServiceInfo = 0;
+api.GoogleServiceInfo buildGoogleServiceInfo() {
+  final o = api.GoogleServiceInfo();
+  buildCounterGoogleServiceInfo++;
+  if (buildCounterGoogleServiceInfo < 3) {
+    o.googleServiceType = 'foo';
+    o.sourceIp = 'foo';
+  }
+  buildCounterGoogleServiceInfo--;
+  return o;
+}
+
+void checkGoogleServiceInfo(api.GoogleServiceInfo o) {
+  buildCounterGoogleServiceInfo++;
+  if (buildCounterGoogleServiceInfo < 3) {
+    unittest.expect(
+      o.googleServiceType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sourceIp!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleServiceInfo--;
+}
+
 core.List<core.String> buildUnnamed8() => [
       'foo',
       'foo',
@@ -1892,6 +1919,7 @@ api.Step buildStep() {
     o.forward = buildForwardInfo();
     o.forwardingRule = buildForwardingRuleInfo();
     o.gkeMaster = buildGKEMasterInfo();
+    o.googleService = buildGoogleServiceInfo();
     o.instance = buildInstanceInfo();
     o.loadBalancer = buildLoadBalancerInfo();
     o.network = buildNetworkInfo();
@@ -1926,6 +1954,7 @@ void checkStep(api.Step o) {
     checkForwardInfo(o.forward!);
     checkForwardingRuleInfo(o.forwardingRule!);
     checkGKEMasterInfo(o.gkeMaster!);
+    checkGoogleServiceInfo(o.googleService!);
     checkInstanceInfo(o.instance!);
     checkLoadBalancerInfo(o.loadBalancer!);
     checkNetworkInfo(o.network!);
@@ -2418,6 +2447,16 @@ void main() {
       final od = api.GKEMasterInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGKEMasterInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleServiceInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleServiceInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleServiceInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleServiceInfo(od);
     });
   });
 

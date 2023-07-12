@@ -24,6 +24,13 @@
     "name": "iam",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230710",
+    "rootUrl": "https://iam.googleapis.com/",
+    "servicePath": "",
+    "title": "Identity and Access Management (IAM) API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "iamPolicies": {
             "methods": {
@@ -1377,6 +1383,138 @@
                                 }
                             },
                             "resources": {
+                                "namespaces": {
+                                    "resources": {
+                                        "managedIdentities": {
+                                            "resources": {
+                                                "operations": {
+                                                    "methods": {
+                                                        "get": {
+                                                            "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workloadIdentityPools/{workloadIdentityPoolsId}/namespaces/{namespacesId}/managedIdentities/{managedIdentitiesId}/operations/{operationsId}",
+                                                            "httpMethod": "GET",
+                                                            "id": "iam.projects.locations.workloadIdentityPools.namespaces.managedIdentities.operations.get",
+                                                            "parameterOrder": [
+                                                                "name"
+                                                            ],
+                                                            "parameters": {
+                                                                "name": {
+                                                                    "description": "The name of the operation resource.",
+                                                                    "location": "path",
+                                                                    "pattern": "^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+/managedIdentities/[^/]+/operations/[^/]+$",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "path": "v1/{+name}",
+                                                            "response": {
+                                                                "$ref": "Operation"
+                                                            },
+                                                            "scopes": [
+                                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                            ]
+                                                        }
+                                                    }
+                                                },
+                                                "workloadSources": {
+                                                    "resources": {
+                                                        "operations": {
+                                                            "methods": {
+                                                                "get": {
+                                                                    "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workloadIdentityPools/{workloadIdentityPoolsId}/namespaces/{namespacesId}/managedIdentities/{managedIdentitiesId}/workloadSources/{workloadSourcesId}/operations/{operationsId}",
+                                                                    "httpMethod": "GET",
+                                                                    "id": "iam.projects.locations.workloadIdentityPools.namespaces.managedIdentities.workloadSources.operations.get",
+                                                                    "parameterOrder": [
+                                                                        "name"
+                                                                    ],
+                                                                    "parameters": {
+                                                                        "name": {
+                                                                            "description": "The name of the operation resource.",
+                                                                            "location": "path",
+                                                                            "pattern": "^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+/managedIdentities/[^/]+/workloadSources/[^/]+/operations/[^/]+$",
+                                                                            "required": true,
+                                                                            "type": "string"
+                                                                        }
+                                                                    },
+                                                                    "path": "v1/{+name}",
+                                                                    "response": {
+                                                                        "$ref": "Operation"
+                                                                    },
+                                                                    "scopes": [
+                                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                                    ]
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "operations": {
+                                            "methods": {
+                                                "get": {
+                                                    "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workloadIdentityPools/{workloadIdentityPoolsId}/namespaces/{namespacesId}/operations/{operationsId}",
+                                                    "httpMethod": "GET",
+                                                    "id": "iam.projects.locations.workloadIdentityPools.namespaces.operations.get",
+                                                    "parameterOrder": [
+                                                        "name"
+                                                    ],
+                                                    "parameters": {
+                                                        "name": {
+                                                            "description": "The name of the operation resource.",
+                                                            "location": "path",
+                                                            "pattern": "^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+/operations/[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "v1/{+name}",
+                                                    "response": {
+                                                        "$ref": "Operation"
+                                                    },
+                                                    "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        "workloadSources": {
+                                            "resources": {
+                                                "operations": {
+                                                    "methods": {
+                                                        "get": {
+                                                            "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+                                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/workloadIdentityPools/{workloadIdentityPoolsId}/namespaces/{namespacesId}/workloadSources/{workloadSourcesId}/operations/{operationsId}",
+                                                            "httpMethod": "GET",
+                                                            "id": "iam.projects.locations.workloadIdentityPools.namespaces.workloadSources.operations.get",
+                                                            "parameterOrder": [
+                                                                "name"
+                                                            ],
+                                                            "parameters": {
+                                                                "name": {
+                                                                    "description": "The name of the operation resource.",
+                                                                    "location": "path",
+                                                                    "pattern": "^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+/workloadSources/[^/]+/operations/[^/]+$",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "path": "v1/{+name}",
+                                                            "response": {
+                                                                "$ref": "Operation"
+                                                            },
+                                                            "scopes": [
+                                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                            ]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "operations": {
                                     "methods": {
                                         "get": {
@@ -2747,8 +2885,6 @@
             }
         }
     },
-    "revision": "20230511",
-    "rootUrl": "https://iam.googleapis.com/",
     "schemas": {
         "AdminAuditData": {
             "description": "Audit log information specific to Cloud IAM admin APIs. This message is serialized as an `Any` type in the `ServiceData` message of an `AuditLog` message.",
@@ -3046,6 +3182,10 @@
                     "description": "Required. The client ID. Must match the audience claim of the JWT issued by the identity provider.",
                     "type": "string"
                 },
+                "clientSecret": {
+                    "$ref": "GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret",
+                    "description": "The optional client secret. Required to enable Authorization Code flow for web sign-in."
+                },
                 "issuerUri": {
                     "description": "Required. The OIDC issuer URI. Must be a valid URI using the 'https' scheme.",
                     "type": "string"
@@ -3057,30 +3197,68 @@
             },
             "type": "object"
         },
+        "GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret": {
+            "description": "Representation of a client secret configured for the OIDC provider.",
+            "id": "GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret",
+            "properties": {
+                "value": {
+                    "$ref": "GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue",
+                    "description": "The value of the client secret."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue": {
+            "description": "Representation of the value of the client secret.",
+            "id": "GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue",
+            "properties": {
+                "plainText": {
+                    "description": "Input only. The plain text of the client secret value. For security reasons, this field is only used for input and will never be populated in any response.",
+                    "type": "string"
+                },
+                "thumbprint": {
+                    "description": "Output only. A thumbprint to represent the current client secret value.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig": {
             "description": "Configuration for web single sign-on for the OIDC provider.",
             "id": "GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig",
             "properties": {
+                "additionalScopes": {
+                    "description": "Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested. Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "assertionClaimsBehavior": {
                     "description": "Required. The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.",
                     "enum": [
                         "ASSERTION_CLAIMS_BEHAVIOR_UNSPECIFIED",
+                        "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
                         "ONLY_ID_TOKEN_CLAIMS"
                     ],
                     "enumDescriptions": [
                         "No assertion claims behavior specified.",
+                        "Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.",
                         "Only include ID Token Claims."
                     ],
                     "type": "string"
                 },
                 "responseType": {
-                    "description": "Required. The Response Type to request for in the OIDC Authorization Request for web sign-in.",
+                    "description": "Required. The Response Type to request for in the OIDC Authorization Request for web sign-in. The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.",
                     "enum": [
                         "RESPONSE_TYPE_UNSPECIFIED",
+                        "CODE",
                         "ID_TOKEN"
                     ],
                     "enumDescriptions": [
                         "No Response Type specified.",
+                        "The `response_type=code` selection uses the Authorization Code Flow for web sign-in. Requires a configured client secret.",
                         "The `response_type=id_token` selection uses the Implicit Flow for web sign-in."
                     ],
                     "type": "string"
@@ -3409,6 +3587,10 @@
                 "issuerUri": {
                     "description": "Required. The OIDC issuer URL. Must be an HTTPS endpoint.",
                     "type": "string"
+                },
+                "jwksJson": {
+                    "description": "Optional. OIDC JWKs in JSON String format. For details on the definition of a JWK, see https://tools.ietf.org/html/rfc7517. If not set, the `jwks_uri` from the discovery document(fetched from the .well-known path of the `issuer_uri`) will be used. Currently, RSA and EC asymmetric keys are supported. The JWK must use following format and include only the following fields: { \"keys\": [ { \"kty\": \"RSA/EC\", \"alg\": \"\", \"use\": \"sig\", \"kid\": \"\", \"n\": \"\", \"e\": \"\", \"x\": \"\", \"y\": \"\", \"crv\": \"\" } ] }",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -3725,7 +3907,7 @@
                     "type": "array"
                 },
                 "name": {
-                    "description": "The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.",
+                    "description": "The name of the role. When `Role` is used in `CreateRole`, the role name must not be set. When `Role` is used in output and other input such as `UpdateRole`, the role name is the complete path. For example, `roles/logging.viewer` for predefined roles, `organizations/{ORGANIZATION_ID}/roles/my-role` for organization-level custom roles, and `projects/{PROJECT_ID}/roles/my-role` for project-level custom roles.",
                     "type": "string"
                 },
                 "stage": {
@@ -4129,6 +4311,12 @@
                     "description": "A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.",
                     "type": "string"
                 },
+                "expireTime": {
+                    "description": "Output only. Time after which the workforce pool will be permanently purged and cannot be recovered.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "name": {
                     "description": "Output only. The resource name of the pool. Format: `locations/{location}/workforcePools/{workforce_pool_id}`",
                     "readOnly": true,
@@ -4186,6 +4374,12 @@
                 },
                 "displayName": {
                     "description": "A user-specified display name for the provider. Cannot exceed 32 characters.",
+                    "type": "string"
+                },
+                "expireTime": {
+                    "description": "Output only. Time after which the workload pool provider will be permanently purged and cannot be recovered.",
+                    "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "name": {
@@ -4284,6 +4478,12 @@
                     "description": "A display name for the pool. Cannot exceed 32 characters.",
                     "type": "string"
                 },
+                "expireTime": {
+                    "description": "Output only. Time after which the workload identity pool will be permanently purged and cannot be recovered.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "name": {
                     "description": "Output only. The resource name of the pool.",
                     "readOnly": true,
@@ -4342,6 +4542,12 @@
                 },
                 "displayName": {
                     "description": "A display name for the provider. Cannot exceed 32 characters.",
+                    "type": "string"
+                },
+                "expireTime": {
+                    "description": "Output only. Time after which the workload identity pool provider will be permanently purged and cannot be recovered.",
+                    "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "name": {
@@ -4424,9 +4630,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Identity and Access Management (IAM) API",
-    "version": "v1",
-    "version_module": true
+    }
 }

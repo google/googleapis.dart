@@ -27,6 +27,13 @@
     "name": "keep",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230710",
+    "rootUrl": "https://keep.googleapis.com/",
+    "servicePath": "",
+    "title": "Google Keep API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -104,7 +111,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "media": {
             "methods": {
@@ -312,8 +318,6 @@
             }
         }
     },
-    "revision": "20230509",
-    "rootUrl": "https://keep.googleapis.com/",
     "schemas": {
         "Attachment": {
             "description": "An attachment to a note.",
@@ -613,9 +617,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Google Keep API",
-    "version": "v1",
-    "version_module": true
+    }
 }

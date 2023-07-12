@@ -15,6 +15,13 @@
     "name": "mybusinessnotifications",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230710",
+    "rootUrl": "https://mybusinessnotifications.googleapis.com/",
+    "servicePath": "",
+    "title": "My Business Notifications API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -92,7 +99,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "accounts": {
             "methods": {
@@ -152,8 +158,6 @@
             }
         }
     },
-    "revision": "20230514",
-    "rootUrl": "https://mybusinessnotifications.googleapis.com/",
     "schemas": {
         "NotificationSetting": {
             "description": "A Google Pub/Sub topic where notifications can be published when a location is updated or has a new review. There will be only one notification setting resource per-account.",
@@ -205,9 +209,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "My Business Notifications API",
-    "version": "v1",
-    "version_module": true
+    }
 }

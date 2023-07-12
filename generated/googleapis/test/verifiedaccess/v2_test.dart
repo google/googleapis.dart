@@ -208,6 +208,7 @@ api.DeviceSignals buildDeviceSignals() {
     o.siteIsolationEnabled = true;
     o.systemDnsServers = buildUnnamed5();
     o.thirdPartyBlockingEnabled = true;
+    o.trigger = 'foo';
     o.windowsMachineDomain = 'foo';
     o.windowsUserDomain = 'foo';
   }
@@ -295,6 +296,10 @@ void checkDeviceSignals(api.DeviceSignals o) {
     checkUnnamed5(o.systemDnsServers!);
     unittest.expect(o.thirdPartyBlockingEnabled!, unittest.isTrue);
     unittest.expect(
+      o.trigger!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.windowsMachineDomain!,
       unittest.equals('foo'),
     );
@@ -358,8 +363,11 @@ api.VerifyChallengeResponseResult buildVerifyChallengeResponseResult() {
     o.deviceSignal = 'foo';
     o.deviceSignals = buildDeviceSignals();
     o.keyTrustLevel = 'foo';
+    o.profileCustomerId = 'foo';
+    o.profileKeyTrustLevel = 'foo';
     o.signedPublicKeyAndChallenge = 'foo';
     o.virtualDeviceId = 'foo';
+    o.virtualProfileId = 'foo';
   }
   buildCounterVerifyChallengeResponseResult--;
   return o;
@@ -386,11 +394,23 @@ void checkVerifyChallengeResponseResult(api.VerifyChallengeResponseResult o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.profileCustomerId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.profileKeyTrustLevel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.signedPublicKeyAndChallenge!,
       unittest.equals('foo'),
     );
     unittest.expect(
       o.virtualDeviceId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.virtualProfileId!,
       unittest.equals('foo'),
     );
   }

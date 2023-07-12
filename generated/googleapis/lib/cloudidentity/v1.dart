@@ -3299,8 +3299,14 @@ class ExpiryDetail {
 
 /// Resource representing the Android specific attributes of a Device.
 class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
+  /// Whether the device passes Android CTS compliance.
+  core.bool? ctsProfileMatch;
+
   /// Whether applications from unknown sources can be installed on device.
   core.bool? enabledUnknownSources;
+
+  /// Whether any potentially harmful apps were detected on the device.
+  core.bool? hasPotentiallyHarmfulApps;
 
   /// Whether this account is on an owner/primary profile.
   ///
@@ -3324,18 +3330,35 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
   /// administrator turns on the "Enforce Work Profile" policy.
   core.bool? supportsWorkProfile;
 
+  /// Whether Android verified boot status is GREEN.
+  core.bool? verifiedBoot;
+
+  /// Whether Google Play Protect Verify Apps is enabled.
+  core.bool? verifyAppsEnabled;
+
   GoogleAppsCloudidentityDevicesV1AndroidAttributes({
+    this.ctsProfileMatch,
     this.enabledUnknownSources,
+    this.hasPotentiallyHarmfulApps,
     this.ownerProfileAccount,
     this.ownershipPrivilege,
     this.supportsWorkProfile,
+    this.verifiedBoot,
+    this.verifyAppsEnabled,
   });
 
   GoogleAppsCloudidentityDevicesV1AndroidAttributes.fromJson(core.Map json_)
       : this(
+          ctsProfileMatch: json_.containsKey('ctsProfileMatch')
+              ? json_['ctsProfileMatch'] as core.bool
+              : null,
           enabledUnknownSources: json_.containsKey('enabledUnknownSources')
               ? json_['enabledUnknownSources'] as core.bool
               : null,
+          hasPotentiallyHarmfulApps:
+              json_.containsKey('hasPotentiallyHarmfulApps')
+                  ? json_['hasPotentiallyHarmfulApps'] as core.bool
+                  : null,
           ownerProfileAccount: json_.containsKey('ownerProfileAccount')
               ? json_['ownerProfileAccount'] as core.bool
               : null,
@@ -3345,17 +3368,28 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
           supportsWorkProfile: json_.containsKey('supportsWorkProfile')
               ? json_['supportsWorkProfile'] as core.bool
               : null,
+          verifiedBoot: json_.containsKey('verifiedBoot')
+              ? json_['verifiedBoot'] as core.bool
+              : null,
+          verifyAppsEnabled: json_.containsKey('verifyAppsEnabled')
+              ? json_['verifyAppsEnabled'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (ctsProfileMatch != null) 'ctsProfileMatch': ctsProfileMatch!,
         if (enabledUnknownSources != null)
           'enabledUnknownSources': enabledUnknownSources!,
+        if (hasPotentiallyHarmfulApps != null)
+          'hasPotentiallyHarmfulApps': hasPotentiallyHarmfulApps!,
         if (ownerProfileAccount != null)
           'ownerProfileAccount': ownerProfileAccount!,
         if (ownershipPrivilege != null)
           'ownershipPrivilege': ownershipPrivilege!,
         if (supportsWorkProfile != null)
           'supportsWorkProfile': supportsWorkProfile!,
+        if (verifiedBoot != null) 'verifiedBoot': verifiedBoot!,
+        if (verifyAppsEnabled != null) 'verifyAppsEnabled': verifyAppsEnabled!,
       };
 }
 
@@ -3676,6 +3710,9 @@ class GoogleAppsCloudidentityDevicesV1Device {
   /// - "NOT_ENCRYPTED" : Device is not encrypted.
   core.String? encryptionState;
 
+  /// Host name of the device.
+  core.String? hostname;
+
   /// IMEI number of device if GSM device; empty otherwise.
   ///
   /// Output only.
@@ -3795,6 +3832,7 @@ class GoogleAppsCloudidentityDevicesV1Device {
     this.enabledDeveloperOptions,
     this.enabledUsbDebugging,
     this.encryptionState,
+    this.hostname,
     this.imei,
     this.kernelVersion,
     this.lastSyncTime,
@@ -3855,6 +3893,9 @@ class GoogleAppsCloudidentityDevicesV1Device {
               : null,
           encryptionState: json_.containsKey('encryptionState')
               ? json_['encryptionState'] as core.String
+              : null,
+          hostname: json_.containsKey('hostname')
+              ? json_['hostname'] as core.String
               : null,
           imei: json_.containsKey('imei') ? json_['imei'] as core.String : null,
           kernelVersion: json_.containsKey('kernelVersion')
@@ -3920,6 +3961,7 @@ class GoogleAppsCloudidentityDevicesV1Device {
         if (enabledUsbDebugging != null)
           'enabledUsbDebugging': enabledUsbDebugging!,
         if (encryptionState != null) 'encryptionState': encryptionState!,
+        if (hostname != null) 'hostname': hostname!,
         if (imei != null) 'imei': imei!,
         if (kernelVersion != null) 'kernelVersion': kernelVersion!,
         if (lastSyncTime != null) 'lastSyncTime': lastSyncTime!,

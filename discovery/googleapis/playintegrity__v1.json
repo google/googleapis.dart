@@ -24,6 +24,13 @@
     "name": "playintegrity",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230711",
+    "rootUrl": "https://playintegrity.googleapis.com/",
+    "servicePath": "",
+    "title": "Google Play Integrity API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "v1": {
             "methods": {
@@ -136,8 +142,6 @@
             }
         }
     },
-    "revision": "20230515",
-    "rootUrl": "https://playintegrity.googleapis.com/",
     "schemas": {
         "AccountActivity": {
             "description": "Contains a signal helping apps differentiating between likely genuine users and likely non-genuine traffic (such as accounts being used for fraud, accounts used by automated traffic, or accounts used in device farms) based on the presence and volume of Play store activity.",
@@ -266,14 +270,16 @@
                             "MEETS_BASIC_INTEGRITY",
                             "MEETS_DEVICE_INTEGRITY",
                             "MEETS_STRONG_INTEGRITY",
-                            "MEETS_VIRTUAL_INTEGRITY"
+                            "MEETS_VIRTUAL_INTEGRITY",
+                            "MEETS_WEAK_INTEGRITY"
                         ],
                         "enumDescriptions": [
                             "Play does not have sufficient information to evaluate device integrity",
                             "App is running on a device that passes basic system integrity checks, but may not meet Android platform compatibility requirements and may not be approved to run Google Play services.",
                             "App is running on GMS Android device with Google Play services.",
                             "App is running on GMS Android device with Google Play services and has a strong guarantee of system integrity such as a hardware-backed keystore.",
-                            "App is running on an Android emulator with Google Play services which meets core Android compatibility requirements."
+                            "App is running on an Android emulator with Google Play services which meets core Android compatibility requirements.",
+                            "App is running on a device that passes only weak integrity checks (is a physical device). See go/pcm-physical-device-detection for more details. Note that this label won't be served for PIA heavyweight and express for now, only for the crystal mode."
                         ],
                         "type": "string"
                     },
@@ -378,9 +384,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Google Play Integrity API",
-    "version": "v1",
-    "version_module": true
+    }
 }

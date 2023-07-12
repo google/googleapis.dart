@@ -27,6 +27,13 @@
     "name": "dialogflow",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230707",
+    "rootUrl": "https://dialogflow.googleapis.com/",
+    "servicePath": "",
+    "title": "Dialogflow API",
+    "version": "v3",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -104,7 +111,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -3251,7 +3257,7 @@
                                                     ]
                                                 },
                                                 "list": {
-                                                    "description": "Fetches a list of results for a given test case.",
+                                                    "description": "Fetches the list of run results for the given test case. A maximum of 100 results are kept for each test case.",
                                                     "flatPath": "v3/projects/{projectsId}/locations/{locationsId}/agents/{agentsId}/testCases/{testCasesId}/results",
                                                     "httpMethod": "GET",
                                                     "id": "dialogflow.projects.locations.agents.testCases.results.list",
@@ -3818,8 +3824,6 @@
             }
         }
     },
-    "revision": "20230508",
-    "rootUrl": "https://dialogflow.googleapis.com/",
     "schemas": {
         "GoogleCloudDialogflowCxV3AdvancedSettings": {
             "description": "Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playback_interruption_settings at fulfillment level only overrides the playback_interruption_settings at the agent level, leaving other settings at the agent level unchanged. DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.",
@@ -3883,6 +3887,10 @@
                     "description": "Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.",
                     "type": "boolean"
                 },
+                "gitIntegrationSettings": {
+                    "$ref": "GoogleCloudDialogflowCxV3AgentGitIntegrationSettings",
+                    "description": "Git integration settings for this agent."
+                },
                 "locked": {
                     "description": "Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.",
                     "type": "boolean"
@@ -3916,6 +3924,47 @@
                 },
                 "timeZone": {
                     "description": "Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDialogflowCxV3AgentGitIntegrationSettings": {
+            "description": "Settings for connecting to Git repository for an agent.",
+            "id": "GoogleCloudDialogflowCxV3AgentGitIntegrationSettings",
+            "properties": {
+                "githubSettings": {
+                    "$ref": "GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings",
+                    "description": "GitHub settings."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings": {
+            "description": "Settings of integration with GitHub.",
+            "id": "GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings",
+            "properties": {
+                "accessToken": {
+                    "description": "The access token used to authenticate the access to the GitHub repository.",
+                    "type": "string"
+                },
+                "branches": {
+                    "description": "A list of branches configured to be used from Dialogflow.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "displayName": {
+                    "description": "The unique repository display name for the GitHub repository.",
+                    "type": "string"
+                },
+                "repositoryUri": {
+                    "description": "The GitHub repository URI related to the agent.",
+                    "type": "string"
+                },
+                "trackingBranch": {
+                    "description": "The branch of GitHub repository tracked for this agent.",
                     "type": "string"
                 }
             },
@@ -4936,6 +4985,29 @@
                 "environment": {
                     "description": "Optional. Environment name. If not set, draft environment is assumed. Format: `projects//locations//agents//environments/`.",
                     "type": "string"
+                },
+                "gitDestination": {
+                    "$ref": "GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination",
+                    "description": "Optional. The Git branch to export the agent to."
+                },
+                "includeBigqueryExportSettings": {
+                    "description": "Optional. Whether to include BigQuery Export setting.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination": {
+            "description": "Settings for exporting to a git branch.",
+            "id": "GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination",
+            "properties": {
+                "commitMessage": {
+                    "description": "Commit message for the git push.",
+                    "type": "string"
+                },
+                "trackingBranch": {
+                    "description": "Tracking branch for the git push.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -4945,12 +5017,16 @@
             "id": "GoogleCloudDialogflowCxV3ExportAgentResponse",
             "properties": {
                 "agentContent": {
-                    "description": "Uncompressed raw byte content for agent.",
+                    "description": "Uncompressed raw byte content for agent. This field is populated if none of `agent_uri` and `git_destination` are specified in ExportAgentRequest.",
                     "format": "byte",
                     "type": "string"
                 },
                 "agentUri": {
                     "description": "The URI to a file containing the exported agent. This field is populated if `agent_uri` is specified in ExportAgentRequest.",
+                    "type": "string"
+                },
+                "commitSha": {
+                    "description": "Commit SHA of the git push. This field is populated if `git_destination` are specified in ExportAgentRequest.",
                     "type": "string"
                 }
             },
@@ -6201,7 +6277,7 @@
                 },
                 "synthesizeSpeechConfig": {
                     "$ref": "GoogleCloudDialogflowCxV3SynthesizeSpeechConfig",
-                    "description": "Optional. Configuration of how speech should be synthesized."
+                    "description": "Optional. Configuration of how speech should be synthesized. If not specified, Agent.text_to_speech_settings is applied."
                 }
             },
             "type": "object"
@@ -6406,6 +6482,11 @@
                         "$ref": "GoogleCloudDialogflowCxV3SessionEntityType"
                     },
                     "type": "array"
+                },
+                "sessionTtl": {
+                    "description": "Optional. Sets Dialogflow session life time. By default, a Dialogflow session remains active and its data is stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1 day.",
+                    "format": "google-duration",
+                    "type": "string"
                 },
                 "timeZone": {
                     "description": "The time zone of this conversational query from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. If not provided, the time zone specified in the agent is used.",
@@ -6743,6 +6824,10 @@
                     "description": "The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to restore agent from. The format of this URI must be `gs:///`. Dialogflow performs a read operation for the Cloud Storage object on the caller's behalf, so your request authentication must have read permissions for the object. For more information, see [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).",
                     "type": "string"
                 },
+                "gitSource": {
+                    "$ref": "GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource",
+                    "description": "Setting for restoring from a git branch"
+                },
                 "restoreOption": {
                     "description": "Agent restore mode. If not specified, `KEEP` is assumed.",
                     "enum": [
@@ -6755,6 +6840,17 @@
                         "Always respect the settings from the exported agent file. It may cause a restoration failure if some settings (e.g. model type) are not supported in the target agent.",
                         "Fallback to default settings if some settings are not supported in the target agent."
                     ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource": {
+            "description": "Settings for restoring from a git branch",
+            "id": "GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource",
+            "properties": {
+                "trackingBranch": {
+                    "description": "tracking branch for the git pull",
                     "type": "string"
                 }
             },
@@ -7277,7 +7373,7 @@
             "id": "GoogleCloudDialogflowCxV3TestRunDifference",
             "properties": {
                 "description": {
-                    "description": "A description of the diff, showing the actual output vs expected output.",
+                    "description": "A human readable description of the diff, showing the actual output vs expected output.",
                     "type": "string"
                 },
                 "type": {
@@ -7322,7 +7418,7 @@
                     "additionalProperties": {
                         "$ref": "GoogleCloudDialogflowCxV3SynthesizeSpeechConfig"
                     },
-                    "description": "Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The synthesize configuration used in [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway). - You no longer need to specify OutputAudioConfig.synthesize_speech_config when invoking API calls. Your agent will use the pre-configured options for speech synthesizing.",
+                    "description": "Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway) synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is not specified.",
                     "type": "object"
                 }
             },
@@ -8535,12 +8631,16 @@
             "id": "GoogleCloudDialogflowCxV3beta1ExportAgentResponse",
             "properties": {
                 "agentContent": {
-                    "description": "Uncompressed raw byte content for agent.",
+                    "description": "Uncompressed raw byte content for agent. This field is populated if none of `agent_uri` and `git_destination` are specified in ExportAgentRequest.",
                     "format": "byte",
                     "type": "string"
                 },
                 "agentUri": {
                     "description": "The URI to a file containing the exported agent. This field is populated if `agent_uri` is specified in ExportAgentRequest.",
+                    "type": "string"
+                },
+                "commitSha": {
+                    "description": "Commit SHA of the git push. This field is populated if `git_destination` are specified in ExportAgentRequest.",
                     "type": "string"
                 }
             },
@@ -9591,7 +9691,7 @@
             "id": "GoogleCloudDialogflowCxV3beta1TestRunDifference",
             "properties": {
                 "description": {
-                    "description": "A description of the diff, showing the actual output vs expected output.",
+                    "description": "A human readable description of the diff, showing the actual output vs expected output.",
                     "type": "string"
                 },
                 "type": {
@@ -12315,6 +12415,7 @@
                         "ARTICLE_SUGGESTION",
                         "FAQ",
                         "SMART_REPLY",
+                        "DIALOGFLOW_ASSIST",
                         "CONVERSATION_SUMMARIZATION"
                     ],
                     "enumDescriptions": [
@@ -12322,6 +12423,7 @@
                         "Run article suggestion model for chat.",
                         "Run FAQ model.",
                         "Run smart reply model for chat.",
+                        "Run Dialogflow assist model for chat, which will return automated agent response as suggestion.",
                         "Run conversation summarization model for chat."
                     ],
                     "type": "string"
@@ -12388,6 +12490,25 @@
                         "Unrecoverable error during a telephone call. In general non-recoverable errors only occur if something was misconfigured in the ConversationProfile corresponding to the call. After a non-recoverable error, Dialogflow may stop responding. We don't fire this event: * in an API call because we can directly return the error, or, * when we can recover from an error."
                     ],
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDialogflowV2beta1DialogflowAssistAnswer": {
+            "description": "Represents a Dialogflow assist answer.",
+            "id": "GoogleCloudDialogflowV2beta1DialogflowAssistAnswer",
+            "properties": {
+                "answerRecord": {
+                    "description": "The name of answer record, in the format of \"projects//locations//answerRecords/\"",
+                    "type": "string"
+                },
+                "intentSuggestion": {
+                    "$ref": "GoogleCloudDialogflowV2beta1IntentSuggestion",
+                    "description": "An intent suggestion generated from conversation."
+                },
+                "queryResult": {
+                    "$ref": "GoogleCloudDialogflowV2beta1QueryResult",
+                    "description": "Result from v2 agent."
                 }
             },
             "type": "object"
@@ -13742,6 +13863,25 @@
             },
             "type": "object"
         },
+        "GoogleCloudDialogflowV2beta1IntentSuggestion": {
+            "description": "Represents an intent suggestion.",
+            "id": "GoogleCloudDialogflowV2beta1IntentSuggestion",
+            "properties": {
+                "description": {
+                    "description": "Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.",
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "The display name of the intent.",
+                    "type": "string"
+                },
+                "intentV2": {
+                    "description": "The unique identifier of this intent. Format: `projects//locations//agent/intents/`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudDialogflowV2beta1IntentTrainingPhrase": {
             "description": "Represents an example that the agent is trained on.",
             "id": "GoogleCloudDialogflowV2beta1IntentTrainingPhrase",
@@ -14182,6 +14322,7 @@
                         "ARTICLE_SUGGESTION",
                         "FAQ",
                         "SMART_REPLY",
+                        "DIALOGFLOW_ASSIST",
                         "CONVERSATION_SUMMARIZATION"
                     ],
                     "enumDescriptions": [
@@ -14189,6 +14330,7 @@
                         "Run article suggestion model for chat.",
                         "Run FAQ model.",
                         "Run smart reply model for chat.",
+                        "Run Dialogflow assist model for chat, which will return automated agent response as suggestion.",
                         "Run conversation summarization model for chat."
                     ],
                     "type": "string"
@@ -14234,6 +14376,29 @@
                 },
                 "latestMessage": {
                     "description": "The name of the latest conversation message used to compile suggestion for. Format: `projects//locations//conversations//messages/`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse": {
+            "description": "The response message for Participants.SuggestDialogflowAssists.",
+            "id": "GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse",
+            "properties": {
+                "contextSize": {
+                    "description": "Number of messages prior to and including latest_message to compile the suggestion. It may be smaller than the SuggestDialogflowAssistsRequest.context_size field in the request if there aren't that many messages in the conversation.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "dialogflowAssistAnswers": {
+                    "description": "Output only. Multiple reply options provided by Dialogflow assist service. The order is based on the rank of the model prediction.",
+                    "items": {
+                        "$ref": "GoogleCloudDialogflowV2beta1DialogflowAssistAnswer"
+                    },
+                    "type": "array"
+                },
+                "latestMessage": {
+                    "description": "The name of the latest conversation message used to suggest answer. Format: `projects//locations//conversations//messages/`.",
                     "type": "string"
                 }
             },
@@ -14296,6 +14461,14 @@
                 "suggestArticlesResponse": {
                     "$ref": "GoogleCloudDialogflowV2beta1SuggestArticlesResponse",
                     "description": "SuggestArticlesResponse if request is for ARTICLE_SUGGESTION."
+                },
+                "suggestDialogflowAssistsResponse": {
+                    "$ref": "GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse",
+                    "description": "SuggestDialogflowAssistsResponse if request is for DIALOGFLOW_ASSIST."
+                },
+                "suggestEntityExtractionResponse": {
+                    "$ref": "GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse",
+                    "description": "SuggestDialogflowAssistsResponse if request is for ENTITY_EXTRACTION."
                 },
                 "suggestFaqAnswersResponse": {
                     "$ref": "GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse",
@@ -14722,9 +14895,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Dialogflow API",
-    "version": "v3",
-    "version_module": true
+    }
 }

@@ -24,6 +24,13 @@
     "name": "binaryauthorization",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230630",
+    "rootUrl": "https://binaryauthorization.googleapis.com/",
+    "servicePath": "",
+    "title": "Binary Authorization API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "methods": {
@@ -549,8 +555,6 @@
             }
         }
     },
-    "revision": "20230505",
-    "rootUrl": "https://binaryauthorization.googleapis.com/",
     "schemas": {
         "AdmissionRule": {
             "description": "An admission rule specifies either that all container images used in a pod creation request must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be denied. Images matching an admission allowlist pattern are exempted from admission rules and will never block a pod creation.",
@@ -1046,9 +1050,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Binary Authorization API",
-    "version": "v1",
-    "version_module": true
+    }
 }

@@ -24,6 +24,13 @@
     "name": "recommender",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230706",
+    "rootUrl": "https://recommender.googleapis.com/",
+    "servicePath": "",
+    "title": "Recommender API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "billingAccounts": {
             "resources": {
@@ -1684,8 +1690,6 @@
             }
         }
     },
-    "revision": "20230507",
-    "rootUrl": "https://recommender.googleapis.com/",
     "schemas": {
         "GoogleCloudRecommenderV1CostProjection": {
             "description": "Contains metadata about how much money a recommendation can save or incur.",
@@ -2425,9 +2429,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Recommender API",
-    "version": "v1",
-    "version_module": true
+    }
 }

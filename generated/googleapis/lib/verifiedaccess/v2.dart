@@ -191,11 +191,13 @@ class CrowdStrikeAgent {
 }
 
 /// The device signals as reported by Chrome.
+///
+/// Unless otherwise specified, signals are available on all platforms.
 class DeviceSignals {
   /// Value of the AllowScreenLock policy on the device.
   ///
   /// See https://chromeenterprise.google/policies/?policy=AllowScreenLock for
-  /// more details.
+  /// more details. Available on ChromeOS only.
   core.bool? allowScreenLock;
 
   /// Current version of the Chrome browser which generated this set of signals.
@@ -215,6 +217,8 @@ class DeviceSignals {
   core.bool? chromeRemoteDesktopAppBlocked;
 
   /// Crowdstrike agent properties installed on the device, if any.
+  ///
+  /// Available on Windows and MacOS only.
   CrowdStrikeAgent? crowdStrikeAgent;
 
   /// Affiliation IDs of the organizations that are affiliated with the
@@ -253,12 +257,16 @@ class DeviceSignals {
   core.String? hostname;
 
   /// International Mobile Equipment Identity (IMEI) of the device.
+  ///
+  /// Available on ChromeOS only.
   core.List<core.String>? imei;
 
   /// MAC addresses of the device.
   core.List<core.String>? macAddresses;
 
   /// Mobile Equipment Identifier (MEID) of the device.
+  ///
+  /// Available on ChromeOS only.
   core.List<core.String>? meid;
 
   /// The type of the Operating System currently running on the device.
@@ -350,6 +358,8 @@ class DeviceSignals {
   core.String? screenLockSecured;
 
   /// Whether the device's startup software has its Secure Boot feature enabled.
+  ///
+  /// Available on Windows only.
   /// Possible string values are:
   /// - "SECURE_BOOT_MODE_UNSPECIFIED" : Unspecified.
   /// - "SECURE_BOOT_MODE_UNKNOWN" : Chrome was unable to determine the Secure
@@ -362,7 +372,8 @@ class DeviceSignals {
 
   /// The serial number of the device.
   ///
-  /// On Windows, this represents the BIOS's serial number.
+  /// On Windows, this represents the BIOS's serial number. Not available on
+  /// most Linux distributions.
   core.String? serialNumber;
 
   /// Whether the Site Isolation (a.k.a Site Per Process) setting is enabled.
@@ -378,13 +389,27 @@ class DeviceSignals {
   /// Whether Chrome is blocking third-party software injection or not.
   ///
   /// This setting may be controlled by an enterprise policy:
-  /// https://chromeenterprise.google/policies/?policy=ThirdPartyBlockingEnabled
+  /// https://chromeenterprise.google/policies/?policy=ThirdPartyBlockingEnabled.
+  /// Available on Windows only.
   core.bool? thirdPartyBlockingEnabled;
 
+  /// The trigger which generated this set of signals.
+  /// Possible string values are:
+  /// - "TRIGGER_UNSPECIFIED" : Unspecified.
+  /// - "TRIGGER_BROWSER_NAVIGATION" : When navigating to an URL inside a
+  /// browser.
+  /// - "TRIGGER_LOGIN_SCREEN" : When signing into an account on the ChromeOS
+  /// login screen.
+  core.String? trigger;
+
   /// Windows domain that the current machine has joined.
+  ///
+  /// Available on Windows only.
   core.String? windowsMachineDomain;
 
   /// Windows domain for the current OS user.
+  ///
+  /// Available on Windows only.
   core.String? windowsUserDomain;
 
   DeviceSignals({
@@ -416,6 +441,7 @@ class DeviceSignals {
     this.siteIsolationEnabled,
     this.systemDnsServers,
     this.thirdPartyBlockingEnabled,
+    this.trigger,
     this.windowsMachineDomain,
     this.windowsUserDomain,
   });
@@ -523,6 +549,9 @@ class DeviceSignals {
               json_.containsKey('thirdPartyBlockingEnabled')
                   ? json_['thirdPartyBlockingEnabled'] as core.bool
                   : null,
+          trigger: json_.containsKey('trigger')
+              ? json_['trigger'] as core.String
+              : null,
           windowsMachineDomain: json_.containsKey('windowsMachineDomain')
               ? json_['windowsMachineDomain'] as core.String
               : null,
@@ -571,6 +600,7 @@ class DeviceSignals {
         if (systemDnsServers != null) 'systemDnsServers': systemDnsServers!,
         if (thirdPartyBlockingEnabled != null)
           'thirdPartyBlockingEnabled': thirdPartyBlockingEnabled!,
+        if (trigger != null) 'trigger': trigger!,
         if (windowsMachineDomain != null)
           'windowsMachineDomain': windowsMachineDomain!,
         if (windowsUserDomain != null) 'windowsUserDomain': windowsUserDomain!,
@@ -661,7 +691,25 @@ class VerifyChallengeResponseResult {
   /// device hardware.
   /// - "CHROME_BROWSER_OS_KEY" : Chrome Browser with the key stored at OS
   /// level.
+  /// - "CHROME_BROWSER_NO_KEY" : Chrome Browser without an attestation key.
   core.String? keyTrustLevel;
+
+  /// Unique customer id that this profile belongs to, as defined by the Google
+  /// Admin SDK at
+  /// https://developers.google.com/admin-sdk/directory/v1/guides/manage-customers
+  core.String? profileCustomerId;
+
+  /// Profile attested key trust level.
+  /// Possible string values are:
+  /// - "KEY_TRUST_LEVEL_UNSPECIFIED" : UNSPECIFIED.
+  /// - "CHROME_OS_VERIFIED_MODE" : ChromeOS device in verified mode.
+  /// - "CHROME_OS_DEVELOPER_MODE" : ChromeOS device in developer mode.
+  /// - "CHROME_BROWSER_HW_KEY" : Chrome Browser with the key stored in the
+  /// device hardware.
+  /// - "CHROME_BROWSER_OS_KEY" : Chrome Browser with the key stored at OS
+  /// level.
+  /// - "CHROME_BROWSER_NO_KEY" : Chrome Browser without an attestation key.
+  core.String? profileKeyTrustLevel;
 
   /// Certificate Signing Request (in the SPKAC format, base64 encoded) is
   /// returned in this field.
@@ -676,14 +724,20 @@ class VerifyChallengeResponseResult {
   /// The definition of virtual device id is platform-specific.
   core.String? virtualDeviceId;
 
+  /// The ID of a profile on the device.
+  core.String? virtualProfileId;
+
   VerifyChallengeResponseResult({
     this.customerId,
     this.devicePermanentId,
     this.deviceSignal,
     this.deviceSignals,
     this.keyTrustLevel,
+    this.profileCustomerId,
+    this.profileKeyTrustLevel,
     this.signedPublicKeyAndChallenge,
     this.virtualDeviceId,
+    this.virtualProfileId,
   });
 
   VerifyChallengeResponseResult.fromJson(core.Map json_)
@@ -704,12 +758,21 @@ class VerifyChallengeResponseResult {
           keyTrustLevel: json_.containsKey('keyTrustLevel')
               ? json_['keyTrustLevel'] as core.String
               : null,
+          profileCustomerId: json_.containsKey('profileCustomerId')
+              ? json_['profileCustomerId'] as core.String
+              : null,
+          profileKeyTrustLevel: json_.containsKey('profileKeyTrustLevel')
+              ? json_['profileKeyTrustLevel'] as core.String
+              : null,
           signedPublicKeyAndChallenge:
               json_.containsKey('signedPublicKeyAndChallenge')
                   ? json_['signedPublicKeyAndChallenge'] as core.String
                   : null,
           virtualDeviceId: json_.containsKey('virtualDeviceId')
               ? json_['virtualDeviceId'] as core.String
+              : null,
+          virtualProfileId: json_.containsKey('virtualProfileId')
+              ? json_['virtualProfileId'] as core.String
               : null,
         );
 
@@ -719,8 +782,12 @@ class VerifyChallengeResponseResult {
         if (deviceSignal != null) 'deviceSignal': deviceSignal!,
         if (deviceSignals != null) 'deviceSignals': deviceSignals!,
         if (keyTrustLevel != null) 'keyTrustLevel': keyTrustLevel!,
+        if (profileCustomerId != null) 'profileCustomerId': profileCustomerId!,
+        if (profileKeyTrustLevel != null)
+          'profileKeyTrustLevel': profileKeyTrustLevel!,
         if (signedPublicKeyAndChallenge != null)
           'signedPublicKeyAndChallenge': signedPublicKeyAndChallenge!,
         if (virtualDeviceId != null) 'virtualDeviceId': virtualDeviceId!,
+        if (virtualProfileId != null) 'virtualProfileId': virtualProfileId!,
       };
 }

@@ -89,6 +89,27 @@ void checkSasPortalChannelWithScore(api.SasPortalChannelWithScore o) {
   buildCounterSasPortalChannelWithScore--;
 }
 
+core.int buildCounterSasPortalCheckHasProvisionedDeploymentResponse = 0;
+api.SasPortalCheckHasProvisionedDeploymentResponse
+    buildSasPortalCheckHasProvisionedDeploymentResponse() {
+  final o = api.SasPortalCheckHasProvisionedDeploymentResponse();
+  buildCounterSasPortalCheckHasProvisionedDeploymentResponse++;
+  if (buildCounterSasPortalCheckHasProvisionedDeploymentResponse < 3) {
+    o.hasProvisionedDeployment = true;
+  }
+  buildCounterSasPortalCheckHasProvisionedDeploymentResponse--;
+  return o;
+}
+
+void checkSasPortalCheckHasProvisionedDeploymentResponse(
+    api.SasPortalCheckHasProvisionedDeploymentResponse o) {
+  buildCounterSasPortalCheckHasProvisionedDeploymentResponse++;
+  if (buildCounterSasPortalCheckHasProvisionedDeploymentResponse < 3) {
+    unittest.expect(o.hasProvisionedDeployment!, unittest.isTrue);
+  }
+  buildCounterSasPortalCheckHasProvisionedDeploymentResponse--;
+}
+
 core.int buildCounterSasPortalCreateSignedDeviceRequest = 0;
 api.SasPortalCreateSignedDeviceRequest
     buildSasPortalCreateSignedDeviceRequest() {
@@ -929,6 +950,30 @@ void checkSasPortalListNodesResponse(api.SasPortalListNodesResponse o) {
   buildCounterSasPortalListNodesResponse--;
 }
 
+core.int buildCounterSasPortalMigrateOrganizationRequest = 0;
+api.SasPortalMigrateOrganizationRequest
+    buildSasPortalMigrateOrganizationRequest() {
+  final o = api.SasPortalMigrateOrganizationRequest();
+  buildCounterSasPortalMigrateOrganizationRequest++;
+  if (buildCounterSasPortalMigrateOrganizationRequest < 3) {
+    o.organizationId = 'foo';
+  }
+  buildCounterSasPortalMigrateOrganizationRequest--;
+  return o;
+}
+
+void checkSasPortalMigrateOrganizationRequest(
+    api.SasPortalMigrateOrganizationRequest o) {
+  buildCounterSasPortalMigrateOrganizationRequest++;
+  if (buildCounterSasPortalMigrateOrganizationRequest < 3) {
+    unittest.expect(
+      o.organizationId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSasPortalMigrateOrganizationRequest--;
+}
+
 core.int buildCounterSasPortalMoveDeploymentRequest = 0;
 api.SasPortalMoveDeploymentRequest buildSasPortalMoveDeploymentRequest() {
   final o = api.SasPortalMoveDeploymentRequest();
@@ -1246,6 +1291,7 @@ api.SasPortalProvisionDeploymentRequest
   if (buildCounterSasPortalProvisionDeploymentRequest < 3) {
     o.newDeploymentDisplayName = 'foo';
     o.newOrganizationDisplayName = 'foo';
+    o.organizationId = 'foo';
   }
   buildCounterSasPortalProvisionDeploymentRequest--;
   return o;
@@ -1261,6 +1307,10 @@ void checkSasPortalProvisionDeploymentRequest(
     );
     unittest.expect(
       o.newOrganizationDisplayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.organizationId!,
       unittest.equals('foo'),
     );
   }
@@ -1600,6 +1650,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SasPortalCheckHasProvisionedDeploymentResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSasPortalCheckHasProvisionedDeploymentResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalCheckHasProvisionedDeploymentResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSasPortalCheckHasProvisionedDeploymentResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-SasPortalCreateSignedDeviceRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSasPortalCreateSignedDeviceRequest();
@@ -1800,6 +1861,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SasPortalMigrateOrganizationRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSasPortalMigrateOrganizationRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalMigrateOrganizationRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSasPortalMigrateOrganizationRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-SasPortalMoveDeploymentRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSasPortalMoveDeploymentRequest();
@@ -1971,6 +2042,59 @@ void main() {
   });
 
   unittest.group('resource-CustomersResource', () {
+    unittest.test('method--checkHasProvisionedDeployment', () async {
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers;
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 48),
+          unittest.equals('v1alpha1/customers:checkHasProvisionedDeployment'),
+        );
+        pathOffset += 48;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildSasPortalCheckHasProvisionedDeploymentResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.checkHasProvisionedDeployment($fields: arg_$fields);
+      checkSasPortalCheckHasProvisionedDeploymentResponse(
+          response as api.SasPortalCheckHasProvisionedDeploymentResponse);
+    });
+
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.SasportalApi(mock).customers;
@@ -2085,6 +2209,62 @@ void main() {
           $fields: arg_$fields);
       checkSasPortalListCustomersResponse(
           response as api.SasPortalListCustomersResponse);
+    });
+
+    unittest.test('method--migrateOrganization', () async {
+      final mock = HttpServerMock();
+      final res = api.SasportalApi(mock).customers;
+      final arg_request = buildSasPortalMigrateOrganizationRequest();
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.SasPortalMigrateOrganizationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalMigrateOrganizationRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 38),
+          unittest.equals('v1alpha1/customers:migrateOrganization'),
+        );
+        pathOffset += 38;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildSasPortalOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.migrateOrganization(arg_request, $fields: arg_$fields);
+      checkSasPortalOperation(response as api.SasPortalOperation);
     });
 
     unittest.test('method--patch', () async {

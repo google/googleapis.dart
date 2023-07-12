@@ -24,6 +24,13 @@
     "name": "clouddeploy",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230621",
+    "rootUrl": "https://clouddeploy.googleapis.com/",
+    "servicePath": "",
+    "title": "Google Cloud Deploy API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -1200,7 +1206,7 @@
                                     ],
                                     "parameters": {
                                         "allowMissing": {
-                                            "description": "Optional. If set to true, then deleting an already deleted or non-existing DeliveryPipeline will succeed.",
+                                            "description": "Optional. If set to true, then deleting an already deleted or non-existing `Target` will succeed.",
                                             "location": "query",
                                             "type": "boolean"
                                         },
@@ -1449,8 +1455,6 @@
             }
         }
     },
-    "revision": "20230503",
-    "rootUrl": "https://clouddeploy.googleapis.com/",
     "schemas": {
         "AbandonReleaseRequest": {
             "description": "The request object used by `AbandonRelease`.",
@@ -1931,11 +1935,15 @@
                     "enum": [
                         "TYPE_UNSPECIFIED",
                         "TYPE_PUBSUB_NOTIFICATION_FAILURE",
+                        "TYPE_RESOURCE_STATE_CHANGE",
+                        "TYPE_PROCESS_ABORTED",
                         "TYPE_RENDER_STATUES_CHANGE"
                     ],
                     "enumDescriptions": [
                         "Type is unspecified.",
                         "A Pub/Sub notification failed to be sent.",
+                        "Resource state changed.",
+                        "A process aborted.",
                         "Deprecated: This field is never used. Use release_render log type instead."
                     ],
                     "type": "string"
@@ -2025,6 +2033,27 @@
                     "$ref": "CloudRunMetadata",
                     "description": "Output only. The name of the Cloud Run Service that is associated with a `DeployJobRun`.",
                     "readOnly": true
+                }
+            },
+            "type": "object"
+        },
+        "DeployParameters": {
+            "description": "DeployParameters contains deploy parameters information.",
+            "id": "DeployParameters",
+            "properties": {
+                "matchTargetLabels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).",
+                    "type": "object"
+                },
+                "values": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Required. Values are deploy parameters in key-value pairs.",
+                    "type": "object"
                 }
             },
             "type": "object"
@@ -2373,11 +2402,15 @@
                     "enum": [
                         "TYPE_UNSPECIFIED",
                         "TYPE_PUBSUB_NOTIFICATION_FAILURE",
+                        "TYPE_RESOURCE_STATE_CHANGE",
+                        "TYPE_PROCESS_ABORTED",
                         "TYPE_RENDER_STATUES_CHANGE"
                     ],
                     "enumDescriptions": [
                         "Type is unspecified.",
                         "A Pub/Sub notification failed to be sent.",
+                        "Resource state changed.",
+                        "A process aborted.",
                         "Deprecated: This field is never used. Use release_render log type instead."
                     ],
                     "type": "string"
@@ -2923,6 +2956,13 @@
                     "description": "Output only. Snapshot of the parent pipeline taken at release creation time.",
                     "readOnly": true
                 },
+                "deployParameters": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. The deploy parameters to use for all targets in this release.",
+                    "type": "object"
+                },
                 "description": {
                     "description": "Description of the `Release`. Max length is 255 characters.",
                     "type": "string"
@@ -3047,11 +3087,15 @@
                     "enum": [
                         "TYPE_UNSPECIFIED",
                         "TYPE_PUBSUB_NOTIFICATION_FAILURE",
+                        "TYPE_RESOURCE_STATE_CHANGE",
+                        "TYPE_PROCESS_ABORTED",
                         "TYPE_RENDER_STATUES_CHANGE"
                     ],
                     "enumDescriptions": [
                         "Type is unspecified.",
                         "A Pub/Sub notification failed to be sent.",
+                        "Resource state changed.",
+                        "A process aborted.",
                         "Deprecated: This field is never used. Use release_render log type instead."
                     ],
                     "type": "string"
@@ -3322,11 +3366,15 @@
                     "enum": [
                         "TYPE_UNSPECIFIED",
                         "TYPE_PUBSUB_NOTIFICATION_FAILURE",
+                        "TYPE_RESOURCE_STATE_CHANGE",
+                        "TYPE_PROCESS_ABORTED",
                         "TYPE_RENDER_STATUES_CHANGE"
                     ],
                     "enumDescriptions": [
                         "Type is unspecified.",
                         "A Pub/Sub notification failed to be sent.",
+                        "Resource state changed.",
+                        "A process aborted.",
                         "Deprecated: This field is never used. Use release_render log type instead."
                     ],
                     "type": "string"
@@ -3370,6 +3418,10 @@
                 "deployment": {
                     "description": "Required. Name of the Kubernetes Deployment whose traffic is managed by the specified Service.",
                     "type": "string"
+                },
+                "disablePodOverprovisioning": {
+                    "description": "Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.",
+                    "type": "boolean"
                 },
                 "service": {
                     "description": "Required. Name of the Kubernetes Service.",
@@ -3460,6 +3512,13 @@
             "description": "Stage specifies a location to which to deploy.",
             "id": "Stage",
             "properties": {
+                "deployParameters": {
+                    "description": "Optional. The deploy parameters to use for the target in this stage.",
+                    "items": {
+                        "$ref": "DeployParameters"
+                    },
+                    "type": "array"
+                },
                 "profiles": {
                     "description": "Skaffold profiles to use when rendering the manifest for this stage's `Target`.",
                     "items": {
@@ -3544,13 +3603,20 @@
                 },
                 "anthosCluster": {
                     "$ref": "AnthosCluster",
-                    "description": "Information specifying an Anthos Cluster."
+                    "description": "Optional. Information specifying an Anthos Cluster."
                 },
                 "createTime": {
                     "description": "Output only. Time at which the `Target` was created.",
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
+                },
+                "deployParameters": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. The deploy parameters to use for this target.",
+                    "type": "object"
                 },
                 "description": {
                     "description": "Optional. Description of the `Target`. Max length is 255 characters.",
@@ -3569,7 +3635,7 @@
                 },
                 "gke": {
                     "$ref": "GkeCluster",
-                    "description": "Information specifying a GKE Cluster."
+                    "description": "Optional. Information specifying a GKE Cluster."
                 },
                 "labels": {
                     "additionalProperties": {
@@ -3580,7 +3646,7 @@
                 },
                 "multiTarget": {
                     "$ref": "MultiTarget",
-                    "description": "Information specifying a multiTarget."
+                    "description": "Optional. Information specifying a multiTarget."
                 },
                 "name": {
                     "description": "Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.",
@@ -3592,7 +3658,7 @@
                 },
                 "run": {
                     "$ref": "CloudRunLocation",
-                    "description": "Information specifying a Cloud Run deployment target."
+                    "description": "Optional. Information specifying a Cloud Run deployment target."
                 },
                 "targetId": {
                     "description": "Output only. Resource id of the `Target`.",
@@ -3660,11 +3726,15 @@
                     "enum": [
                         "TYPE_UNSPECIFIED",
                         "TYPE_PUBSUB_NOTIFICATION_FAILURE",
+                        "TYPE_RESOURCE_STATE_CHANGE",
+                        "TYPE_PROCESS_ABORTED",
                         "TYPE_RENDER_STATUES_CHANGE"
                     ],
                     "enumDescriptions": [
                         "Type is unspecified.",
                         "A Pub/Sub notification failed to be sent.",
+                        "Resource state changed.",
+                        "A process aborted.",
                         "Deprecated: This field is never used. Use release_render log type instead."
                     ],
                     "type": "string"
@@ -3860,9 +3930,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Google Cloud Deploy API",
-    "version": "v1",
-    "version_module": true
+    }
 }

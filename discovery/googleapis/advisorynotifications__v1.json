@@ -24,6 +24,13 @@
     "name": "advisorynotifications",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230708",
+    "rootUrl": "https://advisorynotifications.googleapis.com/",
+    "servicePath": "",
+    "title": "Advisory Notifications API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "organizations": {
             "resources": {
@@ -202,8 +208,6 @@
             }
         }
     },
-    "revision": "20230514",
-    "rootUrl": "https://advisorynotifications.googleapis.com/",
     "schemas": {
         "GoogleCloudAdvisorynotificationsV1Attachment": {
             "description": "Attachment with specific information about the issue.",
@@ -401,9 +405,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Advisory Notifications API",
-    "version": "v1",
-    "version_module": true
+    }
 }

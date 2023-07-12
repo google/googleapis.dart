@@ -179,11 +179,11 @@ class ProjectsTestMatricesResource {
   /// Unsupported environments will be returned in the state UNSUPPORTED. A test
   /// matrix is limited to use at most 2000 devices in parallel. The returned
   /// matrix will not yet contain the executions that will be created for this
-  /// matrix. That happens later on and will require a call to GetTestMatrix.
-  /// May return any of the following canonical error codes: - PERMISSION_DENIED
-  /// - if the user is not authorized to write to project - INVALID_ARGUMENT -
-  /// if the request is malformed or if the matrix tries to use too many
-  /// simultaneous devices.
+  /// matrix. Execution creation happens later on and will require a call to
+  /// GetTestMatrix. May return any of the following canonical error codes: -
+  /// PERMISSION_DENIED - if the user is not authorized to write to project -
+  /// INVALID_ARGUMENT - if the request is malformed or if the matrix tries to
+  /// use too many simultaneous devices.
   ///
   /// [request] - The metadata request object.
   ///
@@ -235,11 +235,10 @@ class ProjectsTestMatricesResource {
   ///
   /// The test matrix will contain the list of test executions to run if and
   /// only if the resultStorage.toolResultsExecution fields have been populated.
-  /// Note: Flaky test executions may still be added to the matrix at a later
-  /// stage. May return any of the following canonical error codes: -
-  /// PERMISSION_DENIED - if the user is not authorized to read project -
-  /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test
-  /// Matrix does not exist
+  /// Note: Flaky test executions may be added to the matrix at a later stage.
+  /// May return any of the following canonical error codes: - PERMISSION_DENIED
+  /// - if the user is not authorized to read project - INVALID_ARGUMENT - if
+  /// the request is malformed - NOT_FOUND - if the Test Matrix does not exist
   ///
   /// Request parameters:
   ///
@@ -2651,6 +2650,9 @@ class NetworkConfigurationCatalog {
       };
 }
 
+/// Skips the starting activity
+typedef NoActivityIntent = $Empty;
+
 /// An opaque binary blob file to install on the device before the test starts.
 class ObbFile {
   /// Opaque Binary Blob (OBB) file(s) to install on the device.
@@ -3042,6 +3044,9 @@ class RoboStartingIntent {
   /// An intent that starts the main launcher activity.
   LauncherActivityIntent? launcherActivity;
 
+  /// Skips the starting activity
+  NoActivityIntent? noActivity;
+
   /// An intent that starts an activity with specific details.
   StartActivityIntent? startActivity;
 
@@ -3050,6 +3055,7 @@ class RoboStartingIntent {
 
   RoboStartingIntent({
     this.launcherActivity,
+    this.noActivity,
     this.startActivity,
     this.timeout,
   });
@@ -3059,6 +3065,10 @@ class RoboStartingIntent {
           launcherActivity: json_.containsKey('launcherActivity')
               ? LauncherActivityIntent.fromJson(json_['launcherActivity']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          noActivity: json_.containsKey('noActivity')
+              ? NoActivityIntent.fromJson(
+                  json_['noActivity'] as core.Map<core.String, core.dynamic>)
               : null,
           startActivity: json_.containsKey('startActivity')
               ? StartActivityIntent.fromJson(
@@ -3071,6 +3081,7 @@ class RoboStartingIntent {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (launcherActivity != null) 'launcherActivity': launcherActivity!,
+        if (noActivity != null) 'noActivity': noActivity!,
         if (startActivity != null) 'startActivity': startActivity!,
         if (timeout != null) 'timeout': timeout!,
       };
@@ -3112,6 +3123,12 @@ class Service {
 ///
 /// Output only.
 class Shard {
+  /// The estimated shard duration based on previous test case timing records,
+  /// if available.
+  ///
+  /// Output only.
+  core.String? estimatedShardDuration;
+
   /// The total number of shards.
   ///
   /// Output only.
@@ -3130,6 +3147,7 @@ class Shard {
   TestTargetsForShard? testTargetsForShard;
 
   Shard({
+    this.estimatedShardDuration,
     this.numShards,
     this.shardIndex,
     this.testTargetsForShard,
@@ -3137,6 +3155,9 @@ class Shard {
 
   Shard.fromJson(core.Map json_)
       : this(
+          estimatedShardDuration: json_.containsKey('estimatedShardDuration')
+              ? json_['estimatedShardDuration'] as core.String
+              : null,
           numShards: json_.containsKey('numShards')
               ? json_['numShards'] as core.int
               : null,
@@ -3150,6 +3171,8 @@ class Shard {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (estimatedShardDuration != null)
+          'estimatedShardDuration': estimatedShardDuration!,
         if (numShards != null) 'numShards': numShards!,
         if (shardIndex != null) 'shardIndex': shardIndex!,
         if (testTargetsForShard != null)
@@ -3212,22 +3235,22 @@ class SmartSharding {
   /// shard duration. Shard duration is not guaranteed because smart sharding
   /// uses test case history and default durations which may not be accurate.
   /// The rules for finding the test case timing records are: - If the service
-  /// has seen a test case in the last 30 days, the record of the latest
-  /// successful one will be used. - For new test cases, the average duration of
-  /// other known test cases will be used. - If there are no previous test case
-  /// timing records available, the test case is considered to be 15 seconds
-  /// long by default. Because the actual shard duration can exceed the targeted
-  /// shard duration, we recommend setting the targeted value at least 5 minutes
-  /// less than the maximum allowed test timeout (45 minutes for physical
-  /// devices and 60 minutes for virtual), or using the custom test timeout
-  /// value you set. This approach avoids cancelling the shard before all tests
-  /// can finish. Note that there is a limit for maximum number of shards. When
-  /// you select one or more physical devices, the number of shards must be \<=
-  /// 50. When you select one or more ARM virtual devices, it must be \<= 100.
-  /// When you select only x86 virtual devices, it must be \<= 500. To guarantee
-  /// at least one test case for per shard, the number of shards will not exceed
-  /// the number of test cases. Each shard created will count toward daily test
-  /// quota.
+  /// has processed a test case in the last 30 days, the record of the latest
+  /// successful test case will be used. - For new test cases, the average
+  /// duration of other known test cases will be used. - If there are no
+  /// previous test case timing records available, the default test case
+  /// duration is 15 seconds. Because the actual shard duration can exceed the
+  /// targeted shard duration, we recommend that you set the targeted value at
+  /// least 5 minutes less than the maximum allowed test timeout (45 minutes for
+  /// physical devices and 60 minutes for virtual), or that you use the custom
+  /// test timeout value that you set. This approach avoids cancelling the shard
+  /// before all tests can finish. Note that there is a limit for maximum number
+  /// of shards. When you select one or more physical devices, the number of
+  /// shards must be \<= 50. When you select one or more ARM virtual devices, it
+  /// must be \<= 100. When you select only x86 virtual devices, it must be \<=
+  /// 500. To guarantee at least one test case for per shard, the number of
+  /// shards will not exceed the number of test cases. Each shard created counts
+  /// toward daily test quota.
   core.String? targetedShardDuration;
 
   SmartSharding({
@@ -3608,8 +3631,8 @@ class TestMatrix {
   /// AndroidJUnitRunner version 1.1 or higher. Orchestrator can be disabled by
   /// using DO_NOT_USE_ORCHESTRATOR OrchestratorOption.
   /// - "NO_TEST_RUNNER_CLASS" : The test APK does not contain the test runner
-  /// class specified by user or in the manifest file. This can be caused by
-  /// either of the following reasons: - the user provided a runner class name
+  /// class specified by the user or in the manifest file. This can be caused by
+  /// one of the following reasons: - the user provided a runner class name
   /// that's incorrect, or - the test runner isn't built into the test APK
   /// (might be in the app APK instead).
   /// - "NO_LAUNCHER_ACTIVITY" : A main launcher activity could not be found.
@@ -3679,7 +3702,7 @@ class TestMatrix {
   /// - "SUCCESS" : The test matrix run was successful, for instance: - All the
   /// test cases passed. - Robo did not detect a crash of the application under
   /// test.
-  /// - "FAILURE" : A run failed, for instance: - One or more test case failed.
+  /// - "FAILURE" : A run failed, for instance: - One or more test cases failed.
   /// - A test timed out. - The application under test crashed.
   /// - "INCONCLUSIVE" : Something unexpected happened. The run should still be
   /// considered unsuccessful but this is likely a transient problem and

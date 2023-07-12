@@ -412,11 +412,11 @@ class ProjectsLocationsWorkflowsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workflows/\[^/\]+$`.
   ///
-  /// [revisionId] - Optional. Optional. The revision of the workflow to
-  /// retrieve. If the revision_id is empty, the latest revision is retrieved.
-  /// The format is "000001-a4d", where the first 6 characters define the
-  /// zero-padded decimal revision number. They are followed by a hyphen and 3
-  /// hexadecimal characters. (go/wf_adr_clh_1)
+  /// [revisionId] - Optional. The revision of the workflow to retrieve. If the
+  /// revision_id is empty, the latest revision is retrieved. The format is
+  /// "000001-a4d", where the first six characters define the zero-padded
+  /// decimal revision number. They are followed by a hyphen and three
+  /// hexadecimal characters.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -835,9 +835,9 @@ class Workflow {
   ///
   /// A new revision of a workflow is created as a result of updating the
   /// following properties of a workflow: - Service account - Workflow code to
-  /// be executed The format is "000001-a4d", where the first 6 characters
+  /// be executed The format is "000001-a4d", where the first six characters
   /// define the zero-padded revision ordinal number. They are followed by a
-  /// hyphen and 3 hexadecimal random characters.
+  /// hyphen and three hexadecimal random characters.
   ///
   /// Output only.
   core.String? revisionId;
@@ -882,6 +882,15 @@ class Workflow {
   /// Output only.
   core.String? updateTime;
 
+  /// User-defined environment variables associated with this workflow revision.
+  ///
+  /// This map has a maximum length of 20. Each string can take up to 40KiB.
+  /// Keys cannot be empty strings and cannot start with “GOOGLE” or
+  /// “WORKFLOWS".
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? userEnvVars;
+
   Workflow({
     this.callLogLevel,
     this.createTime,
@@ -896,6 +905,7 @@ class Workflow {
     this.state,
     this.stateError,
     this.updateTime,
+    this.userEnvVars,
   });
 
   Workflow.fromJson(core.Map json_)
@@ -942,6 +952,15 @@ class Workflow {
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
+          userEnvVars: json_.containsKey('userEnvVars')
+              ? (json_['userEnvVars'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -959,5 +978,6 @@ class Workflow {
         if (state != null) 'state': state!,
         if (stateError != null) 'stateError': stateError!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (userEnvVars != null) 'userEnvVars': userEnvVars!,
       };
 }

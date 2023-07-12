@@ -5739,10 +5739,10 @@ class ExecutionConfig {
   /// cannot be set on a batch workload. Minimum value is 10 minutes; maximum
   /// value is 14 days (see JSON representation of Duration
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-  /// Defaults to 4 hours if not set. If both ttl and idle_ttl are specified,
-  /// the conditions are treated as OR conditions: the workload will be
-  /// terminated when it has been idle for idle_ttl or when ttl has been exceed,
-  /// whichever occurs first.
+  /// Defaults to 4 hours if not set. If both ttl and idle_ttl are specified for
+  /// an interactive session, the conditions are treated as OR conditions: the
+  /// workload will be terminated when it has been idle for idle_ttl or when ttl
+  /// has been exceeded, whichever occurs first.
   ///
   /// Optional.
   core.String? idleTtl;
@@ -5791,8 +5791,10 @@ class ExecutionConfig {
   /// terminated without waiting for ongoing work to finish. If ttl is not
   /// specified for a batch workload, the workload will be allowed to run until
   /// it exits naturally (or runs forever without exiting). If ttl is not
-  /// specified for an interactive session, it defaults to 24h. Minimum value is
-  /// 10 minutes; maximum value is 14 days (see JSON representation of Duration
+  /// specified for an interactive session, it defaults to 24h. If ttl is not
+  /// specified for a batch that uses 2.1+ runtime version, it defaults to 4h.
+  /// Minimum value is 10 minutes; maximum value is 14 days (see JSON
+  /// representation of Duration
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json)). If
   /// both ttl and idle_ttl are specified (for an interactive session), the
   /// conditions are treated as OR conditions: the workload will be terminated
@@ -8110,6 +8112,8 @@ class ListAutoscalingPoliciesResponse {
 /// A list of batch workloads.
 class ListBatchesResponse {
   /// The batches from the specified collection.
+  ///
+  /// Output only.
   core.List<Batch>? batches;
 
   /// A token, which can be sent as page_token to retrieve the next page.

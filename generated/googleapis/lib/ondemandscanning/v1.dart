@@ -549,8 +549,142 @@ class AttestationOccurrence {
       };
 }
 
+class BinarySourceInfo {
+  /// The binary package.
+  ///
+  /// This is significant when the source is different than the binary itself.
+  /// Historically if they've differed, we've stored the name of the source and
+  /// its version in the package/version fields, but we should also store the
+  /// binary package info, as that's what's actually installed. See
+  /// b/175908657#comment15.
+  PackageVersion? binaryVersion;
+
+  /// The source package.
+  ///
+  /// Similar to the above, this is significant when the source is different
+  /// than the binary itself. Since the top-level package/version fields are
+  /// based on an if/else, we need a separate field for both binary and source
+  /// if we want to know definitively where the data is coming from.
+  PackageVersion? sourceVersion;
+
+  BinarySourceInfo({
+    this.binaryVersion,
+    this.sourceVersion,
+  });
+
+  BinarySourceInfo.fromJson(core.Map json_)
+      : this(
+          binaryVersion: json_.containsKey('binaryVersion')
+              ? PackageVersion.fromJson(
+                  json_['binaryVersion'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sourceVersion: json_.containsKey('sourceVersion')
+              ? PackageVersion.fromJson(
+                  json_['sourceVersion'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (binaryVersion != null) 'binaryVersion': binaryVersion!,
+        if (sourceVersion != null) 'sourceVersion': sourceVersion!,
+      };
+}
+
+class BuildDefinition {
+  core.String? buildType;
+
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? externalParameters;
+
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? internalParameters;
+  core.List<ResourceDescriptor>? resolvedDependencies;
+
+  BuildDefinition({
+    this.buildType,
+    this.externalParameters,
+    this.internalParameters,
+    this.resolvedDependencies,
+  });
+
+  BuildDefinition.fromJson(core.Map json_)
+      : this(
+          buildType: json_.containsKey('buildType')
+              ? json_['buildType'] as core.String
+              : null,
+          externalParameters: json_.containsKey('externalParameters')
+              ? json_['externalParameters']
+                  as core.Map<core.String, core.dynamic>
+              : null,
+          internalParameters: json_.containsKey('internalParameters')
+              ? json_['internalParameters']
+                  as core.Map<core.String, core.dynamic>
+              : null,
+          resolvedDependencies: json_.containsKey('resolvedDependencies')
+              ? (json_['resolvedDependencies'] as core.List)
+                  .map((value) => ResourceDescriptor.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buildType != null) 'buildType': buildType!,
+        if (externalParameters != null)
+          'externalParameters': externalParameters!,
+        if (internalParameters != null)
+          'internalParameters': internalParameters!,
+        if (resolvedDependencies != null)
+          'resolvedDependencies': resolvedDependencies!,
+      };
+}
+
+class BuildMetadata {
+  core.String? finishedOn;
+  core.String? invocationId;
+  core.String? startedOn;
+
+  BuildMetadata({
+    this.finishedOn,
+    this.invocationId,
+    this.startedOn,
+  });
+
+  BuildMetadata.fromJson(core.Map json_)
+      : this(
+          finishedOn: json_.containsKey('finishedOn')
+              ? json_['finishedOn'] as core.String
+              : null,
+          invocationId: json_.containsKey('invocationId')
+              ? json_['invocationId'] as core.String
+              : null,
+          startedOn: json_.containsKey('startedOn')
+              ? json_['startedOn'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (finishedOn != null) 'finishedOn': finishedOn!,
+        if (invocationId != null) 'invocationId': invocationId!,
+        if (startedOn != null) 'startedOn': startedOn!,
+      };
+}
+
 /// Details of a build occurrence.
 class BuildOccurrence {
+  /// In-Toto Slsa Provenance V1 represents a slsa provenance meeting the slsa
+  /// spec, wrapped in an in-toto statement.
+  ///
+  /// This allows for direct jsonification of a to-spec in-toto slsa statement
+  /// with a to-spec slsa provenance.
+  InTotoSlsaProvenanceV1? inTotoSlsaProvenanceV1;
+
   /// See InTotoStatement for the replacement.
   ///
   /// In-toto Provenance representation as defined in spec.
@@ -581,6 +715,7 @@ class BuildOccurrence {
   core.String? provenanceBytes;
 
   BuildOccurrence({
+    this.inTotoSlsaProvenanceV1,
     this.intotoProvenance,
     this.intotoStatement,
     this.provenance,
@@ -589,6 +724,10 @@ class BuildOccurrence {
 
   BuildOccurrence.fromJson(core.Map json_)
       : this(
+          inTotoSlsaProvenanceV1: json_.containsKey('inTotoSlsaProvenanceV1')
+              ? InTotoSlsaProvenanceV1.fromJson(json_['inTotoSlsaProvenanceV1']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           intotoProvenance: json_.containsKey('intotoProvenance')
               ? InTotoProvenance.fromJson(json_['intotoProvenance']
                   as core.Map<core.String, core.dynamic>)
@@ -607,6 +746,8 @@ class BuildOccurrence {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (inTotoSlsaProvenanceV1 != null)
+          'inTotoSlsaProvenanceV1': inTotoSlsaProvenanceV1!,
         if (intotoProvenance != null) 'intotoProvenance': intotoProvenance!,
         if (intotoStatement != null) 'intotoStatement': intotoStatement!,
         if (provenance != null) 'provenance': provenance!,
@@ -924,6 +1065,9 @@ class DiscoveryOccurrence {
   /// The last time this resource was scanned.
   core.String? lastScanTime;
 
+  /// The status of an SBOM generation.
+  SBOMStatus? sbomStatus;
+
   DiscoveryOccurrence({
     this.analysisCompleted,
     this.analysisError,
@@ -933,6 +1077,7 @@ class DiscoveryOccurrence {
     this.continuousAnalysis,
     this.cpe,
     this.lastScanTime,
+    this.sbomStatus,
   });
 
   DiscoveryOccurrence.fromJson(core.Map json_)
@@ -964,6 +1109,10 @@ class DiscoveryOccurrence {
           lastScanTime: json_.containsKey('lastScanTime')
               ? json_['lastScanTime'] as core.String
               : null,
+          sbomStatus: json_.containsKey('sbomStatus')
+              ? SBOMStatus.fromJson(
+                  json_['sbomStatus'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -977,6 +1126,7 @@ class DiscoveryOccurrence {
           'continuousAnalysis': continuousAnalysis!,
         if (cpe != null) 'cpe': cpe!,
         if (lastScanTime != null) 'lastScanTime': lastScanTime!,
+        if (sbomStatus != null) 'sbomStatus': sbomStatus!,
       };
 }
 
@@ -1349,6 +1499,48 @@ class InTotoProvenance {
         if (materials != null) 'materials': materials!,
         if (metadata != null) 'metadata': metadata!,
         if (recipe != null) 'recipe': recipe!,
+      };
+}
+
+class InTotoSlsaProvenanceV1 {
+  /// InToto spec defined at
+  /// https://github.com/in-toto/attestation/tree/main/spec#statement
+  core.String? P_type;
+  SlsaProvenanceV1? predicate;
+  core.String? predicateType;
+  core.List<Subject>? subject;
+
+  InTotoSlsaProvenanceV1({
+    this.P_type,
+    this.predicate,
+    this.predicateType,
+    this.subject,
+  });
+
+  InTotoSlsaProvenanceV1.fromJson(core.Map json_)
+      : this(
+          P_type:
+              json_.containsKey('_type') ? json_['_type'] as core.String : null,
+          predicate: json_.containsKey('predicate')
+              ? SlsaProvenanceV1.fromJson(
+                  json_['predicate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          predicateType: json_.containsKey('predicateType')
+              ? json_['predicateType'] as core.String
+              : null,
+          subject: json_.containsKey('subject')
+              ? (json_['subject'] as core.List)
+                  .map((value) => Subject.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (P_type != null) '_type': P_type!,
+        if (predicate != null) 'predicate': predicate!,
+        if (predicateType != null) 'predicateType': predicateType!,
+        if (subject != null) 'subject': subject!,
       };
 }
 
@@ -1942,13 +2134,10 @@ class PackageData {
   /// The architecture of the package.
   core.String? architecture;
 
-  /// The binary package.
-  ///
-  /// This is significant when the source is different than the binary itself.
-  /// Historically if they've differed, we've stored the name of the source and
-  /// its version in the package/version fields, but we should also store the
-  /// binary package info, as that's what's actually installed. See
-  /// b/175908657#comment15.
+  /// A bundle containing the binary and source information.
+  core.List<BinarySourceInfo>? binarySourceInfo;
+
+  /// DEPRECATED
   PackageVersion? binaryVersion;
 
   /// The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) in which
@@ -2001,12 +2190,7 @@ class PackageData {
   /// go/drydock-dd-custom-binary-scanning
   core.List<core.String>? patchedCve;
 
-  /// The source package.
-  ///
-  /// Similar to the above, this is significant when the source is different
-  /// than the binary itself. Since the top-level package/version fields are
-  /// based on an if/else, we need a separate field for both binary and source
-  /// if we want to know definitively where the data is coming from.
+  /// DEPRECATED
   PackageVersion? sourceVersion;
   core.String? unused;
 
@@ -2015,6 +2199,7 @@ class PackageData {
 
   PackageData({
     this.architecture,
+    this.binarySourceInfo,
     this.binaryVersion,
     this.cpeUri,
     this.dependencyChain,
@@ -2035,6 +2220,12 @@ class PackageData {
       : this(
           architecture: json_.containsKey('architecture')
               ? json_['architecture'] as core.String
+              : null,
+          binarySourceInfo: json_.containsKey('binarySourceInfo')
+              ? (json_['binarySourceInfo'] as core.List)
+                  .map((value) => BinarySourceInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           binaryVersion: json_.containsKey('binaryVersion')
               ? PackageVersion.fromJson(
@@ -2091,6 +2282,7 @@ class PackageData {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (architecture != null) 'architecture': architecture!,
+        if (binarySourceInfo != null) 'binarySourceInfo': binarySourceInfo!,
         if (binaryVersion != null) 'binaryVersion': binaryVersion!,
         if (cpeUri != null) 'cpeUri': cpeUri!,
         if (dependencyChain != null) 'dependencyChain': dependencyChain!,
@@ -2358,6 +2550,44 @@ class PackageVersion {
 /// winged-cargo-31) and a repo name within that project.
 typedef ProjectRepoId = $ProjectRepoId;
 
+class ProvenanceBuilder {
+  core.List<ResourceDescriptor>? builderDependencies;
+  core.String? id;
+  core.Map<core.String, core.String>? version;
+
+  ProvenanceBuilder({
+    this.builderDependencies,
+    this.id,
+    this.version,
+  });
+
+  ProvenanceBuilder.fromJson(core.Map json_)
+      : this(
+          builderDependencies: json_.containsKey('builderDependencies')
+              ? (json_['builderDependencies'] as core.List)
+                  .map((value) => ResourceDescriptor.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          version: json_.containsKey('version')
+              ? (json_['version'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (builderDependencies != null)
+          'builderDependencies': builderDependencies!,
+        if (id != null) 'id': id!,
+        if (version != null) 'version': version!,
+      };
+}
+
 /// Steps taken to build the artifact.
 ///
 /// For a TaskRun, typically each container corresponds to one step in the
@@ -2440,6 +2670,109 @@ class RepoId {
       };
 }
 
+class ResourceDescriptor {
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? annotations;
+  core.String? content;
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
+
+  set contentAsBytes(core.List<core.int> bytes_) {
+    content =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  core.Map<core.String, core.String>? digest;
+  core.String? downloadLocation;
+  core.String? mediaType;
+  core.String? name;
+  core.String? uri;
+
+  ResourceDescriptor({
+    this.annotations,
+    this.content,
+    this.digest,
+    this.downloadLocation,
+    this.mediaType,
+    this.name,
+    this.uri,
+  });
+
+  ResourceDescriptor.fromJson(core.Map json_)
+      : this(
+          annotations: json_.containsKey('annotations')
+              ? json_['annotations'] as core.Map<core.String, core.dynamic>
+              : null,
+          content: json_.containsKey('content')
+              ? json_['content'] as core.String
+              : null,
+          digest: json_.containsKey('digest')
+              ? (json_['digest'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          downloadLocation: json_.containsKey('downloadLocation')
+              ? json_['downloadLocation'] as core.String
+              : null,
+          mediaType: json_.containsKey('mediaType')
+              ? json_['mediaType'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
+        if (content != null) 'content': content!,
+        if (digest != null) 'digest': digest!,
+        if (downloadLocation != null) 'downloadLocation': downloadLocation!,
+        if (mediaType != null) 'mediaType': mediaType!,
+        if (name != null) 'name': name!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+class RunDetails {
+  ProvenanceBuilder? builder;
+  core.List<ResourceDescriptor>? byproducts;
+  BuildMetadata? metadata;
+
+  RunDetails({
+    this.builder,
+    this.byproducts,
+    this.metadata,
+  });
+
+  RunDetails.fromJson(core.Map json_)
+      : this(
+          builder: json_.containsKey('builder')
+              ? ProvenanceBuilder.fromJson(
+                  json_['builder'] as core.Map<core.String, core.dynamic>)
+              : null,
+          byproducts: json_.containsKey('byproducts')
+              ? (json_['byproducts'] as core.List)
+                  .map((value) => ResourceDescriptor.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          metadata: json_.containsKey('metadata')
+              ? BuildMetadata.fromJson(
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (builder != null) 'builder': builder!,
+        if (byproducts != null) 'byproducts': byproducts!,
+        if (metadata != null) 'metadata': metadata!,
+      };
+}
+
 /// The occurrence representing an SBOM reference as applied to a specific
 /// resource.
 ///
@@ -2486,6 +2819,39 @@ class SBOMReferenceOccurrence {
         if (payload != null) 'payload': payload!,
         if (payloadType != null) 'payloadType': payloadType!,
         if (signatures != null) 'signatures': signatures!,
+      };
+}
+
+/// The status of an SBOM generation.
+class SBOMStatus {
+  /// If there was an error generating an SBOM, this will indicate what that
+  /// error was.
+  core.String? error;
+
+  /// The progress of the SBOM generation.
+  /// Possible string values are:
+  /// - "SBOM_STATE_UNSPECIFIED" : Default unknown state.
+  /// - "PENDING" : SBOM scanning is pending.
+  /// - "COMPLETE" : SBOM scanning has completed.
+  core.String? sbomState;
+
+  SBOMStatus({
+    this.error,
+    this.sbomState,
+  });
+
+  SBOMStatus.fromJson(core.Map json_)
+      : this(
+          error:
+              json_.containsKey('error') ? json_['error'] as core.String : null,
+          sbomState: json_.containsKey('sbomState')
+              ? json_['sbomState'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (error != null) 'error': error!,
+        if (sbomState != null) 'sbomState': sbomState!,
       };
 }
 
@@ -2686,6 +3052,36 @@ class SlsaProvenance {
         if (materials != null) 'materials': materials!,
         if (metadata != null) 'metadata': metadata!,
         if (recipe != null) 'recipe': recipe!,
+      };
+}
+
+/// Keep in sync with schema at
+/// https://github.com/slsa-framework/slsa/blob/main/docs/provenance/schema/v1/provenance.proto
+/// Builder renamed to ProvenanceBuilder because of Java conflicts.
+class SlsaProvenanceV1 {
+  BuildDefinition? buildDefinition;
+  RunDetails? runDetails;
+
+  SlsaProvenanceV1({
+    this.buildDefinition,
+    this.runDetails,
+  });
+
+  SlsaProvenanceV1.fromJson(core.Map json_)
+      : this(
+          buildDefinition: json_.containsKey('buildDefinition')
+              ? BuildDefinition.fromJson(json_['buildDefinition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          runDetails: json_.containsKey('runDetails')
+              ? RunDetails.fromJson(
+                  json_['runDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buildDefinition != null) 'buildDefinition': buildDefinition!,
+        if (runDetails != null) 'runDetails': runDetails!,
       };
 }
 

@@ -479,7 +479,7 @@ class Execution {
 
   /// Error regarding the state of the Execution resource.
   ///
-  /// For example, this field will have error details if the Execution data is
+  /// For example, this field will have error details if the execution data is
   /// unavailable due to revoked KMS key permissions.
   ///
   /// Output only.
@@ -657,7 +657,87 @@ class Position {
 /// for more information. See
 /// [quotas and limits](https://cloud.google.com/pubsub/quotas) for more
 /// information about message limits.
-typedef PubsubMessage = $PubsubMessage;
+class PubsubMessage {
+  /// Attributes for this message.
+  ///
+  /// If this field is empty, the message must contain non-empty data. This can
+  /// be used to filter messages on the subscription.
+  core.Map<core.String, core.String>? attributes;
+
+  /// The message data field.
+  ///
+  /// If this field is empty, the message must contain at least one attribute.
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
+
+  set dataAsBytes(core.List<core.int> bytes_) {
+    data =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// ID of this message, assigned by the server when the message is published.
+  ///
+  /// Guaranteed to be unique within the topic. This value may be read by a
+  /// subscriber that receives a `PubsubMessage` via a `Pull` call or a push
+  /// delivery. It must not be populated by the publisher in a `Publish` call.
+  core.String? messageId;
+
+  /// If non-empty, identifies related messages for which publish order should
+  /// be respected.
+  ///
+  /// If a `Subscription` has `enable_message_ordering` set to `true`, messages
+  /// published with the same non-empty `ordering_key` value will be delivered
+  /// to subscribers in the order in which they are received by the Pub/Sub
+  /// system. All `PubsubMessage`s published in a given `PublishRequest` must
+  /// specify the same `ordering_key` value. For more information, see
+  /// [ordering messages](https://cloud.google.com/pubsub/docs/ordering).
+  core.String? orderingKey;
+
+  /// The time at which the message was published, populated by the server when
+  /// it receives the `Publish` call.
+  ///
+  /// It must not be populated by the publisher in a `Publish` call.
+  core.String? publishTime;
+
+  PubsubMessage({
+    this.attributes,
+    this.data,
+    this.messageId,
+    this.orderingKey,
+    this.publishTime,
+  });
+
+  PubsubMessage.fromJson(core.Map json_)
+      : this(
+          attributes: json_.containsKey('attributes')
+              ? (json_['attributes'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          data: json_.containsKey('data') ? json_['data'] as core.String : null,
+          messageId: json_.containsKey('messageId')
+              ? json_['messageId'] as core.String
+              : null,
+          orderingKey: json_.containsKey('orderingKey')
+              ? json_['orderingKey'] as core.String
+              : null,
+          publishTime: json_.containsKey('publishTime')
+              ? json_['publishTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributes != null) 'attributes': attributes!,
+        if (data != null) 'data': data!,
+        if (messageId != null) 'messageId': messageId!,
+        if (orderingKey != null) 'orderingKey': orderingKey!,
+        if (publishTime != null) 'publishTime': publishTime!,
+      };
+}
 
 /// A collection of stack elements (frames) where an error occurred.
 class StackTrace {
@@ -788,6 +868,13 @@ class TriggerPubsubExecutionRequest {
   /// Required.
   core.String? GCPCloudEventsMode;
 
+  /// The number of attempts that have been made to deliver this message.
+  ///
+  /// This is set by Pub/Sub for subscriptions that have the "dead letter"
+  /// feature enabled, and hence provided here for compatibility, but is ignored
+  /// by Workflows.
+  core.int? deliveryAttempt;
+
   /// The message of the Pub/Sub push notification.
   ///
   /// Required.
@@ -802,6 +889,7 @@ class TriggerPubsubExecutionRequest {
 
   TriggerPubsubExecutionRequest({
     this.GCPCloudEventsMode,
+    this.deliveryAttempt,
     this.message,
     this.subscription,
   });
@@ -810,6 +898,9 @@ class TriggerPubsubExecutionRequest {
       : this(
           GCPCloudEventsMode: json_.containsKey('GCPCloudEventsMode')
               ? json_['GCPCloudEventsMode'] as core.String
+              : null,
+          deliveryAttempt: json_.containsKey('deliveryAttempt')
+              ? json_['deliveryAttempt'] as core.int
               : null,
           message: json_.containsKey('message')
               ? PubsubMessage.fromJson(
@@ -823,6 +914,7 @@ class TriggerPubsubExecutionRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (GCPCloudEventsMode != null)
           'GCPCloudEventsMode': GCPCloudEventsMode!,
+        if (deliveryAttempt != null) 'deliveryAttempt': deliveryAttempt!,
         if (message != null) 'message': message!,
         if (subscription != null) 'subscription': subscription!,
       };

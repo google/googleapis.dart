@@ -6057,7 +6057,6 @@ api.InventorySource buildInventorySource() {
     o.readPartnerIds = buildUnnamed79();
     o.readWriteAccessors = buildInventorySourceAccessors();
     o.status = buildInventorySourceStatus();
-    o.subSitePropertyId = 'foo';
     o.timeRange = buildTimeRange();
     o.updateTime = 'foo';
   }
@@ -6118,10 +6117,6 @@ void checkInventorySource(api.InventorySource o) {
     checkUnnamed79(o.readPartnerIds!);
     checkInventorySourceAccessors(o.readWriteAccessors!);
     checkInventorySourceStatus(o.status!);
-    unittest.expect(
-      o.subSitePropertyId!,
-      unittest.equals('foo'),
-    );
     checkTimeRange(o.timeRange!);
     unittest.expect(
       o.updateTime!,
@@ -21611,6 +21606,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DisplayVideoApi(mock).inventorySources;
       final arg_inventorySourceId = 'foo';
+      final arg_advertiserId = 'foo';
       final arg_partnerId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -21646,6 +21642,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['advertiserId']!.first,
+          unittest.equals(arg_advertiserId),
+        );
+        unittest.expect(
           queryMap['partnerId']!.first,
           unittest.equals(arg_partnerId),
         );
@@ -21661,7 +21661,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_inventorySourceId,
-          partnerId: arg_partnerId, $fields: arg_$fields);
+          advertiserId: arg_advertiserId,
+          partnerId: arg_partnerId,
+          $fields: arg_$fields);
       checkInventorySource(response as api.InventorySource);
     });
 

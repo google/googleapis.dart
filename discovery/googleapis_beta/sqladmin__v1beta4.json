@@ -27,6 +27,12 @@
     "name": "sqladmin",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230627",
+    "rootUrl": "https://sqladmin.googleapis.com/",
+    "servicePath": "",
+    "title": "Cloud SQL Admin API",
+    "version": "v1beta4",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -104,7 +110,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "backupRuns": {
             "methods": {
@@ -1043,6 +1048,41 @@
                         "https://www.googleapis.com/auth/sqlservice.admin"
                     ]
                 },
+                "reencrypt": {
+                    "description": "Reencrypt CMEK instance with latest key version.",
+                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/reencrypt",
+                    "httpMethod": "POST",
+                    "id": "sql.instances.reencrypt",
+                    "parameterOrder": [
+                        "project",
+                        "instance"
+                    ],
+                    "parameters": {
+                        "instance": {
+                            "description": "Cloud SQL instance ID. This does not include the project ID.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "ID of the project that contains the instance.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/reencrypt",
+                    "request": {
+                        "$ref": "InstancesReencryptRequest"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sqlservice.admin"
+                    ]
+                },
                 "resetSslConfig": {
                     "description": "Deletes all client certificates and generates a new server SSL certificate for the instance.",
                     "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/resetSslConfig",
@@ -1315,6 +1355,38 @@
         },
         "operations": {
             "methods": {
+                "cancel": {
+                    "description": "Cancels an instance operation that has been performed on an instance.",
+                    "flatPath": "sql/v1beta4/projects/{project}/operations/{operation}/cancel",
+                    "httpMethod": "POST",
+                    "id": "sql.operations.cancel",
+                    "parameterOrder": [
+                        "project",
+                        "operation"
+                    ],
+                    "parameters": {
+                        "operation": {
+                            "description": "Instance operation ID.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Project ID of the project that contains the instance.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "sql/v1beta4/projects/{project}/operations/{operation}/cancel",
+                    "response": {
+                        "$ref": "Empty"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sqlservice.admin"
+                    ]
+                },
                 "get": {
                     "description": "Retrieves an instance operation that has been performed on an instance.",
                     "flatPath": "sql/v1beta4/projects/{project}/operations/{operation}",
@@ -1420,6 +1492,38 @@
                             "path": "sql/v1beta4/projects/{project}/instances/{instance}/getDiskShrinkConfig",
                             "response": {
                                 "$ref": "SqlInstancesGetDiskShrinkConfigResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sqlservice.admin"
+                            ]
+                        },
+                        "getLatestRecoveryTime": {
+                            "description": "Get Latest Recovery Time for a given instance.",
+                            "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/getLatestRecoveryTime",
+                            "httpMethod": "GET",
+                            "id": "sql.projects.instances.getLatestRecoveryTime",
+                            "parameterOrder": [
+                                "project",
+                                "instance"
+                            ],
+                            "parameters": {
+                                "instance": {
+                                    "description": "Cloud SQL instance ID. This does not include the project ID.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "project": {
+                                    "description": "Project ID of the project that contains the instance.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "sql/v1beta4/projects/{project}/instances/{instance}/getLatestRecoveryTime",
+                            "response": {
+                                "$ref": "SqlInstancesGetLatestRecoveryTimeResponse"
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform",
@@ -2021,8 +2125,6 @@
             }
         }
     },
-    "revision": "20230510",
-    "rootUrl": "https://sqladmin.googleapis.com/",
     "schemas": {
         "AclEntry": {
             "description": "An entry for an Access Control list.",
@@ -2114,7 +2216,7 @@
                     "type": "string"
                 },
                 "pointInTimeRecoveryEnabled": {
-                    "description": "(Postgres only) Whether point in time recovery is enabled.",
+                    "description": "Whether point in time recovery is enabled.",
                     "type": "boolean"
                 },
                 "replicationLogArchivingEnabled": {
@@ -2144,6 +2246,32 @@
                 },
                 "kind": {
                     "description": "This is always `sql#backupContext`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "BackupReencryptionConfig": {
+            "description": "Backup Reencryption Config",
+            "id": "BackupReencryptionConfig",
+            "properties": {
+                "backupLimit": {
+                    "description": "Backup re-encryption limit",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "backupType": {
+                    "description": "Type of backups users want to re-encrypt.",
+                    "enum": [
+                        "BACKUP_TYPE_UNSPECIFIED",
+                        "AUTOMATED",
+                        "ON_DEMAND"
+                    ],
+                    "enumDescriptions": [
+                        "Unknown backup type, will be defaulted to AUTOMATIC backup type",
+                        "Reencrypt automatic backups",
+                        "Reencrypt on-demand backups"
+                    ],
                     "type": "string"
                 }
             },
@@ -2377,7 +2505,7 @@
                     "type": "string"
                 },
                 "preferredZone": {
-                    "description": "(Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.",
+                    "description": "Optional. (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.",
                     "type": "string"
                 }
             },
@@ -2438,7 +2566,11 @@
                         "SQLSERVER_2019_STANDARD",
                         "SQLSERVER_2019_ENTERPRISE",
                         "SQLSERVER_2019_EXPRESS",
-                        "SQLSERVER_2019_WEB"
+                        "SQLSERVER_2019_WEB",
+                        "SQLSERVER_2022_STANDARD",
+                        "SQLSERVER_2022_ENTERPRISE",
+                        "SQLSERVER_2022_EXPRESS",
+                        "SQLSERVER_2022_WEB"
                     ],
                     "enumDescriptions": [
                         "This is an unknown database version.",
@@ -2473,8 +2605,16 @@
                         "The database version is SQL Server 2019 Standard.",
                         "The database version is SQL Server 2019 Enterprise.",
                         "The database version is SQL Server 2019 Express.",
-                        "The database version is SQL Server 2019 Web."
+                        "The database version is SQL Server 2019 Web.",
+                        "The database version is SQL Server 2022 Standard.",
+                        "The database version is SQL Server 2022 Enterprise.",
+                        "The database version is SQL Server 2022 Express.",
+                        "The database version is SQL Server 2022 Web."
                     ],
+                    "type": "string"
+                },
+                "dnsName": {
+                    "description": "The dns name of the instance.",
                     "type": "string"
                 },
                 "ipAddresses": {
@@ -2495,6 +2635,17 @@
                 "serverCaCert": {
                     "$ref": "SslCert",
                     "description": "SSL configuration."
+                }
+            },
+            "type": "object"
+        },
+        "DataCacheConfig": {
+            "description": "Data cache configurations.",
+            "id": "DataCacheConfig",
+            "properties": {
+                "dataCacheEnabled": {
+                    "description": "Whether data cache is enabled for the instance.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -2639,7 +2790,11 @@
                         "SQLSERVER_2019_STANDARD",
                         "SQLSERVER_2019_ENTERPRISE",
                         "SQLSERVER_2019_EXPRESS",
-                        "SQLSERVER_2019_WEB"
+                        "SQLSERVER_2019_WEB",
+                        "SQLSERVER_2022_STANDARD",
+                        "SQLSERVER_2022_ENTERPRISE",
+                        "SQLSERVER_2022_EXPRESS",
+                        "SQLSERVER_2022_WEB"
                     ],
                     "enumDescriptions": [
                         "This is an unknown database version.",
@@ -2674,7 +2829,11 @@
                         "The database version is SQL Server 2019 Standard.",
                         "The database version is SQL Server 2019 Enterprise.",
                         "The database version is SQL Server 2019 Express.",
-                        "The database version is SQL Server 2019 Web."
+                        "The database version is SQL Server 2019 Web.",
+                        "The database version is SQL Server 2022 Standard.",
+                        "The database version is SQL Server 2022 Enterprise.",
+                        "The database version is SQL Server 2022 Express.",
+                        "The database version is SQL Server 2022 Web."
                     ],
                     "type": "string"
                 },
@@ -3003,6 +3162,12 @@
             },
             "type": "object"
         },
+        "Empty": {
+            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+            "id": "Empty",
+            "properties": {},
+            "type": "object"
+        },
         "ExportContext": {
             "description": "Database instance export context.",
             "id": "ExportContext",
@@ -3018,18 +3183,18 @@
                                 "DIFF"
                             ],
                             "enumDescriptions": [
-                                "default type to meet enum requirement, will be set to FULL if not set",
+                                "default type.",
                                 "Full backup.",
                                 "Differential backup."
                             ],
                             "type": "string"
                         },
                         "copyOnly": {
-                            "description": "Whether or not the export will be exeucted with COPY_ONLY, SQL Server only deprecated as the behavior should default to copy_only = true use differential_base instead",
+                            "description": "Deprecated: copy_only is deprecated. Use differential_base instead",
                             "type": "boolean"
                         },
                         "differentialBase": {
-                            "description": "Whether or not the backup can be use as differential base only non copy only backup can be served as differential base",
+                            "description": "Whether or not the backup can be used as a differential base copy_only backup can not be served as differential base",
                             "type": "boolean"
                         },
                         "stripeCount": {
@@ -3207,7 +3372,11 @@
                             "SQLSERVER_2019_STANDARD",
                             "SQLSERVER_2019_ENTERPRISE",
                             "SQLSERVER_2019_EXPRESS",
-                            "SQLSERVER_2019_WEB"
+                            "SQLSERVER_2019_WEB",
+                            "SQLSERVER_2022_STANDARD",
+                            "SQLSERVER_2022_ENTERPRISE",
+                            "SQLSERVER_2022_EXPRESS",
+                            "SQLSERVER_2022_WEB"
                         ],
                         "enumDescriptions": [
                             "This is an unknown database version.",
@@ -3242,7 +3411,11 @@
                             "The database version is SQL Server 2019 Standard.",
                             "The database version is SQL Server 2019 Enterprise.",
                             "The database version is SQL Server 2019 Express.",
-                            "The database version is SQL Server 2019 Web."
+                            "The database version is SQL Server 2019 Web.",
+                            "The database version is SQL Server 2022 Standard.",
+                            "The database version is SQL Server 2022 Enterprise.",
+                            "The database version is SQL Server 2022 Express.",
+                            "The database version is SQL Server 2022 Web."
                         ],
                         "type": "string"
                     },
@@ -3370,7 +3543,7 @@
                                 "DIFF"
                             ],
                             "enumDescriptions": [
-                                "default type to meet enum requirement, will be set to FULL if not set",
+                                "default type.",
                                 "Full backup.",
                                 "Differential backup."
                             ],
@@ -3625,6 +3798,17 @@
                 "kind": {
                     "description": "This is always `sql#instancesListServerCas`.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InstancesReencryptRequest": {
+            "description": "Database Instance reencrypt request.",
+            "id": "InstancesReencryptRequest",
+            "properties": {
+                "backupReencryptionConfig": {
+                    "$ref": "BackupReencryptionConfig",
+                    "description": "Configuration specific to backup re-encryption"
                 }
             },
             "type": "object"
@@ -3976,7 +4160,8 @@
                         "START_EXTERNAL_SYNC",
                         "LOG_CLEANUP",
                         "AUTO_RESTART",
-                        "REENCRYPT"
+                        "REENCRYPT",
+                        "SWITCHOVER"
                     ],
                     "enumDescriptions": [
                         "Unknown operation type.",
@@ -4016,7 +4201,8 @@
                         "Starts external sync of a Cloud SQL EM replica to an external primary instance.",
                         "Recovers logs from an instance's old data disk.",
                         "Performs auto-restart of an HA-enabled Cloud SQL database for auto recovery.",
-                        "Re-encrypts CMEK instances with latest key version."
+                        "Re-encrypts CMEK instances with latest key version.",
+                        "Switches over to replica instance from primary."
                     ],
                     "type": "string"
                 },
@@ -4396,6 +4582,10 @@
                     "description": "Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.",
                     "type": "boolean"
                 },
+                "dataCacheConfig": {
+                    "$ref": "DataCacheConfig",
+                    "description": "Configuration for data cache."
+                },
                 "dataDiskSizeGb": {
                     "description": "The size of data disk, in GB. The data disk size minimum is 10GB.",
                     "format": "int64",
@@ -4438,6 +4628,20 @@
                         "$ref": "DenyMaintenancePeriod"
                     },
                     "type": "array"
+                },
+                "edition": {
+                    "description": "Optional. The edition of the instance.",
+                    "enum": [
+                        "EDITION_UNSPECIFIED",
+                        "ENTERPRISE",
+                        "ENTERPRISE_PLUS"
+                    ],
+                    "enumDescriptions": [
+                        "The instance did not specify the edition.",
+                        "The instance is an enterprise edition.",
+                        "The instance is an Enterprise Plus edition."
+                    ],
+                    "type": "string"
                 },
                 "insightsConfig": {
                     "$ref": "InsightsConfig",
@@ -4586,7 +4790,12 @@
                         "UNSUPPORTED_STORAGE_ENGINE",
                         "LIMITED_SUPPORT_TABLES",
                         "EXISTING_DATA_IN_REPLICA",
-                        "MISSING_OPTIONAL_PRIVILEGES"
+                        "MISSING_OPTIONAL_PRIVILEGES",
+                        "RISKY_BACKUP_ADMIN_PRIVILEGE",
+                        "INSUFFICIENT_GCS_PERMISSIONS",
+                        "INVALID_FILE_INFO",
+                        "UNSUPPORTED_DATABASE_SETTINGS",
+                        "MYSQL_PARALLEL_IMPORT_INSUFFICIENT_PRIVILEGE"
                     ],
                     "enumDescriptions": [
                         "",
@@ -4618,7 +4827,12 @@
                         "The primary instance has tables with unsupported storage engine.",
                         "Source has tables with limited support eg: PostgreSQL tables without primary keys.",
                         "The replica instance contains existing data.",
-                        "The replication user is missing privileges that are optional."
+                        "The replication user is missing privileges that are optional.",
+                        "Additional BACKUP_ADMIN privilege is granted to the replication user which may lock source MySQL 8 instance for DDLs during initial sync.",
+                        "The Cloud Storage bucket is missing necessary permissions.",
+                        "The Cloud Storage bucket has an error in the file or contains invalid file information.",
+                        "The source instance has unsupported database settings for migration.",
+                        "The replication user is missing parallel import specific privileges. (e.g. LOCK TABLES) for MySQL."
                     ],
                     "type": "string"
                 }
@@ -4640,6 +4854,22 @@
                 "minimalTargetSizeGb": {
                     "description": "The minimum size to which a disk can be shrunk in GigaBytes.",
                     "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SqlInstancesGetLatestRecoveryTimeResponse": {
+            "description": "Instance get latest recovery time response.",
+            "id": "SqlInstancesGetLatestRecoveryTimeResponse",
+            "properties": {
+                "kind": {
+                    "description": "This is always `sql#getLatestRecoveryTime`.",
+                    "type": "string"
+                },
+                "latestRecoveryTime": {
+                    "description": "Timestamp, identifies the latest recovery time of the source instance.",
+                    "format": "google-datetime",
                     "type": "string"
                 }
             },
@@ -4684,6 +4914,22 @@
                         "Unknown external sync mode, will be defaulted to ONLINE mode",
                         "Online external sync will set up replication after initial data external sync",
                         "Offline external sync only dumps and loads a one-time snapshot of the primary instance's data"
+                    ],
+                    "type": "string"
+                },
+                "syncParallelLevel": {
+                    "description": "Optional. Parallel level for initial data sync. Currently only applicable for MySQL.",
+                    "enum": [
+                        "EXTERNAL_SYNC_PARALLEL_LEVEL_UNSPECIFIED",
+                        "MIN",
+                        "OPTIMAL",
+                        "MAX"
+                    ],
+                    "enumDescriptions": [
+                        "Unknown sync parallel level. Will be defaulted to OPTIMAL.",
+                        "Minimal parallel level.",
+                        "Optimal parallel level.",
+                        "Maximum parallel level."
                     ],
                     "type": "string"
                 }
@@ -5187,8 +5433,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Cloud SQL Admin API",
-    "version": "v1beta4"
+    }
 }

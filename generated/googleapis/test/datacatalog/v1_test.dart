@@ -1337,6 +1337,7 @@ api.GoogleCloudDatacatalogV1ImportEntriesRequest
   buildCounterGoogleCloudDatacatalogV1ImportEntriesRequest++;
   if (buildCounterGoogleCloudDatacatalogV1ImportEntriesRequest < 3) {
     o.gcsBucketPath = 'foo';
+    o.jobId = 'foo';
   }
   buildCounterGoogleCloudDatacatalogV1ImportEntriesRequest--;
   return o;
@@ -1348,6 +1349,10 @@ void checkGoogleCloudDatacatalogV1ImportEntriesRequest(
   if (buildCounterGoogleCloudDatacatalogV1ImportEntriesRequest < 3) {
     unittest.expect(
       o.gcsBucketPath!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.jobId!,
       unittest.equals('foo'),
     );
   }
@@ -4687,6 +4692,8 @@ void main() {
       final res = api.DataCatalogApi(mock).entries;
       final arg_fullyQualifiedName = 'foo';
       final arg_linkedResource = 'foo';
+      final arg_location = 'foo';
+      final arg_project = 'foo';
       final arg_sqlResource = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4729,6 +4736,14 @@ void main() {
           unittest.equals(arg_linkedResource),
         );
         unittest.expect(
+          queryMap['location']!.first,
+          unittest.equals(arg_location),
+        );
+        unittest.expect(
+          queryMap['project']!.first,
+          unittest.equals(arg_project),
+        );
+        unittest.expect(
           queryMap['sqlResource']!.first,
           unittest.equals(arg_sqlResource),
         );
@@ -4746,6 +4761,8 @@ void main() {
       final response = await res.lookup(
           fullyQualifiedName: arg_fullyQualifiedName,
           linkedResource: arg_linkedResource,
+          location: arg_location,
+          project: arg_project,
           sqlResource: arg_sqlResource,
           $fields: arg_$fields);
       checkGoogleCloudDatacatalogV1Entry(

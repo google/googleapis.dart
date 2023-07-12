@@ -24,6 +24,13 @@
     "name": "iam",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230710",
+    "rootUrl": "https://iam.googleapis.com/",
+    "servicePath": "",
+    "title": "Identity and Access Management (IAM) API",
+    "version": "v2",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "policies": {
             "methods": {
@@ -291,8 +297,6 @@
             }
         }
     },
-    "revision": "20230511",
-    "rootUrl": "https://iam.googleapis.com/",
     "schemas": {
         "GoogleIamAdminV1AuditData": {
             "description": "Audit log information specific to Cloud IAM admin APIs. This message is serialized as an `Any` type in the `ServiceData` message of an `AuditLog` message.",
@@ -475,7 +479,7 @@
                     "type": "string"
                 },
                 "etag": {
-                    "description": "An opaque tag that identifies the current version of the `Policy`. IAM uses this value to help manage concurrent updates, so they do not cause one update to be overwritten by another. If this field is present in a CreatePolicy request, the value is ignored.",
+                    "description": "An opaque tag that identifies the current version of the `Policy`. IAM uses this value to help manage concurrent updates, so they do not cause one update to be overwritten by another. If this field is present in a CreatePolicyRequest, the value is ignored.",
                     "type": "string"
                 },
                 "kind": {
@@ -619,9 +623,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Identity and Access Management (IAM) API",
-    "version": "v2",
-    "version_module": true
+    }
 }

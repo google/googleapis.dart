@@ -870,12 +870,14 @@ class CustomersTelemetryEventsResource {
   /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [filter] - Optional. Only include resources that match the filter.
-  /// Supported filter fields: - device_id - user_id - device_org_unit_id -
-  /// user_org_unit_id - timestamp - event_type The "timestamp" filter accepts
-  /// either the Unix Epoch milliseconds format or the RFC3339 UTC "Zulu" format
-  /// with nanosecond resolution and up to nine fractional digits. Both formats
-  /// should be surrounded by simple double quotes. Examples:
-  /// "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z", "1679283943823".
+  /// Although this parameter is currently optional, this parameter will be
+  /// required- please specify at least 1 event type. Supported filter fields: -
+  /// device_id - user_id - device_org_unit_id - user_org_unit_id - timestamp -
+  /// event_type The "timestamp" filter accepts either the Unix Epoch
+  /// milliseconds format or the RFC3339 UTC "Zulu" format with nanosecond
+  /// resolution and up to nine fractional digits. Both formats should be
+  /// surrounded by simple double quotes. Examples: "2014-10-02T15:01:23Z",
+  /// "2014-10-02T15:01:23.045123456Z", "1679283943823".
   ///
   /// [pageSize] - Optional. Maximum number of results to return. Default value
   /// is 100. Maximum value is 1000.
@@ -883,6 +885,8 @@ class CustomersTelemetryEventsResource {
   /// [pageToken] - Optional. Token to specify next page in the list.
   ///
   /// [readMask] - Required. Read mask to specify which fields to return.
+  /// Although currently required, this field will become optional, while the
+  /// filter parameter with an event type will be come required.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3300,6 +3304,50 @@ class GoogleChromeManagementV1GraphicsStatusReport {
       };
 }
 
+/// Heartbeat status report of a device.
+///
+/// * Available for Kiosks * This field provides online/offline/unknown status
+/// of a device and will only be included if the status has changed (e.g. Online
+/// -\> Offline) * Data for this field is controlled via policy:
+/// [HeartbeatEnabled](https://chromeenterprise.google/policies/#HeartbeatEnabled)
+/// [More Info](https://support.google.com/chrome/a/answer/6179663#:~:text=On%20the%20Chrome,device%20status%20alerts)
+/// * Heartbeat Frequency: 2 mins * Note: If a device goes offline, it can take
+/// up to 12 minutes for the online status of the device to be updated * Cache:
+/// If the device is offline, the collected data is stored locally, and will be
+/// reported when the device is next online: N/A * Reported for affiliated users
+/// only: N/A * Granular permission needed: TELEMETRY_API_DEVICE_ACTIVITY_REPORT
+class GoogleChromeManagementV1HeartbeatStatusReport {
+  /// Timestamp of when status changed was detected
+  core.String? reportTime;
+
+  /// State the device changed to
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State not specified
+  /// - "UNKNOWN" : Device is not eligible for heartbeat monitoring
+  /// - "ONLINE" : Device is online
+  /// - "OFFLINE" : Device is offline
+  core.String? state;
+
+  GoogleChromeManagementV1HeartbeatStatusReport({
+    this.reportTime,
+    this.state,
+  });
+
+  GoogleChromeManagementV1HeartbeatStatusReport.fromJson(core.Map json_)
+      : this(
+          reportTime: json_.containsKey('reportTime')
+              ? json_['reportTime'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (reportTime != null) 'reportTime': reportTime!,
+        if (state != null) 'state': state!,
+      };
+}
+
 /// Data that describes the result of the HTTPS latency diagnostics routine,
 /// with the HTTPS requests issued to Google websites.
 class GoogleChromeManagementV1HttpsLatencyRoutineData {
@@ -3491,6 +3539,52 @@ class GoogleChromeManagementV1InstalledApp {
         if (homepageUri != null) 'homepageUri': homepageUri!,
         if (osUserCount != null) 'osUserCount': osUserCount!,
         if (permissions != null) 'permissions': permissions!,
+      };
+}
+
+/// Kiosk app status report of a device.
+///
+/// * Available for Kiosks * This field provides the app id and version number
+/// running on a kiosk device and the timestamp of when the report was last
+/// updated * Data for this field is controlled via policy:
+/// [ReportDeviceSessionStatus](https://chromeenterprise.google/policies/#ReportDeviceSessionStatus)
+/// * Data Collection Frequency: Only at Upload * Default Data Reporting
+/// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
+/// offline, the collected data is stored locally, and will be reported when the
+/// device is next online: No * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_APPS_REPORT
+class GoogleChromeManagementV1KioskAppStatusReport {
+  /// App id of kiosk app for example "mdmkkicfmmkgmpkmkdikhlbggogpicma"
+  core.String? appId;
+
+  /// App version number of kiosk app for example "1.10.118"
+  core.String? appVersion;
+
+  /// Timestamp of when report was collected
+  core.String? reportTime;
+
+  GoogleChromeManagementV1KioskAppStatusReport({
+    this.appId,
+    this.appVersion,
+    this.reportTime,
+  });
+
+  GoogleChromeManagementV1KioskAppStatusReport.fromJson(core.Map json_)
+      : this(
+          appId:
+              json_.containsKey('appId') ? json_['appId'] as core.String : null,
+          appVersion: json_.containsKey('appVersion')
+              ? json_['appVersion'] as core.String
+              : null,
+          reportTime: json_.containsKey('reportTime')
+              ? json_['reportTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appId != null) 'appId': appId!,
+        if (appVersion != null) 'appVersion': appVersion!,
+        if (reportTime != null) 'reportTime': reportTime!,
       };
 }
 
@@ -4387,6 +4481,18 @@ class GoogleChromeManagementV1TelemetryDevice {
   /// Output only.
   core.List<GoogleChromeManagementV1GraphicsStatusReport>? graphicsStatusReport;
 
+  /// Heartbeat status report containing timestamps periodically sorted in
+  /// decreasing order of report_time
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1HeartbeatStatusReport>?
+      heartbeatStatusReport;
+
+  /// Kiosk app status report for the kiosk device
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1KioskAppStatusReport>? kioskAppStatusReport;
+
   /// Information regarding memory specs for the device.
   ///
   /// Output only.
@@ -4469,6 +4575,8 @@ class GoogleChromeManagementV1TelemetryDevice {
     this.deviceId,
     this.graphicsInfo,
     this.graphicsStatusReport,
+    this.heartbeatStatusReport,
+    this.kioskAppStatusReport,
     this.memoryInfo,
     this.memoryStatusReport,
     this.name,
@@ -4540,6 +4648,20 @@ class GoogleChromeManagementV1TelemetryDevice {
               ? (json_['graphicsStatusReport'] as core.List)
                   .map((value) =>
                       GoogleChromeManagementV1GraphicsStatusReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          heartbeatStatusReport: json_.containsKey('heartbeatStatusReport')
+              ? (json_['heartbeatStatusReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1HeartbeatStatusReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kioskAppStatusReport: json_.containsKey('kioskAppStatusReport')
+              ? (json_['kioskAppStatusReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1KioskAppStatusReport.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -4628,6 +4750,10 @@ class GoogleChromeManagementV1TelemetryDevice {
         if (graphicsInfo != null) 'graphicsInfo': graphicsInfo!,
         if (graphicsStatusReport != null)
           'graphicsStatusReport': graphicsStatusReport!,
+        if (heartbeatStatusReport != null)
+          'heartbeatStatusReport': heartbeatStatusReport!,
+        if (kioskAppStatusReport != null)
+          'kioskAppStatusReport': kioskAppStatusReport!,
         if (memoryInfo != null) 'memoryInfo': memoryInfo!,
         if (memoryStatusReport != null)
           'memoryStatusReport': memoryStatusReport!,

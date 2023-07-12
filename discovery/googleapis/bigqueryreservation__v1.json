@@ -27,6 +27,13 @@
     "name": "bigqueryreservation",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230706",
+    "rootUrl": "https://bigqueryreservation.googleapis.com/",
+    "servicePath": "",
+    "title": "BigQuery Reservation API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -104,7 +111,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -821,8 +827,6 @@
             }
         }
     },
-    "revision": "20230509",
-    "rootUrl": "https://bigqueryreservation.googleapis.com/",
     "schemas": {
         "Assignment": {
             "description": "An assignment allows a project to submit jobs of a certain type using slots from the specified reservation.",
@@ -956,6 +960,11 @@
                     "$ref": "Status",
                     "description": "Output only. For FAILED commitment plan, provides the reason of failure.",
                     "readOnly": true
+                },
+                "isFlatRate": {
+                    "description": "Output only. If true, the commitment is a flat-rate commitment, otherwise, it's an edition commitment.",
+                    "readOnly": true,
+                    "type": "boolean"
                 },
                 "multiRegionAuxiliary": {
                     "description": "Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.",
@@ -1184,7 +1193,7 @@
                     "type": "string"
                 },
                 "slotCapacity": {
-                    "description": "Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If edition is EDITION_UNSPECIFIED and total slot_capacity of the reservation and its siblings exceeds the total slot_count of all capacity commitments, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`. If edition is any value but EDITION_UNSPECIFIED, then the above requirement is not needed. The total slot_capacity of the reservation and its siblings may exceed the total slot_count of capacity commitments. In that case, the exceeding slots will be charged with the autoscale SKU. You can increase the number of baseline slots in a reservation every few minutes. If you want to decrease your baseline slots, you are limited to once an hour if you have recently changed your baseline slot capacity and your baseline slots exceed your committed slots. Otherwise, you can decrease your baseline slots every few minutes. NOTE: for reservations in US or EU multi-regions, slot capacity constraints are checked separately for default and auxiliary regions. See multi_region_auxiliary flag for more details.",
+                    "description": "Baseline slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false, or autoscaling is enabled. If edition is EDITION_UNSPECIFIED and total slot_capacity of the reservation and its siblings exceeds the total slot_count of all capacity commitments, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`. If edition is any value but EDITION_UNSPECIFIED, then the above requirement is not needed. The total slot_capacity of the reservation and its siblings may exceed the total slot_count of capacity commitments. In that case, the exceeding slots will be charged with the autoscale SKU. You can increase the number of baseline slots in a reservation every few minutes. If you want to decrease your baseline slots, you are limited to once an hour if you have recently changed your baseline slot capacity and your baseline slots exceed your committed slots. Otherwise, you can decrease your baseline slots every few minutes. NOTE: for reservations in US or EU multi-regions, slot capacity constraints are checked separately for default and auxiliary regions. See multi_region_auxiliary flag for more details.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -1306,9 +1315,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "BigQuery Reservation API",
-    "version": "v1",
-    "version_module": true
+    }
 }

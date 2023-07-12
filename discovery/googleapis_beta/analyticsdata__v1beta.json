@@ -15,7 +15,7 @@
     "baseUrl": "https://analyticsdata.googleapis.com/",
     "batchPath": "batch",
     "canonicalName": "AnalyticsData",
-    "description": "Accesses report data in Google Analytics.",
+    "description": "Accesses report data in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning. ",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/analytics/devguides/reporting/data/v1/",
     "icons": {
@@ -27,6 +27,13 @@
     "name": "analyticsdata",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230711",
+    "rootUrl": "https://analyticsdata.googleapis.com/",
+    "servicePath": "",
+    "title": "Google Analytics Data API",
+    "version": "v1beta",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -104,7 +111,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "properties": {
             "methods": {
@@ -311,8 +317,6 @@
             }
         }
     },
-    "revision": "20230515",
-    "rootUrl": "https://analyticsdata.googleapis.com/",
     "schemas": {
         "ActiveMetricRestriction": {
             "description": "A metric actively restricted in creating the report.",
@@ -340,6 +344,12 @@
                     "type": "array"
                 }
             },
+            "type": "object"
+        },
+        "AudienceListMetadata": {
+            "description": "This metadata is currently blank.",
+            "id": "AudienceListMetadata",
+            "properties": {},
             "type": "object"
         },
         "BatchRunPivotReportsRequest": {
@@ -1840,9 +1850,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Google Analytics Data API",
-    "version": "v1beta",
-    "version_module": true
+    }
 }

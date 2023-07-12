@@ -502,8 +502,8 @@ class SpreadsheetsValuesResource {
   /// [responseValueRenderOption] - Determines how values in the response should
   /// be rendered. The default render option is FORMATTED_VALUE.
   /// Possible string values are:
-  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
-  /// according to the cell's formatting. Formatting is based on the
+  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the
+  /// response according to the cell's formatting. Formatting is based on the
   /// spreadsheet's locale, not the requesting user's locale. For example, if
   /// `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2`
   /// would return `"$1.23"`.
@@ -512,7 +512,11 @@ class SpreadsheetsValuesResource {
   /// as currency, then `A2` would return the number `1.23`.
   /// - "FORMULA" : Values will not be calculated. The reply will include the
   /// formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
-  /// as currency, then A2 would return `"=A1"`.
+  /// as currency, then A2 would return `"=A1"`. Sheets treats date and time
+  /// values as decimal values. This lets you perform arithmetic on them in
+  /// formulas. For more information on interpreting date and time values, see
+  /// \[About date & time
+  /// values\](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
   ///
   /// [valueInputOption] - How the input data should be interpreted.
   /// Possible string values are:
@@ -709,8 +713,8 @@ class SpreadsheetsValuesResource {
   /// [valueRenderOption] - How values should be represented in the output. The
   /// default render option is ValueRenderOption.FORMATTED_VALUE.
   /// Possible string values are:
-  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
-  /// according to the cell's formatting. Formatting is based on the
+  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the
+  /// response according to the cell's formatting. Formatting is based on the
   /// spreadsheet's locale, not the requesting user's locale. For example, if
   /// `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2`
   /// would return `"$1.23"`.
@@ -719,7 +723,11 @@ class SpreadsheetsValuesResource {
   /// as currency, then `A2` would return the number `1.23`.
   /// - "FORMULA" : Values will not be calculated. The reply will include the
   /// formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
-  /// as currency, then A2 would return `"=A1"`.
+  /// as currency, then A2 would return `"=A1"`. Sheets treats date and time
+  /// values as decimal values. This lets you perform arithmetic on them in
+  /// formulas. For more information on interpreting date and time values, see
+  /// \[About date & time
+  /// values\](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -990,8 +998,8 @@ class SpreadsheetsValuesResource {
   /// [valueRenderOption] - How values should be represented in the output. The
   /// default render option is FORMATTED_VALUE.
   /// Possible string values are:
-  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
-  /// according to the cell's formatting. Formatting is based on the
+  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the
+  /// response according to the cell's formatting. Formatting is based on the
   /// spreadsheet's locale, not the requesting user's locale. For example, if
   /// `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2`
   /// would return `"$1.23"`.
@@ -1000,7 +1008,11 @@ class SpreadsheetsValuesResource {
   /// as currency, then `A2` would return the number `1.23`.
   /// - "FORMULA" : Values will not be calculated. The reply will include the
   /// formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
-  /// as currency, then A2 would return `"=A1"`.
+  /// as currency, then A2 would return `"=A1"`. Sheets treats date and time
+  /// values as decimal values. This lets you perform arithmetic on them in
+  /// formulas. For more information on interpreting date and time values, see
+  /// \[About date & time
+  /// values\](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1081,8 +1093,8 @@ class SpreadsheetsValuesResource {
   /// [responseValueRenderOption] - Determines how values in the response should
   /// be rendered. The default render option is FORMATTED_VALUE.
   /// Possible string values are:
-  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
-  /// according to the cell's formatting. Formatting is based on the
+  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the
+  /// response according to the cell's formatting. Formatting is based on the
   /// spreadsheet's locale, not the requesting user's locale. For example, if
   /// `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2`
   /// would return `"$1.23"`.
@@ -1091,7 +1103,11 @@ class SpreadsheetsValuesResource {
   /// as currency, then `A2` would return the number `1.23`.
   /// - "FORMULA" : Values will not be calculated. The reply will include the
   /// formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
-  /// as currency, then A2 would return `"=A1"`.
+  /// as currency, then A2 would return `"=A1"`. Sheets treats date and time
+  /// values as decimal values. This lets you perform arithmetic on them in
+  /// formulas. For more information on interpreting date and time values, see
+  /// \[About date & time
+  /// values\](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
   ///
   /// [valueInputOption] - How the input data should be interpreted.
   /// Possible string values are:
@@ -2856,8 +2872,8 @@ class BatchGetValuesByDataFilterRequest {
   ///
   /// The default render option is FORMATTED_VALUE.
   /// Possible string values are:
-  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
-  /// according to the cell's formatting. Formatting is based on the
+  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the
+  /// response according to the cell's formatting. Formatting is based on the
   /// spreadsheet's locale, not the requesting user's locale. For example, if
   /// `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2`
   /// would return `"$1.23"`.
@@ -2866,7 +2882,11 @@ class BatchGetValuesByDataFilterRequest {
   /// as currency, then `A2` would return the number `1.23`.
   /// - "FORMULA" : Values will not be calculated. The reply will include the
   /// formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
-  /// as currency, then A2 would return `"=A1"`.
+  /// as currency, then A2 would return `"=A1"`. Sheets treats date and time
+  /// values as decimal values. This lets you perform arithmetic on them in
+  /// formulas. For more information on interpreting date and time values, see
+  /// \[About date & time
+  /// values\](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
   core.String? valueRenderOption;
 
   BatchGetValuesByDataFilterRequest({
@@ -3122,8 +3142,8 @@ class BatchUpdateValuesByDataFilterRequest {
   ///
   /// The default render option is FORMATTED_VALUE.
   /// Possible string values are:
-  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
-  /// according to the cell's formatting. Formatting is based on the
+  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the
+  /// response according to the cell's formatting. Formatting is based on the
   /// spreadsheet's locale, not the requesting user's locale. For example, if
   /// `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2`
   /// would return `"$1.23"`.
@@ -3132,7 +3152,11 @@ class BatchUpdateValuesByDataFilterRequest {
   /// as currency, then `A2` would return the number `1.23`.
   /// - "FORMULA" : Values will not be calculated. The reply will include the
   /// formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
-  /// as currency, then A2 would return `"=A1"`.
+  /// as currency, then A2 would return `"=A1"`. Sheets treats date and time
+  /// values as decimal values. This lets you perform arithmetic on them in
+  /// formulas. For more information on interpreting date and time values, see
+  /// \[About date & time
+  /// values\](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
   core.String? responseValueRenderOption;
 
   /// How the input data should be interpreted.
@@ -3297,8 +3321,8 @@ class BatchUpdateValuesRequest {
   ///
   /// The default render option is FORMATTED_VALUE.
   /// Possible string values are:
-  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
-  /// according to the cell's formatting. Formatting is based on the
+  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the
+  /// response according to the cell's formatting. Formatting is based on the
   /// spreadsheet's locale, not the requesting user's locale. For example, if
   /// `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2`
   /// would return `"$1.23"`.
@@ -3307,7 +3331,11 @@ class BatchUpdateValuesRequest {
   /// as currency, then `A2` would return the number `1.23`.
   /// - "FORMULA" : Values will not be calculated. The reply will include the
   /// formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
-  /// as currency, then A2 would return `"=A1"`.
+  /// as currency, then A2 would return `"=A1"`. Sheets treats date and time
+  /// values as decimal values. This lets you perform arithmetic on them in
+  /// formulas. For more information on interpreting date and time values, see
+  /// \[About date & time
+  /// values\](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
   core.String? responseValueRenderOption;
 
   /// How the input data should be interpreted.
@@ -3651,6 +3679,8 @@ class BooleanCondition {
   /// - "DATE_NOT_EQ" : The cell's value must be exactly not the condition's
   /// value. Supported by filters on data source objects. Requires at least one
   /// ConditionValue.
+  /// - "FILTER_EXPRESSION" : The cell's value must follow the pattern
+  /// specified. Requires a single ConditionValue.
   core.String? type;
 
   /// The values of the condition.
@@ -5110,32 +5140,32 @@ class ClearValuesResponse {
 
 /// Represents a color in the RGBA color space.
 ///
-/// This representation is designed for simplicity of conversion to/from color
-/// representations in various languages over compactness. For example, the
-/// fields of this representation can be trivially provided to the constructor
-/// of `java.awt.Color` in Java; it can also be trivially provided to UIColor's
-/// `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little
-/// work, it can be easily formatted into a CSS `rgba()` string in JavaScript.
-/// This reference page doesn't carry information about the absolute color space
-/// that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-/// DCI-P3, BT.2020, etc.). By default, applications should assume the sRGB
-/// color space. When color equality needs to be decided, implementations,
-/// unless documented otherwise, treat two colors as equal if all their red,
-/// green, blue, and alpha values each differ by at most 1e-5. Example (Java):
-/// import com.google.type.Color; // ... public static java.awt.Color
-/// fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ?
-/// protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color(
-/// protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); }
-/// public static Color toProto(java.awt.Color color) { float red = (float)
-/// color.getRed(); float green = (float) color.getGreen(); float blue = (float)
-/// color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder =
-/// Color .newBuilder() .setRed(red / denominator) .setGreen(green /
-/// denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if
-/// (alpha != 255) { result.setAlpha( FloatValue .newBuilder()
-/// .setValue(((float) alpha) / denominator) .build()); } return
-/// resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static
-/// UIColor* fromProto(Color* protocolor) { float red = \[protocolor red\];
-/// float green = \[protocolor green\]; float blue = \[protocolor blue\];
+/// This representation is designed for simplicity of conversion to and from
+/// color representations in various languages over compactness. For example,
+/// the fields of this representation can be trivially provided to the
+/// constructor of `java.awt.Color` in Java; it can also be trivially provided
+/// to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just
+/// a little work, it can be easily formatted into a CSS `rgba()` string in
+/// JavaScript. This reference page doesn't have information about the absolute
+/// color space that should be used to interpret the RGB value—for example,
+/// sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume
+/// the sRGB color space. When color equality needs to be decided,
+/// implementations, unless documented otherwise, treat two colors as equal if
+/// all their red, green, blue, and alpha values each differ by at most `1e-5`.
+/// Example (Java): import com.google.type.Color; // ... public static
+/// java.awt.Color fromProto(Color protocolor) { float alpha =
+/// protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+/// java.awt.Color( protocolor.getRed(), protocolor.getGreen(),
+/// protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color
+/// color) { float red = (float) color.getRed(); float green = (float)
+/// color.getGreen(); float blue = (float) color.getBlue(); float denominator =
+/// 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red /
+/// denominator) .setGreen(green / denominator) .setBlue(blue / denominator);
+/// int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha(
+/// FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build());
+/// } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ...
+/// static UIColor* fromProto(Color* protocolor) { float red = \[protocolor
+/// red\]; float green = \[protocolor green\]; float blue = \[protocolor blue\];
 /// FloatValue* alpha_wrapper = \[protocolor alpha\]; float alpha = 1.0; if
 /// (alpha_wrapper != nil) { alpha = \[alpha_wrapper value\]; } return \[UIColor
 /// colorWithRed:red green:green blue:blue alpha:alpha\]; } static Color*
@@ -10701,7 +10731,7 @@ class Request {
   /// Randomizes the order of the rows in a range.
   RandomizeRangeRequest? randomizeRange;
 
-  /// Refreshs one or multiple data sources and associated dbobjects.
+  /// Refreshes one or multiple data sources and associated dbobjects.
   RefreshDataSourceRequest? refreshDataSource;
 
   /// Repeats a single cell across a range.

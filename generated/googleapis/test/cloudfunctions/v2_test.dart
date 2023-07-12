@@ -387,10 +387,12 @@ api.Function_ buildFunction_() {
     o.kmsKeyName = 'foo';
     o.labels = buildUnnamed5();
     o.name = 'foo';
+    o.satisfiesPzs = true;
     o.serviceConfig = buildServiceConfig();
     o.state = 'foo';
     o.stateMessages = buildUnnamed6();
     o.updateTime = 'foo';
+    o.url = 'foo';
   }
   buildCounterFunction_--;
   return o;
@@ -418,6 +420,7 @@ void checkFunction_(api.Function_ o) {
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     checkServiceConfig(o.serviceConfig!);
     unittest.expect(
       o.state!,
@@ -426,6 +429,10 @@ void checkFunction_(api.Function_ o) {
     checkUnnamed6(o.stateMessages!);
     unittest.expect(
       o.updateTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.url!,
       unittest.equals('foo'),
     );
   }
@@ -982,7 +989,6 @@ api.RepoSource buildRepoSource() {
     o.branchName = 'foo';
     o.commitSha = 'foo';
     o.dir = 'foo';
-    o.invertRegex = true;
     o.projectId = 'foo';
     o.repoName = 'foo';
     o.tagName = 'foo';
@@ -1006,7 +1012,6 @@ void checkRepoSource(api.RepoSource o) {
       o.dir!,
       unittest.equals('foo'),
     );
-    unittest.expect(o.invertRegex!, unittest.isTrue);
     unittest.expect(
       o.projectId!,
       unittest.equals('foo'),
@@ -1351,6 +1356,7 @@ api.Source buildSource() {
   final o = api.Source();
   buildCounterSource++;
   if (buildCounterSource < 3) {
+    o.gitUri = 'foo';
     o.repoSource = buildRepoSource();
     o.storageSource = buildStorageSource();
   }
@@ -1361,6 +1367,10 @@ api.Source buildSource() {
 void checkSource(api.Source o) {
   buildCounterSource++;
   if (buildCounterSource < 3) {
+    unittest.expect(
+      o.gitUri!,
+      unittest.equals('foo'),
+    );
     checkRepoSource(o.repoSource!);
     checkStorageSource(o.storageSource!);
   }
@@ -1372,6 +1382,7 @@ api.SourceProvenance buildSourceProvenance() {
   final o = api.SourceProvenance();
   buildCounterSourceProvenance++;
   if (buildCounterSourceProvenance < 3) {
+    o.gitUri = 'foo';
     o.resolvedRepoSource = buildRepoSource();
     o.resolvedStorageSource = buildStorageSource();
   }
@@ -1382,6 +1393,10 @@ api.SourceProvenance buildSourceProvenance() {
 void checkSourceProvenance(api.SourceProvenance o) {
   buildCounterSourceProvenance++;
   if (buildCounterSourceProvenance < 3) {
+    unittest.expect(
+      o.gitUri!,
+      unittest.equals('foo'),
+    );
     checkRepoSource(o.resolvedRepoSource!);
     checkStorageSource(o.resolvedStorageSource!);
   }

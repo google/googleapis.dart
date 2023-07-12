@@ -24,6 +24,13 @@
     "name": "firebaseremoteconfig",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230710",
+    "rootUrl": "https://firebaseremoteconfig.googleapis.com/",
+    "servicePath": "",
+    "title": "Firebase Remote Config API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "methods": {
@@ -337,8 +343,6 @@
             }
         }
     },
-    "revision": "20230514",
-    "rootUrl": "https://firebaseremoteconfig.googleapis.com/",
     "schemas": {
         "ExperimentDescription": {
             "description": "Encapsulates per-experiment data.",
@@ -817,9 +821,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Firebase Remote Config API",
-    "version": "v1",
-    "version_module": true
+    }
 }

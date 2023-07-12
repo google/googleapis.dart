@@ -86,6 +86,12 @@
     "name": "classroom",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230708",
+    "rootUrl": "https://classroom.googleapis.com/",
+    "servicePath": "",
+    "title": "Google Classroom API",
+    "version": "v1",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -163,7 +169,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "courses": {
             "methods": {
@@ -1381,7 +1386,7 @@
                                     "enumDescriptions": [
                                         "No state specified. This is never returned.",
                                         "Status for course work material that has been published. This is the default state.",
-                                        "Status for an course work material that is not yet published. Course work material in this state is visible only to course teachers and domain administrators.",
+                                        "Status for a course work material that is not yet published. Course work material in this state is visible only to course teachers and domain administrators.",
                                         "Status for course work material that was published but is now deleted. Course work material in this state is visible only to course teachers and domain administrators. Course work material in this state is deleted after some time."
                                     ],
                                     "location": "query",
@@ -2398,8 +2403,6 @@
             }
         }
     },
-    "revision": "20230502",
-    "rootUrl": "https://classroom.googleapis.com/",
     "schemas": {
         "Announcement": {
             "description": "Announcement created by a teacher for students of the course",
@@ -2552,7 +2555,7 @@
                     "type": "string"
                 },
                 "calendarId": {
-                    "description": "The Calendar ID for a calendar that all course members can see, to which Classroom adds events for course work and announcements in the course. Read-only.",
+                    "description": "The Calendar ID for a calendar that all course members can see, to which Classroom adds events for course work and announcements in the course. The Calendar for a course is created asynchronously when the course is set to `CourseState.ACTIVE` for the first time (at creation time or when it is updated to `ACTIVE` through the UI or the API). The Calendar ID will not be populated until the creation process is completed. Read-only.",
                     "type": "string"
                 },
                 "courseGroupEmail": {
@@ -2941,7 +2944,7 @@
                     "enumDescriptions": [
                         "No state specified. This is never returned.",
                         "Status for course work material that has been published. This is the default state.",
-                        "Status for an course work material that is not yet published. Course work material in this state is visible only to course teachers and domain administrators.",
+                        "Status for a course work material that is not yet published. Course work material in this state is visible only to course teachers and domain administrators.",
                         "Status for course work material that was published but is now deleted. Course work material in this state is visible only to course teachers and domain administrators. Course work material in this state is deleted after some time."
                     ],
                     "type": "string"
@@ -4104,8 +4107,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Google Classroom API",
-    "version": "v1"
+    }
 }

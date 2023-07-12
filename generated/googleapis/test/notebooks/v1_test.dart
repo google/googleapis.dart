@@ -859,6 +859,7 @@ api.Instance buildInstance() {
     o.noPublicIp = true;
     o.noRemoveDataDisk = true;
     o.postStartupScript = 'foo';
+    o.preMigrationCheck = buildPreMigrationCheck();
     o.proxyUri = 'foo';
     o.reservationAffinity = buildReservationAffinity();
     o.serviceAccount = 'foo';
@@ -945,6 +946,7 @@ void checkInstance(api.Instance o) {
       o.postStartupScript!,
       unittest.equals('foo'),
     );
+    checkPreMigrationCheck(o.preMigrationCheck!);
     unittest.expect(
       o.proxyUri!,
       unittest.equals('foo'),
@@ -1775,6 +1777,33 @@ void checkPolicy(api.Policy o) {
     );
   }
   buildCounterPolicy--;
+}
+
+core.int buildCounterPreMigrationCheck = 0;
+api.PreMigrationCheck buildPreMigrationCheck() {
+  final o = api.PreMigrationCheck();
+  buildCounterPreMigrationCheck++;
+  if (buildCounterPreMigrationCheck < 3) {
+    o.message = 'foo';
+    o.result = 'foo';
+  }
+  buildCounterPreMigrationCheck--;
+  return o;
+}
+
+void checkPreMigrationCheck(api.PreMigrationCheck o) {
+  buildCounterPreMigrationCheck++;
+  if (buildCounterPreMigrationCheck < 3) {
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.result!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPreMigrationCheck--;
 }
 
 core.int buildCounterRefreshRuntimeTokenInternalRequest = 0;
@@ -3670,6 +3699,16 @@ void main() {
       final od =
           api.Policy.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-PreMigrationCheck', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPreMigrationCheck();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PreMigrationCheck.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPreMigrationCheck(od);
     });
   });
 

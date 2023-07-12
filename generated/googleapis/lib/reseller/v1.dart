@@ -776,12 +776,32 @@ class SubscriptionsResource {
   /// used. We recommend storing the unique identifier in your systems where
   /// applicable.
   ///
+  /// [action] - The intented insert action. The usage of this field is governed
+  /// by certain policies which are being developed & tested currently. Hence,
+  /// these might not work as intended. Once this is fully tested & available to
+  /// consume, we will share more information about its usage, limitations and
+  /// policy documentation.
+  /// Possible string values are:
+  /// - "actionUnspecified" : Auto determines whether to create new
+  /// subscription, upgrade or downagrade existing subscription or transfer the
+  /// existing subscription
+  /// - "buy" : Create new subscription
+  /// - "switch" : Switch existing subscription to another sku
+  /// (upgrade/downgrade)
+  ///
   /// [customerAuthToken] - The `customerAuthToken` query string is required
   /// when creating a resold account that transfers a direct customer's
   /// subscription or transfers another reseller customer's subscription to your
   /// reseller management. This is a hexadecimal authentication token needed to
   /// complete the subscription transfer. For more information, see the
   /// administrator help center.
+  ///
+  /// [sourceSkuId] - The sku_id of the existing subscription to be upgraded or
+  /// downgraded. This is required when action is SWITCH. The usage of this
+  /// field is governed by certain policies which are being developed & tested
+  /// currently. Hence, these might not work as intended. Once this is fully
+  /// tested & available to consume, we will share more information about its
+  /// usage, limitations and policy documentation.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -796,12 +816,16 @@ class SubscriptionsResource {
   async.Future<Subscription> insert(
     Subscription request,
     core.String customerId, {
+    core.String? action,
     core.String? customerAuthToken,
+    core.String? sourceSkuId,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (action != null) 'action': [action],
       if (customerAuthToken != null) 'customerAuthToken': [customerAuthToken],
+      if (sourceSkuId != null) 'sourceSkuId': [sourceSkuId],
       if ($fields != null) 'fields': [$fields],
     };
 

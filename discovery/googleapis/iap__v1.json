@@ -24,6 +24,13 @@
     "name": "iap",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230707",
+    "rootUrl": "https://iap.googleapis.com/",
+    "servicePath": "",
+    "title": "Cloud Identity-Aware Proxy API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -646,12 +652,40 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform"
                     ]
+                },
+                "validateAttributeExpression": {
+                    "description": "Validates a given CEL expression conforms to IAP restrictions.",
+                    "flatPath": "v1/{v1Id}:validateAttributeExpression",
+                    "httpMethod": "POST",
+                    "id": "iap.validateAttributeExpression",
+                    "parameterOrder": [
+                        "name"
+                    ],
+                    "parameters": {
+                        "expression": {
+                            "description": "Required. User input string expression. Should be of the form 'attributes.saml_attributes.filter(attribute, attribute.name in ['{attribute_name}', '{attribute_name}'])'",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Required. The resource name of the IAP protected resource.",
+                            "location": "path",
+                            "pattern": "^.*$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+name}:validateAttributeExpression",
+                    "response": {
+                        "$ref": "ValidateIapAttributeExpressionResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 }
             }
         }
     },
-    "revision": "20230505",
-    "rootUrl": "https://iap.googleapis.com/",
     "schemas": {
         "AccessDeniedPageSettings": {
             "description": "Custom content configuration for access denied page. IAP allows customers to define a custom URI to use as the error page when access is denied to users. If IAP prevents access to this page, the default IAP error page will be displayed instead.",
@@ -1222,10 +1256,12 @@
                 }
             },
             "type": "object"
+        },
+        "ValidateIapAttributeExpressionResponse": {
+            "description": "API requires a return message, but currently all response strings will fit in the status and public message. In the future, this response can hold AST validation info.",
+            "id": "ValidateIapAttributeExpressionResponse",
+            "properties": {},
+            "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Cloud Identity-Aware Proxy API",
-    "version": "v1",
-    "version_module": true
+    }
 }

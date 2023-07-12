@@ -2682,6 +2682,10 @@ class InappproductsResource {
 
   /// Deletes an in-app product (i.e. a managed product or a subscription).
   ///
+  /// This method should no longer be used to delete subscriptions. See
+  /// [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+  /// for more information.
+  ///
   /// Request parameters:
   ///
   /// [packageName] - Package name of the app.
@@ -2719,6 +2723,10 @@ class InappproductsResource {
   }
 
   /// Gets an in-app product, which can be a managed product or a subscription.
+  ///
+  /// This method should no longer be used to retrieve subscriptions. See
+  /// [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+  /// for more information.
   ///
   /// Request parameters:
   ///
@@ -2760,6 +2768,10 @@ class InappproductsResource {
   }
 
   /// Creates an in-app product (i.e. a managed product or a subscription).
+  ///
+  /// This method should no longer be used to create subscriptions. See
+  /// [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+  /// for more information.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2814,7 +2826,10 @@ class InappproductsResource {
   /// If an app has a large number of in-app products, the response may be
   /// paginated. In this case the response field `tokenPagination.nextPageToken`
   /// will be set and the caller should provide its value as a `token` request
-  /// parameter to retrieve the next page.
+  /// parameter to retrieve the next page. This method should no longer be used
+  /// to retrieve subscriptions. See
+  /// [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+  /// for more information.
   ///
   /// Request parameters:
   ///
@@ -2866,6 +2881,10 @@ class InappproductsResource {
   }
 
   /// Patches an in-app product (i.e. a managed product or a subscription).
+  ///
+  /// This method should no longer be used to update subscriptions. See
+  /// [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+  /// for more information.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2920,6 +2939,10 @@ class InappproductsResource {
   }
 
   /// Updates an in-app product (i.e. a managed product or a subscription).
+  ///
+  /// This method should no longer be used to update subscriptions. See
+  /// [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+  /// for more information.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5374,6 +5397,70 @@ class UsersResource {
   }
 }
 
+/// Represents an Abi.
+class Abi {
+  /// Alias for an abi.
+  /// Possible string values are:
+  /// - "UNSPECIFIED_CPU_ARCHITECTURE" : Unspecified abi.
+  /// - "ARMEABI" : ARMEABI abi.
+  /// - "ARMEABI_V7A" : ARMEABI_V7A abi.
+  /// - "ARM64_V8A" : ARM64_V8A abi.
+  /// - "X86" : X86 abi.
+  /// - "X86_64" : X86_64 abi.
+  core.String? alias;
+
+  Abi({
+    this.alias,
+  });
+
+  Abi.fromJson(core.Map json_)
+      : this(
+          alias:
+              json_.containsKey('alias') ? json_['alias'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alias != null) 'alias': alias!,
+      };
+}
+
+/// Targeting based on Abi.
+class AbiTargeting {
+  /// Targeting of other sibling directories that were in the Bundle.
+  ///
+  /// For main splits this is targeting of other main splits.
+  core.List<Abi>? alternatives;
+
+  /// Value of an abi.
+  core.List<Abi>? value;
+
+  AbiTargeting({
+    this.alternatives,
+    this.value,
+  });
+
+  AbiTargeting.fromJson(core.Map json_)
+      : this(
+          alternatives: json_.containsKey('alternatives')
+              ? (json_['alternatives'] as core.List)
+                  .map((value) => Abi.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          value: json_.containsKey('value')
+              ? (json_['value'] as core.List)
+                  .map((value) => Abi.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alternatives != null) 'alternatives': alternatives!,
+        if (value != null) 'value': value!,
+      };
+}
+
 /// Represents a targeting rule of the form: User never had {scope} before.
 class AcquisitionTargetingRule {
   /// The scope of subscriptions this rule considers.
@@ -5464,6 +5551,180 @@ class ApkBinary {
   core.Map<core.String, core.dynamic> toJson() => {
         if (sha1 != null) 'sha1': sha1!,
         if (sha256 != null) 'sha256': sha256!,
+      };
+}
+
+/// Description of the created apks.
+class ApkDescription {
+  /// Set only for asset slices.
+  SplitApkMetadata? assetSliceMetadata;
+
+  /// Set only for Instant split APKs.
+  SplitApkMetadata? instantApkMetadata;
+
+  /// Path of the Apk, will be in the following format: .apk where DownloadId is
+  /// the ID used to download the apk using GeneratedApks.Download API.
+  core.String? path;
+
+  /// Set only for Split APKs.
+  SplitApkMetadata? splitApkMetadata;
+
+  /// Set only for standalone APKs.
+  StandaloneApkMetadata? standaloneApkMetadata;
+
+  /// Apk-level targeting.
+  ApkTargeting? targeting;
+
+  ApkDescription({
+    this.assetSliceMetadata,
+    this.instantApkMetadata,
+    this.path,
+    this.splitApkMetadata,
+    this.standaloneApkMetadata,
+    this.targeting,
+  });
+
+  ApkDescription.fromJson(core.Map json_)
+      : this(
+          assetSliceMetadata: json_.containsKey('assetSliceMetadata')
+              ? SplitApkMetadata.fromJson(json_['assetSliceMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          instantApkMetadata: json_.containsKey('instantApkMetadata')
+              ? SplitApkMetadata.fromJson(json_['instantApkMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          splitApkMetadata: json_.containsKey('splitApkMetadata')
+              ? SplitApkMetadata.fromJson(json_['splitApkMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          standaloneApkMetadata: json_.containsKey('standaloneApkMetadata')
+              ? StandaloneApkMetadata.fromJson(json_['standaloneApkMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          targeting: json_.containsKey('targeting')
+              ? ApkTargeting.fromJson(
+                  json_['targeting'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assetSliceMetadata != null)
+          'assetSliceMetadata': assetSliceMetadata!,
+        if (instantApkMetadata != null)
+          'instantApkMetadata': instantApkMetadata!,
+        if (path != null) 'path': path!,
+        if (splitApkMetadata != null) 'splitApkMetadata': splitApkMetadata!,
+        if (standaloneApkMetadata != null)
+          'standaloneApkMetadata': standaloneApkMetadata!,
+        if (targeting != null) 'targeting': targeting!,
+      };
+}
+
+/// A set of apks representing a module.
+class ApkSet {
+  /// Description of the generated apks.
+  core.List<ApkDescription>? apkDescription;
+
+  /// Metadata about the module represented by this ApkSet
+  ModuleMetadata? moduleMetadata;
+
+  ApkSet({
+    this.apkDescription,
+    this.moduleMetadata,
+  });
+
+  ApkSet.fromJson(core.Map json_)
+      : this(
+          apkDescription: json_.containsKey('apkDescription')
+              ? (json_['apkDescription'] as core.List)
+                  .map((value) => ApkDescription.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          moduleMetadata: json_.containsKey('moduleMetadata')
+              ? ModuleMetadata.fromJson(json_['moduleMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apkDescription != null) 'apkDescription': apkDescription!,
+        if (moduleMetadata != null) 'moduleMetadata': moduleMetadata!,
+      };
+}
+
+/// Represents a set of apk-level targetings.
+class ApkTargeting {
+  /// The abi that the apk targets
+  AbiTargeting? abiTargeting;
+
+  /// The language that the apk targets
+  LanguageTargeting? languageTargeting;
+
+  /// Multi-api-level targeting.
+  MultiAbiTargeting? multiAbiTargeting;
+
+  /// The screen density that this apk supports.
+  ScreenDensityTargeting? screenDensityTargeting;
+
+  /// The sdk version that the apk targets
+  SdkVersionTargeting? sdkVersionTargeting;
+
+  /// Texture-compression-format-level targeting
+  TextureCompressionFormatTargeting? textureCompressionFormatTargeting;
+
+  ApkTargeting({
+    this.abiTargeting,
+    this.languageTargeting,
+    this.multiAbiTargeting,
+    this.screenDensityTargeting,
+    this.sdkVersionTargeting,
+    this.textureCompressionFormatTargeting,
+  });
+
+  ApkTargeting.fromJson(core.Map json_)
+      : this(
+          abiTargeting: json_.containsKey('abiTargeting')
+              ? AbiTargeting.fromJson(
+                  json_['abiTargeting'] as core.Map<core.String, core.dynamic>)
+              : null,
+          languageTargeting: json_.containsKey('languageTargeting')
+              ? LanguageTargeting.fromJson(json_['languageTargeting']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          multiAbiTargeting: json_.containsKey('multiAbiTargeting')
+              ? MultiAbiTargeting.fromJson(json_['multiAbiTargeting']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          screenDensityTargeting: json_.containsKey('screenDensityTargeting')
+              ? ScreenDensityTargeting.fromJson(json_['screenDensityTargeting']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sdkVersionTargeting: json_.containsKey('sdkVersionTargeting')
+              ? SdkVersionTargeting.fromJson(json_['sdkVersionTargeting']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          textureCompressionFormatTargeting:
+              json_.containsKey('textureCompressionFormatTargeting')
+                  ? TextureCompressionFormatTargeting.fromJson(
+                      json_['textureCompressionFormatTargeting']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (abiTargeting != null) 'abiTargeting': abiTargeting!,
+        if (languageTargeting != null) 'languageTargeting': languageTargeting!,
+        if (multiAbiTargeting != null) 'multiAbiTargeting': multiAbiTargeting!,
+        if (screenDensityTargeting != null)
+          'screenDensityTargeting': screenDensityTargeting!,
+        if (sdkVersionTargeting != null)
+          'sdkVersionTargeting': sdkVersionTargeting!,
+        if (textureCompressionFormatTargeting != null)
+          'textureCompressionFormatTargeting':
+              textureCompressionFormatTargeting!,
       };
 }
 
@@ -5628,6 +5889,77 @@ class AppEdit {
 
 /// Request message for ArchiveSubscription.
 typedef ArchiveSubscriptionRequest = $Empty;
+
+/// Metadata of an asset module.
+class AssetModuleMetadata {
+  /// Indicates the delivery type for persistent install.
+  /// Possible string values are:
+  /// - "UNKNOWN_DELIVERY_TYPE" : Unspecified delivery type.
+  /// - "INSTALL_TIME" : This module will always be downloaded as part of the
+  /// initial install of the app.
+  /// - "ON_DEMAND" : This module is requested on-demand, which means it will
+  /// not be part of the initial install, and will only be sent when requested
+  /// by the client.
+  /// - "FAST_FOLLOW" : This module will be downloaded immediately after initial
+  /// install finishes. The app can be opened before these modules are
+  /// downloaded.
+  core.String? deliveryType;
+
+  /// Module name.
+  core.String? name;
+
+  AssetModuleMetadata({
+    this.deliveryType,
+    this.name,
+  });
+
+  AssetModuleMetadata.fromJson(core.Map json_)
+      : this(
+          deliveryType: json_.containsKey('deliveryType')
+              ? json_['deliveryType'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deliveryType != null) 'deliveryType': deliveryType!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Set of asset slices belonging to a single asset module.
+class AssetSliceSet {
+  /// Asset slices.
+  core.List<ApkDescription>? apkDescription;
+
+  /// Module level metadata.
+  AssetModuleMetadata? assetModuleMetadata;
+
+  AssetSliceSet({
+    this.apkDescription,
+    this.assetModuleMetadata,
+  });
+
+  AssetSliceSet.fromJson(core.Map json_)
+      : this(
+          apkDescription: json_.containsKey('apkDescription')
+              ? (json_['apkDescription'] as core.List)
+                  .map((value) => ApkDescription.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          assetModuleMetadata: json_.containsKey('assetModuleMetadata')
+              ? AssetModuleMetadata.fromJson(json_['assetModuleMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apkDescription != null) 'apkDescription': apkDescription!,
+        if (assetModuleMetadata != null)
+          'assetModuleMetadata': assetModuleMetadata!,
+      };
+}
 
 /// Represents a base plan that automatically renews at the end of its
 /// subscription period.
@@ -6255,6 +6587,27 @@ typedef DeactivateBasePlanRequest = $Empty;
 /// Request message for DeactivateSubscriptionOffer.
 typedef DeactivateSubscriptionOfferRequest = $Empty;
 
+/// Information related to deferred item replacement.
+class DeferredItemReplacement {
+  /// The product_id going to replace the existing product_id.
+  core.String? productId;
+
+  DeferredItemReplacement({
+    this.productId,
+  });
+
+  DeferredItemReplacement.fromJson(core.Map json_)
+      : this(
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (productId != null) 'productId': productId!,
+      };
+}
+
 /// Represents a deobfuscation file.
 class DeobfuscationFile {
   /// The type of the deobfuscation file.
@@ -6333,6 +6686,58 @@ class DeveloperComment {
 
 /// Information specific to cancellations initiated by developers.
 typedef DeveloperInitiatedCancellation = $Empty;
+
+/// Represents a device feature.
+class DeviceFeature {
+  /// Name of the feature.
+  core.String? featureName;
+
+  /// The feature version specified by android:glEsVersion or android:version in
+  /// in the AndroidManifest.
+  core.int? featureVersion;
+
+  DeviceFeature({
+    this.featureName,
+    this.featureVersion,
+  });
+
+  DeviceFeature.fromJson(core.Map json_)
+      : this(
+          featureName: json_.containsKey('featureName')
+              ? json_['featureName'] as core.String
+              : null,
+          featureVersion: json_.containsKey('featureVersion')
+              ? json_['featureVersion'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (featureName != null) 'featureName': featureName!,
+        if (featureVersion != null) 'featureVersion': featureVersion!,
+      };
+}
+
+/// Targeting for a device feature.
+class DeviceFeatureTargeting {
+  /// Feature of the device.
+  DeviceFeature? requiredFeature;
+
+  DeviceFeatureTargeting({
+    this.requiredFeature,
+  });
+
+  DeviceFeatureTargeting.fromJson(core.Map json_)
+      : this(
+          requiredFeature: json_.containsKey('requiredFeature')
+              ? DeviceFeature.fromJson(json_['requiredFeature']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requiredFeature != null) 'requiredFeature': requiredFeature!,
+      };
+}
 
 /// A group of devices.
 ///
@@ -7333,12 +7738,16 @@ class GeneratedApksPerSigningKey {
   /// key.
   GeneratedUniversalApk? generatedUniversalApk;
 
+  /// Contains targeting information about the generated apks.
+  TargetingInfo? targetingInfo;
+
   GeneratedApksPerSigningKey({
     this.certificateSha256Hash,
     this.generatedAssetPackSlices,
     this.generatedSplitApks,
     this.generatedStandaloneApks,
     this.generatedUniversalApk,
+    this.targetingInfo,
   });
 
   GeneratedApksPerSigningKey.fromJson(core.Map json_)
@@ -7369,6 +7778,10 @@ class GeneratedApksPerSigningKey {
               ? GeneratedUniversalApk.fromJson(json_['generatedUniversalApk']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          targetingInfo: json_.containsKey('targetingInfo')
+              ? TargetingInfo.fromJson(
+                  json_['targetingInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7382,6 +7795,7 @@ class GeneratedApksPerSigningKey {
           'generatedStandaloneApks': generatedStandaloneApks!,
         if (generatedUniversalApk != null)
           'generatedUniversalApk': generatedUniversalApk!,
+        if (targetingInfo != null) 'targetingInfo': targetingInfo!,
       };
 }
 
@@ -8063,6 +8477,39 @@ class IntroductoryPriceInfo {
       };
 }
 
+/// Targeting based on language.
+class LanguageTargeting {
+  /// Alternative languages.
+  core.List<core.String>? alternatives;
+
+  /// ISO-639: 2 or 3 letter language code.
+  core.List<core.String>? value;
+
+  LanguageTargeting({
+    this.alternatives,
+    this.value,
+  });
+
+  LanguageTargeting.fromJson(core.Map json_)
+      : this(
+          alternatives: json_.containsKey('alternatives')
+              ? (json_['alternatives'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          value: json_.containsKey('value')
+              ? (json_['value'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alternatives != null) 'alternatives': alternatives!,
+        if (value != null) 'value': value!,
+      };
+}
+
 /// Response listing existing device tier configs.
 class ListDeviceTierConfigsResponse {
   /// Device tier configs created by the developer.
@@ -8406,8 +8853,185 @@ class MigrateBasePlanPricesRequest {
 /// Response message for MigrateBasePlanPrices.
 typedef MigrateBasePlanPricesResponse = $Empty;
 
+/// Metadata of a module.
+class ModuleMetadata {
+  /// Indicates the delivery type (e.g. on-demand) of the module.
+  /// Possible string values are:
+  /// - "UNKNOWN_DELIVERY_TYPE" : Unspecified delivery type.
+  /// - "INSTALL_TIME" : This module will always be downloaded as part of the
+  /// initial install of the app.
+  /// - "ON_DEMAND" : This module is requested on-demand, which means it will
+  /// not be part of the initial install, and will only be sent when requested
+  /// by the client.
+  /// - "FAST_FOLLOW" : This module will be downloaded immediately after initial
+  /// install finishes. The app can be opened before these modules are
+  /// downloaded.
+  core.String? deliveryType;
+
+  /// Names of the modules that this module directly depends on.
+  ///
+  /// Each module implicitly depends on the base module.
+  core.List<core.String>? dependencies;
+
+  /// Indicates the type of this feature module.
+  /// Possible string values are:
+  /// - "UNKNOWN_MODULE_TYPE" : Unknown feature module.
+  /// - "FEATURE_MODULE" : Regular feature module.
+  core.String? moduleType;
+
+  /// Module name.
+  core.String? name;
+
+  /// The targeting that makes a conditional module installed.
+  ///
+  /// Relevant only for Split APKs.
+  ModuleTargeting? targeting;
+
+  ModuleMetadata({
+    this.deliveryType,
+    this.dependencies,
+    this.moduleType,
+    this.name,
+    this.targeting,
+  });
+
+  ModuleMetadata.fromJson(core.Map json_)
+      : this(
+          deliveryType: json_.containsKey('deliveryType')
+              ? json_['deliveryType'] as core.String
+              : null,
+          dependencies: json_.containsKey('dependencies')
+              ? (json_['dependencies'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          moduleType: json_.containsKey('moduleType')
+              ? json_['moduleType'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          targeting: json_.containsKey('targeting')
+              ? ModuleTargeting.fromJson(
+                  json_['targeting'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deliveryType != null) 'deliveryType': deliveryType!,
+        if (dependencies != null) 'dependencies': dependencies!,
+        if (moduleType != null) 'moduleType': moduleType!,
+        if (name != null) 'name': name!,
+        if (targeting != null) 'targeting': targeting!,
+      };
+}
+
+/// Targeting on the module level.
+class ModuleTargeting {
+  /// Targeting for device features.
+  core.List<DeviceFeatureTargeting>? deviceFeatureTargeting;
+
+  /// The sdk version that the variant targets
+  SdkVersionTargeting? sdkVersionTargeting;
+
+  /// Countries-level targeting
+  UserCountriesTargeting? userCountriesTargeting;
+
+  ModuleTargeting({
+    this.deviceFeatureTargeting,
+    this.sdkVersionTargeting,
+    this.userCountriesTargeting,
+  });
+
+  ModuleTargeting.fromJson(core.Map json_)
+      : this(
+          deviceFeatureTargeting: json_.containsKey('deviceFeatureTargeting')
+              ? (json_['deviceFeatureTargeting'] as core.List)
+                  .map((value) => DeviceFeatureTargeting.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          sdkVersionTargeting: json_.containsKey('sdkVersionTargeting')
+              ? SdkVersionTargeting.fromJson(json_['sdkVersionTargeting']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          userCountriesTargeting: json_.containsKey('userCountriesTargeting')
+              ? UserCountriesTargeting.fromJson(json_['userCountriesTargeting']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceFeatureTargeting != null)
+          'deviceFeatureTargeting': deviceFeatureTargeting!,
+        if (sdkVersionTargeting != null)
+          'sdkVersionTargeting': sdkVersionTargeting!,
+        if (userCountriesTargeting != null)
+          'userCountriesTargeting': userCountriesTargeting!,
+      };
+}
+
 /// Represents an amount of money with its currency type.
 typedef Money = $Money;
+
+/// Represents a list of apis.
+class MultiAbi {
+  /// A list of targeted ABIs, as represented by the Android Platform
+  core.List<Abi>? abi;
+
+  MultiAbi({
+    this.abi,
+  });
+
+  MultiAbi.fromJson(core.Map json_)
+      : this(
+          abi: json_.containsKey('abi')
+              ? (json_['abi'] as core.List)
+                  .map((value) => Abi.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (abi != null) 'abi': abi!,
+      };
+}
+
+/// Targeting based on multiple abis.
+class MultiAbiTargeting {
+  /// Targeting of other sibling directories that were in the Bundle.
+  ///
+  /// For main splits this is targeting of other main splits.
+  core.List<MultiAbi>? alternatives;
+
+  /// Value of a multi abi.
+  core.List<MultiAbi>? value;
+
+  MultiAbiTargeting({
+    this.alternatives,
+    this.value,
+  });
+
+  MultiAbiTargeting.fromJson(core.Map json_)
+      : this(
+          alternatives: json_.containsKey('alternatives')
+              ? (json_['alternatives'] as core.List)
+                  .map((value) => MultiAbi.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          value: json_.containsKey('value')
+              ? (json_['value'] as core.List)
+                  .map((value) => MultiAbi.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alternatives != null) 'alternatives': alternatives!,
+        if (value != null) 'value': value!,
+      };
+}
 
 /// Offer details information related to a purchase line item.
 class OfferDetails {
@@ -9561,6 +10185,238 @@ class ReviewsReplyResponse {
       };
 }
 
+/// Represents a screen density.
+class ScreenDensity {
+  /// Alias for a screen density.
+  /// Possible string values are:
+  /// - "DENSITY_UNSPECIFIED" : Unspecified screen density.
+  /// - "NODPI" : NODPI screen density.
+  /// - "LDPI" : LDPI screen density.
+  /// - "MDPI" : MDPI screen density.
+  /// - "TVDPI" : TVDPI screen density.
+  /// - "HDPI" : HDPI screen density.
+  /// - "XHDPI" : XHDPI screen density.
+  /// - "XXHDPI" : XXHDPI screen density.
+  /// - "XXXHDPI" : XXXHDPI screen density.
+  core.String? densityAlias;
+
+  /// Value for density dpi.
+  core.int? densityDpi;
+
+  ScreenDensity({
+    this.densityAlias,
+    this.densityDpi,
+  });
+
+  ScreenDensity.fromJson(core.Map json_)
+      : this(
+          densityAlias: json_.containsKey('densityAlias')
+              ? json_['densityAlias'] as core.String
+              : null,
+          densityDpi: json_.containsKey('densityDpi')
+              ? json_['densityDpi'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (densityAlias != null) 'densityAlias': densityAlias!,
+        if (densityDpi != null) 'densityDpi': densityDpi!,
+      };
+}
+
+/// Targeting based on screen density.
+class ScreenDensityTargeting {
+  /// Targeting of other sibling directories that were in the Bundle.
+  ///
+  /// For main splits this is targeting of other main splits.
+  core.List<ScreenDensity>? alternatives;
+
+  /// Value of a screen density.
+  core.List<ScreenDensity>? value;
+
+  ScreenDensityTargeting({
+    this.alternatives,
+    this.value,
+  });
+
+  ScreenDensityTargeting.fromJson(core.Map json_)
+      : this(
+          alternatives: json_.containsKey('alternatives')
+              ? (json_['alternatives'] as core.List)
+                  .map((value) => ScreenDensity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          value: json_.containsKey('value')
+              ? (json_['value'] as core.List)
+                  .map((value) => ScreenDensity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alternatives != null) 'alternatives': alternatives!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Represents an sdk version.
+class SdkVersion {
+  /// Inclusive minimum value of an sdk version.
+  core.int? min;
+
+  SdkVersion({
+    this.min,
+  });
+
+  SdkVersion.fromJson(core.Map json_)
+      : this(
+          min: json_.containsKey('min') ? json_['min'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (min != null) 'min': min!,
+      };
+}
+
+/// Targeting based on sdk version.
+class SdkVersionTargeting {
+  /// Targeting of other sibling directories that were in the Bundle.
+  ///
+  /// For main splits this is targeting of other main splits.
+  core.List<SdkVersion>? alternatives;
+
+  /// Value of an sdk version.
+  core.List<SdkVersion>? value;
+
+  SdkVersionTargeting({
+    this.alternatives,
+    this.value,
+  });
+
+  SdkVersionTargeting.fromJson(core.Map json_)
+      : this(
+          alternatives: json_.containsKey('alternatives')
+              ? (json_['alternatives'] as core.List)
+                  .map((value) => SdkVersion.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          value: json_.containsKey('value')
+              ? (json_['value'] as core.List)
+                  .map((value) => SdkVersion.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alternatives != null) 'alternatives': alternatives!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Holds data specific to Split APKs.
+class SplitApkMetadata {
+  /// Indicates whether this APK is the main split of the module.
+  core.bool? isMasterSplit;
+
+  /// Id of the split.
+  core.String? splitId;
+
+  SplitApkMetadata({
+    this.isMasterSplit,
+    this.splitId,
+  });
+
+  SplitApkMetadata.fromJson(core.Map json_)
+      : this(
+          isMasterSplit: json_.containsKey('isMasterSplit')
+              ? json_['isMasterSplit'] as core.bool
+              : null,
+          splitId: json_.containsKey('splitId')
+              ? json_['splitId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (isMasterSplit != null) 'isMasterSplit': isMasterSplit!,
+        if (splitId != null) 'splitId': splitId!,
+      };
+}
+
+/// Variant is a group of APKs that covers a part of the device configuration
+/// space.
+///
+/// APKs from multiple variants are never combined on one device.
+class SplitApkVariant {
+  /// Set of APKs, one set per module.
+  core.List<ApkSet>? apkSet;
+
+  /// Variant-level targeting.
+  VariantTargeting? targeting;
+
+  /// Number of the variant, starting at 0 (unless overridden).
+  ///
+  /// A device will receive APKs from the first variant that matches the device
+  /// configuration, with higher variant numbers having priority over lower
+  /// variant numbers.
+  core.int? variantNumber;
+
+  SplitApkVariant({
+    this.apkSet,
+    this.targeting,
+    this.variantNumber,
+  });
+
+  SplitApkVariant.fromJson(core.Map json_)
+      : this(
+          apkSet: json_.containsKey('apkSet')
+              ? (json_['apkSet'] as core.List)
+                  .map((value) => ApkSet.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          targeting: json_.containsKey('targeting')
+              ? VariantTargeting.fromJson(
+                  json_['targeting'] as core.Map<core.String, core.dynamic>)
+              : null,
+          variantNumber: json_.containsKey('variantNumber')
+              ? json_['variantNumber'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apkSet != null) 'apkSet': apkSet!,
+        if (targeting != null) 'targeting': targeting!,
+        if (variantNumber != null) 'variantNumber': variantNumber!,
+      };
+}
+
+/// Holds data specific to Standalone APKs.
+class StandaloneApkMetadata {
+  /// Names of the modules fused in this standalone APK.
+  core.List<core.String>? fusedModuleName;
+
+  StandaloneApkMetadata({
+    this.fusedModuleName,
+  });
+
+  StandaloneApkMetadata.fromJson(core.Map json_)
+      : this(
+          fusedModuleName: json_.containsKey('fusedModuleName')
+              ? (json_['fusedModuleName'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fusedModuleName != null) 'fusedModuleName': fusedModuleName!,
+      };
+}
+
 /// Information associated with purchases made with 'Subscribe with Google'.
 class SubscribeWithGoogleInfo {
   /// The email address of the user when the subscription was purchased.
@@ -10542,6 +11398,9 @@ class SubscriptionPurchaseLineItem {
   /// The item is auto renewing.
   AutoRenewingPlan? autoRenewingPlan;
 
+  /// Information for deferred item replacement.
+  DeferredItemReplacement? deferredItemReplacement;
+
   /// Time at which the subscription expired or will expire unless the access is
   /// extended (ex.
   ///
@@ -10559,6 +11418,7 @@ class SubscriptionPurchaseLineItem {
 
   SubscriptionPurchaseLineItem({
     this.autoRenewingPlan,
+    this.deferredItemReplacement,
     this.expiryTime,
     this.offerDetails,
     this.prepaidPlan,
@@ -10570,6 +11430,11 @@ class SubscriptionPurchaseLineItem {
           autoRenewingPlan: json_.containsKey('autoRenewingPlan')
               ? AutoRenewingPlan.fromJson(json_['autoRenewingPlan']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          deferredItemReplacement: json_.containsKey('deferredItemReplacement')
+              ? DeferredItemReplacement.fromJson(
+                  json_['deferredItemReplacement']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           expiryTime: json_.containsKey('expiryTime')
               ? json_['expiryTime'] as core.String
@@ -10589,6 +11454,8 @@ class SubscriptionPurchaseLineItem {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoRenewingPlan != null) 'autoRenewingPlan': autoRenewingPlan!,
+        if (deferredItemReplacement != null)
+          'deferredItemReplacement': deferredItemReplacement!,
         if (expiryTime != null) 'expiryTime': expiryTime!,
         if (offerDetails != null) 'offerDetails': offerDetails!,
         if (prepaidPlan != null) 'prepaidPlan': prepaidPlan!,
@@ -10925,6 +11792,49 @@ class SystemFeature {
 /// Information specific to cancellations initiated by Google system.
 typedef SystemInitiatedCancellation = $Empty;
 
+/// Targeting information about the generated apks.
+class TargetingInfo {
+  /// List of created asset slices.
+  core.List<AssetSliceSet>? assetSliceSet;
+
+  /// The package name of this app.
+  core.String? packageName;
+
+  /// List of the created variants.
+  core.List<SplitApkVariant>? variant;
+
+  TargetingInfo({
+    this.assetSliceSet,
+    this.packageName,
+    this.variant,
+  });
+
+  TargetingInfo.fromJson(core.Map json_)
+      : this(
+          assetSliceSet: json_.containsKey('assetSliceSet')
+              ? (json_['assetSliceSet'] as core.List)
+                  .map((value) => AssetSliceSet.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          packageName: json_.containsKey('packageName')
+              ? json_['packageName'] as core.String
+              : null,
+          variant: json_.containsKey('variant')
+              ? (json_['variant'] as core.List)
+                  .map((value) => SplitApkVariant.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assetSliceSet != null) 'assetSliceSet': assetSliceSet!,
+        if (packageName != null) 'packageName': packageName!,
+        if (variant != null) 'variant': variant!,
+      };
+}
+
 /// Defines the scope of subscriptions which a targeting rule can match to
 /// target offers to users based on past or current entitlement.
 class TargetingRuleScope {
@@ -10979,6 +11889,75 @@ class Testers {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (googleGroups != null) 'googleGroups': googleGroups!,
+      };
+}
+
+/// Represents texture compression format.
+class TextureCompressionFormat {
+  /// Alias for texture compression format.
+  /// Possible string values are:
+  /// - "UNSPECIFIED_TEXTURE_COMPRESSION_FORMAT" : Unspecified format.
+  /// - "ETC1_RGB8" : ETC1_RGB8 format.
+  /// - "PALETTED" : PALETTED format.
+  /// - "THREE_DC" : THREE_DC format.
+  /// - "ATC" : ATC format.
+  /// - "LATC" : LATC format.
+  /// - "DXT1" : DXT1 format.
+  /// - "S3TC" : S3TC format.
+  /// - "PVRTC" : PVRTC format.
+  /// - "ASTC" : ASTC format.
+  /// - "ETC2" : ETC2 format.
+  core.String? alias;
+
+  TextureCompressionFormat({
+    this.alias,
+  });
+
+  TextureCompressionFormat.fromJson(core.Map json_)
+      : this(
+          alias:
+              json_.containsKey('alias') ? json_['alias'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alias != null) 'alias': alias!,
+      };
+}
+
+/// Targeting by a texture compression format.
+class TextureCompressionFormatTargeting {
+  /// List of alternative TCFs (TCFs targeted by the sibling splits).
+  core.List<TextureCompressionFormat>? alternatives;
+
+  /// The list of targeted TCFs.
+  ///
+  /// Should not be empty.
+  core.List<TextureCompressionFormat>? value;
+
+  TextureCompressionFormatTargeting({
+    this.alternatives,
+    this.value,
+  });
+
+  TextureCompressionFormatTargeting.fromJson(core.Map json_)
+      : this(
+          alternatives: json_.containsKey('alternatives')
+              ? (json_['alternatives'] as core.List)
+                  .map((value) => TextureCompressionFormat.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          value: json_.containsKey('value')
+              ? (json_['value'] as core.List)
+                  .map((value) => TextureCompressionFormat.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alternatives != null) 'alternatives': alternatives!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -11549,6 +12528,37 @@ class UserComment {
       };
 }
 
+/// Describes an inclusive/exclusive list of country codes that module targets.
+class UserCountriesTargeting {
+  /// List of country codes in the two-letter CLDR territory format.
+  core.List<core.String>? countryCodes;
+
+  /// Indicates if the list above is exclusive.
+  core.bool? exclude;
+
+  UserCountriesTargeting({
+    this.countryCodes,
+    this.exclude,
+  });
+
+  UserCountriesTargeting.fromJson(core.Map json_)
+      : this(
+          countryCodes: json_.containsKey('countryCodes')
+              ? (json_['countryCodes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          exclude: json_.containsKey('exclude')
+              ? json_['exclude'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (countryCodes != null) 'countryCodes': countryCodes!,
+        if (exclude != null) 'exclude': exclude!,
+      };
+}
+
 /// A set of user countries.
 ///
 /// A country set determines what variation of app content gets served to a
@@ -11677,6 +12687,70 @@ class Variant {
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceSpec != null) 'deviceSpec': deviceSpec!,
         if (variantId != null) 'variantId': variantId!,
+      };
+}
+
+/// Targeting on the level of variants.
+class VariantTargeting {
+  /// The abi that the variant targets
+  AbiTargeting? abiTargeting;
+
+  /// Multi-api-level targeting
+  MultiAbiTargeting? multiAbiTargeting;
+
+  /// The screen densities that this variant supports
+  ScreenDensityTargeting? screenDensityTargeting;
+
+  /// The sdk version that the variant targets
+  SdkVersionTargeting? sdkVersionTargeting;
+
+  /// Texture-compression-format-level targeting
+  TextureCompressionFormatTargeting? textureCompressionFormatTargeting;
+
+  VariantTargeting({
+    this.abiTargeting,
+    this.multiAbiTargeting,
+    this.screenDensityTargeting,
+    this.sdkVersionTargeting,
+    this.textureCompressionFormatTargeting,
+  });
+
+  VariantTargeting.fromJson(core.Map json_)
+      : this(
+          abiTargeting: json_.containsKey('abiTargeting')
+              ? AbiTargeting.fromJson(
+                  json_['abiTargeting'] as core.Map<core.String, core.dynamic>)
+              : null,
+          multiAbiTargeting: json_.containsKey('multiAbiTargeting')
+              ? MultiAbiTargeting.fromJson(json_['multiAbiTargeting']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          screenDensityTargeting: json_.containsKey('screenDensityTargeting')
+              ? ScreenDensityTargeting.fromJson(json_['screenDensityTargeting']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sdkVersionTargeting: json_.containsKey('sdkVersionTargeting')
+              ? SdkVersionTargeting.fromJson(json_['sdkVersionTargeting']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          textureCompressionFormatTargeting:
+              json_.containsKey('textureCompressionFormatTargeting')
+                  ? TextureCompressionFormatTargeting.fromJson(
+                      json_['textureCompressionFormatTargeting']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (abiTargeting != null) 'abiTargeting': abiTargeting!,
+        if (multiAbiTargeting != null) 'multiAbiTargeting': multiAbiTargeting!,
+        if (screenDensityTargeting != null)
+          'screenDensityTargeting': screenDensityTargeting!,
+        if (sdkVersionTargeting != null)
+          'sdkVersionTargeting': sdkVersionTargeting!,
+        if (textureCompressionFormatTargeting != null)
+          'textureCompressionFormatTargeting':
+              textureCompressionFormatTargeting!,
       };
 }
 

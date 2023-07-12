@@ -50,6 +50,12 @@
     "name": "oauth2",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20200213",
+    "rootUrl": "https://www.googleapis.com/",
+    "servicePath": "",
+    "title": "Google OAuth2 API",
+    "version": "v2",
     "parameters": {
         "alt": {
             "default": "json",
@@ -95,7 +101,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "userinfo": {
             "methods": {
@@ -138,8 +143,6 @@
             }
         }
     },
-    "revision": "20200213",
-    "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Tokeninfo": {
             "id": "Tokeninfo",
@@ -227,8 +230,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Google OAuth2 API",
-    "version": "v2"
+    }
 }

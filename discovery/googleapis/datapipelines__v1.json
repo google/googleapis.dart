@@ -24,6 +24,13 @@
     "name": "datapipelines",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230702",
+    "rootUrl": "https://datapipelines.googleapis.com/",
+    "servicePath": "",
+    "title": "Data pipelines API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -367,8 +373,6 @@
             }
         }
     },
-    "revision": "20230507",
-    "rootUrl": "https://datapipelines.googleapis.com/",
     "schemas": {
         "GoogleCloudDatapipelinesV1DataflowJobDetails": {
             "description": "Pipeline job details specific to the Dataflow API. This is encapsulated here to allow for more executors to store their specific details separately.",
@@ -1014,9 +1018,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Data pipelines API",
-    "version": "v1",
-    "version_module": true
+    }
 }

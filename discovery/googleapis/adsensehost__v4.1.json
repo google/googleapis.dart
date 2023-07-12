@@ -27,6 +27,12 @@
     "name": "adsensehost",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20200930",
+    "rootUrl": "https://www.googleapis.com/",
+    "servicePath": "adsensehost/v4.1/",
+    "title": "AdSense Host API",
+    "version": "v4.1",
     "parameters": {
         "alt": {
             "default": "json",
@@ -74,7 +80,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "accounts": {
             "methods": {
@@ -1076,8 +1081,6 @@
             }
         }
     },
-    "revision": "20200930",
-    "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
             "id": "Account",
@@ -1566,8 +1569,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "adsensehost/v4.1/",
-    "title": "AdSense Host API",
-    "version": "v4.1"
+    }
 }

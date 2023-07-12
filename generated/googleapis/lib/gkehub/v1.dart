@@ -17,9 +17,13 @@
 ///
 /// Create an instance of [GKEHubApi] to access these resources:
 ///
+/// - [OrganizationsResource]
+///   - [OrganizationsLocationsResource]
+///     - [OrganizationsLocationsFleetsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsFeaturesResource]
+///     - [ProjectsLocationsFleetsResource]
 ///     - [ProjectsLocationsMembershipsResource]
 ///       - [ProjectsLocationsMembershipsBindingsResource]
 ///     - [ProjectsLocationsOperationsResource]
@@ -48,6 +52,7 @@ class GKEHubApi {
 
   final commons.ApiRequester _requester;
 
+  OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   GKEHubApi(http.Client client,
@@ -55,6 +60,85 @@ class GKEHubApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+}
+
+class OrganizationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsResource get locations =>
+      OrganizationsLocationsResource(_requester);
+
+  OrganizationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class OrganizationsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsFleetsResource get fleets =>
+      OrganizationsLocationsFleetsResource(_requester);
+
+  OrganizationsLocationsResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class OrganizationsLocationsFleetsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsFleetsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Returns all fleets within an organization or a project that the caller has
+  /// access to.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The organization or project to list for Fleets under,
+  /// in the format `organizations / * /locations / * ` or `projects / *
+  /// /locations / * `.
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of fleets to return. The service
+  /// may return fewer than this value. If unspecified, at most 200 fleets will
+  /// be returned. The maximum value is 1000; values above 1000 will be coerced
+  /// to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListFleets` call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided to `ListFleets` must match the
+  /// call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListFleetsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListFleetsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/fleets';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListFleetsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsResource {
@@ -71,6 +155,8 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsFeaturesResource get features =>
       ProjectsLocationsFeaturesResource(_requester);
+  ProjectsLocationsFleetsResource get fleets =>
+      ProjectsLocationsFleetsResource(_requester);
   ProjectsLocationsMembershipsResource get memberships =>
       ProjectsLocationsMembershipsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
@@ -603,6 +689,230 @@ class ProjectsLocationsFeaturesResource {
     );
     return TestIamPermissionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsFleetsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsFleetsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a fleet.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent (project and location) where the Fleet
+  /// will be created. Specified in the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Fleet request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/fleets';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Removes a Fleet.
+  ///
+  /// There must be no memberships remaining in the Fleet.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The Fleet resource name in the format `projects / *
+  /// /locations / * /fleets / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/fleets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the details of a fleet.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The Fleet resource name in the format `projects / *
+  /// /locations / * /fleets / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/fleets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Fleet].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Fleet> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Fleet.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns all fleets within an organization or a project that the caller has
+  /// access to.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The organization or project to list for Fleets under,
+  /// in the format `organizations / * /locations / * ` or `projects / *
+  /// /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of fleets to return. The service
+  /// may return fewer than this value. If unspecified, at most 200 fleets will
+  /// be returned. The maximum value is 1000; values above 1000 will be coerced
+  /// to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListFleets` call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided to `ListFleets` must match the
+  /// call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListFleetsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListFleetsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/fleets';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListFleetsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a fleet.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The full, unique resource name of this fleet in the
+  /// format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each
+  /// Google Cloud project can have at most one fleet resource, named "default".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/fleets/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The fields to be updated;
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Fleet request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1283,6 +1593,9 @@ class ProjectsLocationsMembershipsBindingsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/memberships/\[^/\]+$`.
   ///
+  /// [filter] - Optional. Lists MembershipBindings that match the filter
+  /// expression, following the syntax outlined in https://google.aip.dev/160.
+  ///
   /// [pageSize] - Optional. When requesting a 'page' of resources, `page_size`
   /// specifies number of resources to return. If unspecified or set to 0, all
   /// resources will be returned.
@@ -1303,11 +1616,13 @@ class ProjectsLocationsMembershipsBindingsResource {
   /// this method will complete with the same error.
   async.Future<ListMembershipBindingsResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -1683,6 +1998,63 @@ class ProjectsLocationsScopesResource {
     return Scope.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/scopes/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists Scopes.
   ///
   /// Request parameters:
@@ -1729,6 +2101,150 @@ class ProjectsLocationsScopesResource {
       queryParams: queryParams_,
     );
     return ListScopesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a scopes.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name for the scope
+  /// `projects/{project}/locations/{location}/scopes/{scope}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/scopes/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Scope request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/scopes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/scopes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2119,14 +2635,22 @@ class ConfigManagementConfigSync {
   /// ConfigSync fields will be applied if exist. If set to false, all other
   /// ConfigSync fields will be ignored, ConfigSync resources will be deleted.
   /// If omitted, ConfigSync resources will be managed depends on the presence
-  /// of git field.
+  /// of the git or oci field.
   core.bool? enabled;
 
   /// Git repo configuration for the cluster.
   ConfigManagementGitConfig? git;
 
-  /// Configuration for Managed Config Sync.
-  ConfigManagementManaged? managed;
+  /// The Email of the Google Cloud Service Account (GSA) used for exporting
+  /// Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload
+  /// Identity is enabled.
+  ///
+  /// The GSA should have the Monitoring Metric Writer
+  /// (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount
+  /// `default` in the namespace `config-management-monitoring` should be binded
+  /// to the GSA. This field is required when automatic Feature management is
+  /// enabled.
+  core.String? metricsGcpServiceAccountEmail;
 
   /// OCI repo configuration for the cluster
   ConfigManagementOciConfig? oci;
@@ -2141,14 +2665,22 @@ class ConfigManagementConfigSync {
   /// "unstructured" mode.
   core.String? sourceFormat;
 
+  /// Set to true to stop syncing configs for a single cluster when automatic
+  /// Feature management is enabled.
+  ///
+  /// Default to false. The field will be ignored when automatic Feature
+  /// management is disabled.
+  core.bool? stopSyncing;
+
   ConfigManagementConfigSync({
     this.allowVerticalScale,
     this.enabled,
     this.git,
-    this.managed,
+    this.metricsGcpServiceAccountEmail,
     this.oci,
     this.preventDrift,
     this.sourceFormat,
+    this.stopSyncing,
   });
 
   ConfigManagementConfigSync.fromJson(core.Map json_)
@@ -2163,10 +2695,10 @@ class ConfigManagementConfigSync {
               ? ConfigManagementGitConfig.fromJson(
                   json_['git'] as core.Map<core.String, core.dynamic>)
               : null,
-          managed: json_.containsKey('managed')
-              ? ConfigManagementManaged.fromJson(
-                  json_['managed'] as core.Map<core.String, core.dynamic>)
-              : null,
+          metricsGcpServiceAccountEmail:
+              json_.containsKey('metricsGcpServiceAccountEmail')
+                  ? json_['metricsGcpServiceAccountEmail'] as core.String
+                  : null,
           oci: json_.containsKey('oci')
               ? ConfigManagementOciConfig.fromJson(
                   json_['oci'] as core.Map<core.String, core.dynamic>)
@@ -2177,6 +2709,9 @@ class ConfigManagementConfigSync {
           sourceFormat: json_.containsKey('sourceFormat')
               ? json_['sourceFormat'] as core.String
               : null,
+          stopSyncing: json_.containsKey('stopSyncing')
+              ? json_['stopSyncing'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2184,10 +2719,12 @@ class ConfigManagementConfigSync {
           'allowVerticalScale': allowVerticalScale!,
         if (enabled != null) 'enabled': enabled!,
         if (git != null) 'git': git!,
-        if (managed != null) 'managed': managed!,
+        if (metricsGcpServiceAccountEmail != null)
+          'metricsGcpServiceAccountEmail': metricsGcpServiceAccountEmail!,
         if (oci != null) 'oci': oci!,
         if (preventDrift != null) 'preventDrift': preventDrift!,
         if (sourceFormat != null) 'sourceFormat': sourceFormat!,
+        if (stopSyncing != null) 'stopSyncing': stopSyncing!,
       };
 }
 
@@ -2295,11 +2832,17 @@ class ConfigManagementConfigSyncDeploymentState {
       };
 }
 
+/// Errors pertaining to the installation of Config Sync
+typedef ConfigManagementConfigSyncError = $Error;
+
 /// State information for ConfigSync
 class ConfigManagementConfigSyncState {
   /// Information about the deployment of ConfigSync, including the version of
   /// the various Pods deployed
   ConfigManagementConfigSyncDeploymentState? deploymentState;
+
+  /// Errors pertaining to the installation of Config Sync.
+  core.List<ConfigManagementConfigSyncError>? errors;
 
   /// The state of ConfigSync's process to sync configs to a cluster
   ConfigManagementSyncState? syncState;
@@ -2309,6 +2852,7 @@ class ConfigManagementConfigSyncState {
 
   ConfigManagementConfigSyncState({
     this.deploymentState,
+    this.errors,
     this.syncState,
     this.version,
   });
@@ -2319,6 +2863,12 @@ class ConfigManagementConfigSyncState {
               ? ConfigManagementConfigSyncDeploymentState.fromJson(
                   json_['deploymentState']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+          errors: json_.containsKey('errors')
+              ? (json_['errors'] as core.List)
+                  .map((value) => ConfigManagementConfigSyncError.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           syncState: json_.containsKey('syncState')
               ? ConfigManagementSyncState.fromJson(
@@ -2332,6 +2882,7 @@ class ConfigManagementConfigSyncState {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deploymentState != null) 'deploymentState': deploymentState!,
+        if (errors != null) 'errors': errors!,
         if (syncState != null) 'syncState': syncState!,
         if (version != null) 'version': version!,
       };
@@ -2509,7 +3060,7 @@ class ConfigManagementGatekeeperDeploymentState {
 
 /// Git repo configuration for a single cluster.
 class ConfigManagementGitConfig {
-  /// The GCP Service Account Email used for auth when secret_type is
+  /// The Google Cloud Service Account Email used for auth when secret_type is
   /// gcpServiceAccount.
   core.String? gcpServiceAccountEmail;
 
@@ -2768,58 +3319,35 @@ class ConfigManagementHierarchyControllerVersion {
 }
 
 /// Errors pertaining to the installation of ACM
-class ConfigManagementInstallError {
-  /// A string representing the user facing error message
-  core.String? errorMessage;
-
-  ConfigManagementInstallError({
-    this.errorMessage,
-  });
-
-  ConfigManagementInstallError.fromJson(core.Map json_)
-      : this(
-          errorMessage: json_.containsKey('errorMessage')
-              ? json_['errorMessage'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (errorMessage != null) 'errorMessage': errorMessage!,
-      };
-}
-
-/// Configuration for Managed Config Sync.
-class ConfigManagementManaged {
-  /// Set to true to enable Managed Config Sync.
-  ///
-  /// Defaults to false which disables Managed Config Sync.
-  core.bool? enabled;
-
-  ConfigManagementManaged({
-    this.enabled,
-  });
-
-  ConfigManagementManaged.fromJson(core.Map json_)
-      : this(
-          enabled: json_.containsKey('enabled')
-              ? json_['enabled'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (enabled != null) 'enabled': enabled!,
-      };
-}
+typedef ConfigManagementInstallError = $Error;
 
 /// **Anthos Config Management**: Configuration for a single cluster.
 ///
 /// Intended to parallel the ConfigManagement CR.
 class ConfigManagementMembershipSpec {
+  /// The user-specified cluster name used by Config Sync cluster-name-selector
+  /// annotation or ClusterSelector, for applying configs to only a subset of
+  /// clusters.
+  ///
+  /// Omit this field if the cluster's fleet membership name is used by Config
+  /// Sync cluster-name-selector annotation or ClusterSelector. Set this field
+  /// if a name different from the cluster's fleet membership name is used by
+  /// Config Sync cluster-name-selector annotation or ClusterSelector.
+  core.String? cluster;
+
   /// Config Sync configuration for the cluster.
   ConfigManagementConfigSync? configSync;
 
   /// Hierarchy Controller configuration for the cluster.
   ConfigManagementHierarchyControllerConfig? hierarchyController;
+
+  /// Enables automatic Feature management.
+  /// Possible string values are:
+  /// - "MANAGEMENT_UNSPECIFIED" : Unspecified
+  /// - "MANAGEMENT_AUTOMATIC" : Google will manage the Feature for the cluster.
+  /// - "MANAGEMENT_MANUAL" : User will manually manage the Feature for the
+  /// cluster.
+  core.String? management;
 
   /// Policy Controller configuration for the cluster.
   ConfigManagementPolicyController? policyController;
@@ -2828,14 +3356,19 @@ class ConfigManagementMembershipSpec {
   core.String? version;
 
   ConfigManagementMembershipSpec({
+    this.cluster,
     this.configSync,
     this.hierarchyController,
+    this.management,
     this.policyController,
     this.version,
   });
 
   ConfigManagementMembershipSpec.fromJson(core.Map json_)
       : this(
+          cluster: json_.containsKey('cluster')
+              ? json_['cluster'] as core.String
+              : null,
           configSync: json_.containsKey('configSync')
               ? ConfigManagementConfigSync.fromJson(
                   json_['configSync'] as core.Map<core.String, core.dynamic>)
@@ -2844,6 +3377,9 @@ class ConfigManagementMembershipSpec {
               ? ConfigManagementHierarchyControllerConfig.fromJson(
                   json_['hierarchyController']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+          management: json_.containsKey('management')
+              ? json_['management'] as core.String
               : null,
           policyController: json_.containsKey('policyController')
               ? ConfigManagementPolicyController.fromJson(
@@ -2856,9 +3392,11 @@ class ConfigManagementMembershipSpec {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cluster != null) 'cluster': cluster!,
         if (configSync != null) 'configSync': configSync!,
         if (hierarchyController != null)
           'hierarchyController': hierarchyController!,
+        if (management != null) 'management': management!,
         if (policyController != null) 'policyController': policyController!,
         if (version != null) 'version': version!,
       };
@@ -2866,12 +3404,10 @@ class ConfigManagementMembershipSpec {
 
 /// **Anthos Config Management**: State for a single cluster.
 class ConfigManagementMembershipState {
-  /// The user-defined name for the cluster used by ClusterSelectors to group
-  /// clusters together.
+  /// This field is set to the `cluster_name` field of the Membership Spec if it
+  /// is not empty.
   ///
-  /// This should match Membership's membership_name, unless the user installed
-  /// ACM on the cluster manually prior to enabling the ACM hub feature. Unique
-  /// within a Anthos Config Management installation.
+  /// Otherwise, it is set to the cluster's fleet membership name.
   core.String? clusterName;
 
   /// Current sync status
@@ -2946,7 +3482,7 @@ class ConfigManagementMembershipState {
 
 /// OCI repo configuration for a single cluster
 class ConfigManagementOciConfig {
-  /// The GCP Service Account Email used for auth when secret_type is
+  /// The Google Cloud Service Account Email used for auth when secret_type is
   /// gcpServiceAccount.
   core.String? gcpServiceAccountEmail;
 
@@ -3086,6 +3622,11 @@ class ConfigManagementPolicyController {
   /// Installs the default template library along with Policy Controller.
   core.bool? templateLibraryInstalled;
 
+  /// Last time this membership spec was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
   ConfigManagementPolicyController({
     this.auditIntervalSeconds,
     this.enabled,
@@ -3095,6 +3636,7 @@ class ConfigManagementPolicyController {
     this.mutationEnabled,
     this.referentialRulesEnabled,
     this.templateLibraryInstalled,
+    this.updateTime,
   });
 
   ConfigManagementPolicyController.fromJson(core.Map json_)
@@ -3127,6 +3669,9 @@ class ConfigManagementPolicyController {
               json_.containsKey('templateLibraryInstalled')
                   ? json_['templateLibraryInstalled'] as core.bool
                   : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3142,11 +3687,15 @@ class ConfigManagementPolicyController {
           'referentialRulesEnabled': referentialRulesEnabled!,
         if (templateLibraryInstalled != null)
           'templateLibraryInstalled': templateLibraryInstalled!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
 /// State for the migration of PolicyController from ACM -\> PoCo Hub.
 class ConfigManagementPolicyControllerMigration {
+  /// Last time this membership spec was copied to PoCo feature.
+  core.String? copyTime;
+
   /// Stage of the migration.
   /// Possible string values are:
   /// - "STAGE_UNSPECIFIED" : Unknown state of migration.
@@ -3157,16 +3706,21 @@ class ConfigManagementPolicyControllerMigration {
   core.String? stage;
 
   ConfigManagementPolicyControllerMigration({
+    this.copyTime,
     this.stage,
   });
 
   ConfigManagementPolicyControllerMigration.fromJson(core.Map json_)
       : this(
+          copyTime: json_.containsKey('copyTime')
+              ? json_['copyTime'] as core.String
+              : null,
           stage:
               json_.containsKey('stage') ? json_['stage'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (copyTime != null) 'copyTime': copyTime!,
         if (stage != null) 'stage': stage!,
       };
 }
@@ -3778,21 +4332,365 @@ class FeatureState {
       };
 }
 
+/// Fleet contains the Fleet-wide metadata and configuration.
+class Fleet {
+  /// When the Fleet was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// When the Fleet was deleted.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// A user-assigned display name of the Fleet.
+  ///
+  /// When present, it must be between 4 to 30 characters. Allowed characters
+  /// are: lowercase and uppercase letters, numbers, hyphen, single-quote,
+  /// double-quote, space, and exclamation point. Example: `Production Fleet`
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// The full, unique resource name of this fleet in the format of
+  /// `projects/{project}/locations/{location}/fleets/{fleet}`.
+  ///
+  /// Each Google Cloud project can have at most one fleet resource, named
+  /// "default".
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// State of the namespace resource.
+  ///
+  /// Output only.
+  FleetLifecycleState? state;
+
+  /// Google-generated UUID for this resource.
+  ///
+  /// This is unique across all Fleet resources. If a Fleet resource is deleted
+  /// and another resource with the same name is created, it gets a different
+  /// uid.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// When the Fleet was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Fleet({
+    this.createTime,
+    this.deleteTime,
+    this.displayName,
+    this.name,
+    this.state,
+    this.uid,
+    this.updateTime,
+  });
+
+  Fleet.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          deleteTime: json_.containsKey('deleteTime')
+              ? json_['deleteTime'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          state: json_.containsKey('state')
+              ? FleetLifecycleState.fromJson(
+                  json_['state'] as core.Map<core.String, core.dynamic>)
+              : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (deleteTime != null) 'deleteTime': deleteTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// FleetLifecycleState describes the state of a Fleet resource.
+class FleetLifecycleState {
+  /// The current state of the Fleet resource.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CODE_UNSPECIFIED" : The code is not set.
+  /// - "CREATING" : The fleet is being created.
+  /// - "READY" : The fleet active.
+  /// - "DELETING" : The fleet is being deleted.
+  /// - "UPDATING" : The fleet is being updated.
+  core.String? code;
+
+  FleetLifecycleState({
+    this.code,
+  });
+
+  FleetLifecycleState.fromJson(core.Map json_)
+      : this(
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+      };
+}
+
+/// All error details of the fleet observability feature.
+class FleetObservabilityFeatureError {
+  /// The code of the error.
+  core.String? code;
+
+  /// A human-readable description of the current status.
+  core.String? description;
+
+  FleetObservabilityFeatureError({
+    this.code,
+    this.description,
+  });
+
+  FleetObservabilityFeatureError.fromJson(core.Map json_)
+      : this(
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (description != null) 'description': description!,
+      };
+}
+
 /// **Fleet Observability**: The Hub-wide input for the FleetObservability
 /// feature.
-typedef FleetObservabilityFeatureSpec = $Empty;
+class FleetObservabilityFeatureSpec {
+  /// Specified if fleet logging feature is enabled for the entire fleet.
+  ///
+  /// If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+  FleetObservabilityLoggingConfig? loggingConfig;
 
-/// **FleetObservability**: An empty state left as an example Hub-wide Feature
+  FleetObservabilityFeatureSpec({
+    this.loggingConfig,
+  });
+
+  FleetObservabilityFeatureSpec.fromJson(core.Map json_)
+      : this(
+          loggingConfig: json_.containsKey('loggingConfig')
+              ? FleetObservabilityLoggingConfig.fromJson(
+                  json_['loggingConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!,
+      };
+}
+
+/// **FleetObservability**: Hub-wide Feature for FleetObservability feature.
+///
 /// state.
-typedef FleetObservabilityFeatureState = $Empty;
+class FleetObservabilityFeatureState {
+  /// The feature state of default logging.
+  FleetObservabilityFleetObservabilityLoggingState? logging;
+
+  /// The feature state of fleet monitoring.
+  FleetObservabilityFleetObservabilityMonitoringState? monitoring;
+
+  FleetObservabilityFeatureState({
+    this.logging,
+    this.monitoring,
+  });
+
+  FleetObservabilityFeatureState.fromJson(core.Map json_)
+      : this(
+          logging: json_.containsKey('logging')
+              ? FleetObservabilityFleetObservabilityLoggingState.fromJson(
+                  json_['logging'] as core.Map<core.String, core.dynamic>)
+              : null,
+          monitoring: json_.containsKey('monitoring')
+              ? FleetObservabilityFleetObservabilityMonitoringState.fromJson(
+                  json_['monitoring'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (logging != null) 'logging': logging!,
+        if (monitoring != null) 'monitoring': monitoring!,
+      };
+}
+
+/// Base state for fleet observability feature.
+class FleetObservabilityFleetObservabilityBaseFeatureState {
+  /// The high-level, machine-readable status of this Feature.
+  /// Possible string values are:
+  /// - "CODE_UNSPECIFIED" : Unknown or not set.
+  /// - "OK" : The Feature is operating normally.
+  /// - "ERROR" : The Feature is encountering errors in the reconciliation. The
+  /// Feature may need intervention to return to normal operation. See the
+  /// description and any associated Feature-specific details for more
+  /// information.
+  core.String? code;
+
+  /// Errors after reconciling the monitoring and logging feature if the code is
+  /// not OK.
+  core.List<FleetObservabilityFeatureError>? errors;
+
+  FleetObservabilityFleetObservabilityBaseFeatureState({
+    this.code,
+    this.errors,
+  });
+
+  FleetObservabilityFleetObservabilityBaseFeatureState.fromJson(core.Map json_)
+      : this(
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          errors: json_.containsKey('errors')
+              ? (json_['errors'] as core.List)
+                  .map((value) => FleetObservabilityFeatureError.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (errors != null) 'errors': errors!,
+      };
+}
+
+/// Feature state for logging feature.
+class FleetObservabilityFleetObservabilityLoggingState {
+  /// The base feature state of fleet default log.
+  FleetObservabilityFleetObservabilityBaseFeatureState? defaultLog;
+
+  /// The base feature state of fleet scope log.
+  FleetObservabilityFleetObservabilityBaseFeatureState? scopeLog;
+
+  FleetObservabilityFleetObservabilityLoggingState({
+    this.defaultLog,
+    this.scopeLog,
+  });
+
+  FleetObservabilityFleetObservabilityLoggingState.fromJson(core.Map json_)
+      : this(
+          defaultLog: json_.containsKey('defaultLog')
+              ? FleetObservabilityFleetObservabilityBaseFeatureState.fromJson(
+                  json_['defaultLog'] as core.Map<core.String, core.dynamic>)
+              : null,
+          scopeLog: json_.containsKey('scopeLog')
+              ? FleetObservabilityFleetObservabilityBaseFeatureState.fromJson(
+                  json_['scopeLog'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultLog != null) 'defaultLog': defaultLog!,
+        if (scopeLog != null) 'scopeLog': scopeLog!,
+      };
+}
+
+/// Feature state for monitoring feature.
+class FleetObservabilityFleetObservabilityMonitoringState {
+  /// The base feature state of fleet monitoring feature.
+  FleetObservabilityFleetObservabilityBaseFeatureState? state;
+
+  FleetObservabilityFleetObservabilityMonitoringState({
+    this.state,
+  });
+
+  FleetObservabilityFleetObservabilityMonitoringState.fromJson(core.Map json_)
+      : this(
+          state: json_.containsKey('state')
+              ? FleetObservabilityFleetObservabilityBaseFeatureState.fromJson(
+                  json_['state'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (state != null) 'state': state!,
+      };
+}
+
+/// LoggingConfig defines the configuration for different types of logs.
+class FleetObservabilityLoggingConfig {
+  /// Specified if applying the default routing config to logs not specified in
+  /// other configs.
+  FleetObservabilityRoutingConfig? defaultConfig;
+
+  /// Specified if applying the routing config to all logs for all fleet scopes.
+  FleetObservabilityRoutingConfig? fleetScopeLogsConfig;
+
+  FleetObservabilityLoggingConfig({
+    this.defaultConfig,
+    this.fleetScopeLogsConfig,
+  });
+
+  FleetObservabilityLoggingConfig.fromJson(core.Map json_)
+      : this(
+          defaultConfig: json_.containsKey('defaultConfig')
+              ? FleetObservabilityRoutingConfig.fromJson(
+                  json_['defaultConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          fleetScopeLogsConfig: json_.containsKey('fleetScopeLogsConfig')
+              ? FleetObservabilityRoutingConfig.fromJson(
+                  json_['fleetScopeLogsConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultConfig != null) 'defaultConfig': defaultConfig!,
+        if (fleetScopeLogsConfig != null)
+          'fleetScopeLogsConfig': fleetScopeLogsConfig!,
+      };
+}
 
 /// **FleetObservability**: The membership-specific input for FleetObservability
 /// feature.
 typedef FleetObservabilityMembershipSpec = $Empty;
 
-/// **FleetObservability**: An empty state left as an example
-/// membership-specific Feature state.
+/// **FleetObservability**: Membership-specific Feature state for
+/// fleetobservability.
 typedef FleetObservabilityMembershipState = $Empty;
+
+/// RoutingConfig configures the behaviour of fleet logging feature.
+class FleetObservabilityRoutingConfig {
+  /// mode configures the logs routing mode.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : If UNSPECIFIED, fleet logging feature is disabled.
+  /// - "COPY" : logs will be copied to the destination project.
+  /// - "MOVE" : logs will be moved to the destination project.
+  core.String? mode;
+
+  FleetObservabilityRoutingConfig({
+    this.mode,
+  });
+
+  FleetObservabilityRoutingConfig.fromJson(core.Map json_)
+      : this(
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mode != null) 'mode': mode!,
+      };
+}
 
 /// GenerateConnectManifestResponse contains manifest information for
 /// installing/upgrading a Connect agent.
@@ -4440,6 +5338,41 @@ class ListFeaturesResponse {
       };
 }
 
+/// Response message for the `GkeHub.ListFleetsResponse` method.
+class ListFleetsResponse {
+  /// The list of matching fleets.
+  core.List<Fleet>? fleets;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages. The token is only
+  /// valid for 1h.
+  core.String? nextPageToken;
+
+  ListFleetsResponse({
+    this.fleets,
+    this.nextPageToken,
+  });
+
+  ListFleetsResponse.fromJson(core.Map json_)
+      : this(
+          fleets: json_.containsKey('fleets')
+              ? (json_['fleets'] as core.List)
+                  .map((value) => Fleet.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fleets != null) 'fleets': fleets!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
@@ -4825,8 +5758,8 @@ class MembershipBinding {
   /// `projects/{project}/locations/{location}/memberships/{membership}/bindings/{membershipbinding}`
   core.String? name;
 
-  /// A Workspace resource name in the format `projects / * /locations / *
-  /// /scopes / * `.
+  /// A Scope resource name in the format `projects / * /locations / * /scopes /
+  /// * `.
   core.String? scope;
 
   /// State of the membership binding resource.
@@ -5036,12 +5969,11 @@ class MembershipEndpoint {
 
 /// MembershipFeatureSpec contains configuration information for a single
 /// Membership.
+///
+/// NOTE: Please use snake case in your feature name.
 class MembershipFeatureSpec {
   /// Config Management-specific spec.
   ConfigManagementMembershipSpec? configmanagement;
-
-  /// True if value of `feature_spec` was inherited from a fleet-level default.
-  core.bool? fleetInherited;
 
   /// Fleet observability membership spec
   FleetObservabilityMembershipSpec? fleetobservability;
@@ -5052,12 +5984,18 @@ class MembershipFeatureSpec {
   /// Anthos Service Mesh-specific spec
   ServiceMeshMembershipSpec? mesh;
 
+  /// Whether this per-Membership spec was inherited from a fleet-level default.
+  ///
+  /// This field can be updated by users by either overriding a Membership
+  /// config (updated to USER implicitly) or setting to FLEET explicitly.
+  Origin? origin;
+
   MembershipFeatureSpec({
     this.configmanagement,
-    this.fleetInherited,
     this.fleetobservability,
     this.identityservice,
     this.mesh,
+    this.origin,
   });
 
   MembershipFeatureSpec.fromJson(core.Map json_)
@@ -5066,9 +6004,6 @@ class MembershipFeatureSpec {
               ? ConfigManagementMembershipSpec.fromJson(
                   json_['configmanagement']
                       as core.Map<core.String, core.dynamic>)
-              : null,
-          fleetInherited: json_.containsKey('fleetInherited')
-              ? json_['fleetInherited'] as core.bool
               : null,
           fleetobservability: json_.containsKey('fleetobservability')
               ? FleetObservabilityMembershipSpec.fromJson(
@@ -5083,15 +6018,19 @@ class MembershipFeatureSpec {
               ? ServiceMeshMembershipSpec.fromJson(
                   json_['mesh'] as core.Map<core.String, core.dynamic>)
               : null,
+          origin: json_.containsKey('origin')
+              ? Origin.fromJson(
+                  json_['origin'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (configmanagement != null) 'configmanagement': configmanagement!,
-        if (fleetInherited != null) 'fleetInherited': fleetInherited!,
         if (fleetobservability != null)
           'fleetobservability': fleetobservability!,
         if (identityservice != null) 'identityservice': identityservice!,
         if (mesh != null) 'mesh': mesh!,
+        if (origin != null) 'origin': origin!,
       };
 }
 
@@ -5471,6 +6410,30 @@ class Operation {
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
+      };
+}
+
+/// Origin defines where this MembershipFeatureSpec originated from.
+class Origin {
+  /// Type specifies which type of origin is set.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Type is unknown or not set.
+  /// - "FLEET" : Per-Membership spec was inherited from the fleet-level
+  /// default.
+  /// - "USER" : Per-Membership spec was inherited from a user specification.
+  core.String? type;
+
+  Origin({
+    this.type,
+  });
+
+  Origin.fromJson(core.Map json_)
+      : this(
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (type != null) 'type': type!,
       };
 }
 

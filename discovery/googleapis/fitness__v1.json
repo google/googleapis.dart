@@ -86,6 +86,12 @@
     "name": "fitness",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230710",
+    "rootUrl": "https://fitness.googleapis.com/",
+    "servicePath": "fitness/v1/users/",
+    "title": "Fitness API",
+    "version": "v1",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -163,7 +169,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "users": {
             "resources": {
@@ -830,8 +835,6 @@
             }
         }
     },
-    "revision": "20230512",
-    "rootUrl": "https://fitness.googleapis.com/",
     "schemas": {
         "AggregateBucket": {
             "id": "AggregateBucket",
@@ -1668,8 +1671,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "fitness/v1/users/",
-    "title": "Fitness API",
-    "version": "v1"
+    }
 }

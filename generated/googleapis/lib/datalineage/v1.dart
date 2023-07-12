@@ -1139,7 +1139,7 @@ class GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse {
 /// The soft reference to everything you can attach a lineage event to.
 class GoogleCloudDatacatalogLineageV1EntityReference {
   /// \[Fully Qualified Name
-  /// (FQN)\](https://cloud.google.com//data-catalog/docs/fully-qualified-names)
+  /// (FQN)\](https://cloud.google.com/data-catalog/docs/fully-qualified-names)
   /// of the entity.
   ///
   /// Required.
@@ -1232,7 +1232,7 @@ class GoogleCloudDatacatalogLineageV1LineageEvent {
   /// For streaming scenarios, it should be the beginning of the period from
   /// which the lineage is being reported.
   ///
-  /// Optional.
+  /// Required.
   core.String? startTime;
 
   GoogleCloudDatacatalogLineageV1LineageEvent({

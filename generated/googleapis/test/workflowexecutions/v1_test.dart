@@ -427,6 +427,7 @@ api.TriggerPubsubExecutionRequest buildTriggerPubsubExecutionRequest() {
   buildCounterTriggerPubsubExecutionRequest++;
   if (buildCounterTriggerPubsubExecutionRequest < 3) {
     o.GCPCloudEventsMode = 'foo';
+    o.deliveryAttempt = 42;
     o.message = buildPubsubMessage();
     o.subscription = 'foo';
   }
@@ -440,6 +441,10 @@ void checkTriggerPubsubExecutionRequest(api.TriggerPubsubExecutionRequest o) {
     unittest.expect(
       o.GCPCloudEventsMode!,
       unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.deliveryAttempt!,
+      unittest.equals(42),
     );
     checkPubsubMessage(o.message!);
     unittest.expect(

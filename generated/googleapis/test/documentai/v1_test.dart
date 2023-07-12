@@ -3322,6 +3322,8 @@ api.GoogleCloudDocumentaiV1TrainProcessorVersionRequest
   buildCounterGoogleCloudDocumentaiV1TrainProcessorVersionRequest++;
   if (buildCounterGoogleCloudDocumentaiV1TrainProcessorVersionRequest < 3) {
     o.baseProcessorVersion = 'foo';
+    o.customDocumentExtractionOptions =
+        buildGoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions();
     o.documentSchema = buildGoogleCloudDocumentaiV1DocumentSchema();
     o.inputData =
         buildGoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData();
@@ -3339,12 +3341,44 @@ void checkGoogleCloudDocumentaiV1TrainProcessorVersionRequest(
       o.baseProcessorVersion!,
       unittest.equals('foo'),
     );
+    checkGoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions(
+        o.customDocumentExtractionOptions!);
     checkGoogleCloudDocumentaiV1DocumentSchema(o.documentSchema!);
     checkGoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData(
         o.inputData!);
     checkGoogleCloudDocumentaiV1ProcessorVersion(o.processorVersion!);
   }
   buildCounterGoogleCloudDocumentaiV1TrainProcessorVersionRequest--;
+}
+
+core.int
+    buildCounterGoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions =
+    0;
+api.GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions
+    buildGoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions() {
+  final o = api
+      .GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions();
+  buildCounterGoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions++;
+  if (buildCounterGoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions <
+      3) {
+    o.trainingMethod = 'foo';
+  }
+  buildCounterGoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions--;
+  return o;
+}
+
+void checkGoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions(
+    api.GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions
+        o) {
+  buildCounterGoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions++;
+  if (buildCounterGoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions <
+      3) {
+    unittest.expect(
+      o.trainingMethod!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions--;
 }
 
 core.int
@@ -4963,6 +4997,21 @@ void main() {
           api.GoogleCloudDocumentaiV1TrainProcessorVersionRequest.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDocumentaiV1TrainProcessorVersionRequest(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions(
+          od);
     });
   });
 

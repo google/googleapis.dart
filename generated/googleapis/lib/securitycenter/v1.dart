@@ -6775,6 +6775,9 @@ class Access {
   /// "iam.googleapis.com"
   core.String? serviceName;
 
+  /// The caller's user agent string associated with the finding.
+  core.String? userAgent;
+
   /// Type of user agent associated with the finding.
   ///
   /// For example, an operating system shell or an embedded or standalone
@@ -6798,6 +6801,7 @@ class Access {
     this.serviceAccountDelegationInfo,
     this.serviceAccountKeyName,
     this.serviceName,
+    this.userAgent,
     this.userAgentFamily,
     this.userName,
   });
@@ -6833,6 +6837,9 @@ class Access {
           serviceName: json_.containsKey('serviceName')
               ? json_['serviceName'] as core.String
               : null,
+          userAgent: json_.containsKey('userAgent')
+              ? json_['userAgent'] as core.String
+              : null,
           userAgentFamily: json_.containsKey('userAgentFamily')
               ? json_['userAgentFamily'] as core.String
               : null,
@@ -6852,6 +6859,7 @@ class Access {
         if (serviceAccountKeyName != null)
           'serviceAccountKeyName': serviceAccountKeyName!,
         if (serviceName != null) 'serviceName': serviceName!,
+        if (userAgent != null) 'userAgent': userAgent!,
         if (userAgentFamily != null) 'userAgentFamily': userAgentFamily!,
         if (userName != null) 'userName': userName!,
       };
@@ -7798,11 +7806,7 @@ class Cvssv3 {
 /// [full resource name](https://google.aip.dev/122#full-resource-names)
 /// populated because these resource types, such as Cloud SQL databases, are not
 /// yet supported by Cloud Asset Inventory. In these cases only the display name
-/// is provided. Some database resources may not have the
-/// [full resource name](https://google.aip.dev/122#full-resource-names)
-/// populated because these resource types are not yet supported by Cloud Asset
-/// Inventory (e.g. Cloud SQL databases). In these cases only the display name
-/// will be provided.
+/// is provided.
 class Database {
   /// The human-readable name of the database that the user connected to.
   core.String? displayName;
@@ -7811,9 +7815,15 @@ class Database {
   /// not an IAM policy change.
   core.List<core.String>? grantees;
 
-  /// The [full resource name](https://google.aip.dev/122#full-resource-names)
-  /// of the database that the user connected to, if it is supported by Cloud
-  /// Asset Inventory.
+  /// Some database resources may not have the
+  /// [full resource name](https://google.aip.dev/122#full-resource-names)
+  /// populated because these resource types are not yet supported by Cloud
+  /// Asset Inventory (e.g. Cloud SQL databases).
+  ///
+  /// In these cases only the display name will be provided. The
+  /// [full resource name](https://google.aip.dev/122#full-resource-names) of
+  /// the database that the user connected to, if it is supported by Cloud Asset
+  /// Inventory.
   core.String? name;
 
   /// The SQL statement that is associated with the database access.
@@ -7824,12 +7834,19 @@ class Database {
   /// The username might not be an IAM principal and does not have a set format.
   core.String? userName;
 
+  /// The version of the database, for example, POSTGRES_14.
+  ///
+  /// See
+  /// [the complete list](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/SqlDatabaseVersion).
+  core.String? version;
+
   Database({
     this.displayName,
     this.grantees,
     this.name,
     this.query,
     this.userName,
+    this.version,
   });
 
   Database.fromJson(core.Map json_)
@@ -7848,6 +7865,9 @@ class Database {
           userName: json_.containsKey('userName')
               ? json_['userName'] as core.String
               : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7856,6 +7876,7 @@ class Database {
         if (name != null) 'name': name!,
         if (query != null) 'query': query!,
         if (userName != null) 'userName': userName!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -10929,8 +10950,8 @@ class OrganizationSettings {
 
   /// A flag that indicates if Asset Discovery should be enabled.
   ///
-  /// If the flag is set to \`true\`, then discovery of assets will occur. If it
-  /// is set to \`false, all historical assets will remain, but discovery of
+  /// If the flag is set to `true`, then discovery of assets will occur. If it
+  /// is set to `false`, all historical assets will remain, but discovery of
   /// future assets will not occur.
   core.bool? enableAssetDiscovery;
 

@@ -94,6 +94,18 @@ class OrganizationsProtectedResourcesResource {
   /// KeyTrackingService.SearchProtectedResources must match the call that
   /// provided the page token.
   ///
+  /// [resourceTypes] - Optional. A list of resource types that this request
+  /// searches for. If empty, it will search all the
+  /// [trackable resource types](https://cloud.google.com/kms/docs/view-key-usage#tracked-resource-types).
+  /// Regular expressions are also supported. For example: *
+  /// `compute.googleapis.com.*` snapshots resources whose type starts with
+  /// `compute.googleapis.com`. * `.*Image` snapshots resources whose type ends
+  /// with `Image`. * `.*Image.*` snapshots resources whose type contains
+  /// `Image`. See [RE2](https://github.com/google/re2/wiki/Syntax) for all
+  /// supported regular expression syntax. If the regular expression does not
+  /// match any supported resource type, an INVALID_ARGUMENT error will be
+  /// returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -111,12 +123,14 @@ class OrganizationsProtectedResourcesResource {
     core.String? cryptoKey,
     core.int? pageSize,
     core.String? pageToken,
+    core.List<core.String>? resourceTypes,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (cryptoKey != null) 'cryptoKey': [cryptoKey],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (resourceTypes != null) 'resourceTypes': resourceTypes,
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -623,6 +637,10 @@ class GoogleCloudKmsV1CryptoKey {
   /// AsymmetricSign and GetPublicKey.
   /// - "ASYMMETRIC_DECRYPT" : CryptoKeys with this purpose may be used with
   /// AsymmetricDecrypt and GetPublicKey.
+  /// - "RAW_ENCRYPT_DECRYPT" : CryptoKeys with this purpose may be used with
+  /// RawEncrypt and RawDecrypt. This purpose is meant to be used for
+  /// interoperable symmetric encryption and does not support automatic
+  /// CryptoKey rotation.
   /// - "MAC" : CryptoKeys with this purpose may be used with MacSign.
   core.String? purpose;
 
@@ -730,6 +748,8 @@ class GoogleCloudKmsV1CryptoKeyVersion {
   /// Possible string values are:
   /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
   /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
+  /// - "AES_128_GCM" : AES-GCM (Galois Counter Mode) using 128-bit keys.
+  /// - "AES_256_GCM" : AES-GCM (Galois Counter Mode) using 256-bit keys.
   /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
   /// digest.
   /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256

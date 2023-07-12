@@ -24,6 +24,13 @@
     "name": "accessapproval",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230606",
+    "rootUrl": "https://accessapproval.googleapis.com/",
+    "servicePath": "",
+    "title": "Access Approval API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "folders": {
             "methods": {
@@ -911,8 +917,6 @@
             }
         }
     },
-    "revision": "20230505",
-    "rootUrl": "https://accessapproval.googleapis.com/",
     "schemas": {
         "AccessApprovalServiceAccount": {
             "description": "Access Approval service account related to a project/folder/organization.",
@@ -1220,9 +1224,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Access Approval API",
-    "version": "v1",
-    "version_module": true
+    }
 }

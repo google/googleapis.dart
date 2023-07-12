@@ -244,10 +244,14 @@ api.GoogleAppsCloudidentityDevicesV1AndroidAttributes
   final o = api.GoogleAppsCloudidentityDevicesV1AndroidAttributes();
   buildCounterGoogleAppsCloudidentityDevicesV1AndroidAttributes++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1AndroidAttributes < 3) {
+    o.ctsProfileMatch = true;
     o.enabledUnknownSources = true;
+    o.hasPotentiallyHarmfulApps = true;
     o.ownerProfileAccount = true;
     o.ownershipPrivilege = 'foo';
     o.supportsWorkProfile = true;
+    o.verifiedBoot = true;
+    o.verifyAppsEnabled = true;
   }
   buildCounterGoogleAppsCloudidentityDevicesV1AndroidAttributes--;
   return o;
@@ -257,13 +261,17 @@ void checkGoogleAppsCloudidentityDevicesV1AndroidAttributes(
     api.GoogleAppsCloudidentityDevicesV1AndroidAttributes o) {
   buildCounterGoogleAppsCloudidentityDevicesV1AndroidAttributes++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1AndroidAttributes < 3) {
+    unittest.expect(o.ctsProfileMatch!, unittest.isTrue);
     unittest.expect(o.enabledUnknownSources!, unittest.isTrue);
+    unittest.expect(o.hasPotentiallyHarmfulApps!, unittest.isTrue);
     unittest.expect(o.ownerProfileAccount!, unittest.isTrue);
     unittest.expect(
       o.ownershipPrivilege!,
       unittest.equals('foo'),
     );
     unittest.expect(o.supportsWorkProfile!, unittest.isTrue);
+    unittest.expect(o.verifiedBoot!, unittest.isTrue);
+    unittest.expect(o.verifyAppsEnabled!, unittest.isTrue);
   }
   buildCounterGoogleAppsCloudidentityDevicesV1AndroidAttributes--;
 }
@@ -561,6 +569,7 @@ api.GoogleAppsCloudidentityDevicesV1Device
     o.enabledDeveloperOptions = true;
     o.enabledUsbDebugging = true;
     o.encryptionState = 'foo';
+    o.hostname = 'foo';
     o.imei = 'foo';
     o.kernelVersion = 'foo';
     o.lastSyncTime = 'foo';
@@ -628,6 +637,10 @@ void checkGoogleAppsCloudidentityDevicesV1Device(
     unittest.expect(o.enabledUsbDebugging!, unittest.isTrue);
     unittest.expect(
       o.encryptionState!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.hostname!,
       unittest.equals('foo'),
     );
     unittest.expect(

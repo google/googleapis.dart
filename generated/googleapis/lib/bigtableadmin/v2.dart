@@ -28,6 +28,7 @@
 ///       - [ProjectsInstancesClustersBackupsResource]
 ///       - [ProjectsInstancesClustersHotTabletsResource]
 ///     - [ProjectsInstancesTablesResource]
+///       - [ProjectsInstancesTablesViewsResource]
 ///   - [ProjectsLocationsResource]
 library bigtableadmin_v2;
 
@@ -1791,6 +1792,9 @@ class ProjectsInstancesClustersHotTabletsResource {
 class ProjectsInstancesTablesResource {
   final commons.ApiRequester _requester;
 
+  ProjectsInstancesTablesViewsResource get views =>
+      ProjectsInstancesTablesViewsResource(_requester);
+
   ProjectsInstancesTablesResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -2473,6 +2477,152 @@ class ProjectsInstancesTablesResource {
   }
 }
 
+class ProjectsInstancesTablesViewsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsInstancesTablesViewsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a Table resource.
+  ///
+  /// Returns an empty policy if the resource exists but does not have a policy
+  /// set.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+/views/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    GetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on a Table resource.
+  ///
+  /// Replaces any existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+/views/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that the caller has on the specified table resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+/views/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
@@ -3046,6 +3196,31 @@ class Binding {
         if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
+      };
+}
+
+/// Change stream configuration.
+class ChangeStreamConfig {
+  /// How long the change stream should be retained.
+  ///
+  /// Change stream data older than the retention period will not be returned
+  /// when reading the change stream from the table. Values must be at least 1
+  /// day and at most 7 days, and will be truncated to microsecond granularity.
+  core.String? retentionPeriod;
+
+  ChangeStreamConfig({
+    this.retentionPeriod,
+  });
+
+  ChangeStreamConfig.fromJson(core.Map json_)
+      : this(
+          retentionPeriod: json_.containsKey('retentionPeriod')
+              ? json_['retentionPeriod'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (retentionPeriod != null) 'retentionPeriod': retentionPeriod!,
       };
 }
 
@@ -4417,7 +4592,7 @@ class ListTablesResponse {
       };
 }
 
-/// A resource that represents Google Cloud location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// A create, update, or delete of a particular column family.
@@ -4469,6 +4644,9 @@ class Modification {
 /// Request message for
 /// google.bigtable.admin.v2.BigtableTableAdmin.ModifyColumnFamilies
 class ModifyColumnFamiliesRequest {
+  /// If true, ignore safety checks when modifying the column families.
+  core.bool? ignoreWarnings;
+
   /// Modifications to be atomically applied to the specified table's families.
   ///
   /// Entries are applied in order, meaning that earlier modifications can be
@@ -4479,11 +4657,15 @@ class ModifyColumnFamiliesRequest {
   core.List<Modification>? modifications;
 
   ModifyColumnFamiliesRequest({
+    this.ignoreWarnings,
     this.modifications,
   });
 
   ModifyColumnFamiliesRequest.fromJson(core.Map json_)
       : this(
+          ignoreWarnings: json_.containsKey('ignoreWarnings')
+              ? json_['ignoreWarnings'] as core.bool
+              : null,
           modifications: json_.containsKey('modifications')
               ? (json_['modifications'] as core.List)
                   .map((value) => Modification.fromJson(
@@ -4493,6 +4675,7 @@ class ModifyColumnFamiliesRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (ignoreWarnings != null) 'ignoreWarnings': ignoreWarnings!,
         if (modifications != null) 'modifications': modifications!,
       };
 }
@@ -4909,6 +5092,12 @@ typedef Status = $Status;
 ///
 /// Each table is served using the resources of its parent cluster.
 class Table {
+  /// If specified, enable the change stream on this table.
+  ///
+  /// Otherwise, the change stream is disabled and the change stream is not
+  /// retained.
+  ChangeStreamConfig? changeStreamConfig;
+
   /// Map from cluster ID to per-cluster table state.
   ///
   /// If it could not be determined whether or not the table has data in a
@@ -4968,6 +5157,7 @@ class Table {
   TableStats? stats;
 
   Table({
+    this.changeStreamConfig,
     this.clusterStates,
     this.columnFamilies,
     this.deletionProtection,
@@ -4979,6 +5169,10 @@ class Table {
 
   Table.fromJson(core.Map json_)
       : this(
+          changeStreamConfig: json_.containsKey('changeStreamConfig')
+              ? ChangeStreamConfig.fromJson(json_['changeStreamConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           clusterStates: json_.containsKey('clusterStates')
               ? (json_['clusterStates'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -5017,6 +5211,8 @@ class Table {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (changeStreamConfig != null)
+          'changeStreamConfig': changeStreamConfig!,
         if (clusterStates != null) 'clusterStates': clusterStates!,
         if (columnFamilies != null) 'columnFamilies': columnFamilies!,
         if (deletionProtection != null)

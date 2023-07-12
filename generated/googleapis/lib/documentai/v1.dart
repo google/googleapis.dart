@@ -1551,9 +1551,9 @@ class GoogleCloudDocumentaiV1BatchProcessRequest {
   /// The input documents for the BatchProcessDocuments method.
   GoogleCloudDocumentaiV1BatchDocumentsInputConfig? inputDocuments;
 
-  /// Whether Human Review feature should be skipped for this request.
+  /// Whether human review should be skipped for this request.
   ///
-  /// Default to false.
+  /// Default to `false`.
   core.bool? skipHumanReview;
 
   GoogleCloudDocumentaiV1BatchProcessRequest({
@@ -1663,10 +1663,8 @@ class GoogleCloudDocumentaiV1Document {
   /// Any error that occurred while processing this document.
   GoogleRpcStatus? error;
 
-  /// An IANA published MIME type (also referred to as media type).
-  ///
-  /// For more information, see
-  /// https://www.iana.org/assignments/media-types/media-types.xhtml.
+  /// An IANA published \[media type (MIME
+  /// type)\](https://www.iana.org/assignments/media-types/media-types.xhtml).
   core.String? mimeType;
 
   /// Visual page layout for the Document.
@@ -2176,7 +2174,7 @@ class GoogleCloudDocumentaiV1DocumentPage {
   /// such that the annotation bounding boxes can be upright and axis-aligned.
   GoogleCloudDocumentaiV1DocumentPageImage? image;
 
-  /// Image Quality Scores.
+  /// Image quality scores.
   GoogleCloudDocumentaiV1DocumentPageImageQualityScores? imageQualityScores;
 
   /// Layout for the page.
@@ -2667,7 +2665,7 @@ class GoogleCloudDocumentaiV1DocumentPageFormField {
 typedef GoogleCloudDocumentaiV1DocumentPageImage
     = $GoogleCloudDocumentaiV1DocumentPageImage;
 
-/// Image Quality Scores for the page image
+/// Image quality scores for the page image.
 class GoogleCloudDocumentaiV1DocumentPageImageQualityScores {
   /// A list of detected defects.
   core.List<
@@ -2676,7 +2674,7 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScores {
 
   /// The overall quality score.
   ///
-  /// Range `[0, 1]` where 1 is perfect quality.
+  /// Range `[0, 1]` where `1` is perfect quality.
   core.double? qualityScore;
 
   GoogleCloudDocumentaiV1DocumentPageImageQualityScores({
@@ -3523,15 +3521,14 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityType {
 
   /// Name of the type.
   ///
-  /// It must be unique within the schema file and cannot be a 'Common Type'.
-  /// Besides that we use the following naming conventions: - *use
-  /// `snake_casing`* - name matching is case-sensitive - Maximum 64 characters.
-  /// - Must start with a letter. - Allowed characters: ASCII letters
-  /// `[a-z0-9_-]`. (For backward compatibility internal infrastructure and
-  /// tooling can handle any ascii character) - The `/` is sometimes used to
-  /// denote a property of a type. For example `line_item/amount`. This
-  /// convention is deprecated, but will still be honored for backward
-  /// compatibility.
+  /// It must be unique within the schema file and cannot be a "Common Type".
+  /// The following naming conventions are used: - Use `snake_casing`. - Name
+  /// matching is case-sensitive. - Maximum 64 characters. - Must start with a
+  /// letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
+  /// compatibility internal infrastructure and tooling can handle any ascii
+  /// character.) - The `/` is sometimes used to denote a property of a type.
+  /// For example `line_item/amount`. This convention is deprecated, but will
+  /// still be honored for backward compatibility.
   core.String? name;
 
   /// Description the nested structure, or composition of an entity.
@@ -3662,8 +3659,8 @@ class GoogleCloudDocumentaiV1DocumentSchemaMetadata {
   /// covering it.
   core.bool? documentAllowMultipleLabels;
 
-  /// If true, a `document` entity type can be applied to subdocument (
-  /// splitting).
+  /// If true, a `document` entity type can be applied to subdocument
+  /// (splitting).
   ///
   /// Otherwise, it can only be applied to the entire document (classification).
   core.bool? documentSplitter;
@@ -3738,25 +3735,22 @@ class GoogleCloudDocumentaiV1DocumentStyle {
   /// Font size.
   GoogleCloudDocumentaiV1DocumentStyleFontSize? fontSize;
 
-  /// Font weight.
+  /// [Font weight](https://www.w3schools.com/cssref/pr_font_weight.asp).
   ///
-  /// Possible values are normal, bold, bolder, and lighter.
-  /// https://www.w3schools.com/cssref/pr_font_weight.asp
+  /// Possible values are `normal`, `bold`, `bolder`, and `lighter`.
   core.String? fontWeight;
 
   /// Text anchor indexing into the Document.text.
   GoogleCloudDocumentaiV1DocumentTextAnchor? textAnchor;
 
-  /// Text decoration.
+  /// [Text decoration](https://www.w3schools.com/cssref/pr_text_text-decoration.asp).
   ///
   /// Follows CSS standard.
-  /// https://www.w3schools.com/cssref/pr_text_text-decoration.asp
   core.String? textDecoration;
 
-  /// Text style.
+  /// [Text style](https://www.w3schools.com/cssref/pr_font_font-style.asp).
   ///
-  /// Possible values are normal, italic, and oblique.
-  /// https://www.w3schools.com/cssref/pr_font_font-style.asp
+  /// Possible values are `normal`, `italic`, and `oblique`.
   core.String? textStyle;
 
   GoogleCloudDocumentaiV1DocumentStyle({
@@ -4675,9 +4669,9 @@ class GoogleCloudDocumentaiV1ProcessRequest {
   /// A raw document content (bytes).
   GoogleCloudDocumentaiV1RawDocument? rawDocument;
 
-  /// Whether Human Review feature should be skipped for this request.
+  /// Whether human review should be skipped for this request.
   ///
-  /// Default to false.
+  /// Default to `false`.
   core.bool? skipHumanReview;
 
   GoogleCloudDocumentaiV1ProcessRequest({
@@ -4760,9 +4754,8 @@ class GoogleCloudDocumentaiV1Processor {
   /// The display name of the processor.
   core.String? displayName;
 
-  /// The KMS key used for encryption/decryption in CMEK scenarios.
-  ///
-  /// See https://cloud.google.com/security-key-management.
+  /// The [KMS key](https://cloud.google.com/security-key-management) used for
+  /// encryption and decryption in CMEK scenarios.
   core.String? kmsKeyName;
 
   /// The resource name of the processor.
@@ -4968,7 +4961,10 @@ class GoogleCloudDocumentaiV1ProcessorType {
 
 /// The location information about where the processor is available.
 class GoogleCloudDocumentaiV1ProcessorTypeLocationInfo {
-  /// The location id, currently must be one of \[us, eu\].
+  /// The location ID.
+  ///
+  /// For supported locations, refer to \[regional and multi-regional
+  /// support\](/document-ai/docs/regions).
   core.String? locationId;
 
   GoogleCloudDocumentaiV1ProcessorTypeLocationInfo({
@@ -4989,10 +4985,9 @@ class GoogleCloudDocumentaiV1ProcessorTypeLocationInfo {
 
 /// A processor version is an implementation of a processor.
 ///
-/// Each processor can have multiple versions, pre-trained by Google internally
-/// or up-trained by the customer. At a time, a processor can only have one
-/// default version version. So the processor's behavior (when processing
-/// documents) is defined by a default version
+/// Each processor can have multiple versions, pretrained by Google internally
+/// or uptrained by the customer. A processor can only have one default version
+/// at a time. Its document-processing behavior is defined by that version.
 class GoogleCloudDocumentaiV1ProcessorVersion {
   /// The time the processor version was created.
   core.String? createTime;
@@ -5008,7 +5003,7 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
   /// Describes the output.
   GoogleCloudDocumentaiV1DocumentSchema? documentSchema;
 
-  /// Denotes that this ProcessorVersion is managed by google.
+  /// Denotes that this `ProcessorVersion` is managed by Google.
   core.bool? googleManaged;
 
   /// The KMS key name used for encryption.
@@ -5266,6 +5261,10 @@ class GoogleCloudDocumentaiV1TrainProcessorVersionRequest {
   /// Optional.
   core.String? baseProcessorVersion;
 
+  /// Options to control Custom Document Extraction (CDE) Processor.
+  GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions?
+      customDocumentExtractionOptions;
+
   /// The schema the processor version will be trained with.
   ///
   /// Optional.
@@ -5283,6 +5282,7 @@ class GoogleCloudDocumentaiV1TrainProcessorVersionRequest {
 
   GoogleCloudDocumentaiV1TrainProcessorVersionRequest({
     this.baseProcessorVersion,
+    this.customDocumentExtractionOptions,
     this.documentSchema,
     this.inputData,
     this.processorVersion,
@@ -5292,6 +5292,12 @@ class GoogleCloudDocumentaiV1TrainProcessorVersionRequest {
       : this(
           baseProcessorVersion: json_.containsKey('baseProcessorVersion')
               ? json_['baseProcessorVersion'] as core.String
+              : null,
+          customDocumentExtractionOptions: json_
+                  .containsKey('customDocumentExtractionOptions')
+              ? GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions
+                  .fromJson(json_['customDocumentExtractionOptions']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           documentSchema: json_.containsKey('documentSchema')
               ? GoogleCloudDocumentaiV1DocumentSchema.fromJson(
@@ -5313,9 +5319,38 @@ class GoogleCloudDocumentaiV1TrainProcessorVersionRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (baseProcessorVersion != null)
           'baseProcessorVersion': baseProcessorVersion!,
+        if (customDocumentExtractionOptions != null)
+          'customDocumentExtractionOptions': customDocumentExtractionOptions!,
         if (documentSchema != null) 'documentSchema': documentSchema!,
         if (inputData != null) 'inputData': inputData!,
         if (processorVersion != null) 'processorVersion': processorVersion!,
+      };
+}
+
+/// Options to control the training of the Custom Document Extraction (CDE)
+/// Processor.
+class GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions {
+  /// Training method to use for CDE training.
+  /// Possible string values are:
+  /// - "TRAINING_METHOD_UNSPECIFIED"
+  /// - "MODEL_BASED"
+  /// - "TEMPLATE_BASED"
+  core.String? trainingMethod;
+
+  GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions({
+    this.trainingMethod,
+  });
+
+  GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions.fromJson(
+      core.Map json_)
+      : this(
+          trainingMethod: json_.containsKey('trainingMethod')
+              ? json_['trainingMethod'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (trainingMethod != null) 'trainingMethod': trainingMethod!,
       };
 }
 
@@ -5522,32 +5557,32 @@ typedef GoogleRpcStatus = $Status;
 
 /// Represents a color in the RGBA color space.
 ///
-/// This representation is designed for simplicity of conversion to/from color
-/// representations in various languages over compactness. For example, the
-/// fields of this representation can be trivially provided to the constructor
-/// of `java.awt.Color` in Java; it can also be trivially provided to UIColor's
-/// `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little
-/// work, it can be easily formatted into a CSS `rgba()` string in JavaScript.
-/// This reference page doesn't carry information about the absolute color space
-/// that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-/// DCI-P3, BT.2020, etc.). By default, applications should assume the sRGB
-/// color space. When color equality needs to be decided, implementations,
-/// unless documented otherwise, treat two colors as equal if all their red,
-/// green, blue, and alpha values each differ by at most 1e-5. Example (Java):
-/// import com.google.type.Color; // ... public static java.awt.Color
-/// fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ?
-/// protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color(
-/// protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); }
-/// public static Color toProto(java.awt.Color color) { float red = (float)
-/// color.getRed(); float green = (float) color.getGreen(); float blue = (float)
-/// color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder =
-/// Color .newBuilder() .setRed(red / denominator) .setGreen(green /
-/// denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if
-/// (alpha != 255) { result.setAlpha( FloatValue .newBuilder()
-/// .setValue(((float) alpha) / denominator) .build()); } return
-/// resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static
-/// UIColor* fromProto(Color* protocolor) { float red = \[protocolor red\];
-/// float green = \[protocolor green\]; float blue = \[protocolor blue\];
+/// This representation is designed for simplicity of conversion to and from
+/// color representations in various languages over compactness. For example,
+/// the fields of this representation can be trivially provided to the
+/// constructor of `java.awt.Color` in Java; it can also be trivially provided
+/// to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just
+/// a little work, it can be easily formatted into a CSS `rgba()` string in
+/// JavaScript. This reference page doesn't have information about the absolute
+/// color space that should be used to interpret the RGB value—for example,
+/// sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume
+/// the sRGB color space. When color equality needs to be decided,
+/// implementations, unless documented otherwise, treat two colors as equal if
+/// all their red, green, blue, and alpha values each differ by at most `1e-5`.
+/// Example (Java): import com.google.type.Color; // ... public static
+/// java.awt.Color fromProto(Color protocolor) { float alpha =
+/// protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+/// java.awt.Color( protocolor.getRed(), protocolor.getGreen(),
+/// protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color
+/// color) { float red = (float) color.getRed(); float green = (float)
+/// color.getGreen(); float blue = (float) color.getBlue(); float denominator =
+/// 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red /
+/// denominator) .setGreen(green / denominator) .setBlue(blue / denominator);
+/// int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha(
+/// FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build());
+/// } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ...
+/// static UIColor* fromProto(Color* protocolor) { float red = \[protocolor
+/// red\]; float green = \[protocolor green\]; float blue = \[protocolor blue\];
 /// FloatValue* alpha_wrapper = \[protocolor alpha\]; float alpha = 1.0; if
 /// (alpha_wrapper != nil) { alpha = \[alpha_wrapper value\]; } return \[UIColor
 /// colorWithRed:red green:green blue:blue alpha:alpha\]; } static Color*

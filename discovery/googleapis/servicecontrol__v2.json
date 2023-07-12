@@ -27,6 +27,13 @@
     "name": "servicecontrol",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230623",
+    "rootUrl": "https://servicecontrol.googleapis.com/",
+    "servicePath": "",
+    "title": "Service Control API",
+    "version": "v2",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -104,7 +111,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "services": {
             "methods": {
@@ -167,8 +173,6 @@
             }
         }
     },
-    "revision": "20230504",
-    "rootUrl": "https://servicecontrol.googleapis.com/",
     "schemas": {
         "Api": {
             "description": "This message defines attributes associated with API operations, such as a network API request. The terminology is based on the conventions used by Google APIs, Istio, and OpenAPI.",
@@ -1141,9 +1145,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Service Control API",
-    "version": "v2",
-    "version_module": true
+    }
 }

@@ -24,6 +24,13 @@
     "name": "homegraph",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230623",
+    "rootUrl": "https://homegraph.googleapis.com/",
+    "servicePath": "",
+    "title": "HomeGraph API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "agentUsers": {
             "methods": {
@@ -214,8 +220,6 @@
             }
         }
     },
-    "revision": "20230428",
-    "rootUrl": "https://homegraph.googleapis.com/",
     "schemas": {
         "AgentDeviceId": {
             "description": "Third-party device ID for one device.",
@@ -587,9 +591,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "HomeGraph API",
-    "version": "v1",
-    "version_module": true
+    }
 }

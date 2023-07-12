@@ -24,6 +24,13 @@
     "name": "notebooks",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230627",
+    "rootUrl": "https://notebooks.googleapis.com/",
+    "servicePath": "",
+    "title": "Notebooks API",
+    "version": "v2",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -394,8 +400,6 @@
             }
         }
     },
-    "revision": "20230502",
-    "rootUrl": "https://notebooks.googleapis.com/",
     "schemas": {
         "Binding": {
             "description": "Associates `members`, or principals, with a `role`.",
@@ -690,9 +694,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Notebooks API",
-    "version": "v2",
-    "version_module": true
+    }
 }

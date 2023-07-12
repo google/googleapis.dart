@@ -1303,6 +1303,49 @@ class QueryResource {
 
   QueryResource(commons.ApiRequester client) : _requester = client;
 
+  /// Provides functionality to remove logged activity for a user.
+  ///
+  /// Currently to be used only for Chat 1p clients **Note:** This API requires
+  /// a standard end user account to execute. A service account can't perform
+  /// Remove Activity requests directly; to use a service account to perform
+  /// queries, set up \[Google Workspace domain-wide delegation of
+  /// authority\](https://developers.google.com/cloud-search/docs/guides/delegation/).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RemoveActivityResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RemoveActivityResponse> removeActivity(
+    RemoveActivityRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1/query:removeActivity';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RemoveActivityResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// The Cloud Search Query API provides the search method, which returns the
   /// most relevant results from a user query.
   ///
@@ -1419,9 +1462,8 @@ class QuerySourcesResource {
   /// translations. Set this field using the language set in browser or for the
   /// page. In the event that the user's language preference is known, set this
   /// field to the known user language. When specified, the documents in search
-  /// results are biased towards the specified language. From Suggest API
-  /// perspective, for 3p suggest this is used as a hint while making
-  /// predictions to add language boosting.
+  /// results are biased towards the specified language. The Suggest API uses
+  /// this field as a hint to make better third-party autocomplete predictions.
   ///
   /// [requestOptions_searchApplicationId] - The ID generated when you create a
   /// search application using the
@@ -7185,6 +7227,26 @@ class PushItemRequest {
       };
 }
 
+/// Details about a user's query activity.
+class QueryActivity {
+  /// User input query to be logged/removed.
+  core.String? query;
+
+  QueryActivity({
+    this.query,
+  });
+
+  QueryActivity.fromJson(core.Map json_)
+      : this(
+          query:
+              json_.containsKey('query') ? json_['query'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (query != null) 'query': query!,
+      };
+}
+
 class QueryCountByStatus {
   core.String? count;
 
@@ -7550,6 +7612,42 @@ class QuerySource {
 /// indicator that the suggest result was a phrase completion.
 typedef QuerySuggestion = $Empty;
 
+/// Remove Logged Activity Request.
+class RemoveActivityRequest {
+  /// Request options, such as the search application and clientId.
+  RequestOptions? requestOptions;
+
+  /// User Activity containing the data to be deleted.
+  UserActivity? userActivity;
+
+  RemoveActivityRequest({
+    this.requestOptions,
+    this.userActivity,
+  });
+
+  RemoveActivityRequest.fromJson(core.Map json_)
+      : this(
+          requestOptions: json_.containsKey('requestOptions')
+              ? RequestOptions.fromJson(json_['requestOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          userActivity: json_.containsKey('userActivity')
+              ? UserActivity.fromJson(
+                  json_['userActivity'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requestOptions != null) 'requestOptions': requestOptions!,
+        if (userActivity != null) 'userActivity': userActivity!,
+      };
+}
+
+/// Remove Logged Activity Response.
+///
+/// will return an empty response for now. Will be revisited in later phases.
+typedef RemoveActivityResponse = $Empty;
+
 /// Errors when the connector is communicating to the source repository.
 class RepositoryError {
   /// Message that describes the error.
@@ -7615,9 +7713,8 @@ class RequestOptions {
   /// translations. Set this field using the language set in browser or for the
   /// page. In the event that the user's language preference is known, set this
   /// field to the known user language. When specified, the documents in search
-  /// results are biased towards the specified language. From Suggest API
-  /// perspective, for 3p suggest this is used as a hint while making
-  /// predictions to add language boosting.
+  /// results are biased towards the specified language. The Suggest API uses
+  /// this field as a hint to make better third-party autocomplete predictions.
   core.String? languageCode;
 
   /// The ID generated when you create a search application using the
@@ -7838,6 +7935,41 @@ class RetrievalImportance {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (importance != null) 'importance': importance!,
+      };
+}
+
+/// IMPORTANT: It is unsafe to accept this message from an untrusted source,
+/// since it's trivial for an attacker to forge serialized messages that don't
+/// fulfill the type's safety contract -- for example, it could contain attacker
+/// controlled script.
+///
+/// A system which receives a SafeHtmlProto implicitly trusts the producer of
+/// the SafeHtmlProto. So, it's generally safe to return this message in RPC
+/// responses, but generally unsafe to accept it in RPC requests.
+class SafeHtmlProto {
+  /// IMPORTANT: Never set or read this field, even from tests, it is private.
+  ///
+  /// See documentation at the top of .proto file for programming language
+  /// packages with which to create or read this message.
+  core.String? privateDoNotAccessOrElseSafeHtmlWrappedValue;
+
+  SafeHtmlProto({
+    this.privateDoNotAccessOrElseSafeHtmlWrappedValue,
+  });
+
+  SafeHtmlProto.fromJson(core.Map json_)
+      : this(
+          privateDoNotAccessOrElseSafeHtmlWrappedValue:
+              json_.containsKey('privateDoNotAccessOrElseSafeHtmlWrappedValue')
+                  ? json_['privateDoNotAccessOrElseSafeHtmlWrappedValue']
+                      as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (privateDoNotAccessOrElseSafeHtmlWrappedValue != null)
+          'privateDoNotAccessOrElseSafeHtmlWrappedValue':
+              privateDoNotAccessOrElseSafeHtmlWrappedValue!,
       };
 }
 
@@ -8835,8 +8967,30 @@ class SpellResult {
   /// The suggested spelling of the query.
   core.String? suggestedQuery;
 
+  /// The sanitized HTML representing the spell corrected query that can be used
+  /// in the UI.
+  ///
+  /// This usually has language-specific tags to mark up parts of the query that
+  /// are spell checked.
+  SafeHtmlProto? suggestedQueryHtml;
+
+  /// Suggestion triggered for the current query.
+  /// Possible string values are:
+  /// - "SUGGESTION_TYPE_UNSPECIFIED" : Default spell check type
+  /// - "NON_EMPTY_RESULTS_SPELL_SUGGESTION" : Spell suggestion without any
+  /// results changed. The results are still shown for the original query (which
+  /// has non zero / results) with a suggestion for spelling that would have
+  /// results.
+  /// - "ZERO_RESULTS_FULL_PAGE_REPLACEMENT" : Spell suggestion triggered when
+  /// original query has no results. When the original query has no results, and
+  /// spell suggestion has results we trigger results for the spell corrected
+  /// query.
+  core.String? suggestionType;
+
   SpellResult({
     this.suggestedQuery,
+    this.suggestedQueryHtml,
+    this.suggestionType,
   });
 
   SpellResult.fromJson(core.Map json_)
@@ -8844,10 +8998,20 @@ class SpellResult {
           suggestedQuery: json_.containsKey('suggestedQuery')
               ? json_['suggestedQuery'] as core.String
               : null,
+          suggestedQueryHtml: json_.containsKey('suggestedQueryHtml')
+              ? SafeHtmlProto.fromJson(json_['suggestedQueryHtml']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          suggestionType: json_.containsKey('suggestionType')
+              ? json_['suggestionType'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (suggestedQuery != null) 'suggestedQuery': suggestedQuery!,
+        if (suggestedQueryHtml != null)
+          'suggestedQueryHtml': suggestedQueryHtml!,
+        if (suggestionType != null) 'suggestionType': suggestionType!,
       };
 }
 
@@ -9469,6 +9633,30 @@ class UploadItemRef {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
+      };
+}
+
+/// User's single or bulk query activity.
+///
+/// This can be a logging query or deletion query.
+class UserActivity {
+  /// Contains data which needs to be logged/removed.
+  QueryActivity? queryActivity;
+
+  UserActivity({
+    this.queryActivity,
+  });
+
+  UserActivity.fromJson(core.Map json_)
+      : this(
+          queryActivity: json_.containsKey('queryActivity')
+              ? QueryActivity.fromJson(
+                  json_['queryActivity'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (queryActivity != null) 'queryActivity': queryActivity!,
       };
 }
 

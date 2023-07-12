@@ -24,6 +24,13 @@
     "name": "firebaseappdistribution",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230712",
+    "rootUrl": "https://firebaseappdistribution.googleapis.com/",
+    "servicePath": "",
+    "title": "Firebase App Distribution API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "media": {
             "methods": {
@@ -939,8 +945,6 @@
             }
         }
     },
-    "revision": "20230516",
-    "rootUrl": "https://firebaseappdistribution.googleapis.com/",
     "schemas": {
         "GdataBlobstore2Info": {
             "description": "Information to read/write to blobstore2.",
@@ -1927,9 +1931,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Firebase App Distribution API",
-    "version": "v1",
-    "version_module": true
+    }
 }

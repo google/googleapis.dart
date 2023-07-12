@@ -36,6 +36,10 @@
 ///       - [OrganizationsApisKeyvaluemapsEntriesResource]
 ///     - [OrganizationsApisRevisionsResource]
 ///       - [OrganizationsApisRevisionsDeploymentsResource]
+///   - [OrganizationsAppgroupsResource]
+///     - [OrganizationsAppgroupsAppsResource]
+///       - [OrganizationsAppgroupsAppsKeysResource]
+///         - [OrganizationsAppgroupsAppsKeysApiproductsResource]
 ///   - [OrganizationsAppsResource]
 ///   - [OrganizationsDatacollectorsResource]
 ///   - [OrganizationsDeploymentsResource]
@@ -207,6 +211,8 @@ class OrganizationsResource {
   OrganizationsApiproductsResource get apiproducts =>
       OrganizationsApiproductsResource(_requester);
   OrganizationsApisResource get apis => OrganizationsApisResource(_requester);
+  OrganizationsAppgroupsResource get appgroups =>
+      OrganizationsAppgroupsResource(_requester);
   OrganizationsAppsResource get apps => OrganizationsAppsResource(_requester);
   OrganizationsDatacollectorsResource get datacollectors =>
       OrganizationsDatacollectorsResource(_requester);
@@ -2584,6 +2590,819 @@ class OrganizationsApisRevisionsDeploymentsResource {
   }
 }
 
+class OrganizationsAppgroupsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsAppgroupsAppsResource get apps =>
+      OrganizationsAppgroupsAppsResource(_requester);
+
+  OrganizationsAppgroupsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an AppGroup.
+  ///
+  /// Once created, user can register apps under the AppGroup to obtain secret
+  /// key and password. At creation time, the AppGroup's state is set as
+  /// `active`. The attribute `Attribute` with key `attribute_name` as
+  /// `__apigee_reserved__developer_details` can be used to store developers and
+  /// their roles. The JSON format expected is: \[ { "developer_id":"",
+  /// "roles":\[ "" \] } \] and is dealt in base64encoded format. Etag will be
+  /// available in attribute `Attribute` with key `attribute_name` as
+  /// `__apigee_reserved__developer_details_etag` for that AppGroup.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the Apigee organization in which the AppGroup
+  /// is created. Use the following structure in your request:
+  /// `organizations/{org}`.
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AppGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AppGroup> create(
+    GoogleCloudApigeeV1AppGroup request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/appgroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1AppGroup.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an AppGroup.
+  ///
+  /// All app and API keys associations with the AppGroup are also removed.
+  /// **Warning**: This API will permanently delete the AppGroup and related
+  /// artifacts. **Note**: The delete operation is asynchronous. The AppGroup
+  /// app is deleted immediately, but its associated resources, such as apps and
+  /// API keys, may take anywhere from a few seconds to a few minutes to be
+  /// deleted.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the AppGroup. Use the following structure in
+  /// your request: `organizations/{org}/appgroups/{app_group_name}`
+  /// Value must have pattern `^organizations/\[^/\]+/appgroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AppGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AppGroup> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1AppGroup.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the AppGroup details for the provided AppGroup name in the request
+  /// URI.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the AppGroup. Use the following structure in
+  /// your request: `organizations/{org}/appgroups/{app_group_name}`
+  /// Value must have pattern `^organizations/\[^/\]+/appgroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AppGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AppGroup> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1AppGroup.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all AppGroups in an organization.
+  ///
+  /// A maximum of 1000 AppGroups are returned in the response if PageSize is
+  /// not specified, or if the PageSize is greater than 1000.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the Apigee organization. Use the following
+  /// structure in your request: `organizations/{org}`.
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [filter] - The filter expression to be used to get the list of AppGroups,
+  /// where filtering can be done on name, correlationID or channelID of the app
+  /// group. Example: filter = "name = foobar"
+  ///
+  /// [pageSize] - Count of AppGroups a single page can have in the response. If
+  /// unspecified, at most 1000 AppGroups will be returned. The maximum value is
+  /// 1000; values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - The starting index record for listing the AppGroups.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ListAppGroupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ListAppGroupsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/appgroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1ListAppGroupsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an appGroup.
+  ///
+  /// This API replaces the existing appGroup details with those specified in
+  /// the request. Include or exclude any existing details that you want to
+  /// retain or delete, respectively. Note that the state of the AppGroup should
+  /// be updated using `action`, and not via AppGroup. The custom attribute
+  /// limit is 1000, and is how `__apigee_reserved__developer_details` can be
+  /// updated. **Note**: OAuth access tokens and Key Management Service (KMS)
+  /// entities (apps, developers, and API products) are cached for 180 seconds
+  /// (current default). Any custom attributes associated with these entities
+  /// are cached for at least 180 seconds after the entity is accessed at
+  /// runtime. Therefore, an `ExpiresIn` element on the OAuthV2 policy won't be
+  /// able to expire an access token in less than 180 seconds.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the AppGroup. Use the following structure in
+  /// your request: `organizations/{org}/appgroups/{app_group_name}`
+  /// Value must have pattern `^organizations/\[^/\]+/appgroups/\[^/\]+$`.
+  ///
+  /// [action] - Activate or de-activate the appGroup by setting the action as
+  /// `active` or `inactive`. The `Content-Type` header must be set to
+  /// `application/octet-stream`, with empty body.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AppGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AppGroup> update(
+    GoogleCloudApigeeV1AppGroup request,
+    core.String name, {
+    core.String? action,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (action != null) 'action': [action],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1AppGroup.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsAppgroupsAppsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsAppgroupsAppsKeysResource get keys =>
+      OrganizationsAppgroupsAppsKeysResource(_requester);
+
+  OrganizationsAppgroupsAppsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an app and associates it with an AppGroup.
+  ///
+  /// This API associates the AppGroup app with the specified API product and
+  /// auto-generates an API key for the app to use in calls to API proxies
+  /// inside that API product. The `name` is the unique ID of the app that you
+  /// can use in API calls.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the AppGroup. Use the following structure in
+  /// your request: `organizations/{org}/appgroups/{app_group_name}`
+  /// Value must have pattern `^organizations/\[^/\]+/appgroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AppGroupApp].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AppGroupApp> create(
+    GoogleCloudApigeeV1AppGroupApp request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/apps';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1AppGroupApp.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an AppGroup app.
+  ///
+  /// **Note**: The delete operation is asynchronous. The AppGroup app is
+  /// deleted immediately, but its associated resources, such as app keys or
+  /// access tokens, may take anywhere from a few seconds to a few minutes to be
+  /// deleted.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the AppGroup app. Use the following structure
+  /// in your request:
+  /// `organizations/{org}/appgroups/{app_group_name}/apps/{app}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/appgroups/\[^/\]+/apps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AppGroupApp].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AppGroupApp> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1AppGroupApp.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the details for an AppGroup app.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the AppGroup app. Use the following structure
+  /// in your request:
+  /// `organizations/{org}/appgroups/{app_group_name}/apps/{app}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/appgroups/\[^/\]+/apps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AppGroupApp].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AppGroupApp> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1AppGroupApp.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all apps created by an AppGroup in an Apigee organization.
+  ///
+  /// Optionally, you can request an expanded view of the AppGroup apps. Lists
+  /// all AppGroupApps in an AppGroup. A maximum of 1000 AppGroup apps are
+  /// returned in the response if PageSize is not specified, or if the PageSize
+  /// is greater than 1000.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the AppGroup. Use the following structure in
+  /// your request: `organizations/{org}/appgroups/{app_group_name}`
+  /// Value must have pattern `^organizations/\[^/\]+/appgroups/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number entries to return. If unspecified,
+  /// at most 1000 entries will be returned.
+  ///
+  /// [pageToken] - Optional. Page token. If provides, must be a valid AppGroup
+  /// app returned from a previous call that can be used to retrieve the next
+  /// page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ListAppGroupAppsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ListAppGroupAppsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/apps';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1ListAppGroupAppsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the details for an AppGroup app.
+  ///
+  /// In addition, you can add an API product to an AppGroup app and
+  /// automatically generate an API key for the app to use when calling APIs in
+  /// the API product. If you want to use an existing API key for the API
+  /// product, add the API product to the API key using the UpdateAppGroupAppKey
+  /// API. Using this API, you cannot update the app name, as it is the primary
+  /// key used to identify the app and cannot be changed. This API replaces the
+  /// existing attributes with those specified in the request. Include or
+  /// exclude any existing attributes that you want to retain or delete,
+  /// respectively.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the AppGroup app. Use the following structure
+  /// in your request:
+  /// `organizations/{org}/appgroups/{app_group_name}/apps/{app}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/appgroups/\[^/\]+/apps/\[^/\]+$`.
+  ///
+  /// [action] - Approve or revoke the consumer key by setting this value to
+  /// `approve` or `revoke`. The `Content-Type` header must be set to
+  /// `application/octet-stream`, with empty body.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AppGroupApp].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AppGroupApp> update(
+    GoogleCloudApigeeV1AppGroupApp request,
+    core.String name, {
+    core.String? action,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (action != null) 'action': [action],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1AppGroupApp.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsAppgroupsAppsKeysResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsAppgroupsAppsKeysApiproductsResource get apiproducts =>
+      OrganizationsAppgroupsAppsKeysApiproductsResource(_requester);
+
+  OrganizationsAppgroupsAppsKeysResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a custom consumer key and secret for a AppGroup app.
+  ///
+  /// This is particularly useful if you want to migrate existing consumer keys
+  /// and secrets to Apigee from another system. Consumer keys and secrets can
+  /// contain letters, numbers, underscores, and hyphens. No other special
+  /// characters are allowed. To avoid service disruptions, a consumer key and
+  /// secret should not exceed 2 KBs each. **Note**: When creating the consumer
+  /// key and secret, an association to API products will not be made.
+  /// Therefore, you should not specify the associated API products in your
+  /// request. Instead, use the ProductizeAppGroupAppKey API to make the
+  /// association after the consumer key and secret are created. If a consumer
+  /// key and secret already exist, you can keep them or delete them using the
+  /// DeleteAppGroupAppKey API.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent of the AppGroup app key. Use the following
+  /// structure in your request:
+  /// `organizations/{org}/appgroups/{app_group_name}/apps/{app}/keys`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/appgroups/\[^/\]+/apps/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AppGroupAppKey].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AppGroupAppKey> create(
+    GoogleCloudApigeeV1AppGroupAppKey request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/keys';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1AppGroupAppKey.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an app's consumer key and removes all API products associated with
+  /// the app.
+  ///
+  /// After the consumer key is deleted, it cannot be used to access any APIs.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the AppGroup app key. Use the following
+  /// structure in your request:
+  /// `organizations/{org}/appgroups/{app_group_name}/apps/{app}/keys/{key}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/appgroups/\[^/\]+/apps/\[^/\]+/keys/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AppGroupAppKey].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AppGroupAppKey> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1AppGroupAppKey.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details for a consumer key for a AppGroup app, including the key and
+  /// secret value, associated API products, and other information.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the AppGroup app key. Use the following
+  /// structure in your request:
+  /// `organizations/{org}/appgroups/{app_group_name}/apps/{app}/keys/{key}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/appgroups/\[^/\]+/apps/\[^/\]+/keys/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AppGroupAppKey].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AppGroupAppKey> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1AppGroupAppKey.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Adds an API product to an AppGroupAppKey, enabling the app that holds the
+  /// key to access the API resources bundled in the API product.
+  ///
+  /// In addition, you can add attributes to the AppGroupAppKey. This API
+  /// replaces the existing attributes with those specified in the request.
+  /// Include or exclude any existing attributes that you want to retain or
+  /// delete, respectively. You can use the same key to access all API products
+  /// associated with the app.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the AppGroup app key. Use the following
+  /// structure in your request:
+  /// `organizations/{org}/appgroups/{app_group_name}/apps/{app}/keys/{key}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/appgroups/\[^/\]+/apps/\[^/\]+/keys/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AppGroupAppKey].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AppGroupAppKey> updateAppGroupAppKey(
+    GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1AppGroupAppKey.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsAppgroupsAppsKeysApiproductsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsAppgroupsAppsKeysApiproductsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Removes an API product from an app's consumer key.
+  ///
+  /// After the API product is removed, the app cannot access the API resources
+  /// defined in that API product. **Note**: The consumer key is not removed,
+  /// only its association with the API product.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Parent of the AppGroup app key. Use the following
+  /// structure in your request:
+  /// `organizations/{org}/appgroups/{app_group_name}/apps/{app}/keys/{key}/apiproducts/{apiproduct}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/appgroups/\[^/\]+/apps/\[^/\]+/keys/\[^/\]+/apiproducts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AppGroupAppKey].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AppGroupAppKey> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1AppGroupAppKey.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Approves or revokes the consumer key for an API product.
+  ///
+  /// After a consumer key is approved, the app can use it to access APIs. A
+  /// consumer key that is revoked or pending cannot be used to access an API.
+  /// Any access tokens associated with a revoked consumer key will remain
+  /// active. However, Apigee checks the status of the consumer key and if set
+  /// to `revoked` will not allow access to the API.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the API product in the developer app key in the
+  /// following format:
+  /// `organizations/{org}/appgroups/{app_group_name}/apps/{app}/keys/{key}/apiproducts/{apiproduct}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/appgroups/\[^/\]+/apps/\[^/\]+/keys/\[^/\]+/apiproducts/\[^/\]+$`.
+  ///
+  /// [action] - Approve or revoke the consumer key by setting this value to
+  /// `approve` or `revoke` respectively. The `Content-Type` header, if set,
+  /// must be set to `application/octet-stream`, with empty body.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> updateAppGroupAppKeyApiProduct(
+    core.String name, {
+    core.String? action,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (action != null) 'action': [action],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class OrganizationsAppsResource {
   final commons.ApiRequester _requester;
 
@@ -2638,11 +3457,17 @@ class OrganizationsAppsResource {
   ///
   /// [apiProduct] - API product.
   ///
-  /// [apptype] - Optional. Filter by the type of the app. Valid values are
-  /// `company` or `developer`. Defaults to `developer`.
+  /// [apptype] - Optional. 'apptype' is no longer available. Use a 'filter'
+  /// instead.
   ///
   /// [expand] - Optional. Flag that specifies whether to return an expanded
   /// list of apps for the organization. Defaults to `false`.
+  ///
+  /// [filter] - Optional. The filter expression to be used to get the list of
+  /// apps, where filtering can be done on developerEmail, apiProduct,
+  /// consumerKey, status, appId, appName and appType. Examples:
+  /// "developerEmail=foo@bar.com", "appType=AppGroup", or "appType=Developer"
+  /// "filter" is supported from ver 1.10.0 and above.
   ///
   /// [ids] - Optional. Comma-separated list of app IDs on which to filter.
   ///
@@ -2651,6 +3476,14 @@ class OrganizationsAppsResource {
   ///
   /// [keyStatus] - Optional. Key status of the app. Valid values include
   /// `approved` or `revoked`. Defaults to `approved`.
+  ///
+  /// [pageSize] - Optional. Count of apps a single page can have in the
+  /// response. If unspecified, at most 100 apps will be returned. The maximum
+  /// value is 100; values above 100 will be coerced to 100. "page_size" is
+  /// supported from ver 1.10.0 and above.
+  ///
+  /// [pageToken] - Optional. The starting index record for listing the
+  /// developers. "page_token" is supported from ver 1.10.0 and above.
   ///
   /// [rows] - Optional. Maximum number of app IDs to return. Defaults to 10000.
   ///
@@ -2674,9 +3507,12 @@ class OrganizationsAppsResource {
     core.String? apiProduct,
     core.String? apptype,
     core.bool? expand,
+    core.String? filter,
     core.String? ids,
     core.bool? includeCred,
     core.String? keyStatus,
+    core.int? pageSize,
+    core.String? pageToken,
     core.String? rows,
     core.String? startKey,
     core.String? status,
@@ -2686,9 +3522,12 @@ class OrganizationsAppsResource {
       if (apiProduct != null) 'apiProduct': [apiProduct],
       if (apptype != null) 'apptype': [apptype],
       if (expand != null) 'expand': ['${expand}'],
+      if (filter != null) 'filter': [filter],
       if (ids != null) 'ids': [ids],
       if (includeCred != null) 'includeCred': ['${includeCred}'],
       if (keyStatus != null) 'keyStatus': [keyStatus],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
       if (rows != null) 'rows': [rows],
       if (startKey != null) 'startKey': [startKey],
       if (status != null) 'status': [status],
@@ -4094,7 +4933,9 @@ class OrganizationsDevelopersAppsKeysResource {
   /// request. Instead, use the UpdateDeveloperAppKey API to make the
   /// association after the consumer key and secret are created. If a consumer
   /// key and secret already exist, you can keep them or delete them using the
-  /// DeleteDeveloperAppKey API.
+  /// DeleteDeveloperAppKey API. **Note**: All keys start out with
+  /// status=approved, even if status=revoked is passed when the key is created.
+  /// To revoke a key, use the UpdateDeveloperAppKey API.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4451,7 +5292,9 @@ class OrganizationsDevelopersAppsKeysCreateResource {
   /// request. Instead, use the UpdateDeveloperAppKey API to make the
   /// association after the consumer key and secret are created. If a consumer
   /// key and secret already exist, you can keep them or delete them using the
-  /// DeleteDeveloperAppKey API.
+  /// DeleteDeveloperAppKey API. **Note**: All keys start out with
+  /// status=approved, even if status=revoked is passed when the key is created.
+  /// To revoke a key, use the UpdateDeveloperAppKey API.
   ///
   /// [request] - The metadata request object.
   ///
@@ -13799,6 +14642,38 @@ class ProjectsResource {
 /// work unchanged.
 typedef GoogleApiHttpBody = $HttpBody;
 
+/// APIProductAssociation has the API product and its administrative state
+/// association.
+class GoogleCloudApigeeV1APIProductAssociation {
+  /// API product to be associated with the credential.
+  core.String? apiproduct;
+
+  /// The API product credential associated status.
+  ///
+  /// Valid values are `approved` or `revoked`.
+  core.String? status;
+
+  GoogleCloudApigeeV1APIProductAssociation({
+    this.apiproduct,
+    this.status,
+  });
+
+  GoogleCloudApigeeV1APIProductAssociation.fromJson(core.Map json_)
+      : this(
+          apiproduct: json_.containsKey('apiproduct')
+              ? json_['apiproduct'] as core.String
+              : null,
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiproduct != null) 'apiproduct': apiproduct!,
+        if (status != null) 'status': status!,
+      };
+}
+
 class GoogleCloudApigeeV1Access {
   GoogleCloudApigeeV1AccessGet? Get;
   GoogleCloudApigeeV1AccessRemove? Remove;
@@ -14986,6 +15861,9 @@ class GoogleCloudApigeeV1App {
   /// List of API products associated with the app.
   core.List<GoogleCloudApigeeV1ApiProductRef>? apiProducts;
 
+  /// Name of the AppGroup
+  core.String? appGroup;
+
   /// ID of the app.
   core.String? appId;
 
@@ -15010,6 +15888,9 @@ class GoogleCloudApigeeV1App {
   ///
   /// Output only.
   core.List<GoogleCloudApigeeV1Credential>? credentials;
+
+  /// Email of the developer.
+  core.String? developerEmail;
 
   /// ID of the developer.
   core.String? developerId;
@@ -15040,12 +15921,14 @@ class GoogleCloudApigeeV1App {
 
   GoogleCloudApigeeV1App({
     this.apiProducts,
+    this.appGroup,
     this.appId,
     this.attributes,
     this.callbackUrl,
     this.companyName,
     this.createdAt,
     this.credentials,
+    this.developerEmail,
     this.developerId,
     this.keyExpiresIn,
     this.lastModifiedAt,
@@ -15061,6 +15944,9 @@ class GoogleCloudApigeeV1App {
                   .map((value) => GoogleCloudApigeeV1ApiProductRef.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          appGroup: json_.containsKey('appGroup')
+              ? json_['appGroup'] as core.String
               : null,
           appId:
               json_.containsKey('appId') ? json_['appId'] as core.String : null,
@@ -15085,6 +15971,9 @@ class GoogleCloudApigeeV1App {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          developerEmail: json_.containsKey('developerEmail')
+              ? json_['developerEmail'] as core.String
+              : null,
           developerId: json_.containsKey('developerId')
               ? json_['developerId'] as core.String
               : null,
@@ -15107,16 +15996,392 @@ class GoogleCloudApigeeV1App {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiProducts != null) 'apiProducts': apiProducts!,
+        if (appGroup != null) 'appGroup': appGroup!,
         if (appId != null) 'appId': appId!,
         if (attributes != null) 'attributes': attributes!,
         if (callbackUrl != null) 'callbackUrl': callbackUrl!,
         if (companyName != null) 'companyName': companyName!,
         if (createdAt != null) 'createdAt': createdAt!,
         if (credentials != null) 'credentials': credentials!,
+        if (developerEmail != null) 'developerEmail': developerEmail!,
         if (developerId != null) 'developerId': developerId!,
         if (keyExpiresIn != null) 'keyExpiresIn': keyExpiresIn!,
         if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
         if (name != null) 'name': name!,
+        if (scopes != null) 'scopes': scopes!,
+        if (status != null) 'status': status!,
+      };
+}
+
+/// AppGroup contains the request/response fields representing the logical
+/// grouping of apps.
+///
+/// Note that appgroup_id, create_time and update_time cannot be changed by the
+/// user, and gets updated by the system. The name and the organization once
+/// provided cannot be edited subsequently.
+class GoogleCloudApigeeV1AppGroup {
+  /// Internal identifier that cannot be edited
+  ///
+  /// Output only.
+  core.String? appGroupId;
+
+  /// A list of attributes
+  core.List<GoogleCloudApigeeV1Attribute>? attributes;
+
+  /// channel identifier identifies the owner maintaing this grouping.
+  core.String? channelId;
+
+  /// A reference to the associated storefront/marketplace.
+  core.String? channelUri;
+
+  /// Created time as milliseconds since epoch.
+  ///
+  /// Output only.
+  core.String? createdAt;
+
+  /// app group name displayed in the UI
+  core.String? displayName;
+
+  /// Modified time as milliseconds since epoch.
+  ///
+  /// Output only.
+  core.String? lastModifiedAt;
+
+  /// Name of the AppGroup.
+  ///
+  /// Characters you can use in the name are restricted to: A-Z0-9._\-$ %.
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// the org the app group is created
+  ///
+  /// Immutable.
+  core.String? organization;
+
+  /// Valid values are `active` or `inactive`.
+  ///
+  /// Note that the status of the AppGroup should be updated via
+  /// UpdateAppGroupRequest by setting the action as `active` or `inactive`.
+  core.String? status;
+
+  GoogleCloudApigeeV1AppGroup({
+    this.appGroupId,
+    this.attributes,
+    this.channelId,
+    this.channelUri,
+    this.createdAt,
+    this.displayName,
+    this.lastModifiedAt,
+    this.name,
+    this.organization,
+    this.status,
+  });
+
+  GoogleCloudApigeeV1AppGroup.fromJson(core.Map json_)
+      : this(
+          appGroupId: json_.containsKey('appGroupId')
+              ? json_['appGroupId'] as core.String
+              : null,
+          attributes: json_.containsKey('attributes')
+              ? (json_['attributes'] as core.List)
+                  .map((value) => GoogleCloudApigeeV1Attribute.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          channelId: json_.containsKey('channelId')
+              ? json_['channelId'] as core.String
+              : null,
+          channelUri: json_.containsKey('channelUri')
+              ? json_['channelUri'] as core.String
+              : null,
+          createdAt: json_.containsKey('createdAt')
+              ? json_['createdAt'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          lastModifiedAt: json_.containsKey('lastModifiedAt')
+              ? json_['lastModifiedAt'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          organization: json_.containsKey('organization')
+              ? json_['organization'] as core.String
+              : null,
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appGroupId != null) 'appGroupId': appGroupId!,
+        if (attributes != null) 'attributes': attributes!,
+        if (channelId != null) 'channelId': channelId!,
+        if (channelUri != null) 'channelUri': channelUri!,
+        if (createdAt != null) 'createdAt': createdAt!,
+        if (displayName != null) 'displayName': displayName!,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
+        if (name != null) 'name': name!,
+        if (organization != null) 'organization': organization!,
+        if (status != null) 'status': status!,
+      };
+}
+
+/// Response for \[GetAppGroupApp\].\[AppGroupApps.GetAppGroupApp\],
+/// \[CreateAppGroupAppRequest\].\[AppGroupApp.CreateAppGroupAppRequest\] and
+/// \[DeleteAppGroupApp\].\[AppGroupApp.DeleteAppGroupApp\]
+class GoogleCloudApigeeV1AppGroupApp {
+  /// List of API products associated with the AppGroup app.
+  core.List<core.String>? apiProducts;
+
+  /// Name of the parent AppGroup whose resource name format is of syntax
+  /// (organizations / * /appgroups / * ).
+  ///
+  /// Immutable.
+  core.String? appGroup;
+
+  /// ID of the AppGroup app.
+  ///
+  /// Immutable.
+  core.String? appId;
+
+  /// List of attributes for the AppGroup app.
+  core.List<GoogleCloudApigeeV1Attribute>? attributes;
+
+  /// Callback URL used by OAuth 2.0 authorization servers to communicate
+  /// authorization codes back to AppGroup apps.
+  core.String? callbackUrl;
+
+  /// Time the AppGroup app was created in milliseconds since epoch.
+  ///
+  /// Output only.
+  core.String? createdAt;
+
+  /// Set of credentials for the AppGroup app consisting of the consumer
+  /// key/secret pairs associated with the API products.
+  ///
+  /// Output only.
+  core.List<GoogleCloudApigeeV1Credential>? credentials;
+
+  /// Expiration time, in seconds, for the consumer key that is generated for
+  /// the AppGroup app.
+  ///
+  /// If not set or left to the default value of `-1`, the API key never
+  /// expires. The expiration time can't be updated after it is set.
+  ///
+  /// Immutable.
+  core.String? keyExpiresIn;
+
+  /// Time the AppGroup app was modified in milliseconds since epoch.
+  ///
+  /// Output only.
+  core.String? lastModifiedAt;
+
+  /// Name of the AppGroup app whose resource name format is of syntax
+  /// (organizations / * /appgroups / * /apps / * ).
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// Scopes to apply to the AppGroup app.
+  ///
+  /// The specified scopes must already exist for the API product that you
+  /// associate with the AppGroup app.
+  core.List<core.String>? scopes;
+
+  /// Status of the App.
+  ///
+  /// Valid values include `approved` or `revoked`.
+  core.String? status;
+
+  GoogleCloudApigeeV1AppGroupApp({
+    this.apiProducts,
+    this.appGroup,
+    this.appId,
+    this.attributes,
+    this.callbackUrl,
+    this.createdAt,
+    this.credentials,
+    this.keyExpiresIn,
+    this.lastModifiedAt,
+    this.name,
+    this.scopes,
+    this.status,
+  });
+
+  GoogleCloudApigeeV1AppGroupApp.fromJson(core.Map json_)
+      : this(
+          apiProducts: json_.containsKey('apiProducts')
+              ? (json_['apiProducts'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          appGroup: json_.containsKey('appGroup')
+              ? json_['appGroup'] as core.String
+              : null,
+          appId:
+              json_.containsKey('appId') ? json_['appId'] as core.String : null,
+          attributes: json_.containsKey('attributes')
+              ? (json_['attributes'] as core.List)
+                  .map((value) => GoogleCloudApigeeV1Attribute.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          callbackUrl: json_.containsKey('callbackUrl')
+              ? json_['callbackUrl'] as core.String
+              : null,
+          createdAt: json_.containsKey('createdAt')
+              ? json_['createdAt'] as core.String
+              : null,
+          credentials: json_.containsKey('credentials')
+              ? (json_['credentials'] as core.List)
+                  .map((value) => GoogleCloudApigeeV1Credential.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          keyExpiresIn: json_.containsKey('keyExpiresIn')
+              ? json_['keyExpiresIn'] as core.String
+              : null,
+          lastModifiedAt: json_.containsKey('lastModifiedAt')
+              ? json_['lastModifiedAt'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          scopes: json_.containsKey('scopes')
+              ? (json_['scopes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiProducts != null) 'apiProducts': apiProducts!,
+        if (appGroup != null) 'appGroup': appGroup!,
+        if (appId != null) 'appId': appId!,
+        if (attributes != null) 'attributes': attributes!,
+        if (callbackUrl != null) 'callbackUrl': callbackUrl!,
+        if (createdAt != null) 'createdAt': createdAt!,
+        if (credentials != null) 'credentials': credentials!,
+        if (keyExpiresIn != null) 'keyExpiresIn': keyExpiresIn!,
+        if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
+        if (name != null) 'name': name!,
+        if (scopes != null) 'scopes': scopes!,
+        if (status != null) 'status': status!,
+      };
+}
+
+/// AppGroupAppKey contains all the information associated with the credentials.
+class GoogleCloudApigeeV1AppGroupAppKey {
+  /// List of API products and its status for which the credential can be used.
+  ///
+  /// **Note**: Use UpdateAppGroupAppKeyApiProductRequest API to make the
+  /// association after the consumer key and secret are created.
+  ///
+  /// Output only.
+  core.List<GoogleCloudApigeeV1APIProductAssociation>? apiProducts;
+
+  /// List of attributes associated with the credential.
+  core.List<GoogleCloudApigeeV1Attribute>? attributes;
+
+  /// Consumer key.
+  ///
+  /// Immutable.
+  core.String? consumerKey;
+
+  /// Secret key.
+  core.String? consumerSecret;
+
+  /// Time the AppGroup app expires in milliseconds since epoch.
+  ///
+  /// Output only.
+  core.String? expiresAt;
+
+  /// Expiration time, in seconds, for the consumer key.
+  ///
+  /// If not set or left to the default value of `-1`, the API key never
+  /// expires. The expiration time can't be updated after it is set.
+  ///
+  /// Immutable.
+  core.String? expiresInSeconds;
+
+  /// Time the AppGroup app was created in milliseconds since epoch.
+  ///
+  /// Output only.
+  core.String? issuedAt;
+
+  /// Scopes to apply to the app.
+  ///
+  /// The specified scope names must already be defined for the API product that
+  /// you associate with the app.
+  core.List<core.String>? scopes;
+
+  /// Status of the credential.
+  ///
+  /// Valid values include `approved` or `revoked`.
+  core.String? status;
+
+  GoogleCloudApigeeV1AppGroupAppKey({
+    this.apiProducts,
+    this.attributes,
+    this.consumerKey,
+    this.consumerSecret,
+    this.expiresAt,
+    this.expiresInSeconds,
+    this.issuedAt,
+    this.scopes,
+    this.status,
+  });
+
+  GoogleCloudApigeeV1AppGroupAppKey.fromJson(core.Map json_)
+      : this(
+          apiProducts: json_.containsKey('apiProducts')
+              ? (json_['apiProducts'] as core.List)
+                  .map((value) =>
+                      GoogleCloudApigeeV1APIProductAssociation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          attributes: json_.containsKey('attributes')
+              ? (json_['attributes'] as core.List)
+                  .map((value) => GoogleCloudApigeeV1Attribute.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          consumerKey: json_.containsKey('consumerKey')
+              ? json_['consumerKey'] as core.String
+              : null,
+          consumerSecret: json_.containsKey('consumerSecret')
+              ? json_['consumerSecret'] as core.String
+              : null,
+          expiresAt: json_.containsKey('expiresAt')
+              ? json_['expiresAt'] as core.String
+              : null,
+          expiresInSeconds: json_.containsKey('expiresInSeconds')
+              ? json_['expiresInSeconds'] as core.String
+              : null,
+          issuedAt: json_.containsKey('issuedAt')
+              ? json_['issuedAt'] as core.String
+              : null,
+          scopes: json_.containsKey('scopes')
+              ? (json_['scopes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiProducts != null) 'apiProducts': apiProducts!,
+        if (attributes != null) 'attributes': attributes!,
+        if (consumerKey != null) 'consumerKey': consumerKey!,
+        if (consumerSecret != null) 'consumerSecret': consumerSecret!,
+        if (expiresAt != null) 'expiresAt': expiresAt!,
+        if (expiresInSeconds != null) 'expiresInSeconds': expiresInSeconds!,
+        if (issuedAt != null) 'issuedAt': issuedAt!,
         if (scopes != null) 'scopes': scopes!,
         if (status != null) 'status': status!,
       };
@@ -18011,19 +19276,33 @@ class GoogleCloudApigeeV1DeveloperSubscription {
 
 /// Encapsulates a metric grouped by dimension.
 class GoogleCloudApigeeV1DimensionMetric {
+  /// Individual dimension names.
+  ///
+  /// E.g. \["dim1_name", "dim2_name"\].
+  core.List<core.String>? individualNames;
+
   /// List of metrics.
   core.List<GoogleCloudApigeeV1Metric>? metrics;
 
-  /// Name of the dimension.
+  /// Comma joined dimension names.
+  ///
+  /// E.g. "dim1_name,dim2_name". Deprecated. If name already has comma before
+  /// join, we may get wrong splits. Please use individual_names.
   core.String? name;
 
   GoogleCloudApigeeV1DimensionMetric({
+    this.individualNames,
     this.metrics,
     this.name,
   });
 
   GoogleCloudApigeeV1DimensionMetric.fromJson(core.Map json_)
       : this(
+          individualNames: json_.containsKey('individualNames')
+              ? (json_['individualNames'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           metrics: json_.containsKey('metrics')
               ? (json_['metrics'] as core.List)
                   .map((value) => GoogleCloudApigeeV1Metric.fromJson(
@@ -18034,6 +19313,7 @@ class GoogleCloudApigeeV1DimensionMetric {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (individualNames != null) 'individualNames': individualNames!,
         if (metrics != null) 'metrics': metrics!,
         if (name != null) 'name': name!,
       };
@@ -20106,11 +21386,98 @@ class GoogleCloudApigeeV1ListApiProxiesResponse {
       };
 }
 
+/// Response for ListAppGroupApps
+class GoogleCloudApigeeV1ListAppGroupAppsResponse {
+  /// List of AppGroup apps and their credentials.
+  core.List<GoogleCloudApigeeV1AppGroupApp>? appGroupApps;
+
+  /// Token that can be sent as `next_page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleCloudApigeeV1ListAppGroupAppsResponse({
+    this.appGroupApps,
+    this.nextPageToken,
+  });
+
+  GoogleCloudApigeeV1ListAppGroupAppsResponse.fromJson(core.Map json_)
+      : this(
+          appGroupApps: json_.containsKey('appGroupApps')
+              ? (json_['appGroupApps'] as core.List)
+                  .map((value) => GoogleCloudApigeeV1AppGroupApp.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appGroupApps != null) 'appGroupApps': appGroupApps!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// ListAppGroupsResponse contains the 0 or more AppGroups, along with the
+/// optional page token and the total count of apps.
+class GoogleCloudApigeeV1ListAppGroupsResponse {
+  /// List of AppGroups.
+  core.List<GoogleCloudApigeeV1AppGroup>? appGroups;
+
+  /// Token that can be sent as `next_page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Total count of AppGroups.
+  core.int? totalSize;
+
+  GoogleCloudApigeeV1ListAppGroupsResponse({
+    this.appGroups,
+    this.nextPageToken,
+    this.totalSize,
+  });
+
+  GoogleCloudApigeeV1ListAppGroupsResponse.fromJson(core.Map json_)
+      : this(
+          appGroups: json_.containsKey('appGroups')
+              ? (json_['appGroups'] as core.List)
+                  .map((value) => GoogleCloudApigeeV1AppGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          totalSize: json_.containsKey('totalSize')
+              ? json_['totalSize'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appGroups != null) 'appGroups': appGroups!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
+      };
+}
+
 class GoogleCloudApigeeV1ListAppsResponse {
   core.List<GoogleCloudApigeeV1App>? app;
 
+  /// Token that can be sent as `next_page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Total count of Apps.
+  core.int? totalSize;
+
   GoogleCloudApigeeV1ListAppsResponse({
     this.app,
+    this.nextPageToken,
+    this.totalSize,
   });
 
   GoogleCloudApigeeV1ListAppsResponse.fromJson(core.Map json_)
@@ -20121,10 +21488,18 @@ class GoogleCloudApigeeV1ListAppsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          totalSize: json_.containsKey('totalSize')
+              ? json_['totalSize'] as core.int
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (app != null) 'app': app!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
       };
 }
 
@@ -21507,7 +22882,8 @@ class GoogleCloudApigeeV1Organization {
   /// Addon configurations of the Apigee organization.
   GoogleCloudApigeeV1AddonsConfig? addonsConfig;
 
-  /// DEPRECATED: This field will be deprecated once Apigee supports DRZ.
+  /// DEPRECATED: This field will eventually be deprecated and replaced with a
+  /// differently-named field.
   ///
   /// Primary Google Cloud region for analytics data storage. For valid values,
   /// see
@@ -21604,6 +22980,22 @@ class GoogleCloudApigeeV1Organization {
 
   /// Description of the Apigee organization.
   core.String? description;
+
+  /// Flag that specifies whether the VPC Peering through Private Google Access
+  /// should be disabled between the consumer network and Apigee.
+  ///
+  /// Valid only when RuntimeType is set to CLOUD. Required if an
+  /// authorizedNetwork on the consumer project is not provided, in which case
+  /// the flag should be set to true. The value must be set before the creation
+  /// of any Apigee runtime instance and can be updated only when there are no
+  /// runtime instances. **Note:** Apigee will be deprecating the vpc peering
+  /// model that requires you to provide 'authorizedNetwork', by making the
+  /// non-peering model as the default way of provisioning Apigee organization
+  /// in future. So, this will be a temporary flag to enable the transition. Not
+  /// supported for Apigee hybrid.
+  ///
+  /// Optional.
+  core.bool? disableVpcPeering;
 
   /// Display name for the Apigee organization.
   ///
@@ -21715,6 +23107,7 @@ class GoogleCloudApigeeV1Organization {
     this.createdAt,
     this.customerName,
     this.description,
+    this.disableVpcPeering,
     this.displayName,
     this.environments,
     this.expiresAt,
@@ -21776,6 +23169,9 @@ class GoogleCloudApigeeV1Organization {
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
+          disableVpcPeering: json_.containsKey('disableVpcPeering')
+              ? json_['disableVpcPeering'] as core.bool
+              : null,
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
@@ -21833,6 +23229,7 @@ class GoogleCloudApigeeV1Organization {
         if (createdAt != null) 'createdAt': createdAt!,
         if (customerName != null) 'customerName': customerName!,
         if (description != null) 'description': description!,
+        if (disableVpcPeering != null) 'disableVpcPeering': disableVpcPeering!,
         if (displayName != null) 'displayName': displayName!,
         if (environments != null) 'environments': environments!,
         if (expiresAt != null) 'expiresAt': expiresAt!,
@@ -22107,6 +23504,21 @@ class GoogleCloudApigeeV1ProvisionOrganizationRequest {
   /// example: `projects/my-sharedvpc-host/global/networks/mynetwork`
   core.String? authorizedNetwork;
 
+  /// Flag that specifies whether the VPC Peering through Private Google Access
+  /// should be disabled between the consumer network and Apigee.
+  ///
+  /// Required if an authorizedNetwork on the consumer project is not provided,
+  /// in which case the flag should be set to true. The value must be set before
+  /// the creation of any Apigee runtime instance and can be updated only when
+  /// there are no runtime instances. **Note:** Apigee will be deprecating the
+  /// vpc peering model that requires you to provide 'authorizedNetwork', by
+  /// making the non-peering model as the default way of provisioning Apigee
+  /// organization in future. So, this will be a temporary flag to enable the
+  /// transition. Not supported for Apigee hybrid.
+  ///
+  /// Optional.
+  core.bool? disableVpcPeering;
+
   /// Cloud Platform location for the runtime instance.
   ///
   /// Defaults to zone `us-west1-a`. If a region is provided, `EVAL`
@@ -22117,6 +23529,7 @@ class GoogleCloudApigeeV1ProvisionOrganizationRequest {
   GoogleCloudApigeeV1ProvisionOrganizationRequest({
     this.analyticsRegion,
     this.authorizedNetwork,
+    this.disableVpcPeering,
     this.runtimeLocation,
   });
 
@@ -22128,6 +23541,9 @@ class GoogleCloudApigeeV1ProvisionOrganizationRequest {
           authorizedNetwork: json_.containsKey('authorizedNetwork')
               ? json_['authorizedNetwork'] as core.String
               : null,
+          disableVpcPeering: json_.containsKey('disableVpcPeering')
+              ? json_['disableVpcPeering'] as core.bool
+              : null,
           runtimeLocation: json_.containsKey('runtimeLocation')
               ? json_['runtimeLocation'] as core.String
               : null,
@@ -22136,6 +23552,7 @@ class GoogleCloudApigeeV1ProvisionOrganizationRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (analyticsRegion != null) 'analyticsRegion': analyticsRegion!,
         if (authorizedNetwork != null) 'authorizedNetwork': authorizedNetwork!,
+        if (disableVpcPeering != null) 'disableVpcPeering': disableVpcPeering!,
         if (runtimeLocation != null) 'runtimeLocation': runtimeLocation!,
       };
 }
@@ -24305,6 +25722,9 @@ class GoogleCloudApigeeV1SecurityIncident {
 
 /// Represents a SecurityProfile resource.
 class GoogleCloudApigeeV1SecurityProfile {
+  /// Description of the security profile.
+  core.String? description;
+
   /// Display name of the security profile.
   core.String? displayName;
 
@@ -24355,6 +25775,7 @@ class GoogleCloudApigeeV1SecurityProfile {
   core.List<GoogleCloudApigeeV1SecurityProfileScoringConfig>? scoringConfigs;
 
   GoogleCloudApigeeV1SecurityProfile({
+    this.description,
     this.displayName,
     this.environments,
     this.maxScore,
@@ -24369,6 +25790,9 @@ class GoogleCloudApigeeV1SecurityProfile {
 
   GoogleCloudApigeeV1SecurityProfile.fromJson(core.Map json_)
       : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
@@ -24408,6 +25832,7 @@ class GoogleCloudApigeeV1SecurityProfile {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (environments != null) 'environments': environments!,
         if (maxScore != null) 'maxScore': maxScore!,
@@ -26067,6 +27492,56 @@ class GoogleCloudApigeeV1TraceConfigOverride {
 /// Only the fields that are defined in the distributed trace configuration can
 /// be overridden using the distribute trace configuration override APIs.
 typedef GoogleCloudApigeeV1TraceSamplingConfig = $TraceSamplingConfig;
+
+/// Request for UpdateAppGroupAppKey
+class GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest {
+  /// Approve or revoke the consumer key by setting this value to `approve` or
+  /// `revoke` respectively.
+  ///
+  /// The `Content-Type` header, if set, must be set to
+  /// `application/octet-stream`, with empty body.
+  core.String? action;
+
+  /// The list of API products that will be associated with the credential.
+  ///
+  /// This list will be appended to the existing list of associated API Products
+  /// for this App Key. Duplicates will be ignored.
+  core.List<core.String>? apiProducts;
+
+  /// The new AppGroupKey to be amended.
+  ///
+  /// Note that the status can be updated only via action.
+  GoogleCloudApigeeV1AppGroupAppKey? appGroupAppKey;
+
+  GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest({
+    this.action,
+    this.apiProducts,
+    this.appGroupAppKey,
+  });
+
+  GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest.fromJson(core.Map json_)
+      : this(
+          action: json_.containsKey('action')
+              ? json_['action'] as core.String
+              : null,
+          apiProducts: json_.containsKey('apiProducts')
+              ? (json_['apiProducts'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          appGroupAppKey: json_.containsKey('appGroupAppKey')
+              ? GoogleCloudApigeeV1AppGroupAppKey.fromJson(
+                  json_['appGroupAppKey']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (apiProducts != null) 'apiProducts': apiProducts!,
+        if (appGroupAppKey != null) 'appGroupAppKey': appGroupAppKey!,
+      };
+}
 
 /// Details on why a resource update failed in the runtime.
 class GoogleCloudApigeeV1UpdateError {

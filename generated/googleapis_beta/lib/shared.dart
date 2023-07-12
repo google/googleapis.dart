@@ -195,6 +195,7 @@ class $DimensionOrderBy {
 /// - sasportal:v1alpha1 : SasPortalEmpty
 /// - sasportal:v1alpha1 : SasPortalGenerateSecretRequest
 /// - sasportal:v1alpha1 : SasPortalValidateInstallerResponse
+/// - sqladmin:v1beta4 : Empty
 /// - sqladmin:v1beta4 : SqlInstancesResetReplicaSizeRequest
 /// - toolresults:v1beta3 : AndroidTestLoop
 /// - toolresults:v1beta3 : IosRoboTest
@@ -470,6 +471,32 @@ class $SasPortalAssignment {
   core.Map<core.String, core.dynamic> toJson() => {
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
+      };
+}
+
+/// Used by:
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalCheckHasProvisionedDeploymentResponse
+/// - sasportal:v1alpha1 : SasPortalCheckHasProvisionedDeploymentResponse
+class $SasPortalCheckHasProvisionedDeploymentResponse {
+  /// Whether a SAS deployment for the authentication context exists.
+  core.bool? hasProvisionedDeployment;
+
+  $SasPortalCheckHasProvisionedDeploymentResponse({
+    this.hasProvisionedDeployment,
+  });
+
+  $SasPortalCheckHasProvisionedDeploymentResponse.fromJson(core.Map json_)
+      : this(
+          hasProvisionedDeployment:
+              json_.containsKey('hasProvisionedDeployment')
+                  ? json_['hasProvisionedDeployment'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hasProvisionedDeployment != null)
+          'hasProvisionedDeployment': hasProvisionedDeployment!,
       };
 }
 
@@ -1009,6 +1036,32 @@ class $SasPortalInstallationParams {
 
 /// Used by:
 ///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalMigrateOrganizationRequest
+/// - sasportal:v1alpha1 : SasPortalMigrateOrganizationRequest
+class $SasPortalMigrateOrganizationRequest {
+  /// Id of the SAS organization to be migrated.
+  ///
+  /// Required.
+  core.String? organizationId;
+
+  $SasPortalMigrateOrganizationRequest({
+    this.organizationId,
+  });
+
+  $SasPortalMigrateOrganizationRequest.fromJson(core.Map json_)
+      : this(
+          organizationId: json_.containsKey('organizationId')
+              ? json_['organizationId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (organizationId != null) 'organizationId': organizationId!,
+      };
+}
+
+/// Used by:
+///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalMoveDeploymentRequest
 /// - sasportal:v1alpha1 : SasPortalMoveDeploymentRequest
 class $SasPortalMoveDeploymentRequest {
@@ -1205,9 +1258,16 @@ class $SasPortalProvisionDeploymentRequest {
   /// Optional.
   core.String? newOrganizationDisplayName;
 
+  /// If this field is set then a new deployment will be created under the
+  /// organization specified by this id.
+  ///
+  /// Optional.
+  core.String? organizationId;
+
   $SasPortalProvisionDeploymentRequest({
     this.newDeploymentDisplayName,
     this.newOrganizationDisplayName,
+    this.organizationId,
   });
 
   $SasPortalProvisionDeploymentRequest.fromJson(core.Map json_)
@@ -1220,6 +1280,9 @@ class $SasPortalProvisionDeploymentRequest {
               json_.containsKey('newOrganizationDisplayName')
                   ? json_['newOrganizationDisplayName'] as core.String
                   : null,
+          organizationId: json_.containsKey('organizationId')
+              ? json_['organizationId'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1227,6 +1290,7 @@ class $SasPortalProvisionDeploymentRequest {
           'newDeploymentDisplayName': newDeploymentDisplayName!,
         if (newOrganizationDisplayName != null)
           'newOrganizationDisplayName': newOrganizationDisplayName!,
+        if (organizationId != null) 'organizationId': organizationId!,
       };
 }
 

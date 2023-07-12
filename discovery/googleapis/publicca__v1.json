@@ -24,6 +24,13 @@
     "name": "publicca",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230711",
+    "rootUrl": "https://publicca.googleapis.com/",
+    "servicePath": "",
+    "title": "Public Certificate Authority API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -144,8 +150,6 @@
             }
         }
     },
-    "revision": "20230509",
-    "rootUrl": "https://publicca.googleapis.com/",
     "schemas": {
         "ExternalAccountKey": {
             "description": "A representation of an ExternalAccountKey used for [external account binding](https://tools.ietf.org/html/rfc8555#section-7.3.4) within ACME.",
@@ -170,9 +174,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Public Certificate Authority API",
-    "version": "v1",
-    "version_module": true
+    }
 }

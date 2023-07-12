@@ -1412,6 +1412,12 @@ class ProjectsLocationsStreamsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/streams/\[^/\]+$`.
   ///
+  /// [cdcStrategy_specificStartPosition_mysqlLogPosition_logFile] - The binary
+  /// log file name.
+  ///
+  /// [cdcStrategy_specificStartPosition_mysqlLogPosition_logPosition] - The
+  /// position within the binary log file. Default is head of file.
+  ///
   /// [force] - Optional. Update the stream without validating it.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
@@ -1448,6 +1454,8 @@ class ProjectsLocationsStreamsResource {
   async.Future<Operation> patch(
     Stream request,
     core.String name, {
+    core.String? cdcStrategy_specificStartPosition_mysqlLogPosition_logFile,
+    core.int? cdcStrategy_specificStartPosition_mysqlLogPosition_logPosition,
     core.bool? force,
     core.String? requestId,
     core.String? updateMask,
@@ -1456,6 +1464,15 @@ class ProjectsLocationsStreamsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (cdcStrategy_specificStartPosition_mysqlLogPosition_logFile != null)
+        'cdcStrategy.specificStartPosition.mysqlLogPosition.logFile': [
+          cdcStrategy_specificStartPosition_mysqlLogPosition_logFile
+        ],
+      if (cdcStrategy_specificStartPosition_mysqlLogPosition_logPosition !=
+          null)
+        'cdcStrategy.specificStartPosition.mysqlLogPosition.logPosition': [
+          '${cdcStrategy_specificStartPosition_mysqlLogPosition_logPosition}'
+        ],
       if (force != null) 'force': ['${force}'],
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -1767,6 +1784,8 @@ class BackfillJob {
   core.String? lastStartTime;
 
   /// Backfill job state.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Default value.
   /// - "NOT_STARTED" : Backfill job was never started for the stream object
@@ -4079,6 +4098,9 @@ class Route {
 /// A single target dataset to which all data will be streamed.
 class SingleTargetDataset {
   /// The dataset ID of the target dataset.
+  ///
+  /// DatasetIds allowed characters:
+  /// https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.
   core.String? datasetId;
 
   SingleTargetDataset({

@@ -24,6 +24,13 @@
     "name": "policysimulator",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230708",
+    "rootUrl": "https://policysimulator.googleapis.com/",
+    "servicePath": "",
+    "title": "Policy Simulator API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "folders": {
             "resources": {
@@ -705,8 +711,6 @@
             }
         }
     },
-    "revision": "20230507",
-    "rootUrl": "https://policysimulator.googleapis.com/",
     "schemas": {
         "GoogleCloudPolicysimulatorV1AccessStateDiff": {
             "description": "A summary and comparison of the principal's access under the current (baseline) policies and the proposed (simulated) policies for a single access tuple.",
@@ -1379,9 +1383,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Policy Simulator API",
-    "version": "v1",
-    "version_module": true
+    }
 }

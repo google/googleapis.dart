@@ -584,6 +584,7 @@ api.ContainerOverride buildContainerOverride() {
   buildCounterContainerOverride++;
   if (buildCounterContainerOverride < 3) {
     o.args = buildUnnamed11();
+    o.clearArgs = true;
     o.env = buildUnnamed12();
     o.name = 'foo';
   }
@@ -595,6 +596,7 @@ void checkContainerOverride(api.ContainerOverride o) {
   buildCounterContainerOverride++;
   if (buildCounterContainerOverride < 3) {
     checkUnnamed11(o.args!);
+    unittest.expect(o.clearArgs!, unittest.isTrue);
     checkUnnamed12(o.env!);
     unittest.expect(
       o.name!,

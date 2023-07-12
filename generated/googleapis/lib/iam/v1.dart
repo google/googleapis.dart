@@ -36,6 +36,19 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsWorkloadIdentityPoolsResource]
+///       - [ProjectsLocationsWorkloadIdentityPoolsNamespacesResource]
+/// -
+/// [ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesResource]
+/// -
+/// [ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesOperationsResource]
+/// -
+/// [ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesWorkloadSourcesResource]
+/// -
+/// [ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesWorkloadSourcesOperationsResource]
+/// - [ProjectsLocationsWorkloadIdentityPoolsNamespacesOperationsResource]
+/// - [ProjectsLocationsWorkloadIdentityPoolsNamespacesWorkloadSourcesResource]
+/// -
+/// [ProjectsLocationsWorkloadIdentityPoolsNamespacesWorkloadSourcesOperationsResource]
 ///       - [ProjectsLocationsWorkloadIdentityPoolsOperationsResource]
 ///       - [ProjectsLocationsWorkloadIdentityPoolsProvidersResource]
 ///         - [ProjectsLocationsWorkloadIdentityPoolsProvidersKeysResource]
@@ -1900,6 +1913,8 @@ class ProjectsLocationsResource {
 class ProjectsLocationsWorkloadIdentityPoolsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsWorkloadIdentityPoolsNamespacesResource get namespaces =>
+      ProjectsLocationsWorkloadIdentityPoolsNamespacesResource(_requester);
   ProjectsLocationsWorkloadIdentityPoolsOperationsResource get operations =>
       ProjectsLocationsWorkloadIdentityPoolsOperationsResource(_requester);
   ProjectsLocationsWorkloadIdentityPoolsProvidersResource get providers =>
@@ -2178,6 +2193,258 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
       url_,
       'POST',
       body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsWorkloadIdentityPoolsNamespacesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesResource
+      get managedIdentities =>
+          ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesResource(
+              _requester);
+  ProjectsLocationsWorkloadIdentityPoolsNamespacesOperationsResource
+      get operations =>
+          ProjectsLocationsWorkloadIdentityPoolsNamespacesOperationsResource(
+              _requester);
+  ProjectsLocationsWorkloadIdentityPoolsNamespacesWorkloadSourcesResource
+      get workloadSources =>
+          ProjectsLocationsWorkloadIdentityPoolsNamespacesWorkloadSourcesResource(
+              _requester);
+
+  ProjectsLocationsWorkloadIdentityPoolsNamespacesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesOperationsResource
+      get operations =>
+          ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesOperationsResource(
+              _requester);
+  ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesWorkloadSourcesResource
+      get workloadSources =>
+          ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesWorkloadSourcesResource(
+              _requester);
+
+  ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesOperationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/namespaces/\[^/\]+/managedIdentities/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesWorkloadSourcesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesWorkloadSourcesOperationsResource
+      get operations =>
+          ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesWorkloadSourcesOperationsResource(
+              _requester);
+
+  ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesWorkloadSourcesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesWorkloadSourcesOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesWorkloadSourcesOperationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/namespaces/\[^/\]+/managedIdentities/\[^/\]+/workloadSources/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsWorkloadIdentityPoolsNamespacesOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsNamespacesOperationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/namespaces/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsWorkloadIdentityPoolsNamespacesWorkloadSourcesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsNamespacesWorkloadSourcesOperationsResource
+      get operations =>
+          ProjectsLocationsWorkloadIdentityPoolsNamespacesWorkloadSourcesOperationsResource(
+              _requester);
+
+  ProjectsLocationsWorkloadIdentityPoolsNamespacesWorkloadSourcesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsWorkloadIdentityPoolsNamespacesWorkloadSourcesOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsNamespacesWorkloadSourcesOperationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/namespaces/\[^/\]+/workloadSources/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -4982,6 +5249,11 @@ class GoogleIamAdminV1WorkforcePoolProviderOidc {
   /// Required.
   core.String? clientId;
 
+  /// The optional client secret.
+  ///
+  /// Required to enable Authorization Code flow for web sign-in.
+  GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret? clientSecret;
+
   /// The OIDC issuer URI.
   ///
   /// Must be a valid URI using the 'https' scheme.
@@ -4999,6 +5271,7 @@ class GoogleIamAdminV1WorkforcePoolProviderOidc {
 
   GoogleIamAdminV1WorkforcePoolProviderOidc({
     this.clientId,
+    this.clientSecret,
     this.issuerUri,
     this.webSsoConfig,
   });
@@ -5007,6 +5280,10 @@ class GoogleIamAdminV1WorkforcePoolProviderOidc {
       : this(
           clientId: json_.containsKey('clientId')
               ? json_['clientId'] as core.String
+              : null,
+          clientSecret: json_.containsKey('clientSecret')
+              ? GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret.fromJson(
+                  json_['clientSecret'] as core.Map<core.String, core.dynamic>)
               : null,
           issuerUri: json_.containsKey('issuerUri')
               ? json_['issuerUri'] as core.String
@@ -5019,13 +5296,80 @@ class GoogleIamAdminV1WorkforcePoolProviderOidc {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clientId != null) 'clientId': clientId!,
+        if (clientSecret != null) 'clientSecret': clientSecret!,
         if (issuerUri != null) 'issuerUri': issuerUri!,
         if (webSsoConfig != null) 'webSsoConfig': webSsoConfig!,
       };
 }
 
+/// Representation of a client secret configured for the OIDC provider.
+class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret {
+  /// The value of the client secret.
+  GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue? value;
+
+  GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret({
+    this.value,
+  });
+
+  GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret.fromJson(core.Map json_)
+      : this(
+          value: json_.containsKey('value')
+              ? GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue
+                  .fromJson(
+                      json_['value'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Representation of the value of the client secret.
+class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue {
+  /// Input only.
+  ///
+  /// The plain text of the client secret value. For security reasons, this
+  /// field is only used for input and will never be populated in any response.
+  core.String? plainText;
+
+  /// A thumbprint to represent the current client secret value.
+  ///
+  /// Output only.
+  core.String? thumbprint;
+
+  GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue({
+    this.plainText,
+    this.thumbprint,
+  });
+
+  GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue.fromJson(
+      core.Map json_)
+      : this(
+          plainText: json_.containsKey('plainText')
+              ? json_['plainText'] as core.String
+              : null,
+          thumbprint: json_.containsKey('thumbprint')
+              ? json_['thumbprint'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (plainText != null) 'plainText': plainText!,
+        if (thumbprint != null) 'thumbprint': thumbprint!,
+      };
+}
+
 /// Configuration for web single sign-on for the OIDC provider.
 class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig {
+  /// Additional scopes to request for in the OIDC authentication request on top
+  /// of scopes requested by default.
+  ///
+  /// By default, the `openid`, `profile` and `email` scopes that are supported
+  /// by the identity provider are requested. Each additional scope may be at
+  /// most 256 characters. A maximum of 10 additional scopes may be configured.
+  core.List<core.String>? additionalScopes;
+
   /// The behavior for how OIDC Claims are included in the `assertion` object
   /// used for attribute mapping and attribute condition.
   ///
@@ -5033,26 +5377,40 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig {
   /// Possible string values are:
   /// - "ASSERTION_CLAIMS_BEHAVIOR_UNSPECIFIED" : No assertion claims behavior
   /// specified.
+  /// - "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS" : Merge the UserInfo Endpoint
+  /// Claims with ID Token Claims, preferring UserInfo Claim Values for the same
+  /// Claim Name. This option is available only for the Authorization Code Flow.
   /// - "ONLY_ID_TOKEN_CLAIMS" : Only include ID Token Claims.
   core.String? assertionClaimsBehavior;
 
   /// The Response Type to request for in the OIDC Authorization Request for web
   /// sign-in.
   ///
+  /// The `CODE` Response Type is recommended to avoid the Implicit Flow, for
+  /// security reasons.
+  ///
   /// Required.
   /// Possible string values are:
   /// - "RESPONSE_TYPE_UNSPECIFIED" : No Response Type specified.
+  /// - "CODE" : The `response_type=code` selection uses the Authorization Code
+  /// Flow for web sign-in. Requires a configured client secret.
   /// - "ID_TOKEN" : The `response_type=id_token` selection uses the Implicit
   /// Flow for web sign-in.
   core.String? responseType;
 
   GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig({
+    this.additionalScopes,
     this.assertionClaimsBehavior,
     this.responseType,
   });
 
   GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig.fromJson(core.Map json_)
       : this(
+          additionalScopes: json_.containsKey('additionalScopes')
+              ? (json_['additionalScopes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           assertionClaimsBehavior: json_.containsKey('assertionClaimsBehavior')
               ? json_['assertionClaimsBehavior'] as core.String
               : null,
@@ -5062,6 +5420,7 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalScopes != null) 'additionalScopes': additionalScopes!,
         if (assertionClaimsBehavior != null)
           'assertionClaimsBehavior': assertionClaimsBehavior!,
         if (responseType != null) 'responseType': responseType!,
@@ -5668,9 +6027,23 @@ class Oidc {
   /// Required.
   core.String? issuerUri;
 
+  /// OIDC JWKs in JSON String format.
+  ///
+  /// For details on the definition of a JWK, see
+  /// https://tools.ietf.org/html/rfc7517. If not set, the `jwks_uri` from the
+  /// discovery document(fetched from the .well-known path of the `issuer_uri`)
+  /// will be used. Currently, RSA and EC asymmetric keys are supported. The JWK
+  /// must use following format and include only the following fields: { "keys":
+  /// \[ { "kty": "RSA/EC", "alg": "", "use": "sig", "kid": "", "n": "", "e":
+  /// "", "x": "", "y": "", "crv": "" } \] }
+  ///
+  /// Optional.
+  core.String? jwksJson;
+
   Oidc({
     this.allowedAudiences,
     this.issuerUri,
+    this.jwksJson,
   });
 
   Oidc.fromJson(core.Map json_)
@@ -5683,11 +6056,15 @@ class Oidc {
           issuerUri: json_.containsKey('issuerUri')
               ? json_['issuerUri'] as core.String
               : null,
+          jwksJson: json_.containsKey('jwksJson')
+              ? json_['jwksJson'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedAudiences != null) 'allowedAudiences': allowedAudiences!,
         if (issuerUri != null) 'issuerUri': issuerUri!,
+        if (jwksJson != null) 'jwksJson': jwksJson!,
       };
 }
 
@@ -6255,10 +6632,12 @@ class Role {
 
   /// The name of the role.
   ///
-  /// When Role is used in CreateRole, the role name must not be set. When Role
-  /// is used in output and other input such as UpdateRole, the role name is the
-  /// complete path, e.g., roles/logging.viewer for predefined roles and
-  /// organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
+  /// When `Role` is used in `CreateRole`, the role name must not be set. When
+  /// `Role` is used in output and other input such as `UpdateRole`, the role
+  /// name is the complete path. For example, `roles/logging.viewer` for
+  /// predefined roles, `organizations/{ORGANIZATION_ID}/roles/my-role` for
+  /// organization-level custom roles, and `projects/{PROJECT_ID}/roles/my-role`
+  /// for project-level custom roles.
   core.String? name;
 
   /// The current launch stage of the role.
@@ -6987,6 +7366,12 @@ class WorkforcePool {
   /// Cannot exceed 32 characters.
   core.String? displayName;
 
+  /// Time after which the workforce pool will be permanently purged and cannot
+  /// be recovered.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
   /// The resource name of the pool.
   ///
   /// Format: `locations/{location}/workforcePools/{workforce_pool_id}`
@@ -7029,6 +7414,7 @@ class WorkforcePool {
     this.description,
     this.disabled,
     this.displayName,
+    this.expireTime,
     this.name,
     this.parent,
     this.sessionDuration,
@@ -7046,6 +7432,9 @@ class WorkforcePool {
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           parent: json_.containsKey('parent')
               ? json_['parent'] as core.String
@@ -7061,6 +7450,7 @@ class WorkforcePool {
         if (description != null) 'description': description!,
         if (disabled != null) 'disabled': disabled!,
         if (displayName != null) 'displayName': displayName!,
+        if (expireTime != null) 'expireTime': expireTime!,
         if (name != null) 'name': name!,
         if (parent != null) 'parent': parent!,
         if (sessionDuration != null) 'sessionDuration': sessionDuration!,
@@ -7151,6 +7541,12 @@ class WorkforcePoolProvider {
   /// Cannot exceed 32 characters.
   core.String? displayName;
 
+  /// Time after which the workload pool provider will be permanently purged and
+  /// cannot be recovered.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
   /// The resource name of the provider.
   ///
   /// Format:
@@ -7183,6 +7579,7 @@ class WorkforcePoolProvider {
     this.description,
     this.disabled,
     this.displayName,
+    this.expireTime,
     this.name,
     this.oidc,
     this.saml,
@@ -7213,6 +7610,9 @@ class WorkforcePoolProvider {
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           oidc: json_.containsKey('oidc')
               ? GoogleIamAdminV1WorkforcePoolProviderOidc.fromJson(
@@ -7233,6 +7633,7 @@ class WorkforcePoolProvider {
         if (description != null) 'description': description!,
         if (disabled != null) 'disabled': disabled!,
         if (displayName != null) 'displayName': displayName!,
+        if (expireTime != null) 'expireTime': expireTime!,
         if (name != null) 'name': name!,
         if (oidc != null) 'oidc': oidc!,
         if (saml != null) 'saml': saml!,
@@ -7338,6 +7739,12 @@ class WorkloadIdentityPool {
   /// Cannot exceed 32 characters.
   core.String? displayName;
 
+  /// Time after which the workload identity pool will be permanently purged and
+  /// cannot be recovered.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
   /// The resource name of the pool.
   ///
   /// Output only.
@@ -7362,6 +7769,7 @@ class WorkloadIdentityPool {
     this.description,
     this.disabled,
     this.displayName,
+    this.expireTime,
     this.name,
     this.state,
   });
@@ -7377,6 +7785,9 @@ class WorkloadIdentityPool {
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
@@ -7386,6 +7797,7 @@ class WorkloadIdentityPool {
         if (description != null) 'description': description!,
         if (disabled != null) 'disabled': disabled!,
         if (displayName != null) 'displayName': displayName!,
+        if (expireTime != null) 'expireTime': expireTime!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
       };
@@ -7472,6 +7884,12 @@ class WorkloadIdentityPoolProvider {
   /// Cannot exceed 32 characters.
   core.String? displayName;
 
+  /// Time after which the workload identity pool provider will be permanently
+  /// purged and cannot be recovered.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
   /// The resource name of the provider.
   ///
   /// Output only.
@@ -7504,6 +7922,7 @@ class WorkloadIdentityPoolProvider {
     this.description,
     this.disabled,
     this.displayName,
+    this.expireTime,
     this.name,
     this.oidc,
     this.saml,
@@ -7538,6 +7957,9 @@ class WorkloadIdentityPoolProvider {
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           oidc: json_.containsKey('oidc')
               ? Oidc.fromJson(
@@ -7559,6 +7981,7 @@ class WorkloadIdentityPoolProvider {
         if (description != null) 'description': description!,
         if (disabled != null) 'disabled': disabled!,
         if (displayName != null) 'displayName': displayName!,
+        if (expireTime != null) 'expireTime': expireTime!,
         if (name != null) 'name': name!,
         if (oidc != null) 'oidc': oidc!,
         if (saml != null) 'saml': saml!,

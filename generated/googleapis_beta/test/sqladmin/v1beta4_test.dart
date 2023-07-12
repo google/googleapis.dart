@@ -189,6 +189,33 @@ void checkBackupContext(api.BackupContext o) {
   buildCounterBackupContext--;
 }
 
+core.int buildCounterBackupReencryptionConfig = 0;
+api.BackupReencryptionConfig buildBackupReencryptionConfig() {
+  final o = api.BackupReencryptionConfig();
+  buildCounterBackupReencryptionConfig++;
+  if (buildCounterBackupReencryptionConfig < 3) {
+    o.backupLimit = 42;
+    o.backupType = 'foo';
+  }
+  buildCounterBackupReencryptionConfig--;
+  return o;
+}
+
+void checkBackupReencryptionConfig(api.BackupReencryptionConfig o) {
+  buildCounterBackupReencryptionConfig++;
+  if (buildCounterBackupReencryptionConfig < 3) {
+    unittest.expect(
+      o.backupLimit!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.backupType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterBackupReencryptionConfig--;
+}
+
 core.int buildCounterBackupRetentionSettings = 0;
 api.BackupRetentionSettings buildBackupRetentionSettings() {
   final o = api.BackupRetentionSettings();
@@ -467,6 +494,7 @@ api.ConnectSettings buildConnectSettings() {
   if (buildCounterConnectSettings < 3) {
     o.backendType = 'foo';
     o.databaseVersion = 'foo';
+    o.dnsName = 'foo';
     o.ipAddresses = buildUnnamed2();
     o.kind = 'foo';
     o.region = 'foo';
@@ -487,6 +515,10 @@ void checkConnectSettings(api.ConnectSettings o) {
       o.databaseVersion!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.dnsName!,
+      unittest.equals('foo'),
+    );
     checkUnnamed2(o.ipAddresses!);
     unittest.expect(
       o.kind!,
@@ -499,6 +531,25 @@ void checkConnectSettings(api.ConnectSettings o) {
     checkSslCert(o.serverCaCert!);
   }
   buildCounterConnectSettings--;
+}
+
+core.int buildCounterDataCacheConfig = 0;
+api.DataCacheConfig buildDataCacheConfig() {
+  final o = api.DataCacheConfig();
+  buildCounterDataCacheConfig++;
+  if (buildCounterDataCacheConfig < 3) {
+    o.dataCacheEnabled = true;
+  }
+  buildCounterDataCacheConfig--;
+  return o;
+}
+
+void checkDataCacheConfig(api.DataCacheConfig o) {
+  buildCounterDataCacheConfig++;
+  if (buildCounterDataCacheConfig < 3) {
+    unittest.expect(o.dataCacheEnabled!, unittest.isTrue);
+  }
+  buildCounterDataCacheConfig--;
 }
 
 core.int buildCounterDatabase = 0;
@@ -1054,6 +1105,21 @@ void checkDiskEncryptionStatus(api.DiskEncryptionStatus o) {
     );
   }
   buildCounterDiskEncryptionStatus--;
+}
+
+core.int buildCounterEmpty = 0;
+api.Empty buildEmpty() {
+  final o = api.Empty();
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {}
+  buildCounterEmpty--;
+  return o;
+}
+
+void checkEmpty(api.Empty o) {
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {}
+  buildCounterEmpty--;
 }
 
 core.int buildCounterExportContextBakExportOptions = 0;
@@ -1900,6 +1966,25 @@ void checkInstancesListServerCasResponse(api.InstancesListServerCasResponse o) {
   buildCounterInstancesListServerCasResponse--;
 }
 
+core.int buildCounterInstancesReencryptRequest = 0;
+api.InstancesReencryptRequest buildInstancesReencryptRequest() {
+  final o = api.InstancesReencryptRequest();
+  buildCounterInstancesReencryptRequest++;
+  if (buildCounterInstancesReencryptRequest < 3) {
+    o.backupReencryptionConfig = buildBackupReencryptionConfig();
+  }
+  buildCounterInstancesReencryptRequest--;
+  return o;
+}
+
+void checkInstancesReencryptRequest(api.InstancesReencryptRequest o) {
+  buildCounterInstancesReencryptRequest++;
+  if (buildCounterInstancesReencryptRequest < 3) {
+    checkBackupReencryptionConfig(o.backupReencryptionConfig!);
+  }
+  buildCounterInstancesReencryptRequest--;
+}
+
 core.int buildCounterInstancesRestoreBackupRequest = 0;
 api.InstancesRestoreBackupRequest buildInstancesRestoreBackupRequest() {
   final o = api.InstancesRestoreBackupRequest();
@@ -2734,12 +2819,14 @@ api.Settings buildSettings() {
     o.collation = 'foo';
     o.connectorEnforcement = 'foo';
     o.crashSafeReplicationEnabled = true;
+    o.dataCacheConfig = buildDataCacheConfig();
     o.dataDiskSizeGb = 'foo';
     o.dataDiskType = 'foo';
     o.databaseFlags = buildUnnamed23();
     o.databaseReplicationEnabled = true;
     o.deletionProtectionEnabled = true;
     o.denyMaintenancePeriods = buildUnnamed24();
+    o.edition = 'foo';
     o.insightsConfig = buildInsightsConfig();
     o.ipConfiguration = buildIpConfiguration();
     o.kind = 'foo';
@@ -2784,6 +2871,7 @@ void checkSettings(api.Settings o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.crashSafeReplicationEnabled!, unittest.isTrue);
+    checkDataCacheConfig(o.dataCacheConfig!);
     unittest.expect(
       o.dataDiskSizeGb!,
       unittest.equals('foo'),
@@ -2796,6 +2884,10 @@ void checkSettings(api.Settings o) {
     unittest.expect(o.databaseReplicationEnabled!, unittest.isTrue);
     unittest.expect(o.deletionProtectionEnabled!, unittest.isTrue);
     checkUnnamed24(o.denyMaintenancePeriods!);
+    unittest.expect(
+      o.edition!,
+      unittest.equals('foo'),
+    );
     checkInsightsConfig(o.insightsConfig!);
     checkIpConfiguration(o.ipConfiguration!);
     unittest.expect(
@@ -2929,6 +3021,35 @@ void checkSqlInstancesGetDiskShrinkConfigResponse(
   buildCounterSqlInstancesGetDiskShrinkConfigResponse--;
 }
 
+core.int buildCounterSqlInstancesGetLatestRecoveryTimeResponse = 0;
+api.SqlInstancesGetLatestRecoveryTimeResponse
+    buildSqlInstancesGetLatestRecoveryTimeResponse() {
+  final o = api.SqlInstancesGetLatestRecoveryTimeResponse();
+  buildCounterSqlInstancesGetLatestRecoveryTimeResponse++;
+  if (buildCounterSqlInstancesGetLatestRecoveryTimeResponse < 3) {
+    o.kind = 'foo';
+    o.latestRecoveryTime = 'foo';
+  }
+  buildCounterSqlInstancesGetLatestRecoveryTimeResponse--;
+  return o;
+}
+
+void checkSqlInstancesGetLatestRecoveryTimeResponse(
+    api.SqlInstancesGetLatestRecoveryTimeResponse o) {
+  buildCounterSqlInstancesGetLatestRecoveryTimeResponse++;
+  if (buildCounterSqlInstancesGetLatestRecoveryTimeResponse < 3) {
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.latestRecoveryTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSqlInstancesGetLatestRecoveryTimeResponse--;
+}
+
 core.int buildCounterSqlInstancesRescheduleMaintenanceRequestBody = 0;
 api.SqlInstancesRescheduleMaintenanceRequestBody
     buildSqlInstancesRescheduleMaintenanceRequestBody() {
@@ -2976,6 +3097,7 @@ api.SqlInstancesStartExternalSyncRequest
     o.mysqlSyncConfig = buildMySqlSyncConfig();
     o.skipVerification = true;
     o.syncMode = 'foo';
+    o.syncParallelLevel = 'foo';
   }
   buildCounterSqlInstancesStartExternalSyncRequest--;
   return o;
@@ -2989,6 +3111,10 @@ void checkSqlInstancesStartExternalSyncRequest(
     unittest.expect(o.skipVerification!, unittest.isTrue);
     unittest.expect(
       o.syncMode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.syncParallelLevel!,
       unittest.equals('foo'),
     );
   }
@@ -3768,6 +3894,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-BackupReencryptionConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBackupReencryptionConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BackupReencryptionConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBackupReencryptionConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-BackupRetentionSettings', () {
     unittest.test('to-json--from-json', () async {
       final o = buildBackupRetentionSettings();
@@ -3825,6 +3961,16 @@ void main() {
       final od = api.ConnectSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkConnectSettings(od);
+    });
+  });
+
+  unittest.group('obj-schema-DataCacheConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDataCacheConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DataCacheConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDataCacheConfig(od);
     });
   });
 
@@ -3935,6 +4081,16 @@ void main() {
       final od = api.DiskEncryptionStatus.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkDiskEncryptionStatus(od);
+    });
+  });
+
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEmpty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkEmpty(od);
     });
   });
 
@@ -4167,6 +4323,16 @@ void main() {
       final od = api.InstancesListServerCasResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkInstancesListServerCasResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-InstancesReencryptRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildInstancesReencryptRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InstancesReencryptRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkInstancesReencryptRequest(od);
     });
   });
 
@@ -4417,6 +4583,16 @@ void main() {
       final od = api.SqlInstancesGetDiskShrinkConfigResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSqlInstancesGetDiskShrinkConfigResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-SqlInstancesGetLatestRecoveryTimeResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSqlInstancesGetLatestRecoveryTimeResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SqlInstancesGetLatestRecoveryTimeResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSqlInstancesGetLatestRecoveryTimeResponse(od);
     });
   });
 
@@ -6832,6 +7008,93 @@ void main() {
       checkOperation(response as api.Operation);
     });
 
+    unittest.test('method--reencrypt', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).instances;
+      final arg_request = buildInstancesReencryptRequest();
+      final arg_project = 'foo';
+      final arg_instance = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.InstancesReencryptRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInstancesReencryptRequest(obj);
+
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('sql/v1beta4/projects/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/instances/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('/instances/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/reencrypt', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_instance'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals('/reencrypt'),
+        );
+        pathOffset += 10;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.reencrypt(
+          arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--resetSslConfig', () async {
       final mock = HttpServerMock();
       final res = api.SQLAdminApi(mock).instances;
@@ -7497,6 +7760,87 @@ void main() {
   });
 
   unittest.group('resource-OperationsResource', () {
+    unittest.test('method--cancel', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).operations;
+      final arg_project = 'foo';
+      final arg_operation = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('sql/v1beta4/projects/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/operations/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('/operations/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf('/cancel', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_operation'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('/cancel'),
+        );
+        pathOffset += 7;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.cancel(arg_project, arg_operation, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.SQLAdminApi(mock).operations;
@@ -7737,6 +8081,90 @@ void main() {
           $fields: arg_$fields);
       checkSqlInstancesGetDiskShrinkConfigResponse(
           response as api.SqlInstancesGetDiskShrinkConfigResponse);
+    });
+
+    unittest.test('method--getLatestRecoveryTime', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).projects.instances;
+      final arg_project = 'foo';
+      final arg_instance = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('sql/v1beta4/projects/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/instances/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('/instances/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/getLatestRecoveryTime', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_instance'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 22),
+          unittest.equals('/getLatestRecoveryTime'),
+        );
+        pathOffset += 22;
+
+        final query = (req.url).query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildSqlInstancesGetLatestRecoveryTimeResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getLatestRecoveryTime(
+          arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkSqlInstancesGetLatestRecoveryTimeResponse(
+          response as api.SqlInstancesGetLatestRecoveryTimeResponse);
     });
 
     unittest.test('method--performDiskShrink', () async {

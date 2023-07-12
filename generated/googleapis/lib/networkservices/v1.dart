@@ -3692,11 +3692,12 @@ typedef Expr = $Expr;
 /// along with any policy configurations. Routes have reference to to Gateways
 /// to dictate how requests should be routed by this Gateway.
 class Gateway {
-  /// Zero or one IPv4-address on which the Gateway will receive the traffic.
+  /// Zero or one IPv4 or IPv6 address on which the Gateway will receive the
+  /// traffic.
   ///
   /// When no address is provided, an IP from the subnetwork is allocated This
   /// field only applies to gateways of type 'SECURE_WEB_GATEWAY'. Gateways of
-  /// type 'OPEN_MESH' listen on 0.0.0.0.
+  /// type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
   ///
   /// Optional.
   core.List<core.String>? addresses;
@@ -3758,7 +3759,7 @@ class Gateway {
   ///
   /// The proxy binds to the specified ports. Gateways of type
   /// 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH'
-  /// listen on 0.0.0.0 and support multiple ports.
+  /// listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
   ///
   /// Required.
   core.List<core.int>? ports;
@@ -5556,9 +5557,13 @@ class ListGatewaysResponse {
   /// `next_page_token` as `page_token`.
   core.String? nextPageToken;
 
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
   ListGatewaysResponse({
     this.gateways,
     this.nextPageToken,
+    this.unreachable,
   });
 
   ListGatewaysResponse.fromJson(core.Map json_)
@@ -5572,11 +5577,17 @@ class ListGatewaysResponse {
           nextPageToken: json_.containsKey('nextPageToken')
               ? json_['nextPageToken'] as core.String
               : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gateways != null) 'gateways': gateways!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -5886,8 +5897,8 @@ class Mesh {
   ///
   /// The SIDECAR proxy will expect all traffic to be redirected to this port
   /// regardless of its actual ip:port destination. If unset, a port '15001' is
-  /// used as the interception port. This will is applicable only for sidecar
-  /// proxy deployments.
+  /// used as the interception port. This is applicable only for sidecar proxy
+  /// deployments.
   ///
   /// Optional.
   core.int? interceptionPort;
@@ -6194,6 +6205,15 @@ class ServiceBinding {
   /// Required.
   core.String? service;
 
+  /// The unique identifier of the Service Directory Service against which the
+  /// Service Binding resource is validated.
+  ///
+  /// This is populated when the Service Binding resource is used in another
+  /// resource (like Backend Service). This is of the UUID4 format.
+  ///
+  /// Output only.
+  core.String? serviceId;
+
   /// The timestamp when the resource was updated.
   ///
   /// Output only.
@@ -6205,6 +6225,7 @@ class ServiceBinding {
     this.labels,
     this.name,
     this.service,
+    this.serviceId,
     this.updateTime,
   });
 
@@ -6228,6 +6249,9 @@ class ServiceBinding {
           service: json_.containsKey('service')
               ? json_['service'] as core.String
               : null,
+          serviceId: json_.containsKey('serviceId')
+              ? json_['serviceId'] as core.String
+              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -6239,6 +6263,7 @@ class ServiceBinding {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (service != null) 'service': service!,
+        if (serviceId != null) 'serviceId': serviceId!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }

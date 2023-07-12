@@ -479,6 +479,9 @@ class AdBreak {
       };
 }
 
+/// Configuration for AES-128 encryption.
+typedef Aes128Encryption = $Empty;
+
 /// Animation types.
 class Animation {
   /// End previous animation.
@@ -918,6 +921,9 @@ class BwdifConfig {
       };
 }
 
+/// Clearkey configuration.
+typedef Clearkey = $Empty;
+
 /// Color preprocessing configuration.
 ///
 /// **Note:** This configuration is not supported.
@@ -1021,6 +1027,36 @@ class Crop {
       };
 }
 
+/// `DASH` manifest configuration.
+class DashConfig {
+  /// The segment reference scheme for a `DASH` manifest.
+  ///
+  /// The default is `SEGMENT_LIST`
+  /// Possible string values are:
+  /// - "SEGMENT_REFERENCE_SCHEME_UNSPECIFIED" : The segment reference scheme is
+  /// not specified.
+  /// - "SEGMENT_LIST" : Lists the URLs of media files for each segment.
+  /// - "SEGMENT_TEMPLATE_NUMBER" : Lists each segment from a template with
+  /// $Number$ variable.
+  core.String? segmentReferenceScheme;
+
+  DashConfig({
+    this.segmentReferenceScheme,
+  });
+
+  DashConfig.fromJson(core.Map json_)
+      : this(
+          segmentReferenceScheme: json_.containsKey('segmentReferenceScheme')
+              ? json_['segmentReferenceScheme'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (segmentReferenceScheme != null)
+          'segmentReferenceScheme': segmentReferenceScheme!,
+      };
+}
+
 /// Deblock preprocessing configuration.
 ///
 /// **Note:** This configuration is not supported.
@@ -1120,6 +1156,55 @@ class Denoise {
   core.Map<core.String, core.dynamic> toJson() => {
         if (strength != null) 'strength': strength!,
         if (tune != null) 'tune': tune!,
+      };
+}
+
+/// Defines configuration for DRM systems in use.
+class DrmSystems {
+  /// Clearkey configuration.
+  Clearkey? clearkey;
+
+  /// Fairplay configuration.
+  Fairplay? fairplay;
+
+  /// Playready configuration.
+  Playready? playready;
+
+  /// Widevine configuration.
+  Widevine? widevine;
+
+  DrmSystems({
+    this.clearkey,
+    this.fairplay,
+    this.playready,
+    this.widevine,
+  });
+
+  DrmSystems.fromJson(core.Map json_)
+      : this(
+          clearkey: json_.containsKey('clearkey')
+              ? Clearkey.fromJson(
+                  json_['clearkey'] as core.Map<core.String, core.dynamic>)
+              : null,
+          fairplay: json_.containsKey('fairplay')
+              ? Fairplay.fromJson(
+                  json_['fairplay'] as core.Map<core.String, core.dynamic>)
+              : null,
+          playready: json_.containsKey('playready')
+              ? Playready.fromJson(
+                  json_['playready'] as core.Map<core.String, core.dynamic>)
+              : null,
+          widevine: json_.containsKey('widevine')
+              ? Widevine.fromJson(
+                  json_['widevine'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clearkey != null) 'clearkey': clearkey!,
+        if (fairplay != null) 'fairplay': fairplay!,
+        if (playready != null) 'playready': playready!,
+        if (widevine != null) 'widevine': widevine!,
       };
 }
 
@@ -1235,6 +1320,80 @@ class ElementaryStream {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// Encryption settings.
+class Encryption {
+  /// Configuration for AES-128 encryption.
+  Aes128Encryption? aes128;
+
+  /// DRM system(s) to use; at least one must be specified.
+  ///
+  /// If a DRM system is omitted, it is considered disabled.
+  ///
+  /// Required.
+  DrmSystems? drmSystems;
+
+  /// Identifier for this set of encryption options.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// Configuration for MPEG Common Encryption (MPEG-CENC).
+  MpegCommonEncryption? mpegCenc;
+
+  /// Configuration for SAMPLE-AES encryption.
+  SampleAesEncryption? sampleAes;
+
+  /// Keys are stored in Google Secret Manager.
+  SecretManagerSource? secretManagerKeySource;
+
+  Encryption({
+    this.aes128,
+    this.drmSystems,
+    this.id,
+    this.mpegCenc,
+    this.sampleAes,
+    this.secretManagerKeySource,
+  });
+
+  Encryption.fromJson(core.Map json_)
+      : this(
+          aes128: json_.containsKey('aes128')
+              ? Aes128Encryption.fromJson(
+                  json_['aes128'] as core.Map<core.String, core.dynamic>)
+              : null,
+          drmSystems: json_.containsKey('drmSystems')
+              ? DrmSystems.fromJson(
+                  json_['drmSystems'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          mpegCenc: json_.containsKey('mpegCenc')
+              ? MpegCommonEncryption.fromJson(
+                  json_['mpegCenc'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sampleAes: json_.containsKey('sampleAes')
+              ? SampleAesEncryption.fromJson(
+                  json_['sampleAes'] as core.Map<core.String, core.dynamic>)
+              : null,
+          secretManagerKeySource: json_.containsKey('secretManagerKeySource')
+              ? SecretManagerSource.fromJson(json_['secretManagerKeySource']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aes128 != null) 'aes128': aes128!,
+        if (drmSystems != null) 'drmSystems': drmSystems!,
+        if (id != null) 'id': id!,
+        if (mpegCenc != null) 'mpegCenc': mpegCenc!,
+        if (sampleAes != null) 'sampleAes': sampleAes!,
+        if (secretManagerKeySource != null)
+          'secretManagerKeySource': secretManagerKeySource!,
+      };
+}
+
+/// Fairplay configuration.
+typedef Fairplay = $Empty;
 
 /// H264 codec settings.
 class H264CodecSettings {
@@ -1834,6 +1993,13 @@ class Input {
 
 /// Transcoding job resource.
 class Job {
+  /// The processing priority of a batch job.
+  ///
+  /// This field can only be set for batch mode jobs, and the default value is
+  /// 0. This value cannot be negative. Higher values correspond to higher
+  /// priorities for the job.
+  core.int? batchModePriority;
+
   /// The configuration for this job.
   JobConfig? config;
 
@@ -1886,6 +2052,18 @@ class Job {
   /// Format: `projects/{project_number}/locations/{location}/jobs/{job}`
   core.String? name;
 
+  /// The optimization strategy of the job.
+  ///
+  /// The default is `AUTODETECT`.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "OPTIMIZATION_STRATEGY_UNSPECIFIED" : The optimization strategy is not
+  /// specified.
+  /// - "AUTODETECT" : Prioritize job processing speed.
+  /// - "DISABLED" : Disable all optimizations.
+  core.String? optimization;
+
   /// Input only.
   ///
   /// Specify the `output_uri` to populate an empty `Job.config.output.uri` or
@@ -1927,6 +2105,7 @@ class Job {
   core.int? ttlAfterCompletionDays;
 
   Job({
+    this.batchModePriority,
     this.config,
     this.createTime,
     this.endTime,
@@ -1935,6 +2114,7 @@ class Job {
     this.labels,
     this.mode,
     this.name,
+    this.optimization,
     this.outputUri,
     this.startTime,
     this.state,
@@ -1944,6 +2124,9 @@ class Job {
 
   Job.fromJson(core.Map json_)
       : this(
+          batchModePriority: json_.containsKey('batchModePriority')
+              ? json_['batchModePriority'] as core.int
+              : null,
           config: json_.containsKey('config')
               ? JobConfig.fromJson(
                   json_['config'] as core.Map<core.String, core.dynamic>)
@@ -1971,6 +2154,9 @@ class Job {
               : null,
           mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          optimization: json_.containsKey('optimization')
+              ? json_['optimization'] as core.String
+              : null,
           outputUri: json_.containsKey('outputUri')
               ? json_['outputUri'] as core.String
               : null,
@@ -1988,6 +2174,7 @@ class Job {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (batchModePriority != null) 'batchModePriority': batchModePriority!,
         if (config != null) 'config': config!,
         if (createTime != null) 'createTime': createTime!,
         if (endTime != null) 'endTime': endTime!,
@@ -1996,6 +2183,7 @@ class Job {
         if (labels != null) 'labels': labels!,
         if (mode != null) 'mode': mode!,
         if (name != null) 'name': name!,
+        if (optimization != null) 'optimization': optimization!,
         if (outputUri != null) 'outputUri': outputUri!,
         if (startTime != null) 'startTime': startTime!,
         if (state != null) 'state': state!,
@@ -2019,6 +2207,13 @@ class JobConfig {
 
   /// List of elementary streams.
   core.List<ElementaryStream>? elementaryStreams;
+
+  /// List of encryption configurations for the content.
+  ///
+  /// Each configuration has an ID. Specify this ID in the
+  /// MuxStream.encryption_id field to indicate the configuration to use for
+  /// that `MuxStream` output.
+  core.List<Encryption>? encryptions;
 
   /// List of input assets stored in Cloud Storage.
   core.List<Input>? inputs;
@@ -2047,6 +2242,7 @@ class JobConfig {
     this.adBreaks,
     this.editList,
     this.elementaryStreams,
+    this.encryptions,
     this.inputs,
     this.manifests,
     this.muxStreams,
@@ -2073,6 +2269,12 @@ class JobConfig {
           elementaryStreams: json_.containsKey('elementaryStreams')
               ? (json_['elementaryStreams'] as core.List)
                   .map((value) => ElementaryStream.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          encryptions: json_.containsKey('encryptions')
+              ? (json_['encryptions'] as core.List)
+                  .map((value) => Encryption.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2120,6 +2322,7 @@ class JobConfig {
         if (adBreaks != null) 'adBreaks': adBreaks!,
         if (editList != null) 'editList': editList!,
         if (elementaryStreams != null) 'elementaryStreams': elementaryStreams!,
+        if (encryptions != null) 'encryptions': encryptions!,
         if (inputs != null) 'inputs': inputs!,
         if (manifests != null) 'manifests': manifests!,
         if (muxStreams != null) 'muxStreams': muxStreams!,
@@ -2262,6 +2465,9 @@ class ListJobsResponse {
 
 /// Manifest configuration.
 class Manifest {
+  /// `DASH` manifest configuration.
+  DashConfig? dash;
+
   /// The name of the generated file.
   ///
   /// The default is `manifest` with the extension suffix corresponding to the
@@ -2289,6 +2495,7 @@ class Manifest {
   core.String? type;
 
   Manifest({
+    this.dash,
     this.fileName,
     this.muxStreams,
     this.type,
@@ -2296,6 +2503,10 @@ class Manifest {
 
   Manifest.fromJson(core.Map json_)
       : this(
+          dash: json_.containsKey('dash')
+              ? DashConfig.fromJson(
+                  json_['dash'] as core.Map<core.String, core.dynamic>)
+              : null,
           fileName: json_.containsKey('fileName')
               ? json_['fileName'] as core.String
               : null,
@@ -2308,9 +2519,35 @@ class Manifest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (dash != null) 'dash': dash!,
         if (fileName != null) 'fileName': fileName!,
         if (muxStreams != null) 'muxStreams': muxStreams!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Configuration for MPEG Common Encryption (MPEG-CENC).
+class MpegCommonEncryption {
+  /// Specify the encryption scheme.
+  ///
+  /// Supported encryption schemes: - `cenc` - `cbcs`
+  ///
+  /// Required.
+  core.String? scheme;
+
+  MpegCommonEncryption({
+    this.scheme,
+  });
+
+  MpegCommonEncryption.fromJson(core.Map json_)
+      : this(
+          scheme: json_.containsKey('scheme')
+              ? json_['scheme'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scheme != null) 'scheme': scheme!,
       };
 }
 
@@ -2325,6 +2562,11 @@ class MuxStream {
 
   /// List of `ElementaryStream.key`s multiplexed in this stream.
   core.List<core.String>? elementaryStreams;
+
+  /// Identifier of the encryption configuration to use.
+  ///
+  /// If omitted, output will be unencrypted.
+  core.String? encryptionId;
 
   /// The name of the generated file.
   ///
@@ -2346,6 +2588,7 @@ class MuxStream {
   MuxStream({
     this.container,
     this.elementaryStreams,
+    this.encryptionId,
     this.fileName,
     this.key,
     this.segmentSettings,
@@ -2361,6 +2604,9 @@ class MuxStream {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          encryptionId: json_.containsKey('encryptionId')
+              ? json_['encryptionId'] as core.String
+              : null,
           fileName: json_.containsKey('fileName')
               ? json_['fileName'] as core.String
               : null,
@@ -2374,6 +2620,7 @@ class MuxStream {
   core.Map<core.String, core.dynamic> toJson() => {
         if (container != null) 'container': container!,
         if (elementaryStreams != null) 'elementaryStreams': elementaryStreams!,
+        if (encryptionId != null) 'encryptionId': encryptionId!,
         if (fileName != null) 'fileName': fileName!,
         if (key != null) 'key': key!,
         if (segmentSettings != null) 'segmentSettings': segmentSettings!,
@@ -2525,6 +2772,9 @@ class Pad {
       };
 }
 
+/// Playready configuration.
+typedef Playready = $Empty;
+
 /// Preprocessing configurations.
 class PreprocessingConfig {
   /// Audio preprocessing configuration.
@@ -2620,6 +2870,37 @@ class PubsubDestination {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (topic != null) 'topic': topic!,
+      };
+}
+
+/// Configuration for SAMPLE-AES encryption.
+typedef SampleAesEncryption = $Empty;
+
+/// Configuration for secrets stored in Google Secret Manager.
+class SecretManagerSource {
+  /// The name of the Secret Version containing the encryption key in the
+  /// following format:
+  /// `projects/{project}/secrets/{secret_id}/versions/{version_number}` Note
+  /// that only numbered versions are supported.
+  ///
+  /// Aliases like "latest" are not supported.
+  ///
+  /// Required.
+  core.String? secretVersion;
+
+  SecretManagerSource({
+    this.secretVersion,
+  });
+
+  SecretManagerSource.fromJson(core.Map json_)
+      : this(
+          secretVersion: json_.containsKey('secretVersion')
+              ? json_['secretVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (secretVersion != null) 'secretVersion': secretVersion!,
       };
 }
 
@@ -3109,6 +3390,9 @@ class Vp9CodecSettings {
         if (widthPixels != null) 'widthPixels': widthPixels!,
       };
 }
+
+/// Widevine configuration.
+typedef Widevine = $Empty;
 
 /// Yet Another Deinterlacing Filter Configuration.
 class YadifConfig {

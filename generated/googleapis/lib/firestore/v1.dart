@@ -102,8 +102,11 @@ class ProjectsDatabasesResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [databaseId] - Required. The ID to use for the database, which will become
-  /// the final component of the database's resource name. The value must be set
-  /// to "(default)".
+  /// the final component of the database's resource name. This value should be
+  /// 4-63 characters. Valid characters are /a-z-/ with first character a letter
+  /// and the last a letter or a number. Must not be UUID-like
+  /// /\[0-9a-f\]{8}(-\[0-9a-f\]{4}){3}-\[0-9a-f\]{12}/. "(default)" database id
+  /// is also valid.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -147,15 +150,9 @@ class ProjectsDatabasesResource {
   /// `projects/{project_id}/databases/{database_id}`
   /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
   ///
-  /// [allowMissing] - If set to true and the Database is not found, the request
-  /// will succeed but no action will be taken.
-  ///
   /// [etag] - The current etag of the Database. If an etag is provided and does
   /// not match the current etag of the database, deletion will be blocked and a
   /// FAILED_PRECONDITION error will be returned.
-  ///
-  /// [validateOnly] - If set, validate the request and preview the response,
-  /// but do not actually delete the database.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -169,15 +166,11 @@ class ProjectsDatabasesResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
-    core.bool? allowMissing,
     core.String? etag,
-    core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (etag != null) 'etag': [etag],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -741,7 +734,7 @@ class ProjectsDatabasesCollectionGroupsFieldsResource {
   /// Currently, FirestoreAdmin.ListFields only supports listing fields that
   /// have been explicitly overridden. To issue this query, call
   /// FirestoreAdmin.ListFields with the filter set to
-  /// `indexConfig.usesAncestorConfig:false` .
+  /// \`indexConfig.usesAncestorConfig:false or \`ttlConfig:*\`.
   ///
   /// Request parameters:
   ///
@@ -3567,6 +3560,18 @@ class GoogleFirestoreAdminV1Database {
   /// - "DELETE_PROTECTION_ENABLED" : Delete protection is enabled
   core.String? deleteProtectionState;
 
+  /// The earliest timestamp at which older versions of the data can be read
+  /// from the database.
+  ///
+  /// See \[version_retention_period\] above; this field is populated with `now
+  /// - version_retention_period`. This value is continuously updated, and
+  /// becomes stale the moment it is queried. If you are using this value to
+  /// recover data, make sure to account for the time from the moment when the
+  /// value is queried to the moment when you initiate the recovery.
+  ///
+  /// Output only.
+  core.String? earliestVersionTime;
+
   /// This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the client
   /// has an up-to-date value before proceeding.
@@ -3594,6 +3599,18 @@ class GoogleFirestoreAdminV1Database {
   /// Format: `projects/{project}/databases/{database}`
   core.String? name;
 
+  /// Whether to enable the PITR feature on this database.
+  /// Possible string values are:
+  /// - "POINT_IN_TIME_RECOVERY_ENABLEMENT_UNSPECIFIED" : Not used.
+  /// - "POINT_IN_TIME_RECOVERY_ENABLED" : Reads are supported on selected
+  /// versions of the data from within the past 7 days: * Reads against any
+  /// timestamp within the past hour * Reads against 1-minute snapshots beyond 1
+  /// hour and within 7 days `version_retention_period` and
+  /// `earliest_version_time` can be used to determine the supported versions.
+  /// - "POINT_IN_TIME_RECOVERY_DISABLED" : Reads are supported on any version
+  /// of the data from within the past 1 hour.
+  core.String? pointInTimeRecoveryEnablement;
+
   /// The type of the database.
   ///
   /// See https://cloud.google.com/datastore/docs/firestore-or-datastore for
@@ -3618,18 +3635,32 @@ class GoogleFirestoreAdminV1Database {
   /// Output only.
   core.String? updateTime;
 
+  /// The period during which past versions of data are retained in the
+  /// database.
+  ///
+  /// Any read or query can specify a `read_time` within this window, and will
+  /// read the state of the database at that time. If the PITR feature is
+  /// enabled, the retention period is 7 days. Otherwise, the retention period
+  /// is 1 hour.
+  ///
+  /// Output only.
+  core.String? versionRetentionPeriod;
+
   GoogleFirestoreAdminV1Database({
     this.appEngineIntegrationMode,
     this.concurrencyMode,
     this.createTime,
     this.deleteProtectionState,
+    this.earliestVersionTime,
     this.etag,
     this.keyPrefix,
     this.locationId,
     this.name,
+    this.pointInTimeRecoveryEnablement,
     this.type,
     this.uid,
     this.updateTime,
+    this.versionRetentionPeriod,
   });
 
   GoogleFirestoreAdminV1Database.fromJson(core.Map json_)
@@ -3647,6 +3678,9 @@ class GoogleFirestoreAdminV1Database {
           deleteProtectionState: json_.containsKey('deleteProtectionState')
               ? json_['deleteProtectionState'] as core.String
               : null,
+          earliestVersionTime: json_.containsKey('earliestVersionTime')
+              ? json_['earliestVersionTime'] as core.String
+              : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           keyPrefix: json_.containsKey('keyPrefix')
               ? json_['keyPrefix'] as core.String
@@ -3655,10 +3689,17 @@ class GoogleFirestoreAdminV1Database {
               ? json_['locationId'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          pointInTimeRecoveryEnablement:
+              json_.containsKey('pointInTimeRecoveryEnablement')
+                  ? json_['pointInTimeRecoveryEnablement'] as core.String
+                  : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
           uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
+              : null,
+          versionRetentionPeriod: json_.containsKey('versionRetentionPeriod')
+              ? json_['versionRetentionPeriod'] as core.String
               : null,
         );
 
@@ -3669,13 +3710,19 @@ class GoogleFirestoreAdminV1Database {
         if (createTime != null) 'createTime': createTime!,
         if (deleteProtectionState != null)
           'deleteProtectionState': deleteProtectionState!,
+        if (earliestVersionTime != null)
+          'earliestVersionTime': earliestVersionTime!,
         if (etag != null) 'etag': etag!,
         if (keyPrefix != null) 'keyPrefix': keyPrefix!,
         if (locationId != null) 'locationId': locationId!,
         if (name != null) 'name': name!,
+        if (pointInTimeRecoveryEnablement != null)
+          'pointInTimeRecoveryEnablement': pointInTimeRecoveryEnablement!,
         if (type != null) 'type': type!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (versionRetentionPeriod != null)
+          'versionRetentionPeriod': versionRetentionPeriod!,
       };
 }
 
@@ -3706,10 +3753,20 @@ class GoogleFirestoreAdminV1ExportDocumentsRequest {
   /// time.
   core.String? outputUriPrefix;
 
+  /// The timestamp that corresponds to the version of the database to be
+  /// exported.
+  ///
+  /// The timestamp must be rounded to the minute, in the past, and not older
+  /// than 1 hour. If specified, then the exported documents will represent a
+  /// consistent view of the database at the provided time. Otherwise, there are
+  /// no guarantees about the consistency of the exported documents.
+  core.String? snapshotTime;
+
   GoogleFirestoreAdminV1ExportDocumentsRequest({
     this.collectionIds,
     this.namespaceIds,
     this.outputUriPrefix,
+    this.snapshotTime,
   });
 
   GoogleFirestoreAdminV1ExportDocumentsRequest.fromJson(core.Map json_)
@@ -3727,12 +3784,16 @@ class GoogleFirestoreAdminV1ExportDocumentsRequest {
           outputUriPrefix: json_.containsKey('outputUriPrefix')
               ? json_['outputUriPrefix'] as core.String
               : null,
+          snapshotTime: json_.containsKey('snapshotTime')
+              ? json_['snapshotTime'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (collectionIds != null) 'collectionIds': collectionIds!,
         if (namespaceIds != null) 'namespaceIds': namespaceIds!,
         if (outputUriPrefix != null) 'outputUriPrefix': outputUriPrefix!,
+        if (snapshotTime != null) 'snapshotTime': snapshotTime!,
       };
 }
 
@@ -3860,8 +3921,8 @@ class GoogleFirestoreAdminV1ImportDocumentsRequest {
 class GoogleFirestoreAdminV1Index {
   /// The API scope supported by this index.
   /// Possible string values are:
-  /// - "ANY_API" : The index can be used by both Firestore Native and Firestore
-  /// in Datastore Mode query API. This is the default.
+  /// - "ANY_API" : The index can only be used by the Firestore Native query
+  /// API. This is the default.
   /// - "DATASTORE_MODE_API" : The index can only be used by the Firestore in
   /// Datastore Mode query API.
   core.String? apiScope;
@@ -4933,6 +4994,9 @@ class ReadOnly {
 }
 
 /// Options for a transaction that can be used to read and write documents.
+///
+/// Firestore does not allow 3rd party auth requests to create read-write.
+/// transactions.
 class ReadWrite {
   /// An optional transaction to retry.
   core.String? retryTransaction;

@@ -33,6 +33,13 @@
     "name": "firebase",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230711",
+    "rootUrl": "https://firebase.googleapis.com/",
+    "servicePath": "",
+    "title": "Firebase Management API",
+    "version": "v1beta1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -110,7 +117,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "availableProjects": {
             "methods": {
@@ -1318,8 +1324,6 @@
             }
         }
     },
-    "revision": "20230504",
-    "rootUrl": "https://firebase.googleapis.com/",
     "schemas": {
         "AddFirebaseRequest": {
             "description": "All fields are required.",
@@ -2323,9 +2327,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Firebase Management API",
-    "version": "v1beta1",
-    "version_module": true
+    }
 }

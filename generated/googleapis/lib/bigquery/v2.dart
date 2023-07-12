@@ -1264,9 +1264,9 @@ class RoutinesResource {
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [filter] - If set, then only the Routines matching this filter are
-  /// returned. The current supported form is either "routine_type:" or
-  /// "routineType:", where is a RoutineType enum. Example:
-  /// "routineType:SCALAR_FUNCTION".
+  /// returned. The supported format is `routineType:{RoutineType}`, where
+  /// `{RoutineType}` is a RoutineType enum. For example:
+  /// `routineType:SCALAR_FUNCTION`.
   ///
   /// [maxResults] - The maximum number of results to return in a single
   /// response page. Leverage the page tokens to iterate through the entire
@@ -5367,6 +5367,16 @@ class ExternalDataConfiguration {
   /// Optional.
   core.List<core.String>? decimalTargetTypes;
 
+  /// Specifies how source URIs are interpreted for constructing the file set to
+  /// load.
+  ///
+  /// By default source URIs are expanded against the underlying storage. Other
+  /// options include specifying manifest files. Only applicable to object
+  /// storage systems.
+  ///
+  /// Optional.
+  core.String? fileSetSpecType;
+
   /// Additional options if sourceFormat is set to GOOGLE_SHEETS.
   ///
   /// Optional.
@@ -5390,6 +5400,10 @@ class ExternalDataConfiguration {
   ///
   /// Optional.
   core.bool? ignoreUnknownValues;
+
+  /// Additional properties to set if `sourceFormat` is set to
+  /// `NEWLINE_DELIMITED_JSON`.
+  JsonOptions? jsonOptions;
 
   /// The maximum number of bad records that BigQuery can ignore when reading
   /// data.
@@ -5467,9 +5481,11 @@ class ExternalDataConfiguration {
     this.connectionId,
     this.csvOptions,
     this.decimalTargetTypes,
+    this.fileSetSpecType,
     this.googleSheetsOptions,
     this.hivePartitioningOptions,
     this.ignoreUnknownValues,
+    this.jsonOptions,
     this.maxBadRecords,
     this.metadataCacheMode,
     this.objectMetadata,
@@ -5508,6 +5524,9 @@ class ExternalDataConfiguration {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          fileSetSpecType: json_.containsKey('fileSetSpecType')
+              ? json_['fileSetSpecType'] as core.String
+              : null,
           googleSheetsOptions: json_.containsKey('googleSheetsOptions')
               ? GoogleSheetsOptions.fromJson(json_['googleSheetsOptions']
                   as core.Map<core.String, core.dynamic>)
@@ -5519,6 +5538,10 @@ class ExternalDataConfiguration {
               : null,
           ignoreUnknownValues: json_.containsKey('ignoreUnknownValues')
               ? json_['ignoreUnknownValues'] as core.bool
+              : null,
+          jsonOptions: json_.containsKey('jsonOptions')
+              ? JsonOptions.fromJson(
+                  json_['jsonOptions'] as core.Map<core.String, core.dynamic>)
               : null,
           maxBadRecords: json_.containsKey('maxBadRecords')
               ? json_['maxBadRecords'] as core.int
@@ -5559,12 +5582,14 @@ class ExternalDataConfiguration {
         if (csvOptions != null) 'csvOptions': csvOptions!,
         if (decimalTargetTypes != null)
           'decimalTargetTypes': decimalTargetTypes!,
+        if (fileSetSpecType != null) 'fileSetSpecType': fileSetSpecType!,
         if (googleSheetsOptions != null)
           'googleSheetsOptions': googleSheetsOptions!,
         if (hivePartitioningOptions != null)
           'hivePartitioningOptions': hivePartitioningOptions!,
         if (ignoreUnknownValues != null)
           'ignoreUnknownValues': ignoreUnknownValues!,
+        if (jsonOptions != null) 'jsonOptions': jsonOptions!,
         if (maxBadRecords != null) 'maxBadRecords': maxBadRecords!,
         if (metadataCacheMode != null) 'metadataCacheMode': metadataCacheMode!,
         if (objectMetadata != null) 'objectMetadata': objectMetadata!,
@@ -6975,6 +7000,16 @@ class JobConfigurationLoad {
   /// Optional.
   core.String? fieldDelimiter;
 
+  /// Specifies how source URIs are interpreted for constructing the file set to
+  /// load.
+  ///
+  /// By default source URIs are expanded against the underlying storage. Other
+  /// options include specifying manifest files. Only applicable to object
+  /// storage systems.
+  ///
+  /// Optional.
+  core.String? fileSetSpecType;
+
   /// Options to configure hive partitioning support.
   ///
   /// Optional.
@@ -7174,6 +7209,7 @@ class JobConfigurationLoad {
     this.destinationTableProperties,
     this.encoding,
     this.fieldDelimiter,
+    this.fileSetSpecType,
     this.hivePartitioningOptions,
     this.ignoreUnknownValues,
     this.jsonExtension,
@@ -7250,6 +7286,9 @@ class JobConfigurationLoad {
               : null,
           fieldDelimiter: json_.containsKey('fieldDelimiter')
               ? json_['fieldDelimiter'] as core.String
+              : null,
+          fileSetSpecType: json_.containsKey('fileSetSpecType')
+              ? json_['fileSetSpecType'] as core.String
               : null,
           hivePartitioningOptions: json_.containsKey('hivePartitioningOptions')
               ? HivePartitioningOptions.fromJson(
@@ -7348,6 +7387,7 @@ class JobConfigurationLoad {
           'destinationTableProperties': destinationTableProperties!,
         if (encoding != null) 'encoding': encoding!,
         if (fieldDelimiter != null) 'fieldDelimiter': fieldDelimiter!,
+        if (fileSetSpecType != null) 'fileSetSpecType': fileSetSpecType!,
         if (hivePartitioningOptions != null)
           'hivePartitioningOptions': hivePartitioningOptions!,
         if (ignoreUnknownValues != null)
@@ -8916,6 +8956,31 @@ class JobStatus {
 /// Represents a single JSON object.
 typedef JsonObject = core.Map<core.String, core.Object?>;
 
+class JsonOptions {
+  /// The character encoding of the data.
+  ///
+  /// The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and
+  /// UTF-32LE. The default value is UTF-8.
+  ///
+  /// Optional.
+  core.String? encoding;
+
+  JsonOptions({
+    this.encoding,
+  });
+
+  JsonOptions.fromJson(core.Map json_)
+      : this(
+          encoding: json_.containsKey('encoding')
+              ? json_['encoding'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (encoding != null) 'encoding': encoding!,
+      };
+}
+
 class ListModelsResponse {
   /// Models in the requested dataset.
   ///
@@ -9266,8 +9331,8 @@ class Model {
   /// - "AUTOENCODER" : Autoencoder model.
   /// - "ARIMA_PLUS" : New name for the ARIMA model.
   /// - "ARIMA_PLUS_XREG" : ARIMA with external regressors.
-  /// - "RANDOM_FOREST_REGRESSOR" : Random Forest regressor model.
-  /// - "RANDOM_FOREST_CLASSIFIER" : Random Forest classifier model.
+  /// - "RANDOM_FOREST_REGRESSOR" : Random forest regressor model.
+  /// - "RANDOM_FOREST_CLASSIFIER" : Random forest classifier model.
   /// - "TENSORFLOW_LITE" : An imported TensorFlow Lite model.
   /// - "ONNX" : An imported ONNX model.
   core.String? modelType;
@@ -10954,9 +11019,10 @@ class Routine {
   /// Required.
   /// Possible string values are:
   /// - "ROUTINE_TYPE_UNSPECIFIED"
-  /// - "SCALAR_FUNCTION" : Non-builtin permanent scalar function.
+  /// - "SCALAR_FUNCTION" : Non-built-in persistent scalar function.
   /// - "PROCEDURE" : Stored procedure.
-  /// - "TABLE_VALUED_FUNCTION" : Non-builtin permanent TVF.
+  /// - "TABLE_VALUED_FUNCTION" : Non-built-in persistent TVF.
+  /// - "AGGREGATE_FUNCTION" : Non-built-in persistent aggregate function.
   core.String? routineType;
 
   /// Spark specific options.
@@ -12066,24 +12132,6 @@ class Table {
   /// run 'PREDICT' queries.
   ModelDefinition? model;
 
-  /// \[Output-only\] The size of this table in bytes, excluding any data in the
-  /// streaming buffer.
-  core.String? numBytes;
-
-  /// \[Output-only\] The number of bytes in the table that are considered
-  /// "long-term storage".
-  core.String? numLongTermBytes;
-
-  /// \[Output-only\] \[TrustedTester\] The physical size of this table in
-  /// bytes, excluding any data in the streaming buffer.
-  ///
-  /// This includes compression and storage used for time travel.
-  core.String? numPhysicalBytes;
-
-  /// \[Output-only\] The number of rows of data in this table, excluding any
-  /// data in the streaming buffer.
-  core.String? numRows;
-
   /// \[Output-only\] Number of logical bytes that are less than 90 days old.
   core.String? numActiveLogicalBytes;
 
@@ -12092,6 +12140,14 @@ class Table {
   /// This data is not kept in real time, and might be delayed by a few seconds
   /// to a few minutes.
   core.String? numActivePhysicalBytes;
+
+  /// \[Output-only\] The size of this table in bytes, excluding any data in the
+  /// streaming buffer.
+  core.String? numBytes;
+
+  /// \[Output-only\] The number of bytes in the table that are considered
+  /// "long-term storage".
+  core.String? numLongTermBytes;
 
   /// \[Output-only\] Number of logical bytes that are more than 90 days old.
   core.String? numLongTermLogicalBytes;
@@ -12108,6 +12164,16 @@ class Table {
   /// This data is not kept in real time, and might be delayed by a few seconds
   /// to a few minutes.
   core.String? numPartitions;
+
+  /// \[Output-only\] \[TrustedTester\] The physical size of this table in
+  /// bytes, excluding any data in the streaming buffer.
+  ///
+  /// This includes compression and storage used for time travel.
+  core.String? numPhysicalBytes;
+
+  /// \[Output-only\] The number of rows of data in this table, excluding any
+  /// data in the streaming buffer.
+  core.String? numRows;
 
   /// \[Output-only\] Number of physical bytes used by time travel storage
   /// (deleted or changed data).
@@ -12155,6 +12221,11 @@ class Table {
   /// there is no data in the streaming buffer.
   Streamingbuffer? streamingBuffer;
 
+  /// The table constraints on the table.
+  ///
+  /// Optional.
+  TableConstraints? tableConstraints;
+
   /// Reference describing the ID of this table.
   ///
   /// Required.
@@ -12200,15 +12271,15 @@ class Table {
     this.materializedView,
     this.maxStaleness,
     this.model,
-    this.numBytes,
-    this.numLongTermBytes,
-    this.numPhysicalBytes,
-    this.numRows,
     this.numActiveLogicalBytes,
     this.numActivePhysicalBytes,
+    this.numBytes,
+    this.numLongTermBytes,
     this.numLongTermLogicalBytes,
     this.numLongTermPhysicalBytes,
     this.numPartitions,
+    this.numPhysicalBytes,
+    this.numRows,
     this.numTimeTravelPhysicalBytes,
     this.numTotalLogicalBytes,
     this.numTotalPhysicalBytes,
@@ -12218,6 +12289,7 @@ class Table {
     this.selfLink,
     this.snapshotDefinition,
     this.streamingBuffer,
+    this.tableConstraints,
     this.tableReference,
     this.timePartitioning,
     this.type,
@@ -12291,11 +12363,27 @@ class Table {
               ? ModelDefinition.fromJson(
                   json_['model'] as core.Map<core.String, core.dynamic>)
               : null,
+          numActiveLogicalBytes: json_.containsKey('numActiveLogicalBytes')
+              ? json_['numActiveLogicalBytes'] as core.String
+              : null,
+          numActivePhysicalBytes: json_.containsKey('numActivePhysicalBytes')
+              ? json_['numActivePhysicalBytes'] as core.String
+              : null,
           numBytes: json_.containsKey('numBytes')
               ? json_['numBytes'] as core.String
               : null,
           numLongTermBytes: json_.containsKey('numLongTermBytes')
               ? json_['numLongTermBytes'] as core.String
+              : null,
+          numLongTermLogicalBytes: json_.containsKey('numLongTermLogicalBytes')
+              ? json_['numLongTermLogicalBytes'] as core.String
+              : null,
+          numLongTermPhysicalBytes:
+              json_.containsKey('numLongTermPhysicalBytes')
+                  ? json_['numLongTermPhysicalBytes'] as core.String
+                  : null,
+          numPartitions: json_.containsKey('numPartitions')
+              ? json_['numPartitions'] as core.String
               : null,
           numPhysicalBytes: json_.containsKey('numPhysicalBytes')
               ? json_['numPhysicalBytes'] as core.String
@@ -12303,32 +12391,15 @@ class Table {
           numRows: json_.containsKey('numRows')
               ? json_['numRows'] as core.String
               : null,
-          numActiveLogicalBytes: json_.containsKey('num_active_logical_bytes')
-              ? json_['num_active_logical_bytes'] as core.String
-              : null,
-          numActivePhysicalBytes: json_.containsKey('num_active_physical_bytes')
-              ? json_['num_active_physical_bytes'] as core.String
-              : null,
-          numLongTermLogicalBytes:
-              json_.containsKey('num_long_term_logical_bytes')
-                  ? json_['num_long_term_logical_bytes'] as core.String
-                  : null,
-          numLongTermPhysicalBytes:
-              json_.containsKey('num_long_term_physical_bytes')
-                  ? json_['num_long_term_physical_bytes'] as core.String
-                  : null,
-          numPartitions: json_.containsKey('num_partitions')
-              ? json_['num_partitions'] as core.String
-              : null,
           numTimeTravelPhysicalBytes:
-              json_.containsKey('num_time_travel_physical_bytes')
-                  ? json_['num_time_travel_physical_bytes'] as core.String
+              json_.containsKey('numTimeTravelPhysicalBytes')
+                  ? json_['numTimeTravelPhysicalBytes'] as core.String
                   : null,
-          numTotalLogicalBytes: json_.containsKey('num_total_logical_bytes')
-              ? json_['num_total_logical_bytes'] as core.String
+          numTotalLogicalBytes: json_.containsKey('numTotalLogicalBytes')
+              ? json_['numTotalLogicalBytes'] as core.String
               : null,
-          numTotalPhysicalBytes: json_.containsKey('num_total_physical_bytes')
-              ? json_['num_total_physical_bytes'] as core.String
+          numTotalPhysicalBytes: json_.containsKey('numTotalPhysicalBytes')
+              ? json_['numTotalPhysicalBytes'] as core.String
               : null,
           rangePartitioning: json_.containsKey('rangePartitioning')
               ? RangePartitioning.fromJson(json_['rangePartitioning']
@@ -12350,6 +12421,10 @@ class Table {
               : null,
           streamingBuffer: json_.containsKey('streamingBuffer')
               ? Streamingbuffer.fromJson(json_['streamingBuffer']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          tableConstraints: json_.containsKey('tableConstraints')
+              ? TableConstraints.fromJson(json_['tableConstraints']
                   as core.Map<core.String, core.dynamic>)
               : null,
           tableReference: json_.containsKey('tableReference')
@@ -12390,25 +12465,25 @@ class Table {
         if (materializedView != null) 'materializedView': materializedView!,
         if (maxStaleness != null) 'maxStaleness': maxStaleness!,
         if (model != null) 'model': model!,
+        if (numActiveLogicalBytes != null)
+          'numActiveLogicalBytes': numActiveLogicalBytes!,
+        if (numActivePhysicalBytes != null)
+          'numActivePhysicalBytes': numActivePhysicalBytes!,
         if (numBytes != null) 'numBytes': numBytes!,
         if (numLongTermBytes != null) 'numLongTermBytes': numLongTermBytes!,
+        if (numLongTermLogicalBytes != null)
+          'numLongTermLogicalBytes': numLongTermLogicalBytes!,
+        if (numLongTermPhysicalBytes != null)
+          'numLongTermPhysicalBytes': numLongTermPhysicalBytes!,
+        if (numPartitions != null) 'numPartitions': numPartitions!,
         if (numPhysicalBytes != null) 'numPhysicalBytes': numPhysicalBytes!,
         if (numRows != null) 'numRows': numRows!,
-        if (numActiveLogicalBytes != null)
-          'num_active_logical_bytes': numActiveLogicalBytes!,
-        if (numActivePhysicalBytes != null)
-          'num_active_physical_bytes': numActivePhysicalBytes!,
-        if (numLongTermLogicalBytes != null)
-          'num_long_term_logical_bytes': numLongTermLogicalBytes!,
-        if (numLongTermPhysicalBytes != null)
-          'num_long_term_physical_bytes': numLongTermPhysicalBytes!,
-        if (numPartitions != null) 'num_partitions': numPartitions!,
         if (numTimeTravelPhysicalBytes != null)
-          'num_time_travel_physical_bytes': numTimeTravelPhysicalBytes!,
+          'numTimeTravelPhysicalBytes': numTimeTravelPhysicalBytes!,
         if (numTotalLogicalBytes != null)
-          'num_total_logical_bytes': numTotalLogicalBytes!,
+          'numTotalLogicalBytes': numTotalLogicalBytes!,
         if (numTotalPhysicalBytes != null)
-          'num_total_physical_bytes': numTotalPhysicalBytes!,
+          'numTotalPhysicalBytes': numTotalPhysicalBytes!,
         if (rangePartitioning != null) 'rangePartitioning': rangePartitioning!,
         if (requirePartitionFilter != null)
           'requirePartitionFilter': requirePartitionFilter!,
@@ -12417,6 +12492,7 @@ class Table {
         if (snapshotDefinition != null)
           'snapshotDefinition': snapshotDefinition!,
         if (streamingBuffer != null) 'streamingBuffer': streamingBuffer!,
+        if (tableConstraints != null) 'tableConstraints': tableConstraints!,
         if (tableReference != null) 'tableReference': tableReference!,
         if (timePartitioning != null) 'timePartitioning': timePartitioning!,
         if (type != null) 'type': type!,
@@ -12442,6 +12518,157 @@ class TableCell {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (v != null) 'v': v!,
+      };
+}
+
+class TableConstraintsForeignKeysColumnReferences {
+  core.String? referencedColumn;
+  core.String? referencingColumn;
+
+  TableConstraintsForeignKeysColumnReferences({
+    this.referencedColumn,
+    this.referencingColumn,
+  });
+
+  TableConstraintsForeignKeysColumnReferences.fromJson(core.Map json_)
+      : this(
+          referencedColumn: json_.containsKey('referencedColumn')
+              ? json_['referencedColumn'] as core.String
+              : null,
+          referencingColumn: json_.containsKey('referencingColumn')
+              ? json_['referencingColumn'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (referencedColumn != null) 'referencedColumn': referencedColumn!,
+        if (referencingColumn != null) 'referencingColumn': referencingColumn!,
+      };
+}
+
+class TableConstraintsForeignKeysReferencedTable {
+  core.String? datasetId;
+  core.String? projectId;
+  core.String? tableId;
+
+  TableConstraintsForeignKeysReferencedTable({
+    this.datasetId,
+    this.projectId,
+    this.tableId,
+  });
+
+  TableConstraintsForeignKeysReferencedTable.fromJson(core.Map json_)
+      : this(
+          datasetId: json_.containsKey('datasetId')
+              ? json_['datasetId'] as core.String
+              : null,
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
+              : null,
+          tableId: json_.containsKey('tableId')
+              ? json_['tableId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (datasetId != null) 'datasetId': datasetId!,
+        if (projectId != null) 'projectId': projectId!,
+        if (tableId != null) 'tableId': tableId!,
+      };
+}
+
+class TableConstraintsForeignKeys {
+  core.List<TableConstraintsForeignKeysColumnReferences>? columnReferences;
+  core.String? name;
+  TableConstraintsForeignKeysReferencedTable? referencedTable;
+
+  TableConstraintsForeignKeys({
+    this.columnReferences,
+    this.name,
+    this.referencedTable,
+  });
+
+  TableConstraintsForeignKeys.fromJson(core.Map json_)
+      : this(
+          columnReferences: json_.containsKey('columnReferences')
+              ? (json_['columnReferences'] as core.List)
+                  .map((value) =>
+                      TableConstraintsForeignKeysColumnReferences.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          referencedTable: json_.containsKey('referencedTable')
+              ? TableConstraintsForeignKeysReferencedTable.fromJson(
+                  json_['referencedTable']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (columnReferences != null) 'columnReferences': columnReferences!,
+        if (name != null) 'name': name!,
+        if (referencedTable != null) 'referencedTable': referencedTable!,
+      };
+}
+
+/// The primary key of the table.
+///
+/// Optional.
+class TableConstraintsPrimaryKey {
+  core.List<core.String>? columns;
+
+  TableConstraintsPrimaryKey({
+    this.columns,
+  });
+
+  TableConstraintsPrimaryKey.fromJson(core.Map json_)
+      : this(
+          columns: json_.containsKey('columns')
+              ? (json_['columns'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (columns != null) 'columns': columns!,
+      };
+}
+
+class TableConstraints {
+  /// The foreign keys of the tables.
+  ///
+  /// Optional.
+  core.List<TableConstraintsForeignKeys>? foreignKeys;
+
+  /// The primary key of the table.
+  ///
+  /// Optional.
+  TableConstraintsPrimaryKey? primaryKey;
+
+  TableConstraints({
+    this.foreignKeys,
+    this.primaryKey,
+  });
+
+  TableConstraints.fromJson(core.Map json_)
+      : this(
+          foreignKeys: json_.containsKey('foreignKeys')
+              ? (json_['foreignKeys'] as core.List)
+                  .map((value) => TableConstraintsForeignKeys.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          primaryKey: json_.containsKey('primaryKey')
+              ? TableConstraintsPrimaryKey.fromJson(
+                  json_['primaryKey'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (foreignKeys != null) 'foreignKeys': foreignKeys!,
+        if (primaryKey != null) 'primaryKey': primaryKey!,
       };
 }
 
@@ -13261,6 +13488,10 @@ class TrainingOptions {
   /// series.
   core.bool? adjustStepChanges;
 
+  /// Whether to use approximate feature contribution method in XGBoost model
+  /// explanation for global explain.
+  core.bool? approxGlobalFeatureContrib;
+
   /// Whether to enable auto ARIMA or not.
   core.bool? autoArima;
 
@@ -13608,12 +13839,6 @@ class TrainingOptions {
   /// problem.
   core.String? optimizationStrategy;
 
-  /// Whether to preserve the input structs in output feature names.
-  ///
-  /// Suppose there is a struct A with field b. When false (default), the output
-  /// feature name is A_b. When true, the output feature name is A.b.
-  core.bool? preserveInputStructs;
-
   /// Number of paths for the sampled Shapley explain method.
   core.String? sampledShapleyNumPaths;
 
@@ -13668,6 +13893,7 @@ class TrainingOptions {
 
   TrainingOptions({
     this.adjustStepChanges,
+    this.approxGlobalFeatureContrib,
     this.autoArima,
     this.autoArimaMaxOrder,
     this.autoArimaMinOrder,
@@ -13723,7 +13949,6 @@ class TrainingOptions {
     this.numParallelTree,
     this.numTrials,
     this.optimizationStrategy,
-    this.preserveInputStructs,
     this.sampledShapleyNumPaths,
     this.subsample,
     this.tfVersion,
@@ -13745,6 +13970,10 @@ class TrainingOptions {
           adjustStepChanges: json_.containsKey('adjustStepChanges')
               ? json_['adjustStepChanges'] as core.bool
               : null,
+          approxGlobalFeatureContrib:
+              json_.containsKey('approxGlobalFeatureContrib')
+                  ? json_['approxGlobalFeatureContrib'] as core.bool
+                  : null,
           autoArima: json_.containsKey('autoArima')
               ? json_['autoArima'] as core.bool
               : null,
@@ -13927,9 +14156,6 @@ class TrainingOptions {
           optimizationStrategy: json_.containsKey('optimizationStrategy')
               ? json_['optimizationStrategy'] as core.String
               : null,
-          preserveInputStructs: json_.containsKey('preserveInputStructs')
-              ? json_['preserveInputStructs'] as core.bool
-              : null,
           sampledShapleyNumPaths: json_.containsKey('sampledShapleyNumPaths')
               ? json_['sampledShapleyNumPaths'] as core.String
               : null,
@@ -13981,6 +14207,8 @@ class TrainingOptions {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adjustStepChanges != null) 'adjustStepChanges': adjustStepChanges!,
+        if (approxGlobalFeatureContrib != null)
+          'approxGlobalFeatureContrib': approxGlobalFeatureContrib!,
         if (autoArima != null) 'autoArima': autoArima!,
         if (autoArimaMaxOrder != null) 'autoArimaMaxOrder': autoArimaMaxOrder!,
         if (autoArimaMinOrder != null) 'autoArimaMinOrder': autoArimaMinOrder!,
@@ -14050,8 +14278,6 @@ class TrainingOptions {
         if (numTrials != null) 'numTrials': numTrials!,
         if (optimizationStrategy != null)
           'optimizationStrategy': optimizationStrategy!,
-        if (preserveInputStructs != null)
-          'preserveInputStructs': preserveInputStructs!,
         if (sampledShapleyNumPaths != null)
           'sampledShapleyNumPaths': sampledShapleyNumPaths!,
         if (subsample != null) 'subsample': subsample!,

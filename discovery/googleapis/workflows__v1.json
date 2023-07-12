@@ -24,6 +24,13 @@
     "name": "workflows",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230619",
+    "rootUrl": "https://workflows.googleapis.com/",
+    "servicePath": "",
+    "title": "Workflows API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -347,7 +353,7 @@
                                             "type": "string"
                                         },
                                         "revisionId": {
-                                            "description": "Optional. Optional. The revision of the workflow to retrieve. If the revision_id is empty, the latest revision is retrieved. The format is \"000001-a4d\", where the first 6 characters define the zero-padded decimal revision number. They are followed by a hyphen and 3 hexadecimal characters. (go/wf_adr_clh_1)",
+                                            "description": "Optional. The revision of the workflow to retrieve. If the revision_id is empty, the latest revision is retrieved. The format is \"000001-a4d\", where the first six characters define the zero-padded decimal revision number. They are followed by a hyphen and three hexadecimal characters.",
                                             "location": "query",
                                             "type": "string"
                                         }
@@ -447,8 +453,6 @@
             }
         }
     },
-    "revision": "20230503",
-    "rootUrl": "https://workflows.googleapis.com/",
     "schemas": {
         "Empty": {
             "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
@@ -717,7 +721,7 @@
                     "type": "string"
                 },
                 "revisionId": {
-                    "description": "Output only. The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is \"000001-a4d\", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.",
+                    "description": "Output only. The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is \"000001-a4d\", where the first six characters define the zero-padded revision ordinal number. They are followed by a hyphen and three hexadecimal random characters.",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -754,13 +758,16 @@
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
+                },
+                "userEnvVars": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS\".",
+                    "type": "object"
                 }
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Workflows API",
-    "version": "v1",
-    "version_module": true
+    }
 }

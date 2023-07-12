@@ -1304,6 +1304,11 @@ class Function_ {
   /// /locations / * /functions / * `
   core.String? name;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// Describes the Service being deployed.
   ///
   /// Currently deploys services to Cloud Run (fully managed).
@@ -1333,6 +1338,11 @@ class Function_ {
   /// Output only.
   core.String? updateTime;
 
+  /// The deployed url for the function.
+  ///
+  /// Output only.
+  core.String? url;
+
   Function_({
     this.buildConfig,
     this.description,
@@ -1341,10 +1351,12 @@ class Function_ {
     this.kmsKeyName,
     this.labels,
     this.name,
+    this.satisfiesPzs,
     this.serviceConfig,
     this.state,
     this.stateMessages,
     this.updateTime,
+    this.url,
   });
 
   Function_.fromJson(core.Map json_)
@@ -1375,6 +1387,9 @@ class Function_ {
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           serviceConfig: json_.containsKey('serviceConfig')
               ? ServiceConfig.fromJson(
                   json_['serviceConfig'] as core.Map<core.String, core.dynamic>)
@@ -1390,6 +1405,7 @@ class Function_ {
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1400,10 +1416,12 @@ class Function_ {
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (serviceConfig != null) 'serviceConfig': serviceConfig!,
         if (state != null) 'state': state!,
         if (stateMessages != null) 'stateMessages': stateMessages!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -1877,10 +1895,6 @@ class RepoSource {
   /// helloworld (no leading slash allowed)
   core.String? dir;
 
-  /// Only trigger a build if the revision regex does NOT match the revision
-  /// regex.
-  core.bool? invertRegex;
-
   /// ID of the project that owns the Cloud Source Repository.
   ///
   /// If omitted, the project ID requesting the build is assumed.
@@ -1899,7 +1913,6 @@ class RepoSource {
     this.branchName,
     this.commitSha,
     this.dir,
-    this.invertRegex,
     this.projectId,
     this.repoName,
     this.tagName,
@@ -1914,9 +1927,6 @@ class RepoSource {
               ? json_['commitSha'] as core.String
               : null,
           dir: json_.containsKey('dir') ? json_['dir'] as core.String : null,
-          invertRegex: json_.containsKey('invertRegex')
-              ? json_['invertRegex'] as core.bool
-              : null,
           projectId: json_.containsKey('projectId')
               ? json_['projectId'] as core.String
               : null,
@@ -1932,7 +1942,6 @@ class RepoSource {
         if (branchName != null) 'branchName': branchName!,
         if (commitSha != null) 'commitSha': commitSha!,
         if (dir != null) 'dir': dir!,
-        if (invertRegex != null) 'invertRegex': invertRegex!,
         if (projectId != null) 'projectId': projectId!,
         if (repoName != null) 'repoName': repoName!,
         if (tagName != null) 'tagName': tagName!,
@@ -2457,6 +2466,12 @@ class SetIamPolicyRequest {
 
 /// The location of the function source code.
 class Source {
+  /// If provided, get the source from GitHub repository.
+  ///
+  /// This option is valid only for GCF 1st Gen function. Example:
+  /// https://github.com///blob//
+  core.String? gitUri;
+
   /// If provided, get the source from this location in a Cloud Source
   /// Repository.
   RepoSource? repoSource;
@@ -2465,12 +2480,16 @@ class Source {
   StorageSource? storageSource;
 
   Source({
+    this.gitUri,
     this.repoSource,
     this.storageSource,
   });
 
   Source.fromJson(core.Map json_)
       : this(
+          gitUri: json_.containsKey('gitUri')
+              ? json_['gitUri'] as core.String
+              : null,
           repoSource: json_.containsKey('repoSource')
               ? RepoSource.fromJson(
                   json_['repoSource'] as core.Map<core.String, core.dynamic>)
@@ -2482,6 +2501,7 @@ class Source {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (gitUri != null) 'gitUri': gitUri!,
         if (repoSource != null) 'repoSource': repoSource!,
         if (storageSource != null) 'storageSource': storageSource!,
       };
@@ -2492,6 +2512,10 @@ class Source {
 /// Ways to find the original source, or verify that some source was used for
 /// this build.
 class SourceProvenance {
+  /// A copy of the build's `source.git_uri`, if exists, with any commits
+  /// resolved.
+  core.String? gitUri;
+
   /// A copy of the build's `source.repo_source`, if exists, with any revisions
   /// resolved.
   RepoSource? resolvedRepoSource;
@@ -2501,12 +2525,16 @@ class SourceProvenance {
   StorageSource? resolvedStorageSource;
 
   SourceProvenance({
+    this.gitUri,
     this.resolvedRepoSource,
     this.resolvedStorageSource,
   });
 
   SourceProvenance.fromJson(core.Map json_)
       : this(
+          gitUri: json_.containsKey('gitUri')
+              ? json_['gitUri'] as core.String
+              : null,
           resolvedRepoSource: json_.containsKey('resolvedRepoSource')
               ? RepoSource.fromJson(json_['resolvedRepoSource']
                   as core.Map<core.String, core.dynamic>)
@@ -2518,6 +2546,7 @@ class SourceProvenance {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (gitUri != null) 'gitUri': gitUri!,
         if (resolvedRepoSource != null)
           'resolvedRepoSource': resolvedRepoSource!,
         if (resolvedStorageSource != null)

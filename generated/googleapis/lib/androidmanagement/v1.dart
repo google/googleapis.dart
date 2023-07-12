@@ -27,6 +27,7 @@
 ///   - [EnterprisesPoliciesResource]
 ///   - [EnterprisesWebAppsResource]
 ///   - [EnterprisesWebTokensResource]
+/// - [ProvisioningInfoResource]
 /// - [SignupUrlsResource]
 library androidmanagement_v1;
 
@@ -54,6 +55,8 @@ class AndroidManagementApi {
   final commons.ApiRequester _requester;
 
   EnterprisesResource get enterprises => EnterprisesResource(_requester);
+  ProvisioningInfoResource get provisioningInfo =>
+      ProvisioningInfoResource(_requester);
   SignupUrlsResource get signupUrls => SignupUrlsResource(_requester);
 
   AndroidManagementApi(http.Client client,
@@ -1430,6 +1433,50 @@ class EnterprisesWebTokensResource {
   }
 }
 
+class ProvisioningInfoResource {
+  final commons.ApiRequester _requester;
+
+  ProvisioningInfoResource(commons.ApiRequester client) : _requester = client;
+
+  /// Get the device provisioning info by the identifier provided via the
+  /// sign-in url.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The identifier that Android Device Policy passes to the
+  /// 3P sign-in page in the form of provisioningInfo/{provisioning_info}.
+  /// Value must have pattern `^provisioningInfo/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ProvisioningInfo].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ProvisioningInfo> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ProvisioningInfo.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class SignupUrlsResource {
   final commons.ApiRequester _requester;
 
@@ -2067,6 +2114,9 @@ class ApplicationPermission {
 }
 
 /// Policy for an individual app.
+///
+/// Note: Application availability on a given device cannot be changed using
+/// this policy if installAppsDisabled is enabled.
 class ApplicationPolicy {
   /// List of the app’s track IDs that a device belonging to the enterprise can
   /// access.
@@ -2401,6 +2451,13 @@ class ApplicationReport {
   /// - "INSTALLED" : App is installed on the device
   core.String? state;
 
+  /// Whether the app is user facing.
+  /// Possible string values are:
+  /// - "USER_FACING_TYPE_UNSPECIFIED" : App user facing type is unspecified.
+  /// - "NOT_USER_FACING" : App is not user facing.
+  /// - "USER_FACING" : App is user facing.
+  core.String? userFacingType;
+
   /// The app version code, which can be used to determine whether one version
   /// is more recent than another.
   core.int? versionCode;
@@ -2418,6 +2475,7 @@ class ApplicationReport {
     this.packageSha256Hash,
     this.signingKeyCertFingerprints,
     this.state,
+    this.userFacingType,
     this.versionCode,
     this.versionName,
   });
@@ -2459,6 +2517,9 @@ class ApplicationReport {
                   : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          userFacingType: json_.containsKey('userFacingType')
+              ? json_['userFacingType'] as core.String
+              : null,
           versionCode: json_.containsKey('versionCode')
               ? json_['versionCode'] as core.int
               : null,
@@ -2479,6 +2540,7 @@ class ApplicationReport {
         if (signingKeyCertFingerprints != null)
           'signingKeyCertFingerprints': signingKeyCertFingerprints!,
         if (state != null) 'state': state!,
+        if (userFacingType != null) 'userFacingType': userFacingType!,
         if (versionCode != null) 'versionCode': versionCode!,
         if (versionName != null) 'versionName': versionName!,
       };
@@ -3589,9 +3651,62 @@ class Device {
 /// Covers controls for device connectivity such as Wi-Fi, USB data access,
 /// keyboard/mouse connections, and more.
 class DeviceConnectivityManagement {
-  /// Controls what can be transferred via USB, files and/or data.
+  /// Controls Wi-Fi configuring privileges.
   ///
-  /// This is supported only on company-owned devices.
+  /// Based on the option set, user will have either full or limited or no
+  /// control in configuring Wi-Fi networks.
+  /// Possible string values are:
+  /// - "CONFIGURE_WIFI_UNSPECIFIED" : Unspecified. Defaults to
+  /// ALLOW_CONFIGURING_WIFI unless wifiConfigDisabled is set to true. If
+  /// wifiConfigDisabled is set to true, this is equivalent to
+  /// DISALLOW_CONFIGURING_WIFI.
+  /// - "ALLOW_CONFIGURING_WIFI" : The user is allowed to configure Wi-Fi.
+  /// wifiConfigDisabled is ignored.
+  /// - "DISALLOW_ADD_WIFI_CONFIG" : Adding new Wi-Fi configurations is
+  /// disallowed. The user is only able to switch between already configured
+  /// networks. Supported on Android 13 and above, on fully managed devices and
+  /// work profiles on company-owned devices. If the setting is not supported,
+  /// ALLOW_CONFIGURING_WIFI is set. A nonComplianceDetail with API_LEVEL is
+  /// reported if the Android version is less than 13. wifiConfigDisabled is
+  /// ignored.
+  /// - "DISALLOW_CONFIGURING_WIFI" : Disallows configuring Wi-Fi networks. The
+  /// setting wifiConfigDisabled is ignored when this value is set. Supported on
+  /// fully managed devices and work profile on company-owned devices, on all
+  /// supported API levels. For fully managed devices, setting this removes all
+  /// configured networks and retains only the networks configured using
+  /// openNetworkConfiguration policy. For work profiles on company-owned
+  /// devices, existing configured networks are not affected and the user is not
+  /// allowed to add, remove, or modify Wi-Fi networks. Note: If a network
+  /// connection can't be made at boot time and configuring Wi-Fi is disabled
+  /// then network escape hatch will be shown in order to refresh the device
+  /// policy (see networkEscapeHatchEnabled).
+  core.String? configureWifi;
+
+  /// Controls tethering settings.
+  ///
+  /// Based on the value set, the user is partially or fully disallowed from
+  /// using different forms of tethering.
+  /// Possible string values are:
+  /// - "TETHERING_SETTINGS_UNSPECIFIED" : Unspecified. Defaults to
+  /// ALLOW_ALL_TETHERING unless tetheringConfigDisabled is set to true. If
+  /// tetheringConfigDisabled is set to true, this is equivalent to
+  /// DISALLOW_ALL_TETHERING.
+  /// - "ALLOW_ALL_TETHERING" : Allows configuration and use of all forms of
+  /// tethering. tetheringConfigDisabled is ignored.
+  /// - "DISALLOW_WIFI_TETHERING" : Disallows the user from using Wi-Fi
+  /// tethering. Supported on company owned devices running Android 13 and
+  /// above. If the setting is not supported, ALLOW_ALL_TETHERING will be set. A
+  /// nonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 13. tetheringConfigDisabled is ignored.
+  /// - "DISALLOW_ALL_TETHERING" : Disallows all forms of tethering. Supported
+  /// on fully managed devices and work profile on company-owned devices, on all
+  /// supported android versions. The setting tetheringConfigDisabled is
+  /// ignored.
+  core.String? tetheringSettings;
+
+  /// Controls what files and/or data can be transferred via USB.
+  ///
+  /// Supported only on company-owned devices.
   /// Possible string values are:
   /// - "USB_DATA_ACCESS_UNSPECIFIED" : Unspecified. Defaults to
   /// ALLOW_USB_DATA_TRANSFER, unless usbFileTransferDisabled is set to true. If
@@ -3611,19 +3726,78 @@ class DeviceConnectivityManagement {
   /// does not have USB HAL 1.3 or above. usbFileTransferDisabled is ignored.
   core.String? usbDataAccess;
 
+  /// Controls configuring and using Wi-Fi direct settings.
+  ///
+  /// Supported on company-owned devices running Android 13 and above.
+  /// Possible string values are:
+  /// - "WIFI_DIRECT_SETTINGS_UNSPECIFIED" : Unspecified. Defaults to
+  /// ALLOW_WIFI_DIRECT
+  /// - "ALLOW_WIFI_DIRECT" : The user is allowed to use Wi-Fi direct.
+  /// - "DISALLOW_WIFI_DIRECT" : The user is not allowed to use Wi-Fi direct. A
+  /// nonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 13.
+  core.String? wifiDirectSettings;
+
   DeviceConnectivityManagement({
+    this.configureWifi,
+    this.tetheringSettings,
     this.usbDataAccess,
+    this.wifiDirectSettings,
   });
 
   DeviceConnectivityManagement.fromJson(core.Map json_)
       : this(
+          configureWifi: json_.containsKey('configureWifi')
+              ? json_['configureWifi'] as core.String
+              : null,
+          tetheringSettings: json_.containsKey('tetheringSettings')
+              ? json_['tetheringSettings'] as core.String
+              : null,
           usbDataAccess: json_.containsKey('usbDataAccess')
               ? json_['usbDataAccess'] as core.String
+              : null,
+          wifiDirectSettings: json_.containsKey('wifiDirectSettings')
+              ? json_['wifiDirectSettings'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (configureWifi != null) 'configureWifi': configureWifi!,
+        if (tetheringSettings != null) 'tetheringSettings': tetheringSettings!,
         if (usbDataAccess != null) 'usbDataAccess': usbDataAccess!,
+        if (wifiDirectSettings != null)
+          'wifiDirectSettings': wifiDirectSettings!,
+      };
+}
+
+/// Controls for device radio settings.
+class DeviceRadioState {
+  /// Controls current state of Wi-Fi and if user can change its state.
+  /// Possible string values are:
+  /// - "WIFI_STATE_UNSPECIFIED" : Unspecified. Defaults to
+  /// WIFI_STATE_USER_CHOICE
+  /// - "WIFI_STATE_USER_CHOICE" : User is allowed to enable/disable Wi-Fi.
+  /// - "WIFI_ENABLED" : Wi-Fi is on and the user is not allowed to turn it off.
+  /// A nonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 13.
+  /// - "WIFI_DISABLED" : Wi-Fi is off and the user is not allowed to turn it
+  /// on. A nonComplianceDetail with API_LEVEL is reported if the Android
+  /// version is less than 13.
+  core.String? wifiState;
+
+  DeviceRadioState({
+    this.wifiState,
+  });
+
+  DeviceRadioState.fromJson(core.Map json_)
+      : this(
+          wifiState: json_.containsKey('wifiState')
+              ? json_['wifiState'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (wifiState != null) 'wifiState': wifiState!,
       };
 }
 
@@ -5293,6 +5467,9 @@ class NonComplianceDetail {
   /// level of the Android version running on the device. fieldPath specifies
   /// which field value is not supported. oncWifiContext is set.
   /// nonComplianceReason is set to API_LEVEL.
+  /// - "ONC_WIFI_INVALID_ENTERPRISE_CONFIG" : The enterprise Wi-Fi network is
+  /// missing either the root CA or domain name. nonComplianceReason is set to
+  /// INVALID_VALUE.
   core.String? specificNonComplianceReason;
 
   NonComplianceDetail({
@@ -6285,6 +6462,9 @@ class Policy {
   /// The device owner information to be shown on the lock screen.
   UserFacingMessage? deviceOwnerLockScreenInfo;
 
+  /// Covers controls for radio state such as Wi-Fi, bluetooth, and more.
+  DeviceRadioState? deviceRadioState;
+
   /// Whether encryption is enabled
   /// Possible string values are:
   /// - "ENCRYPTION_POLICY_UNSPECIFIED" : This value is ignored, i.e. no
@@ -6419,7 +6599,9 @@ class Policy {
   /// and the device boots into an app in lock task mode, or the user is
   /// otherwise unable to reach device settings.Note: Setting wifiConfigDisabled
   /// to true will override this setting under specific circumstances. Please
-  /// see wifiConfigDisabled for further details.
+  /// see wifiConfigDisabled for further details. Setting configureWifi to
+  /// DISALLOW_CONFIGURING_WIFI will override this setting under specific
+  /// circumstances. Please see DISALLOW_CONFIGURING_WIFI for further details.
   core.bool? networkEscapeHatchEnabled;
 
   /// Whether resetting network settings is disabled.
@@ -6599,6 +6781,9 @@ class Policy {
   SystemUpdate? systemUpdate;
 
   /// Whether configuring tethering and portable hotspots is disabled.
+  ///
+  /// If tetheringSettings is set to anything other than
+  /// TETHERING_SETTINGS_UNSPECIFIED, this setting is ignored.
   core.bool? tetheringConfigDisabled;
 
   /// Whether user uninstallation of applications is disabled.
@@ -6644,10 +6829,11 @@ class Policy {
   /// configured networks and retains only the networks configured using
   /// openNetworkConfiguration. For work profiles on company-owned devices,
   /// existing configured networks are not affected and the user is not allowed
-  /// to add, remove, or modify Wi-Fi networks. Note: If a network connection
-  /// can't be made at boot time and configuring Wi-Fi is disabled then network
-  /// escape hatch will be shown in order to refresh the device policy (see
-  /// networkEscapeHatchEnabled).
+  /// to add, remove, or modify Wi-Fi networks. If configureWifi is set to
+  /// anything other than CONFIGURE_WIFI_UNSPECIFIED, this setting is ignored.
+  /// Note: If a network connection can't be made at boot time and configuring
+  /// Wi-Fi is disabled then network escape hatch will be shown in order to
+  /// refresh the device policy (see networkEscapeHatchEnabled).
   core.bool? wifiConfigDisabled;
 
   /// DEPRECATED - Use wifi_config_disabled.
@@ -6681,6 +6867,7 @@ class Policy {
     this.defaultPermissionPolicy,
     this.deviceConnectivityManagement,
     this.deviceOwnerLockScreenInfo,
+    this.deviceRadioState,
     this.encryptionPolicy,
     this.ensureVerifyAppsEnabled,
     this.factoryResetDisabled,
@@ -6856,6 +7043,10 @@ class Policy {
           deviceOwnerLockScreenInfo: json_
                   .containsKey('deviceOwnerLockScreenInfo')
               ? UserFacingMessage.fromJson(json_['deviceOwnerLockScreenInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          deviceRadioState: json_.containsKey('deviceRadioState')
+              ? DeviceRadioState.fromJson(json_['deviceRadioState']
                   as core.Map<core.String, core.dynamic>)
               : null,
           encryptionPolicy: json_.containsKey('encryptionPolicy')
@@ -7144,6 +7335,7 @@ class Policy {
           'deviceConnectivityManagement': deviceConnectivityManagement!,
         if (deviceOwnerLockScreenInfo != null)
           'deviceOwnerLockScreenInfo': deviceOwnerLockScreenInfo!,
+        if (deviceRadioState != null) 'deviceRadioState': deviceRadioState!,
         if (encryptionPolicy != null) 'encryptionPolicy': encryptionPolicy!,
         if (ensureVerifyAppsEnabled != null)
           'ensureVerifyAppsEnabled': ensureVerifyAppsEnabled!,
@@ -7253,6 +7445,13 @@ class Policy {
 
 /// A rule that defines the actions to take if a device or work profile is not
 /// compliant with the policy specified in settingName.
+///
+/// In the case of multiple matching or multiple triggered enforcement rules, a
+/// merge will occur with the most severe action being taken. However, all
+/// triggered rules are still kept track of: this includes initial trigger time
+/// and all associated non-compliance details. In the situation where the most
+/// severe enforcement rule is satisfied, the next most appropriate action is
+/// applied.
 class PolicyEnforcementRule {
   /// An action to block access to apps and data on a company owned device or in
   /// a work profile.
@@ -7388,6 +7587,96 @@ class PowerManagementEvent {
         if (batteryLevel != null) 'batteryLevel': batteryLevel!,
         if (createTime != null) 'createTime': createTime!,
         if (eventType != null) 'eventType': eventType!,
+      };
+}
+
+/// Information about a device that is available during setup.
+class ProvisioningInfo {
+  /// The API level of the Android platform version running on the device.
+  core.int? apiLevel;
+
+  /// The email address of the authenticated user (only present for Google
+  /// Account provisioning method).
+  core.String? authenticatedUserEmail;
+
+  /// Brand of the device.
+  ///
+  /// For example, Google.
+  core.String? brand;
+
+  /// The name of the enterprise in the form enterprises/{enterprise}.
+  core.String? enterprise;
+
+  /// The management mode of the device or profile.
+  /// Possible string values are:
+  /// - "MANAGEMENT_MODE_UNSPECIFIED" : This value is disallowed.
+  /// - "DEVICE_OWNER" : Device owner. Android Device Policy has full control
+  /// over the device.
+  /// - "PROFILE_OWNER" : Profile owner. Android Device Policy has control over
+  /// a managed profile on the device.
+  core.String? managementMode;
+
+  /// The model of the device.
+  ///
+  /// For example, Asus Nexus 7.
+  core.String? model;
+
+  /// The name of this resource in the form
+  /// provisioningInfo/{provisioning_info}.
+  core.String? name;
+
+  /// Ownership of the managed device.
+  /// Possible string values are:
+  /// - "OWNERSHIP_UNSPECIFIED" : Ownership is unspecified.
+  /// - "COMPANY_OWNED" : Device is company-owned.
+  /// - "PERSONALLY_OWNED" : Device is personally-owned.
+  core.String? ownership;
+
+  ProvisioningInfo({
+    this.apiLevel,
+    this.authenticatedUserEmail,
+    this.brand,
+    this.enterprise,
+    this.managementMode,
+    this.model,
+    this.name,
+    this.ownership,
+  });
+
+  ProvisioningInfo.fromJson(core.Map json_)
+      : this(
+          apiLevel: json_.containsKey('apiLevel')
+              ? json_['apiLevel'] as core.int
+              : null,
+          authenticatedUserEmail: json_.containsKey('authenticatedUserEmail')
+              ? json_['authenticatedUserEmail'] as core.String
+              : null,
+          brand:
+              json_.containsKey('brand') ? json_['brand'] as core.String : null,
+          enterprise: json_.containsKey('enterprise')
+              ? json_['enterprise'] as core.String
+              : null,
+          managementMode: json_.containsKey('managementMode')
+              ? json_['managementMode'] as core.String
+              : null,
+          model:
+              json_.containsKey('model') ? json_['model'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          ownership: json_.containsKey('ownership')
+              ? json_['ownership'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiLevel != null) 'apiLevel': apiLevel!,
+        if (authenticatedUserEmail != null)
+          'authenticatedUserEmail': authenticatedUserEmail!,
+        if (brand != null) 'brand': brand!,
+        if (enterprise != null) 'enterprise': enterprise!,
+        if (managementMode != null) 'managementMode': managementMode!,
+        if (model != null) 'model': model!,
+        if (name != null) 'name': name!,
+        if (ownership != null) 'ownership': ownership!,
       };
 }
 

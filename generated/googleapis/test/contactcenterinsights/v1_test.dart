@@ -2069,6 +2069,8 @@ api.GoogleCloudContactcenterinsightsV1IssueModel
     o.inputDataConfig =
         buildGoogleCloudContactcenterinsightsV1IssueModelInputDataConfig();
     o.issueCount = 'foo';
+    o.languageCode = 'foo';
+    o.modelType = 'foo';
     o.name = 'foo';
     o.state = 'foo';
     o.trainingStats =
@@ -2095,6 +2097,14 @@ void checkGoogleCloudContactcenterinsightsV1IssueModel(
         o.inputDataConfig!);
     unittest.expect(
       o.issueCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.modelType!,
       unittest.equals('foo'),
     );
     unittest.expect(

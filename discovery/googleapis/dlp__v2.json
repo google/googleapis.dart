@@ -24,6 +24,13 @@
     "name": "dlp",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230702",
+    "rootUrl": "https://dlp.googleapis.com/",
+    "servicePath": "",
+    "title": "Cloud Data Loss Prevention (DLP)",
+    "version": "v2",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "infoTypes": {
             "methods": {
@@ -3410,8 +3416,6 @@
             }
         }
     },
-    "revision": "20230508",
-    "rootUrl": "https://dlp.googleapis.com/",
     "schemas": {
         "GooglePrivacyDlpV2Action": {
             "description": "A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.",
@@ -3894,12 +3898,12 @@
             "id": "GooglePrivacyDlpV2CloudStorageOptions",
             "properties": {
                 "bytesLimitPerFile": {
-                    "description": "Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.",
+                    "description": "Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).",
                     "format": "int64",
                     "type": "string"
                 },
                 "bytesLimitPerFilePercent": {
-                    "description": "Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.",
+                    "description": "Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if de-identification is requested. For certain file types, setting this field has no effect. For more information, see [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -3925,16 +3929,16 @@
                         ],
                         "enumDescriptions": [
                             "Includes all files.",
-                            "Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other FileType's in your storage scan.",
+                            "Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other file types in your storage scan.",
                             "Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.",
-                            "Included file extensions: bmp, gif, jpg, jpeg, jpe, png. bytes_limit_per_file has no effect on image files. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.",
-                            "Word files >30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm",
-                            "PDF files >30 MB will be scanned as binary files. Included file extensions: pdf",
+                            "Included file extensions: bmp, gif, jpg, jpeg, jpe, png. Setting bytes_limit_per_file or bytes_limit_per_file_percent has no effect on image files. Image inspection is restricted to the `global`, `us`, `asia`, and `europe` regions.",
+                            "Microsoft Word files larger than 30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on Word files.",
+                            "PDF files larger than 30 MB will be scanned as binary files. Included file extensions: pdf. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on PDF files.",
                             "Included file extensions: avro",
                             "Included file extensions: csv",
                             "Included file extensions: tsv",
-                            "Powerpoint files >30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot",
-                            "Excel files >30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm"
+                            "Microsoft PowerPoint files larger than 30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on PowerPoint files.",
+                            "Microsoft Excel files larger than 30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on Excel files."
                         ],
                         "type": "string"
                     },
@@ -4015,6 +4019,176 @@
                     "description": "The amount of red in the color as a value in the interval [0, 1].",
                     "format": "float",
                     "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "GooglePrivacyDlpV2ColumnDataProfile": {
+            "description": "The profile for a scanned column within a table.",
+            "id": "GooglePrivacyDlpV2ColumnDataProfile",
+            "properties": {
+                "column": {
+                    "description": "The name of the column.",
+                    "type": "string"
+                },
+                "columnInfoType": {
+                    "$ref": "GooglePrivacyDlpV2InfoTypeSummary",
+                    "description": "If it's been determined this column can be identified as a single type, this will be set. Otherwise the column either has unidentifiable content or mixed types."
+                },
+                "columnType": {
+                    "description": "The data type of a given column.",
+                    "enum": [
+                        "COLUMN_DATA_TYPE_UNSPECIFIED",
+                        "TYPE_INT64",
+                        "TYPE_BOOL",
+                        "TYPE_FLOAT64",
+                        "TYPE_STRING",
+                        "TYPE_BYTES",
+                        "TYPE_TIMESTAMP",
+                        "TYPE_DATE",
+                        "TYPE_TIME",
+                        "TYPE_DATETIME",
+                        "TYPE_GEOGRAPHY",
+                        "TYPE_NUMERIC",
+                        "TYPE_RECORD",
+                        "TYPE_BIGNUMERIC",
+                        "TYPE_JSON"
+                    ],
+                    "enumDescriptions": [
+                        "Invalid type.",
+                        "Encoded as a string in decimal format.",
+                        "Encoded as a boolean \"false\" or \"true\".",
+                        "Encoded as a number, or string \"NaN\", \"Infinity\" or \"-Infinity\".",
+                        "Encoded as a string value.",
+                        "Encoded as a base64 string per RFC 4648, section 4.",
+                        "Encoded as an RFC 3339 timestamp with mandatory \"Z\" time zone string: 1985-04-12T23:20:50.52Z",
+                        "Encoded as RFC 3339 full-date format string: 1985-04-12",
+                        "Encoded as RFC 3339 partial-time format string: 23:20:50.52",
+                        "Encoded as RFC 3339 full-date \"T\" partial-time: 1985-04-12T23:20:50.52",
+                        "Encoded as WKT",
+                        "Encoded as a decimal string.",
+                        "Container of ordered fields, each with a type and field name.",
+                        "Decimal type.",
+                        "Json type."
+                    ],
+                    "type": "string"
+                },
+                "dataRiskLevel": {
+                    "$ref": "GooglePrivacyDlpV2DataRiskLevel",
+                    "description": "The data risk level for this column."
+                },
+                "datasetId": {
+                    "description": "The BigQuery dataset ID.",
+                    "type": "string"
+                },
+                "datasetLocation": {
+                    "description": "The BigQuery location where the dataset's data is stored. See https://cloud.google.com/bigquery/docs/locations for supported locations.",
+                    "type": "string"
+                },
+                "datasetProjectId": {
+                    "description": "The Google Cloud project ID that owns the BigQuery dataset.",
+                    "type": "string"
+                },
+                "estimatedNullPercentage": {
+                    "description": "Approximate percentage of entries being null in the column.",
+                    "enum": [
+                        "NULL_PERCENTAGE_LEVEL_UNSPECIFIED",
+                        "NULL_PERCENTAGE_VERY_LOW",
+                        "NULL_PERCENTAGE_LOW",
+                        "NULL_PERCENTAGE_MEDIUM",
+                        "NULL_PERCENTAGE_HIGH"
+                    ],
+                    "enumDescriptions": [
+                        "Unused.",
+                        "Very few null entries.",
+                        "Some null entries.",
+                        "",
+                        "A lot of null entries."
+                    ],
+                    "type": "string"
+                },
+                "estimatedUniquenessScore": {
+                    "description": "Approximate uniqueness of the column.",
+                    "enum": [
+                        "UNIQUENESS_SCORE_LEVEL_UNSPECIFIED",
+                        "UNIQUENESS_SCORE_LOW",
+                        "UNIQUENESS_SCORE_MEDIUM",
+                        "UNIQUENESS_SCORE_HIGH"
+                    ],
+                    "enumDescriptions": [
+                        "Some columns do not have estimated uniqueness. Possible reasons include having too few values.",
+                        "Low uniqueness, possibly a boolean, enum or similiarly typed column.",
+                        "Medium uniqueness.",
+                        "High uniqueness, possibly a column of free text or unique identifiers."
+                    ],
+                    "type": "string"
+                },
+                "freeTextScore": {
+                    "description": "The likelihood that this column contains free-form text. A value close to 1 may indicate the column is likely to contain free-form or natural language text. Range in 0-1.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "name": {
+                    "description": "The name of the profile.",
+                    "type": "string"
+                },
+                "otherMatches": {
+                    "description": "Other types found within this column. List will be un-ordered.",
+                    "items": {
+                        "$ref": "GooglePrivacyDlpV2OtherInfoTypeSummary"
+                    },
+                    "type": "array"
+                },
+                "policyState": {
+                    "description": "Indicates if a policy tag has been applied to the column.",
+                    "enum": [
+                        "COLUMN_POLICY_STATE_UNSPECIFIED",
+                        "COLUMN_POLICY_TAGGED"
+                    ],
+                    "enumDescriptions": [
+                        "No policy tags.",
+                        "Column has policy tag applied."
+                    ],
+                    "type": "string"
+                },
+                "profileLastGenerated": {
+                    "description": "The last time the profile was generated.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "profileStatus": {
+                    "$ref": "GooglePrivacyDlpV2ProfileStatus",
+                    "description": "Success or error status from the most recent profile generation attempt. May be empty if the profile is still being generated."
+                },
+                "sensitivityScore": {
+                    "$ref": "GooglePrivacyDlpV2SensitivityScore",
+                    "description": "The sensitivity of this column."
+                },
+                "state": {
+                    "description": "State of a profile.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "RUNNING",
+                        "DONE"
+                    ],
+                    "enumDescriptions": [
+                        "Unused.",
+                        "The profile is currently running. Once a profile has finished it will transition to DONE.",
+                        "The profile is no longer generating. If profile_status.status.code is 0, the profile succeeded, otherwise, it failed."
+                    ],
+                    "type": "string"
+                },
+                "tableDataProfile": {
+                    "description": "The resource name to the table data profile.",
+                    "type": "string"
+                },
+                "tableFullResource": {
+                    "description": "The resource name of the table this column is within.",
+                    "type": "string"
+                },
+                "tableId": {
+                    "description": "The BigQuery table ID.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -4441,6 +4615,21 @@
             },
             "type": "object"
         },
+        "GooglePrivacyDlpV2DataProfileBigQueryRowSchema": {
+            "description": "The schema of data to be saved to the BigQuery when the `DataProfileAction` is enabled.",
+            "id": "GooglePrivacyDlpV2DataProfileBigQueryRowSchema",
+            "properties": {
+                "columnProfile": {
+                    "$ref": "GooglePrivacyDlpV2ColumnDataProfile",
+                    "description": "Column data profile column"
+                },
+                "tableProfile": {
+                    "$ref": "GooglePrivacyDlpV2TableDataProfile",
+                    "description": "Table data profile column"
+                }
+            },
+            "type": "object"
+        },
         "GooglePrivacyDlpV2DataProfileConfigSnapshot": {
             "description": "Snapshot of the configurations used to generate the profile.",
             "id": "GooglePrivacyDlpV2DataProfileConfigSnapshot",
@@ -4685,16 +4874,16 @@
                         ],
                         "enumDescriptions": [
                             "Includes all files.",
-                            "Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other FileType's in your storage scan.",
+                            "Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other file types in your storage scan.",
                             "Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.",
-                            "Included file extensions: bmp, gif, jpg, jpeg, jpe, png. bytes_limit_per_file has no effect on image files. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.",
-                            "Word files >30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm",
-                            "PDF files >30 MB will be scanned as binary files. Included file extensions: pdf",
+                            "Included file extensions: bmp, gif, jpg, jpeg, jpe, png. Setting bytes_limit_per_file or bytes_limit_per_file_percent has no effect on image files. Image inspection is restricted to the `global`, `us`, `asia`, and `europe` regions.",
+                            "Microsoft Word files larger than 30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on Word files.",
+                            "PDF files larger than 30 MB will be scanned as binary files. Included file extensions: pdf. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on PDF files.",
                             "Included file extensions: avro",
                             "Included file extensions: csv",
                             "Included file extensions: tsv",
-                            "Powerpoint files >30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot",
-                            "Excel files >30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm"
+                            "Microsoft PowerPoint files larger than 30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on PowerPoint files.",
+                            "Microsoft Excel files larger than 30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm. Setting `bytes_limit_per_file` or `bytes_limit_per_file_percent` has no effect on Excel files."
                         ],
                         "type": "string"
                     },
@@ -4781,12 +4970,12 @@
             "type": "object"
         },
         "GooglePrivacyDlpV2DeidentifyDataSourceDetails": {
-            "description": "The results of a Deidentify action from an Inspect job.",
+            "description": "The results of a Deidentify action from an inspect job.",
             "id": "GooglePrivacyDlpV2DeidentifyDataSourceDetails",
             "properties": {
                 "deidentifyStats": {
                     "$ref": "GooglePrivacyDlpV2DeidentifyDataSourceStats",
-                    "description": "Stats about de-identification."
+                    "description": "Stats about the de-identification operation."
                 },
                 "requestedOptions": {
                     "$ref": "GooglePrivacyDlpV2RequestedDeidentifyOptions",
@@ -6802,6 +6991,10 @@
                     "format": "int32",
                     "type": "integer"
                 },
+                "excludedFromAnalysis": {
+                    "description": "Whether this infoType was excluded from sensitivity and risk analysis due to factors such as low prevalence (subject to change).",
+                    "type": "boolean"
+                },
                 "infoType": {
                     "$ref": "GooglePrivacyDlpV2InfoType",
                     "description": "The other infoType."
@@ -6966,7 +7159,7 @@
             "properties": {
                 "status": {
                     "$ref": "GoogleRpcStatus",
-                    "description": "Profiling status code and optional message"
+                    "description": "Profiling status code and optional message. The `status.code` value is 0 (default value) for OK."
                 },
                 "timestamp": {
                     "description": "Time when the profile generation status was updated",
@@ -7469,15 +7662,15 @@
             "properties": {
                 "snapshotDeidentifyTemplate": {
                     "$ref": "GooglePrivacyDlpV2DeidentifyTemplate",
-                    "description": "Snapshot of the state of the DeidentifyTemplate from the Deidentify action at the time this job was run."
+                    "description": "Snapshot of the state of the `DeidentifyTemplate` from the Deidentify action at the time this job was run."
                 },
                 "snapshotImageRedactTemplate": {
                     "$ref": "GooglePrivacyDlpV2DeidentifyTemplate",
-                    "description": "Snapshot of the state of the image redact DeidentifyTemplate from the Deidentify action at the time this job was run."
+                    "description": "Snapshot of the state of the image transformation `DeidentifyTemplate` from the `Deidentify` action at the time this job was run."
                 },
                 "snapshotStructuredDeidentifyTemplate": {
                     "$ref": "GooglePrivacyDlpV2DeidentifyTemplate",
-                    "description": "Snapshot of the state of the structured DeidentifyTemplate from the Deidentify action at the time this job was run."
+                    "description": "Snapshot of the state of the structured `DeidentifyTemplate` from the `Deidentify` action at the time this job was run."
                 }
             },
             "type": "object"
@@ -7610,11 +7803,11 @@
             "type": "object"
         },
         "GooglePrivacyDlpV2SensitivityScore": {
-            "description": "Score is a summary of all elements in the data profile. A higher number means more sensitive.",
+            "description": "Score is calculated from of all elements in the data profile. A higher level means the data is more sensitive.",
             "id": "GooglePrivacyDlpV2SensitivityScore",
             "properties": {
                 "score": {
-                    "description": "The score applied to the resource.",
+                    "description": "The sensitivity score applied to the resource.",
                     "enum": [
                         "SENSITIVITY_SCORE_UNSPECIFIED",
                         "SENSITIVITY_LOW",
@@ -7623,9 +7816,9 @@
                     ],
                     "enumDescriptions": [
                         "Unused.",
-                        "No sensitive information detected. Limited access.",
-                        "Medium risk - PII, potentially sensitive data, or fields with free-text data that are at higher risk of having intermittent sensitive data. Consider limiting access.",
-                        "High risk – SPII may be present. Exfiltration of data may lead to user data loss. Re-identification of users may be possible. Consider limiting usage and or removing SPII."
+                        "No sensitive information detected. The resource isn't publicly accessible.",
+                        "Medium risk. Contains personally identifiable information (PII), potentially sensitive data, or fields with free-text data that are at a higher risk of having intermittent sensitive data. Consider limiting access.",
+                        "High risk. Sensitive personally identifiable information (SPII) can be present. Exfiltration of data can lead to user data loss. Re-identification of users might be possible. Consider limiting usage and or removing SPII."
                     ],
                     "type": "string"
                 }
@@ -7894,7 +8087,7 @@
                     "type": "string"
                 },
                 "datasetProjectId": {
-                    "description": "The GCP project ID that owns the BigQuery dataset.",
+                    "description": "The Google Cloud project ID that owns the BigQuery dataset.",
                     "type": "string"
                 },
                 "encryptionStatus": {
@@ -8691,9 +8884,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Cloud Data Loss Prevention (DLP) API",
-    "version": "v2",
-    "version_module": true
+    }
 }

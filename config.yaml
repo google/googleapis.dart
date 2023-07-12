@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 11.2.0
+    version: 11.3.0
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -50,6 +50,7 @@ packages:
     - bigtableadmin:v2 # https://cloud.google.com/bigtable/
     - billingbudgets:v1
     - binaryauthorization:v1
+    - blockchainnodeengine:v1
     - blogger:v3 # https://developers.google.com/blogger/
     - books:v1 # https://developers.google.com/books/
     - businessprofileperformance:v1
@@ -78,6 +79,7 @@ packages:
     - cloudscheduler:v1
     - cloudsearch:v1 # https://gsuite.google.com/products/cloud-search/
     - cloudshell:v1 # https://cloud.google.com/shell/docs/
+    - cloudsupport:v2
     - cloudtasks:v2
     - cloudtrace:v2 # https://cloud.google.com/cloud-trace/
     - composer:v1 # https://cloud.google.com/composer/
@@ -114,7 +116,6 @@ packages:
     - documentai:v1
     - domains:v1
     - domainsrdap:v1
-    - doubleclickbidmanager:v1.1
     - doubleclickbidmanager:v2
     - doubleclicksearch:v2 # https://developers.google.com/doubleclick-search/
     - drive:v2 # https://developers.google.com/drive/v2/reference/
@@ -174,7 +175,6 @@ packages:
     - ml:v1 # https://cloud.google.com/ml-engine/
     - monitoring:v3 # https://cloud.google.com/monitoring/api/
     - mybusinessaccountmanagement:v1
-    - mybusinessbusinesscalls:v1
     - mybusinessbusinessinformation:v1
     - mybusinesslodging:v1
     - mybusinessnotifications:v1
@@ -323,6 +323,7 @@ skipped_apis:
 - billingbudgets:v1beta1 # v1 included
 - binaryauthorization:v1beta1 # v1 included
 - blogger:v2 # v3 included
+- checks:v1alpha
 - cloudasset:v1beta1
 - cloudasset:v1p1beta1 # v1 included
 - cloudasset:v1p5beta1 # v1 included
@@ -370,7 +371,6 @@ skipped_apis:
 - firestore:v1beta1 # v1 included
 - firestore:v1beta2 # v1 included
 - gameservices:v1beta # v1 included
-- genomics:v2alpha1 # v1 included
 - gkehub:v1alpha
 - gkehub:v1alpha2
 - gkehub:v1beta
@@ -412,7 +412,6 @@ skipped_apis:
 - publicca:v1beta1
 - pubsub:v1beta1a # v1beta1, v1bets2 and v1 included
 - pubsub:v1beta2 # v1 included
-- realtimebidding:v1alpha
 - recommender:v1beta1 # v1 included
 - redis:v1beta1 # v1 included
 - retail:v2alpha # v2 included

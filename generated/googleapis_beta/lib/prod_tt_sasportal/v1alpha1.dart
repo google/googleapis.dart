@@ -87,6 +87,39 @@ class CustomersResource {
 
   CustomersResource(commons.ApiRequester client) : _requester = client;
 
+  /// Checks whether a SAS deployment for the authentication context exists.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalCheckHasProvisionedDeploymentResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalCheckHasProvisionedDeploymentResponse>
+      checkHasProvisionedDeployment({
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1alpha1/customers:checkHasProvisionedDeployment';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SasPortalCheckHasProvisionedDeploymentResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Returns a requested customer.
   ///
   /// Request parameters:
@@ -161,6 +194,47 @@ class CustomersResource {
       queryParams: queryParams_,
     );
     return SasPortalListCustomersResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Migrates a SAS organization to the cloud.
+  ///
+  /// This will create GCP projects for each deployment and associate them. The
+  /// SAS Organization is linked to the gcp project that called the command.
+  /// go/sas-legacy-customer-migration
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalOperation> migrateOrganization(
+    SasPortalMigrateOrganizationRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1alpha1/customers:migrateOrganization';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SasPortalOperation.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -3566,6 +3640,12 @@ class SasPortalChannelWithScore {
       };
 }
 
+/// Response for \[CheckHasProvisionedDeployment\].
+///
+/// \[spectrum.sas.portal.v1alpha1.Provisioning.CheckHasProvisionedDeployment\].
+typedef SasPortalCheckHasProvisionedDeploymentResponse
+    = $SasPortalCheckHasProvisionedDeploymentResponse;
+
 /// Request for CreateSignedDevice.
 typedef SasPortalCreateSignedDeviceRequest
     = $SasPortalCreateSignedDeviceRequest;
@@ -4195,6 +4275,15 @@ class SasPortalListNodesResponse {
         if (nodes != null) 'nodes': nodes!,
       };
 }
+
+/// Request for \[MigrateOrganization\].
+///
+/// \[spectrum.sas.portal.v1alpha1.Provisioning.MigrateOrganization\]. GCP
+/// Project, Organization Info, and caller's GAIA ID should be retrieved from
+/// the RPC handler, and used to check authorization on SAS Portal organization
+/// and to create GCP Projects.
+typedef SasPortalMigrateOrganizationRequest
+    = $SasPortalMigrateOrganizationRequest;
 
 /// Request for MoveDeployment.
 typedef SasPortalMoveDeploymentRequest = $SasPortalMoveDeploymentRequest;

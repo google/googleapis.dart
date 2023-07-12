@@ -27,6 +27,13 @@
     "name": "searchconsole",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230711",
+    "rootUrl": "https://searchconsole.googleapis.com/",
+    "servicePath": "",
+    "title": "Google Search Console API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -104,7 +111,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "searchanalytics": {
             "methods": {
@@ -398,8 +404,6 @@
             }
         }
     },
-    "revision": "20230515",
-    "rootUrl": "https://searchconsole.googleapis.com/",
     "schemas": {
         "AmpInspectionResult": {
             "description": "AMP inspection result of the live page or the current information from Google's index, depending on whether you requested a live inspection or not.",
@@ -1476,9 +1480,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Google Search Console API",
-    "version": "v1",
-    "version_module": true
+    }
 }

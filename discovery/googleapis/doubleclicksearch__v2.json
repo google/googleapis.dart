@@ -24,6 +24,12 @@
     "name": "doubleclicksearch",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230705",
+    "rootUrl": "https://doubleclicksearch.googleapis.com/",
+    "servicePath": "",
+    "title": "Search Ads 360 API",
+    "version": "v2",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +107,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "conversion": {
             "methods": {
@@ -542,8 +547,6 @@
             }
         }
     },
-    "revision": "20230508",
-    "rootUrl": "https://doubleclicksearch.googleapis.com/",
     "schemas": {
         "Availability": {
             "description": "A message containing availability data relevant to DoubleClick Search.",
@@ -1208,8 +1211,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Search Ads 360 API",
-    "version": "v2"
+    }
 }

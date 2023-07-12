@@ -151,6 +151,16 @@ class EntriesResource {
   /// `//bigquery.googleapis.com/projects/{PROJECT_ID}/datasets/{DATASET_ID}/tables/{TABLE_ID}`
   /// * `//pubsub.googleapis.com/projects/{PROJECT_ID}/topics/{TOPIC_ID}`
   ///
+  /// [location] - Location where the lookup should be performed. Required to
+  /// lookup entry that is not a part of `DPMS` or `DATAPLEX`
+  /// `integrated_system` using its `fully_qualified_name`. Ignored in other
+  /// cases.
+  ///
+  /// [project] - Project where the lookup should be performed. Required to
+  /// lookup entry that is not a part of `DPMS` or `DATAPLEX`
+  /// `integrated_system` using its `fully_qualified_name`. Ignored in other
+  /// cases.
+  ///
   /// [sqlResource] - The SQL name of the entry. SQL names are case-sensitive.
   /// Examples: * `pubsub.topic.{PROJECT_ID}.{TOPIC_ID}` *
   /// `pubsub.topic.{PROJECT_ID}.`\``{TOPIC.ID.SEPARATED.WITH.DOTS}`\` *
@@ -173,6 +183,8 @@ class EntriesResource {
   async.Future<GoogleCloudDatacatalogV1Entry> lookup({
     core.String? fullyQualifiedName,
     core.String? linkedResource,
+    core.String? location,
+    core.String? project,
     core.String? sqlResource,
     core.String? $fields,
   }) async {
@@ -180,6 +192,8 @@ class EntriesResource {
       if (fullyQualifiedName != null)
         'fullyQualifiedName': [fullyQualifiedName],
       if (linkedResource != null) 'linkedResource': [linkedResource],
+      if (location != null) 'location': [location],
+      if (project != null) 'project': [project],
       if (sqlResource != null) 'sqlResource': [sqlResource],
       if ($fields != null) 'fields': [$fields],
     };
@@ -4663,15 +4677,14 @@ class GoogleCloudDatacatalogV1Entry {
 
   /// The type of the entry.
   ///
-  /// Only used for entries with types listed in the `EntryType` enum.
-  /// Currently, only `FILESET` enum value is allowed. All other entries created
-  /// in Data Catalog must use the `user_specified_type`.
+  /// For details, see \[`EntryType`\](#entrytype).
   /// Possible string values are:
   /// - "ENTRY_TYPE_UNSPECIFIED" : Default unknown type.
   /// - "TABLE" : The entry type that has a GoogleSQL schema, including logical
   /// views.
-  /// - "MODEL" : Output only. The type of models. For more information, see
-  /// [Supported models in BigQuery ML](https://cloud.google.com/bigquery-ml/docs/introduction#supported_models_in).
+  /// - "MODEL" : The type of models. For more information, see \[Supported
+  /// models in BigQuery
+  /// ML\](/bigquery/docs/bqml-introduction#supported_models).
   /// - "DATA_STREAM" : An entry type for streaming entries. For example, a
   /// Pub/Sub topic.
   /// - "FILESET" : An entry type for a set of files or objects. For example, a
@@ -4679,9 +4692,9 @@ class GoogleCloudDatacatalogV1Entry {
   /// - "CLUSTER" : A group of servers that work together. For example, a Kafka
   /// cluster.
   /// - "DATABASE" : A database.
-  /// - "DATA_SOURCE_CONNECTION" : Output only. Connection to a data source. For
-  /// example, a BigQuery connection.
-  /// - "ROUTINE" : Output only. Routine, for example, a BigQuery routine.
+  /// - "DATA_SOURCE_CONNECTION" : Connection to a data source. For example, a
+  /// BigQuery connection.
+  /// - "ROUTINE" : Routine, for example, a BigQuery routine.
   /// - "LAKE" : A Dataplex lake.
   /// - "ZONE" : A Dataplex zone.
   /// - "SERVICE" : A service, for example, a Dataproc Metastore service.
@@ -5241,8 +5254,15 @@ class GoogleCloudDatacatalogV1ImportEntriesRequest {
   /// Path to a Cloud Storage bucket that contains a dump ready for ingestion.
   core.String? gcsBucketPath;
 
+  /// (Optional) Dataplex task job id, if specified will be used as part of
+  /// ImportEntries LRO ID
+  ///
+  /// Optional.
+  core.String? jobId;
+
   GoogleCloudDatacatalogV1ImportEntriesRequest({
     this.gcsBucketPath,
+    this.jobId,
   });
 
   GoogleCloudDatacatalogV1ImportEntriesRequest.fromJson(core.Map json_)
@@ -5250,10 +5270,13 @@ class GoogleCloudDatacatalogV1ImportEntriesRequest {
           gcsBucketPath: json_.containsKey('gcsBucketPath')
               ? json_['gcsBucketPath'] as core.String
               : null,
+          jobId:
+              json_.containsKey('jobId') ? json_['jobId'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcsBucketPath != null) 'gcsBucketPath': gcsBucketPath!,
+        if (jobId != null) 'jobId': jobId!,
       };
 }
 
@@ -6161,11 +6184,16 @@ class GoogleCloudDatacatalogV1SearchCatalogRequest {
   ///
   /// Currently supported case-sensitive values are: * `relevance` that can only
   /// be descending * `last_modified_timestamp [asc|desc]` with descending
-  /// (`desc`) as default * `default` that can only be descending If this
+  /// (`desc`) as default * `default` that can only be descending Search queries
+  /// don't guarantee full recall. Results that match your query might not be
+  /// returned, even in subsequent result pages. Additionally, returned (and not
+  /// returned) results can vary if you repeat search queries. If you are
+  /// experiencing recall issues and you don't have to fetch the results in any
+  /// specific order, consider setting this parameter to `default`. If this
   /// parameter is omitted, it defaults to the descending `relevance`.
   core.String? orderBy;
 
-  /// Number of results to return in a single search page.
+  /// Upper bound on the number of results you can get in a single response.
   ///
   /// Can't be negative or 0, defaults to 10 in this case. The maximum number is
   /// 1000. If exceeded, throws an "invalid argument" exception.

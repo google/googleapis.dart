@@ -24,6 +24,13 @@
     "name": "essentialcontacts",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230710",
+    "rootUrl": "https://essentialcontacts.googleapis.com/",
+    "servicePath": "",
+    "title": "Essential Contacts API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "folders": {
             "resources": {
@@ -848,8 +854,6 @@
             }
         }
     },
-    "revision": "20230515",
-    "rootUrl": "https://essentialcontacts.googleapis.com/",
     "schemas": {
         "GoogleCloudEssentialcontactsV1ComputeContactsResponse": {
             "description": "Response message for the ComputeContacts method.",
@@ -1001,9 +1005,5 @@
             "properties": {},
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Essential Contacts API",
-    "version": "v1",
-    "version_module": true
+    }
 }

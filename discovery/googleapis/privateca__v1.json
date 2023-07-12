@@ -24,6 +24,13 @@
     "name": "privateca",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230620",
+    "rootUrl": "https://privateca.googleapis.com/",
+    "servicePath": "",
+    "title": "Certificate Authority API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -1603,8 +1609,6 @@
             }
         }
     },
-    "revision": "20230503",
-    "rootUrl": "https://privateca.googleapis.com/",
     "schemas": {
         "AccessUrls": {
             "description": "URLs where a CertificateAuthority will publish content.",
@@ -3492,9 +3496,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Certificate Authority API",
-    "version": "v1",
-    "version_module": true
+    }
 }

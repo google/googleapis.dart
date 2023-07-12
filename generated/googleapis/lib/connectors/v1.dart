@@ -24,6 +24,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsConnectionsResource]
 ///       - [ProjectsLocationsConnectionsConnectionSchemaMetadataResource]
+///       - [ProjectsLocationsConnectionsEventSubscriptionsResource]
 ///       - [ProjectsLocationsConnectionsRuntimeActionSchemasResource]
 ///       - [ProjectsLocationsConnectionsRuntimeEntitySchemasResource]
 ///     - [ProjectsLocationsEndpointAttachmentsResource]
@@ -33,6 +34,7 @@
 ///     - [ProjectsLocationsProvidersResource]
 ///       - [ProjectsLocationsProvidersConnectorsResource]
 ///         - [ProjectsLocationsProvidersConnectorsVersionsResource]
+/// - [ProjectsLocationsProvidersConnectorsVersionsEventtypesResource]
 library connectors_v1;
 
 import 'dart:async' as async;
@@ -228,6 +230,9 @@ class ProjectsLocationsConnectionsResource {
       get connectionSchemaMetadata =>
           ProjectsLocationsConnectionsConnectionSchemaMetadataResource(
               _requester);
+  ProjectsLocationsConnectionsEventSubscriptionsResource
+      get eventSubscriptions =>
+          ProjectsLocationsConnectionsEventSubscriptionsResource(_requester);
   ProjectsLocationsConnectionsRuntimeActionSchemasResource
       get runtimeActionSchemas =>
           ProjectsLocationsConnectionsRuntimeActionSchemasResource(_requester);
@@ -577,6 +582,48 @@ class ProjectsLocationsConnectionsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// RepaiEventing tries to repair eventing related event subscriptions.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the form: `projects / * /locations / *
+  /// /connections / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> repairEventing(
+    RepairEventingRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':repairEventing';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Sets the access control policy on the specified resource.
   ///
   /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
@@ -715,6 +762,284 @@ class ProjectsLocationsConnectionsConnectionSchemaMetadataResource {
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':refresh';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsConnectionsEventSubscriptionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsConnectionsEventSubscriptionsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new EventSubscription in a given project,location and
+  /// connection.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource of the EventSubscription, of the
+  /// form: `projects / * /locations / * /connections / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [eventSubscriptionId] - Required. Identifier to assign to the Event
+  /// Subscription. Must be unique within scope of the parent resource.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    EventSubscription request,
+    core.String parent, {
+    core.String? eventSubscriptionId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (eventSubscriptionId != null)
+        'eventSubscriptionId': [eventSubscriptionId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/eventSubscriptions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single EventSubscription.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the form: `projects / * /locations / *
+  /// /connections / * /eventsubscriptions / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/eventSubscriptions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single EventSubscription.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the form: `projects / * /locations / *
+  /// /connections / * /eventSubscriptions / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/eventSubscriptions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EventSubscription].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EventSubscription> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return EventSubscription.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List EventSubscriptions in a given project,location and connection.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource of the EventSubscription, of the
+  /// form: `projects / * /locations / * /connections / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [filter] - Filter.
+  /// https://g3doc.corp.google.com/cloud/control2/g3doc/dev/apihosting/list_filtering.md#filtering.
+  ///
+  /// [orderBy] - Order by parameters.
+  ///
+  /// [pageSize] - Page size.
+  ///
+  /// [pageToken] - Page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListEventSubscriptionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListEventSubscriptionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/eventSubscriptions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListEventSubscriptionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single EventSubscription.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the EventSubscription. Format:
+  /// projects/{project}/locations/{location}/connections/{connection}/eventSubscriptions/{event_subscription}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/eventSubscriptions/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to update. Fields are
+  /// specified relative to the Subscription. A field will be overwritten if it
+  /// is in the mask. You can modify only the fields listed below. To update the
+  /// EventSubscription details: * `serviceAccount`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    EventSubscription request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// RetryEventSubscription retries the registration of Subscription.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the form: `projects / * /locations / *
+  /// /connections / * /eventSubscriptions / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/eventSubscriptions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> retry(
+    RetryEventSubscriptionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':retry';
 
     final response_ = await _requester.request(
       url_,
@@ -1126,6 +1451,51 @@ class ProjectsLocationsGlobalResource {
       queryParams: queryParams_,
     );
     return Settings.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update the global settings of a project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name of the Connection. Format:
+  /// projects/{project}/locations/global/settings}
+  /// Value must have pattern `^projects/\[^/\]+/locations/global/settings$`.
+  ///
+  /// [updateMask] - Required. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateSettings(
+    Settings request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1852,6 +2222,8 @@ class ProjectsLocationsProvidersConnectorsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/providers/\[^/\]+$`.
   ///
+  /// [filter] - Filter string.
+  ///
   /// [pageSize] - Page size.
   ///
   /// [pageToken] - Page token.
@@ -1868,11 +2240,13 @@ class ProjectsLocationsProvidersConnectorsResource {
   /// this method will complete with the same error.
   async.Future<ListConnectorsResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -1892,6 +2266,11 @@ class ProjectsLocationsProvidersConnectorsResource {
 
 class ProjectsLocationsProvidersConnectorsVersionsResource {
   final commons.ApiRequester _requester;
+
+  ProjectsLocationsProvidersConnectorsVersionsEventtypesResource
+      get eventtypes =>
+          ProjectsLocationsProvidersConnectorsVersionsEventtypesResource(
+              _requester);
 
   ProjectsLocationsProvidersConnectorsVersionsResource(
       commons.ApiRequester client)
@@ -2000,6 +2379,99 @@ class ProjectsLocationsProvidersConnectorsVersionsResource {
       queryParams: queryParams_,
     );
     return ListConnectorVersionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsProvidersConnectorsVersionsEventtypesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsProvidersConnectorsVersionsEventtypesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets details of a single event type.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the form: `projects / * /locations / *
+  /// /providers / * /connectors / * /versions / * /eventtypes / * ` Only global
+  /// location is supported for EventType resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/providers/\[^/\]+/connectors/\[^/\]+/versions/\[^/\]+/eventtypes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EventType].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EventType> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return EventType.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Event Types in a given Connector Version.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource of the connectors, of the form:
+  /// `projects / * /locations / * /providers / * /connectors / * /versions / *
+  /// ` Only global location is supported for EventType resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/providers/\[^/\]+/connectors/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [pageSize] - Page size.
+  ///
+  /// [pageToken] - Page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListEventTypesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListEventTypesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/eventtypes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListEventTypesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2369,6 +2841,9 @@ class ConfigVariable {
   /// Value is a bool.
   core.bool? boolValue;
 
+  /// Value is a Encryption Key.
+  EncryptionKey? encryptionKeyValue;
+
   /// Value is an integer
   core.String? intValue;
 
@@ -2383,6 +2858,7 @@ class ConfigVariable {
 
   ConfigVariable({
     this.boolValue,
+    this.encryptionKeyValue,
     this.intValue,
     this.key,
     this.secretValue,
@@ -2393,6 +2869,10 @@ class ConfigVariable {
       : this(
           boolValue: json_.containsKey('boolValue')
               ? json_['boolValue'] as core.bool
+              : null,
+          encryptionKeyValue: json_.containsKey('encryptionKeyValue')
+              ? EncryptionKey.fromJson(json_['encryptionKeyValue']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           intValue: json_.containsKey('intValue')
               ? json_['intValue'] as core.String
@@ -2409,6 +2889,8 @@ class ConfigVariable {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
+        if (encryptionKeyValue != null)
+          'encryptionKeyValue': encryptionKeyValue!,
         if (intValue != null) 'intValue': intValue!,
         if (key != null) 'key': key!,
         if (secretValue != null) 'secretValue': secretValue!,
@@ -2445,6 +2927,11 @@ class ConfigVariableTemplate {
   /// connection.
   core.bool? required;
 
+  /// Condition under which a field would be required.
+  ///
+  /// The condition can be represented in the form of a logical expression.
+  LogicalExpression? requiredCondition;
+
   /// Role grant configuration for the config variable.
   RoleGrant? roleGrant;
 
@@ -2470,6 +2957,7 @@ class ConfigVariableTemplate {
   /// - "SECRET" : Value type is secret.
   /// - "ENUM" : Value type is enum.
   /// - "AUTHORIZATION_CODE" : Value type is authorization code.
+  /// - "ENCRYPTION_KEY" : Encryption Key.
   core.String? valueType;
 
   ConfigVariableTemplate({
@@ -2480,6 +2968,7 @@ class ConfigVariableTemplate {
     this.isAdvanced,
     this.key,
     this.required,
+    this.requiredCondition,
     this.roleGrant,
     this.state,
     this.validationRegex,
@@ -2511,6 +3000,10 @@ class ConfigVariableTemplate {
           required: json_.containsKey('required')
               ? json_['required'] as core.bool
               : null,
+          requiredCondition: json_.containsKey('requiredCondition')
+              ? LogicalExpression.fromJson(json_['requiredCondition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           roleGrant: json_.containsKey('roleGrant')
               ? RoleGrant.fromJson(
                   json_['roleGrant'] as core.Map<core.String, core.dynamic>)
@@ -2534,6 +3027,7 @@ class ConfigVariableTemplate {
         if (isAdvanced != null) 'isAdvanced': isAdvanced!,
         if (key != null) 'key': key!,
         if (required != null) 'required': required!,
+        if (requiredCondition != null) 'requiredCondition': requiredCondition!,
         if (roleGrant != null) 'roleGrant': roleGrant!,
         if (state != null) 'state': state!,
         if (validationRegex != null) 'validationRegex': validationRegex!,
@@ -2554,6 +3048,14 @@ class Connection {
   /// Optional.
   core.List<ConfigVariable>? configVariables;
 
+  /// Connection revision.
+  ///
+  /// This field is only updated when the connection is created or updated by
+  /// User.
+  ///
+  /// Output only.
+  core.String? connectionRevision;
+
   /// Connector version on which the connection is created.
   ///
   /// The format is: projects / * /locations / * /providers / * /connectors / *
@@ -2562,6 +3064,22 @@ class Connection {
   ///
   /// Required.
   core.String? connectorVersion;
+
+  /// Infra configs supported by Connector Version.
+  ///
+  /// Output only.
+  ConnectorVersionInfraConfig? connectorVersionInfraConfig;
+
+  /// Flag to mark the version indicating the launch stage.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : LAUNCH_STAGE_UNSPECIFIED.
+  /// - "PREVIEW" : PREVIEW.
+  /// - "GA" : GA.
+  /// - "DEPRECATED" : DEPRECATED.
+  /// - "PRIVATE_PREVIEW" : PRIVATE_PREVIEW.
+  core.String? connectorVersionLaunchStage;
 
   /// Created time.
   ///
@@ -2586,6 +3104,28 @@ class Connection {
   ///
   /// Output only.
   core.String? envoyImageLocation;
+
+  /// Eventing config of a connection
+  ///
+  /// Optional.
+  EventingConfig? eventingConfig;
+
+  /// Eventing enablement type.
+  ///
+  /// Will be nil if eventing is not enabled.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "EVENTING_ENABLEMENT_TYPE_UNSPECIFIED" : Eventing Enablement Type
+  /// Unspecifeied.
+  /// - "EVENTING_AND_CONNECTION" : Both connection and eventing.
+  /// - "ONLY_EVENTING" : Only Eventing.
+  core.String? eventingEnablementType;
+
+  /// Eventing Runtime Data.
+  ///
+  /// Output only.
+  EventingRuntimeData? eventingRuntimeData;
 
   /// GCR location where the runtime image is stored.
   ///
@@ -2669,11 +3209,17 @@ class Connection {
   Connection({
     this.authConfig,
     this.configVariables,
+    this.connectionRevision,
     this.connectorVersion,
+    this.connectorVersionInfraConfig,
+    this.connectorVersionLaunchStage,
     this.createTime,
     this.description,
     this.destinationConfigs,
     this.envoyImageLocation,
+    this.eventingConfig,
+    this.eventingEnablementType,
+    this.eventingRuntimeData,
     this.imageLocation,
     this.labels,
     this.lockConfig,
@@ -2701,9 +3247,22 @@ class Connection {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          connectionRevision: json_.containsKey('connectionRevision')
+              ? json_['connectionRevision'] as core.String
+              : null,
           connectorVersion: json_.containsKey('connectorVersion')
               ? json_['connectorVersion'] as core.String
               : null,
+          connectorVersionInfraConfig:
+              json_.containsKey('connectorVersionInfraConfig')
+                  ? ConnectorVersionInfraConfig.fromJson(
+                      json_['connectorVersionInfraConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          connectorVersionLaunchStage:
+              json_.containsKey('connectorVersionLaunchStage')
+                  ? json_['connectorVersionLaunchStage'] as core.String
+                  : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -2718,6 +3277,17 @@ class Connection {
               : null,
           envoyImageLocation: json_.containsKey('envoyImageLocation')
               ? json_['envoyImageLocation'] as core.String
+              : null,
+          eventingConfig: json_.containsKey('eventingConfig')
+              ? EventingConfig.fromJson(json_['eventingConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          eventingEnablementType: json_.containsKey('eventingEnablementType')
+              ? json_['eventingEnablementType'] as core.String
+              : null,
+          eventingRuntimeData: json_.containsKey('eventingRuntimeData')
+              ? EventingRuntimeData.fromJson(json_['eventingRuntimeData']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           imageLocation: json_.containsKey('imageLocation')
               ? json_['imageLocation'] as core.String
@@ -2771,13 +3341,24 @@ class Connection {
   core.Map<core.String, core.dynamic> toJson() => {
         if (authConfig != null) 'authConfig': authConfig!,
         if (configVariables != null) 'configVariables': configVariables!,
+        if (connectionRevision != null)
+          'connectionRevision': connectionRevision!,
         if (connectorVersion != null) 'connectorVersion': connectorVersion!,
+        if (connectorVersionInfraConfig != null)
+          'connectorVersionInfraConfig': connectorVersionInfraConfig!,
+        if (connectorVersionLaunchStage != null)
+          'connectorVersionLaunchStage': connectorVersionLaunchStage!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (destinationConfigs != null)
           'destinationConfigs': destinationConfigs!,
         if (envoyImageLocation != null)
           'envoyImageLocation': envoyImageLocation!,
+        if (eventingConfig != null) 'eventingConfig': eventingConfig!,
+        if (eventingEnablementType != null)
+          'eventingEnablementType': eventingEnablementType!,
+        if (eventingRuntimeData != null)
+          'eventingRuntimeData': eventingRuntimeData!,
         if (imageLocation != null) 'imageLocation': imageLocation!,
         if (labels != null) 'labels': labels!,
         if (lockConfig != null) 'lockConfig': lockConfig!,
@@ -2946,6 +3527,13 @@ class Connector {
   /// Output only.
   core.String? documentationUri;
 
+  /// Eventing details.
+  ///
+  /// Will be null if eventing is not supported.
+  ///
+  /// Output only.
+  EventingDetails? eventingDetails;
+
   /// Link to external page.
   ///
   /// Output only.
@@ -2994,6 +3582,7 @@ class Connector {
     this.description,
     this.displayName,
     this.documentationUri,
+    this.eventingDetails,
     this.externalUri,
     this.labels,
     this.launchStage,
@@ -3015,6 +3604,10 @@ class Connector {
               : null,
           documentationUri: json_.containsKey('documentationUri')
               ? json_['documentationUri'] as core.String
+              : null,
+          eventingDetails: json_.containsKey('eventingDetails')
+              ? EventingDetails.fromJson(json_['eventingDetails']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           externalUri: json_.containsKey('externalUri')
               ? json_['externalUri'] as core.String
@@ -3044,12 +3637,36 @@ class Connector {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (documentationUri != null) 'documentationUri': documentationUri!,
+        if (eventingDetails != null) 'eventingDetails': eventingDetails!,
         if (externalUri != null) 'externalUri': externalUri!,
         if (labels != null) 'labels': labels!,
         if (launchStage != null) 'launchStage': launchStage!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (webAssetsLocation != null) 'webAssetsLocation': webAssetsLocation!,
+      };
+}
+
+/// This cofiguration provides infra configs like rate limit threshold which
+/// need to be configurable for every connector version
+class ConnectorInfraConfig {
+  /// Max QPS supported by the connector version before throttling of requests.
+  core.String? ratelimitThreshold;
+
+  ConnectorInfraConfig({
+    this.ratelimitThreshold,
+  });
+
+  ConnectorInfraConfig.fromJson(core.Map json_)
+      : this(
+          ratelimitThreshold: json_.containsKey('ratelimitThreshold')
+              ? json_['ratelimitThreshold'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ratelimitThreshold != null)
+          'ratelimitThreshold': ratelimitThreshold!,
       };
 }
 
@@ -3064,6 +3681,11 @@ class ConnectorVersion {
   ///
   /// Output only.
   core.List<ConfigVariableTemplate>? configVariableTemplates;
+
+  /// Infra configs supported by Connector.
+  ///
+  /// Output only.
+  ConnectorInfraConfig? connectorInfraConfig;
 
   /// Created time.
   ///
@@ -3084,6 +3706,11 @@ class ConnectorVersion {
   ///
   /// Output only.
   EgressControlConfig? egressControlConfig;
+
+  /// Eventing configuration supported by the Connector.
+  ///
+  /// Output only.
+  EventingConfigTemplate? eventingConfigTemplate;
 
   /// Resource labels to represent user-provided metadata.
   ///
@@ -3148,10 +3775,12 @@ class ConnectorVersion {
   ConnectorVersion({
     this.authConfigTemplates,
     this.configVariableTemplates,
+    this.connectorInfraConfig,
     this.createTime,
     this.destinationConfigTemplates,
     this.displayName,
     this.egressControlConfig,
+    this.eventingConfigTemplate,
     this.labels,
     this.launchStage,
     this.name,
@@ -3177,6 +3806,10 @@ class ConnectorVersion {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          connectorInfraConfig: json_.containsKey('connectorInfraConfig')
+              ? ConnectorInfraConfig.fromJson(json_['connectorInfraConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -3192,6 +3825,10 @@ class ConnectorVersion {
               : null,
           egressControlConfig: json_.containsKey('egressControlConfig')
               ? EgressControlConfig.fromJson(json_['egressControlConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          eventingConfigTemplate: json_.containsKey('eventingConfigTemplate')
+              ? EventingConfigTemplate.fromJson(json_['eventingConfigTemplate']
                   as core.Map<core.String, core.dynamic>)
               : null,
           labels: json_.containsKey('labels')
@@ -3239,12 +3876,16 @@ class ConnectorVersion {
           'authConfigTemplates': authConfigTemplates!,
         if (configVariableTemplates != null)
           'configVariableTemplates': configVariableTemplates!,
+        if (connectorInfraConfig != null)
+          'connectorInfraConfig': connectorInfraConfig!,
         if (createTime != null) 'createTime': createTime!,
         if (destinationConfigTemplates != null)
           'destinationConfigTemplates': destinationConfigTemplates!,
         if (displayName != null) 'displayName': displayName!,
         if (egressControlConfig != null)
           'egressControlConfig': egressControlConfig!,
+        if (eventingConfigTemplate != null)
+          'eventingConfigTemplate': eventingConfigTemplate!,
         if (labels != null) 'labels': labels!,
         if (launchStage != null) 'launchStage': launchStage!,
         if (name != null) 'name': name!,
@@ -3255,6 +3896,31 @@ class ConnectorVersion {
         if (supportedRuntimeFeatures != null)
           'supportedRuntimeFeatures': supportedRuntimeFeatures!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// This cofiguration provides infra configs like rate limit threshold which
+/// need to be configurable for every connector version
+class ConnectorVersionInfraConfig {
+  /// Max QPS supported by the connector version before throttling of requests.
+  ///
+  /// Output only.
+  core.String? ratelimitThreshold;
+
+  ConnectorVersionInfraConfig({
+    this.ratelimitThreshold,
+  });
+
+  ConnectorVersionInfraConfig.fromJson(core.Map json_)
+      : this(
+          ratelimitThreshold: json_.containsKey('ratelimitThreshold')
+              ? json_['ratelimitThreshold'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ratelimitThreshold != null)
+          'ratelimitThreshold': ratelimitThreshold!,
       };
 }
 
@@ -3476,6 +4142,72 @@ class EgressControlConfig {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// Encryption Key value.
+class EncryptionKey {
+  /// The \[KMS key name\] with which the content of the Operation is encrypted.
+  ///
+  /// The expected format: `projects / * /locations / * /keyRings / *
+  /// /cryptoKeys / * `. Will be empty string if google managed.
+  core.String? kmsKeyName;
+
+  /// Type.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Value type is not specified.
+  /// - "GOOGLE_MANAGED" : Google Managed.
+  /// - "CUSTOMER_MANAGED" : Customer Managed.
+  core.String? type;
+
+  EncryptionKey({
+    this.kmsKeyName,
+    this.type,
+  });
+
+  EncryptionKey.fromJson(core.Map json_)
+      : this(
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Endpoint message includes details of the Destination endpoint.
+class EndPoint {
+  /// The URI of the Endpoint.
+  core.String? endpointUri;
+
+  /// List of Header to be added to the Endpoint.
+  core.List<Header>? headers;
+
+  EndPoint({
+    this.endpointUri,
+    this.headers,
+  });
+
+  EndPoint.fromJson(core.Map json_)
+      : this(
+          endpointUri: json_.containsKey('endpointUri')
+              ? json_['endpointUri'] as core.String
+              : null,
+          headers: json_.containsKey('headers')
+              ? (json_['headers'] as core.List)
+                  .map((value) => Header.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endpointUri != null) 'endpointUri': endpointUri!,
+        if (headers != null) 'headers': headers!,
+      };
+}
+
 /// represents the Connector's Endpoint Attachment resource
 class EndpointAttachment {
   /// Created time.
@@ -3592,6 +4324,608 @@ class EnumOption {
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (id != null) 'id': id!,
+      };
+}
+
+/// represents the Connector's EventSubscription resource
+class EventSubscription {
+  /// Created time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The destination to hit when we receive an event
+  ///
+  /// Optional.
+  EventSubscriptionDestination? destinations;
+
+  /// Event type id of the event of current EventSubscription.
+  ///
+  /// Optional.
+  core.String? eventTypeId;
+
+  /// Resource name of the EventSubscription.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/connections/{connection}/eventSubscriptions/{event_subscription}
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Status indicates the status of the event subscription resource
+  ///
+  /// Optional.
+  EventSubscriptionStatus? status;
+
+  /// name of the Subscriber for the current EventSubscription.
+  ///
+  /// Optional.
+  core.String? subscriber;
+
+  /// Link for Subscriber of the current EventSubscription.
+  ///
+  /// Optional.
+  core.String? subscriberLink;
+
+  /// Updated time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  EventSubscription({
+    this.createTime,
+    this.destinations,
+    this.eventTypeId,
+    this.name,
+    this.status,
+    this.subscriber,
+    this.subscriberLink,
+    this.updateTime,
+  });
+
+  EventSubscription.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          destinations: json_.containsKey('destinations')
+              ? EventSubscriptionDestination.fromJson(
+                  json_['destinations'] as core.Map<core.String, core.dynamic>)
+              : null,
+          eventTypeId: json_.containsKey('eventTypeId')
+              ? json_['eventTypeId'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          status: json_.containsKey('status')
+              ? EventSubscriptionStatus.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+          subscriber: json_.containsKey('subscriber')
+              ? json_['subscriber'] as core.String
+              : null,
+          subscriberLink: json_.containsKey('subscriberLink')
+              ? json_['subscriberLink'] as core.String
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (destinations != null) 'destinations': destinations!,
+        if (eventTypeId != null) 'eventTypeId': eventTypeId!,
+        if (name != null) 'name': name!,
+        if (status != null) 'status': status!,
+        if (subscriber != null) 'subscriber': subscriber!,
+        if (subscriberLink != null) 'subscriberLink': subscriberLink!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Message for EventSubscription Destination to act on receiving an event
+class EventSubscriptionDestination {
+  /// OPTION 1: Hit an endpoint when we receive an event.
+  EndPoint? endpoint;
+
+  /// Service account needed for runtime plane to trigger IP workflow.
+  core.String? serviceAccount;
+
+  /// type of the destination
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Default state.
+  /// - "ENDPOINT" : Endpoint - Hit the value of endpoint when event is received
+  core.String? type;
+
+  EventSubscriptionDestination({
+    this.endpoint,
+    this.serviceAccount,
+    this.type,
+  });
+
+  EventSubscriptionDestination.fromJson(core.Map json_)
+      : this(
+          endpoint: json_.containsKey('endpoint')
+              ? EndPoint.fromJson(
+                  json_['endpoint'] as core.Map<core.String, core.dynamic>)
+              : null,
+          serviceAccount: json_.containsKey('serviceAccount')
+              ? json_['serviceAccount'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endpoint != null) 'endpoint': endpoint!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// EventSubscription Status denotes the status of the EventSubscription
+/// resource.
+class EventSubscriptionStatus {
+  /// Description of the state.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// State of Event Subscription resource.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default state.
+  /// - "CREATING" : EventSubscription creation is in progress.
+  /// - "UPDATING" : EventSubscription is in Updating status.
+  /// - "ACTIVE" : EventSubscription is in Active state and is ready to receive
+  /// events.
+  /// - "SUSPENDED" : EventSubscription is currently suspended.
+  /// - "ERROR" : EventSubscription is in Error state.
+  core.String? state;
+
+  EventSubscriptionStatus({
+    this.description,
+    this.state,
+  });
+
+  EventSubscriptionStatus.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// EventType includes fields.
+class EventType {
+  /// Created time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Schema of the event payload after enriched.
+  ///
+  /// Will be null if read before send is not supported.
+  ///
+  /// Output only.
+  core.String? enrichedEventPayloadSchema;
+
+  /// Runtime entity type name.
+  ///
+  /// Will be null if entity type map is not available. Used for read before
+  /// send feature.
+  ///
+  /// Output only.
+  core.String? entityType;
+
+  /// Schema of webhook event payload.
+  ///
+  /// Output only.
+  core.String? eventPayloadSchema;
+
+  /// Event type id.
+  ///
+  /// Example: `ticket.created`.
+  ///
+  /// Output only.
+  core.String? eventTypeId;
+
+  /// Id path denotes the path of id in webhook payload.
+  ///
+  /// Output only.
+  core.String? idPath;
+
+  /// Resource name of the eventtype.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/providers/{provider}/connectors/{connector}/versions/{version}/eventtypes/{eventtype}
+  /// Only global location is supported for Connector resource.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Updated time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  EventType({
+    this.createTime,
+    this.enrichedEventPayloadSchema,
+    this.entityType,
+    this.eventPayloadSchema,
+    this.eventTypeId,
+    this.idPath,
+    this.name,
+    this.updateTime,
+  });
+
+  EventType.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          enrichedEventPayloadSchema:
+              json_.containsKey('enrichedEventPayloadSchema')
+                  ? json_['enrichedEventPayloadSchema'] as core.String
+                  : null,
+          entityType: json_.containsKey('entityType')
+              ? json_['entityType'] as core.String
+              : null,
+          eventPayloadSchema: json_.containsKey('eventPayloadSchema')
+              ? json_['eventPayloadSchema'] as core.String
+              : null,
+          eventTypeId: json_.containsKey('eventTypeId')
+              ? json_['eventTypeId'] as core.String
+              : null,
+          idPath: json_.containsKey('idPath')
+              ? json_['idPath'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (enrichedEventPayloadSchema != null)
+          'enrichedEventPayloadSchema': enrichedEventPayloadSchema!,
+        if (entityType != null) 'entityType': entityType!,
+        if (eventPayloadSchema != null)
+          'eventPayloadSchema': eventPayloadSchema!,
+        if (eventTypeId != null) 'eventTypeId': eventTypeId!,
+        if (idPath != null) 'idPath': idPath!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Eventing Configuration of a connection
+class EventingConfig {
+  /// Additional eventing related field values
+  core.List<ConfigVariable>? additionalVariables;
+
+  /// Auth details for the webhook adapter.
+  AuthConfig? authConfig;
+
+  /// Encryption key (can be either Google managed or CMEK).
+  ConfigVariable? encryptionKey;
+
+  /// Enrichment Enabled.
+  core.bool? enrichmentEnabled;
+
+  /// Registration endpoint for auto regsitration.
+  DestinationConfig? registrationDestinationConfig;
+
+  EventingConfig({
+    this.additionalVariables,
+    this.authConfig,
+    this.encryptionKey,
+    this.enrichmentEnabled,
+    this.registrationDestinationConfig,
+  });
+
+  EventingConfig.fromJson(core.Map json_)
+      : this(
+          additionalVariables: json_.containsKey('additionalVariables')
+              ? (json_['additionalVariables'] as core.List)
+                  .map((value) => ConfigVariable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          authConfig: json_.containsKey('authConfig')
+              ? AuthConfig.fromJson(
+                  json_['authConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          encryptionKey: json_.containsKey('encryptionKey')
+              ? ConfigVariable.fromJson(
+                  json_['encryptionKey'] as core.Map<core.String, core.dynamic>)
+              : null,
+          enrichmentEnabled: json_.containsKey('enrichmentEnabled')
+              ? json_['enrichmentEnabled'] as core.bool
+              : null,
+          registrationDestinationConfig:
+              json_.containsKey('registrationDestinationConfig')
+                  ? DestinationConfig.fromJson(
+                      json_['registrationDestinationConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalVariables != null)
+          'additionalVariables': additionalVariables!,
+        if (authConfig != null) 'authConfig': authConfig!,
+        if (encryptionKey != null) 'encryptionKey': encryptionKey!,
+        if (enrichmentEnabled != null) 'enrichmentEnabled': enrichmentEnabled!,
+        if (registrationDestinationConfig != null)
+          'registrationDestinationConfig': registrationDestinationConfig!,
+      };
+}
+
+/// Eventing Config details of a connector version.
+class EventingConfigTemplate {
+  /// Additional fields that need to be rendered.
+  core.List<ConfigVariableTemplate>? additionalVariables;
+
+  /// AuthConfigTemplates represents the auth values for the webhook adapter.
+  core.List<AuthConfigTemplate>? authConfigTemplates;
+
+  /// Auto refresh to extend webhook life.
+  core.bool? autoRefresh;
+
+  /// Auto Registration supported.
+  core.bool? autoRegistrationSupported;
+
+  /// Encryption key (can be either Google managed or CMEK).
+  ConfigVariableTemplate? encryptionKeyTemplate;
+
+  /// Enrichment Supported.
+  core.bool? enrichmentSupported;
+
+  /// Is Eventing Supported.
+  core.bool? isEventingSupported;
+
+  /// Registration host destination config template.
+  DestinationConfigTemplate? registrationDestinationConfig;
+
+  EventingConfigTemplate({
+    this.additionalVariables,
+    this.authConfigTemplates,
+    this.autoRefresh,
+    this.autoRegistrationSupported,
+    this.encryptionKeyTemplate,
+    this.enrichmentSupported,
+    this.isEventingSupported,
+    this.registrationDestinationConfig,
+  });
+
+  EventingConfigTemplate.fromJson(core.Map json_)
+      : this(
+          additionalVariables: json_.containsKey('additionalVariables')
+              ? (json_['additionalVariables'] as core.List)
+                  .map((value) => ConfigVariableTemplate.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          authConfigTemplates: json_.containsKey('authConfigTemplates')
+              ? (json_['authConfigTemplates'] as core.List)
+                  .map((value) => AuthConfigTemplate.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          autoRefresh: json_.containsKey('autoRefresh')
+              ? json_['autoRefresh'] as core.bool
+              : null,
+          autoRegistrationSupported:
+              json_.containsKey('autoRegistrationSupported')
+                  ? json_['autoRegistrationSupported'] as core.bool
+                  : null,
+          encryptionKeyTemplate: json_.containsKey('encryptionKeyTemplate')
+              ? ConfigVariableTemplate.fromJson(json_['encryptionKeyTemplate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          enrichmentSupported: json_.containsKey('enrichmentSupported')
+              ? json_['enrichmentSupported'] as core.bool
+              : null,
+          isEventingSupported: json_.containsKey('isEventingSupported')
+              ? json_['isEventingSupported'] as core.bool
+              : null,
+          registrationDestinationConfig:
+              json_.containsKey('registrationDestinationConfig')
+                  ? DestinationConfigTemplate.fromJson(
+                      json_['registrationDestinationConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalVariables != null)
+          'additionalVariables': additionalVariables!,
+        if (authConfigTemplates != null)
+          'authConfigTemplates': authConfigTemplates!,
+        if (autoRefresh != null) 'autoRefresh': autoRefresh!,
+        if (autoRegistrationSupported != null)
+          'autoRegistrationSupported': autoRegistrationSupported!,
+        if (encryptionKeyTemplate != null)
+          'encryptionKeyTemplate': encryptionKeyTemplate!,
+        if (enrichmentSupported != null)
+          'enrichmentSupported': enrichmentSupported!,
+        if (isEventingSupported != null)
+          'isEventingSupported': isEventingSupported!,
+        if (registrationDestinationConfig != null)
+          'registrationDestinationConfig': registrationDestinationConfig!,
+      };
+}
+
+/// Eventing Details message.
+class EventingDetails {
+  /// Custom Event Types.
+  ///
+  /// Output only.
+  core.bool? customEventTypes;
+
+  /// Description.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// Link to public documentation.
+  ///
+  /// Output only.
+  core.String? documentationLink;
+
+  /// Cloud storage location of the icon.
+  ///
+  /// Output only.
+  core.String? iconLocation;
+
+  /// Eventing Launch Stage.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : LAUNCH_STAGE_UNSPECIFIED.
+  /// - "PREVIEW" : PREVIEW.
+  /// - "GA" : GA.
+  /// - "DEPRECATED" : DEPRECATED.
+  /// - "PRIVATE_PREVIEW" : PRIVATE_PREVIEW.
+  core.String? launchStage;
+
+  /// Name of the Eventing trigger.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Array of search keywords.
+  ///
+  /// Output only.
+  core.List<core.String>? searchTags;
+
+  EventingDetails({
+    this.customEventTypes,
+    this.description,
+    this.documentationLink,
+    this.iconLocation,
+    this.launchStage,
+    this.name,
+    this.searchTags,
+  });
+
+  EventingDetails.fromJson(core.Map json_)
+      : this(
+          customEventTypes: json_.containsKey('customEventTypes')
+              ? json_['customEventTypes'] as core.bool
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          documentationLink: json_.containsKey('documentationLink')
+              ? json_['documentationLink'] as core.String
+              : null,
+          iconLocation: json_.containsKey('iconLocation')
+              ? json_['iconLocation'] as core.String
+              : null,
+          launchStage: json_.containsKey('launchStage')
+              ? json_['launchStage'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          searchTags: json_.containsKey('searchTags')
+              ? (json_['searchTags'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customEventTypes != null) 'customEventTypes': customEventTypes!,
+        if (description != null) 'description': description!,
+        if (documentationLink != null) 'documentationLink': documentationLink!,
+        if (iconLocation != null) 'iconLocation': iconLocation!,
+        if (launchStage != null) 'launchStage': launchStage!,
+        if (name != null) 'name': name!,
+        if (searchTags != null) 'searchTags': searchTags!,
+      };
+}
+
+/// Eventing runtime data has the details related to eventing managed by the
+/// system.
+class EventingRuntimeData {
+  /// Events listener endpoint.
+  ///
+  /// The value will populated after provisioning the events listener.
+  ///
+  /// Output only.
+  core.String? eventsListenerEndpoint;
+
+  /// Current status of eventing.
+  ///
+  /// Output only.
+  EventingStatus? status;
+
+  EventingRuntimeData({
+    this.eventsListenerEndpoint,
+    this.status,
+  });
+
+  EventingRuntimeData.fromJson(core.Map json_)
+      : this(
+          eventsListenerEndpoint: json_.containsKey('eventsListenerEndpoint')
+              ? json_['eventsListenerEndpoint'] as core.String
+              : null,
+          status: json_.containsKey('status')
+              ? EventingStatus.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventsListenerEndpoint != null)
+          'eventsListenerEndpoint': eventsListenerEndpoint!,
+        if (status != null) 'status': status!,
+      };
+}
+
+/// EventingStatus indicates the state of eventing.
+class EventingStatus {
+  /// Description of error if State is set to "ERROR".
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// State.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default state.
+  /// - "ACTIVE" : Eventing is enabled and ready to receive events.
+  /// - "ERROR" : Eventing is not active due to an error.
+  core.String? state;
+
+  EventingStatus({
+    this.description,
+    this.state,
+  });
+
+  EventingStatus.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -3801,6 +5135,87 @@ class Field {
         if (key != null) 'key': key!,
         if (nullable != null) 'nullable': nullable!,
         if (readonly != null) 'readonly': readonly!,
+      };
+}
+
+/// Field that needs to be compared.
+class FieldComparison {
+  /// Boolean value
+  core.bool? boolValue;
+
+  /// Comparator to use for comparing the field value.
+  /// Possible string values are:
+  /// - "COMPARATOR_UNSPECIFIED" : The default value.
+  /// - "EQUALS" : The field value must be equal to the specified value.
+  /// - "NOT_EQUALS" : The field value must not be equal to the specified value.
+  core.String? comparator;
+
+  /// Integer value
+  core.String? intValue;
+
+  /// Key of the field.
+  core.String? key;
+
+  /// String value
+  core.String? stringValue;
+
+  FieldComparison({
+    this.boolValue,
+    this.comparator,
+    this.intValue,
+    this.key,
+    this.stringValue,
+  });
+
+  FieldComparison.fromJson(core.Map json_)
+      : this(
+          boolValue: json_.containsKey('boolValue')
+              ? json_['boolValue'] as core.bool
+              : null,
+          comparator: json_.containsKey('comparator')
+              ? json_['comparator'] as core.String
+              : null,
+          intValue: json_.containsKey('intValue')
+              ? json_['intValue'] as core.String
+              : null,
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          stringValue: json_.containsKey('stringValue')
+              ? json_['stringValue'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
+        if (comparator != null) 'comparator': comparator!,
+        if (intValue != null) 'intValue': intValue!,
+        if (key != null) 'key': key!,
+        if (stringValue != null) 'stringValue': stringValue!,
+      };
+}
+
+/// Header details for a given header to be added to Endpoint.
+class Header {
+  /// Key of Header.
+  core.String? key;
+
+  /// Value of Header.
+  core.String? value;
+
+  Header({
+    this.key,
+    this.value,
+  });
+
+  Header.fromJson(core.Map json_)
+      : this(
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -4115,6 +5530,81 @@ class ListEndpointAttachmentsResponse {
       };
 }
 
+/// Response message for ConnectorsService.ListEventSubscriptions
+class ListEventSubscriptionsResponse {
+  /// Subscriptions.
+  core.List<EventSubscription>? eventSubscriptions;
+
+  /// Next page token.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListEventSubscriptionsResponse({
+    this.eventSubscriptions,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListEventSubscriptionsResponse.fromJson(core.Map json_)
+      : this(
+          eventSubscriptions: json_.containsKey('eventSubscriptions')
+              ? (json_['eventSubscriptions'] as core.List)
+                  .map((value) => EventSubscription.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventSubscriptions != null)
+          'eventSubscriptions': eventSubscriptions!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response message for Connectors.ListEventTypes.
+class ListEventTypesResponse {
+  /// A list of connector versions.
+  core.List<EventType>? eventTypes;
+
+  /// Next page token.
+  core.String? nextPageToken;
+
+  ListEventTypesResponse({
+    this.eventTypes,
+    this.nextPageToken,
+  });
+
+  ListEventTypesResponse.fromJson(core.Map json_)
+      : this(
+          eventTypes: json_.containsKey('eventTypes')
+              ? (json_['eventTypes'] as core.List)
+                  .map((value) => EventType.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventTypes != null) 'eventTypes': eventTypes!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
@@ -4352,6 +5842,54 @@ class LockConfig {
       };
 }
 
+/// Struct for representing boolean expressions.
+class LogicalExpression {
+  /// A list of fields to be compared.
+  core.List<FieldComparison>? fieldComparisons;
+
+  /// A list of nested conditions to be compared.
+  core.List<LogicalExpression>? logicalExpressions;
+
+  /// The logical operator to use between the fields and conditions.
+  /// Possible string values are:
+  /// - "OPERATOR_UNSPECIFIED" : The default value.
+  /// - "AND" : AND operator; The conditions must all be true.
+  /// - "OR" : OR operator; At least one of the conditions must be true.
+  core.String? logicalOperator;
+
+  LogicalExpression({
+    this.fieldComparisons,
+    this.logicalExpressions,
+    this.logicalOperator,
+  });
+
+  LogicalExpression.fromJson(core.Map json_)
+      : this(
+          fieldComparisons: json_.containsKey('fieldComparisons')
+              ? (json_['fieldComparisons'] as core.List)
+                  .map((value) => FieldComparison.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          logicalExpressions: json_.containsKey('logicalExpressions')
+              ? (json_['logicalExpressions'] as core.List)
+                  .map((value) => LogicalExpression.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          logicalOperator: json_.containsKey('logicalOperator')
+              ? json_['logicalOperator'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fieldComparisons != null) 'fieldComparisons': fieldComparisons!,
+        if (logicalExpressions != null)
+          'logicalExpressions': logicalExpressions!,
+        if (logicalOperator != null) 'logicalOperator': logicalOperator!,
+      };
+}
+
 /// represents the Connector's Managed Zone resource
 class ManagedZone {
   /// Created time.
@@ -4487,6 +6025,9 @@ class Oauth2AuthCodeFlow {
   /// Authorization code to be exchanged for access and refresh tokens.
   core.String? authCode;
 
+  /// Auth URL for Authorization Code Flow
+  core.String? authUri;
+
   /// Client ID for user-provided OAuth app.
   core.String? clientId;
 
@@ -4508,6 +6049,7 @@ class Oauth2AuthCodeFlow {
 
   Oauth2AuthCodeFlow({
     this.authCode,
+    this.authUri,
     this.clientId,
     this.clientSecret,
     this.enablePkce,
@@ -4520,6 +6062,9 @@ class Oauth2AuthCodeFlow {
       : this(
           authCode: json_.containsKey('authCode')
               ? json_['authCode'] as core.String
+              : null,
+          authUri: json_.containsKey('authUri')
+              ? json_['authUri'] as core.String
               : null,
           clientId: json_.containsKey('clientId')
               ? json_['clientId'] as core.String
@@ -4546,6 +6091,7 @@ class Oauth2AuthCodeFlow {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authCode != null) 'authCode': authCode!,
+        if (authUri != null) 'authUri': authUri!,
         if (clientId != null) 'clientId': clientId!,
         if (clientSecret != null) 'clientSecret': clientSecret!,
         if (enablePkce != null) 'enablePkce': enablePkce!,
@@ -4954,6 +6500,9 @@ class Provider {
 /// Request message for ConnectorsService.RefreshConnectionSchemaMetadata.
 typedef RefreshConnectionSchemaMetadataRequest = $Empty;
 
+/// Request message for ConnectorsService.RepairEventing
+typedef RepairEventingRequest = $Empty;
+
 /// Resource definition
 class Resource {
   /// Template to uniquely represent a GCP resource in a format IAM expects This
@@ -5074,8 +6623,11 @@ class ResultMetadata {
       };
 }
 
+/// Request message for ConnectorsService.RefreshEventSubscription
+typedef RetryEventSubscriptionRequest = $Empty;
+
 /// This configuration defines all the Cloud IAM roles that needs to be granted
-/// to a particular GCP resource for the selected prinicpal like service
+/// to a particular GCP resource for the selected principal like service
 /// account.
 ///
 /// These configurations will let UI display to customers what IAM roles need to
@@ -5428,6 +6980,11 @@ class Settings {
   /// Output only.
   core.bool? payg;
 
+  /// Tenant project id of the consumer project.
+  ///
+  /// Output only.
+  core.String? tenantProjectId;
+
   /// Flag indicates whether vpc-sc is enabled.
   ///
   /// Optional.
@@ -5436,6 +6993,7 @@ class Settings {
   Settings({
     this.name,
     this.payg,
+    this.tenantProjectId,
     this.vpcsc,
   });
 
@@ -5443,6 +7001,9 @@ class Settings {
       : this(
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           payg: json_.containsKey('payg') ? json_['payg'] as core.bool : null,
+          tenantProjectId: json_.containsKey('tenantProjectId')
+              ? json_['tenantProjectId'] as core.String
+              : null,
           vpcsc:
               json_.containsKey('vpcsc') ? json_['vpcsc'] as core.bool : null,
         );
@@ -5450,6 +7011,7 @@ class Settings {
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (payg != null) 'payg': payg!,
+        if (tenantProjectId != null) 'tenantProjectId': tenantProjectId!,
         if (vpcsc != null) 'vpcsc': vpcsc!,
       };
 }

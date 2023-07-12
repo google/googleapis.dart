@@ -15,6 +15,13 @@
     "name": "mybusinesslodging",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230710",
+    "rootUrl": "https://mybusinesslodging.googleapis.com/",
+    "servicePath": "",
+    "title": "My Business Lodging API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -92,7 +99,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "locations": {
             "methods": {
@@ -192,8 +198,6 @@
             }
         }
     },
-    "revision": "20230514",
-    "rootUrl": "https://mybusinesslodging.googleapis.com/",
     "schemas": {
         "Accessibility": {
             "description": "Physical adaptations made to the property in consideration of varying levels of human physical ability.",
@@ -6227,9 +6231,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "My Business Lodging API",
-    "version": "v1",
-    "version_module": true
+    }
 }

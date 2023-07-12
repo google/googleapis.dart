@@ -180,6 +180,43 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
+  /// Get the project status.
+  ///
+  /// Request parameters:
+  ///
+  /// [location] - Required. The location to be queried Format:
+  /// projects/{project_number}/locations/{location}.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContentwarehouseV1ProjectStatus].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContentwarehouseV1ProjectStatus> getStatus(
+    core.String location, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$location') + ':getStatus';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContentwarehouseV1ProjectStatus.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Provisions resources for given tenant project.
   ///
   /// Returns a long running operation.
@@ -2649,6 +2686,12 @@ class GoogleCloudContentwarehouseV1DocumentQuery {
   /// creators.
   core.List<core.String>? documentCreatorFilter;
 
+  /// Search the documents in the list.
+  ///
+  /// Format:
+  /// projects/{project_number}/locations/{location}/documents/{document_id}.
+  core.List<core.String>? documentNameFilter;
+
   /// This filter specifies the exact document schema
   /// Document.document_schema_name of the documents to search against.
   ///
@@ -2735,6 +2778,7 @@ class GoogleCloudContentwarehouseV1DocumentQuery {
     this.customPropertyFilter,
     this.customWeightsMetadata,
     this.documentCreatorFilter,
+    this.documentNameFilter,
     this.documentSchemaNames,
     this.fileTypeFilter,
     this.folderNameFilter,
@@ -2757,6 +2801,11 @@ class GoogleCloudContentwarehouseV1DocumentQuery {
               : null,
           documentCreatorFilter: json_.containsKey('documentCreatorFilter')
               ? (json_['documentCreatorFilter'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          documentNameFilter: json_.containsKey('documentNameFilter')
+              ? (json_['documentNameFilter'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -2806,6 +2855,8 @@ class GoogleCloudContentwarehouseV1DocumentQuery {
           'customWeightsMetadata': customWeightsMetadata!,
         if (documentCreatorFilter != null)
           'documentCreatorFilter': documentCreatorFilter!,
+        if (documentNameFilter != null)
+          'documentNameFilter': documentNameFilter!,
         if (documentSchemaNames != null)
           'documentSchemaNames': documentSchemaNames!,
         if (fileTypeFilter != null) 'fileTypeFilter': fileTypeFilter!,
@@ -2838,6 +2889,12 @@ class GoogleCloudContentwarehouseV1DocumentReference {
   /// The document type of the document being referenced.
   core.bool? documentIsFolder;
 
+  /// Document is a folder with legal hold.
+  core.bool? documentIsLegalHoldFolder;
+
+  /// Document is a folder with retention policy.
+  core.bool? documentIsRetentionFolder;
+
   /// Name of the referenced document.
   ///
   /// Required.
@@ -2859,6 +2916,8 @@ class GoogleCloudContentwarehouseV1DocumentReference {
     this.deleteTime,
     this.displayName,
     this.documentIsFolder,
+    this.documentIsLegalHoldFolder,
+    this.documentIsRetentionFolder,
     this.documentName,
     this.snippet,
     this.updateTime,
@@ -2878,6 +2937,14 @@ class GoogleCloudContentwarehouseV1DocumentReference {
           documentIsFolder: json_.containsKey('documentIsFolder')
               ? json_['documentIsFolder'] as core.bool
               : null,
+          documentIsLegalHoldFolder:
+              json_.containsKey('documentIsLegalHoldFolder')
+                  ? json_['documentIsLegalHoldFolder'] as core.bool
+                  : null,
+          documentIsRetentionFolder:
+              json_.containsKey('documentIsRetentionFolder')
+                  ? json_['documentIsRetentionFolder'] as core.bool
+                  : null,
           documentName: json_.containsKey('documentName')
               ? json_['documentName'] as core.String
               : null,
@@ -2894,6 +2961,10 @@ class GoogleCloudContentwarehouseV1DocumentReference {
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (displayName != null) 'displayName': displayName!,
         if (documentIsFolder != null) 'documentIsFolder': documentIsFolder!,
+        if (documentIsLegalHoldFolder != null)
+          'documentIsLegalHoldFolder': documentIsLegalHoldFolder!,
+        if (documentIsRetentionFolder != null)
+          'documentIsRetentionFolder': documentIsRetentionFolder!,
         if (documentName != null) 'documentName': documentName!,
         if (snippet != null) 'snippet': snippet!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -3397,6 +3468,11 @@ class GoogleCloudContentwarehouseV1InitializeProjectRequest {
   /// contentwarehouse.googleapis.com/documentViewer.
   core.String? documentCreatorDefaultRole;
 
+  /// Whether to enable CAL user email logging.
+  ///
+  /// Optional.
+  core.bool? enableCalUserEmailLogging;
+
   /// The KMS key used for CMEK encryption.
   ///
   /// It is required that the kms key is in the same region as the endpoint. The
@@ -3410,6 +3486,7 @@ class GoogleCloudContentwarehouseV1InitializeProjectRequest {
     this.accessControlMode,
     this.databaseType,
     this.documentCreatorDefaultRole,
+    this.enableCalUserEmailLogging,
     this.kmsKey,
   });
 
@@ -3425,6 +3502,10 @@ class GoogleCloudContentwarehouseV1InitializeProjectRequest {
               json_.containsKey('documentCreatorDefaultRole')
                   ? json_['documentCreatorDefaultRole'] as core.String
                   : null,
+          enableCalUserEmailLogging:
+              json_.containsKey('enableCalUserEmailLogging')
+                  ? json_['enableCalUserEmailLogging'] as core.bool
+                  : null,
           kmsKey: json_.containsKey('kmsKey')
               ? json_['kmsKey'] as core.String
               : null,
@@ -3435,6 +3516,8 @@ class GoogleCloudContentwarehouseV1InitializeProjectRequest {
         if (databaseType != null) 'databaseType': databaseType!,
         if (documentCreatorDefaultRole != null)
           'documentCreatorDefaultRole': documentCreatorDefaultRole!,
+        if (enableCalUserEmailLogging != null)
+          'enableCalUserEmailLogging': enableCalUserEmailLogging!,
         if (kmsKey != null) 'kmsKey': kmsKey!,
       };
 }
@@ -3847,6 +3930,94 @@ class GoogleCloudContentwarehouseV1MergeFieldsOptions {
           'replaceMessageFields': replaceMessageFields!,
         if (replaceRepeatedFields != null)
           'replaceRepeatedFields': replaceRepeatedFields!,
+      };
+}
+
+/// Status of a project, including the project state, dbType, aclMode and etc.
+class GoogleCloudContentwarehouseV1ProjectStatus {
+  /// Access control mode.
+  /// Possible string values are:
+  /// - "ACL_MODE_UNKNOWN" : This value is required by protobuf best practices
+  /// - "ACL_MODE_UNIVERSAL_ACCESS" : Universal Access: No document level access
+  /// control.
+  /// - "ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_BYOID" : Document level access
+  /// control with customer own Identity Service.
+  /// - "ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI" : Document level access
+  /// control using Google Cloud Identity.
+  core.String? accessControlMode;
+
+  /// Database type.
+  /// Possible string values are:
+  /// - "DB_UNKNOWN" : This value is required by protobuf best practices
+  /// - "DB_INFRA_SPANNER" : Internal Spanner
+  /// - "DB_CLOUD_SQL_POSTGRES" : Cloud Sql with a Postgres Sql instance
+  core.String? databaseType;
+
+  /// The default role for the person who create a document.
+  core.String? documentCreatorDefaultRole;
+
+  /// The location of the queried project.
+  core.String? location;
+
+  /// If the qa is enabled on this project.
+  core.bool? qaEnabled;
+
+  /// State of the project.
+  /// Possible string values are:
+  /// - "PROJECT_STATE_UNSPECIFIED" : Default status, required by protobuf best
+  /// practices.
+  /// - "PROJECT_STATE_PENDING" : The project is in the middle of a provision
+  /// process.
+  /// - "PROJECT_STATE_COMPLETED" : All dependencies have been provisioned.
+  /// - "PROJECT_STATE_FAILED" : A provision process was previously initiated,
+  /// but failed.
+  /// - "PROJECT_STATE_DELETING" : The project is in the middle of a deletion
+  /// process.
+  /// - "PROJECT_STATE_DELETING_FAILED" : A deleting process was initiated, but
+  /// failed.
+  /// - "PROJECT_STATE_DELETED" : The project is deleted.
+  /// - "PROJECT_STATE_NOT_FOUND" : The project is not found.
+  core.String? state;
+
+  GoogleCloudContentwarehouseV1ProjectStatus({
+    this.accessControlMode,
+    this.databaseType,
+    this.documentCreatorDefaultRole,
+    this.location,
+    this.qaEnabled,
+    this.state,
+  });
+
+  GoogleCloudContentwarehouseV1ProjectStatus.fromJson(core.Map json_)
+      : this(
+          accessControlMode: json_.containsKey('accessControlMode')
+              ? json_['accessControlMode'] as core.String
+              : null,
+          databaseType: json_.containsKey('databaseType')
+              ? json_['databaseType'] as core.String
+              : null,
+          documentCreatorDefaultRole:
+              json_.containsKey('documentCreatorDefaultRole')
+                  ? json_['documentCreatorDefaultRole'] as core.String
+                  : null,
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
+              : null,
+          qaEnabled: json_.containsKey('qaEnabled')
+              ? json_['qaEnabled'] as core.bool
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessControlMode != null) 'accessControlMode': accessControlMode!,
+        if (databaseType != null) 'databaseType': databaseType!,
+        if (documentCreatorDefaultRole != null)
+          'documentCreatorDefaultRole': documentCreatorDefaultRole!,
+        if (location != null) 'location': location!,
+        if (qaEnabled != null) 'qaEnabled': qaEnabled!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -4496,6 +4667,8 @@ class GoogleCloudContentwarehouseV1Rule {
   /// - "UNKNOWN" : Trigger for unknown action.
   /// - "ON_CREATE" : Trigger for create document action.
   /// - "ON_UPDATE" : Trigger for update document action.
+  /// - "ON_CREATE_LINK" : Trigger for create link action.
+  /// - "ON_DELETE_LINK" : Trigger for delete link action.
   core.String? triggerType;
 
   GoogleCloudContentwarehouseV1Rule({
@@ -4900,6 +5073,11 @@ class GoogleCloudContentwarehouseV1SearchDocumentsResponse {
   /// This field is empty if there are no more results.
   core.String? nextPageToken;
 
+  /// Experimental.
+  ///
+  /// Question answer from the query against the document.
+  core.String? questionAnswer;
+
   /// The total number of matched documents which is available only if the
   /// client set SearchDocumentsRequest.require_total_size to `true` or set
   /// SearchDocumentsRequest.total_result_size to `ESTIMATED_SIZE` or
@@ -4914,6 +5092,7 @@ class GoogleCloudContentwarehouseV1SearchDocumentsResponse {
     this.matchingDocuments,
     this.metadata,
     this.nextPageToken,
+    this.questionAnswer,
     this.totalSize,
   });
 
@@ -4942,6 +5121,9 @@ class GoogleCloudContentwarehouseV1SearchDocumentsResponse {
           nextPageToken: json_.containsKey('nextPageToken')
               ? json_['nextPageToken'] as core.String
               : null,
+          questionAnswer: json_.containsKey('questionAnswer')
+              ? json_['questionAnswer'] as core.String
+              : null,
           totalSize: json_.containsKey('totalSize')
               ? json_['totalSize'] as core.int
               : null,
@@ -4953,6 +5135,7 @@ class GoogleCloudContentwarehouseV1SearchDocumentsResponse {
         if (matchingDocuments != null) 'matchingDocuments': matchingDocuments!,
         if (metadata != null) 'metadata': metadata!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (questionAnswer != null) 'questionAnswer': questionAnswer!,
         if (totalSize != null) 'totalSize': totalSize!,
       };
 }
@@ -5207,6 +5390,7 @@ class GoogleCloudContentwarehouseV1TimeFilter {
   /// - "TIME_FIELD_UNSPECIFIED" : Default value.
   /// - "CREATE_TIME" : Earliest document create time.
   /// - "UPDATE_TIME" : Latest document update time.
+  /// - "DISPOSITION_TIME" : Time when document becomes mutable again.
   core.String? timeField;
   GoogleTypeInterval? timeRange;
 
@@ -5722,10 +5906,8 @@ class GoogleCloudDocumentaiV1Document {
   /// Any error that occurred while processing this document.
   GoogleRpcStatus? error;
 
-  /// An IANA published MIME type (also referred to as media type).
-  ///
-  /// For more information, see
-  /// https://www.iana.org/assignments/media-types/media-types.xhtml.
+  /// An IANA published \[media type (MIME
+  /// type)\](https://www.iana.org/assignments/media-types/media-types.xhtml).
   core.String? mimeType;
 
   /// Visual page layout for the Document.
@@ -6136,7 +6318,7 @@ class GoogleCloudDocumentaiV1DocumentPage {
   /// such that the annotation bounding boxes can be upright and axis-aligned.
   GoogleCloudDocumentaiV1DocumentPageImage? image;
 
-  /// Image Quality Scores.
+  /// Image quality scores.
   GoogleCloudDocumentaiV1DocumentPageImageQualityScores? imageQualityScores;
 
   /// Layout for the page.
@@ -6627,7 +6809,7 @@ class GoogleCloudDocumentaiV1DocumentPageFormField {
 typedef GoogleCloudDocumentaiV1DocumentPageImage
     = $GoogleCloudDocumentaiV1DocumentPageImage;
 
-/// Image Quality Scores for the page image
+/// Image quality scores for the page image.
 class GoogleCloudDocumentaiV1DocumentPageImageQualityScores {
   /// A list of detected defects.
   core.List<
@@ -6636,7 +6818,7 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScores {
 
   /// The overall quality score.
   ///
-  /// Range `[0, 1]` where 1 is perfect quality.
+  /// Range `[0, 1]` where `1` is perfect quality.
   core.double? qualityScore;
 
   GoogleCloudDocumentaiV1DocumentPageImageQualityScores({
@@ -7436,25 +7618,22 @@ class GoogleCloudDocumentaiV1DocumentStyle {
   /// Font size.
   GoogleCloudDocumentaiV1DocumentStyleFontSize? fontSize;
 
-  /// Font weight.
+  /// [Font weight](https://www.w3schools.com/cssref/pr_font_weight.asp).
   ///
-  /// Possible values are normal, bold, bolder, and lighter.
-  /// https://www.w3schools.com/cssref/pr_font_weight.asp
+  /// Possible values are `normal`, `bold`, `bolder`, and `lighter`.
   core.String? fontWeight;
 
   /// Text anchor indexing into the Document.text.
   GoogleCloudDocumentaiV1DocumentTextAnchor? textAnchor;
 
-  /// Text decoration.
+  /// [Text decoration](https://www.w3schools.com/cssref/pr_text_text-decoration.asp).
   ///
   /// Follows CSS standard.
-  /// https://www.w3schools.com/cssref/pr_text_text-decoration.asp
   core.String? textDecoration;
 
-  /// Text style.
+  /// [Text style](https://www.w3schools.com/cssref/pr_font_font-style.asp).
   ///
-  /// Possible values are normal, italic, and oblique.
-  /// https://www.w3schools.com/cssref/pr_font_font-style.asp
+  /// Possible values are `normal`, `italic`, and `oblique`.
   core.String? textStyle;
 
   GoogleCloudDocumentaiV1DocumentStyle({
@@ -7979,32 +8158,32 @@ typedef GoogleRpcStatus = $Status;
 
 /// Represents a color in the RGBA color space.
 ///
-/// This representation is designed for simplicity of conversion to/from color
-/// representations in various languages over compactness. For example, the
-/// fields of this representation can be trivially provided to the constructor
-/// of `java.awt.Color` in Java; it can also be trivially provided to UIColor's
-/// `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little
-/// work, it can be easily formatted into a CSS `rgba()` string in JavaScript.
-/// This reference page doesn't carry information about the absolute color space
-/// that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-/// DCI-P3, BT.2020, etc.). By default, applications should assume the sRGB
-/// color space. When color equality needs to be decided, implementations,
-/// unless documented otherwise, treat two colors as equal if all their red,
-/// green, blue, and alpha values each differ by at most 1e-5. Example (Java):
-/// import com.google.type.Color; // ... public static java.awt.Color
-/// fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ?
-/// protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color(
-/// protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); }
-/// public static Color toProto(java.awt.Color color) { float red = (float)
-/// color.getRed(); float green = (float) color.getGreen(); float blue = (float)
-/// color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder =
-/// Color .newBuilder() .setRed(red / denominator) .setGreen(green /
-/// denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if
-/// (alpha != 255) { result.setAlpha( FloatValue .newBuilder()
-/// .setValue(((float) alpha) / denominator) .build()); } return
-/// resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static
-/// UIColor* fromProto(Color* protocolor) { float red = \[protocolor red\];
-/// float green = \[protocolor green\]; float blue = \[protocolor blue\];
+/// This representation is designed for simplicity of conversion to and from
+/// color representations in various languages over compactness. For example,
+/// the fields of this representation can be trivially provided to the
+/// constructor of `java.awt.Color` in Java; it can also be trivially provided
+/// to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just
+/// a little work, it can be easily formatted into a CSS `rgba()` string in
+/// JavaScript. This reference page doesn't have information about the absolute
+/// color space that should be used to interpret the RGB value—for example,
+/// sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume
+/// the sRGB color space. When color equality needs to be decided,
+/// implementations, unless documented otherwise, treat two colors as equal if
+/// all their red, green, blue, and alpha values each differ by at most `1e-5`.
+/// Example (Java): import com.google.type.Color; // ... public static
+/// java.awt.Color fromProto(Color protocolor) { float alpha =
+/// protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+/// java.awt.Color( protocolor.getRed(), protocolor.getGreen(),
+/// protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color
+/// color) { float red = (float) color.getRed(); float green = (float)
+/// color.getGreen(); float blue = (float) color.getBlue(); float denominator =
+/// 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red /
+/// denominator) .setGreen(green / denominator) .setBlue(blue / denominator);
+/// int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha(
+/// FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build());
+/// } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ...
+/// static UIColor* fromProto(Color* protocolor) { float red = \[protocolor
+/// red\]; float green = \[protocolor green\]; float blue = \[protocolor blue\];
 /// FloatValue* alpha_wrapper = \[protocolor alpha\]; float alpha = 1.0; if
 /// (alpha_wrapper != nil) { alpha = \[alpha_wrapper value\]; } return \[UIColor
 /// colorWithRed:red green:green blue:blue alpha:alpha\]; } static Color*

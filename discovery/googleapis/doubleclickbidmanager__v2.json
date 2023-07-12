@@ -24,6 +24,12 @@
     "name": "doubleclickbidmanager",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230613",
+    "rootUrl": "https://doubleclickbidmanager.googleapis.com/",
+    "servicePath": "v2/",
+    "title": "DoubleClick Bid Manager API",
+    "version": "v2",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +107,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "queries": {
             "methods": {
@@ -318,8 +323,6 @@
             }
         }
     },
-    "revision": "20230502",
-    "rootUrl": "https://doubleclickbidmanager.googleapis.com/",
     "schemas": {
         "ChannelGrouping": {
             "description": "A channel grouping defines a set of rules that can be used to categorize events in a path report.",
@@ -545,7 +548,7 @@
                     "description": "Additional query options."
                 },
                 "type": {
-                    "description": "The type of the report. The type of the report will dictate what dimesions, filters, and metrics can be used. **Warning:** The `AUDIENCE_COMPOSITION` report type will be deprecated in Display & Video 360 on **June 8, 2023**. Once deprecated, you will no longer be able to create new or retrieve existing Query and Report resources of this type.",
+                    "description": "The type of the report. The type of the report will dictate what dimesions, filters, and metrics can be used.",
                     "enum": [
                         "REPORT_TYPE_UNSPECIFIED",
                         "STANDARD",
@@ -564,7 +567,7 @@
                         "Default value when report type is not specified or is unknown in this version.",
                         "Standard report.",
                         "Inventory Availability report.",
-                        "Audience Composition report. **Warning:** This report type will be deprecated in Display & Video 360 on **June 8, 2023**. Once deprecated, you will no longer be able to create new or retrieve existing Query and Report resources of this type.",
+                        "Audience Composition report.",
                         "Floodlight report.",
                         "YouTube report.",
                         "GRP report.",
@@ -908,8 +911,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "v2/",
-    "title": "DoubleClick Bid Manager API",
-    "version": "v2"
+    }
 }

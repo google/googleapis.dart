@@ -15,6 +15,12 @@
     "name": "discovery",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20200806",
+    "rootUrl": "https://www.googleapis.com/",
+    "servicePath": "discovery/v1/",
+    "title": "API Discovery Service",
+    "version": "v1",
     "parameters": {
         "alt": {
             "default": "json",
@@ -60,7 +66,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "apis": {
             "methods": {
@@ -116,8 +121,6 @@
             }
         }
     },
-    "revision": "20200806",
-    "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "DirectoryList": {
             "id": "DirectoryList",
@@ -682,8 +685,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "discovery/v1/",
-    "title": "API Discovery Service",
-    "version": "v1"
+    }
 }

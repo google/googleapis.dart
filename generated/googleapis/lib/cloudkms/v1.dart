@@ -2212,6 +2212,98 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Decrypts data that was originally encrypted using a raw cryptographic
+  /// mechanism.
+  ///
+  /// The CryptoKey.purpose must be RAW_ENCRYPT_DECRYPT.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the CryptoKeyVersion to use for
+  /// decryption.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+/cryptoKeyVersions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RawDecryptResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RawDecryptResponse> rawDecrypt(
+    RawDecryptRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':rawDecrypt';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RawDecryptResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Encrypts data using portable cryptographic primitives.
+  ///
+  /// Most users should choose Encrypt and Decrypt rather than their raw
+  /// counterparts. The CryptoKey.purpose must be RAW_ENCRYPT_DECRYPT.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the CryptoKeyVersion to use for
+  /// encryption.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+/cryptoKeyVersions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RawEncryptResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RawEncryptResponse> rawEncrypt(
+    RawEncryptRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':rawEncrypt';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RawEncryptResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Restore a CryptoKeyVersion in the DESTROY_SCHEDULED state.
   ///
   /// Upon restoration of the CryptoKeyVersion, state will be set to DISABLED,
@@ -3245,6 +3337,10 @@ class CryptoKey {
   /// AsymmetricSign and GetPublicKey.
   /// - "ASYMMETRIC_DECRYPT" : CryptoKeys with this purpose may be used with
   /// AsymmetricDecrypt and GetPublicKey.
+  /// - "RAW_ENCRYPT_DECRYPT" : CryptoKeys with this purpose may be used with
+  /// RawEncrypt and RawDecrypt. This purpose is meant to be used for
+  /// interoperable symmetric encryption and does not support automatic
+  /// CryptoKey rotation.
   /// - "MAC" : CryptoKeys with this purpose may be used with MacSign.
   core.String? purpose;
 
@@ -3351,6 +3447,8 @@ class CryptoKeyVersion {
   /// Possible string values are:
   /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
   /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
+  /// - "AES_128_GCM" : AES-GCM (Galois Counter Mode) using 128-bit keys.
+  /// - "AES_256_GCM" : AES-GCM (Galois Counter Mode) using 256-bit keys.
   /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
   /// digest.
   /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256
@@ -4342,6 +4440,8 @@ class ImportCryptoKeyVersionRequest {
   /// Possible string values are:
   /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
   /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
+  /// - "AES_128_GCM" : AES-GCM (Galois Counter Mode) using 128-bit keys.
+  /// - "AES_256_GCM" : AES-GCM (Galois Counter Mode) using 256-bit keys.
   /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
   /// digest.
   /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256
@@ -5478,6 +5578,8 @@ class PublicKey {
   /// Possible string values are:
   /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
   /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
+  /// - "AES_128_GCM" : AES-GCM (Galois Counter Mode) using 128-bit keys.
+  /// - "AES_256_GCM" : AES-GCM (Galois Counter Mode) using 256-bit keys.
   /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
   /// digest.
   /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256
@@ -5600,6 +5702,613 @@ class PublicKey {
         if (pem != null) 'pem': pem!,
         if (pemCrc32c != null) 'pemCrc32c': pemCrc32c!,
         if (protectionLevel != null) 'protectionLevel': protectionLevel!,
+      };
+}
+
+/// Request message for KeyManagementService.RawDecrypt.
+class RawDecryptRequest {
+  /// Optional data that must match the data originally supplied in
+  /// RawEncryptRequest.additional_authenticated_data.
+  ///
+  /// Optional.
+  core.String? additionalAuthenticatedData;
+  core.List<core.int> get additionalAuthenticatedDataAsBytes =>
+      convert.base64.decode(additionalAuthenticatedData!);
+
+  set additionalAuthenticatedDataAsBytes(core.List<core.int> bytes_) {
+    additionalAuthenticatedData =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// An optional CRC32C checksum of the
+  /// RawDecryptRequest.additional_authenticated_data.
+  ///
+  /// If specified, KeyManagementService will verify the integrity of the
+  /// received additional_authenticated_data using this checksum.
+  /// KeyManagementService will report an error if the checksum verification
+  /// fails. If you receive a checksum error, your client should verify that
+  /// CRC32C(additional_authenticated_data) is equal to
+  /// additional_authenticated_data_crc32c, and if so, perform a limited number
+  /// of retries. A persistent mismatch may indicate an issue in your
+  /// computation of the CRC32C checksum. Note: This field is defined as int64
+  /// for reasons of compatibility across different languages. However, it is a
+  /// non-negative integer, which will never exceed 2^32-1, and can be safely
+  /// downconverted to uint32 in languages that support this type.
+  ///
+  /// Optional.
+  core.String? additionalAuthenticatedDataCrc32c;
+
+  /// The encrypted data originally returned in RawEncryptResponse.ciphertext.
+  ///
+  /// Required.
+  core.String? ciphertext;
+  core.List<core.int> get ciphertextAsBytes =>
+      convert.base64.decode(ciphertext!);
+
+  set ciphertextAsBytes(core.List<core.int> bytes_) {
+    ciphertext =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// An optional CRC32C checksum of the RawDecryptRequest.ciphertext.
+  ///
+  /// If specified, KeyManagementService will verify the integrity of the
+  /// received ciphertext using this checksum. KeyManagementService will report
+  /// an error if the checksum verification fails. If you receive a checksum
+  /// error, your client should verify that CRC32C(ciphertext) is equal to
+  /// ciphertext_crc32c, and if so, perform a limited number of retries. A
+  /// persistent mismatch may indicate an issue in your computation of the
+  /// CRC32C checksum. Note: This field is defined as int64 for reasons of
+  /// compatibility across different languages. However, it is a non-negative
+  /// integer, which will never exceed 2^32-1, and can be safely downconverted
+  /// to uint32 in languages that support this type.
+  ///
+  /// Optional.
+  core.String? ciphertextCrc32c;
+
+  /// The initialization vector (IV) used during encryption, which must match
+  /// the data originally provided in RawEncryptResponse.initialization_vector.
+  ///
+  /// Required.
+  core.String? initializationVector;
+  core.List<core.int> get initializationVectorAsBytes =>
+      convert.base64.decode(initializationVector!);
+
+  set initializationVectorAsBytes(core.List<core.int> bytes_) {
+    initializationVector =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// An optional CRC32C checksum of the
+  /// RawDecryptRequest.initialization_vector.
+  ///
+  /// If specified, KeyManagementService will verify the integrity of the
+  /// received initialization_vector using this checksum. KeyManagementService
+  /// will report an error if the checksum verification fails. If you receive a
+  /// checksum error, your client should verify that
+  /// CRC32C(initialization_vector) is equal to initialization_vector_crc32c,
+  /// and if so, perform a limited number of retries. A persistent mismatch may
+  /// indicate an issue in your computation of the CRC32C checksum. Note: This
+  /// field is defined as int64 for reasons of compatibility across different
+  /// languages. However, it is a non-negative integer, which will never exceed
+  /// 2^32-1, and can be safely downconverted to uint32 in languages that
+  /// support this type.
+  ///
+  /// Optional.
+  core.String? initializationVectorCrc32c;
+
+  /// The length of the authentication tag that is appended to the end of the
+  /// ciphertext.
+  ///
+  /// If unspecified (0), the default value for the key's algorithm will be used
+  /// (for AES-GCM, the default value is 16).
+  core.int? tagLength;
+
+  RawDecryptRequest({
+    this.additionalAuthenticatedData,
+    this.additionalAuthenticatedDataCrc32c,
+    this.ciphertext,
+    this.ciphertextCrc32c,
+    this.initializationVector,
+    this.initializationVectorCrc32c,
+    this.tagLength,
+  });
+
+  RawDecryptRequest.fromJson(core.Map json_)
+      : this(
+          additionalAuthenticatedData:
+              json_.containsKey('additionalAuthenticatedData')
+                  ? json_['additionalAuthenticatedData'] as core.String
+                  : null,
+          additionalAuthenticatedDataCrc32c:
+              json_.containsKey('additionalAuthenticatedDataCrc32c')
+                  ? json_['additionalAuthenticatedDataCrc32c'] as core.String
+                  : null,
+          ciphertext: json_.containsKey('ciphertext')
+              ? json_['ciphertext'] as core.String
+              : null,
+          ciphertextCrc32c: json_.containsKey('ciphertextCrc32c')
+              ? json_['ciphertextCrc32c'] as core.String
+              : null,
+          initializationVector: json_.containsKey('initializationVector')
+              ? json_['initializationVector'] as core.String
+              : null,
+          initializationVectorCrc32c:
+              json_.containsKey('initializationVectorCrc32c')
+                  ? json_['initializationVectorCrc32c'] as core.String
+                  : null,
+          tagLength: json_.containsKey('tagLength')
+              ? json_['tagLength'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalAuthenticatedData != null)
+          'additionalAuthenticatedData': additionalAuthenticatedData!,
+        if (additionalAuthenticatedDataCrc32c != null)
+          'additionalAuthenticatedDataCrc32c':
+              additionalAuthenticatedDataCrc32c!,
+        if (ciphertext != null) 'ciphertext': ciphertext!,
+        if (ciphertextCrc32c != null) 'ciphertextCrc32c': ciphertextCrc32c!,
+        if (initializationVector != null)
+          'initializationVector': initializationVector!,
+        if (initializationVectorCrc32c != null)
+          'initializationVectorCrc32c': initializationVectorCrc32c!,
+        if (tagLength != null) 'tagLength': tagLength!,
+      };
+}
+
+/// Response message for KeyManagementService.RawDecrypt.
+class RawDecryptResponse {
+  /// The decrypted data.
+  core.String? plaintext;
+  core.List<core.int> get plaintextAsBytes => convert.base64.decode(plaintext!);
+
+  set plaintextAsBytes(core.List<core.int> bytes_) {
+    plaintext =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Integrity verification field.
+  ///
+  /// A CRC32C checksum of the returned RawDecryptResponse.plaintext. An
+  /// integrity check of plaintext can be performed by computing the CRC32C
+  /// checksum of plaintext and comparing your results to this field. Discard
+  /// the response in case of non-matching checksum values, and perform a
+  /// limited number of retries. A persistent mismatch may indicate an issue in
+  /// your computation of the CRC32C checksum. Note: receiving this response
+  /// message indicates that KeyManagementService is able to successfully
+  /// decrypt the ciphertext. Note: This field is defined as int64 for reasons
+  /// of compatibility across different languages. However, it is a non-negative
+  /// integer, which will never exceed 2^32-1, and can be safely downconverted
+  /// to uint32 in languages that support this type.
+  core.String? plaintextCrc32c;
+
+  /// The ProtectionLevel of the CryptoKeyVersion used in decryption.
+  /// Possible string values are:
+  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
+  /// - "SOFTWARE" : Crypto operations are performed in software.
+  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
+  /// backend.
+  core.String? protectionLevel;
+
+  /// Integrity verification field.
+  ///
+  /// A flag indicating whether
+  /// RawDecryptRequest.additional_authenticated_data_crc32c was received by
+  /// KeyManagementService and used for the integrity verification of
+  /// additional_authenticated_data. A false value of this field indicates
+  /// either that // RawDecryptRequest.additional_authenticated_data_crc32c was
+  /// left unset or that it was not delivered to KeyManagementService. If you've
+  /// set RawDecryptRequest.additional_authenticated_data_crc32c but this field
+  /// is still false, discard the response and perform a limited number of
+  /// retries.
+  core.bool? verifiedAdditionalAuthenticatedDataCrc32c;
+
+  /// Integrity verification field.
+  ///
+  /// A flag indicating whether RawDecryptRequest.ciphertext_crc32c was received
+  /// by KeyManagementService and used for the integrity verification of the
+  /// ciphertext. A false value of this field indicates either that
+  /// RawDecryptRequest.ciphertext_crc32c was left unset or that it was not
+  /// delivered to KeyManagementService. If you've set
+  /// RawDecryptRequest.ciphertext_crc32c but this field is still false, discard
+  /// the response and perform a limited number of retries.
+  core.bool? verifiedCiphertextCrc32c;
+
+  /// Integrity verification field.
+  ///
+  /// A flag indicating whether RawDecryptRequest.initialization_vector_crc32c
+  /// was received by KeyManagementService and used for the integrity
+  /// verification of initialization_vector. A false value of this field
+  /// indicates either that RawDecryptRequest.initialization_vector_crc32c was
+  /// left unset or that it was not delivered to KeyManagementService. If you've
+  /// set RawDecryptRequest.initialization_vector_crc32c but this field is still
+  /// false, discard the response and perform a limited number of retries.
+  core.bool? verifiedInitializationVectorCrc32c;
+
+  RawDecryptResponse({
+    this.plaintext,
+    this.plaintextCrc32c,
+    this.protectionLevel,
+    this.verifiedAdditionalAuthenticatedDataCrc32c,
+    this.verifiedCiphertextCrc32c,
+    this.verifiedInitializationVectorCrc32c,
+  });
+
+  RawDecryptResponse.fromJson(core.Map json_)
+      : this(
+          plaintext: json_.containsKey('plaintext')
+              ? json_['plaintext'] as core.String
+              : null,
+          plaintextCrc32c: json_.containsKey('plaintextCrc32c')
+              ? json_['plaintextCrc32c'] as core.String
+              : null,
+          protectionLevel: json_.containsKey('protectionLevel')
+              ? json_['protectionLevel'] as core.String
+              : null,
+          verifiedAdditionalAuthenticatedDataCrc32c: json_
+                  .containsKey('verifiedAdditionalAuthenticatedDataCrc32c')
+              ? json_['verifiedAdditionalAuthenticatedDataCrc32c'] as core.bool
+              : null,
+          verifiedCiphertextCrc32c:
+              json_.containsKey('verifiedCiphertextCrc32c')
+                  ? json_['verifiedCiphertextCrc32c'] as core.bool
+                  : null,
+          verifiedInitializationVectorCrc32c:
+              json_.containsKey('verifiedInitializationVectorCrc32c')
+                  ? json_['verifiedInitializationVectorCrc32c'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (plaintext != null) 'plaintext': plaintext!,
+        if (plaintextCrc32c != null) 'plaintextCrc32c': plaintextCrc32c!,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel!,
+        if (verifiedAdditionalAuthenticatedDataCrc32c != null)
+          'verifiedAdditionalAuthenticatedDataCrc32c':
+              verifiedAdditionalAuthenticatedDataCrc32c!,
+        if (verifiedCiphertextCrc32c != null)
+          'verifiedCiphertextCrc32c': verifiedCiphertextCrc32c!,
+        if (verifiedInitializationVectorCrc32c != null)
+          'verifiedInitializationVectorCrc32c':
+              verifiedInitializationVectorCrc32c!,
+      };
+}
+
+/// Request message for KeyManagementService.RawEncrypt.
+class RawEncryptRequest {
+  /// Optional data that, if specified, must also be provided during decryption
+  /// through RawDecryptRequest.additional_authenticated_data.
+  ///
+  /// This field may only be used in conjunction with an algorithm that accepts
+  /// additional authenticated data (for example, AES-GCM). The maximum size
+  /// depends on the key version's protection_level. For SOFTWARE keys, the
+  /// plaintext must be no larger than 64KiB. For HSM keys, the combined length
+  /// of the plaintext and additional_authenticated_data fields must be no
+  /// larger than 8KiB.
+  ///
+  /// Optional.
+  core.String? additionalAuthenticatedData;
+  core.List<core.int> get additionalAuthenticatedDataAsBytes =>
+      convert.base64.decode(additionalAuthenticatedData!);
+
+  set additionalAuthenticatedDataAsBytes(core.List<core.int> bytes_) {
+    additionalAuthenticatedData =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// An optional CRC32C checksum of the
+  /// RawEncryptRequest.additional_authenticated_data.
+  ///
+  /// If specified, KeyManagementService will verify the integrity of the
+  /// received additional_authenticated_data using this checksum.
+  /// KeyManagementService will report an error if the checksum verification
+  /// fails. If you receive a checksum error, your client should verify that
+  /// CRC32C(additional_authenticated_data) is equal to
+  /// additional_authenticated_data_crc32c, and if so, perform a limited number
+  /// of retries. A persistent mismatch may indicate an issue in your
+  /// computation of the CRC32C checksum. Note: This field is defined as int64
+  /// for reasons of compatibility across different languages. However, it is a
+  /// non-negative integer, which will never exceed 2^32-1, and can be safely
+  /// downconverted to uint32 in languages that support this type.
+  ///
+  /// Optional.
+  core.String? additionalAuthenticatedDataCrc32c;
+
+  /// A customer-supplied initialization vector that will be used for
+  /// encryption.
+  ///
+  /// If it is not provided for AES-CBC and AES-CTR, one will be generated. It
+  /// will be returned in RawEncryptResponse.initialization_vector.
+  ///
+  /// Optional.
+  core.String? initializationVector;
+  core.List<core.int> get initializationVectorAsBytes =>
+      convert.base64.decode(initializationVector!);
+
+  set initializationVectorAsBytes(core.List<core.int> bytes_) {
+    initializationVector =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// An optional CRC32C checksum of the
+  /// RawEncryptRequest.initialization_vector.
+  ///
+  /// If specified, KeyManagementService will verify the integrity of the
+  /// received initialization_vector using this checksum. KeyManagementService
+  /// will report an error if the checksum verification fails. If you receive a
+  /// checksum error, your client should verify that
+  /// CRC32C(initialization_vector) is equal to initialization_vector_crc32c,
+  /// and if so, perform a limited number of retries. A persistent mismatch may
+  /// indicate an issue in your computation of the CRC32C checksum. Note: This
+  /// field is defined as int64 for reasons of compatibility across different
+  /// languages. However, it is a non-negative integer, which will never exceed
+  /// 2^32-1, and can be safely downconverted to uint32 in languages that
+  /// support this type.
+  ///
+  /// Optional.
+  core.String? initializationVectorCrc32c;
+
+  /// The data to encrypt.
+  ///
+  /// Must be no larger than 64KiB. The maximum size depends on the key
+  /// version's protection_level. For SOFTWARE keys, the plaintext must be no
+  /// larger than 64KiB. For HSM keys, the combined length of the plaintext and
+  /// additional_authenticated_data fields must be no larger than 8KiB.
+  ///
+  /// Required.
+  core.String? plaintext;
+  core.List<core.int> get plaintextAsBytes => convert.base64.decode(plaintext!);
+
+  set plaintextAsBytes(core.List<core.int> bytes_) {
+    plaintext =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// An optional CRC32C checksum of the RawEncryptRequest.plaintext.
+  ///
+  /// If specified, KeyManagementService will verify the integrity of the
+  /// received plaintext using this checksum. KeyManagementService will report
+  /// an error if the checksum verification fails. If you receive a checksum
+  /// error, your client should verify that CRC32C(plaintext) is equal to
+  /// plaintext_crc32c, and if so, perform a limited number of retries. A
+  /// persistent mismatch may indicate an issue in your computation of the
+  /// CRC32C checksum. Note: This field is defined as int64 for reasons of
+  /// compatibility across different languages. However, it is a non-negative
+  /// integer, which will never exceed 2^32-1, and can be safely downconverted
+  /// to uint32 in languages that support this type.
+  ///
+  /// Optional.
+  core.String? plaintextCrc32c;
+
+  RawEncryptRequest({
+    this.additionalAuthenticatedData,
+    this.additionalAuthenticatedDataCrc32c,
+    this.initializationVector,
+    this.initializationVectorCrc32c,
+    this.plaintext,
+    this.plaintextCrc32c,
+  });
+
+  RawEncryptRequest.fromJson(core.Map json_)
+      : this(
+          additionalAuthenticatedData:
+              json_.containsKey('additionalAuthenticatedData')
+                  ? json_['additionalAuthenticatedData'] as core.String
+                  : null,
+          additionalAuthenticatedDataCrc32c:
+              json_.containsKey('additionalAuthenticatedDataCrc32c')
+                  ? json_['additionalAuthenticatedDataCrc32c'] as core.String
+                  : null,
+          initializationVector: json_.containsKey('initializationVector')
+              ? json_['initializationVector'] as core.String
+              : null,
+          initializationVectorCrc32c:
+              json_.containsKey('initializationVectorCrc32c')
+                  ? json_['initializationVectorCrc32c'] as core.String
+                  : null,
+          plaintext: json_.containsKey('plaintext')
+              ? json_['plaintext'] as core.String
+              : null,
+          plaintextCrc32c: json_.containsKey('plaintextCrc32c')
+              ? json_['plaintextCrc32c'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalAuthenticatedData != null)
+          'additionalAuthenticatedData': additionalAuthenticatedData!,
+        if (additionalAuthenticatedDataCrc32c != null)
+          'additionalAuthenticatedDataCrc32c':
+              additionalAuthenticatedDataCrc32c!,
+        if (initializationVector != null)
+          'initializationVector': initializationVector!,
+        if (initializationVectorCrc32c != null)
+          'initializationVectorCrc32c': initializationVectorCrc32c!,
+        if (plaintext != null) 'plaintext': plaintext!,
+        if (plaintextCrc32c != null) 'plaintextCrc32c': plaintextCrc32c!,
+      };
+}
+
+/// Response message for KeyManagementService.RawEncrypt.
+class RawEncryptResponse {
+  /// The encrypted data.
+  ///
+  /// In the case of AES-GCM, the authentication tag is the tag_length bytes at
+  /// the end of this field.
+  core.String? ciphertext;
+  core.List<core.int> get ciphertextAsBytes =>
+      convert.base64.decode(ciphertext!);
+
+  set ciphertextAsBytes(core.List<core.int> bytes_) {
+    ciphertext =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Integrity verification field.
+  ///
+  /// A CRC32C checksum of the returned RawEncryptResponse.ciphertext. An
+  /// integrity check of ciphertext can be performed by computing the CRC32C
+  /// checksum of ciphertext and comparing your results to this field. Discard
+  /// the response in case of non-matching checksum values, and perform a
+  /// limited number of retries. A persistent mismatch may indicate an issue in
+  /// your computation of the CRC32C checksum. Note: This field is defined as
+  /// int64 for reasons of compatibility across different languages. However, it
+  /// is a non-negative integer, which will never exceed 2^32-1, and can be
+  /// safely downconverted to uint32 in languages that support this type.
+  core.String? ciphertextCrc32c;
+
+  /// The initialization vector (IV) generated by the service during encryption.
+  ///
+  /// This value must be stored and provided in
+  /// RawDecryptRequest.initialization_vector at decryption time.
+  core.String? initializationVector;
+  core.List<core.int> get initializationVectorAsBytes =>
+      convert.base64.decode(initializationVector!);
+
+  set initializationVectorAsBytes(core.List<core.int> bytes_) {
+    initializationVector =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Integrity verification field.
+  ///
+  /// A CRC32C checksum of the returned
+  /// RawEncryptResponse.initialization_vector. An integrity check of
+  /// initialization_vector can be performed by computing the CRC32C checksum of
+  /// initialization_vector and comparing your results to this field. Discard
+  /// the response in case of non-matching checksum values, and perform a
+  /// limited number of retries. A persistent mismatch may indicate an issue in
+  /// your computation of the CRC32C checksum. Note: This field is defined as
+  /// int64 for reasons of compatibility across different languages. However, it
+  /// is a non-negative integer, which will never exceed 2^32-1, and can be
+  /// safely downconverted to uint32 in languages that support this type.
+  core.String? initializationVectorCrc32c;
+
+  /// The resource name of the CryptoKeyVersion used in encryption.
+  ///
+  /// Check this field to verify that the intended resource was used for
+  /// encryption.
+  core.String? name;
+
+  /// The ProtectionLevel of the CryptoKeyVersion used in encryption.
+  /// Possible string values are:
+  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
+  /// - "SOFTWARE" : Crypto operations are performed in software.
+  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
+  /// backend.
+  core.String? protectionLevel;
+
+  /// The length of the authentication tag that is appended to the end of the
+  /// ciphertext.
+  core.int? tagLength;
+
+  /// Integrity verification field.
+  ///
+  /// A flag indicating whether
+  /// RawEncryptRequest.additional_authenticated_data_crc32c was received by
+  /// KeyManagementService and used for the integrity verification of
+  /// additional_authenticated_data. A false value of this field indicates
+  /// either that // RawEncryptRequest.additional_authenticated_data_crc32c was
+  /// left unset or that it was not delivered to KeyManagementService. If you've
+  /// set RawEncryptRequest.additional_authenticated_data_crc32c but this field
+  /// is still false, discard the response and perform a limited number of
+  /// retries.
+  core.bool? verifiedAdditionalAuthenticatedDataCrc32c;
+
+  /// Integrity verification field.
+  ///
+  /// A flag indicating whether RawEncryptRequest.initialization_vector_crc32c
+  /// was received by KeyManagementService and used for the integrity
+  /// verification of initialization_vector. A false value of this field
+  /// indicates either that RawEncryptRequest.initialization_vector_crc32c was
+  /// left unset or that it was not delivered to KeyManagementService. If you've
+  /// set RawEncryptRequest.initialization_vector_crc32c but this field is still
+  /// false, discard the response and perform a limited number of retries.
+  core.bool? verifiedInitializationVectorCrc32c;
+
+  /// Integrity verification field.
+  ///
+  /// A flag indicating whether RawEncryptRequest.plaintext_crc32c was received
+  /// by KeyManagementService and used for the integrity verification of the
+  /// plaintext. A false value of this field indicates either that
+  /// RawEncryptRequest.plaintext_crc32c was left unset or that it was not
+  /// delivered to KeyManagementService. If you've set
+  /// RawEncryptRequest.plaintext_crc32c but this field is still false, discard
+  /// the response and perform a limited number of retries.
+  core.bool? verifiedPlaintextCrc32c;
+
+  RawEncryptResponse({
+    this.ciphertext,
+    this.ciphertextCrc32c,
+    this.initializationVector,
+    this.initializationVectorCrc32c,
+    this.name,
+    this.protectionLevel,
+    this.tagLength,
+    this.verifiedAdditionalAuthenticatedDataCrc32c,
+    this.verifiedInitializationVectorCrc32c,
+    this.verifiedPlaintextCrc32c,
+  });
+
+  RawEncryptResponse.fromJson(core.Map json_)
+      : this(
+          ciphertext: json_.containsKey('ciphertext')
+              ? json_['ciphertext'] as core.String
+              : null,
+          ciphertextCrc32c: json_.containsKey('ciphertextCrc32c')
+              ? json_['ciphertextCrc32c'] as core.String
+              : null,
+          initializationVector: json_.containsKey('initializationVector')
+              ? json_['initializationVector'] as core.String
+              : null,
+          initializationVectorCrc32c:
+              json_.containsKey('initializationVectorCrc32c')
+                  ? json_['initializationVectorCrc32c'] as core.String
+                  : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          protectionLevel: json_.containsKey('protectionLevel')
+              ? json_['protectionLevel'] as core.String
+              : null,
+          tagLength: json_.containsKey('tagLength')
+              ? json_['tagLength'] as core.int
+              : null,
+          verifiedAdditionalAuthenticatedDataCrc32c: json_
+                  .containsKey('verifiedAdditionalAuthenticatedDataCrc32c')
+              ? json_['verifiedAdditionalAuthenticatedDataCrc32c'] as core.bool
+              : null,
+          verifiedInitializationVectorCrc32c:
+              json_.containsKey('verifiedInitializationVectorCrc32c')
+                  ? json_['verifiedInitializationVectorCrc32c'] as core.bool
+                  : null,
+          verifiedPlaintextCrc32c: json_.containsKey('verifiedPlaintextCrc32c')
+              ? json_['verifiedPlaintextCrc32c'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ciphertext != null) 'ciphertext': ciphertext!,
+        if (ciphertextCrc32c != null) 'ciphertextCrc32c': ciphertextCrc32c!,
+        if (initializationVector != null)
+          'initializationVector': initializationVector!,
+        if (initializationVectorCrc32c != null)
+          'initializationVectorCrc32c': initializationVectorCrc32c!,
+        if (name != null) 'name': name!,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel!,
+        if (tagLength != null) 'tagLength': tagLength!,
+        if (verifiedAdditionalAuthenticatedDataCrc32c != null)
+          'verifiedAdditionalAuthenticatedDataCrc32c':
+              verifiedAdditionalAuthenticatedDataCrc32c!,
+        if (verifiedInitializationVectorCrc32c != null)
+          'verifiedInitializationVectorCrc32c':
+              verifiedInitializationVectorCrc32c!,
+        if (verifiedPlaintextCrc32c != null)
+          'verifiedPlaintextCrc32c': verifiedPlaintextCrc32c!,
       };
 }
 

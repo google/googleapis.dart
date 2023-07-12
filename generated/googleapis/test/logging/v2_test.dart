@@ -2079,6 +2079,7 @@ api.Settings buildSettings() {
     o.disableDefaultSink = true;
     o.kmsKeyName = 'foo';
     o.kmsServiceAccountId = 'foo';
+    o.loggingServiceAccountId = 'foo';
     o.name = 'foo';
     o.storageLocation = 'foo';
   }
@@ -2096,6 +2097,10 @@ void checkSettings(api.Settings o) {
     );
     unittest.expect(
       o.kmsServiceAccountId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.loggingServiceAccountId!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -4980,6 +4985,7 @@ void main() {
       final res = api.LoggingApi(mock).billingAccounts.sinks;
       final arg_request = buildLogSink();
       final arg_parent = 'foo';
+      final arg_customWriterIdentity = 'foo';
       final arg_uniqueWriterIdentity = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5019,6 +5025,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['customWriterIdentity']!.first,
+          unittest.equals(arg_customWriterIdentity),
+        );
+        unittest.expect(
           queryMap['uniqueWriterIdentity']!.first,
           unittest.equals('$arg_uniqueWriterIdentity'),
         );
@@ -5034,7 +5044,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
-          uniqueWriterIdentity: arg_uniqueWriterIdentity, $fields: arg_$fields);
+          customWriterIdentity: arg_customWriterIdentity,
+          uniqueWriterIdentity: arg_uniqueWriterIdentity,
+          $fields: arg_$fields);
       checkLogSink(response as api.LogSink);
     });
 
@@ -5212,6 +5224,7 @@ void main() {
       final res = api.LoggingApi(mock).billingAccounts.sinks;
       final arg_request = buildLogSink();
       final arg_sinkName = 'foo';
+      final arg_customWriterIdentity = 'foo';
       final arg_uniqueWriterIdentity = true;
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
@@ -5251,6 +5264,10 @@ void main() {
             );
           }
         }
+        unittest.expect(
+          queryMap['customWriterIdentity']!.first,
+          unittest.equals(arg_customWriterIdentity),
+        );
         unittest.expect(
           queryMap['uniqueWriterIdentity']!.first,
           unittest.equals('$arg_uniqueWriterIdentity'),
@@ -5271,6 +5288,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_sinkName,
+          customWriterIdentity: arg_customWriterIdentity,
           uniqueWriterIdentity: arg_uniqueWriterIdentity,
           updateMask: arg_updateMask,
           $fields: arg_$fields);
@@ -5282,6 +5300,7 @@ void main() {
       final res = api.LoggingApi(mock).billingAccounts.sinks;
       final arg_request = buildLogSink();
       final arg_sinkName = 'foo';
+      final arg_customWriterIdentity = 'foo';
       final arg_uniqueWriterIdentity = true;
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
@@ -5322,6 +5341,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['customWriterIdentity']!.first,
+          unittest.equals(arg_customWriterIdentity),
+        );
+        unittest.expect(
           queryMap['uniqueWriterIdentity']!.first,
           unittest.equals('$arg_uniqueWriterIdentity'),
         );
@@ -5341,6 +5364,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(arg_request, arg_sinkName,
+          customWriterIdentity: arg_customWriterIdentity,
           uniqueWriterIdentity: arg_uniqueWriterIdentity,
           updateMask: arg_updateMask,
           $fields: arg_$fields);
@@ -7848,6 +7872,7 @@ void main() {
       final res = api.LoggingApi(mock).folders.sinks;
       final arg_request = buildLogSink();
       final arg_parent = 'foo';
+      final arg_customWriterIdentity = 'foo';
       final arg_uniqueWriterIdentity = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7887,6 +7912,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['customWriterIdentity']!.first,
+          unittest.equals(arg_customWriterIdentity),
+        );
+        unittest.expect(
           queryMap['uniqueWriterIdentity']!.first,
           unittest.equals('$arg_uniqueWriterIdentity'),
         );
@@ -7902,7 +7931,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
-          uniqueWriterIdentity: arg_uniqueWriterIdentity, $fields: arg_$fields);
+          customWriterIdentity: arg_customWriterIdentity,
+          uniqueWriterIdentity: arg_uniqueWriterIdentity,
+          $fields: arg_$fields);
       checkLogSink(response as api.LogSink);
     });
 
@@ -8080,6 +8111,7 @@ void main() {
       final res = api.LoggingApi(mock).folders.sinks;
       final arg_request = buildLogSink();
       final arg_sinkName = 'foo';
+      final arg_customWriterIdentity = 'foo';
       final arg_uniqueWriterIdentity = true;
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
@@ -8119,6 +8151,10 @@ void main() {
             );
           }
         }
+        unittest.expect(
+          queryMap['customWriterIdentity']!.first,
+          unittest.equals(arg_customWriterIdentity),
+        );
         unittest.expect(
           queryMap['uniqueWriterIdentity']!.first,
           unittest.equals('$arg_uniqueWriterIdentity'),
@@ -8139,6 +8175,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_sinkName,
+          customWriterIdentity: arg_customWriterIdentity,
           uniqueWriterIdentity: arg_uniqueWriterIdentity,
           updateMask: arg_updateMask,
           $fields: arg_$fields);
@@ -8150,6 +8187,7 @@ void main() {
       final res = api.LoggingApi(mock).folders.sinks;
       final arg_request = buildLogSink();
       final arg_sinkName = 'foo';
+      final arg_customWriterIdentity = 'foo';
       final arg_uniqueWriterIdentity = true;
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
@@ -8190,6 +8228,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['customWriterIdentity']!.first,
+          unittest.equals(arg_customWriterIdentity),
+        );
+        unittest.expect(
           queryMap['uniqueWriterIdentity']!.first,
           unittest.equals('$arg_uniqueWriterIdentity'),
         );
@@ -8209,6 +8251,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(arg_request, arg_sinkName,
+          customWriterIdentity: arg_customWriterIdentity,
           uniqueWriterIdentity: arg_uniqueWriterIdentity,
           updateMask: arg_updateMask,
           $fields: arg_$fields);
@@ -11778,6 +11821,7 @@ void main() {
       final res = api.LoggingApi(mock).organizations.sinks;
       final arg_request = buildLogSink();
       final arg_parent = 'foo';
+      final arg_customWriterIdentity = 'foo';
       final arg_uniqueWriterIdentity = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -11817,6 +11861,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['customWriterIdentity']!.first,
+          unittest.equals(arg_customWriterIdentity),
+        );
+        unittest.expect(
           queryMap['uniqueWriterIdentity']!.first,
           unittest.equals('$arg_uniqueWriterIdentity'),
         );
@@ -11832,7 +11880,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
-          uniqueWriterIdentity: arg_uniqueWriterIdentity, $fields: arg_$fields);
+          customWriterIdentity: arg_customWriterIdentity,
+          uniqueWriterIdentity: arg_uniqueWriterIdentity,
+          $fields: arg_$fields);
       checkLogSink(response as api.LogSink);
     });
 
@@ -12010,6 +12060,7 @@ void main() {
       final res = api.LoggingApi(mock).organizations.sinks;
       final arg_request = buildLogSink();
       final arg_sinkName = 'foo';
+      final arg_customWriterIdentity = 'foo';
       final arg_uniqueWriterIdentity = true;
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
@@ -12049,6 +12100,10 @@ void main() {
             );
           }
         }
+        unittest.expect(
+          queryMap['customWriterIdentity']!.first,
+          unittest.equals(arg_customWriterIdentity),
+        );
         unittest.expect(
           queryMap['uniqueWriterIdentity']!.first,
           unittest.equals('$arg_uniqueWriterIdentity'),
@@ -12069,6 +12124,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_sinkName,
+          customWriterIdentity: arg_customWriterIdentity,
           uniqueWriterIdentity: arg_uniqueWriterIdentity,
           updateMask: arg_updateMask,
           $fields: arg_$fields);
@@ -12080,6 +12136,7 @@ void main() {
       final res = api.LoggingApi(mock).organizations.sinks;
       final arg_request = buildLogSink();
       final arg_sinkName = 'foo';
+      final arg_customWriterIdentity = 'foo';
       final arg_uniqueWriterIdentity = true;
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
@@ -12120,6 +12177,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['customWriterIdentity']!.first,
+          unittest.equals(arg_customWriterIdentity),
+        );
+        unittest.expect(
           queryMap['uniqueWriterIdentity']!.first,
           unittest.equals('$arg_uniqueWriterIdentity'),
         );
@@ -12139,6 +12200,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(arg_request, arg_sinkName,
+          customWriterIdentity: arg_customWriterIdentity,
           uniqueWriterIdentity: arg_uniqueWriterIdentity,
           updateMask: arg_updateMask,
           $fields: arg_$fields);
@@ -14356,6 +14418,7 @@ void main() {
       final res = api.LoggingApi(mock).projects.sinks;
       final arg_request = buildLogSink();
       final arg_parent = 'foo';
+      final arg_customWriterIdentity = 'foo';
       final arg_uniqueWriterIdentity = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -14395,6 +14458,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['customWriterIdentity']!.first,
+          unittest.equals(arg_customWriterIdentity),
+        );
+        unittest.expect(
           queryMap['uniqueWriterIdentity']!.first,
           unittest.equals('$arg_uniqueWriterIdentity'),
         );
@@ -14410,7 +14477,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
-          uniqueWriterIdentity: arg_uniqueWriterIdentity, $fields: arg_$fields);
+          customWriterIdentity: arg_customWriterIdentity,
+          uniqueWriterIdentity: arg_uniqueWriterIdentity,
+          $fields: arg_$fields);
       checkLogSink(response as api.LogSink);
     });
 
@@ -14588,6 +14657,7 @@ void main() {
       final res = api.LoggingApi(mock).projects.sinks;
       final arg_request = buildLogSink();
       final arg_sinkName = 'foo';
+      final arg_customWriterIdentity = 'foo';
       final arg_uniqueWriterIdentity = true;
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
@@ -14627,6 +14697,10 @@ void main() {
             );
           }
         }
+        unittest.expect(
+          queryMap['customWriterIdentity']!.first,
+          unittest.equals(arg_customWriterIdentity),
+        );
         unittest.expect(
           queryMap['uniqueWriterIdentity']!.first,
           unittest.equals('$arg_uniqueWriterIdentity'),
@@ -14647,6 +14721,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_sinkName,
+          customWriterIdentity: arg_customWriterIdentity,
           uniqueWriterIdentity: arg_uniqueWriterIdentity,
           updateMask: arg_updateMask,
           $fields: arg_$fields);
@@ -14658,6 +14733,7 @@ void main() {
       final res = api.LoggingApi(mock).projects.sinks;
       final arg_request = buildLogSink();
       final arg_sinkName = 'foo';
+      final arg_customWriterIdentity = 'foo';
       final arg_uniqueWriterIdentity = true;
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
@@ -14698,6 +14774,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['customWriterIdentity']!.first,
+          unittest.equals(arg_customWriterIdentity),
+        );
+        unittest.expect(
           queryMap['uniqueWriterIdentity']!.first,
           unittest.equals('$arg_uniqueWriterIdentity'),
         );
@@ -14717,6 +14797,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(arg_request, arg_sinkName,
+          customWriterIdentity: arg_customWriterIdentity,
           uniqueWriterIdentity: arg_uniqueWriterIdentity,
           updateMask: arg_updateMask,
           $fields: arg_$fields);
@@ -14730,6 +14811,7 @@ void main() {
       final res = api.LoggingApi(mock).sinks;
       final arg_request = buildLogSink();
       final arg_parent = 'foo';
+      final arg_customWriterIdentity = 'foo';
       final arg_uniqueWriterIdentity = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -14769,6 +14851,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['customWriterIdentity']!.first,
+          unittest.equals(arg_customWriterIdentity),
+        );
+        unittest.expect(
           queryMap['uniqueWriterIdentity']!.first,
           unittest.equals('$arg_uniqueWriterIdentity'),
         );
@@ -14784,7 +14870,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.create(arg_request, arg_parent,
-          uniqueWriterIdentity: arg_uniqueWriterIdentity, $fields: arg_$fields);
+          customWriterIdentity: arg_customWriterIdentity,
+          uniqueWriterIdentity: arg_uniqueWriterIdentity,
+          $fields: arg_$fields);
       checkLogSink(response as api.LogSink);
     });
 
@@ -14962,6 +15050,7 @@ void main() {
       final res = api.LoggingApi(mock).sinks;
       final arg_request = buildLogSink();
       final arg_sinkName = 'foo';
+      final arg_customWriterIdentity = 'foo';
       final arg_uniqueWriterIdentity = true;
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
@@ -15002,6 +15091,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['customWriterIdentity']!.first,
+          unittest.equals(arg_customWriterIdentity),
+        );
+        unittest.expect(
           queryMap['uniqueWriterIdentity']!.first,
           unittest.equals('$arg_uniqueWriterIdentity'),
         );
@@ -15021,6 +15114,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.update(arg_request, arg_sinkName,
+          customWriterIdentity: arg_customWriterIdentity,
           uniqueWriterIdentity: arg_uniqueWriterIdentity,
           updateMask: arg_updateMask,
           $fields: arg_$fields);

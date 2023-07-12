@@ -2582,7 +2582,7 @@ typedef EnvironmentDimensionValueEntry = $Entry;
 /// device configurations - a jenkins job with a build step followed by a test
 /// step The maximum size of an execution message is 1 MiB. An Execution can be
 /// updated until its state is set to COMPLETE at which point it becomes
-/// immutable. Next tag: 17
+/// immutable.
 class Execution {
   /// The time when the Execution status transitioned to COMPLETE.
   ///
@@ -4611,7 +4611,7 @@ typedef Status = $Status;
 /// xml logs and returns a TestExecutionStep with updated TestResult(s). - user
 /// update the status of TestExecutionStep with id 100 to COMPLETE A Step can be
 /// updated until its state is set to COMPLETE at which points it becomes
-/// immutable. Next tag: 27
+/// immutable.
 class Step {
   /// The time when the step status was set to complete.
   ///

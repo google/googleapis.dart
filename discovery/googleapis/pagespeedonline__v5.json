@@ -24,6 +24,13 @@
     "name": "pagespeedonline",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230710",
+    "rootUrl": "https://pagespeedonline.googleapis.com/",
+    "servicePath": "",
+    "title": "PageSpeed Insights API",
+    "version": "v5",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "pagespeedapi": {
             "methods": {
@@ -191,8 +197,6 @@
             }
         }
     },
-    "revision": "20230515",
-    "rootUrl": "https://pagespeedonline.googleapis.com/",
     "schemas": {
         "AuditRefs": {
             "description": "A light reference to an audit by id, used to group and weight audits in a given category.",
@@ -952,9 +956,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "PageSpeed Insights API",
-    "version": "v5",
-    "version_module": true
+    }
 }

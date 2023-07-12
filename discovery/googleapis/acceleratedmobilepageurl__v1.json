@@ -15,6 +15,13 @@
     "name": "acceleratedmobilepageurl",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230708",
+    "rootUrl": "https://acceleratedmobilepageurl.googleapis.com/",
+    "servicePath": "",
+    "title": "Accelerated Mobile Pages (AMP) URL API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -92,7 +99,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "ampUrls": {
             "methods": {
@@ -114,8 +120,6 @@
             }
         }
     },
-    "revision": "20230515",
-    "rootUrl": "https://acceleratedmobilepageurl.googleapis.com/",
     "schemas": {
         "AmpUrl": {
             "description": "AMP URL response for a requested URL.",
@@ -218,9 +222,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Accelerated Mobile Pages (AMP) URL API",
-    "version": "v1",
-    "version_module": true
+    }
 }

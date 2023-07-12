@@ -12,6 +12,10 @@
 
 /// Workload Manager API - v1
 ///
+/// Workload Manager is a service that provides tooling for enterprise workloads
+/// to automate the deployment and validation of your workloads against best
+/// practices and recommendations.
+///
 /// For more information, see <https://cloud.google.com/workload-manager/docs>
 ///
 /// Create an instance of [WorkloadManagerApi] to access these resources:
@@ -41,6 +45,9 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
+/// Workload Manager is a service that provides tooling for enterprise workloads
+/// to automate the deployment and validation of your workloads against best
+/// practices and recommendations.
 class WorkloadManagerApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -857,6 +864,8 @@ class ProjectsLocationsRulesResource {
   /// pre-defined rules are global available to all projects and all regions
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [customRulesBucket] - The Cloud Storage bucket name for custom rules.
+  ///
   /// [filter] - Filter based on primary_category, secondary_category
   ///
   /// [pageSize] - Requested page size. Server may return fewer items than
@@ -877,12 +886,14 @@ class ProjectsLocationsRulesResource {
   /// this method will complete with the same error.
   async.Future<ListRulesResponse> list(
     core.String parent, {
+    core.String? customRulesBucket,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (customRulesBucket != null) 'customRulesBucket': [customRulesBucket],
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -912,12 +923,15 @@ typedef CancelOperationRequest = $Empty;
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
-/// Message describing Evaluation object
+/// LINT.IfChange Message describing Evaluation object
 class Evaluation {
   /// Create time stamp
   ///
   /// Output only.
   core.String? createTime;
+
+  /// The Cloud Storage bucket name for custom rules.
+  core.String? customRulesBucket;
 
   /// Description of the Evaluation
   core.String? description;
@@ -945,7 +959,9 @@ class Evaluation {
   /// Output only.
   core.List<core.String>? ruleVersions;
 
-  /// crontab format schedule for scheduled evaluation, example: 0  * / 3 * * *
+  /// crontab format schedule for scheduled evaluation, currently only support
+  /// the following schedule: "0 * / 1 * * *", "0 * / 6 * * *", "0 * / 12 * *
+  /// *", "0 0 * / 1 * *", "0 0 * / 7 * *",
   core.String? schedule;
 
   /// Update time stamp
@@ -955,6 +971,7 @@ class Evaluation {
 
   Evaluation({
     this.createTime,
+    this.customRulesBucket,
     this.description,
     this.labels,
     this.name,
@@ -970,6 +987,9 @@ class Evaluation {
       : this(
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
+              : null,
+          customRulesBucket: json_.containsKey('customRulesBucket')
+              ? json_['customRulesBucket'] as core.String
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
@@ -1011,6 +1031,7 @@ class Evaluation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
+        if (customRulesBucket != null) 'customRulesBucket': customRulesBucket!,
         if (description != null) 'description': description!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
@@ -1211,6 +1232,11 @@ class GceInstanceFilter {
 
 /// A presentation of host resource usage where the workload runs.
 class Insight {
+  /// The instance id where the insight is generated from
+  ///
+  /// Required.
+  core.String? instanceId;
+
   /// The insights data for sap system discovery.
   ///
   /// This is a copy of SAP System proto and should get updated whenever that
@@ -1229,6 +1255,7 @@ class Insight {
   SqlserverValidation? sqlserverValidation;
 
   Insight({
+    this.instanceId,
     this.sapDiscovery,
     this.sapValidation,
     this.sentTime,
@@ -1237,6 +1264,9 @@ class Insight {
 
   Insight.fromJson(core.Map json_)
       : this(
+          instanceId: json_.containsKey('instanceId')
+              ? json_['instanceId'] as core.String
+              : null,
           sapDiscovery: json_.containsKey('sapDiscovery')
               ? SapDiscovery.fromJson(
                   json_['sapDiscovery'] as core.Map<core.String, core.dynamic>)
@@ -1255,6 +1285,7 @@ class Insight {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (instanceId != null) 'instanceId': instanceId!,
         if (sapDiscovery != null) 'sapDiscovery': sapDiscovery!,
         if (sapValidation != null) 'sapValidation': sapValidation!,
         if (sentTime != null) 'sentTime': sentTime!,
@@ -1683,7 +1714,7 @@ class ResourceFilter {
 
 /// Message describing resource status
 class ResourceStatus {
-  /// the new version of rule id if exists
+  /// Historical: Used before 2023-05-22 the new version of rule id if exists
   core.List<core.String>? rulesNewerVersions;
 
   /// State of the resource
@@ -1865,7 +1896,7 @@ class RunEvaluationRequest {
       };
 }
 
-/// The schema of SAP system discovery data.
+/// LINT.IfChange The schema of SAP system discovery data.
 class SapDiscovery {
   /// An SAP system may run without an application layer.
   SapDiscoveryComponent? applicationLayer;
@@ -2030,9 +2061,26 @@ class SapDiscoveryResource {
   core.List<core.String>? relatedResources;
 
   /// ComputeInstance, ComputeDisk, VPC, Bare Metal server, etc.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "RESOURCE_KIND_UNSPECIFIED" : Unspecified resource kind.
+  /// - "RESOURCE_KIND_INSTANCE" : This is a compute instance.
+  /// - "RESOURCE_KIND_DISK" : This is a compute disk.
+  /// - "RESOURCE_KIND_ADDRESS" : This is a compute address.
+  /// - "RESOURCE_KIND_FILESTORE" : This is a filestore instance.
+  /// - "RESOURCE_KIND_HEALTH_CHECK" : This is a compute health check.
+  /// - "RESOURCE_KIND_FORWARDING_RULE" : This is a compute forwarding rule.
+  /// - "RESOURCE_KIND_BACKEND_SERVICE" : This is a compute backend service.
+  /// - "RESOURCE_KIND_SUBNETWORK" : This is a compute subnetwork.
+  /// - "RESOURCE_KIND_NETWORK" : This is a compute network.
+  /// - "RESOURCE_KIND_PUBLIC_ADDRESS" : This is a public accessible IP Address.
+  /// - "RESOURCE_KIND_INSTANCE_GROUP" : This is a compute instance group.
   core.String? resourceKind;
 
   /// The type of this resource.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "RESOURCE_TYPE_UNSPECIFIED" : Undefined resource type.
   /// - "COMPUTE" : This is a compute resource.
@@ -2179,11 +2227,26 @@ class SqlserverValidation {
   /// The agent version collected this data point
   core.String? agentVersion;
 
+  /// The instance_name of the instance that the Insight data comes from.
+  ///
+  /// According to https://linter.aip.dev/122/name-suffix: field names should
+  /// not use the _name suffix unless the field would be ambiguous without it.
+  ///
+  /// Required.
+  core.String? instance;
+
+  /// The project_id of the cloud project that the Insight data comes from.
+  ///
+  /// Required.
+  core.String? projectId;
+
   /// A list of SqlServer validation metrics data.
   core.List<SqlserverValidationValidationDetail>? validationDetails;
 
   SqlserverValidation({
     this.agentVersion,
+    this.instance,
+    this.projectId,
     this.validationDetails,
   });
 
@@ -2191,6 +2254,12 @@ class SqlserverValidation {
       : this(
           agentVersion: json_.containsKey('agentVersion')
               ? json_['agentVersion'] as core.String
+              : null,
+          instance: json_.containsKey('instance')
+              ? json_['instance'] as core.String
+              : null,
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
               : null,
           validationDetails: json_.containsKey('validationDetails')
               ? (json_['validationDetails'] as core.List)
@@ -2202,50 +2271,78 @@ class SqlserverValidation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (agentVersion != null) 'agentVersion': agentVersion!,
+        if (instance != null) 'instance': instance!,
+        if (projectId != null) 'projectId': projectId!,
         if (validationDetails != null) 'validationDetails': validationDetails!,
       };
 }
 
-/// Message describing the Sqlserver validation metrics.
-class SqlserverValidationValidationDetail {
-  /// The pairs of metrics data: field name & field value.
-  core.Map<core.String, core.String>? details;
+/// Message containing collected data names and values.
+class SqlserverValidationDetails {
+  /// Collected data is in format.
+  ///
+  /// Required.
+  core.Map<core.String, core.String>? fields;
 
-  /// The instance id where the ValidationDetail is generated from
-  core.String? instanceId;
-
-  /// The Sqlserver system that the validation data is from.
-  /// Possible string values are:
-  /// - "SQLSERVER_VALIDATION_TYPE_UNSPECIFIED" : Unspecified type.
-  /// - "OS" : The Sqlserver system named OS
-  /// - "DB" : The Sqlserver system named DB
-  core.String? type;
-
-  SqlserverValidationValidationDetail({
-    this.details,
-    this.instanceId,
-    this.type,
+  SqlserverValidationDetails({
+    this.fields,
   });
 
-  SqlserverValidationValidationDetail.fromJson(core.Map json_)
+  SqlserverValidationDetails.fromJson(core.Map json_)
       : this(
-          details: json_.containsKey('details')
-              ? (json_['details'] as core.Map<core.String, core.dynamic>).map(
+          fields: json_.containsKey('fields')
+              ? (json_['fields'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
                     key,
                     value as core.String,
                   ),
                 )
               : null,
-          instanceId: json_.containsKey('instanceId')
-              ? json_['instanceId'] as core.String
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fields != null) 'fields': fields!,
+      };
+}
+
+/// Message describing the Sqlserver validation metrics.
+class SqlserverValidationValidationDetail {
+  /// Details wraps map that represents collected data names and values.
+  ///
+  /// Required.
+  core.List<SqlserverValidationDetails>? details;
+
+  /// The Sqlserver system that the validation data is from.
+  /// Possible string values are:
+  /// - "SQLSERVER_VALIDATION_TYPE_UNSPECIFIED" : Unspecified type.
+  /// - "OS" : The Sqlserver system named OS
+  /// - "DB_LOG_DISK_SEPARATION" : The LOG_DISK_SEPARATION table
+  /// - "DB_MAX_PARALLELISM" : The MAX_PARALLELISM table
+  /// - "DB_CXPACKET_WAITS" : The CXPACKET_WAITS table
+  /// - "DB_TRANSACTION_LOG_HANDLING" : The TRANSACTION_LOG_HANDLING table
+  /// - "DB_VIRTUAL_LOG_FILE_COUNT" : The VIRTUAL_LOG_FILE_COUNT table
+  /// - "DB_BUFFER_POOL_EXTENSION" : The BUFFER_POOL_EXTENSION table
+  /// - "DB_MAX_SERVER_MEMORY" : The MAX_SERVER_MEMORY table
+  core.String? type;
+
+  SqlserverValidationValidationDetail({
+    this.details,
+    this.type,
+  });
+
+  SqlserverValidationValidationDetail.fromJson(core.Map json_)
+      : this(
+          details: json_.containsKey('details')
+              ? (json_['details'] as core.List)
+                  .map((value) => SqlserverValidationDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (details != null) 'details': details!,
-        if (instanceId != null) 'instanceId': instanceId!,
         if (type != null) 'type': type!,
       };
 }

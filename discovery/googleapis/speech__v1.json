@@ -24,6 +24,13 @@
     "name": "speech",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230705",
+    "rootUrl": "https://speech.googleapis.com/",
+    "servicePath": "",
+    "title": "Cloud Speech-to-Text API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "operations": {
             "methods": {
@@ -522,8 +528,6 @@
             }
         }
     },
-    "revision": "20230428",
-    "rootUrl": "https://speech.googleapis.com/",
     "schemas": {
         "ABNFGrammar": {
             "id": "ABNFGrammar",
@@ -1332,9 +1336,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Cloud Speech-to-Text API",
-    "version": "v1",
-    "version_module": true
+    }
 }

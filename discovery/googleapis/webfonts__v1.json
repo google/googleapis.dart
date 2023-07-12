@@ -15,6 +15,12 @@
     "name": "webfonts",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230621",
+    "rootUrl": "https://webfonts.googleapis.com/",
+    "servicePath": "",
+    "title": "Web Fonts Developer API",
+    "version": "v1",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -92,7 +98,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "webfonts": {
             "methods": {
@@ -160,8 +165,6 @@
             }
         }
     },
-    "revision": "20230502",
-    "rootUrl": "https://webfonts.googleapis.com/",
     "schemas": {
         "Axis": {
             "description": "Metadata for a variable font axis.",
@@ -261,8 +264,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Web Fonts Developer API",
-    "version": "v1"
+    }
 }

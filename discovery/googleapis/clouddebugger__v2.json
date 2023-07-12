@@ -15,7 +15,7 @@
     "baseUrl": "https://clouddebugger.googleapis.com/",
     "batchPath": "batch",
     "canonicalName": "Cloud Debugger",
-    "description": "Examines the call stack and variables of a running application without stopping or slowing it down. ",
+    "description": "Examines the call stack and variables of a running application without stopping or slowing it down. (Deprecated) ",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/debugger",
     "icons": {
@@ -27,6 +27,13 @@
     "name": "clouddebugger",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230629",
+    "rootUrl": "https://clouddebugger.googleapis.com/",
+    "servicePath": "",
+    "title": "Cloud Debugger API (Deprecated)",
+    "version": "v2",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -104,7 +111,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "controller": {
             "resources": {
@@ -446,8 +452,6 @@
             }
         }
     },
-    "revision": "20230508",
-    "rootUrl": "https://clouddebugger.googleapis.com/",
     "schemas": {
         "AliasContext": {
             "description": "An alias to a repo revision.",
@@ -1116,9 +1120,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Cloud Debugger API",
-    "version": "v2",
-    "version_module": true
+    }
 }

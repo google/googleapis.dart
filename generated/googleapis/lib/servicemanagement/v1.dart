@@ -2614,7 +2614,7 @@ class Diagnostic {
 /// Example: documentation: summary: \> The Google Calendar API gives access to
 /// most calendar features. pages: - name: Overview content: (== include
 /// google/foo/overview.md ==) - name: Tutorial content: (== include
-/// google/foo/tutorial.md ==) subpages; - name: Java content: (== include
+/// google/foo/tutorial.md ==) subpages: - name: Java content: (== include
 /// google/foo/tutorial_java.md ==) rules: - selector:
 /// google.calendar.Calendar.Get description: \> ... - selector:
 /// google.calendar.Calendar.Put description: \> ... Documentation is provided
@@ -2659,6 +2659,12 @@ class Documentation {
   /// **NOTE:** All service configuration rules follow "last one wins" order.
   core.List<DocumentationRule>? rules;
 
+  /// Specifies section and content to override boilerplate content provided by
+  /// go/api-docgen.
+  ///
+  /// Currently overrides following sections: 1. rest.service.client_libraries
+  core.List<Page>? sectionOverrides;
+
   /// Specifies the service root url if the default one (the service name from
   /// the yaml file) is not suitable.
   ///
@@ -2678,6 +2684,7 @@ class Documentation {
     this.overview,
     this.pages,
     this.rules,
+    this.sectionOverrides,
     this.serviceRootUrl,
     this.summary,
   });
@@ -2702,6 +2709,12 @@ class Documentation {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          sectionOverrides: json_.containsKey('sectionOverrides')
+              ? (json_['sectionOverrides'] as core.List)
+                  .map((value) => Page.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           serviceRootUrl: json_.containsKey('serviceRootUrl')
               ? json_['serviceRootUrl'] as core.String
               : null,
@@ -2716,6 +2729,7 @@ class Documentation {
         if (overview != null) 'overview': overview!,
         if (pages != null) 'pages': pages!,
         if (rules != null) 'rules': rules!,
+        if (sectionOverrides != null) 'sectionOverrides': sectionOverrides!,
         if (serviceRootUrl != null) 'serviceRootUrl': serviceRootUrl!,
         if (summary != null) 'summary': summary!,
       };

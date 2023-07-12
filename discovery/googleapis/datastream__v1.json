@@ -24,6 +24,13 @@
     "name": "datastream",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230620",
+    "rootUrl": "https://datastream.googleapis.com/",
+    "servicePath": "",
+    "title": "Datastream API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -1022,6 +1028,17 @@
                                         "name"
                                     ],
                                     "parameters": {
+                                        "cdcStrategy.specificStartPosition.mysqlLogPosition.logFile": {
+                                            "description": "The binary log file name.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "cdcStrategy.specificStartPosition.mysqlLogPosition.logPosition": {
+                                            "description": "The position within the binary log file. Default is head of file.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
                                         "force": {
                                             "description": "Optional. Update the stream without validating it.",
                                             "location": "query",
@@ -1220,8 +1237,6 @@
             }
         }
     },
-    "revision": "20230425",
-    "rootUrl": "https://datastream.googleapis.com/",
     "schemas": {
         "AvroFileFormat": {
             "description": "AVRO file format configuration.",
@@ -1273,7 +1288,7 @@
                     "type": "string"
                 },
                 "state": {
-                    "description": "Backfill job state.",
+                    "description": "Output only. Backfill job state.",
                     "enum": [
                         "STATE_UNSPECIFIED",
                         "NOT_STARTED",
@@ -1294,6 +1309,7 @@
                         "Backfill completed successfully.",
                         "Backfill job failed since the table structure is currently unsupported for backfill."
                     ],
+                    "readOnly": true,
                     "type": "string"
                 },
                 "trigger": {
@@ -2620,7 +2636,7 @@
             "id": "SingleTargetDataset",
             "properties": {
                 "datasetId": {
-                    "description": "The dataset ID of the target dataset.",
+                    "description": "The dataset ID of the target dataset. DatasetIds allowed characters: https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.",
                     "type": "string"
                 }
             },
@@ -2905,7 +2921,7 @@
                     "type": "array"
                 },
                 "state": {
-                    "description": "Validation execution status.",
+                    "description": "Output only. Validation execution status.",
                     "enum": [
                         "STATE_UNSPECIFIED",
                         "NOT_EXECUTED",
@@ -2918,6 +2934,7 @@
                         "Validation failed.",
                         "Validation passed."
                     ],
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -2988,9 +3005,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Datastream API",
-    "version": "v1",
-    "version_module": true
+    }
 }

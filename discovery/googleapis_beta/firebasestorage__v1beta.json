@@ -27,6 +27,13 @@
     "name": "firebasestorage",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230630",
+    "rootUrl": "https://firebasestorage.googleapis.com/",
+    "servicePath": "",
+    "title": "Cloud Storage for Firebase API",
+    "version": "v1beta",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -104,7 +111,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -120,7 +126,7 @@
                             ],
                             "parameters": {
                                 "bucket": {
-                                    "description": "Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_number}/buckets/{bucket_id}`.",
+                                    "description": "Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`.",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+/buckets/[^/]+$",
                                     "required": true,
@@ -149,7 +155,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_number}/buckets/{bucket_id}`.",
+                                    "description": "Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`.",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+/buckets/[^/]+$",
                                     "required": true,
@@ -186,7 +192,7 @@
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. Resource name of the parent Firebase project, `projects/{project_number}`.",
+                                    "description": "Required. Resource name of the parent Firebase project, `projects/{project_id_or_number}`.",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+$",
                                     "required": true,
@@ -212,7 +218,7 @@
                             ],
                             "parameters": {
                                 "bucket": {
-                                    "description": "Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_number}/buckets/{bucket_id}`.",
+                                    "description": "Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`.",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+/buckets/[^/]+$",
                                     "required": true,
@@ -236,8 +242,6 @@
             }
         }
     },
-    "revision": "20230505",
-    "rootUrl": "https://firebasestorage.googleapis.com/",
     "schemas": {
         "AddFirebaseRequest": {
             "description": "The request used to link a Google Cloud Storage bucket to a Firebase project.",
@@ -384,9 +388,5 @@
             "properties": {},
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Cloud Storage for Firebase API",
-    "version": "v1beta",
-    "version_module": true
+    }
 }

@@ -454,6 +454,7 @@ api.GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest
     o.artifact = 'foo';
     o.assertion = 'foo';
     o.challenge = 'foo';
+    o.limitedUse = true;
   }
   buildCounterGoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest--;
   return o;
@@ -476,6 +477,7 @@ void checkGoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest(
       o.challenge!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.limitedUse!, unittest.isTrue);
   }
   buildCounterGoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest--;
 }
@@ -491,6 +493,7 @@ api.GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest
     o.attestationStatement = 'foo';
     o.challenge = 'foo';
     o.keyId = 'foo';
+    o.limitedUse = true;
   }
   buildCounterGoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest--;
   return o;
@@ -513,6 +516,7 @@ void checkGoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest(
       o.keyId!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.limitedUse!, unittest.isTrue);
   }
   buildCounterGoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest--;
 }
@@ -554,6 +558,7 @@ api.GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest
   buildCounterGoogleFirebaseAppcheckV1ExchangeCustomTokenRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1ExchangeCustomTokenRequest < 3) {
     o.customToken = 'foo';
+    o.limitedUse = true;
   }
   buildCounterGoogleFirebaseAppcheckV1ExchangeCustomTokenRequest--;
   return o;
@@ -567,6 +572,7 @@ void checkGoogleFirebaseAppcheckV1ExchangeCustomTokenRequest(
       o.customToken!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.limitedUse!, unittest.isTrue);
   }
   buildCounterGoogleFirebaseAppcheckV1ExchangeCustomTokenRequest--;
 }
@@ -578,6 +584,7 @@ api.GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest
   buildCounterGoogleFirebaseAppcheckV1ExchangeDebugTokenRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1ExchangeDebugTokenRequest < 3) {
     o.debugToken = 'foo';
+    o.limitedUse = true;
   }
   buildCounterGoogleFirebaseAppcheckV1ExchangeDebugTokenRequest--;
   return o;
@@ -591,6 +598,7 @@ void checkGoogleFirebaseAppcheckV1ExchangeDebugTokenRequest(
       o.debugToken!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.limitedUse!, unittest.isTrue);
   }
   buildCounterGoogleFirebaseAppcheckV1ExchangeDebugTokenRequest--;
 }
@@ -603,6 +611,7 @@ api.GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest
   buildCounterGoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest < 3) {
     o.deviceToken = 'foo';
+    o.limitedUse = true;
   }
   buildCounterGoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest--;
   return o;
@@ -616,6 +625,7 @@ void checkGoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest(
       o.deviceToken!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.limitedUse!, unittest.isTrue);
   }
   buildCounterGoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest--;
 }
@@ -628,6 +638,7 @@ api.GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest
   buildCounterGoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest <
       3) {
+    o.limitedUse = true;
     o.playIntegrityToken = 'foo';
   }
   buildCounterGoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest--;
@@ -639,6 +650,7 @@ void checkGoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest(
   buildCounterGoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest <
       3) {
+    unittest.expect(o.limitedUse!, unittest.isTrue);
     unittest.expect(
       o.playIntegrityToken!,
       unittest.equals('foo'),
@@ -657,6 +669,7 @@ api.GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest
   buildCounterGoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest <
       3) {
+    o.limitedUse = true;
     o.recaptchaEnterpriseToken = 'foo';
   }
   buildCounterGoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest--;
@@ -668,6 +681,7 @@ void checkGoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest(
   buildCounterGoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest <
       3) {
+    unittest.expect(o.limitedUse!, unittest.isTrue);
     unittest.expect(
       o.recaptchaEnterpriseToken!,
       unittest.equals('foo'),
@@ -683,6 +697,7 @@ api.GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest
   final o = api.GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest();
   buildCounterGoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest < 3) {
+    o.limitedUse = true;
     o.recaptchaV3Token = 'foo';
   }
   buildCounterGoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest--;
@@ -693,6 +708,7 @@ void checkGoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest(
     api.GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest o) {
   buildCounterGoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest < 3) {
+    unittest.expect(o.limitedUse!, unittest.isTrue);
     unittest.expect(
       o.recaptchaV3Token!,
       unittest.equals('foo'),

@@ -75,6 +75,12 @@
     "name": "script",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230707",
+    "rootUrl": "https://script.googleapis.com/",
+    "servicePath": "",
+    "title": "Apps Script API",
+    "version": "v1",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -152,7 +158,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "processes": {
             "methods": {
@@ -885,8 +890,6 @@
             }
         }
     },
-    "revision": "20230429",
-    "rootUrl": "https://script.googleapis.com/",
     "schemas": {
         "Content": {
             "description": "The Content resource.",
@@ -1785,8 +1788,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Apps Script API",
-    "version": "v1"
+    }
 }

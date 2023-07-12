@@ -24,6 +24,13 @@
     "name": "adexchangebuyer2",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230711",
+    "rootUrl": "https://adexchangebuyer.googleapis.com/",
+    "servicePath": "",
+    "title": "Ad Exchange Buyer API II",
+    "version": "v2beta1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "accounts": {
             "resources": {
@@ -2567,8 +2573,6 @@
             }
         }
     },
-    "revision": "20230516",
-    "rootUrl": "https://adexchangebuyer.googleapis.com/",
     "schemas": {
         "AbsoluteDateRange": {
             "description": "An absolute date range, specified by its start date and end date. The supported range of dates begins 30 days before today and ends today. Validity checked upon filter set creation. If a filter set with an absolute date range is run at a later date more than 30 days after start_date, it will fail.",
@@ -6124,9 +6128,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Ad Exchange Buyer API II",
-    "version": "v2beta1",
-    "version_module": true
+    }
 }

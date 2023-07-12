@@ -1047,6 +1047,21 @@ class AwsS3Data {
   /// Required.
   core.String? bucketName;
 
+  /// The Resource name of a secret in Secret Manager.
+  ///
+  /// The Azure SAS token must be stored in Secret Manager in JSON format: {
+  /// "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted
+  /// `roles/secretmanager.secretAccessor` for the resource. See \[Configure
+  /// access to a source: Microsoft Azure Blob
+  /// Storage\](https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager)
+  /// for more information. If `credentials_secret` is specified, do not specify
+  /// azure_credentials. This feature is in
+  /// [preview](https://cloud.google.com/terms/service-terms#1). Format:
+  /// `projects/{project_number}/secrets/{secret_name}`
+  ///
+  /// Optional.
+  core.String? credentialsSecret;
+
   /// Root path to transfer objects.
   ///
   /// Must be an empty string or full path name that ends with a '/'. This field
@@ -1067,6 +1082,7 @@ class AwsS3Data {
   AwsS3Data({
     this.awsAccessKey,
     this.bucketName,
+    this.credentialsSecret,
     this.path,
     this.roleArn,
   });
@@ -1080,6 +1096,9 @@ class AwsS3Data {
           bucketName: json_.containsKey('bucketName')
               ? json_['bucketName'] as core.String
               : null,
+          credentialsSecret: json_.containsKey('credentialsSecret')
+              ? json_['credentialsSecret'] as core.String
+              : null,
           path: json_.containsKey('path') ? json_['path'] as core.String : null,
           roleArn: json_.containsKey('roleArn')
               ? json_['roleArn'] as core.String
@@ -1089,6 +1108,7 @@ class AwsS3Data {
   core.Map<core.String, core.dynamic> toJson() => {
         if (awsAccessKey != null) 'awsAccessKey': awsAccessKey!,
         if (bucketName != null) 'bucketName': bucketName!,
+        if (credentialsSecret != null) 'credentialsSecret': credentialsSecret!,
         if (path != null) 'path': path!,
         if (roleArn != null) 'roleArn': roleArn!,
       };
@@ -1116,6 +1136,21 @@ class AzureBlobStorageData {
   /// Required.
   core.String? container;
 
+  /// The Resource name of a secret in Secret Manager.
+  ///
+  /// The Azure SAS token must be stored in Secret Manager in JSON format: {
+  /// "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted
+  /// `roles/secretmanager.secretAccessor` for the resource. See \[Configure
+  /// access to a source: Microsoft Azure Blob
+  /// Storage\](https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager)
+  /// for more information. If `credentials_secret` is specified, do not specify
+  /// azure_credentials. This feature is in
+  /// [preview](https://cloud.google.com/terms/service-terms#1). Format:
+  /// `projects/{project_number}/secrets/{secret_name}`
+  ///
+  /// Optional.
+  core.String? credentialsSecret;
+
   /// Root path to transfer objects.
   ///
   /// Must be an empty string or full path name that ends with a '/'. This field
@@ -1131,6 +1166,7 @@ class AzureBlobStorageData {
   AzureBlobStorageData({
     this.azureCredentials,
     this.container,
+    this.credentialsSecret,
     this.path,
     this.storageAccount,
   });
@@ -1144,6 +1180,9 @@ class AzureBlobStorageData {
           container: json_.containsKey('container')
               ? json_['container'] as core.String
               : null,
+          credentialsSecret: json_.containsKey('credentialsSecret')
+              ? json_['credentialsSecret'] as core.String
+              : null,
           path: json_.containsKey('path') ? json_['path'] as core.String : null,
           storageAccount: json_.containsKey('storageAccount')
               ? json_['storageAccount'] as core.String
@@ -1153,6 +1192,7 @@ class AzureBlobStorageData {
   core.Map<core.String, core.dynamic> toJson() => {
         if (azureCredentials != null) 'azureCredentials': azureCredentials!,
         if (container != null) 'container': container!,
+        if (credentialsSecret != null) 'credentialsSecret': credentialsSecret!,
         if (path != null) 'path': path!,
         if (storageAccount != null) 'storageAccount': storageAccount!,
       };
@@ -2545,7 +2585,12 @@ class TransferSpec {
   /// A Cloud Storage data source.
   GcsData? gcsDataSource;
 
-  /// Cloud Storage intermediate data location.
+  /// For transfers between file systems, specifies a Cloud Storage bucket to be
+  /// used as an intermediate location through which to transfer data.
+  ///
+  /// See
+  /// [Transfer data between file systems](https://cloud.google.com/storage-transfer/docs/file-to-file)
+  /// for more information.
   GcsData? gcsIntermediateDataLocation;
 
   /// An HTTP URL data source.

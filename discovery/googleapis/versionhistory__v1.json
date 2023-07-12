@@ -15,6 +15,13 @@
     "name": "versionhistory",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230710",
+    "rootUrl": "https://versionhistory.googleapis.com/",
+    "servicePath": "",
+    "title": "versionhistory.googleapis.com API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -92,7 +99,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "platforms": {
             "methods": {
@@ -269,8 +275,6 @@
             }
         }
     },
-    "revision": "20230514",
-    "rootUrl": "https://versionhistory.googleapis.com/",
     "schemas": {
         "Channel": {
             "description": "Each Channel is owned by a Platform and owns a collection of versions. Possible Channels are listed in the Channel enum below. Not all Channels are available for every Platform (e.g. CANARY does not exist for LINUX).",
@@ -489,9 +493,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "versionhistory.googleapis.com API",
-    "version": "v1",
-    "version_module": true
+    }
 }

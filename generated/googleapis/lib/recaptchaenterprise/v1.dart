@@ -605,8 +605,8 @@ class ProjectsKeysResource {
   ///
   /// Once a key is migrated, it can be used from either product. SiteVerify
   /// requests are billed as CreateAssessment calls. You must be authenticated
-  /// as one of the current owners of the reCAPTCHA Site Key, and your user must
-  /// have the reCAPTCHA Enterprise Admin IAM role in the destination project.
+  /// as one of the current owners of the reCAPTCHA Key, and your user must have
+  /// the reCAPTCHA Enterprise Admin IAM role in the destination project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1177,7 +1177,8 @@ class GoogleCloudRecaptchaenterpriseV1AppleDeveloperId {
   /// Input only.
   ///
   /// A private key (downloaded as a text file with a .p8 file extension)
-  /// generated for your Apple Developer account.
+  /// generated for your Apple Developer account. Ensure that Apple DeviceCheck
+  /// is enabled for the private key.
   ///
   /// Required.
   core.String? privateKey;
@@ -2009,11 +2010,11 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
   /// Example: 'com.companyname.productname.appname'
   core.List<core.String>? allowedBundleIds;
 
-  /// Apple Developer account details for the app the reCAPTCHA key will
-  /// protect.
+  /// Apple Developer account details for the app that is protected by the
+  /// reCAPTCHA Key.
   ///
-  /// reCAPTCHA Enterprise leverages platform specific checks like Apple
-  /// AppAttest and Apple DeviceCheck to protect your app from abuse. Providing
+  /// reCAPTCHA Enterprise leverages platform-specific checks like Apple App
+  /// Attest and Apple DeviceCheck to protect your app from abuse. Providing
   /// these fields allows reCAPTCHA Enterprise to get a better assessment of the
   /// integrity of your app.
   GoogleCloudRecaptchaenterpriseV1AppleDeveloperId? appleDeveloperId;
@@ -2698,7 +2699,7 @@ class GoogleCloudRecaptchaenterpriseV1ScoreMetrics {
 
 /// The request message to search related account group memberships.
 class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest {
-  /// The unique stable hashed user identifier we should search connections to.
+  /// The unique stable hashed user identifier used to search connections.
   ///
   /// The identifier should correspond to a `hashed_account_id` provided in a
   /// previous `CreateAssessment` or `AnnotateAssessment` call.

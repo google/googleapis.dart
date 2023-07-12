@@ -2595,7 +2595,8 @@ class TagValuesResource {
   /// [pageToken] - Optional. A pagination token returned from a previous call
   /// to `ListTagValues` that indicates where this listing should continue from.
   ///
-  /// [parent] - Required.
+  /// [parent] - Required. Resource name for the parent of the TagValues to be
+  /// listed, in the format `tagKeys/123` or `tagValues/123`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

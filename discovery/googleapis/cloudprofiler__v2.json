@@ -30,6 +30,13 @@
     "name": "cloudprofiler",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230612",
+    "rootUrl": "https://cloudprofiler.googleapis.com/",
+    "servicePath": "",
+    "title": "Cloud Profiler API",
+    "version": "v2",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -107,7 +114,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -214,8 +220,6 @@
             }
         }
     },
-    "revision": "20230507",
-    "rootUrl": "https://cloudprofiler.googleapis.com/",
     "schemas": {
         "CreateProfileRequest": {
             "description": "CreateProfileRequest describes a profile resource online creation request. The deployment field must be populated. The profile_type specifies the list of profile types supported by the agent. The creation call will hang until a profile of one of these types needs to be collected. ",
@@ -334,9 +338,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Cloud Profiler API",
-    "version": "v2",
-    "version_module": true
+    }
 }

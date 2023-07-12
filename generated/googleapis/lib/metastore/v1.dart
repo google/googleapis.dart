@@ -2182,6 +2182,7 @@ class BackendMetastore {
   /// The type of the backend metastore.
   /// Possible string values are:
   /// - "METASTORE_TYPE_UNSPECIFIED" : The metastore type is not set.
+  /// - "BIGQUERY" : The backend metastore is BigQuery.
   /// - "DATAPROC_METASTORE" : The backend metastore is Dataproc Metastore.
   core.String? metastoreType;
 
@@ -2758,6 +2759,17 @@ class HiveMetastoreConfig {
   /// customized in the auxiliary version's AuxiliaryVersionConfig.
   core.Map<core.String, core.String>? configOverrides;
 
+  /// The protocol to use for the metastore service endpoint.
+  ///
+  /// If unspecified, defaults to THRIFT.
+  /// Possible string values are:
+  /// - "ENDPOINT_PROTOCOL_UNSPECIFIED" : The protocol is not set.
+  /// - "THRIFT" : Use the legacy Apache Thrift protocol for the metastore
+  /// service endpoint.
+  /// - "GRPC" : Use the modernized gRPC protocol for the metastore service
+  /// endpoint.
+  core.String? endpointProtocol;
+
   /// Information used to configure the Hive metastore service as a service
   /// principal in a Kerberos realm.
   ///
@@ -2774,6 +2786,7 @@ class HiveMetastoreConfig {
   HiveMetastoreConfig({
     this.auxiliaryVersions,
     this.configOverrides,
+    this.endpointProtocol,
     this.kerberosConfig,
     this.version,
   });
@@ -2801,6 +2814,9 @@ class HiveMetastoreConfig {
                   ),
                 )
               : null,
+          endpointProtocol: json_.containsKey('endpointProtocol')
+              ? json_['endpointProtocol'] as core.String
+              : null,
           kerberosConfig: json_.containsKey('kerberosConfig')
               ? KerberosConfig.fromJson(json_['kerberosConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -2813,6 +2829,7 @@ class HiveMetastoreConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (auxiliaryVersions != null) 'auxiliaryVersions': auxiliaryVersions!,
         if (configOverrides != null) 'configOverrides': configOverrides!,
+        if (endpointProtocol != null) 'endpointProtocol': endpointProtocol!,
         if (kerberosConfig != null) 'kerberosConfig': kerberosConfig!,
         if (version != null) 'version': version!,
       };

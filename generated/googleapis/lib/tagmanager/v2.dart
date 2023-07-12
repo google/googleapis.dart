@@ -32,6 +32,7 @@
 ///       - [AccountsContainersWorkspacesGtagConfigResource]
 ///       - [AccountsContainersWorkspacesTagsResource]
 ///       - [AccountsContainersWorkspacesTemplatesResource]
+///       - [AccountsContainersWorkspacesTransformationsResource]
 ///       - [AccountsContainersWorkspacesTriggersResource]
 ///       - [AccountsContainersWorkspacesVariablesResource]
 ///       - [AccountsContainersWorkspacesZonesResource]
@@ -1440,6 +1441,8 @@ class AccountsContainersWorkspacesResource {
       AccountsContainersWorkspacesTagsResource(_requester);
   AccountsContainersWorkspacesTemplatesResource get templates =>
       AccountsContainersWorkspacesTemplatesResource(_requester);
+  AccountsContainersWorkspacesTransformationsResource get transformations =>
+      AccountsContainersWorkspacesTransformationsResource(_requester);
   AccountsContainersWorkspacesTriggersResource get triggers =>
       AccountsContainersWorkspacesTriggersResource(_requester);
   AccountsContainersWorkspacesVariablesResource get variables =>
@@ -3487,6 +3490,265 @@ class AccountsContainersWorkspacesTemplatesResource {
   }
 }
 
+class AccountsContainersWorkspacesTransformationsResource {
+  final commons.ApiRequester _requester;
+
+  AccountsContainersWorkspacesTransformationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a GTM Transformation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - GTM Workspace's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Transformation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Transformation> create(
+    Transformation request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/transformations';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Transformation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a GTM Transformation.
+  ///
+  /// Request parameters:
+  ///
+  /// [path] - GTM Transformation's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/transformations/{transformation_id}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/transformations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> delete(
+    core.String path, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
+
+    await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
+
+  /// Gets a GTM Transformation.
+  ///
+  /// Request parameters:
+  ///
+  /// [path] - GTM Transformation's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/transformations/{transformation_id}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/transformations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Transformation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Transformation> get(
+    core.String path, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Transformation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all GTM Transformations of a GTM container workspace.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - GTM Workspace's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListTransformationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListTransformationsResponse> list(
+    core.String parent, {
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'tagmanager/v2/' + core.Uri.encodeFull('$parent') + '/transformations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListTransformationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Reverts changes to a GTM Transformation in a GTM Workspace.
+  ///
+  /// Request parameters:
+  ///
+  /// [path] - GTM Transformation's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/transformations/{transformation_id}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/transformations/\[^/\]+$`.
+  ///
+  /// [fingerprint] - When provided, this fingerprint must match the fingerprint
+  /// of the transformation in storage.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RevertTransformationResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RevertTransformationResponse> revert(
+    core.String path, {
+    core.String? fingerprint,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'tagmanager/v2/' + core.Uri.encodeFull('$path') + ':revert';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return RevertTransformationResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a GTM Transformation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [path] - GTM Transformation's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/transformations/{transformation_id}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/transformations/\[^/\]+$`.
+  ///
+  /// [fingerprint] - When provided, this fingerprint must match the fingerprint
+  /// of the transformation in storage.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Transformation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Transformation> update(
+    Transformation request,
+    core.String path, {
+    core.String? fingerprint,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (fingerprint != null) 'fingerprint': [fingerprint],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'tagmanager/v2/' + core.Uri.encodeFull('$path');
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Transformation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class AccountsContainersWorkspacesTriggersResource {
   final commons.ApiRequester _requester;
 
@@ -5162,6 +5424,9 @@ class ContainerFeatures {
   /// Whether this Container supports templates.
   core.bool? supportTemplates;
 
+  /// Whether this Container supports transformations.
+  core.bool? supportTransformations;
+
   /// Whether this Container supports triggers.
   core.bool? supportTriggers;
 
@@ -5188,6 +5453,7 @@ class ContainerFeatures {
     this.supportGtagConfigs,
     this.supportTags,
     this.supportTemplates,
+    this.supportTransformations,
     this.supportTriggers,
     this.supportUserPermissions,
     this.supportVariables,
@@ -5218,6 +5484,9 @@ class ContainerFeatures {
               : null,
           supportTemplates: json_.containsKey('supportTemplates')
               ? json_['supportTemplates'] as core.bool
+              : null,
+          supportTransformations: json_.containsKey('supportTransformations')
+              ? json_['supportTransformations'] as core.bool
               : null,
           supportTriggers: json_.containsKey('supportTriggers')
               ? json_['supportTriggers'] as core.bool
@@ -5250,6 +5519,8 @@ class ContainerFeatures {
           'supportGtagConfigs': supportGtagConfigs!,
         if (supportTags != null) 'supportTags': supportTags!,
         if (supportTemplates != null) 'supportTemplates': supportTemplates!,
+        if (supportTransformations != null)
+          'supportTransformations': supportTransformations!,
         if (supportTriggers != null) 'supportTriggers': supportTriggers!,
         if (supportUserPermissions != null)
           'supportUserPermissions': supportUserPermissions!,
@@ -5316,6 +5587,9 @@ class ContainerVersion {
   /// Auto generated link to the tag manager UI
   core.String? tagManagerUrl;
 
+  /// The transformations in the container that this version was taken from.
+  core.List<Transformation>? transformation;
+
   /// The triggers in the container that this version was taken from.
   core.List<Trigger>? trigger;
 
@@ -5342,6 +5616,7 @@ class ContainerVersion {
     this.path,
     this.tag,
     this.tagManagerUrl,
+    this.transformation,
     this.trigger,
     this.variable,
     this.zone,
@@ -5412,6 +5687,12 @@ class ContainerVersion {
           tagManagerUrl: json_.containsKey('tagManagerUrl')
               ? json_['tagManagerUrl'] as core.String
               : null,
+          transformation: json_.containsKey('transformation')
+              ? (json_['transformation'] as core.List)
+                  .map((value) => Transformation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           trigger: json_.containsKey('trigger')
               ? (json_['trigger'] as core.List)
                   .map((value) => Trigger.fromJson(
@@ -5450,6 +5731,7 @@ class ContainerVersion {
         if (path != null) 'path': path!,
         if (tag != null) 'tag': tag!,
         if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl!,
+        if (transformation != null) 'transformation': transformation!,
         if (trigger != null) 'trigger': trigger!,
         if (variable != null) 'variable': variable!,
         if (zone != null) 'zone': zone!,
@@ -5884,6 +6166,9 @@ class Entity {
   /// The tag being represented by the entity.
   Tag? tag;
 
+  /// The transformation being represented by the entity.
+  Transformation? transformation;
+
   /// The trigger being represented by the entity.
   Trigger? trigger;
 
@@ -5895,6 +6180,7 @@ class Entity {
     this.client,
     this.folder,
     this.tag,
+    this.transformation,
     this.trigger,
     this.variable,
   });
@@ -5916,6 +6202,10 @@ class Entity {
               ? Tag.fromJson(
                   json_['tag'] as core.Map<core.String, core.dynamic>)
               : null,
+          transformation: json_.containsKey('transformation')
+              ? Transformation.fromJson(json_['transformation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           trigger: json_.containsKey('trigger')
               ? Trigger.fromJson(
                   json_['trigger'] as core.Map<core.String, core.dynamic>)
@@ -5931,6 +6221,7 @@ class Entity {
         if (client != null) 'client': client!,
         if (folder != null) 'folder': folder!,
         if (tag != null) 'tag': tag!,
+        if (transformation != null) 'transformation': transformation!,
         if (trigger != null) 'trigger': trigger!,
         if (variable != null) 'variable': variable!,
       };
@@ -6795,6 +7086,37 @@ class ListTemplatesResponse {
       };
 }
 
+class ListTransformationsResponse {
+  /// Continuation token for fetching the next page of results.
+  core.String? nextPageToken;
+
+  /// All GTM Transformations of a GTM Container.
+  core.List<Transformation>? transformation;
+
+  ListTransformationsResponse({
+    this.nextPageToken,
+    this.transformation,
+  });
+
+  ListTransformationsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          transformation: json_.containsKey('transformation')
+              ? (json_['transformation'] as core.List)
+                  .map((value) => Transformation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (transformation != null) 'transformation': transformation!,
+      };
+}
+
 /// List triggers response.
 class ListTriggersResponse {
   /// Continuation token for fetching the next page of results.
@@ -7295,6 +7617,32 @@ class RevertTemplateResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (template != null) 'template': template!,
+      };
+}
+
+/// The result of reverting a transformation in a workspace.
+class RevertTransformationResponse {
+  /// Transformation as it appears in the latest container version since the
+  /// last workspace synchronization operation.
+  ///
+  /// If no transformation is present, that means the transformation was deleted
+  /// in the latest container version.
+  Transformation? transformation;
+
+  RevertTransformationResponse({
+    this.transformation,
+  });
+
+  RevertTransformationResponse.fromJson(core.Map json_)
+      : this(
+          transformation: json_.containsKey('transformation')
+              ? Transformation.fromJson(json_['transformation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (transformation != null) 'transformation': transformation!,
       };
 }
 
@@ -7807,6 +8155,125 @@ class TagConsentSetting {
 /// Represents a tag that fires after another tag in order to tear down
 /// dependencies.
 typedef TeardownTag = $TeardownTag;
+
+/// Represents a Google Tag Manager Transformation.
+class Transformation {
+  /// GTM Account ID.
+  core.String? accountId;
+
+  /// GTM Container ID.
+  core.String? containerId;
+
+  /// The fingerprint of the GTM Transformation as computed at storage time.
+  ///
+  /// This value is recomputed whenever the transformation is modified.
+  core.String? fingerprint;
+
+  /// Transformation display name.
+  ///
+  /// @mutable tagmanager.accounts.containers.workspaces.transformations.create
+  /// @mutable tagmanager.accounts.containers.workspaces.transformations.update
+  core.String? name;
+
+  /// User notes on how to apply this transformation in the container.
+  ///
+  /// @mutable tagmanager.accounts.containers.workspaces.transformations.create
+  /// @mutable tagmanager.accounts.containers.workspaces.transformations.update
+  core.String? notes;
+
+  /// The transformation's parameters.
+  ///
+  /// @mutable tagmanager.accounts.containers.workspaces.transformations.create
+  /// @mutable tagmanager.accounts.containers.workspaces.transformations.update
+  core.List<Parameter>? parameter;
+
+  /// Parent folder id.
+  core.String? parentFolderId;
+
+  /// GTM transformation's API relative path.
+  core.String? path;
+
+  /// Auto generated link to the tag manager UI
+  core.String? tagManagerUrl;
+
+  /// The Transformation ID uniquely identifies the GTM transformation.
+  core.String? transformationId;
+
+  /// Transformation type.
+  ///
+  /// @mutable tagmanager.accounts.containers.workspaces.transformations.create
+  /// @mutable tagmanager.accounts.containers.workspaces.transformations.update
+  core.String? type;
+
+  /// GTM Workspace ID.
+  core.String? workspaceId;
+
+  Transformation({
+    this.accountId,
+    this.containerId,
+    this.fingerprint,
+    this.name,
+    this.notes,
+    this.parameter,
+    this.parentFolderId,
+    this.path,
+    this.tagManagerUrl,
+    this.transformationId,
+    this.type,
+    this.workspaceId,
+  });
+
+  Transformation.fromJson(core.Map json_)
+      : this(
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
+              : null,
+          containerId: json_.containsKey('containerId')
+              ? json_['containerId'] as core.String
+              : null,
+          fingerprint: json_.containsKey('fingerprint')
+              ? json_['fingerprint'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          notes:
+              json_.containsKey('notes') ? json_['notes'] as core.String : null,
+          parameter: json_.containsKey('parameter')
+              ? (json_['parameter'] as core.List)
+                  .map((value) => Parameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          parentFolderId: json_.containsKey('parentFolderId')
+              ? json_['parentFolderId'] as core.String
+              : null,
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          tagManagerUrl: json_.containsKey('tagManagerUrl')
+              ? json_['tagManagerUrl'] as core.String
+              : null,
+          transformationId: json_.containsKey('transformationId')
+              ? json_['transformationId'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          workspaceId: json_.containsKey('workspaceId')
+              ? json_['workspaceId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (containerId != null) 'containerId': containerId!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
+        if (name != null) 'name': name!,
+        if (notes != null) 'notes': notes!,
+        if (parameter != null) 'parameter': parameter!,
+        if (parentFolderId != null) 'parentFolderId': parentFolderId!,
+        if (path != null) 'path': path!,
+        if (tagManagerUrl != null) 'tagManagerUrl': tagManagerUrl!,
+        if (transformationId != null) 'transformationId': transformationId!,
+        if (type != null) 'type': type!,
+        if (workspaceId != null) 'workspaceId': workspaceId!,
+      };
+}
 
 /// Represents a Google Tag Manager Trigger
 class Trigger {

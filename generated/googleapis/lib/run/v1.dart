@@ -3225,7 +3225,7 @@ typedef AuditLogConfig = $AuditLogConfig;
 /// A domain that a user has been authorized to administer.
 ///
 /// To authorize use of a domain, verify ownership via
-/// [Webmaster Central](https://www.google.com/webmasters/verification/home).
+/// [Search Console](https://search.google.com/search-console/welcome).
 class AuthorizedDomain {
   /// Relative name of the domain authorized for use.
   ///
@@ -3880,8 +3880,14 @@ class Container {
 class ContainerOverride {
   /// Arguments to the entrypoint.
   ///
-  /// Will replace existing args for override.
+  /// Will replace existing args for override if present. Must be empty if
+  /// `clear_args` is set to true.
   core.List<core.String>? args;
+
+  /// True if the intention is to clear out existing args list.
+  ///
+  /// Optional.
+  core.bool? clearArgs;
 
   /// List of environment variables to set in the container.
   ///
@@ -3893,6 +3899,7 @@ class ContainerOverride {
 
   ContainerOverride({
     this.args,
+    this.clearArgs,
     this.env,
     this.name,
   });
@@ -3903,6 +3910,9 @@ class ContainerOverride {
               ? (json_['args'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
+              : null,
+          clearArgs: json_.containsKey('clearArgs')
+              ? json_['clearArgs'] as core.bool
               : null,
           env: json_.containsKey('env')
               ? (json_['env'] as core.List)
@@ -3915,6 +3925,7 @@ class ContainerOverride {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (args != null) 'args': args!,
+        if (clearArgs != null) 'clearArgs': clearArgs!,
         if (env != null) 'env': env!,
         if (name != null) 'name': name!,
       };
@@ -4148,7 +4159,7 @@ class EmptyDirVolumeSource {
   ///
   /// The default is "" which means to use the node's default medium. Must be an
   /// empty string (default) or Memory. More info:
-  /// https://kubernetes.io/docs/concepts/storage/volumes#emptydir +optional
+  /// https://kubernetes.io/docs/concepts/storage/volumes#emptydir
   core.String? medium;
 
   /// Limit on the storage usable by this EmptyDir volume.
@@ -4159,7 +4170,7 @@ class EmptyDirVolumeSource {
   /// This field's values are of the 'Quantity' k8s type:
   /// https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/.
   /// The default is nil which means that the limit is undefined. More info:
-  /// http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+  /// https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
   core.String? sizeLimit;
 
   EmptyDirVolumeSource({
@@ -6155,7 +6166,8 @@ class Probe {
   /// Number of seconds after which the probe times out.
   ///
   /// Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be
-  /// smaller than period_seconds.
+  /// smaller than period_seconds; if period_seconds is not set, must be less or
+  /// equal than 10.
   core.int? timeoutSeconds;
 
   Probe({
@@ -6765,10 +6777,11 @@ class RouteStatus {
 
 /// Request message for creating a new execution of a job.
 class RunJobRequest {
-  /// Overrides specification for a given execution of a job.
+  /// Private preview feature.
   ///
-  /// If provided, overrides will be applied to update the execution or task
-  /// spec.
+  /// Currently only available by invitation. Overrides specification for a
+  /// given execution of a job. If provided, overrides will be applied to update
+  /// the execution or task spec.
   ///
   /// Optional.
   Overrides? overrides;

@@ -879,13 +879,16 @@ api.GoogleFirestoreAdminV1Database buildGoogleFirestoreAdminV1Database() {
     o.concurrencyMode = 'foo';
     o.createTime = 'foo';
     o.deleteProtectionState = 'foo';
+    o.earliestVersionTime = 'foo';
     o.etag = 'foo';
     o.keyPrefix = 'foo';
     o.locationId = 'foo';
     o.name = 'foo';
+    o.pointInTimeRecoveryEnablement = 'foo';
     o.type = 'foo';
     o.uid = 'foo';
     o.updateTime = 'foo';
+    o.versionRetentionPeriod = 'foo';
   }
   buildCounterGoogleFirestoreAdminV1Database--;
   return o;
@@ -911,6 +914,10 @@ void checkGoogleFirestoreAdminV1Database(api.GoogleFirestoreAdminV1Database o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.earliestVersionTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.etag!,
       unittest.equals('foo'),
     );
@@ -927,6 +934,10 @@ void checkGoogleFirestoreAdminV1Database(api.GoogleFirestoreAdminV1Database o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.pointInTimeRecoveryEnablement!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.type!,
       unittest.equals('foo'),
     );
@@ -936,6 +947,10 @@ void checkGoogleFirestoreAdminV1Database(api.GoogleFirestoreAdminV1Database o) {
     );
     unittest.expect(
       o.updateTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.versionRetentionPeriod!,
       unittest.equals('foo'),
     );
   }
@@ -985,6 +1000,7 @@ api.GoogleFirestoreAdminV1ExportDocumentsRequest
     o.collectionIds = buildUnnamed14();
     o.namespaceIds = buildUnnamed15();
     o.outputUriPrefix = 'foo';
+    o.snapshotTime = 'foo';
   }
   buildCounterGoogleFirestoreAdminV1ExportDocumentsRequest--;
   return o;
@@ -998,6 +1014,10 @@ void checkGoogleFirestoreAdminV1ExportDocumentsRequest(
     checkUnnamed15(o.namespaceIds!);
     unittest.expect(
       o.outputUriPrefix!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.snapshotTime!,
       unittest.equals('foo'),
     );
   }
@@ -3771,9 +3791,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.FirestoreApi(mock).projects.databases;
       final arg_name = 'foo';
-      final arg_allowMissing = true;
       final arg_etag = 'foo';
-      final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -3808,16 +3826,8 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap['allowMissing']!.first,
-          unittest.equals('$arg_allowMissing'),
-        );
-        unittest.expect(
           queryMap['etag']!.first,
           unittest.equals(arg_etag),
-        );
-        unittest.expect(
-          queryMap['validateOnly']!.first,
-          unittest.equals('$arg_validateOnly'),
         );
         unittest.expect(
           queryMap['fields']!.first,
@@ -3830,11 +3840,8 @@ void main() {
         final resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.delete(arg_name,
-          allowMissing: arg_allowMissing,
-          etag: arg_etag,
-          validateOnly: arg_validateOnly,
-          $fields: arg_$fields);
+      final response =
+          await res.delete(arg_name, etag: arg_etag, $fields: arg_$fields);
       checkGoogleLongrunningOperation(
           response as api.GoogleLongrunningOperation);
     });

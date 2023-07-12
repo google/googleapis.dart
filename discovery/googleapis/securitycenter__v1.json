@@ -24,6 +24,13 @@
     "name": "securitycenter",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230706",
+    "rootUrl": "https://securitycenter.googleapis.com/",
+    "servicePath": "",
+    "title": "Security Command Center API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "folders": {
             "resources": {
@@ -4141,8 +4147,6 @@
             }
         }
     },
-    "revision": "20230512",
-    "rootUrl": "https://securitycenter.googleapis.com/",
     "schemas": {
         "Access": {
             "description": "Represents an access event.",
@@ -4181,6 +4185,10 @@
                 },
                 "serviceName": {
                     "description": "This is the API service that the service account made a call to, e.g. \"iam.googleapis.com\"",
+                    "type": "string"
+                },
+                "userAgent": {
+                    "description": "The caller's user agent string associated with the finding.",
                     "type": "string"
                 },
                 "userAgentFamily": {
@@ -4723,7 +4731,7 @@
             "type": "object"
         },
         "Database": {
-            "description": "Represents database access information, such as queries. A database may be a sub-resource of an instance (as in the case of Cloud SQL instances or Cloud Spanner instances), or the database instance itself. Some database resources might not have the [full resource name](https://google.aip.dev/122#full-resource-names) populated because these resource types, such as Cloud SQL databases, are not yet supported by Cloud Asset Inventory. In these cases only the display name is provided. Some database resources may not have the [full resource name](https://google.aip.dev/122#full-resource-names) populated because these resource types are not yet supported by Cloud Asset Inventory (e.g. Cloud SQL databases). In these cases only the display name will be provided.",
+            "description": "Represents database access information, such as queries. A database may be a sub-resource of an instance (as in the case of Cloud SQL instances or Cloud Spanner instances), or the database instance itself. Some database resources might not have the [full resource name](https://google.aip.dev/122#full-resource-names) populated because these resource types, such as Cloud SQL databases, are not yet supported by Cloud Asset Inventory. In these cases only the display name is provided.",
             "id": "Database",
             "properties": {
                 "displayName": {
@@ -4738,7 +4746,7 @@
                     "type": "array"
                 },
                 "name": {
-                    "description": "The [full resource name](https://google.aip.dev/122#full-resource-names) of the database that the user connected to, if it is supported by Cloud Asset Inventory.",
+                    "description": "Some database resources may not have the [full resource name](https://google.aip.dev/122#full-resource-names) populated because these resource types are not yet supported by Cloud Asset Inventory (e.g. Cloud SQL databases). In these cases only the display name will be provided. The [full resource name](https://google.aip.dev/122#full-resource-names) of the database that the user connected to, if it is supported by Cloud Asset Inventory.",
                     "type": "string"
                 },
                 "query": {
@@ -4747,6 +4755,10 @@
                 },
                 "userName": {
                     "description": "The username used to connect to the database. The username might not be an IAM principal and does not have a set format.",
+                    "type": "string"
+                },
+                "version": {
+                    "description": "The version of the database, for example, POSTGRES_14. See [the complete list](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/SqlDatabaseVersion).",
                     "type": "string"
                 }
             },
@@ -6513,7 +6525,8 @@
                             "NETWORK_SERVICE_DISCOVERY",
                             "ACCESS_TOKEN_MANIPULATION",
                             "ABUSE_ELEVATION_CONTROL_MECHANISM",
-                            "DEFAULT_ACCOUNTS"
+                            "DEFAULT_ACCOUNTS",
+                            "INHIBIT_SYSTEM_RECOVERY"
                         ],
                         "enumDescriptions": [
                             "Unspecified value.",
@@ -6551,7 +6564,8 @@
                             "T1046",
                             "T1134",
                             "T1548",
-                            "T1078.001"
+                            "T1078.001",
+                            "T1490"
                         ],
                         "type": "string"
                     },
@@ -6634,7 +6648,8 @@
                             "NETWORK_SERVICE_DISCOVERY",
                             "ACCESS_TOKEN_MANIPULATION",
                             "ABUSE_ELEVATION_CONTROL_MECHANISM",
-                            "DEFAULT_ACCOUNTS"
+                            "DEFAULT_ACCOUNTS",
+                            "INHIBIT_SYSTEM_RECOVERY"
                         ],
                         "enumDescriptions": [
                             "Unspecified value.",
@@ -6672,7 +6687,8 @@
                             "T1046",
                             "T1134",
                             "T1548",
-                            "T1078.001"
+                            "T1078.001",
+                            "T1490"
                         ],
                         "type": "string"
                     },
@@ -6786,7 +6802,7 @@
                     "description": "The configuration used for Asset Discovery runs."
                 },
                 "enableAssetDiscovery": {
-                    "description": "A flag that indicates if Asset Discovery should be enabled. If the flag is set to `true`, then discovery of assets will occur. If it is set to `false, all historical assets will remain, but discovery of future assets will not occur.",
+                    "description": "A flag that indicates if Asset Discovery should be enabled. If the flag is set to `true`, then discovery of assets will occur. If it is set to `false`, all historical assets will remain, but discovery of future assets will not occur.",
                     "type": "boolean"
                 },
                 "name": {
@@ -7314,9 +7330,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Security Command Center API",
-    "version": "v1",
-    "version_module": true
+    }
 }

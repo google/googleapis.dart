@@ -747,6 +747,9 @@ class Attributes {
   /// https://support.google.com/manufacturers/answer/6124116#video.
   core.List<core.String>? videoLink;
 
+  /// Virtual Model (3d) asset link.
+  core.String? virtualModelLink;
+
   Attributes({
     this.additionalImageLink,
     this.ageGroup,
@@ -787,6 +790,7 @@ class Attributes {
     this.theme,
     this.title,
     this.videoLink,
+    this.virtualModelLink,
   });
 
   Attributes.fromJson(core.Map json_)
@@ -930,6 +934,9 @@ class Attributes {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          virtualModelLink: json_.containsKey('virtualModelLink')
+              ? json_['virtualModelLink'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -978,6 +985,7 @@ class Attributes {
         if (theme != null) 'theme': theme!,
         if (title != null) 'title': title!,
         if (videoLink != null) 'videoLink': videoLink!,
+        if (virtualModelLink != null) 'virtualModelLink': virtualModelLink!,
       };
 }
 

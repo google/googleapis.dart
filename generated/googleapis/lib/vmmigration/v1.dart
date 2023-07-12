@@ -3023,6 +3023,43 @@ class AvailableUpdates {
       };
 }
 
+/// The details of an AWS instance disk.
+class AwsDiskDetails {
+  /// The ordinal number of the disk.
+  core.int? diskNumber;
+
+  /// Size in GB.
+  core.String? sizeGb;
+
+  /// AWS volume ID.
+  core.String? volumeId;
+
+  AwsDiskDetails({
+    this.diskNumber,
+    this.sizeGb,
+    this.volumeId,
+  });
+
+  AwsDiskDetails.fromJson(core.Map json_)
+      : this(
+          diskNumber: json_.containsKey('diskNumber')
+              ? json_['diskNumber'] as core.int
+              : null,
+          sizeGb: json_.containsKey('sizeGb')
+              ? json_['sizeGb'] as core.String
+              : null,
+          volumeId: json_.containsKey('volumeId')
+              ? json_['volumeId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (diskNumber != null) 'diskNumber': diskNumber!,
+        if (sizeGb != null) 'sizeGb': sizeGb!,
+        if (volumeId != null) 'volumeId': volumeId!,
+      };
+}
+
 /// AwsSecurityGroup describes a security group of an AWS VM.
 class AwsSecurityGroup {
   /// The AWS security group id.
@@ -3170,6 +3207,9 @@ class AwsSourceVmDetails {
   /// The total size of the disks being migrated in bytes.
   core.String? committedStorageBytes;
 
+  /// The disks attached to the source VM.
+  core.List<AwsDiskDetails>? disks;
+
   /// The firmware type of the source VM.
   /// Possible string values are:
   /// - "FIRMWARE_UNSPECIFIED" : The firmware is unknown.
@@ -3179,6 +3219,7 @@ class AwsSourceVmDetails {
 
   AwsSourceVmDetails({
     this.committedStorageBytes,
+    this.disks,
     this.firmware,
   });
 
@@ -3186,6 +3227,12 @@ class AwsSourceVmDetails {
       : this(
           committedStorageBytes: json_.containsKey('committedStorageBytes')
               ? json_['committedStorageBytes'] as core.String
+              : null,
+          disks: json_.containsKey('disks')
+              ? (json_['disks'] as core.List)
+                  .map((value) => AwsDiskDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           firmware: json_.containsKey('firmware')
               ? json_['firmware'] as core.String
@@ -3195,6 +3242,7 @@ class AwsSourceVmDetails {
   core.Map<core.String, core.dynamic> toJson() => {
         if (committedStorageBytes != null)
           'committedStorageBytes': committedStorageBytes!,
+        if (disks != null) 'disks': disks!,
         if (firmware != null) 'firmware': firmware!,
       };
 }

@@ -4152,7 +4152,7 @@ class CseIdentity {
   /// user.
   core.String? emailAddress;
 
-  /// If a key pair is associated, the identifier of the key pair, CseKeyPair.
+  /// If a key pair is associated, the ID of the key pair, CseKeyPair.
   core.String? primaryKeyPairId;
 
   CseIdentity({
@@ -6346,13 +6346,27 @@ class VacationSettings {
 
 /// Set up or update a new push notification watch on this user's mailbox.
 class WatchRequest {
-  /// Filtering behavior of labelIds list specified.
+  /// Filtering behavior of `labelIds list` specified.
+  ///
+  /// This field is deprecated because it caused incorrect behavior in some
+  /// cases; use `label_filter_behavior` instead.
   /// Possible string values are:
   /// - "include" : Only get push notifications for message changes relating to
   /// labelIds specified.
   /// - "exclude" : Get push notifications for all message changes except those
   /// relating to labelIds specified.
   core.String? labelFilterAction;
+
+  /// Filtering behavior of `labelIds list` specified.
+  ///
+  /// This field replaces `label_filter_action`; if set, `label_filter_action`
+  /// is ignored.
+  /// Possible string values are:
+  /// - "include" : Only get push notifications for message changes relating to
+  /// labelIds specified.
+  /// - "exclude" : Get push notifications for all message changes except those
+  /// relating to labelIds specified.
+  core.String? labelFilterBehavior;
 
   /// List of label_ids to restrict notifications about.
   ///
@@ -6374,6 +6388,7 @@ class WatchRequest {
 
   WatchRequest({
     this.labelFilterAction,
+    this.labelFilterBehavior,
     this.labelIds,
     this.topicName,
   });
@@ -6382,6 +6397,9 @@ class WatchRequest {
       : this(
           labelFilterAction: json_.containsKey('labelFilterAction')
               ? json_['labelFilterAction'] as core.String
+              : null,
+          labelFilterBehavior: json_.containsKey('labelFilterBehavior')
+              ? json_['labelFilterBehavior'] as core.String
               : null,
           labelIds: json_.containsKey('labelIds')
               ? (json_['labelIds'] as core.List)
@@ -6395,6 +6413,8 @@ class WatchRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (labelFilterAction != null) 'labelFilterAction': labelFilterAction!,
+        if (labelFilterBehavior != null)
+          'labelFilterBehavior': labelFilterBehavior!,
         if (labelIds != null) 'labelIds': labelIds!,
         if (topicName != null) 'topicName': topicName!,
       };

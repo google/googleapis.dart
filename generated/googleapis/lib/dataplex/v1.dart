@@ -1321,6 +1321,16 @@ class ProjectsLocationsDataScansJobsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dataScans/\[^/\]+$`.
   ///
+  /// [filter] - Optional. An expression for filtering the results of the
+  /// ListDataScanJobs request.If unspecified, all datascan jobs will be
+  /// returned. Multiple filters can be applied (with AND, OR logical
+  /// operators). Filters are case-sensitive.Allowed fields are: start_time
+  /// end_timestart_time and end_time expect RFC-3339 formatted strings (e.g.
+  /// 2018-10-08T18:30:00-07:00).For instance, 'start_time \>
+  /// 2018-10-08T00:00:00.123456789Z AND end_time \<
+  /// 2018-10-09T00:00:00.123456789Z' limits results to DataScanJobs between
+  /// specified start and end times.
+  ///
   /// [pageSize] - Optional. Maximum number of DataScanJobs to return. The
   /// service may return fewer than this value. If unspecified, at most 10
   /// DataScanJobs will be returned. The maximum value is 1000; values above
@@ -1343,11 +1353,13 @@ class ProjectsLocationsDataScansJobsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDataplexV1ListDataScanJobsResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -8148,8 +8160,8 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo {
   GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo?
       stringProfile;
 
-  /// The list of top N non-null values and number of times they occur in the
-  /// scanned data.
+  /// The list of top N non-null values, frequency and ratio with which they
+  /// occur in the scanned data.
   ///
   /// N is 10 or equal to the number of distinct values in the field, whichever
   /// is smaller. Not available for complex non-groupable field type RECORD and
@@ -8313,8 +8325,8 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldI
   /// below this point. The third quartile (Q3) splits off the highest 25% of
   /// data from the lowest 75%. It is known as the upper or 75th empirical
   /// quartile, as 75% of the data lies below this point. Here, the quartiles is
-  /// provided as an ordered list of quartile values for the scanned data,
-  /// occurring in order Q1, median, Q3.
+  /// provided as an ordered list of approximate quartile values for the scanned
+  /// data, occurring in order Q1, median, Q3.
   core.List<core.String>? quartiles;
 
   /// Standard deviation of non-null values in the scanned data.
@@ -8400,11 +8412,16 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue {
   /// Count of the corresponding value in the scanned data.
   core.String? count;
 
+  /// Ratio of the corresponding value in the field against the total number of
+  /// rows in the scanned data.
+  core.double? ratio;
+
   /// String value of a top N non-null value.
   core.String? value;
 
   GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue({
     this.count,
+    this.ratio,
     this.value,
   });
 
@@ -8413,18 +8430,35 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue {
       : this(
           count:
               json_.containsKey('count') ? json_['count'] as core.String : null,
+          ratio: json_.containsKey('ratio')
+              ? (json_['ratio'] as core.num).toDouble()
+              : null,
           value:
               json_.containsKey('value') ? json_['value'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
+        if (ratio != null) 'ratio': ratio!,
         if (value != null) 'value': value!,
       };
 }
 
 /// DataProfileScan related setting.
 class GoogleCloudDataplexV1DataProfileSpec {
+  /// The fields to exclude from data profile.If specified, the fields will be
+  /// excluded from data profile, regardless of include_fields value.
+  ///
+  /// Optional.
+  GoogleCloudDataplexV1DataProfileSpecSelectedFields? excludeFields;
+
+  /// The fields to include in data profile.If not specified, all fields at the
+  /// time of profile scan job execution are included, except for ones listed in
+  /// exclude_fields.
+  ///
+  /// Optional.
+  GoogleCloudDataplexV1DataProfileSpecSelectedFields? includeFields;
+
   /// A filter applied to all rows in a single DataScan job.
   ///
   /// The filter needs to be a valid SQL expression for a WHERE clause in
@@ -8444,12 +8478,22 @@ class GoogleCloudDataplexV1DataProfileSpec {
   core.double? samplingPercent;
 
   GoogleCloudDataplexV1DataProfileSpec({
+    this.excludeFields,
+    this.includeFields,
     this.rowFilter,
     this.samplingPercent,
   });
 
   GoogleCloudDataplexV1DataProfileSpec.fromJson(core.Map json_)
       : this(
+          excludeFields: json_.containsKey('excludeFields')
+              ? GoogleCloudDataplexV1DataProfileSpecSelectedFields.fromJson(
+                  json_['excludeFields'] as core.Map<core.String, core.dynamic>)
+              : null,
+          includeFields: json_.containsKey('includeFields')
+              ? GoogleCloudDataplexV1DataProfileSpecSelectedFields.fromJson(
+                  json_['includeFields'] as core.Map<core.String, core.dynamic>)
+              : null,
           rowFilter: json_.containsKey('rowFilter')
               ? json_['rowFilter'] as core.String
               : null,
@@ -8459,8 +8503,39 @@ class GoogleCloudDataplexV1DataProfileSpec {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (excludeFields != null) 'excludeFields': excludeFields!,
+        if (includeFields != null) 'includeFields': includeFields!,
         if (rowFilter != null) 'rowFilter': rowFilter!,
         if (samplingPercent != null) 'samplingPercent': samplingPercent!,
+      };
+}
+
+/// The specification for fields to include or exclude in data profile scan.
+class GoogleCloudDataplexV1DataProfileSpecSelectedFields {
+  /// Expected input is a list of fully qualified names of fields as in the
+  /// schema.Only top-level field names for nested fields are supported.
+  ///
+  /// For instance, if 'x' is of nested field type, listing 'x' is supported but
+  /// 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+  ///
+  /// Optional.
+  core.List<core.String>? fieldNames;
+
+  GoogleCloudDataplexV1DataProfileSpecSelectedFields({
+    this.fieldNames,
+  });
+
+  GoogleCloudDataplexV1DataProfileSpecSelectedFields.fromJson(core.Map json_)
+      : this(
+          fieldNames: json_.containsKey('fieldNames')
+              ? (json_['fieldNames'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fieldNames != null) 'fieldNames': fieldNames!,
       };
 }
 
@@ -8553,6 +8628,13 @@ class GoogleCloudDataplexV1DataQualityRule {
   /// Optional.
   core.String? column;
 
+  /// Description of the rule.
+  ///
+  /// The maximum length is 1,024 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
   /// The dimension a rule belongs to.
   ///
   /// Results are also aggregated at the dimension level. Supported dimensions
@@ -8565,55 +8647,68 @@ class GoogleCloudDataplexV1DataQualityRule {
   /// Rows with null values will automatically fail a rule, unless ignore_null
   /// is true.
   ///
-  /// In that case, such null rows are trivially considered passing.Only
-  /// applicable to ColumnMap rules.
+  /// In that case, such null rows are trivially considered passing.This field
+  /// is only valid for row-level type rules.
   ///
   /// Optional.
   core.bool? ignoreNull;
 
-  /// ColumnMap rule which evaluates whether each column value is null.
+  /// A mutable name for the rule.
+  ///
+  /// The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens
+  /// (-). The maximum length is 63 characters. Must start with a letter. Must
+  /// end with a number or a letter.
+  ///
+  /// Optional.
+  core.String? name;
+
+  /// Row-level rule which evaluates whether each column value is null.
   GoogleCloudDataplexV1DataQualityRuleNonNullExpectation? nonNullExpectation;
 
-  /// ColumnMap rule which evaluates whether each column value lies between a
+  /// Row-level rule which evaluates whether each column value lies between a
   /// specified range.
   GoogleCloudDataplexV1DataQualityRuleRangeExpectation? rangeExpectation;
 
-  /// ColumnMap rule which evaluates whether each column value matches a
+  /// Row-level rule which evaluates whether each column value matches a
   /// specified regex.
   GoogleCloudDataplexV1DataQualityRuleRegexExpectation? regexExpectation;
 
-  /// Table rule which evaluates whether each row passes the specified
-  /// condition.
+  /// Row-level rule which evaluates whether each row in a table passes the
+  /// specified condition.
   GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation?
       rowConditionExpectation;
 
-  /// ColumnMap rule which evaluates whether each column value is contained by a
+  /// Row-level rule which evaluates whether each column value is contained by a
   /// specified set.
   GoogleCloudDataplexV1DataQualityRuleSetExpectation? setExpectation;
 
-  /// ColumnAggregate rule which evaluates whether the column aggregate
-  /// statistic lies between a specified range.
+  /// Aggregate rule which evaluates whether the column aggregate statistic lies
+  /// between a specified range.
   GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation?
       statisticRangeExpectation;
 
-  /// Table rule which evaluates whether the provided expression is true.
+  /// Aggregate rule which evaluates whether the provided expression is true for
+  /// a table.
   GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation?
       tableConditionExpectation;
 
   /// The minimum ratio of passing_rows / total_rows required to pass this rule,
-  /// with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).
+  /// with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).This field
+  /// is only valid for row-level type rules.
   ///
   /// Optional.
   core.double? threshold;
 
-  /// ColumnAggregate rule which evaluates whether the column has duplicates.
+  /// Aggregate rule which evaluates whether the column has duplicates.
   GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation?
       uniquenessExpectation;
 
   GoogleCloudDataplexV1DataQualityRule({
     this.column,
+    this.description,
     this.dimension,
     this.ignoreNull,
+    this.name,
     this.nonNullExpectation,
     this.rangeExpectation,
     this.regexExpectation,
@@ -8630,12 +8725,16 @@ class GoogleCloudDataplexV1DataQualityRule {
           column: json_.containsKey('column')
               ? json_['column'] as core.String
               : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
           dimension: json_.containsKey('dimension')
               ? json_['dimension'] as core.String
               : null,
           ignoreNull: json_.containsKey('ignoreNull')
               ? json_['ignoreNull'] as core.bool
               : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           nonNullExpectation: json_.containsKey('nonNullExpectation')
               ? GoogleCloudDataplexV1DataQualityRuleNonNullExpectation.fromJson(
                   json_['nonNullExpectation']
@@ -8685,8 +8784,10 @@ class GoogleCloudDataplexV1DataQualityRule {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (column != null) 'column': column!,
+        if (description != null) 'description': description!,
         if (dimension != null) 'dimension': dimension!,
         if (ignoreNull != null) 'ignoreNull': ignoreNull!,
+        if (name != null) 'name': name!,
         if (nonNullExpectation != null)
           'nonNullExpectation': nonNullExpectation!,
         if (rangeExpectation != null) 'rangeExpectation': rangeExpectation!,
@@ -8793,33 +8894,29 @@ class GoogleCloudDataplexV1DataQualityRuleRegexExpectation {
 /// DataQualityRuleResult provides a more detailed, per-rule view of the
 /// results.
 class GoogleCloudDataplexV1DataQualityRuleResult {
-  /// The number of rows a rule was evaluated against.
-  ///
-  /// This field is only valid for ColumnMap type rules.Evaluated count can be
-  /// configured to either include all rows (default) - with null rows
-  /// automatically failing rule evaluation, or exclude null rows from the
-  /// evaluated_count, by setting ignore_nulls = true.
+  /// The number of rows a rule was evaluated against.This field is only valid
+  /// for row-level type rules.Evaluated count can be configured to either
+  /// include all rows (default) - with null rows automatically failing rule
+  /// evaluation, or exclude null rows from the evaluated_count, by setting
+  /// ignore_nulls = true.
   core.String? evaluatedCount;
 
-  /// The query to find rows that did not pass this rule.
-  ///
-  /// Only applies to ColumnMap and RowCondition rules.
+  /// The query to find rows that did not pass this rule.This field is only
+  /// valid for row-level type rules.
   core.String? failingRowsQuery;
 
   /// The number of rows with null values in the specified column.
   core.String? nullCount;
 
-  /// The ratio of passed_count / evaluated_count.
-  ///
-  /// This field is only valid for ColumnMap type rules.
+  /// The ratio of passed_count / evaluated_count.This field is only valid for
+  /// row-level type rules.
   core.double? passRatio;
 
   /// Whether the rule passed or failed.
   core.bool? passed;
 
-  /// The number of rows which passed a rule evaluation.
-  ///
-  /// This field is only valid for ColumnMap type rules.
+  /// The number of rows which passed a rule evaluation.This field is only valid
+  /// for row-level type rules.
   core.String? passedCount;
 
   /// The rule specified in the DataQualitySpec, as is.
@@ -10305,6 +10402,16 @@ class GoogleCloudDataplexV1Job {
   /// Output only.
   core.String? endTime;
 
+  /// Spec related to how a task is executed.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1TaskExecutionSpec? executionSpec;
+
+  /// User-defined labels for the task.
+  ///
+  /// Output only.
+  core.Map<core.String, core.String>? labels;
+
   /// Additional information about the current state.
   ///
   /// Output only.
@@ -10353,6 +10460,16 @@ class GoogleCloudDataplexV1Job {
   /// - "ABORTED" : The job was cancelled outside of Dataplex.
   core.String? state;
 
+  /// Job execution trigger.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TRIGGER_UNSPECIFIED" : The trigger is unspecified.
+  /// - "TASK_CONFIG" : The job was triggered by Dataplex based on trigger spec
+  /// from task definition.
+  /// - "RUN_REQUEST" : The job was triggered by the explicit call of Task API.
+  core.String? trigger;
+
   /// System generated globally unique ID for the job.
   ///
   /// Output only.
@@ -10360,6 +10477,8 @@ class GoogleCloudDataplexV1Job {
 
   GoogleCloudDataplexV1Job({
     this.endTime,
+    this.executionSpec,
+    this.labels,
     this.message,
     this.name,
     this.retryCount,
@@ -10367,6 +10486,7 @@ class GoogleCloudDataplexV1Job {
     this.serviceJob,
     this.startTime,
     this.state,
+    this.trigger,
     this.uid,
   });
 
@@ -10374,6 +10494,18 @@ class GoogleCloudDataplexV1Job {
       : this(
           endTime: json_.containsKey('endTime')
               ? json_['endTime'] as core.String
+              : null,
+          executionSpec: json_.containsKey('executionSpec')
+              ? GoogleCloudDataplexV1TaskExecutionSpec.fromJson(
+                  json_['executionSpec'] as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
               : null,
           message: json_.containsKey('message')
               ? json_['message'] as core.String
@@ -10393,11 +10525,16 @@ class GoogleCloudDataplexV1Job {
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          trigger: json_.containsKey('trigger')
+              ? json_['trigger'] as core.String
+              : null,
           uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
+        if (executionSpec != null) 'executionSpec': executionSpec!,
+        if (labels != null) 'labels': labels!,
         if (message != null) 'message': message!,
         if (name != null) 'name': name!,
         if (retryCount != null) 'retryCount': retryCount!,
@@ -10405,6 +10542,7 @@ class GoogleCloudDataplexV1Job {
         if (serviceJob != null) 'serviceJob': serviceJob!,
         if (startTime != null) 'startTime': startTime!,
         if (state != null) 'state': state!,
+        if (trigger != null) 'trigger': trigger!,
         if (uid != null) 'uid': uid!,
       };
 }
@@ -11380,7 +11518,61 @@ class GoogleCloudDataplexV1RunDataScanResponse {
       };
 }
 
-typedef GoogleCloudDataplexV1RunTaskRequest = $Empty;
+class GoogleCloudDataplexV1RunTaskRequest {
+  /// Execution spec arguments.
+  ///
+  /// If the map is left empty, the task will run with existing execution spec
+  /// args from task definition. If the map contains an entry with a new key,
+  /// the same will be added to existing set of args. If the map contains an
+  /// entry with an existing arg key in task definition, the task will run with
+  /// new arg value for that entry. Clearing an existing arg will require arg
+  /// value to be explicitly set to a hyphen "-". The arg value cannot be empty.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? args;
+
+  /// User-defined labels for the task.
+  ///
+  /// If the map is left empty, the task will run with existing labels from task
+  /// definition. If the map contains an entry with a new key, the same will be
+  /// added to existing set of labels. If the map contains an entry with an
+  /// existing label key in task definition, the task will run with new label
+  /// value for that entry. Clearing an existing label will require label value
+  /// to be explicitly set to a hyphen "-". The label value cannot be empty.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  GoogleCloudDataplexV1RunTaskRequest({
+    this.args,
+    this.labels,
+  });
+
+  GoogleCloudDataplexV1RunTaskRequest.fromJson(core.Map json_)
+      : this(
+          args: json_.containsKey('args')
+              ? (json_['args'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (args != null) 'args': args!,
+        if (labels != null) 'labels': labels!,
+      };
+}
 
 class GoogleCloudDataplexV1RunTaskResponse {
   /// Jobs created by RunTask API.

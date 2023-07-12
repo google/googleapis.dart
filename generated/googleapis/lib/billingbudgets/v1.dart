@@ -575,6 +575,18 @@ class GoogleCloudBillingBudgetsV1Filter {
   /// Optional.
   core.List<core.String>? projects;
 
+  /// A set of folder and organization names of the form `folders/{folderId}` or
+  /// `organizations/{organizationId}`, specifying that usage from only this set
+  /// of folders and organizations should be included in the budget.
+  ///
+  /// If omitted, the budget includes all usage that the billing account pays
+  /// for. If the folder or organization contains projects that are paid for by
+  /// a different Cloud Billing account, the budget *doesn't* apply to those
+  /// projects.
+  ///
+  /// Optional.
+  core.List<core.String>? resourceAncestors;
+
   /// A set of services of the form `services/{service_id}`, specifying that
   /// usage from only this set of services should be included in the budget.
   ///
@@ -603,6 +615,7 @@ class GoogleCloudBillingBudgetsV1Filter {
     this.customPeriod,
     this.labels,
     this.projects,
+    this.resourceAncestors,
     this.services,
     this.subaccounts,
   });
@@ -637,6 +650,11 @@ class GoogleCloudBillingBudgetsV1Filter {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          resourceAncestors: json_.containsKey('resourceAncestors')
+              ? (json_['resourceAncestors'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           services: json_.containsKey('services')
               ? (json_['services'] as core.List)
                   .map((value) => value as core.String)
@@ -657,6 +675,7 @@ class GoogleCloudBillingBudgetsV1Filter {
         if (customPeriod != null) 'customPeriod': customPeriod!,
         if (labels != null) 'labels': labels!,
         if (projects != null) 'projects': projects!,
+        if (resourceAncestors != null) 'resourceAncestors': resourceAncestors!,
         if (services != null) 'services': services!,
         if (subaccounts != null) 'subaccounts': subaccounts!,
       };

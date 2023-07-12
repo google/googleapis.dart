@@ -1725,7 +1725,7 @@ class ProjectsLocationsTargetsResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/targets/\[^/\]+$`.
   ///
   /// [allowMissing] - Optional. If set to true, then deleting an already
-  /// deleted or non-existing DeliveryPipeline will succeed.
+  /// deleted or non-existing `Target` will succeed.
   ///
   /// [etag] - Optional. This checksum is computed by the server based on the
   /// value of other fields, and may be sent on update and delete requests to
@@ -3113,6 +3113,54 @@ class DeployJobRunMetadata {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cloudRun != null) 'cloudRun': cloudRun!,
+      };
+}
+
+/// DeployParameters contains deploy parameters information.
+class DeployParameters {
+  /// Deploy parameters are applied to targets with match labels.
+  ///
+  /// If unspecified, deploy parameters are applied to all targets (including
+  /// child targets of a multi-target).
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? matchTargetLabels;
+
+  /// Values are deploy parameters in key-value pairs.
+  ///
+  /// Required.
+  core.Map<core.String, core.String>? values;
+
+  DeployParameters({
+    this.matchTargetLabels,
+    this.values,
+  });
+
+  DeployParameters.fromJson(core.Map json_)
+      : this(
+          matchTargetLabels: json_.containsKey('matchTargetLabels')
+              ? (json_['matchTargetLabels']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (matchTargetLabels != null) 'matchTargetLabels': matchTargetLabels!,
+        if (values != null) 'values': values!,
       };
 }
 
@@ -4579,6 +4627,11 @@ class Release {
   /// Output only.
   DeliveryPipeline? deliveryPipelineSnapshot;
 
+  /// The deploy parameters to use for all targets in this release.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? deployParameters;
+
   /// Description of the `Release`.
   ///
   /// Max length is 255 characters.
@@ -4672,6 +4725,7 @@ class Release {
     this.condition,
     this.createTime,
     this.deliveryPipelineSnapshot,
+    this.deployParameters,
     this.description,
     this.etag,
     this.labels,
@@ -4720,6 +4774,16 @@ class Release {
                   ? DeliveryPipeline.fromJson(json_['deliveryPipelineSnapshot']
                       as core.Map<core.String, core.dynamic>)
                   : null,
+          deployParameters: json_.containsKey('deployParameters')
+              ? (json_['deployParameters']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
@@ -4789,6 +4853,7 @@ class Release {
         if (createTime != null) 'createTime': createTime!,
         if (deliveryPipelineSnapshot != null)
           'deliveryPipelineSnapshot': deliveryPipelineSnapshot!,
+        if (deployParameters != null) 'deployParameters': deployParameters!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
         if (labels != null) 'labels': labels!,
@@ -5275,6 +5340,15 @@ class ServiceNetworking {
   /// Required.
   core.String? deployment;
 
+  /// Whether to disable Pod overprovisioning.
+  ///
+  /// If Pod overprovisioning is disabled then Cloud Deploy will limit the
+  /// number of total Pods used for the deployment strategy to the number of
+  /// Pods the Deployment has on the cluster.
+  ///
+  /// Optional.
+  core.bool? disablePodOverprovisioning;
+
   /// Name of the Kubernetes Service.
   ///
   /// Required.
@@ -5282,6 +5356,7 @@ class ServiceNetworking {
 
   ServiceNetworking({
     this.deployment,
+    this.disablePodOverprovisioning,
     this.service,
   });
 
@@ -5290,6 +5365,10 @@ class ServiceNetworking {
           deployment: json_.containsKey('deployment')
               ? json_['deployment'] as core.String
               : null,
+          disablePodOverprovisioning:
+              json_.containsKey('disablePodOverprovisioning')
+                  ? json_['disablePodOverprovisioning'] as core.bool
+                  : null,
           service: json_.containsKey('service')
               ? json_['service'] as core.String
               : null,
@@ -5297,6 +5376,8 @@ class ServiceNetworking {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deployment != null) 'deployment': deployment!,
+        if (disablePodOverprovisioning != null)
+          'disablePodOverprovisioning': disablePodOverprovisioning!,
         if (service != null) 'service': service!,
       };
 }
@@ -5449,6 +5530,11 @@ class SkaffoldVersion {
 
 /// Stage specifies a location to which to deploy.
 class Stage {
+  /// The deploy parameters to use for the target in this stage.
+  ///
+  /// Optional.
+  core.List<DeployParameters>? deployParameters;
+
   /// Skaffold profiles to use when rendering the manifest for this stage's
   /// `Target`.
   core.List<core.String>? profiles;
@@ -5468,6 +5554,7 @@ class Stage {
   core.String? targetId;
 
   Stage({
+    this.deployParameters,
     this.profiles,
     this.strategy,
     this.targetId,
@@ -5475,6 +5562,12 @@ class Stage {
 
   Stage.fromJson(core.Map json_)
       : this(
+          deployParameters: json_.containsKey('deployParameters')
+              ? (json_['deployParameters'] as core.List)
+                  .map((value) => DeployParameters.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           profiles: json_.containsKey('profiles')
               ? (json_['profiles'] as core.List)
                   .map((value) => value as core.String)
@@ -5490,6 +5583,7 @@ class Stage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (deployParameters != null) 'deployParameters': deployParameters!,
         if (profiles != null) 'profiles': profiles!,
         if (strategy != null) 'strategy': strategy!,
         if (targetId != null) 'targetId': targetId!,
@@ -5573,12 +5667,19 @@ class Target {
   core.Map<core.String, core.String>? annotations;
 
   /// Information specifying an Anthos Cluster.
+  ///
+  /// Optional.
   AnthosCluster? anthosCluster;
 
   /// Time at which the `Target` was created.
   ///
   /// Output only.
   core.String? createTime;
+
+  /// The deploy parameters to use for this target.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? deployParameters;
 
   /// Description of the `Target`.
   ///
@@ -5604,6 +5705,8 @@ class Target {
   core.List<ExecutionConfig>? executionConfigs;
 
   /// Information specifying a GKE Cluster.
+  ///
+  /// Optional.
   GkeCluster? gke;
 
   /// Labels are attributes that can be set and used by both the user and by
@@ -5620,6 +5723,8 @@ class Target {
   core.Map<core.String, core.String>? labels;
 
   /// Information specifying a multiTarget.
+  ///
+  /// Optional.
   MultiTarget? multiTarget;
 
   /// Name of the `Target`.
@@ -5635,6 +5740,8 @@ class Target {
   core.bool? requireApproval;
 
   /// Information specifying a Cloud Run deployment target.
+  ///
+  /// Optional.
   CloudRunLocation? run;
 
   /// Resource id of the `Target`.
@@ -5656,6 +5763,7 @@ class Target {
     this.annotations,
     this.anthosCluster,
     this.createTime,
+    this.deployParameters,
     this.description,
     this.etag,
     this.executionConfigs,
@@ -5687,6 +5795,16 @@ class Target {
               : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
+              : null,
+          deployParameters: json_.containsKey('deployParameters')
+              ? (json_['deployParameters']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
@@ -5735,6 +5853,7 @@ class Target {
         if (annotations != null) 'annotations': annotations!,
         if (anthosCluster != null) 'anthosCluster': anthosCluster!,
         if (createTime != null) 'createTime': createTime!,
+        if (deployParameters != null) 'deployParameters': deployParameters!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
         if (executionConfigs != null) 'executionConfigs': executionConfigs!,

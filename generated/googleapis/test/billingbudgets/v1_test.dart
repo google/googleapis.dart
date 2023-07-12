@@ -246,6 +246,23 @@ void checkUnnamed6(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed7() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed7(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterGoogleCloudBillingBudgetsV1Filter = 0;
 api.GoogleCloudBillingBudgetsV1Filter buildGoogleCloudBillingBudgetsV1Filter() {
   final o = api.GoogleCloudBillingBudgetsV1Filter();
@@ -257,8 +274,9 @@ api.GoogleCloudBillingBudgetsV1Filter buildGoogleCloudBillingBudgetsV1Filter() {
     o.customPeriod = buildGoogleCloudBillingBudgetsV1CustomPeriod();
     o.labels = buildUnnamed3();
     o.projects = buildUnnamed4();
-    o.services = buildUnnamed5();
-    o.subaccounts = buildUnnamed6();
+    o.resourceAncestors = buildUnnamed5();
+    o.services = buildUnnamed6();
+    o.subaccounts = buildUnnamed7();
   }
   buildCounterGoogleCloudBillingBudgetsV1Filter--;
   return o;
@@ -280,8 +298,9 @@ void checkGoogleCloudBillingBudgetsV1Filter(
     checkGoogleCloudBillingBudgetsV1CustomPeriod(o.customPeriod!);
     checkUnnamed3(o.labels!);
     checkUnnamed4(o.projects!);
-    checkUnnamed5(o.services!);
-    checkUnnamed6(o.subaccounts!);
+    checkUnnamed5(o.resourceAncestors!);
+    checkUnnamed6(o.services!);
+    checkUnnamed7(o.subaccounts!);
   }
   buildCounterGoogleCloudBillingBudgetsV1Filter--;
 }
@@ -303,12 +322,12 @@ void checkGoogleCloudBillingBudgetsV1LastPeriodAmount(
   buildCounterGoogleCloudBillingBudgetsV1LastPeriodAmount--;
 }
 
-core.List<api.GoogleCloudBillingBudgetsV1Budget> buildUnnamed7() => [
+core.List<api.GoogleCloudBillingBudgetsV1Budget> buildUnnamed8() => [
       buildGoogleCloudBillingBudgetsV1Budget(),
       buildGoogleCloudBillingBudgetsV1Budget(),
     ];
 
-void checkUnnamed7(core.List<api.GoogleCloudBillingBudgetsV1Budget> o) {
+void checkUnnamed8(core.List<api.GoogleCloudBillingBudgetsV1Budget> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudBillingBudgetsV1Budget(o[0]);
   checkGoogleCloudBillingBudgetsV1Budget(o[1]);
@@ -320,7 +339,7 @@ api.GoogleCloudBillingBudgetsV1ListBudgetsResponse
   final o = api.GoogleCloudBillingBudgetsV1ListBudgetsResponse();
   buildCounterGoogleCloudBillingBudgetsV1ListBudgetsResponse++;
   if (buildCounterGoogleCloudBillingBudgetsV1ListBudgetsResponse < 3) {
-    o.budgets = buildUnnamed7();
+    o.budgets = buildUnnamed8();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudBillingBudgetsV1ListBudgetsResponse--;
@@ -331,7 +350,7 @@ void checkGoogleCloudBillingBudgetsV1ListBudgetsResponse(
     api.GoogleCloudBillingBudgetsV1ListBudgetsResponse o) {
   buildCounterGoogleCloudBillingBudgetsV1ListBudgetsResponse++;
   if (buildCounterGoogleCloudBillingBudgetsV1ListBudgetsResponse < 3) {
-    checkUnnamed7(o.budgets!);
+    checkUnnamed8(o.budgets!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -340,12 +359,12 @@ void checkGoogleCloudBillingBudgetsV1ListBudgetsResponse(
   buildCounterGoogleCloudBillingBudgetsV1ListBudgetsResponse--;
 }
 
-core.List<core.String> buildUnnamed8() => [
+core.List<core.String> buildUnnamed9() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8(core.List<core.String> o) {
+void checkUnnamed9(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -364,7 +383,7 @@ api.GoogleCloudBillingBudgetsV1NotificationsRule
   buildCounterGoogleCloudBillingBudgetsV1NotificationsRule++;
   if (buildCounterGoogleCloudBillingBudgetsV1NotificationsRule < 3) {
     o.disableDefaultIamRecipients = true;
-    o.monitoringNotificationChannels = buildUnnamed8();
+    o.monitoringNotificationChannels = buildUnnamed9();
     o.pubsubTopic = 'foo';
     o.schemaVersion = 'foo';
   }
@@ -377,7 +396,7 @@ void checkGoogleCloudBillingBudgetsV1NotificationsRule(
   buildCounterGoogleCloudBillingBudgetsV1NotificationsRule++;
   if (buildCounterGoogleCloudBillingBudgetsV1NotificationsRule < 3) {
     unittest.expect(o.disableDefaultIamRecipients!, unittest.isTrue);
-    checkUnnamed8(o.monitoringNotificationChannels!);
+    checkUnnamed9(o.monitoringNotificationChannels!);
     unittest.expect(
       o.pubsubTopic!,
       unittest.equals('foo'),

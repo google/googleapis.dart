@@ -37,7 +37,7 @@ void writeDiscoveryDocuments(
     final name = '$outputDir/${description.name}__${description.version}.json';
     final file = File(name);
     const encoder = JsonEncoder.withIndent('    ');
-    file.writeAsStringSync(encoder.convert(description.toJson()));
+    file.writeAsStringSync('${encoder.convert(description.toJsonSorted())}\n');
     print('Wrote: $name');
   }
 }

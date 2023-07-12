@@ -14,6 +14,13 @@
     "name": "digitalassetlinks",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230708",
+    "rootUrl": "https://digitalassetlinks.googleapis.com/",
+    "servicePath": "",
+    "title": "Digital Asset Links API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -91,7 +98,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "assetlinks": {
             "methods": {
@@ -198,8 +204,6 @@
             }
         }
     },
-    "revision": "20230509",
-    "rootUrl": "https://digitalassetlinks.googleapis.com/",
     "schemas": {
         "AndroidAppAsset": {
             "description": "Describes an android app asset.",
@@ -478,9 +482,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Digital Asset Links API",
-    "version": "v1",
-    "version_module": true
+    }
 }

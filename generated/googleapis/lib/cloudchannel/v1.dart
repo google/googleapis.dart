@@ -30,6 +30,8 @@
 ///   - [AccountsOffersResource]
 ///   - [AccountsReportJobsResource]
 ///   - [AccountsReportsResource]
+///   - [AccountsSkuGroupsResource]
+///     - [AccountsSkuGroupsBillableSkusResource]
 /// - [OperationsResource]
 /// - [ProductsResource]
 ///   - [ProductsSkusResource]
@@ -84,6 +86,8 @@ class AccountsResource {
   AccountsReportJobsResource get reportJobs =>
       AccountsReportJobsResource(_requester);
   AccountsReportsResource get reports => AccountsReportsResource(_requester);
+  AccountsSkuGroupsResource get skuGroups =>
+      AccountsSkuGroupsResource(_requester);
 
   AccountsResource(commons.ApiRequester client) : _requester = client;
 
@@ -992,6 +996,8 @@ class AccountsChannelPartnerLinksCustomersResource {
   ///
   /// Possible error codes: * PERMISSION_DENIED: The reseller account making the
   /// request is different from the reseller account in the API request. *
+  /// PERMISSION_DENIED: You are not authorized to create a customer. See
+  /// https://support.google.com/channelservices/answer/9759265 *
   /// INVALID_ARGUMENT: * Required request parameters are missing or invalid. *
   /// Domain field value doesn't match the primary email domain. Return value:
   /// The newly created Customer resource.
@@ -1129,11 +1135,13 @@ class AccountsChannelPartnerLinksCustomersResource {
   /// If a linked Customer already exists and overwrite_if_exists is true, it
   /// will update that Customer's data. Possible error codes: *
   /// PERMISSION_DENIED: The reseller account making the request is different
-  /// from the reseller account in the API request. * NOT_FOUND: Cloud Identity
-  /// doesn't exist or was deleted. * INVALID_ARGUMENT: Required parameters are
-  /// missing, or the auth_token is expired or invalid. * ALREADY_EXISTS: A
-  /// customer already exists and has conflicting critical fields. Requires an
-  /// overwrite. Return value: The Customer.
+  /// from the reseller account in the API request. * PERMISSION_DENIED: You are
+  /// not authorized to import the customer. See
+  /// https://support.google.com/channelservices/answer/9759265 * NOT_FOUND:
+  /// Cloud Identity doesn't exist or was deleted. * INVALID_ARGUMENT: Required
+  /// parameters are missing, or the auth_token is expired or invalid. *
+  /// ALREADY_EXISTS: A customer already exists and has conflicting critical
+  /// fields. Requires an overwrite. Return value: The Customer.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1307,6 +1315,8 @@ class AccountsCustomersResource {
   ///
   /// Possible error codes: * PERMISSION_DENIED: The reseller account making the
   /// request is different from the reseller account in the API request. *
+  /// PERMISSION_DENIED: You are not authorized to create a customer. See
+  /// https://support.google.com/channelservices/answer/9759265 *
   /// INVALID_ARGUMENT: * Required request parameters are missing or invalid. *
   /// Domain field value doesn't match the primary email domain. Return value:
   /// The newly created Customer resource.
@@ -1442,11 +1452,13 @@ class AccountsCustomersResource {
   /// If a linked Customer already exists and overwrite_if_exists is true, it
   /// will update that Customer's data. Possible error codes: *
   /// PERMISSION_DENIED: The reseller account making the request is different
-  /// from the reseller account in the API request. * NOT_FOUND: Cloud Identity
-  /// doesn't exist or was deleted. * INVALID_ARGUMENT: Required parameters are
-  /// missing, or the auth_token is expired or invalid. * ALREADY_EXISTS: A
-  /// customer already exists and has conflicting critical fields. Requires an
-  /// overwrite. Return value: The Customer.
+  /// from the reseller account in the API request. * PERMISSION_DENIED: You are
+  /// not authorized to import the customer. See
+  /// https://support.google.com/channelservices/answer/9759265 * NOT_FOUND:
+  /// Cloud Identity doesn't exist or was deleted. * INVALID_ARGUMENT: Required
+  /// parameters are missing, or the auth_token is expired or invalid. *
+  /// ALREADY_EXISTS: A customer already exists and has conflicting critical
+  /// fields. Requires an overwrite. Return value: The Customer.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1563,6 +1575,13 @@ class AccountsCustomersResource {
   /// for. Format: accounts/{account_id}/customers/{customer_id}.
   /// Value must have pattern `^accounts/\[^/\]+/customers/\[^/\]+$`.
   ///
+  /// [changeOfferPurchase_billingAccount] - Optional. Resource name of the new
+  /// target Billing Account. Provide this Billing Account when setting up
+  /// billing for a trial subscription. Format:
+  /// accounts/{account_id}/billingAccounts/{billing_account_id}. This field is
+  /// only relevant for multi-currency accounts. It should be left empty for
+  /// single currency accounts.
+  ///
   /// [changeOfferPurchase_entitlement] - Required. Resource name of the
   /// entitlement. Format:
   /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
@@ -1570,6 +1589,10 @@ class AccountsCustomersResource {
   /// [changeOfferPurchase_newSku] - Optional. Resource name of the new target
   /// SKU. Provide this SKU when upgrading or downgrading an entitlement.
   /// Format: products/{product_id}/skus/{sku_id}
+  ///
+  /// [createEntitlementPurchase_billingAccount] - Optional. Billing account
+  /// that the result should be restricted to. Format:
+  /// accounts/{account_id}/billingAccounts/{billing_account_id}.
   ///
   /// [createEntitlementPurchase_sku] - Required. SKU that the result should be
   /// restricted to. Format: products/{product_id}/skus/{sku_id}.
@@ -1598,8 +1621,10 @@ class AccountsCustomersResource {
   async.Future<GoogleCloudChannelV1ListPurchasableOffersResponse>
       listPurchasableOffers(
     core.String customer, {
+    core.String? changeOfferPurchase_billingAccount,
     core.String? changeOfferPurchase_entitlement,
     core.String? changeOfferPurchase_newSku,
+    core.String? createEntitlementPurchase_billingAccount,
     core.String? createEntitlementPurchase_sku,
     core.String? languageCode,
     core.int? pageSize,
@@ -1607,10 +1632,18 @@ class AccountsCustomersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (changeOfferPurchase_billingAccount != null)
+        'changeOfferPurchase.billingAccount': [
+          changeOfferPurchase_billingAccount
+        ],
       if (changeOfferPurchase_entitlement != null)
         'changeOfferPurchase.entitlement': [changeOfferPurchase_entitlement],
       if (changeOfferPurchase_newSku != null)
         'changeOfferPurchase.newSku': [changeOfferPurchase_newSku],
+      if (createEntitlementPurchase_billingAccount != null)
+        'createEntitlementPurchase.billingAccount': [
+          createEntitlementPurchase_billingAccount
+        ],
       if (createEntitlementPurchase_sku != null)
         'createEntitlementPurchase.sku': [createEntitlementPurchase_sku],
       if (languageCode != null) 'languageCode': [languageCode],
@@ -1774,16 +1807,19 @@ class AccountsCustomersResource {
   /// information, or the information provided here.
   ///
   /// Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to
-  /// the reseller. * INVALID_ARGUMENT: Required request parameters are missing
-  /// or invalid. * NOT_FOUND: The customer was not found. * ALREADY_EXISTS: The
-  /// customer's primary email already exists. Retry after changing the
-  /// customer's primary contact email. * INTERNAL: Any non-user error related
-  /// to a technical issue in the backend. Contact Cloud Channel support. *
-  /// UNKNOWN: Any non-user error related to a technical issue in the backend.
-  /// Contact Cloud Channel support. Return value: The ID of a long-running
-  /// operation. To get the results of the operation, call the GetOperation
-  /// method of CloudChannelOperationsService. The Operation metadata contains
-  /// an instance of OperationMetadata.
+  /// the reseller. * PERMISSION_DENIED: You are not authorized to provision
+  /// cloud identity id. See
+  /// https://support.google.com/channelservices/answer/9759265 *
+  /// INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+  /// NOT_FOUND: The customer was not found. * ALREADY_EXISTS: The customer's
+  /// primary email already exists. Retry after changing the customer's primary
+  /// contact email. * INTERNAL: Any non-user error related to a technical issue
+  /// in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user
+  /// error related to a technical issue in the backend. Contact Cloud Channel
+  /// support. Return value: The ID of a long-running operation. To get the
+  /// results of the operation, call the GetOperation method of
+  /// CloudChannelOperationsService. The Operation metadata contains an instance
+  /// of OperationMetadata.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3256,6 +3292,142 @@ class AccountsReportsResource {
   }
 }
 
+class AccountsSkuGroupsResource {
+  final commons.ApiRequester _requester;
+
+  AccountsSkuGroupsBillableSkusResource get billableSkus =>
+      AccountsSkuGroupsBillableSkusResource(_requester);
+
+  AccountsSkuGroupsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Lists the Rebilling supported SKU groups the account is authorized to
+  /// sell.
+  ///
+  /// Reference: https://cloud.google.com/skus/sku-groups Possible Error Codes:
+  /// * PERMISSION_DENIED: If the account making the request and the account
+  /// being queried are different, or the account doesn't exist. * INTERNAL: Any
+  /// non-user error related to technical issues in the backend. In this case,
+  /// contact Cloud Channel support. Return Value: If successful, the SkuGroup
+  /// resources. The data for each resource is displayed in the alphabetical
+  /// order of SKU group display name. The data for each resource is displayed
+  /// in the ascending order of SkuGroup.display_name If unsuccessful, returns
+  /// an error.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the account from which to list
+  /// SKU groups. Parent uses the format: accounts/{account}.
+  /// Value must have pattern `^accounts/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of SKU groups to return. The
+  /// service may return fewer than this value. If unspecified, returns a
+  /// maximum of 1000 SKU groups. The maximum value is 1000; values above 1000
+  /// will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results beyond the
+  /// first page. Obtained through ListSkuGroups.next_page_token of the previous
+  /// CloudChannelService.ListSkuGroups call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudChannelV1ListSkuGroupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1ListSkuGroupsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/skuGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudChannelV1ListSkuGroupsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AccountsSkuGroupsBillableSkusResource {
+  final commons.ApiRequester _requester;
+
+  AccountsSkuGroupsBillableSkusResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the Billable SKUs in a given SKU group.
+  ///
+  /// Possible error codes: PERMISSION_DENIED: If the account making the request
+  /// and the account being queried for are different, or the account doesn't
+  /// exist. INVALID_ARGUMENT: Missing or invalid required parameters in the
+  /// request. INTERNAL: Any non-user error related to technical issue in the
+  /// backend. In this case, contact cloud channel support. Return Value: If
+  /// successful, the BillableSku resources. The data for each resource is
+  /// displayed in the ascending order of: * BillableSku.service_display_name *
+  /// BillableSku.sku_display_name If unsuccessful, returns an error.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the SKU group. Format:
+  /// accounts/{account}/skuGroups/{sku_group}.
+  /// Value must have pattern `^accounts/\[^/\]+/skuGroups/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of SKUs to return. The service
+  /// may return fewer than this value. If unspecified, returns a maximum of
+  /// 100000 SKUs. The maximum value is 100000; values above 100000 will be
+  /// coerced to 100000.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results beyond the
+  /// first page. Obtained through ListSkuGroupBillableSkus.next_page_token of
+  /// the previous CloudChannelService.ListSkuGroupBillableSkus call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudChannelV1ListSkuGroupBillableSkusResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1ListSkuGroupBillableSkusResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/billableSkus';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudChannelV1ListSkuGroupBillableSkusResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class OperationsResource {
   final commons.ApiRequester _requester;
 
@@ -3635,6 +3807,54 @@ class GoogleCloudChannelV1AssociationInfo {
       };
 }
 
+/// Represents the Billable SKU information.
+class GoogleCloudChannelV1BillableSku {
+  /// Resource name of Service which contains Repricing SKU.
+  ///
+  /// Format: services/{service}. Example: "services/B7D9-FDCB-15D8".
+  core.String? service;
+
+  /// Unique human readable name for the Service.
+  core.String? serviceDisplayName;
+
+  /// Resource name of Billable SKU.
+  ///
+  /// Format: billableSkus/{sku}. Example: billableSkus/6E1B-6634-470F".
+  core.String? sku;
+
+  /// Unique human readable name for the SKU.
+  core.String? skuDisplayName;
+
+  GoogleCloudChannelV1BillableSku({
+    this.service,
+    this.serviceDisplayName,
+    this.sku,
+    this.skuDisplayName,
+  });
+
+  GoogleCloudChannelV1BillableSku.fromJson(core.Map json_)
+      : this(
+          service: json_.containsKey('service')
+              ? json_['service'] as core.String
+              : null,
+          serviceDisplayName: json_.containsKey('serviceDisplayName')
+              ? json_['serviceDisplayName'] as core.String
+              : null,
+          sku: json_.containsKey('sku') ? json_['sku'] as core.String : null,
+          skuDisplayName: json_.containsKey('skuDisplayName')
+              ? json_['skuDisplayName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (service != null) 'service': service!,
+        if (serviceDisplayName != null)
+          'serviceDisplayName': serviceDisplayName!,
+        if (sku != null) 'sku': sku!,
+        if (skuDisplayName != null) 'skuDisplayName': skuDisplayName!,
+      };
+}
+
 /// Represents a billing account.
 class GoogleCloudChannelV1BillingAccount {
   /// The time when this billing account was created.
@@ -3724,6 +3944,15 @@ typedef GoogleCloudChannelV1CancelEntitlementRequest = $Request01;
 
 /// Request message for CloudChannelService.ChangeOffer.
 class GoogleCloudChannelV1ChangeOfferRequest {
+  /// The billing account resource name that is used to pay for this entitlement
+  /// when setting up billing on a trial subscription.
+  ///
+  /// This field is only relevant for multi-currency accounts. It should be left
+  /// empty for single currency accounts.
+  ///
+  /// Optional.
+  core.String? billingAccount;
+
   /// New Offer.
   ///
   /// Format: accounts/{account_id}/offers/{offer_id}.
@@ -3758,6 +3987,7 @@ class GoogleCloudChannelV1ChangeOfferRequest {
   core.String? requestId;
 
   GoogleCloudChannelV1ChangeOfferRequest({
+    this.billingAccount,
     this.offer,
     this.parameters,
     this.purchaseOrderId,
@@ -3766,6 +3996,9 @@ class GoogleCloudChannelV1ChangeOfferRequest {
 
   GoogleCloudChannelV1ChangeOfferRequest.fromJson(core.Map json_)
       : this(
+          billingAccount: json_.containsKey('billingAccount')
+              ? json_['billingAccount'] as core.String
+              : null,
           offer:
               json_.containsKey('offer') ? json_['offer'] as core.String : null,
           parameters: json_.containsKey('parameters')
@@ -3783,6 +4016,7 @@ class GoogleCloudChannelV1ChangeOfferRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (billingAccount != null) 'billingAccount': billingAccount!,
         if (offer != null) 'offer': offer!,
         if (parameters != null) 'parameters': parameters!,
         if (purchaseOrderId != null) 'purchaseOrderId': purchaseOrderId!,
@@ -5841,6 +6075,74 @@ class GoogleCloudChannelV1ListReportsResponse {
       };
 }
 
+/// Response message for ListSkuGroupBillableSkus.
+class GoogleCloudChannelV1ListSkuGroupBillableSkusResponse {
+  /// The list of billable SKUs in the requested SKU group.
+  core.List<GoogleCloudChannelV1BillableSku>? billableSkus;
+
+  /// A token to retrieve the next page of results.
+  ///
+  /// Pass to ListSkuGroupBillableSkus.page_token to obtain that page.
+  core.String? nextPageToken;
+
+  GoogleCloudChannelV1ListSkuGroupBillableSkusResponse({
+    this.billableSkus,
+    this.nextPageToken,
+  });
+
+  GoogleCloudChannelV1ListSkuGroupBillableSkusResponse.fromJson(core.Map json_)
+      : this(
+          billableSkus: json_.containsKey('billableSkus')
+              ? (json_['billableSkus'] as core.List)
+                  .map((value) => GoogleCloudChannelV1BillableSku.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (billableSkus != null) 'billableSkus': billableSkus!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for ListSkuGroups.
+class GoogleCloudChannelV1ListSkuGroupsResponse {
+  /// A token to retrieve the next page of results.
+  ///
+  /// Pass to ListSkuGroups.page_token to obtain that page.
+  core.String? nextPageToken;
+
+  /// The list of SKU groups requested.
+  core.List<GoogleCloudChannelV1SkuGroup>? skuGroups;
+
+  GoogleCloudChannelV1ListSkuGroupsResponse({
+    this.nextPageToken,
+    this.skuGroups,
+  });
+
+  GoogleCloudChannelV1ListSkuGroupsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          skuGroups: json_.containsKey('skuGroups')
+              ? (json_['skuGroups'] as core.List)
+                  .map((value) => GoogleCloudChannelV1SkuGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (skuGroups != null) 'skuGroups': skuGroups!,
+      };
+}
+
 /// Response message for ListSkus.
 class GoogleCloudChannelV1ListSkusResponse {
   /// A token to retrieve the next page of results.
@@ -5915,6 +6217,15 @@ class GoogleCloudChannelV1ListSubscribersResponse {
 
 /// Request message for CloudChannelService.ListTransferableOffers
 class GoogleCloudChannelV1ListTransferableOffersRequest {
+  /// The Billing Account to look up Offers for.
+  ///
+  /// Format: accounts/{account_id}/billingAccounts/{billing_account_id}. This
+  /// field is only relevant for multi-currency accounts. It should be left
+  /// empty for single currency accounts.
+  ///
+  /// Optional.
+  core.String? billingAccount;
+
   /// Customer's Cloud Identity ID
   core.String? cloudIdentityId;
 
@@ -5949,6 +6260,7 @@ class GoogleCloudChannelV1ListTransferableOffersRequest {
   core.String? sku;
 
   GoogleCloudChannelV1ListTransferableOffersRequest({
+    this.billingAccount,
     this.cloudIdentityId,
     this.customerName,
     this.languageCode,
@@ -5959,6 +6271,9 @@ class GoogleCloudChannelV1ListTransferableOffersRequest {
 
   GoogleCloudChannelV1ListTransferableOffersRequest.fromJson(core.Map json_)
       : this(
+          billingAccount: json_.containsKey('billingAccount')
+              ? json_['billingAccount'] as core.String
+              : null,
           cloudIdentityId: json_.containsKey('cloudIdentityId')
               ? json_['cloudIdentityId'] as core.String
               : null,
@@ -5978,6 +6293,7 @@ class GoogleCloudChannelV1ListTransferableOffersRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (billingAccount != null) 'billingAccount': billingAccount!,
         if (cloudIdentityId != null) 'cloudIdentityId': cloudIdentityId!,
         if (customerName != null) 'customerName': customerName!,
         if (languageCode != null) 'languageCode': languageCode!,
@@ -6404,6 +6720,7 @@ class GoogleCloudChannelV1ParameterDefinition {
   /// - "INT64" : Int64 type.
   /// - "STRING" : String type.
   /// - "DOUBLE" : Double type.
+  /// - "BOOLEAN" : Boolean type.
   core.String? parameterType;
 
   GoogleCloudChannelV1ParameterDefinition({
@@ -6886,7 +7203,7 @@ class GoogleCloudChannelV1ProvisionedService {
   /// Provisioning ID of the entitlement.
   ///
   /// For Google Workspace, this is the underlying Subscription ID. For Google
-  /// Cloud, this is the Billing Account ID of the billing subaccount."
+  /// Cloud, this is the Billing Account ID of the billing subaccount.
   ///
   /// Output only.
   core.String? provisioningId;
@@ -7590,6 +7907,36 @@ class GoogleCloudChannelV1Sku {
         if (marketingInfo != null) 'marketingInfo': marketingInfo!,
         if (name != null) 'name': name!,
         if (product != null) 'product': product!,
+      };
+}
+
+/// Represents the SKU group information.
+class GoogleCloudChannelV1SkuGroup {
+  /// Unique human readable identifier for the SKU group.
+  core.String? displayName;
+
+  /// Resource name of SKU group.
+  ///
+  /// Format: accounts/{account}/skuGroups/{sku_group}. Example:
+  /// "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041".
+  core.String? name;
+
+  GoogleCloudChannelV1SkuGroup({
+    this.displayName,
+    this.name,
+  });
+
+  GoogleCloudChannelV1SkuGroup.fromJson(core.Map json_)
+      : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
       };
 }
 

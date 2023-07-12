@@ -24,6 +24,13 @@
     "name": "firebasedynamiclinks",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230710",
+    "rootUrl": "https://firebasedynamiclinks.googleapis.com/",
+    "servicePath": "",
+    "title": "Firebase Dynamic Links API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "managedShortLinks": {
             "methods": {
@@ -223,8 +229,6 @@
             }
         }
     },
-    "revision": "20230515",
-    "rootUrl": "https://firebasedynamiclinks.googleapis.com/",
     "schemas": {
         "AnalyticsInfo": {
             "description": "Tracking parameters supported by Dynamic Link.",
@@ -1012,9 +1016,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Firebase Dynamic Links API",
-    "version": "v1",
-    "version_module": true
+    }
 }

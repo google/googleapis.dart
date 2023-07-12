@@ -29,6 +29,13 @@
     "name": "appengine",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230706",
+    "rootUrl": "https://appengine.googleapis.com/",
+    "servicePath": "",
+    "title": "App Engine Admin API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -106,7 +113,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "apps": {
             "methods": {
@@ -116,13 +122,7 @@
                     "httpMethod": "POST",
                     "id": "appengine.apps.create",
                     "parameterOrder": [],
-                    "parameters": {
-                        "parent": {
-                            "description": "The project and location in which the application should be created, specified in the format projects/*/locations/*",
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
+                    "parameters": {},
                     "path": "v1/apps",
                     "request": {
                         "$ref": "Application"
@@ -1597,96 +1597,8 @@
                     }
                 }
             }
-        },
-        "projects": {
-            "resources": {
-                "locations": {
-                    "resources": {
-                        "applications": {
-                            "methods": {
-                                "create": {
-                                    "description": "Creates an App Engine application for a Google Cloud Platform project. Required fields: id - The ID of the target Cloud Platform project. location - The region (https://cloud.google.com/appengine/docs/locations) where you want the App Engine application located.For more information about App Engine applications, see Managing Projects, Applications, and Billing (https://cloud.google.com/appengine/docs/standard/python/console/).",
-                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/applications",
-                                    "httpMethod": "POST",
-                                    "id": "appengine.projects.locations.applications.create",
-                                    "parameterOrder": [
-                                        "projectsId",
-                                        "locationsId"
-                                    ],
-                                    "parameters": {
-                                        "locationsId": {
-                                            "description": "Part of `parent`. See documentation of `projectsId`.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "projectsId": {
-                                            "description": "Part of `parent`. The project and location in which the application should be created, specified in the format projects/*/locations/*",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1/projects/{projectsId}/locations/{locationsId}/applications",
-                                    "request": {
-                                        "$ref": "Application"
-                                    },
-                                    "response": {
-                                        "$ref": "Operation"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                },
-                                "get": {
-                                    "description": "Gets information about an application.",
-                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}",
-                                    "httpMethod": "GET",
-                                    "id": "appengine.projects.locations.applications.get",
-                                    "parameterOrder": [
-                                        "projectsId",
-                                        "locationsId",
-                                        "applicationsId"
-                                    ],
-                                    "parameters": {
-                                        "applicationsId": {
-                                            "description": "Part of `name`. See documentation of `projectsId`.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "locationsId": {
-                                            "description": "Part of `name`. See documentation of `projectsId`.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "projectsId": {
-                                            "description": "Part of `name`. Name of the Application resource to get. Example: apps/myapp.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}",
-                                    "response": {
-                                        "$ref": "Application"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/appengine.admin",
-                                        "https://www.googleapis.com/auth/cloud-platform",
-                                        "https://www.googleapis.com/auth/cloud-platform.read-only"
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                }
-            }
         }
     },
-    "revision": "20230505",
-    "rootUrl": "https://appengine.googleapis.com/",
     "schemas": {
         "ApiConfigHandler": {
             "description": "Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration for API handlers.",
@@ -4081,9 +3993,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "App Engine Admin API",
-    "version": "v1",
-    "version_module": true
+    }
 }

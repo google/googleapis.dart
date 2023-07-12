@@ -628,6 +628,23 @@ void checkGoogleCloudKmsV1KeyOperationAttestationCertificateChains(
   buildCounterGoogleCloudKmsV1KeyOperationAttestationCertificateChains--;
 }
 
+core.List<core.String> buildUnnamed11() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed11(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 void main() {
   unittest.group('obj-schema-GoogleCloudKmsInventoryV1ListCryptoKeysResponse',
       () {
@@ -747,6 +764,7 @@ void main() {
       final arg_cryptoKey = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
+      final arg_resourceTypes = buildUnnamed11();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = (req.url).path;
@@ -793,6 +811,10 @@ void main() {
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
+          queryMap['resourceTypes']!,
+          unittest.equals(arg_resourceTypes),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -808,6 +830,7 @@ void main() {
           cryptoKey: arg_cryptoKey,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
+          resourceTypes: arg_resourceTypes,
           $fields: arg_$fields);
       checkGoogleCloudKmsInventoryV1SearchProtectedResourcesResponse(response
           as api.GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse);

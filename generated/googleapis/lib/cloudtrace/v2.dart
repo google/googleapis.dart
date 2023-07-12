@@ -263,7 +263,7 @@ class Attributes {
   /// string up to 256 bytes, a signed 64-bit integer, or the boolean values
   /// `true` or `false`. For example: "/instance_id": { "string_value": {
   /// "value": "my-instance" } } "/http/request_bytes": { "int_value": 300 }
-  /// "abc.com/myattribute": { "bool_value": false }
+  /// "example.com/myattribute": { "bool_value": false }
   core.Map<core.String, AttributeValue>? attributeMap;
 
   /// The number of attributes that were discarded.
