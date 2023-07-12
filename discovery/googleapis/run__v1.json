@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230702",
+    "revision": "20230709",
     "rootUrl": "https://run.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Run Admin API",
@@ -2766,7 +2766,7 @@
             "id": "EmptyDirVolumeSource",
             "properties": {
                 "medium": {
-                    "description": "The medium on which the data is stored. The default is \"\" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir +optional",
+                    "description": "The medium on which the data is stored. The default is \"\" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir",
                     "type": "string"
                 },
                 "sizeLimit": {

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230629",
+    "revision": "20230706",
     "rootUrl": "https://retail.googleapis.com/",
     "servicePath": "",
     "title": "Retail API",

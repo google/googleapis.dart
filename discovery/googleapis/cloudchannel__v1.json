@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230705",
+    "revision": "20230710",
     "rootUrl": "https://cloudchannel.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Channel API",
@@ -4157,7 +4157,7 @@
                     "type": "string"
                 },
                 "provisioningId": {
-                    "description": "Output only. Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud, this is the Billing Account ID of the billing subaccount.\"",
+                    "description": "Output only. Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud, this is the Billing Account ID of the billing subaccount.",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -5255,7 +5255,7 @@
                     "type": "string"
                 },
                 "provisioningId": {
-                    "description": "Output only. Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud, this is the Billing Account ID of the billing subaccount.\"",
+                    "description": "Output only. Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud, this is the Billing Account ID of the billing subaccount.",
                     "readOnly": true,
                     "type": "string"
                 },

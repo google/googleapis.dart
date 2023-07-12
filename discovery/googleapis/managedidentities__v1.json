@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230505",
+    "revision": "20230705",
     "rootUrl": "https://managedidentities.googleapis.com/",
     "servicePath": "",
     "title": "Managed Service for Microsoft Active Directory API",
@@ -208,6 +208,34 @@
                                             },
                                             "response": {
                                                 "$ref": "Operation"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
+                                        "checkMigrationPermission": {
+                                            "description": "CheckMigrationPermission API gets the current state of DomainMigration",
+                                            "flatPath": "v1/projects/{projectsId}/locations/global/domains/{domainsId}:checkMigrationPermission",
+                                            "httpMethod": "POST",
+                                            "id": "managedidentities.projects.locations.global.domains.checkMigrationPermission",
+                                            "parameterOrder": [
+                                                "domain"
+                                            ],
+                                            "parameters": {
+                                                "domain": {
+                                                    "description": "Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}`",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/global/domains/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+domain}:checkMigrationPermission",
+                                            "request": {
+                                                "$ref": "CheckMigrationPermissionRequest"
+                                            },
+                                            "response": {
+                                                "$ref": "CheckMigrationPermissionResponse"
                                             },
                                             "scopes": [
                                                 "https://www.googleapis.com/auth/cloud-platform"
@@ -1632,6 +1660,42 @@
             },
             "type": "object"
         },
+        "CheckMigrationPermissionRequest": {
+            "description": "CheckMigrationPermissionRequest is the request message for CheckMigrationPermission method.",
+            "id": "CheckMigrationPermissionRequest",
+            "properties": {},
+            "type": "object"
+        },
+        "CheckMigrationPermissionResponse": {
+            "description": "CheckMigrationPermissionResponse is the response message for CheckMigrationPermission method.",
+            "id": "CheckMigrationPermissionResponse",
+            "properties": {
+                "onpremDomains": {
+                    "description": "The state of SID filtering of all the domains which has trust established.",
+                    "items": {
+                        "$ref": "OnPremDomainSIDDetails"
+                    },
+                    "type": "array"
+                },
+                "state": {
+                    "description": "The state of DomainMigration.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "DISABLED",
+                        "ENABLED",
+                        "NEEDS_MAINTENANCE"
+                    ],
+                    "enumDescriptions": [
+                        "DomainMigration is in unspecified state.",
+                        "Domain Migration is Disabled.",
+                        "Domain Migration is Enabled.",
+                        "Domain Migration is not in valid state."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "DailyCycle": {
             "description": "Time window specified for daily operations.",
             "id": "DailyCycle",
@@ -2582,6 +2646,31 @@
                 },
                 "domainName": {
                     "description": "Required. FQDN of the on-prem domain being migrated.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "OnPremDomainSIDDetails": {
+            "description": "OnPremDomainDetails is the message which contains details of on-prem domain which is trusted and needs to be migrated.",
+            "id": "OnPremDomainSIDDetails",
+            "properties": {
+                "name": {
+                    "description": "FQDN of the on-prem domain being migrated.",
+                    "type": "string"
+                },
+                "sidFilteringState": {
+                    "description": "Current SID filtering state.",
+                    "enum": [
+                        "SID_FILTERING_STATE_UNSPECIFIED",
+                        "ENABLED",
+                        "DISABLED"
+                    ],
+                    "enumDescriptions": [
+                        "SID Filtering is in unspecified state.",
+                        "SID Filtering is Enabled.",
+                        "SID Filtering is Disabled."
+                    ],
                     "type": "string"
                 }
             },

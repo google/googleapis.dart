@@ -67,7 +67,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230704",
+    "revision": "20230706",
     "rootUrl": "https://chat.googleapis.com/",
     "servicePath": "",
     "title": "Google Chat API",

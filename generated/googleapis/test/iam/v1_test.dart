@@ -2215,6 +2215,7 @@ api.WorkforcePool buildWorkforcePool() {
     o.description = 'foo';
     o.disabled = true;
     o.displayName = 'foo';
+    o.expireTime = 'foo';
     o.name = 'foo';
     o.parent = 'foo';
     o.sessionDuration = 'foo';
@@ -2234,6 +2235,10 @@ void checkWorkforcePool(api.WorkforcePool o) {
     unittest.expect(o.disabled!, unittest.isTrue);
     unittest.expect(
       o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expireTime!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2283,6 +2288,7 @@ api.WorkforcePoolProvider buildWorkforcePoolProvider() {
     o.description = 'foo';
     o.disabled = true;
     o.displayName = 'foo';
+    o.expireTime = 'foo';
     o.name = 'foo';
     o.oidc = buildGoogleIamAdminV1WorkforcePoolProviderOidc();
     o.saml = buildGoogleIamAdminV1WorkforcePoolProviderSaml();
@@ -2307,6 +2313,10 @@ void checkWorkforcePoolProvider(api.WorkforcePoolProvider o) {
     unittest.expect(o.disabled!, unittest.isTrue);
     unittest.expect(
       o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expireTime!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2370,7 +2380,7 @@ api.WorkloadIdentityPool buildWorkloadIdentityPool() {
     o.description = 'foo';
     o.disabled = true;
     o.displayName = 'foo';
-    o.identityMode = 'foo';
+    o.expireTime = 'foo';
     o.name = 'foo';
     o.state = 'foo';
   }
@@ -2391,7 +2401,7 @@ void checkWorkloadIdentityPool(api.WorkloadIdentityPool o) {
       unittest.equals('foo'),
     );
     unittest.expect(
-      o.identityMode!,
+      o.expireTime!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2434,6 +2444,7 @@ api.WorkloadIdentityPoolProvider buildWorkloadIdentityPoolProvider() {
     o.description = 'foo';
     o.disabled = true;
     o.displayName = 'foo';
+    o.expireTime = 'foo';
     o.name = 'foo';
     o.oidc = buildOidc();
     o.saml = buildSaml();
@@ -2459,6 +2470,10 @@ void checkWorkloadIdentityPoolProvider(api.WorkloadIdentityPoolProvider o) {
     unittest.expect(o.disabled!, unittest.isTrue);
     unittest.expect(
       o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expireTime!,
       unittest.equals('foo'),
     );
     unittest.expect(

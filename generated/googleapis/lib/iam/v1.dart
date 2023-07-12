@@ -5379,13 +5379,15 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig {
   /// specified.
   /// - "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS" : Merge the UserInfo Endpoint
   /// Claims with ID Token Claims, preferring UserInfo Claim Values for the same
-  /// Claim Name. Only possible for flows granting an Access Token, which
-  /// comprise only the Authorization Code Flow at the moment.
+  /// Claim Name. This option is available only for the Authorization Code Flow.
   /// - "ONLY_ID_TOKEN_CLAIMS" : Only include ID Token Claims.
   core.String? assertionClaimsBehavior;
 
   /// The Response Type to request for in the OIDC Authorization Request for web
   /// sign-in.
+  ///
+  /// The `CODE` Response Type is recommended to avoid the Implicit Flow, for
+  /// security reasons.
   ///
   /// Required.
   /// Possible string values are:
@@ -7364,6 +7366,12 @@ class WorkforcePool {
   /// Cannot exceed 32 characters.
   core.String? displayName;
 
+  /// Time after which the workforce pool will be permanently purged and cannot
+  /// be recovered.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
   /// The resource name of the pool.
   ///
   /// Format: `locations/{location}/workforcePools/{workforce_pool_id}`
@@ -7406,6 +7414,7 @@ class WorkforcePool {
     this.description,
     this.disabled,
     this.displayName,
+    this.expireTime,
     this.name,
     this.parent,
     this.sessionDuration,
@@ -7423,6 +7432,9 @@ class WorkforcePool {
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           parent: json_.containsKey('parent')
               ? json_['parent'] as core.String
@@ -7438,6 +7450,7 @@ class WorkforcePool {
         if (description != null) 'description': description!,
         if (disabled != null) 'disabled': disabled!,
         if (displayName != null) 'displayName': displayName!,
+        if (expireTime != null) 'expireTime': expireTime!,
         if (name != null) 'name': name!,
         if (parent != null) 'parent': parent!,
         if (sessionDuration != null) 'sessionDuration': sessionDuration!,
@@ -7528,6 +7541,12 @@ class WorkforcePoolProvider {
   /// Cannot exceed 32 characters.
   core.String? displayName;
 
+  /// Time after which the workload pool provider will be permanently purged and
+  /// cannot be recovered.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
   /// The resource name of the provider.
   ///
   /// Format:
@@ -7560,6 +7579,7 @@ class WorkforcePoolProvider {
     this.description,
     this.disabled,
     this.displayName,
+    this.expireTime,
     this.name,
     this.oidc,
     this.saml,
@@ -7590,6 +7610,9 @@ class WorkforcePoolProvider {
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           oidc: json_.containsKey('oidc')
               ? GoogleIamAdminV1WorkforcePoolProviderOidc.fromJson(
@@ -7610,6 +7633,7 @@ class WorkforcePoolProvider {
         if (description != null) 'description': description!,
         if (disabled != null) 'disabled': disabled!,
         if (displayName != null) 'displayName': displayName!,
+        if (expireTime != null) 'expireTime': expireTime!,
         if (name != null) 'name': name!,
         if (oidc != null) 'oidc': oidc!,
         if (saml != null) 'saml': saml!,
@@ -7715,25 +7739,11 @@ class WorkloadIdentityPool {
   /// Cannot exceed 32 characters.
   core.String? displayName;
 
-  /// The identity mode of the pool.
+  /// Time after which the workload identity pool will be permanently purged and
+  /// cannot be recovered.
   ///
-  /// Immutable.
-  /// Possible string values are:
-  /// - "IDENTITY_MODE_UNSPECIFIED" : Existing pools will be in this mode. For
-  /// existing worklod identity pools created through the public API, they will
-  /// act as if they are set to FEDERATION_ONLY.
-  /// - "FEDERATION_ONLY" : With FEDERATION_ONLY mode, providers can be created
-  /// at the root level within the pool. Attribute mappings must specify a
-  /// "google.subject" claim that specifies the identity of the federation
-  /// workload. Namespace or any sub-namespace resources is not allowed with
-  /// this mode.
-  /// - "TRUST_DOMAIN" : With TRUST_DOMAIN mode, providers can be created at the
-  /// root level within the pool. Attribute mappings must specify the
-  /// "google.namespace" and "google.workload_identifier" claims that,
-  /// respectively, specify the namespace and individual sub-namespace
-  /// identifier for the workload. Namespaces and sub-Namespace resources are
-  /// allowed.
-  core.String? identityMode;
+  /// Output only.
+  core.String? expireTime;
 
   /// The resource name of the pool.
   ///
@@ -7759,7 +7769,7 @@ class WorkloadIdentityPool {
     this.description,
     this.disabled,
     this.displayName,
-    this.identityMode,
+    this.expireTime,
     this.name,
     this.state,
   });
@@ -7775,8 +7785,8 @@ class WorkloadIdentityPool {
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
-          identityMode: json_.containsKey('identityMode')
-              ? json_['identityMode'] as core.String
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           state:
@@ -7787,7 +7797,7 @@ class WorkloadIdentityPool {
         if (description != null) 'description': description!,
         if (disabled != null) 'disabled': disabled!,
         if (displayName != null) 'displayName': displayName!,
-        if (identityMode != null) 'identityMode': identityMode!,
+        if (expireTime != null) 'expireTime': expireTime!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
       };
@@ -7874,6 +7884,12 @@ class WorkloadIdentityPoolProvider {
   /// Cannot exceed 32 characters.
   core.String? displayName;
 
+  /// Time after which the workload identity pool provider will be permanently
+  /// purged and cannot be recovered.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
   /// The resource name of the provider.
   ///
   /// Output only.
@@ -7906,6 +7922,7 @@ class WorkloadIdentityPoolProvider {
     this.description,
     this.disabled,
     this.displayName,
+    this.expireTime,
     this.name,
     this.oidc,
     this.saml,
@@ -7940,6 +7957,9 @@ class WorkloadIdentityPoolProvider {
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           oidc: json_.containsKey('oidc')
               ? Oidc.fromJson(
@@ -7961,6 +7981,7 @@ class WorkloadIdentityPoolProvider {
         if (description != null) 'description': description!,
         if (disabled != null) 'disabled': disabled!,
         if (displayName != null) 'displayName': displayName!,
+        if (expireTime != null) 'expireTime': expireTime!,
         if (name != null) 'name': name!,
         if (oidc != null) 'oidc': oidc!,
         if (saml != null) 'saml': saml!,

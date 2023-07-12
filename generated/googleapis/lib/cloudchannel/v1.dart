@@ -7203,7 +7203,7 @@ class GoogleCloudChannelV1ProvisionedService {
   /// Provisioning ID of the entitlement.
   ///
   /// For Google Workspace, this is the underlying Subscription ID. For Google
-  /// Cloud, this is the Billing Account ID of the billing subaccount."
+  /// Cloud, this is the Billing Account ID of the billing subaccount.
   ///
   /// Output only.
   core.String? provisioningId;

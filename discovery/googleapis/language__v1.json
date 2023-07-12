@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230626",
+    "revision": "20230708",
     "rootUrl": "https://language.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Natural Language API",

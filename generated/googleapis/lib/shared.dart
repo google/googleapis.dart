@@ -5132,6 +5132,8 @@ class $EgressFrom {
 /// - connectors:v1 : CancelOperationRequest
 /// - connectors:v1 : Empty
 /// - connectors:v1 : RefreshConnectionSchemaMetadataRequest
+/// - connectors:v1 : RepairEventingRequest
+/// - connectors:v1 : RetryEventSubscriptionRequest
 /// - connectors:v2 : Empty
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1HoldData
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1InterruptionData
@@ -5354,6 +5356,7 @@ class $EgressFrom {
 /// - logging:v2 : UndeleteBucketRequest
 /// - logging:v2 : WriteLogEntriesResponse
 /// - managedidentities:v1 : CancelOperationRequest
+/// - managedidentities:v1 : CheckMigrationPermissionRequest
 /// - managedidentities:v1 : DisableMigrationRequest
 /// - managedidentities:v1 : Empty
 /// - managedidentities:v1 : ResetAdminPasswordRequest

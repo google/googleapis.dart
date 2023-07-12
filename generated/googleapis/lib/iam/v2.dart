@@ -560,7 +560,7 @@ class GoogleIamV2Policy {
   ///
   /// IAM uses this value to help manage concurrent updates, so they do not
   /// cause one update to be overwritten by another. If this field is present in
-  /// a CreatePolicy request, the value is ignored.
+  /// a CreatePolicyRequest, the value is ignored.
   core.String? etag;
 
   /// The kind of the `Policy`.

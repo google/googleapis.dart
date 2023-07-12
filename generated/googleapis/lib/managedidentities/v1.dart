@@ -238,6 +238,50 @@ class ProjectsLocationsGlobalDomainsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// CheckMigrationPermission API gets the current state of DomainMigration
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [domain] - Required. The domain resource name using the form:
+  /// `projects/{project_id}/locations/global/domains/{domain_name}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/domains/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CheckMigrationPermissionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CheckMigrationPermissionResponse> checkMigrationPermission(
+    CheckMigrationPermissionRequest request,
+    core.String domain, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$domain') + ':checkMigrationPermission';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CheckMigrationPermissionResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a Microsoft AD domain.
   ///
   /// [request] - The metadata request object.
@@ -2442,6 +2486,47 @@ class Certificate {
       };
 }
 
+/// CheckMigrationPermissionRequest is the request message for
+/// CheckMigrationPermission method.
+typedef CheckMigrationPermissionRequest = $Empty;
+
+/// CheckMigrationPermissionResponse is the response message for
+/// CheckMigrationPermission method.
+class CheckMigrationPermissionResponse {
+  /// The state of SID filtering of all the domains which has trust established.
+  core.List<OnPremDomainSIDDetails>? onpremDomains;
+
+  /// The state of DomainMigration.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : DomainMigration is in unspecified state.
+  /// - "DISABLED" : Domain Migration is Disabled.
+  /// - "ENABLED" : Domain Migration is Enabled.
+  /// - "NEEDS_MAINTENANCE" : Domain Migration is not in valid state.
+  core.String? state;
+
+  CheckMigrationPermissionResponse({
+    this.onpremDomains,
+    this.state,
+  });
+
+  CheckMigrationPermissionResponse.fromJson(core.Map json_)
+      : this(
+          onpremDomains: json_.containsKey('onpremDomains')
+              ? (json_['onpremDomains'] as core.List)
+                  .map((value) => OnPremDomainSIDDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (onpremDomains != null) 'onpremDomains': onpremDomains!,
+        if (state != null) 'state': state!,
+      };
+}
+
 /// Request message for DetachTrust
 class DetachTrustRequest {
   /// The domain trust resource to removed.
@@ -3208,6 +3293,39 @@ class OnPremDomainDetails {
         if (disableSidFiltering != null)
           'disableSidFiltering': disableSidFiltering!,
         if (domainName != null) 'domainName': domainName!,
+      };
+}
+
+/// OnPremDomainDetails is the message which contains details of on-prem domain
+/// which is trusted and needs to be migrated.
+class OnPremDomainSIDDetails {
+  /// FQDN of the on-prem domain being migrated.
+  core.String? name;
+
+  /// Current SID filtering state.
+  /// Possible string values are:
+  /// - "SID_FILTERING_STATE_UNSPECIFIED" : SID Filtering is in unspecified
+  /// state.
+  /// - "ENABLED" : SID Filtering is Enabled.
+  /// - "DISABLED" : SID Filtering is Disabled.
+  core.String? sidFilteringState;
+
+  OnPremDomainSIDDetails({
+    this.name,
+    this.sidFilteringState,
+  });
+
+  OnPremDomainSIDDetails.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          sidFilteringState: json_.containsKey('sidFilteringState')
+              ? json_['sidFilteringState'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (sidFilteringState != null) 'sidFilteringState': sidFilteringState!,
       };
 }
 

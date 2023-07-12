@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230706",
+    "revision": "20230710",
     "rootUrl": "https://prod-tt-sasportal.googleapis.com/",
     "servicePath": "",
     "title": "SAS Portal API (Testing)",

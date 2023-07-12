@@ -5591,10 +5591,10 @@ class ExecuteBatchDmlResponse {
 /// The request for ExecuteSql and ExecuteStreamingSql.
 class ExecuteSqlRequest {
   /// If this is for a partitioned query and this field is set to `true`, the
-  /// request will be executed via Spanner independent compute resources.
+  /// request is executed with Spanner Data Boost independent compute resources.
   ///
   /// If the field is set to `true` but the request does not set
-  /// `partition_token`, the API will return an `INVALID_ARGUMENT` error.
+  /// `partition_token`, the API returns an `INVALID_ARGUMENT` error.
   core.bool? dataBoostEnabled;
 
   /// It is not always possible for Cloud Spanner to infer the right SQL type
@@ -8318,10 +8318,10 @@ class ReadRequest {
   core.List<core.String>? columns;
 
   /// If this is for a partitioned read and this field is set to `true`, the
-  /// request will be executed via Spanner independent compute resources.
+  /// request is executed with Spanner Data Boost independent compute resources.
   ///
   /// If the field is set to `true` but the request does not set
-  /// `partition_token`, the API will return an `INVALID_ARGUMENT` error.
+  /// `partition_token`, the API returns an `INVALID_ARGUMENT` error.
   core.bool? dataBoostEnabled;
 
   /// If non-empty, the name of an index on table.

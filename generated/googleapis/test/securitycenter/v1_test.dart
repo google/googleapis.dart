@@ -823,6 +823,7 @@ api.Database buildDatabase() {
     o.name = 'foo';
     o.query = 'foo';
     o.userName = 'foo';
+    o.version = 'foo';
   }
   buildCounterDatabase--;
   return o;
@@ -846,6 +847,10 @@ void checkDatabase(api.Database o) {
     );
     unittest.expect(
       o.userName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
       unittest.equals('foo'),
     );
   }

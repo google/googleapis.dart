@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230629",
+    "revision": "20230708",
     "rootUrl": "https://firestore.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Firestore API",
@@ -159,11 +159,6 @@
                                 "name"
                             ],
                             "parameters": {
-                                "allowMissing": {
-                                    "description": "If set to true and the Database is not found, the request will succeed but no action will be taken.",
-                                    "location": "query",
-                                    "type": "boolean"
-                                },
                                 "etag": {
                                     "description": "The current etag of the Database. If an etag is provided and does not match the current etag of the database, deletion will be blocked and a FAILED_PRECONDITION error will be returned.",
                                     "location": "query",
@@ -175,11 +170,6 @@
                                     "pattern": "^projects/[^/]+/databases/[^/]+$",
                                     "required": true,
                                     "type": "string"
-                                },
-                                "validateOnly": {
-                                    "description": "If set, validate the request and preview the response, but do not actually delete the database.",
-                                    "location": "query",
-                                    "type": "boolean"
                                 }
                             },
                             "path": "v1/{+name}",

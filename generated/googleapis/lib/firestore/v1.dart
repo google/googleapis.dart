@@ -150,15 +150,9 @@ class ProjectsDatabasesResource {
   /// `projects/{project_id}/databases/{database_id}`
   /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
   ///
-  /// [allowMissing] - If set to true and the Database is not found, the request
-  /// will succeed but no action will be taken.
-  ///
   /// [etag] - The current etag of the Database. If an etag is provided and does
   /// not match the current etag of the database, deletion will be blocked and a
   /// FAILED_PRECONDITION error will be returned.
-  ///
-  /// [validateOnly] - If set, validate the request and preview the response,
-  /// but do not actually delete the database.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -172,15 +166,11 @@ class ProjectsDatabasesResource {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
-    core.bool? allowMissing,
     core.String? etag,
-    core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (etag != null) 'etag': [etag],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 

@@ -4159,7 +4159,7 @@ class EmptyDirVolumeSource {
   ///
   /// The default is "" which means to use the node's default medium. Must be an
   /// empty string (default) or Memory. More info:
-  /// https://kubernetes.io/docs/concepts/storage/volumes#emptydir +optional
+  /// https://kubernetes.io/docs/concepts/storage/volumes#emptydir
   core.String? medium;
 
   /// Limit on the storage usable by this EmptyDir volume.

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230622",
+    "revision": "20230710",
     "rootUrl": "https://iam.googleapis.com/",
     "servicePath": "",
     "title": "Identity and Access Management (IAM) API",
@@ -479,7 +479,7 @@
                     "type": "string"
                 },
                 "etag": {
-                    "description": "An opaque tag that identifies the current version of the `Policy`. IAM uses this value to help manage concurrent updates, so they do not cause one update to be overwritten by another. If this field is present in a CreatePolicy request, the value is ignored.",
+                    "description": "An opaque tag that identifies the current version of the `Policy`. IAM uses this value to help manage concurrent updates, so they do not cause one update to be overwritten by another. If this field is present in a CreatePolicyRequest, the value is ignored.",
                     "type": "string"
                 },
                 "kind": {

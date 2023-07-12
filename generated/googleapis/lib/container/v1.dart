@@ -3648,6 +3648,76 @@ class AcceleratorConfig {
       };
 }
 
+/// AdditionalNodeNetworkConfig is the configuration for additional node
+/// networks within the NodeNetworkConfig message
+class AdditionalNodeNetworkConfig {
+  /// Name of the VPC where the additional interface belongs
+  core.String? network;
+
+  /// Name of the subnetwork where the additional interface belongs
+  core.String? subnetwork;
+
+  AdditionalNodeNetworkConfig({
+    this.network,
+    this.subnetwork,
+  });
+
+  AdditionalNodeNetworkConfig.fromJson(core.Map json_)
+      : this(
+          network: json_.containsKey('network')
+              ? json_['network'] as core.String
+              : null,
+          subnetwork: json_.containsKey('subnetwork')
+              ? json_['subnetwork'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (network != null) 'network': network!,
+        if (subnetwork != null) 'subnetwork': subnetwork!,
+      };
+}
+
+/// AdditionalPodNetworkConfig is the configuration for additional pod networks
+/// within the NodeNetworkConfig message
+class AdditionalPodNetworkConfig {
+  /// The maximum number of pods per node which use this pod network
+  MaxPodsConstraint? maxPodsPerNode;
+
+  /// The name of the secondary range on the subnet which provides IP address
+  /// for this pod range
+  core.String? secondaryPodRange;
+
+  /// Name of the subnetwork where the additional pod network belongs
+  core.String? subnetwork;
+
+  AdditionalPodNetworkConfig({
+    this.maxPodsPerNode,
+    this.secondaryPodRange,
+    this.subnetwork,
+  });
+
+  AdditionalPodNetworkConfig.fromJson(core.Map json_)
+      : this(
+          maxPodsPerNode: json_.containsKey('maxPodsPerNode')
+              ? MaxPodsConstraint.fromJson(json_['maxPodsPerNode']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          secondaryPodRange: json_.containsKey('secondaryPodRange')
+              ? json_['secondaryPodRange'] as core.String
+              : null,
+          subnetwork: json_.containsKey('subnetwork')
+              ? json_['subnetwork'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxPodsPerNode != null) 'maxPodsPerNode': maxPodsPerNode!,
+        if (secondaryPodRange != null) 'secondaryPodRange': secondaryPodRange!,
+        if (subnetwork != null) 'subnetwork': subnetwork!,
+      };
+}
+
 /// AdditionalPodRangesConfig is the configuration for additional pod secondary
 /// ranges supporting the ClusterUpdate message.
 class AdditionalPodRangesConfig {
@@ -8332,6 +8402,9 @@ class NetworkConfig {
   /// Whether L4ILB Subsetting is enabled for this cluster.
   core.bool? enableL4ilbSubsetting;
 
+  /// Whether multi-networking is enabled for this cluster.
+  core.bool? enableMultiNetworking;
+
   /// GatewayAPIConfig contains the desired config of Gateway API on this
   /// cluster.
   GatewayAPIConfig? gatewayApiConfig;
@@ -8383,6 +8456,7 @@ class NetworkConfig {
     this.enableFqdnNetworkPolicy,
     this.enableIntraNodeVisibility,
     this.enableL4ilbSubsetting,
+    this.enableMultiNetworking,
     this.gatewayApiConfig,
     this.network,
     this.networkPerformanceConfig,
@@ -8413,6 +8487,9 @@ class NetworkConfig {
                   : null,
           enableL4ilbSubsetting: json_.containsKey('enableL4ilbSubsetting')
               ? json_['enableL4ilbSubsetting'] as core.bool
+              : null,
+          enableMultiNetworking: json_.containsKey('enableMultiNetworking')
+              ? json_['enableMultiNetworking'] as core.bool
               : null,
           gatewayApiConfig: json_.containsKey('gatewayApiConfig')
               ? GatewayAPIConfig.fromJson(json_['gatewayApiConfig']
@@ -8451,6 +8528,8 @@ class NetworkConfig {
           'enableIntraNodeVisibility': enableIntraNodeVisibility!,
         if (enableL4ilbSubsetting != null)
           'enableL4ilbSubsetting': enableL4ilbSubsetting!,
+        if (enableMultiNetworking != null)
+          'enableMultiNetworking': enableMultiNetworking!,
         if (gatewayApiConfig != null) 'gatewayApiConfig': gatewayApiConfig!,
         if (network != null) 'network': network!,
         if (networkPerformanceConfig != null)
@@ -9207,6 +9286,17 @@ class NodeManagement {
 
 /// Parameters for node pool-level network config.
 class NodeNetworkConfig {
+  /// We specify the additional node networks for this node pool using this
+  /// list.
+  ///
+  /// Each node network corresponds to an additional interface
+  core.List<AdditionalNodeNetworkConfig>? additionalNodeNetworkConfigs;
+
+  /// We specify the additional pod networks for this node pool using this list.
+  ///
+  /// Each pod network corresponds to an additional alias IP range for the node
+  core.List<AdditionalPodNetworkConfig>? additionalPodNetworkConfigs;
+
   /// Input only.
   ///
   /// Whether to create a new range for pod IPs in this node pool. Defaults are
@@ -9265,6 +9355,8 @@ class NodeNetworkConfig {
   core.String? podRange;
 
   NodeNetworkConfig({
+    this.additionalNodeNetworkConfigs,
+    this.additionalPodNetworkConfigs,
     this.createPodRange,
     this.enablePrivateNodes,
     this.networkPerformanceConfig,
@@ -9276,6 +9368,20 @@ class NodeNetworkConfig {
 
   NodeNetworkConfig.fromJson(core.Map json_)
       : this(
+          additionalNodeNetworkConfigs:
+              json_.containsKey('additionalNodeNetworkConfigs')
+                  ? (json_['additionalNodeNetworkConfigs'] as core.List)
+                      .map((value) => AdditionalNodeNetworkConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          additionalPodNetworkConfigs:
+              json_.containsKey('additionalPodNetworkConfigs')
+                  ? (json_['additionalPodNetworkConfigs'] as core.List)
+                      .map((value) => AdditionalPodNetworkConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
           createPodRange: json_.containsKey('createPodRange')
               ? json_['createPodRange'] as core.bool
               : null,
@@ -9306,6 +9412,10 @@ class NodeNetworkConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalNodeNetworkConfigs != null)
+          'additionalNodeNetworkConfigs': additionalNodeNetworkConfigs!,
+        if (additionalPodNetworkConfigs != null)
+          'additionalPodNetworkConfigs': additionalPodNetworkConfigs!,
         if (createPodRange != null) 'createPodRange': createPodRange!,
         if (enablePrivateNodes != null)
           'enablePrivateNodes': enablePrivateNodes!,
@@ -10140,6 +10250,13 @@ class OperationProgress {
 
 /// PlacementPolicy defines the placement policy used by the node pool.
 class PlacementPolicy {
+  /// If set, refers to the name of a custom resource policy supplied by the
+  /// user.
+  ///
+  /// The resource policy must be in the same project and region as the node
+  /// pool. If not found, InvalidArgument error is returned.
+  core.String? policyName;
+
   /// The type of placement.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : TYPE_UNSPECIFIED specifies no requirements on nodes
@@ -10149,15 +10266,20 @@ class PlacementPolicy {
   core.String? type;
 
   PlacementPolicy({
+    this.policyName,
     this.type,
   });
 
   PlacementPolicy.fromJson(core.Map json_)
       : this(
+          policyName: json_.containsKey('policyName')
+              ? json_['policyName'] as core.String
+              : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (policyName != null) 'policyName': policyName!,
         if (type != null) 'type': type!,
       };
 }
