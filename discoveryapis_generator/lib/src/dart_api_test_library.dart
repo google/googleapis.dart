@@ -239,7 +239,12 @@ class ResourceTest extends TestHelper {
             }
 
             final test = MethodArgsTest(
-                '(req.url)', rootPath, basePath, method, paramValues);
+              'req.url',
+              rootPath,
+              basePath,
+              method,
+              paramValues,
+            );
             sb.writeln(test.uriValidationStatements(8));
             sb.writeln(test.queryValidationStatements(8));
             sb.writeln();
