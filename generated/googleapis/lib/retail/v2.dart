@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -45,7 +46,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -4009,6 +4009,9 @@ class GoogleCloudRetailV2CompleteQueryResponse {
   /// recent searches will be reserved when duplication happens.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult>?
       recentSearchResults;
 
@@ -4570,6 +4573,9 @@ class GoogleCloudRetailV2CustomAttribute {
   /// filtered, faceted or boosted in SearchService.Search. This field is
   /// ignored in a UserEvent. See SearchRequest.filter,
   /// SearchRequest.facet_specs and SearchRequest.boost_spec for more details.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? indexable;
 
   /// The numerical values of this custom attribute.
@@ -4588,6 +4594,9 @@ class GoogleCloudRetailV2CustomAttribute {
   /// If true, custom attribute values are searchable by text queries in
   /// SearchService.Search. This field is ignored in a UserEvent. Only set if
   /// type text is set. Otherwise, a INVALID_ARGUMENT error is returned.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? searchable;
 
   /// The textual values of this custom attribute.
@@ -4994,6 +5003,9 @@ class GoogleCloudRetailV2ImportProductsRequest {
   /// This field has no effect.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? requestId;
 
   /// Indicates which fields in the provided imported `products` to update.
@@ -5779,6 +5791,9 @@ class GoogleCloudRetailV2PredictRequest {
   core.int? pageSize;
 
   /// This field is not used; leave it unset.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? pageToken;
 
   /// Additional domain specific parameters for the predictions.
@@ -6394,6 +6409,9 @@ class GoogleCloudRetailV2Product {
   /// Returning more fields in SearchResponse can increase response payload size
   /// and serving latency. This field is deprecated. Use the retrievable
   /// site-wide control instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? retrievableFields;
 
   /// The size of the product.
@@ -7808,6 +7826,9 @@ class GoogleCloudRetailV2SearchRequest {
   /// Notice that only textual facets can be dynamically generated.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleCloudRetailV2SearchRequestDynamicFacetSpec? dynamicFacetSpec;
 
   /// The entity for customers that may run multiple different entities,

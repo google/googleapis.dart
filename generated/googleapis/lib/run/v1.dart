@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -50,7 +51,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -3236,6 +3236,9 @@ class AuthorizedDomain {
   ///
   /// Full path to the `AuthorizedDomain` resource in the API. Example:
   /// `projects/myproject/authorizedDomains/example.com`.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? name;
 
   AuthorizedDomain({
@@ -3351,6 +3354,9 @@ class ConfigMapEnvSource {
   /// directly into the message.
   ///
   /// Use the "name" field instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   LocalObjectReference? localObjectReference;
 
   /// The ConfigMap to select from.
@@ -3393,6 +3399,9 @@ class ConfigMapKeySelector {
   core.String? key;
 
   /// Not supported by Cloud Run.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   LocalObjectReference? localObjectReference;
 
   /// Not supported by Cloud Run.
@@ -6813,6 +6822,9 @@ class SecretEnvSource {
   /// directly into the message.
   ///
   /// Use the "name" field instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   LocalObjectReference? localObjectReference;
 
   /// The Secret to select from.
@@ -6862,6 +6874,9 @@ class SecretKeySelector {
   /// directly into the message.
   ///
   /// Use the "name" field instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   LocalObjectReference? localObjectReference;
 
   /// The name of the secret in Cloud Secret Manager.
@@ -7845,6 +7860,9 @@ class TrafficTarget {
   /// It must be empty.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? configurationName;
 
   /// Uses the "status.latestReadyRevisionName" of the Service to determine the

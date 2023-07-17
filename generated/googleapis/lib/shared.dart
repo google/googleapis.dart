@@ -7,6 +7,7 @@ library;
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -5458,6 +5459,9 @@ class $Endpoint {
   /// aliases. Additional names that this endpoint will be hosted on.
   ///
   /// Unimplemented.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? aliases;
 
   /// Allowing
@@ -7439,6 +7443,9 @@ class $GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak {
 /// - documentai:v1 : GoogleCloudDocumentaiV1DocumentProvenanceParent
 class $GoogleCloudDocumentaiV1DocumentProvenanceParent {
   /// The id of the parent provenance.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? id;
 
   /// The index of the parent item in the corresponding item list (eg.
@@ -10646,6 +10653,9 @@ class $MetricDescriptorMetadata {
   /// Terms of Service (https://cloud.google.com/terms/) and the Google Cloud
   /// Platform Subject to the Deprecation Policy
   /// (https://cloud.google.com/terms/deprecation) documentation.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? launchStage;
 
   /// The sampling period of metric data points.
@@ -15578,6 +15588,9 @@ class $TargetingExpansionConfig {
   /// all positive first-party audience targeting assigned to this line item
   /// will be replaced with negative targeting of the same first-party audiences
   /// to ensure the continued exclusion of those audiences.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? excludeFirstPartyAudience;
 
   /// Whether optimized targeting is turned on.

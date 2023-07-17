@@ -1,3 +1,7 @@
+## 11.4.0-wip
+
+- Deprecated APIs are now annotated with `@Deprecated`.
+
 ## 11.3.0
 
 - `blockchainnodeengine` - new!

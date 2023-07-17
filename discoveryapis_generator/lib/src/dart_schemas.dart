@@ -67,13 +67,20 @@ class DartClassProperty {
   final Comment comment;
   final DartSchemaType type;
   final String jsonName;
+  final bool deprecated;
 
   // If this property is a base64 encoded bytes, this identifier will represent
   // the name used for a setter/getter.
   final Identifier? byteArrayAccessor;
 
-  DartClassProperty(this.name, this.comment, this.type, this.jsonName,
-      {this.byteArrayAccessor});
+  DartClassProperty(
+    this.name,
+    this.comment,
+    this.type,
+    this.jsonName, {
+    this.byteArrayAccessor,
+    required this.deprecated,
+  });
 }
 
 /// Parses all schemas in [description] and returns a [DartSchemaTypeDB].
@@ -208,8 +215,13 @@ DartSchemaTypeDB parseSchemas(
                   classScope.newIdentifier('${jsonPName}AsBytes');
             }
             final property = DartClassProperty(
-                propertyName, comment, propertyType, jsonPName,
-                byteArrayAccessor: byteArrayAccessor);
+              propertyName,
+              comment,
+              propertyType,
+              jsonPName,
+              byteArrayAccessor: byteArrayAccessor,
+              deprecated: value.deprecated ?? false,
+            );
             properties.add(property);
           });
         }

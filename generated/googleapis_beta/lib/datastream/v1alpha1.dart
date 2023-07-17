@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -33,7 +34,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -105,6 +105,9 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<FetchStaticIpsResponse> fetchStaticIps(
     core.String name, {
     core.int? pageSize,
@@ -216,6 +219,9 @@ class ProjectsLocationsResource {
   }
 }
 
+@core.Deprecated(
+  'Not supported. Member documentation may have more information.',
+)
 class ProjectsLocationsConnectionProfilesResource {
   final commons.ApiRequester _requester;
 
@@ -256,6 +262,9 @@ class ProjectsLocationsConnectionProfilesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Operation> create(
     ConnectionProfile request,
     core.String parent, {
@@ -313,6 +322,9 @@ class ProjectsLocationsConnectionProfilesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Operation> delete(
     core.String name, {
     core.String? requestId,
@@ -357,6 +369,9 @@ class ProjectsLocationsConnectionProfilesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<DiscoverConnectionProfileResponse> discover(
     DiscoverConnectionProfileRequest request,
     core.String parent, {
@@ -399,6 +414,9 @@ class ProjectsLocationsConnectionProfilesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<ConnectionProfile> get(
     core.String name, {
     core.String? $fields,
@@ -450,6 +468,9 @@ class ProjectsLocationsConnectionProfilesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<ListConnectionProfilesResponse> list(
     core.String parent, {
     core.String? filter,
@@ -519,6 +540,9 @@ class ProjectsLocationsConnectionProfilesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Operation> patch(
     ConnectionProfile request,
     core.String name, {
@@ -776,6 +800,9 @@ class ProjectsLocationsPrivateConnectionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Operation> create(
     PrivateConnection request,
     core.String parent, {
@@ -837,6 +864,9 @@ class ProjectsLocationsPrivateConnectionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Operation> delete(
     core.String name, {
     core.bool? force,
@@ -878,6 +908,9 @@ class ProjectsLocationsPrivateConnectionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<PrivateConnection> get(
     core.String name, {
     core.String? $fields,
@@ -930,6 +963,9 @@ class ProjectsLocationsPrivateConnectionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<ListPrivateConnectionsResponse> list(
     core.String parent, {
     core.String? filter,
@@ -959,6 +995,9 @@ class ProjectsLocationsPrivateConnectionsResource {
   }
 }
 
+@core.Deprecated(
+  'Not supported. Member documentation may have more information.',
+)
 class ProjectsLocationsPrivateConnectionsRoutesResource {
   final commons.ApiRequester _requester;
 
@@ -1000,6 +1039,9 @@ class ProjectsLocationsPrivateConnectionsRoutesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Operation> create(
     Route request,
     core.String parent, {
@@ -1055,6 +1097,9 @@ class ProjectsLocationsPrivateConnectionsRoutesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Operation> delete(
     core.String name, {
     core.String? requestId,
@@ -1093,6 +1138,9 @@ class ProjectsLocationsPrivateConnectionsRoutesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Route> get(
     core.String name, {
     core.String? $fields,
@@ -1143,6 +1191,9 @@ class ProjectsLocationsPrivateConnectionsRoutesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<ListRoutesResponse> list(
     core.String parent, {
     core.String? filter,
@@ -1218,6 +1269,9 @@ class ProjectsLocationsStreamsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Operation> create(
     Stream request,
     core.String parent, {
@@ -1277,6 +1331,9 @@ class ProjectsLocationsStreamsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Operation> delete(
     core.String name, {
     core.String? requestId,
@@ -1317,6 +1374,9 @@ class ProjectsLocationsStreamsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Operation> fetchErrors(
     FetchErrorsRequest request,
     core.String stream, {
@@ -1356,6 +1416,9 @@ class ProjectsLocationsStreamsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Stream> get(
     core.String name, {
     core.String? $fields,
@@ -1404,6 +1467,9 @@ class ProjectsLocationsStreamsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<ListStreamsResponse> list(
     core.String parent, {
     core.String? filter,
@@ -1474,6 +1540,9 @@ class ProjectsLocationsStreamsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Operation> patch(
     Stream request,
     core.String name, {
@@ -1504,6 +1573,9 @@ class ProjectsLocationsStreamsResource {
   }
 }
 
+@core.Deprecated(
+  'Not supported. Member documentation may have more information.',
+)
 class ProjectsLocationsStreamsObjectsResource {
   final commons.ApiRequester _requester;
 
@@ -1528,6 +1600,9 @@ class ProjectsLocationsStreamsObjectsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<StreamObject> get(
     core.String name, {
     core.String? $fields,
@@ -1575,6 +1650,9 @@ class ProjectsLocationsStreamsObjectsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<ListStreamObjectsResponse> list(
     core.String parent, {
     core.int? pageSize,
@@ -1617,6 +1695,9 @@ class ProjectsLocationsStreamsObjectsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<StartBackfillJobResponse> startBackfillJob(
     core.String object, {
     core.String? $fields,
@@ -1656,6 +1737,9 @@ class ProjectsLocationsStreamsObjectsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<StopBackfillJobResponse> stopBackfillJob(
     core.String object, {
     core.String? $fields,
@@ -2247,6 +2331,9 @@ class GcsDestinationConfig {
   /// Possible string values are:
   /// - "GCS_FILE_FORMAT_UNSPECIFIED" : Unspecified Cloud Storage file format.
   /// - "AVRO" : Avro file format
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? gcsFileFormat;
 
   /// JSON file format configuration.

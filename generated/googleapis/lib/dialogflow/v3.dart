@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -52,7 +53,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -5911,6 +5911,9 @@ class GoogleCloudDialogflowCxV3Agent {
   /// Indicates if stackdriver logging is enabled for the agent.
   ///
   /// Please use agent.advanced_settings instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? enableStackdriverLogging;
 
   /// Git integration settings for this agent.
@@ -10936,6 +10939,9 @@ class GoogleCloudDialogflowCxV3QueryResult {
   /// Some, not all fields are filled in this message, including but not limited
   /// to: `name` and `display_name`. This field is deprecated, please use
   /// QueryResult.match instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleCloudDialogflowCxV3Intent? intent;
 
   /// The intent detection confidence.
@@ -10946,6 +10952,9 @@ class GoogleCloudDialogflowCxV3QueryResult {
   /// change for the same end-user expression at any time due to a model
   /// retraining or change in implementation. This field is deprecated, please
   /// use QueryResult.match instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.double? intentDetectionConfidence;
 
   /// The language that was triggered during intent detection.
@@ -13041,6 +13050,9 @@ class GoogleCloudDialogflowCxV3ValidationMessage {
   core.String? resourceType;
 
   /// The names of the resources where the message is found.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? resources;
 
   /// Indicates the severity of the message.
@@ -13439,6 +13451,9 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
   core.Map<core.String, core.String>? parameterMapping;
 
   /// The password for HTTP Basic authentication.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? password;
 
   /// Defines a custom JSON object as request body to send to flexible webhook.
@@ -13457,6 +13472,9 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
   core.String? uri;
 
   /// The user name for HTTP Basic authentication.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? username;
 
   /// Type of the webhook.

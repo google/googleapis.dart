@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -33,7 +34,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -1151,6 +1151,9 @@ class Node {
   /// instances.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? ipAddress;
 
   /// Resource labels to represent user-provided metadata.
@@ -1181,6 +1184,9 @@ class Node {
   /// The network port for the TPU Node as visible to Compute Engine instances.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? port;
 
   /// The scheduling options for this node.

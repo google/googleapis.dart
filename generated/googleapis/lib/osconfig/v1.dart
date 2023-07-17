@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -41,7 +42,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -5543,6 +5543,9 @@ class VulnerabilityReportVulnerability {
   /// these values might not display in VM inventory. If there is no available
   /// fix, the field is empty. The `inventory_item` value specifies the latest
   /// `SoftwarePackage` available to the VM that fixes the vulnerability.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? availableInventoryItemIds;
 
   /// The timestamp for when the vulnerability was first detected.
@@ -5558,6 +5561,9 @@ class VulnerabilityReportVulnerability {
   /// the vulnerability report was not updated after the VM inventory update,
   /// these values might not display in VM inventory. For some distros, this
   /// field may be empty.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? installedInventoryItemIds;
 
   /// List of items affected by the vulnerability.

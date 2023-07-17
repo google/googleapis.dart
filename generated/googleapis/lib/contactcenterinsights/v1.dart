@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -36,7 +37,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -2566,6 +2566,9 @@ class GoogleCloudContactcenterinsightsV1CalculateStatsResponse {
   ///
   /// Key has the format: `projects//locations//issueModels//issues/`
   /// Deprecated, use `issue_matches_stats` field instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.Map<core.String, core.int>? issueMatches;
 
   /// A map associating each issue resource name with its respective number of
@@ -3206,6 +3209,9 @@ class GoogleCloudContactcenterinsightsV1ConversationParticipant {
   /// projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? dialogflowParticipant;
 
   /// The name of the participant provided by Dialogflow.
@@ -4536,6 +4542,9 @@ class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
   /// - "PHONE_CALL" : The format for conversations that took place over the
   /// phone.
   /// - "CHAT" : The format for conversations that took place over chat.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? medium;
 
   /// Number of conversations used in training.

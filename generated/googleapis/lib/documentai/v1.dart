@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -39,7 +40,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -1704,6 +1704,9 @@ class GoogleCloudDocumentaiV1Document {
   core.List<GoogleCloudDocumentaiV1DocumentTextChange>? textChanges;
 
   /// Styles for the Document.text.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<GoogleCloudDocumentaiV1DocumentStyle>? textStyles;
 
   /// Currently supports Google Cloud Storage URI of the form
@@ -2206,6 +2209,9 @@ class GoogleCloudDocumentaiV1DocumentPage {
   core.List<GoogleCloudDocumentaiV1DocumentPageParagraph>? paragraphs;
 
   /// The history of this page.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleCloudDocumentaiV1DocumentProvenance? provenance;
 
   /// A list of visually detected symbols on the page.
@@ -2420,6 +2426,9 @@ class GoogleCloudDocumentaiV1DocumentPageAnchorPageRef {
   /// Use PageRef.bounding_poly instead.
   ///
   /// Optional. Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? layoutId;
 
   /// The type of the layout element that is being referenced if any.
@@ -2491,6 +2500,9 @@ class GoogleCloudDocumentaiV1DocumentPageBlock {
   GoogleCloudDocumentaiV1DocumentPageLayout? layout;
 
   /// The history of this annotation.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleCloudDocumentaiV1DocumentProvenance? provenance;
 
   GoogleCloudDocumentaiV1DocumentPageBlock({
@@ -2789,6 +2801,9 @@ class GoogleCloudDocumentaiV1DocumentPageLine {
   GoogleCloudDocumentaiV1DocumentPageLayout? layout;
 
   /// The history of this annotation.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleCloudDocumentaiV1DocumentProvenance? provenance;
 
   GoogleCloudDocumentaiV1DocumentPageLine({
@@ -2839,6 +2854,9 @@ class GoogleCloudDocumentaiV1DocumentPageParagraph {
   GoogleCloudDocumentaiV1DocumentPageLayout? layout;
 
   /// The history of this annotation.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleCloudDocumentaiV1DocumentProvenance? provenance;
 
   GoogleCloudDocumentaiV1DocumentPageParagraph({
@@ -2926,6 +2944,9 @@ class GoogleCloudDocumentaiV1DocumentPageTable {
   GoogleCloudDocumentaiV1DocumentPageLayout? layout;
 
   /// The history of this table.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleCloudDocumentaiV1DocumentProvenance? provenance;
 
   GoogleCloudDocumentaiV1DocumentPageTable({
@@ -3070,6 +3091,9 @@ class GoogleCloudDocumentaiV1DocumentPageToken {
   GoogleCloudDocumentaiV1DocumentPageLayout? layout;
 
   /// The history of this annotation.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleCloudDocumentaiV1DocumentProvenance? provenance;
 
   /// Text style attributes.
@@ -3309,12 +3333,18 @@ class GoogleCloudDocumentaiV1DocumentProvenance {
   /// The Id of this operation.
   ///
   /// Needs to be unique within the scope of the revision.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? id;
 
   /// References to the original elements that are replaced.
   core.List<GoogleCloudDocumentaiV1DocumentProvenanceParent>? parents;
 
   /// The index of the revision that produced this element.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? revision;
 
   /// The type of provenance operation.
@@ -3395,6 +3425,9 @@ class GoogleCloudDocumentaiV1DocumentRevision {
   ///
   /// This can include one or more parent (when documents are merged.) This
   /// field represents the index into the `revisions` field.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.int>? parent;
 
   /// The revisions that this revision is based on.
@@ -3875,6 +3908,9 @@ class GoogleCloudDocumentaiV1DocumentTextChange {
   core.String? changedText;
 
   /// The history of this annotation.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<GoogleCloudDocumentaiV1DocumentProvenance>? provenance;
 
   /// Provenance of the correction.

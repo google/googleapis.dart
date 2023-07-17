@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -41,7 +42,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -4724,12 +4724,21 @@ class AboutQuotaBytesByService {
 
 class AboutTeamDriveThemes {
   /// Deprecated: Use `driveThemes/backgroundImageLink` instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? backgroundImageLink;
 
   /// Deprecated: Use `driveThemes/colorRgb` instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? colorRgb;
 
   /// Deprecated: Use `driveThemes/id` instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? id;
 
   AboutTeamDriveThemes({
@@ -4768,6 +4777,9 @@ class About {
   core.bool? canCreateDrives;
 
   /// Deprecated: Use `canCreateDrives` instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? canCreateTeamDrives;
 
   /// The domain sharing policy for the current user.
@@ -4852,6 +4864,9 @@ class About {
   core.String? selfLink;
 
   /// Deprecated: Use `driveThemes` instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<AboutTeamDriveThemes>? teamDriveThemes;
 
   /// The authenticated user.
@@ -5405,12 +5420,21 @@ class Change {
   core.String? selfLink;
 
   /// Deprecated: Use `drive` instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   TeamDrive? teamDrive;
 
   /// Deprecated: Use `driveId` instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? teamDriveId;
 
   /// Deprecated: Use `changeType` instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? type;
 
   Change({
@@ -6805,6 +6829,9 @@ class FileCapabilities {
   /// Deprecated.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? canChangeRestrictedDownload;
 
   /// Whether the current user can change the securityUpdateEnabled field on
@@ -6888,6 +6915,9 @@ class FileCapabilities {
   /// Deprecated: Use `canMoveChildrenOutOfDrive` instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? canMoveChildrenOutOfTeamDrive;
 
   /// Whether the current user can move children of this folder within this
@@ -6903,11 +6933,17 @@ class FileCapabilities {
   /// Deprecated: Use `canMoveChildrenWithinDrive` instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? canMoveChildrenWithinTeamDrive;
 
   /// Deprecated: Use `canMoveItemOutOfDrive` instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? canMoveItemIntoTeamDrive;
 
   /// Whether the current user can move this item outside of this drive by
@@ -6922,6 +6958,9 @@ class FileCapabilities {
   /// Deprecated: Use `canMoveItemOutOfDrive` instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? canMoveItemOutOfTeamDrive;
 
   /// Whether the current user can move this item within this drive.
@@ -6936,12 +6975,18 @@ class FileCapabilities {
   /// Deprecated: Use `canMoveItemWithinDrive` instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? canMoveItemWithinTeamDrive;
 
   /// Deprecated: Use `canMoveItemWithinDrive` or `canMoveItemOutOfDrive`
   /// instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? canMoveTeamDriveItem;
 
   /// Whether the current user can read the shared drive to which this file
@@ -6968,6 +7013,9 @@ class FileCapabilities {
   /// Deprecated: Use `canReadDrive` instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? canReadTeamDrive;
 
   /// Whether the current user can remove children from this folder.
@@ -7570,6 +7618,9 @@ class FileLabels {
   /// Deprecated.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? hidden;
 
   /// Whether the file has been modified by this user.
@@ -7580,6 +7631,9 @@ class FileLabels {
   /// Deprecated: Use `copyRequiresWriterPermission` instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? restricted;
 
   /// Whether this file is starred by the user.
@@ -7815,11 +7869,17 @@ class File {
   /// Deprecated: Use `capabilities/canComment` instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? canComment;
 
   /// Deprecated: Use `capabilities/canReadRevisions` instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? canReadRevisions;
 
   /// Capabilities the current user has on this file.
@@ -7841,6 +7901,9 @@ class File {
   /// Deprecated: Use `capabilities/canCopy` instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? copyable;
 
   /// Create time for this file (formatted RFC 3339 timestamp).
@@ -7874,6 +7937,9 @@ class File {
   /// Deprecated: Use `capabilities/canEdit` instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? editable;
 
   /// A link for embedding the file.
@@ -8137,6 +8203,9 @@ class File {
   /// Deprecated: Use `capabilities/canShare` instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? shareable;
 
   /// Whether the file has been shared.
@@ -8171,6 +8240,9 @@ class File {
   /// Deprecated: Use `driveId` instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? teamDriveId;
 
   /// A thumbnail for the file.
@@ -9382,26 +9454,41 @@ class PermissionTeamDrivePermissionDetails {
   /// Deprecated: Use `permissionDetails/additionalRoles` instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? additionalRoles;
 
   /// Deprecated: Use `permissionDetails/inherited` instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? inherited;
 
   /// Deprecated: Use `permissionDetails/inheritedFrom` instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? inheritedFrom;
 
   /// Deprecated: Use `permissionDetails/role` instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? role;
 
   /// Deprecated: Use `permissionDetails/permissionType` instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? teamDrivePermissionType;
 
   PermissionTeamDrivePermissionDetails({
@@ -9452,6 +9539,9 @@ class Permission {
   /// Deprecated.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? authKey;
 
   /// Whether the account associated with this permission has been deleted.
@@ -9542,6 +9632,9 @@ class Permission {
   /// Deprecated: Use `permissionDetails` instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<PermissionTeamDrivePermissionDetails>? teamDrivePermissionDetails;
 
   /// The account type.
@@ -10289,6 +10382,9 @@ class TeamDriveCapabilities {
   core.bool? canReadRevisions;
 
   /// Deprecated: Use `canDeleteChildren` or `canTrashChildren` instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? canRemoveChildren;
 
   /// Whether the current user can rename files or folders in this Team Drive.

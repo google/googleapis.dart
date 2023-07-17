@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -34,7 +35,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -2353,6 +2353,9 @@ class GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo {
 
 /// Request message for CreateAuthUri.
 class GoogleCloudIdentitytoolkitV1CreateAuthUriRequest {
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? appId;
 
   /// Used for the Google provider.
@@ -2394,6 +2397,9 @@ class GoogleCloudIdentitytoolkitV1CreateAuthUriRequest {
   /// format of `name@domain.tld`. The email address should also match the
   /// [RFC 822](https://tools.ietf.org/html/rfc822) addr-spec production.
   core.String? identifier;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? oauthConsumerKey;
 
   /// Additional space-delimited OAuth 2.0 scopes specifying the scope of the
@@ -2402,7 +2408,13 @@ class GoogleCloudIdentitytoolkitV1CreateAuthUriRequest {
   /// Used for OAuth 2.0 IdPs. For the Google provider, the authorization code
   /// flow will be used if this field is set.
   core.String? oauthScope;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? openidRealm;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? otaApp;
 
   /// The provider ID of the IdP for the user to sign in with.
@@ -2518,6 +2530,9 @@ class GoogleCloudIdentitytoolkitV1CreateAuthUriRequest {
 
 /// Response message for CreateAuthUri.
 class GoogleCloudIdentitytoolkitV1CreateAuthUriResponse {
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? allProviders;
 
   /// The authorization URI for the requested provider.
@@ -2536,6 +2551,9 @@ class GoogleCloudIdentitytoolkitV1CreateAuthUriResponse {
   ///
   /// Present only when a registered email identifier is set in the request.
   core.bool? forExistingProvider;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? kind;
 
   /// The provider ID from the request, if provided.
@@ -2688,6 +2706,9 @@ class GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse {
 
 /// Request message for DeleteAccount.
 class GoogleCloudIdentitytoolkitV1DeleteAccountRequest {
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? delegatedProjectNumber;
 
   /// The Identity Platform ID token of the account to delete.
@@ -2758,6 +2779,9 @@ class GoogleCloudIdentitytoolkitV1DeleteAccountRequest {
 
 /// Response message for DeleteAccount.
 class GoogleCloudIdentitytoolkitV1DeleteAccountResponse {
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? kind;
 
   GoogleCloudIdentitytoolkitV1DeleteAccountResponse({
@@ -2776,6 +2800,9 @@ class GoogleCloudIdentitytoolkitV1DeleteAccountResponse {
 
 /// Response message for DownloadAccount.
 class GoogleCloudIdentitytoolkitV1DownloadAccountResponse {
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? kind;
 
   /// If there are more accounts to be downloaded, a token that can be passed
@@ -2999,6 +3026,9 @@ class GoogleCloudIdentitytoolkitV1FederatedUserIdentifier {
 
 /// Request message for GetAccountInfo.
 class GoogleCloudIdentitytoolkitV1GetAccountInfoRequest {
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? delegatedProjectNumber;
 
   /// The email address of one or more accounts to fetch.
@@ -3128,6 +3158,9 @@ class GoogleCloudIdentitytoolkitV1GetAccountInfoRequest {
 
 /// Response message for GetAccountInfo.
 class GoogleCloudIdentitytoolkitV1GetAccountInfoResponse {
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? kind;
 
   /// The information of specific user account(s) matching the parameters in the
@@ -3193,6 +3226,9 @@ class GoogleCloudIdentitytoolkitV1GetOobCodeRequest {
   /// In those cases, this is the response from the reCaptcha challenge used to
   /// verify the caller.
   core.String? captchaResp;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? challenge;
 
   /// The client type: web, Android or iOS.
@@ -3424,6 +3460,9 @@ class GoogleCloudIdentitytoolkitV1GetOobCodeResponse {
   /// If return_oob_link is false in the request, the email address the
   /// verification was sent to.
   core.String? email;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? kind;
 
   /// If return_oob_link is true in the request, the OOB code to send.
@@ -3631,6 +3670,9 @@ class GoogleCloudIdentitytoolkitV1GetProjectConfigResponse {
 
 /// Response message for GetRecaptchaParam.
 class GoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse {
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? kind;
 
   /// The producer project number used to generate PIA tokens
@@ -3640,6 +3682,9 @@ class GoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse {
   ///
   /// Always present.
   core.String? recaptchaSiteKey;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? recaptchaStoken;
 
   GoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse({
@@ -4350,6 +4395,9 @@ class GoogleCloudIdentitytoolkitV1ResetPasswordRequest {
 class GoogleCloudIdentitytoolkitV1ResetPasswordResponse {
   /// The email associated with the out-of-band code that was used.
   core.String? email;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? kind;
   GoogleCloudIdentitytoolkitV1MfaEnrollment? mfaInfo;
   core.String? newEmail;
@@ -4551,6 +4599,9 @@ class GoogleCloudIdentitytoolkitV1SendVerificationCodeResponse {
 
 /// Request message for SetAccountInfo.
 class GoogleCloudIdentitytoolkitV1SetAccountInfoRequest {
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? captchaChallenge;
 
   /// The response from reCaptcha challenge.
@@ -4567,6 +4618,9 @@ class GoogleCloudIdentitytoolkitV1SetAccountInfoRequest {
   /// Specifying this field requires a Google OAuth 2.0 credential with proper
   /// [permissions](https://cloud.google.com/identity-platform/docs/access-control).
   core.String? customAttributes;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? delegatedProjectNumber;
 
   /// The account's attributes to be deleted.
@@ -4602,6 +4656,9 @@ class GoogleCloudIdentitytoolkitV1SetAccountInfoRequest {
   ///
   /// Required when attempting to change user-related information.
   core.String? idToken;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? instanceId;
 
   /// The timestamp in milliseconds when the account last logged in.
@@ -4837,9 +4894,15 @@ class GoogleCloudIdentitytoolkitV1SetAccountInfoRequest {
 /// Response message for SetAccountInfo
 class GoogleCloudIdentitytoolkitV1SetAccountInfoResponse {
   /// The account's display name.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? displayName;
 
   /// The account's email address.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? email;
 
   /// Whether the account's email has been verified.
@@ -4852,6 +4915,9 @@ class GoogleCloudIdentitytoolkitV1SetAccountInfoResponse {
   ///
   /// This is used for legacy user sign up.
   core.String? idToken;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? kind;
 
   /// The ID of the authenticated user.
@@ -4863,9 +4929,15 @@ class GoogleCloudIdentitytoolkitV1SetAccountInfoResponse {
   /// No actual password hash is currently returned.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? passwordHash;
 
   /// The user's photo URL for the account's profile photo.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? photoUrl;
 
   /// The linked Identity Providers on the account.
@@ -4950,7 +5022,13 @@ class GoogleCloudIdentitytoolkitV1SetAccountInfoResponse {
 
 /// Request message for SignInWithCustomToken.
 class GoogleCloudIdentitytoolkitV1SignInWithCustomTokenRequest {
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? delegatedProjectNumber;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? instanceId;
 
   /// Should always be true.
@@ -5019,6 +5097,9 @@ class GoogleCloudIdentitytoolkitV1SignInWithCustomTokenResponse {
 
   /// Whether the authenticated user was created by this request.
   core.bool? isNewUser;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? kind;
 
   /// An Identity Platform refresh token for the authenticated user.
@@ -5134,6 +5215,9 @@ class GoogleCloudIdentitytoolkitV1SignInWithEmailLinkResponse {
 
   /// Whether the authenticated user was created by this request.
   core.bool? isNewUser;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? kind;
 
   /// The ID of the authenticated user.
@@ -5431,7 +5515,13 @@ class GoogleCloudIdentitytoolkitV1SignInWithGameCenterResponse {
 
 /// Request message for SignInWithIdp.
 class GoogleCloudIdentitytoolkitV1SignInWithIdpRequest {
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? autoCreate;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? delegatedProjectNumber;
 
   /// A valid Identity Platform ID token.
@@ -5439,6 +5529,9 @@ class GoogleCloudIdentitytoolkitV1SignInWithIdpRequest {
   /// If passed, the user's account at the IdP will be linked to the account
   /// represented by this ID token.
   core.String? idToken;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? pendingIdToken;
 
   /// An opaque string from a previous SignInWithIdp response.
@@ -5635,11 +5728,17 @@ class GoogleCloudIdentitytoolkitV1SignInWithIdpResponse {
 
   /// An Identity Platform ID token for the authenticated user.
   core.String? idToken;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? inputEmail;
 
   /// Whether or not a new Identity Platform account was created for the
   /// authenticated user.
   core.bool? isNewUser;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? kind;
 
   /// The language preference for the user's account at the IdP.
@@ -5672,6 +5771,9 @@ class GoogleCloudIdentitytoolkitV1SignInWithIdpResponse {
   /// and then link the current credential from the IdP to it. Only present if
   /// the "One account per email address" setting is enabled.
   core.bool? needConfirmation;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? needEmail;
 
   /// The nickname for the user's account at the IdP.
@@ -5957,6 +6059,9 @@ class GoogleCloudIdentitytoolkitV1SignInWithIdpResponse {
 
 /// Request message for SignInWithPassword.
 class GoogleCloudIdentitytoolkitV1SignInWithPasswordRequest {
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? captchaChallenge;
 
   /// The reCAPTCHA token provided by the reCAPTCHA client-side integration.
@@ -5974,6 +6079,9 @@ class GoogleCloudIdentitytoolkitV1SignInWithPasswordRequest {
   /// - "CLIENT_TYPE_ANDROID" : Client type is android.
   /// - "CLIENT_TYPE_IOS" : Client type is ios.
   core.String? clientType;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? delegatedProjectNumber;
 
   /// The email the user is signing in with.
@@ -5984,13 +6092,22 @@ class GoogleCloudIdentitytoolkitV1SignInWithPasswordRequest {
   ///
   /// Required.
   core.String? email;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? idToken;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? instanceId;
 
   /// The password the user provides to sign in to the account.
   ///
   /// Required.
   core.String? password;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? pendingIdToken;
 
   /// The reCAPTCHA version of the reCAPTCHA token in the captcha_response.
@@ -6095,6 +6212,9 @@ class GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse {
 
   /// An Identity Platform ID token for the authenticated user.
   core.String? idToken;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? kind;
 
   /// The ID of the authenticated user.
@@ -6114,10 +6234,19 @@ class GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse {
   core.String? mfaPendingCredential;
 
   /// The OAuth2 access token.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? oauthAccessToken;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? oauthAuthorizationCode;
 
   /// The access token expiration time in seconds.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? oauthExpireIn;
 
   /// The user's profile picture stored in the account's attributes.
@@ -6129,6 +6258,9 @@ class GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse {
   /// Whether the email is for an existing account.
   ///
   /// Always true.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? registered;
 
   /// Warning notifications for the user.
@@ -6247,6 +6379,9 @@ class GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequest {
   /// - "REAUTH" : Verify operation is to reauth.
   /// - "UPDATE" : Verify operation is to update.
   /// - "LINK" : Verify operation is to link.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? operation;
 
   /// The user's phone number to sign in with.
@@ -6439,6 +6574,9 @@ class GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberResponse {
 
 /// Request message for SignUp.
 class GoogleCloudIdentitytoolkitV1SignUpRequest {
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? captchaChallenge;
 
   /// The reCAPTCHA token provided by the reCAPTCHA client-side integration.
@@ -6489,6 +6627,9 @@ class GoogleCloudIdentitytoolkitV1SignUpRequest {
   /// and `password` fields must be set. For an admin request, `local_id` must
   /// not be set.
   core.String? idToken;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? instanceId;
 
   /// The ID of the user to create.
@@ -6786,6 +6927,9 @@ class GoogleCloudIdentitytoolkitV1UploadAccountRequest {
   /// resources needed to hash a password, and should be tuned as processor
   /// speeds and memory technologies advance.
   core.int? cpuMemCost;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? delegatedProjectNumber;
 
   /// The desired key length for the STANDARD_SCRYPT hashing function.
@@ -6969,6 +7113,9 @@ class GoogleCloudIdentitytoolkitV1UploadAccountRequest {
 class GoogleCloudIdentitytoolkitV1UploadAccountResponse {
   /// Detailed error info for accounts that cannot be uploaded.
   core.List<GoogleCloudIdentitytoolkitV1ErrorInfo>? error;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? kind;
 
   GoogleCloudIdentitytoolkitV1UploadAccountResponse({

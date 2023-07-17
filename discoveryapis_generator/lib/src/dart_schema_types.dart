@@ -55,9 +55,14 @@ class ObjectType extends ComplexDartSchemaType {
   DartSchemaType resolveCore(DartSchemaTypeDB db) {
     for (var i = 0; i < properties.length; i++) {
       final property = properties[i];
-      final resolvedProperty = DartClassProperty(property.name,
-          property.comment, property.type.resolve(db), property.jsonName,
-          byteArrayAccessor: property.byteArrayAccessor);
+      final resolvedProperty = DartClassProperty(
+        property.name,
+        property.comment,
+        property.type.resolve(db),
+        property.jsonName,
+        byteArrayAccessor: property.byteArrayAccessor,
+        deprecated: property.deprecated,
+      );
       properties[i] = resolvedProperty;
     }
     return this;
@@ -85,13 +90,14 @@ class ObjectType extends ComplexDartSchemaType {
     final propertyString = StringBuffer();
     for (var property in properties) {
       final comment = property.comment.asDartDoc(2);
+      final deprecatedMsg = property.deprecated ? imports.deprecatedMsg : '';
       var prefix = '', postfix = '';
       if (isVariantDiscriminator(property)) {
         prefix = 'final ';
         postfix = ' = "${escapeString(discriminatorValue()!)}"';
       }
       propertyString.writeln(
-        '$comment  $prefix${property.type.nullableDeclaration} '
+        '$comment$deprecatedMsg  $prefix${property.type.nullableDeclaration} '
         '${property.name}$postfix;',
       );
 

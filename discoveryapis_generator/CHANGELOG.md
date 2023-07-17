@@ -2,6 +2,7 @@
 
 - Require Dart 2.19 or later.
 - Allow latest `package:http`.
+- Generate `@Deprecated` annotations for associated members.
 - Add positional parameters to all schema types.
 - Package version must be provided or default is to set `publish_to: none`.
 - Added `Function` to the set of reserved names.

@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -35,7 +36,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -2398,6 +2398,9 @@ class ArimaFittingMetrics {
 /// Model evaluation metrics for ARIMA forecasting models.
 class ArimaForecastingMetrics {
   /// Arima model fitting metrics.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<ArimaFittingMetrics>? arimaFittingMetrics;
 
   /// Repeated as there can be many metric sets (one for each model) in
@@ -2408,17 +2411,29 @@ class ArimaForecastingMetrics {
   /// Whether Arima model fitted with drift or not.
   ///
   /// It is always false when d is not 1.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.bool>? hasDrift;
 
   /// Non-seasonal order.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<ArimaOrder>? nonSeasonalOrder;
 
   /// Seasonal periods.
   ///
   /// Repeated because multiple periods are supported for one time series.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? seasonalPeriods;
 
   /// Id to differentiate different time series for the large-scale case.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? timeSeriesId;
 
   ArimaForecastingMetrics({
@@ -9207,6 +9222,9 @@ class MlStatistics {
 
 class Model {
   /// The best trial_id across all training runs.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? bestTrialId;
 
   /// The time when this model was created, in millisecs since the epoch.
@@ -14486,6 +14504,9 @@ class TrainingRun {
   /// The start time of this training run, in milliseconds since epoch.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? trainingStartTime;
 
   /// The model id in the

@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -34,7 +35,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -3340,6 +3340,9 @@ class GoogleAppsCardV1DecoratedText {
   GoogleAppsCardV1Icon? endIcon;
 
   /// Deprecated in favor of `startIcon`.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleAppsCardV1Icon? icon;
 
   /// This action is triggered when users click `topLabel` or `bottomLabel`.
@@ -5339,6 +5342,9 @@ class Message {
   /// elements such as: formatted texts, buttons, and clickable images. Cards
   /// are normally displayed below the plain-text body of the message. `cards`
   /// and `cards_v2` can have a maximum size of 32 KB.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<Card>? cards;
 
   /// Richly formatted and interactive cards that display UI elements and
@@ -6026,6 +6032,9 @@ class Space {
   /// Whether messages are threaded in this space.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? threaded;
 
   /// Deprecated: Use `space_type` instead.
@@ -6039,6 +6048,9 @@ class Space {
   /// - "DM" : 1:1 Direct Message between a human and a Chat app, where all
   /// messages are flat. Note that this doesn't include direct messages between
   /// two humans.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? type;
 
   Space({

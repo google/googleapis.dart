@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -40,7 +41,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -2314,6 +2314,9 @@ class GoogleCloudBaremetalsolutionV2LogicalInterface {
   /// bond or nic on the chosen network template.
   ///
   /// This field is deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? interfaceIndex;
 
   /// List of logical network interfaces within a logical interface.
@@ -2607,6 +2610,9 @@ class InstanceConfig {
   /// Client network address.
   ///
   /// Filled if InstanceConfig.multivlan_config is false.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   NetworkAddress? clientNetwork;
 
   /// Whether the instance should be provisioned with Hyperthreading enabled.
@@ -2655,6 +2661,9 @@ class InstanceConfig {
   /// Private network address, if any.
   ///
   /// Filled if InstanceConfig.multivlan_config is false.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   NetworkAddress? privateNetwork;
 
   /// List of names of ssh keys used to provision the instance.
@@ -2757,6 +2766,9 @@ class InstanceQuota {
   /// Instance type.
   ///
   /// Deprecated: use gcp_service.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? instanceType;
 
   /// Location where the quota applies.
@@ -4155,6 +4167,9 @@ class ProvisioningConfig {
   /// Email provided to send a confirmation with provisioning config to.
   ///
   /// Deprecated in favour of email field in request messages.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? email;
 
   /// A service account to enable customers to access instance credentials upon

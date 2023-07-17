@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -1054,6 +1055,9 @@ class AggregateRequest {
   /// DO NOT POPULATE THIS FIELD.
   ///
   /// It is ignored.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? filteredDataQualityStandard;
 
   /// The start of a window of time.
@@ -1335,6 +1339,9 @@ class DataPoint {
   /// DO NOT USE THIS FIELD.
   ///
   /// It is ignored, and not stored.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? computationTimeMillis;
 
   /// The data type defining the format of the values in this data point.
@@ -1456,6 +1463,9 @@ class DataSource {
   ///
   /// It is never populated in responses from the platform, and is ignored in
   /// queries. It will be removed in a future version entirely.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? dataQualityStandard;
 
   /// A unique identifier for the data stream produced by this data source.
@@ -1502,6 +1512,9 @@ class DataSource {
   Device? device;
 
   /// An end-user visible name for this data source.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? name;
 
   /// A constant describing the type of this data source.
@@ -1883,6 +1896,9 @@ class ListSessionsResponse {
   /// Flag to indicate server has more data to transfer.
   ///
   /// DO NOT USE THIS FIELD. It is never populated in responses from the server.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? hasMoreData;
 
   /// The sync token which is used to sync further changes.

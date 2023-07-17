@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -66,7 +67,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -140,6 +140,9 @@ class FoldersAssetsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GroupAssetsResponse> group(
     GroupAssetsRequest request,
     core.String parent, {
@@ -267,6 +270,9 @@ class FoldersAssetsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<ListAssetsResponse> list(
     core.String parent, {
     core.String? compareDuration,
@@ -2231,6 +2237,9 @@ class OrganizationsAssetsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GroupAssetsResponse> group(
     GroupAssetsRequest request,
     core.String parent, {
@@ -2358,6 +2367,9 @@ class OrganizationsAssetsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<ListAssetsResponse> list(
     core.String parent, {
     core.String? compareDuration,
@@ -2415,6 +2427,9 @@ class OrganizationsAssetsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Operation> runDiscovery(
     RunAssetDiscoveryRequest request,
     core.String parent, {
@@ -4767,6 +4782,9 @@ class ProjectsAssetsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GroupAssetsResponse> group(
     GroupAssetsRequest request,
     core.String parent, {
@@ -4894,6 +4912,9 @@ class ProjectsAssetsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<ListAssetsResponse> list(
     core.String parent, {
     core.String? compareDuration,
@@ -7270,6 +7291,9 @@ class BulkMuteFindingsRequest {
 
   /// This can be a mute configuration name or any identifier for mute/unmute of
   /// findings based on the filter.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? muteAnnotation;
 
   BulkMuteFindingsRequest({
@@ -9142,6 +9166,9 @@ class GoogleCloudSecuritycenterV1MuteConfig {
   core.String? description;
 
   /// The human readable name to be displayed for the mute config.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? displayName;
 
   /// An expression that defines the filter to apply across create/update events

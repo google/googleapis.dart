@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -35,7 +36,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -2275,6 +2275,9 @@ class Asset {
   /// one type of relationship.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   RelatedAssets? relatedAssets;
 
   /// A representation of the resource.
@@ -7319,6 +7322,9 @@ class ResourceSearchResult {
   /// [these resource types](https://cloud.google.com/asset-inventory/docs/legacy-field-names#resource_types_with_the_to_be_deprecated_kmskey_field)
   /// for backward compatible purposes. To search against the `kms_key`: * Use a
   /// field query. Example: `kmsKey:key` * Use a free text query. Example: `key`
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? kmsKey;
 
   /// The Cloud KMS

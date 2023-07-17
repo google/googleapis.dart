@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -318,6 +319,9 @@ class ConfigSettings {
   /// The form factor the emulation should use.
   ///
   /// This field is deprecated, form_factor should be used instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? emulatedFormFactor;
 
   /// How Lighthouse should interpret this run in regards to scoring performance

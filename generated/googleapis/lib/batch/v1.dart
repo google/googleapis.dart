@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -34,7 +35,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -742,6 +742,9 @@ class Accelerator {
   core.String? driverVersion;
 
   /// Deprecated: please use instances\[0\].install_gpu_drivers instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? installGpuDrivers;
 
   /// The accelerator type.
@@ -999,6 +1002,9 @@ class AgentMetadata {
   /// When the VM agent started.
   ///
   /// Use agent_startup_time instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? creationTime;
 
   /// Full name of the entity that created this vm.
@@ -3354,6 +3360,9 @@ class TaskSpec {
   Environment? environment;
 
   /// Deprecated: please use environment(non-plural) instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.Map<core.String, core.String>? environments;
 
   /// Lifecycle management schema when any task in a task group is failed.

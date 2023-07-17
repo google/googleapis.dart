@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -38,7 +39,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -901,6 +901,9 @@ class ProjectsLocationsTransferConfigsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<ScheduleTransferRunsResponse> scheduleRuns(
     ScheduleTransferRunsRequest request,
     core.String parent, {
@@ -1525,6 +1528,9 @@ class ProjectsTransferConfigsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<ScheduleTransferRunsResponse> scheduleRuns(
     ScheduleTransferRunsRequest request,
     core.String parent, {
@@ -1925,6 +1931,9 @@ class DataSource {
   /// This field has no effect.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? supportsMultipleTransfers;
 
   /// This field has no effect.
@@ -1936,6 +1945,9 @@ class DataSource {
   /// - "BATCH" : Batch data transfer.
   /// - "STREAMING" : Streaming data transfer. Streaming data source currently
   /// doesn't support multiple transfer configs per project.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? transferType;
 
   /// The number of seconds to wait for an update from the data source before

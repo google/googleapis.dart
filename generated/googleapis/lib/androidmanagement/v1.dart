@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -38,7 +39,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -2234,6 +2234,9 @@ class ApplicationPolicy {
   ///
   /// DEPRECATED. Use InstallType KIOSK or kioskCustomLauncherEnabled to
   /// configure a dedicated device.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? lockTaskAllowed;
 
   /// Managed configuration applied to the app.
@@ -3297,6 +3300,9 @@ class Device {
   core.List<HardwareStatus>? hardwareStatusSamples;
 
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? lastPolicyComplianceReportTime;
 
   /// The last time the device fetched its policy.
@@ -4116,6 +4122,9 @@ class EnrollmentToken {
 /// The configuration applied to an enterprise.
 class Enterprise {
   /// Deprecated and unused.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? appAutoApprovalEnabled;
 
   /// The enterprise contact info of an EMM-managed enterprise.
@@ -5309,6 +5318,9 @@ class NetworkInfo {
   /// Alphabetic name of current registered operator.
   ///
   /// For example, Vodafone.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? networkOperatorName;
 
   /// Provides telephony information associated with each SIM card on the
@@ -6359,6 +6371,9 @@ class Policy {
   /// setting the date and time.
   ///
   /// If autoDateAndTimeZone is set, this field is ignored.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? autoTimeRequired;
 
   /// Whether applications other than the ones configured in applications are
@@ -6366,6 +6381,9 @@ class Policy {
   ///
   /// When set, applications that were installed under a previous policy but no
   /// longer appear in the policy are automatically uninstalled.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? blockApplicationsEnabled;
 
   /// Whether configuring bluetooth is disabled.
@@ -6412,6 +6430,9 @@ class Policy {
   /// devices this field applies for all apps on the device. For work profiles,
   /// this field applies only to apps in the work profile, and the camera access
   /// of apps outside the work profile is unaffected.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? cameraDisabled;
 
   /// Whether configuring cell broadcast is disabled.
@@ -6428,6 +6449,9 @@ class Policy {
   /// When the conditions for multiple rules are satisfied, all of the
   /// mitigating actions for the rules are taken. There is a maximum limit of
   /// 100 rules. Use policy enforcement rules instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<ComplianceRule>? complianceRules;
 
   /// Whether creating windows besides app windows is disabled.
@@ -6443,6 +6467,9 @@ class Policy {
   core.bool? dataRoamingDisabled;
 
   /// Whether the user is allowed to enable debugging features.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? debuggingFeaturesAllowed;
 
   /// The default permission policy for runtime permission requests.
@@ -6476,6 +6503,9 @@ class Policy {
   core.String? encryptionPolicy;
 
   /// Whether app verification is force-enabled.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? ensureVerifyAppsEnabled;
 
   /// Whether factory resetting from settings is disabled.
@@ -6498,6 +6528,9 @@ class Policy {
   core.bool? installAppsDisabled;
 
   /// This field has no effect.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? installUnknownSourcesAllowed;
 
   /// If true, this disables the Lock Screen
@@ -6637,6 +6670,9 @@ class Policy {
   /// PasswordQuality, that is, COMPLEXITY_LOW, COMPLEXITY_MEDIUM, and
   /// COMPLEXITY_HIGH, cannot be used here. unified_lock_settings cannot be used
   /// here.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   PasswordRequirements? passwordRequirements;
 
   /// Explicit permission or group grants or denials for all apps.
@@ -6720,6 +6756,9 @@ class Policy {
   core.bool? removeUserDisabled;
 
   /// Whether rebooting the device into safe boot is disabled.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? safeBootDisabled;
 
   /// Whether screen capture is disabled.
@@ -6763,6 +6802,9 @@ class Policy {
   /// that allow escape from full-screen mode. DEPRECATED. To disable the status
   /// bar on a kiosk device, use InstallType KIOSK or
   /// kioskCustomLauncherEnabled.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? statusBarDisabled;
 
   /// Status reporting settings
@@ -6784,6 +6826,9 @@ class Policy {
   ///
   /// If tetheringSettings is set to anything other than
   /// TETHERING_SETTINGS_UNSPECIFIED, this setting is ignored.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? tetheringConfigDisabled;
 
   /// Whether user uninstallation of applications is disabled.
@@ -6798,6 +6843,9 @@ class Policy {
   /// Otherwise this field controls whether microphones are disabled: If true,
   /// all microphones are disabled, otherwise they are available. This is
   /// available only on fully managed devices.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? unmuteMicrophoneDisabled;
 
   /// Configuration of device activity logging.
@@ -6806,11 +6854,17 @@ class Policy {
   /// Whether transferring files over USB is disabled.
   ///
   /// This is supported only on company-owned devices.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? usbFileTransferDisabled;
 
   /// Whether USB storage is enabled.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? usbMassStorageEnabled;
 
   /// The version of the policy.
@@ -6834,9 +6888,15 @@ class Policy {
   /// Note: If a network connection can't be made at boot time and configuring
   /// Wi-Fi is disabled then network escape hatch will be shown in order to
   /// refresh the device policy (see networkEscapeHatchEnabled).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? wifiConfigDisabled;
 
   /// DEPRECATED - Use wifi_config_disabled.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? wifiConfigsLockdownEnabled;
 
   Policy({
@@ -8614,6 +8674,9 @@ class WebToken {
   ///
   /// An admin must have all of these permissions in order to view the UI. This
   /// field is deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? permissions;
 
   /// The token value which is used in the hosting page to generate the iframe
