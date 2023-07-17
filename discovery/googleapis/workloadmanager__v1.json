@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230630",
+    "revision": "20230705",
     "rootUrl": "https://workloadmanager.googleapis.com/",
     "servicePath": "",
     "title": "Workload Manager API",
@@ -1245,6 +1245,7 @@
             "id": "ResourceStatus",
             "properties": {
                 "rulesNewerVersions": {
+                    "deprecated": true,
                     "description": "Historical: Used before 2023-05-22 the new version of rule id if exists",
                     "items": {
                         "type": "string"

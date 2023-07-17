@@ -1405,6 +1405,7 @@ api.DiscoveryOccurrence buildDiscoveryOccurrence() {
     o.continuousAnalysis = 'foo';
     o.cpe = 'foo';
     o.lastScanTime = 'foo';
+    o.sbomStatus = buildSBOMStatus();
   }
   buildCounterDiscoveryOccurrence--;
   return o;
@@ -1436,6 +1437,7 @@ void checkDiscoveryOccurrence(api.DiscoveryOccurrence o) {
       o.lastScanTime!,
       unittest.equals('foo'),
     );
+    checkSBOMStatus(o.sbomStatus!);
   }
   buildCounterDiscoveryOccurrence--;
 }
@@ -3543,6 +3545,33 @@ void checkSBOMReferenceOccurrence(api.SBOMReferenceOccurrence o) {
     checkUnnamed48(o.signatures!);
   }
   buildCounterSBOMReferenceOccurrence--;
+}
+
+core.int buildCounterSBOMStatus = 0;
+api.SBOMStatus buildSBOMStatus() {
+  final o = api.SBOMStatus();
+  buildCounterSBOMStatus++;
+  if (buildCounterSBOMStatus < 3) {
+    o.error = 'foo';
+    o.sbomState = 'foo';
+  }
+  buildCounterSBOMStatus--;
+  return o;
+}
+
+void checkSBOMStatus(api.SBOMStatus o) {
+  buildCounterSBOMStatus++;
+  if (buildCounterSBOMStatus < 3) {
+    unittest.expect(
+      o.error!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sbomState!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSBOMStatus--;
 }
 
 core.List<api.Subject> buildUnnamed49() => [
@@ -5759,6 +5788,16 @@ void main() {
       final od = api.SBOMReferenceOccurrence.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSBOMReferenceOccurrence(od);
+    });
+  });
+
+  unittest.group('obj-schema-SBOMStatus', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSBOMStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.SBOMStatus.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkSBOMStatus(od);
     });
   });
 

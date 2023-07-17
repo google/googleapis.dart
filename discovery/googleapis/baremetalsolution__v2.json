@@ -24,7 +24,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230628",
+    "revision": "20230710",
     "rootUrl": "https://baremetalsolution.googleapis.com/",
     "servicePath": "",
     "title": "Bare Metal Solution API",
@@ -1654,6 +1654,7 @@
             "id": "GoogleCloudBaremetalsolutionV2LogicalInterface",
             "properties": {
                 "interfaceIndex": {
+                    "deprecated": true,
                     "description": "The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.",
                     "format": "int32",
                     "type": "integer"
@@ -1820,6 +1821,7 @@
                 },
                 "clientNetwork": {
                     "$ref": "NetworkAddress",
+                    "deprecated": true,
                     "description": "Client network address. Filled if InstanceConfig.multivlan_config is false."
                 },
                 "hyperthreading": {
@@ -1870,6 +1872,7 @@
                 },
                 "privateNetwork": {
                     "$ref": "NetworkAddress",
+                    "deprecated": true,
                     "description": "Private network address, if any. Filled if InstanceConfig.multivlan_config is false."
                 },
                 "sshKeyNames": {
@@ -1900,6 +1903,7 @@
                     "type": "string"
                 },
                 "instanceType": {
+                    "deprecated": true,
                     "description": "Instance type. Deprecated: use gcp_service.",
                     "type": "string"
                 },
@@ -2787,6 +2791,7 @@
                     "type": "string"
                 },
                 "email": {
+                    "deprecated": true,
                     "description": "Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.",
                     "type": "string"
                 },
@@ -3178,6 +3183,10 @@
             "properties": {
                 "id": {
                     "description": "Immutable. The identifier of the attachment within vrf.",
+                    "type": "string"
+                },
+                "interconnectAttachment": {
+                    "description": "Optional. The name of the vlan attachment within vrf. This is of the form projects/{project_number}/regions/{region}/interconnectAttachments/{interconnect_attachment}",
                     "type": "string"
                 },
                 "pairingKey": {

@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230628",
+    "revision": "20230710",
     "rootUrl": "https://artifactregistry.googleapis.com/",
     "servicePath": "",
     "title": "Artifact Registry API",
@@ -1846,6 +1846,7 @@
                     "type": "string"
                 },
                 "versionAge": {
+                    "deprecated": true,
                     "description": "DEPRECATED: Use older_than.",
                     "format": "google-duration",
                     "type": "string"
@@ -2789,6 +2790,12 @@
                         "REDIRECTION_FROM_GCR_IO_DISABLED",
                         "REDIRECTION_FROM_GCR_IO_ENABLED",
                         "REDIRECTION_FROM_GCR_IO_FINALIZED"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        true
                     ],
                     "enumDescriptions": [
                         "No redirection status has been set.",

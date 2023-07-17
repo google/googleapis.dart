@@ -30,6 +30,7 @@ api.Accelerator buildAccelerator() {
   buildCounterAccelerator++;
   if (buildCounterAccelerator < 3) {
     o.count = 'foo';
+    o.driverVersion = 'foo';
     o.installGpuDrivers = true;
     o.type = 'foo';
   }
@@ -42,6 +43,10 @@ void checkAccelerator(api.Accelerator o) {
   if (buildCounterAccelerator < 3) {
     unittest.expect(
       o.count!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.driverVersion!,
       unittest.equals('foo'),
     );
     unittest.expect(o.installGpuDrivers!, unittest.isTrue);
@@ -3418,6 +3423,7 @@ void main() {
       final res = api.BatchApi(mock).projects.locations.jobs;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -3458,6 +3464,10 @@ void main() {
           unittest.equals(arg_filter),
         );
         unittest.expect(
+          queryMap['orderBy']!.first,
+          unittest.equals(arg_orderBy),
+        );
+        unittest.expect(
           core.int.parse(queryMap['pageSize']!.first),
           unittest.equals(arg_pageSize),
         );
@@ -3478,6 +3488,7 @@ void main() {
       }), true);
       final response = await res.list(arg_parent,
           filter: arg_filter,
+          orderBy: arg_orderBy,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
           $fields: arg_$fields);

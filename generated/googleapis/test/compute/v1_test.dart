@@ -27239,9 +27239,11 @@ api.QuotaExceededInfo buildQuotaExceededInfo() {
   buildCounterQuotaExceededInfo++;
   if (buildCounterQuotaExceededInfo < 3) {
     o.dimensions = buildUnnamed462();
+    o.futureLimit = 42.0;
     o.limit = 42.0;
     o.limitName = 'foo';
     o.metricName = 'foo';
+    o.rolloutStatus = 'foo';
   }
   buildCounterQuotaExceededInfo--;
   return o;
@@ -27252,6 +27254,10 @@ void checkQuotaExceededInfo(api.QuotaExceededInfo o) {
   if (buildCounterQuotaExceededInfo < 3) {
     checkUnnamed462(o.dimensions!);
     unittest.expect(
+      o.futureLimit!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
       o.limit!,
       unittest.equals(42.0),
     );
@@ -27261,6 +27267,10 @@ void checkQuotaExceededInfo(api.QuotaExceededInfo o) {
     );
     unittest.expect(
       o.metricName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.rolloutStatus!,
       unittest.equals('foo'),
     );
   }
@@ -32991,6 +33001,7 @@ api.Scheduling buildScheduling() {
   if (buildCounterScheduling < 3) {
     o.automaticRestart = true;
     o.instanceTerminationAction = 'foo';
+    o.localSsdRecoveryTimeout = buildDuration();
     o.locationHint = 'foo';
     o.minNodeCpus = 42;
     o.nodeAffinities = buildUnnamed570();
@@ -33010,6 +33021,7 @@ void checkScheduling(api.Scheduling o) {
       o.instanceTerminationAction!,
       unittest.equals('foo'),
     );
+    checkDuration(o.localSsdRecoveryTimeout!);
     unittest.expect(
       o.locationHint!,
       unittest.equals('foo'),
@@ -34769,6 +34781,7 @@ api.ServiceAttachmentConnectedEndpoint
   final o = api.ServiceAttachmentConnectedEndpoint();
   buildCounterServiceAttachmentConnectedEndpoint++;
   if (buildCounterServiceAttachmentConnectedEndpoint < 3) {
+    o.consumerNetwork = 'foo';
     o.endpoint = 'foo';
     o.pscConnectionId = 'foo';
     o.status = 'foo';
@@ -34781,6 +34794,10 @@ void checkServiceAttachmentConnectedEndpoint(
     api.ServiceAttachmentConnectedEndpoint o) {
   buildCounterServiceAttachmentConnectedEndpoint++;
   if (buildCounterServiceAttachmentConnectedEndpoint < 3) {
+    unittest.expect(
+      o.consumerNetwork!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.endpoint!,
       unittest.equals('foo'),
@@ -109680,6 +109697,117 @@ void main() {
           returnPartialSuccess: arg_returnPartialSuccess,
           $fields: arg_$fields);
       checkResourcePolicyList(response as api.ResourcePolicyList);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.ComputeApi(mock).resourcePolicies;
+      final arg_request = buildResourcePolicy();
+      final arg_project = 'foo';
+      final arg_region = 'foo';
+      final arg_resourcePolicy = 'foo';
+      final arg_requestId = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ResourcePolicy.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkResourcePolicy(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('compute/v1/'),
+        );
+        pathOffset += 11;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals('projects/'),
+        );
+        pathOffset += 9;
+        index = path.indexOf('/regions/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 9),
+          unittest.equals('/regions/'),
+        );
+        pathOffset += 9;
+        index = path.indexOf('/resourcePolicies/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_region'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals('/resourcePolicies/'),
+        );
+        pathOffset += 18;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_resourcePolicy'),
+        );
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(
+          arg_request, arg_project, arg_region, arg_resourcePolicy,
+          requestId: arg_requestId,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
     unittest.test('method--setIamPolicy', () async {

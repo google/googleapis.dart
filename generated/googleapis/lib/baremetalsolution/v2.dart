@@ -4762,6 +4762,14 @@ class VlanAttachment {
   /// Immutable.
   core.String? id;
 
+  /// The name of the vlan attachment within vrf.
+  ///
+  /// This is of the form
+  /// projects/{project_number}/regions/{region}/interconnectAttachments/{interconnect_attachment}
+  ///
+  /// Optional.
+  core.String? interconnectAttachment;
+
   /// Input only.
   ///
   /// Pairing key.
@@ -4783,6 +4791,7 @@ class VlanAttachment {
 
   VlanAttachment({
     this.id,
+    this.interconnectAttachment,
     this.pairingKey,
     this.peerIp,
     this.peerVlanId,
@@ -4793,6 +4802,9 @@ class VlanAttachment {
   VlanAttachment.fromJson(core.Map json_)
       : this(
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          interconnectAttachment: json_.containsKey('interconnectAttachment')
+              ? json_['interconnectAttachment'] as core.String
+              : null,
           pairingKey: json_.containsKey('pairingKey')
               ? json_['pairingKey'] as core.String
               : null,
@@ -4813,6 +4825,8 @@ class VlanAttachment {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
+        if (interconnectAttachment != null)
+          'interconnectAttachment': interconnectAttachment!,
         if (pairingKey != null) 'pairingKey': pairingKey!,
         if (peerIp != null) 'peerIp': peerIp!,
         if (peerVlanId != null) 'peerVlanId': peerVlanId!,

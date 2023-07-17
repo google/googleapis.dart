@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230711",
+    "revision": "20230716",
     "rootUrl": "https://youtubereporting.googleapis.com/",
     "servicePath": "",
     "title": "YouTube Reporting API",
@@ -457,6 +457,7 @@
             "id": "GdataCompositeMedia",
             "properties": {
                 "blobRef": {
+                    "deprecated": true,
                     "description": "gdata",
                     "format": "byte",
                     "type": "string"
@@ -661,15 +662,18 @@
             "id": "GdataMedia",
             "properties": {
                 "algorithm": {
+                    "deprecated": true,
                     "description": "gdata",
                     "type": "string"
                 },
                 "bigstoreObjectRef": {
+                    "deprecated": true,
                     "description": "gdata",
                     "format": "byte",
                     "type": "string"
                 },
                 "blobRef": {
+                    "deprecated": true,
                     "description": "gdata",
                     "format": "byte",
                     "type": "string"
@@ -732,6 +736,7 @@
                     "type": "string"
                 },
                 "hash": {
+                    "deprecated": true,
                     "description": "gdata",
                     "type": "string"
                 },

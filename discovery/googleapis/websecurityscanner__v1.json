@@ -541,6 +541,7 @@
                 },
                 "googleAccount": {
                     "$ref": "GoogleAccount",
+                    "deprecated": true,
                     "description": "Authentication using a Google account."
                 },
                 "iapCredential": {
@@ -724,6 +725,7 @@
             "type": "object"
         },
         "GoogleAccount": {
+            "deprecated": true,
             "description": "Describes authentication configuration that uses a Google account.",
             "id": "GoogleAccount",
             "properties": {

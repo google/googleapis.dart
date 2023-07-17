@@ -87,7 +87,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230708",
+    "revision": "20230710",
     "rootUrl": "https://classroom.googleapis.com/",
     "servicePath": "",
     "title": "Google Classroom API",
@@ -2563,6 +2563,7 @@
                     "type": "string"
                 },
                 "courseMaterialSets": {
+                    "deprecated": true,
                     "description": "Sets of materials that appear on the \"about\" page of this course. Read-only.",
                     "items": {
                         "$ref": "CourseMaterialSet"

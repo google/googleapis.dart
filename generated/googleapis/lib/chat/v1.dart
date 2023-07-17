@@ -2221,6 +2221,36 @@ class CardWithId {
       };
 }
 
+/// Chat apps only.
+///
+/// For a `SelectionInput` widget that uses a multi-select menu, a data source
+/// from Google Chat. For example, a list of Google Chat spaces of which the
+/// user is a member.
+/// [Developer Preview](https://developers.google.com/workspace/preview).
+class ChatClientDataSourceMarkup {
+  /// A data source representing a Google Chat space.
+  ///
+  /// Format: spaces/{space}
+  /// [Developer Preview](https://developers.google.com/workspace/preview).
+  SpaceDataSource? spaceDataSource;
+
+  ChatClientDataSourceMarkup({
+    this.spaceDataSource,
+  });
+
+  ChatClientDataSourceMarkup.fromJson(core.Map json_)
+      : this(
+          spaceDataSource: json_.containsKey('spaceDataSource')
+              ? SpaceDataSource.fromJson(json_['spaceDataSource']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (spaceDataSource != null) 'spaceDataSource': spaceDataSource!,
+      };
+}
+
 /// Represents a color in the RGBA color space.
 ///
 /// This representation is designed for simplicity of conversion to and from
@@ -2875,6 +2905,14 @@ class GoogleAppsCardV1Card {
   /// Not supported by Chat apps.
   GoogleAppsCardV1CardHeader? peekCardHeader;
 
+  /// The divider style between sections.
+  /// Possible string values are:
+  /// - "DIVIDER_STYLE_UNSPECIFIED" : Don't use. Unspecified.
+  /// - "SOLID_DIVIDER" : Default option. Render a solid divider between
+  /// sections.
+  /// - "NO_DIVIDER" : If set, no divider is rendered between sections.
+  core.String? sectionDividerStyle;
+
   /// Contains a collection of widgets.
   ///
   /// Each section has its own, optional header. Sections are visually separated
@@ -2888,6 +2926,7 @@ class GoogleAppsCardV1Card {
     this.header,
     this.name,
     this.peekCardHeader,
+    this.sectionDividerStyle,
     this.sections,
   });
 
@@ -2915,6 +2954,9 @@ class GoogleAppsCardV1Card {
               ? GoogleAppsCardV1CardHeader.fromJson(json_['peekCardHeader']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          sectionDividerStyle: json_.containsKey('sectionDividerStyle')
+              ? json_['sectionDividerStyle'] as core.String
+              : null,
           sections: json_.containsKey('sections')
               ? (json_['sections'] as core.List)
                   .map((value) => GoogleAppsCardV1Section.fromJson(
@@ -2930,6 +2972,8 @@ class GoogleAppsCardV1Card {
         if (header != null) 'header': header!,
         if (name != null) 'name': name!,
         if (peekCardHeader != null) 'peekCardHeader': peekCardHeader!,
+        if (sectionDividerStyle != null)
+          'sectionDividerStyle': sectionDividerStyle!,
         if (sections != null) 'sections': sections!,
       };
 }
@@ -3852,6 +3896,57 @@ class GoogleAppsCardV1OpenLink {
       };
 }
 
+/// Chat apps only.
+///
+/// For a `SelectionInput` widget that uses a multi-select menu, the data from a
+/// [Google Workspace host application](https://developers.google.com/chat/api/reference/rest/v1/HostApp).
+/// Used to populate the items in the multi-select menu.
+/// [Developer Preview](https://developers.google.com/workspace/preview).
+class GoogleAppsCardV1PlatformDataSource {
+  /// For a `SelectionInput` widget that uses a multi-select menu, a data source
+  /// shared by all Google Workspace host applications, such as users in a
+  /// Google Workspace organization.
+  ///
+  /// [Developer Preview](https://developers.google.com/workspace/preview).
+  /// Possible string values are:
+  /// - "UNKNOWN" : Default value. Don't use.
+  /// [Developer Preview](https://developers.google.com/workspace/preview).
+  /// - "USER" : A list of users provided by the Google Workspace host
+  /// application. For example, to source users from Google Chat, use the
+  /// resource name of the
+  /// [user](https://developers.google.com/chat/api/reference/rest/v1/User).
+  /// Format: users/{user}
+  /// [Developer Preview](https://developers.google.com/workspace/preview).
+  core.String? commonDataSource;
+
+  /// A data source that's unique to a Google Workspace host application, such
+  /// as Gmail emails, Google Calendar events, or Google Chat messages.
+  ///
+  /// [Developer Preview](https://developers.google.com/workspace/preview).
+  HostAppDataSourceMarkup? hostAppDataSource;
+
+  GoogleAppsCardV1PlatformDataSource({
+    this.commonDataSource,
+    this.hostAppDataSource,
+  });
+
+  GoogleAppsCardV1PlatformDataSource.fromJson(core.Map json_)
+      : this(
+          commonDataSource: json_.containsKey('commonDataSource')
+              ? json_['commonDataSource'] as core.String
+              : null,
+          hostAppDataSource: json_.containsKey('hostAppDataSource')
+              ? HostAppDataSourceMarkup.fromJson(json_['hostAppDataSource']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commonDataSource != null) 'commonDataSource': commonDataSource!,
+        if (hostAppDataSource != null) 'hostAppDataSource': hostAppDataSource!,
+      };
+}
+
 /// A section contains a collection of widgets that are rendered vertically in
 /// the order that they're specified.
 class GoogleAppsCardV1Section {
@@ -3932,6 +4027,11 @@ class GoogleAppsCardV1Section {
 /// [Receive form data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
 /// To collect undefined or abstract data from users, use the TextInput widget.
 class GoogleAppsCardV1SelectionInput {
+  /// An external data source, such as a relational data base.
+  ///
+  /// [Developer Preview](https://developers.google.com/workspace/preview).
+  GoogleAppsCardV1Action? externalDataSource;
+
   /// An array of selectable items.
   ///
   /// For example, an array of radio buttons or checkboxes. Supports up to 100
@@ -3946,6 +4046,22 @@ class GoogleAppsCardV1SelectionInput {
   /// drop-down menu, the label might be "Urgency" or "Select urgency".
   core.String? label;
 
+  /// For multi-select menus, the maximum number of items that a user can
+  /// select.
+  ///
+  /// Minimum value is 1 item. If unspecified, set to 3 items.
+  /// [Developer Preview](https://developers.google.com/workspace/preview).
+  core.int? multiSelectMaxSelectedItems;
+
+  /// For multi-select menus, the number of text characters that a user inputs
+  /// before the Chat app queries autocomplete and displays suggested items on
+  /// the card.
+  ///
+  /// If unspecified, set to 0 characters for static data sources and 3
+  /// characters for external data sources.
+  /// [Developer Preview](https://developers.google.com/workspace/preview).
+  core.int? multiSelectMinQueryLength;
+
   /// The name that identifies the selection input in a form input event.
   ///
   /// For details about working with form inputs, see
@@ -3958,6 +4074,12 @@ class GoogleAppsCardV1SelectionInput {
   /// form. For details about working with form inputs, see
   /// [Receive form data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
   GoogleAppsCardV1Action? onChangeAction;
+
+  /// A data source from a
+  /// [Google Workspace host application](https://developers.google.com/chat/api/reference/rest/v1/HostApp).
+  ///
+  /// [Developer Preview](https://developers.google.com/workspace/preview).
+  GoogleAppsCardV1PlatformDataSource? platformDataSource;
 
   /// The type of items that are displayed to users in a `SelectionInput`
   /// widget.
@@ -3972,18 +4094,40 @@ class GoogleAppsCardV1SelectionInput {
   /// button.
   /// - "SWITCH" : A set of switches. Users can turn on one or more switches.
   /// - "DROPDOWN" : A dropdown menu. Users can select one item from the menu.
+  /// - "MULTI_SELECT" : Supported by Chat apps, but not Google Workspace
+  /// Add-ons. A multi-select menu for static or dynamic data. From the menu
+  /// bar, users select one or more items. Users can also input values to
+  /// populate dynamic data. For example, users can start typing the name of a
+  /// Google Chat space and the widget autosuggests the space. To populate items
+  /// for a multi-select menu, you can use one of the following types of data
+  /// sources: * Static data: Items are specified as `SelectionItem` objects in
+  /// the widget. Up to 100 items. * Google Workspace data: Items are populated
+  /// using data from a Google Workspace application, such as Google Chat users
+  /// or spaces. * External data: Items are populated from a dynamic external
+  /// data source. For examples of how to implement multi-select menus, see the
+  /// \[`SelectionInput` widget
+  /// page\](https://developers.google.com/chat/ui/widgets/selection-input).
+  /// [Developer Preview](https://developers.google.com/workspace/preview).
   core.String? type;
 
   GoogleAppsCardV1SelectionInput({
+    this.externalDataSource,
     this.items,
     this.label,
+    this.multiSelectMaxSelectedItems,
+    this.multiSelectMinQueryLength,
     this.name,
     this.onChangeAction,
+    this.platformDataSource,
     this.type,
   });
 
   GoogleAppsCardV1SelectionInput.fromJson(core.Map json_)
       : this(
+          externalDataSource: json_.containsKey('externalDataSource')
+              ? GoogleAppsCardV1Action.fromJson(json_['externalDataSource']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           items: json_.containsKey('items')
               ? (json_['items'] as core.List)
                   .map((value) => GoogleAppsCardV1SelectionItem.fromJson(
@@ -3992,19 +4136,40 @@ class GoogleAppsCardV1SelectionInput {
               : null,
           label:
               json_.containsKey('label') ? json_['label'] as core.String : null,
+          multiSelectMaxSelectedItems:
+              json_.containsKey('multiSelectMaxSelectedItems')
+                  ? json_['multiSelectMaxSelectedItems'] as core.int
+                  : null,
+          multiSelectMinQueryLength:
+              json_.containsKey('multiSelectMinQueryLength')
+                  ? json_['multiSelectMinQueryLength'] as core.int
+                  : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           onChangeAction: json_.containsKey('onChangeAction')
               ? GoogleAppsCardV1Action.fromJson(json_['onChangeAction']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          platformDataSource: json_.containsKey('platformDataSource')
+              ? GoogleAppsCardV1PlatformDataSource.fromJson(
+                  json_['platformDataSource']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (externalDataSource != null)
+          'externalDataSource': externalDataSource!,
         if (items != null) 'items': items!,
         if (label != null) 'label': label!,
+        if (multiSelectMaxSelectedItems != null)
+          'multiSelectMaxSelectedItems': multiSelectMaxSelectedItems!,
+        if (multiSelectMinQueryLength != null)
+          'multiSelectMinQueryLength': multiSelectMinQueryLength!,
         if (name != null) 'name': name!,
         if (onChangeAction != null) 'onChangeAction': onChangeAction!,
+        if (platformDataSource != null)
+          'platformDataSource': platformDataSource!,
         if (type != null) 'type': type!,
       };
 }
@@ -4012,11 +4177,25 @@ class GoogleAppsCardV1SelectionInput {
 /// An item that users can select in a selection input, such as a checkbox or
 /// switch.
 class GoogleAppsCardV1SelectionItem {
+  /// For multi-select menus, a text description or label that's displayed below
+  /// the item's `text` field.
+  ///
+  /// [Developer Preview](https://developers.google.com/workspace/preview).
+  core.String? bottomText;
+
   /// Whether the item is selected by default.
   ///
   /// If the selection input only accepts one value (such as for radio buttons
   /// or a dropdown menu), only set this field for one item.
   core.bool? selected;
+
+  /// For multi-select menus, the URL for the icon displayed next to the item's
+  /// `text` field.
+  ///
+  /// Supports PNG and JPEG files. Must be an `HTTPS` URL. For example,
+  /// `https://developers.google.com/chat/images/quickstart-app-avatar.png`.
+  /// [Developer Preview](https://developers.google.com/workspace/preview).
+  core.String? startIconUri;
 
   /// The text that identifies or describes the item to users.
   core.String? text;
@@ -4029,15 +4208,23 @@ class GoogleAppsCardV1SelectionItem {
   core.String? value;
 
   GoogleAppsCardV1SelectionItem({
+    this.bottomText,
     this.selected,
+    this.startIconUri,
     this.text,
     this.value,
   });
 
   GoogleAppsCardV1SelectionItem.fromJson(core.Map json_)
       : this(
+          bottomText: json_.containsKey('bottomText')
+              ? json_['bottomText'] as core.String
+              : null,
           selected: json_.containsKey('selected')
               ? json_['selected'] as core.bool
+              : null,
+          startIconUri: json_.containsKey('startIconUri')
+              ? json_['startIconUri'] as core.String
               : null,
           text: json_.containsKey('text') ? json_['text'] as core.String : null,
           value:
@@ -4045,7 +4232,9 @@ class GoogleAppsCardV1SelectionItem {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bottomText != null) 'bottomText': bottomText!,
         if (selected != null) 'selected': selected!,
+        if (startIconUri != null) 'startIconUri': startIconUri!,
         if (text != null) 'text': text!,
         if (value != null) 'value': value!,
       };
@@ -4595,6 +4784,34 @@ class GoogleAppsCardV1Widgets {
         if (selectionInput != null) 'selectionInput': selectionInput!,
         if (textInput != null) 'textInput': textInput!,
         if (textParagraph != null) 'textParagraph': textParagraph!,
+      };
+}
+
+/// Chat apps only.
+///
+/// For a `SelectionInput` widget that uses a multi-select menu, a data source
+/// from a Google Workspace host application.
+/// [Developer Preview](https://developers.google.com/workspace/preview).
+class HostAppDataSourceMarkup {
+  /// The data source is Google Chat.
+  ///
+  /// [Developer Preview](https://developers.google.com/workspace/preview).
+  ChatClientDataSourceMarkup? chatDataSource;
+
+  HostAppDataSourceMarkup({
+    this.chatDataSource,
+  });
+
+  HostAppDataSourceMarkup.fromJson(core.Map json_)
+      : this(
+          chatDataSource: json_.containsKey('chatDataSource')
+              ? ChatClientDataSourceMarkup.fromJson(json_['chatDataSource']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (chatDataSource != null) 'chatDataSource': chatDataSource!,
       };
 }
 
@@ -5880,6 +6097,34 @@ class Space {
         if (spaceType != null) 'spaceType': spaceType!,
         if (threaded != null) 'threaded': threaded!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// A data source representing a Google Chat space.
+///
+/// Format: spaces/{space}
+/// [Developer Preview](https://developers.google.com/workspace/preview).
+class SpaceDataSource {
+  /// When `true`, uses the card's Google Chat space as the default selection.
+  ///
+  /// The default value is `false`.
+  /// [Developer Preview](https://developers.google.com/workspace/preview).
+  core.bool? defaultToCurrentSpace;
+
+  SpaceDataSource({
+    this.defaultToCurrentSpace,
+  });
+
+  SpaceDataSource.fromJson(core.Map json_)
+      : this(
+          defaultToCurrentSpace: json_.containsKey('defaultToCurrentSpace')
+              ? json_['defaultToCurrentSpace'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultToCurrentSpace != null)
+          'defaultToCurrentSpace': defaultToCurrentSpace!,
       };
 }
 

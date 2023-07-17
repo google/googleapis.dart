@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230621",
+    "revision": "20230705",
     "rootUrl": "https://clouddeploy.googleapis.com/",
     "servicePath": "",
     "title": "Google Cloud Deploy API",
@@ -1939,6 +1939,13 @@
                         "TYPE_PROCESS_ABORTED",
                         "TYPE_RENDER_STATUES_CHANGE"
                     ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        false,
+                        true
+                    ],
                     "enumDescriptions": [
                         "Type is unspecified.",
                         "A Pub/Sub notification failed to be sent.",
@@ -2405,6 +2412,13 @@
                         "TYPE_RESOURCE_STATE_CHANGE",
                         "TYPE_PROCESS_ABORTED",
                         "TYPE_RENDER_STATUES_CHANGE"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        false,
+                        true
                     ],
                     "enumDescriptions": [
                         "Type is unspecified.",
@@ -3091,6 +3105,13 @@
                         "TYPE_PROCESS_ABORTED",
                         "TYPE_RENDER_STATUES_CHANGE"
                     ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        false,
+                        true
+                    ],
                     "enumDescriptions": [
                         "Type is unspecified.",
                         "A Pub/Sub notification failed to be sent.",
@@ -3369,6 +3390,13 @@
                         "TYPE_RESOURCE_STATE_CHANGE",
                         "TYPE_PROCESS_ABORTED",
                         "TYPE_RENDER_STATUES_CHANGE"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        false,
+                        true
                     ],
                     "enumDescriptions": [
                         "Type is unspecified.",
@@ -3729,6 +3757,13 @@
                         "TYPE_RESOURCE_STATE_CHANGE",
                         "TYPE_PROCESS_ABORTED",
                         "TYPE_RENDER_STATUES_CHANGE"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        false,
+                        true
                     ],
                     "enumDescriptions": [
                         "Type is unspecified.",

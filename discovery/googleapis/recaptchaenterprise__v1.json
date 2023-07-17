@@ -744,6 +744,7 @@
                     "type": "string"
                 },
                 "username": {
+                    "deprecated": true,
                     "description": "Username of the account that is being verified. Deprecated. Customers should now provide the hashed account ID field in Event.",
                     "type": "string"
                 }
@@ -784,6 +785,13 @@
                         "FRAUDULENT",
                         "PASSWORD_CORRECT",
                         "PASSWORD_INCORRECT"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        true,
+                        true
                     ],
                     "enumDescriptions": [
                         "Default unspecified type.",

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230627",
+    "revision": "20230710",
     "rootUrl": "https://datafusion.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Data Fusion API",
@@ -1067,6 +1067,7 @@
                     "type": "boolean"
                 },
                 "serviceAccount": {
+                    "deprecated": true,
                     "description": "Output only. Deprecated. Use tenant_project_id instead to extract the tenant project ID.",
                     "readOnly": true,
                     "type": "string"

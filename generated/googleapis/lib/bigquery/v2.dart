@@ -9252,7 +9252,10 @@ class Model {
   /// Optional.
   core.String? expirationTime;
 
-  /// Input feature columns that were used to train this model.
+  /// Input feature columns for the model inference.
+  ///
+  /// If the model is trained with TRANSFORM clause, these are the input of the
+  /// TRANSFORM clause.
   ///
   /// Output only.
   core.List<StandardSqlField>? featureColumns;
@@ -13484,6 +13487,9 @@ class TimePartitioning {
 
 /// Options used in model training.
 class TrainingOptions {
+  /// Activation function of the neural nets.
+  core.String? activationFn;
+
   /// If true, detect step changes and make data adjustment in the input time
   /// series.
   core.bool? adjustStepChanges;
@@ -13501,6 +13507,10 @@ class TrainingOptions {
   /// The min value of the sum of non-seasonal p and q.
   core.String? autoArimaMinOrder;
 
+  /// Whether to calculate class weights automatically based on the popularity
+  /// of each label.
+  core.bool? autoClassWeights;
+
   /// Batch size for dnn models.
   core.String? batchSize;
 
@@ -13510,6 +13520,9 @@ class TrainingOptions {
   /// - "GBTREE" : Gbtree booster.
   /// - "DART" : Dart booster.
   core.String? boosterType;
+
+  /// Budget in hours for AutoML training.
+  core.double? budgetHours;
 
   /// Whether or not p-value test should be computed for this model.
   ///
@@ -13620,6 +13633,9 @@ class TrainingOptions {
   /// - "IMPLICIT" : Use weighted-als for implicit feedback problems.
   /// - "EXPLICIT" : Use nonweighted-als for explicit feedback problems.
   core.String? feedbackType;
+
+  /// Whether the model should include intercept during model training.
+  core.bool? fitIntercept;
 
   /// Hidden units for dnn models.
   core.List<core.String>? hiddenUnits;
@@ -13742,6 +13758,9 @@ class TrainingOptions {
   /// - "KMEANS_PLUS_PLUS" : Initializes with kmeans++.
   core.String? kmeansInitializationMethod;
 
+  /// L1 regularization coefficient to activations.
+  core.double? l1RegActivation;
+
   /// L1 regularization coefficient.
   core.double? l1Regularization;
 
@@ -13807,6 +13826,12 @@ class TrainingOptions {
   /// Minimum sum of instance weight needed in a child for boosted tree models.
   core.String? minTreeChildWeight;
 
+  /// The model registry.
+  /// Possible string values are:
+  /// - "MODEL_REGISTRY_UNSPECIFIED"
+  /// - "VERTEX_AI" : Vertex AI.
+  core.String? modelRegistry;
+
   /// Google Cloud Storage URI from which the model was imported.
   ///
   /// Only applicable for imported models.
@@ -13827,6 +13852,11 @@ class TrainingOptions {
   /// tree models.
   core.String? numParallelTree;
 
+  /// Number of principal components to keep in the PCA model.
+  ///
+  /// Must be \<= the number of features.
+  core.String? numPrincipalComponents;
+
   /// Number of trials to run this hyperparameter tuning job.
   core.String? numTrials;
 
@@ -13839,8 +13869,34 @@ class TrainingOptions {
   /// problem.
   core.String? optimizationStrategy;
 
+  /// Optimizer used for training the neural nets.
+  core.String? optimizer;
+
+  /// The minimum ratio of cumulative explained variance that needs to be given
+  /// by the PCA model.
+  core.double? pcaExplainedVarianceRatio;
+
+  /// The solver for PCA.
+  /// Possible string values are:
+  /// - "UNSPECIFIED"
+  /// - "FULL" : Full eigen-decoposition.
+  /// - "RANDOMIZED" : Randomized SVD.
+  /// - "AUTO" : Auto.
+  core.String? pcaSolver;
+
   /// Number of paths for the sampled Shapley explain method.
   core.String? sampledShapleyNumPaths;
+
+  /// If true, scale the feature values by dividing the feature standard
+  /// deviation.
+  ///
+  /// Currently only apply to PCA.
+  core.bool? scaleFeatures;
+
+  /// Whether to standardize numerical features.
+  ///
+  /// Default to true.
+  core.bool? standardizeFeatures;
 
   /// Subsample fraction of the training data to grow tree to prevent
   /// overfitting for boosted tree models.
@@ -13881,6 +13937,11 @@ class TrainingOptions {
   /// User column specified for matrix factorization models.
   core.String? userColumn;
 
+  /// The version aliases to apply in Vertex AI model registry.
+  ///
+  /// Always overwrite if the version aliases exists in a existing model.
+  core.List<core.String>? vertexAiModelVersionAliases;
+
   /// Hyperparameter for matrix factoration when implicit feedback type is
   /// specified.
   core.double? walsAlpha;
@@ -13892,13 +13953,16 @@ class TrainingOptions {
   core.String? xgboostVersion;
 
   TrainingOptions({
+    this.activationFn,
     this.adjustStepChanges,
     this.approxGlobalFeatureContrib,
     this.autoArima,
     this.autoArimaMaxOrder,
     this.autoArimaMinOrder,
+    this.autoClassWeights,
     this.batchSize,
     this.boosterType,
+    this.budgetHours,
     this.calculatePValues,
     this.cleanSpikesAndDips,
     this.colorSpace,
@@ -13916,6 +13980,7 @@ class TrainingOptions {
     this.earlyStop,
     this.enableGlobalExplain,
     this.feedbackType,
+    this.fitIntercept,
     this.hiddenUnits,
     this.holidayRegion,
     this.horizon,
@@ -13928,6 +13993,7 @@ class TrainingOptions {
     this.itemColumn,
     this.kmeansInitializationColumn,
     this.kmeansInitializationMethod,
+    this.l1RegActivation,
     this.l1Regularization,
     this.l2Regularization,
     this.labelClassWeights,
@@ -13942,14 +14008,21 @@ class TrainingOptions {
     this.minSplitLoss,
     this.minTimeSeriesLength,
     this.minTreeChildWeight,
+    this.modelRegistry,
     this.modelUri,
     this.nonSeasonalOrder,
     this.numClusters,
     this.numFactors,
     this.numParallelTree,
+    this.numPrincipalComponents,
     this.numTrials,
     this.optimizationStrategy,
+    this.optimizer,
+    this.pcaExplainedVarianceRatio,
+    this.pcaSolver,
     this.sampledShapleyNumPaths,
+    this.scaleFeatures,
+    this.standardizeFeatures,
     this.subsample,
     this.tfVersion,
     this.timeSeriesDataColumn,
@@ -13960,6 +14033,7 @@ class TrainingOptions {
     this.treeMethod,
     this.trendSmoothingWindowSize,
     this.userColumn,
+    this.vertexAiModelVersionAliases,
     this.walsAlpha,
     this.warmStart,
     this.xgboostVersion,
@@ -13967,6 +14041,9 @@ class TrainingOptions {
 
   TrainingOptions.fromJson(core.Map json_)
       : this(
+          activationFn: json_.containsKey('activationFn')
+              ? json_['activationFn'] as core.String
+              : null,
           adjustStepChanges: json_.containsKey('adjustStepChanges')
               ? json_['adjustStepChanges'] as core.bool
               : null,
@@ -13983,11 +14060,17 @@ class TrainingOptions {
           autoArimaMinOrder: json_.containsKey('autoArimaMinOrder')
               ? json_['autoArimaMinOrder'] as core.String
               : null,
+          autoClassWeights: json_.containsKey('autoClassWeights')
+              ? json_['autoClassWeights'] as core.bool
+              : null,
           batchSize: json_.containsKey('batchSize')
               ? json_['batchSize'] as core.String
               : null,
           boosterType: json_.containsKey('boosterType')
               ? json_['boosterType'] as core.String
+              : null,
+          budgetHours: json_.containsKey('budgetHours')
+              ? (json_['budgetHours'] as core.num).toDouble()
               : null,
           calculatePValues: json_.containsKey('calculatePValues')
               ? json_['calculatePValues'] as core.bool
@@ -14040,6 +14123,9 @@ class TrainingOptions {
           feedbackType: json_.containsKey('feedbackType')
               ? json_['feedbackType'] as core.String
               : null,
+          fitIntercept: json_.containsKey('fitIntercept')
+              ? json_['fitIntercept'] as core.bool
+              : null,
           hiddenUnits: json_.containsKey('hiddenUnits')
               ? (json_['hiddenUnits'] as core.List)
                   .map((value) => value as core.String)
@@ -14085,6 +14171,9 @@ class TrainingOptions {
               json_.containsKey('kmeansInitializationMethod')
                   ? json_['kmeansInitializationMethod'] as core.String
                   : null,
+          l1RegActivation: json_.containsKey('l1RegActivation')
+              ? (json_['l1RegActivation'] as core.num).toDouble()
+              : null,
           l1Regularization: json_.containsKey('l1Regularization')
               ? (json_['l1Regularization'] as core.num).toDouble()
               : null,
@@ -14134,6 +14223,9 @@ class TrainingOptions {
           minTreeChildWeight: json_.containsKey('minTreeChildWeight')
               ? json_['minTreeChildWeight'] as core.String
               : null,
+          modelRegistry: json_.containsKey('modelRegistry')
+              ? json_['modelRegistry'] as core.String
+              : null,
           modelUri: json_.containsKey('modelUri')
               ? json_['modelUri'] as core.String
               : null,
@@ -14150,14 +14242,33 @@ class TrainingOptions {
           numParallelTree: json_.containsKey('numParallelTree')
               ? json_['numParallelTree'] as core.String
               : null,
+          numPrincipalComponents: json_.containsKey('numPrincipalComponents')
+              ? json_['numPrincipalComponents'] as core.String
+              : null,
           numTrials: json_.containsKey('numTrials')
               ? json_['numTrials'] as core.String
               : null,
           optimizationStrategy: json_.containsKey('optimizationStrategy')
               ? json_['optimizationStrategy'] as core.String
               : null,
+          optimizer: json_.containsKey('optimizer')
+              ? json_['optimizer'] as core.String
+              : null,
+          pcaExplainedVarianceRatio:
+              json_.containsKey('pcaExplainedVarianceRatio')
+                  ? (json_['pcaExplainedVarianceRatio'] as core.num).toDouble()
+                  : null,
+          pcaSolver: json_.containsKey('pcaSolver')
+              ? json_['pcaSolver'] as core.String
+              : null,
           sampledShapleyNumPaths: json_.containsKey('sampledShapleyNumPaths')
               ? json_['sampledShapleyNumPaths'] as core.String
+              : null,
+          scaleFeatures: json_.containsKey('scaleFeatures')
+              ? json_['scaleFeatures'] as core.bool
+              : null,
+          standardizeFeatures: json_.containsKey('standardizeFeatures')
+              ? json_['standardizeFeatures'] as core.bool
               : null,
           subsample: json_.containsKey('subsample')
               ? (json_['subsample'] as core.num).toDouble()
@@ -14194,6 +14305,12 @@ class TrainingOptions {
           userColumn: json_.containsKey('userColumn')
               ? json_['userColumn'] as core.String
               : null,
+          vertexAiModelVersionAliases:
+              json_.containsKey('vertexAiModelVersionAliases')
+                  ? (json_['vertexAiModelVersionAliases'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
           walsAlpha: json_.containsKey('walsAlpha')
               ? (json_['walsAlpha'] as core.num).toDouble()
               : null,
@@ -14206,14 +14323,17 @@ class TrainingOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (activationFn != null) 'activationFn': activationFn!,
         if (adjustStepChanges != null) 'adjustStepChanges': adjustStepChanges!,
         if (approxGlobalFeatureContrib != null)
           'approxGlobalFeatureContrib': approxGlobalFeatureContrib!,
         if (autoArima != null) 'autoArima': autoArima!,
         if (autoArimaMaxOrder != null) 'autoArimaMaxOrder': autoArimaMaxOrder!,
         if (autoArimaMinOrder != null) 'autoArimaMinOrder': autoArimaMinOrder!,
+        if (autoClassWeights != null) 'autoClassWeights': autoClassWeights!,
         if (batchSize != null) 'batchSize': batchSize!,
         if (boosterType != null) 'boosterType': boosterType!,
+        if (budgetHours != null) 'budgetHours': budgetHours!,
         if (calculatePValues != null) 'calculatePValues': calculatePValues!,
         if (cleanSpikesAndDips != null)
           'cleanSpikesAndDips': cleanSpikesAndDips!,
@@ -14235,6 +14355,7 @@ class TrainingOptions {
         if (enableGlobalExplain != null)
           'enableGlobalExplain': enableGlobalExplain!,
         if (feedbackType != null) 'feedbackType': feedbackType!,
+        if (fitIntercept != null) 'fitIntercept': fitIntercept!,
         if (hiddenUnits != null) 'hiddenUnits': hiddenUnits!,
         if (holidayRegion != null) 'holidayRegion': holidayRegion!,
         if (horizon != null) 'horizon': horizon!,
@@ -14252,6 +14373,7 @@ class TrainingOptions {
           'kmeansInitializationColumn': kmeansInitializationColumn!,
         if (kmeansInitializationMethod != null)
           'kmeansInitializationMethod': kmeansInitializationMethod!,
+        if (l1RegActivation != null) 'l1RegActivation': l1RegActivation!,
         if (l1Regularization != null) 'l1Regularization': l1Regularization!,
         if (l2Regularization != null) 'l2Regularization': l2Regularization!,
         if (labelClassWeights != null) 'labelClassWeights': labelClassWeights!,
@@ -14270,16 +14392,26 @@ class TrainingOptions {
           'minTimeSeriesLength': minTimeSeriesLength!,
         if (minTreeChildWeight != null)
           'minTreeChildWeight': minTreeChildWeight!,
+        if (modelRegistry != null) 'modelRegistry': modelRegistry!,
         if (modelUri != null) 'modelUri': modelUri!,
         if (nonSeasonalOrder != null) 'nonSeasonalOrder': nonSeasonalOrder!,
         if (numClusters != null) 'numClusters': numClusters!,
         if (numFactors != null) 'numFactors': numFactors!,
         if (numParallelTree != null) 'numParallelTree': numParallelTree!,
+        if (numPrincipalComponents != null)
+          'numPrincipalComponents': numPrincipalComponents!,
         if (numTrials != null) 'numTrials': numTrials!,
         if (optimizationStrategy != null)
           'optimizationStrategy': optimizationStrategy!,
+        if (optimizer != null) 'optimizer': optimizer!,
+        if (pcaExplainedVarianceRatio != null)
+          'pcaExplainedVarianceRatio': pcaExplainedVarianceRatio!,
+        if (pcaSolver != null) 'pcaSolver': pcaSolver!,
         if (sampledShapleyNumPaths != null)
           'sampledShapleyNumPaths': sampledShapleyNumPaths!,
+        if (scaleFeatures != null) 'scaleFeatures': scaleFeatures!,
+        if (standardizeFeatures != null)
+          'standardizeFeatures': standardizeFeatures!,
         if (subsample != null) 'subsample': subsample!,
         if (tfVersion != null) 'tfVersion': tfVersion!,
         if (timeSeriesDataColumn != null)
@@ -14296,6 +14428,8 @@ class TrainingOptions {
         if (trendSmoothingWindowSize != null)
           'trendSmoothingWindowSize': trendSmoothingWindowSize!,
         if (userColumn != null) 'userColumn': userColumn!,
+        if (vertexAiModelVersionAliases != null)
+          'vertexAiModelVersionAliases': vertexAiModelVersionAliases!,
         if (walsAlpha != null) 'walsAlpha': walsAlpha!,
         if (warmStart != null) 'warmStart': warmStart!,
         if (xgboostVersion != null) 'xgboostVersion': xgboostVersion!,

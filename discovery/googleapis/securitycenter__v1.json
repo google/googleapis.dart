@@ -114,6 +114,7 @@
                 "assets": {
                     "methods": {
                         "group": {
+                            "deprecated": true,
                             "description": "Filters an organization's assets and groups them by their specified properties.",
                             "flatPath": "v1/folders/{foldersId}/assets:group",
                             "httpMethod": "POST",
@@ -142,6 +143,7 @@
                             ]
                         },
                         "list": {
+                            "deprecated": true,
                             "description": "Lists an organization's assets.",
                             "flatPath": "v1/folders/{foldersId}/assets",
                             "httpMethod": "GET",
@@ -1383,6 +1385,7 @@
                 "assets": {
                     "methods": {
                         "group": {
+                            "deprecated": true,
                             "description": "Filters an organization's assets and groups them by their specified properties.",
                             "flatPath": "v1/organizations/{organizationsId}/assets:group",
                             "httpMethod": "POST",
@@ -1411,6 +1414,7 @@
                             ]
                         },
                         "list": {
+                            "deprecated": true,
                             "description": "Lists an organization's assets.",
                             "flatPath": "v1/organizations/{organizationsId}/assets",
                             "httpMethod": "GET",
@@ -1475,6 +1479,7 @@
                             ]
                         },
                         "runDiscovery": {
+                            "deprecated": true,
                             "description": "Runs asset discovery. The discovery is tracked with a long-running operation. This API can only be called with limited frequency for an organization. If it is called too frequently the caller will receive a TOO_MANY_REQUESTS error.",
                             "flatPath": "v1/organizations/{organizationsId}/assets:runDiscovery",
                             "httpMethod": "POST",
@@ -2943,6 +2948,7 @@
                 "assets": {
                     "methods": {
                         "group": {
+                            "deprecated": true,
                             "description": "Filters an organization's assets and groups them by their specified properties.",
                             "flatPath": "v1/projects/{projectsId}/assets:group",
                             "httpMethod": "POST",
@@ -2971,6 +2977,7 @@
                             ]
                         },
                         "list": {
+                            "deprecated": true,
                             "description": "Lists an organization's assets.",
                             "flatPath": "v1/projects/{projectsId}/assets",
                             "httpMethod": "GET",
@@ -4395,6 +4402,7 @@
                     "type": "string"
                 },
                 "muteAnnotation": {
+                    "deprecated": true,
                     "description": "This can be a mute configuration name or any identifier for mute/unmute of findings based on the filter.",
                     "type": "string"
                 }
@@ -5410,6 +5418,7 @@
                     "type": "string"
                 },
                 "displayName": {
+                    "deprecated": true,
                     "description": "The human readable name to be displayed for the mute config.",
                     "type": "string"
                 },

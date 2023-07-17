@@ -838,9 +838,11 @@ api.Node buildNode() {
     o.id = 'foo';
     o.labels = buildUnnamed15();
     o.metadata = buildUnnamed16();
+    o.multisliceNode = true;
     o.name = 'foo';
     o.networkConfig = buildNetworkConfig();
     o.networkEndpoints = buildUnnamed17();
+    o.queuedResource = 'foo';
     o.runtimeVersion = 'foo';
     o.schedulingConfig = buildSchedulingConfig();
     o.serviceAccount = buildServiceAccount();
@@ -892,12 +894,17 @@ void checkNode(api.Node o) {
     );
     checkUnnamed15(o.labels!);
     checkUnnamed16(o.metadata!);
+    unittest.expect(o.multisliceNode!, unittest.isTrue);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
     checkNetworkConfig(o.networkConfig!);
     checkUnnamed17(o.networkEndpoints!);
+    unittest.expect(
+      o.queuedResource!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.runtimeVersion!,
       unittest.equals('foo'),

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230710",
+    "revision": "20230713",
     "rootUrl": "https://pagespeedonline.googleapis.com/",
     "servicePath": "",
     "title": "PageSpeed Insights API",
@@ -302,6 +302,7 @@
                     "type": "string"
                 },
                 "emulatedFormFactor": {
+                    "deprecated": true,
                     "description": "The form factor the emulation should use. This field is deprecated, form_factor should be used instead.",
                     "type": "string"
                 },

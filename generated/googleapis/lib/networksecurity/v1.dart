@@ -5837,10 +5837,54 @@ class TlsInspectionPolicy {
   /// Output only.
   core.String? createTime;
 
+  /// List of custom TLS cipher suites selected.
+  ///
+  /// This field is valid only if the selected tls_feature_profile is CUSTOM.
+  /// The compute.SslPoliciesService.ListAvailableFeatures method returns the
+  /// set of features that can be specified in this list. Note that Secure Web
+  /// Proxy does not yet honor this field.
+  ///
+  /// Optional.
+  core.List<core.String>? customTlsFeatures;
+
   /// Free-text description of the resource.
   ///
   /// Optional.
   core.String? description;
+
+  /// If FALSE (the default), use our default set of public CAs in addition to
+  /// any CAs specified in trust_config.
+  ///
+  /// These public CAs are currently based on the Mozilla Root Program and are
+  /// subject to change over time. If TRUE, do not accept our default set of
+  /// public CAs. Only CAs specified in trust_config will be accepted. This
+  /// defaults to FALSE (use public CAs in addition to trust_config) for
+  /// backwards compatibility, but trusting public root CAs is *not recommended*
+  /// unless the traffic in question is outbound to public web servers. When
+  /// possible, prefer setting this to "false" and explicitly specifying trusted
+  /// CAs and certificates in a TrustConfig. Note that Secure Web Proxy does not
+  /// yet honor this field.
+  ///
+  /// Optional.
+  core.bool? excludePublicCaSet;
+
+  /// Minimum TLS version that the firewall should use when negotiating
+  /// connections with both clients and servers.
+  ///
+  /// If this is not set, then the default value is to allow the broadest set of
+  /// clients and servers (TLS 1.0 or higher). Setting this to more restrictive
+  /// values may improve security, but may also prevent the firewall from
+  /// connecting to some clients or servers. Note that Secure Web Proxy does not
+  /// yet honor this field.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TLS_VERSION_UNSPECIFIED" : Indicates no TLS version was specified.
+  /// - "TLS_1_0" : TLS 1.0
+  /// - "TLS_1_1" : TLS 1.1
+  /// - "TLS_1_2" : TLS 1.2
+  /// - "TLS_1_3" : TLS 1.3
+  core.String? minTlsVersion;
 
   /// Name of the resource.
   ///
@@ -5852,6 +5896,39 @@ class TlsInspectionPolicy {
   /// Required.
   core.String? name;
 
+  /// The selected Profile.
+  ///
+  /// If this is not set, then the default value is to allow the broadest set of
+  /// clients and servers ("PROFILE_COMPATIBLE"). Setting this to more
+  /// restrictive values may improve security, but may also prevent the TLS
+  /// inspection proxy from connecting to some clients or servers. Note that
+  /// Secure Web Proxy does not yet honor this field.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PROFILE_UNSPECIFIED" : Indicates no profile was specified.
+  /// - "PROFILE_COMPATIBLE" : Compatible profile. Allows the broadest set of
+  /// clients, even those which support only out-of-date SSL features to
+  /// negotiate with the TLS inspection proxy.
+  /// - "PROFILE_MODERN" : Modern profile. Supports a wide set of SSL features,
+  /// allowing modern clients to negotiate SSL with the TLS inspection proxy.
+  /// - "PROFILE_RESTRICTED" : Restricted profile. Supports a reduced set of SSL
+  /// features, intended to meet stricter compliance requirements.
+  /// - "PROFILE_CUSTOM" : Custom profile. Allow only the set of allowed SSL
+  /// features specified in the custom_features field of SslPolicy.
+  core.String? tlsFeatureProfile;
+
+  /// A TrustConfig resource used when making a connection to the TLS server.
+  ///
+  /// This is a relative resource path following the form
+  /// "projects/{project}/locations/{location}/trustConfigs/{trust_config}".
+  /// This is necessary to intercept TLS connections to servers with
+  /// certificates signed by a private CA or self-signed certificates. Note that
+  /// Secure Web Proxy does not yet honor this field.
+  ///
+  /// Optional.
+  core.String? trustConfig;
+
   /// The timestamp when the resource was updated.
   ///
   /// Output only.
@@ -5860,8 +5937,13 @@ class TlsInspectionPolicy {
   TlsInspectionPolicy({
     this.caPool,
     this.createTime,
+    this.customTlsFeatures,
     this.description,
+    this.excludePublicCaSet,
+    this.minTlsVersion,
     this.name,
+    this.tlsFeatureProfile,
+    this.trustConfig,
     this.updateTime,
   });
 
@@ -5873,10 +5955,27 @@ class TlsInspectionPolicy {
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
+          customTlsFeatures: json_.containsKey('customTlsFeatures')
+              ? (json_['customTlsFeatures'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
+          excludePublicCaSet: json_.containsKey('excludePublicCaSet')
+              ? json_['excludePublicCaSet'] as core.bool
+              : null,
+          minTlsVersion: json_.containsKey('minTlsVersion')
+              ? json_['minTlsVersion'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          tlsFeatureProfile: json_.containsKey('tlsFeatureProfile')
+              ? json_['tlsFeatureProfile'] as core.String
+              : null,
+          trustConfig: json_.containsKey('trustConfig')
+              ? json_['trustConfig'] as core.String
+              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -5885,8 +5984,14 @@ class TlsInspectionPolicy {
   core.Map<core.String, core.dynamic> toJson() => {
         if (caPool != null) 'caPool': caPool!,
         if (createTime != null) 'createTime': createTime!,
+        if (customTlsFeatures != null) 'customTlsFeatures': customTlsFeatures!,
         if (description != null) 'description': description!,
+        if (excludePublicCaSet != null)
+          'excludePublicCaSet': excludePublicCaSet!,
+        if (minTlsVersion != null) 'minTlsVersion': minTlsVersion!,
         if (name != null) 'name': name!,
+        if (tlsFeatureProfile != null) 'tlsFeatureProfile': tlsFeatureProfile!,
+        if (trustConfig != null) 'trustConfig': trustConfig!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }

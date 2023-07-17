@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230704",
+    "revision": "20230710",
     "rootUrl": "https://billingbudgets.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Billing Budget API",

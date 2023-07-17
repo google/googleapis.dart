@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230708",
+    "revision": "20230716",
     "rootUrl": "https://osconfig.googleapis.com/",
     "servicePath": "",
     "title": "OS Config API",
@@ -3462,6 +3462,7 @@
             "id": "VulnerabilityReportVulnerability",
             "properties": {
                 "availableInventoryItemIds": {
+                    "deprecated": true,
                     "description": "Corresponds to the `AVAILABLE_PACKAGE` inventory item on the VM. If the vulnerability report was not updated after the VM inventory update, these values might not display in VM inventory. If there is no available fix, the field is empty. The `inventory_item` value specifies the latest `SoftwarePackage` available to the VM that fixes the vulnerability.",
                     "items": {
                         "type": "string"
@@ -3478,6 +3479,7 @@
                     "description": "Contains metadata as per the upstream feed of the operating system and NVD."
                 },
                 "installedInventoryItemIds": {
+                    "deprecated": true,
                     "description": "Corresponds to the `INSTALLED_PACKAGE` inventory item on the VM. This field displays the inventory items affected by this vulnerability. If the vulnerability report was not updated after the VM inventory update, these values might not display in VM inventory. For some distros, this field may be empty.",
                     "items": {
                         "type": "string"

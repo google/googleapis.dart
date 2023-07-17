@@ -341,6 +341,9 @@ class ProjectsLocationsJobsResource {
   ///
   /// [filter] - List filter.
   ///
+  /// [orderBy] - Optional. Sort results. Supported are "name", "name desc",
+  /// "create_time", and "create_time desc".
+  ///
   /// [pageSize] - Page size.
   ///
   /// [pageToken] - Page token.
@@ -358,12 +361,14 @@ class ProjectsLocationsJobsResource {
   async.Future<ListJobsResponse> list(
     core.String parent, {
     core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -726,6 +731,16 @@ class Accelerator {
   /// The number of accelerators of this type.
   core.String? count;
 
+  /// The NVIDIA GPU driver version that should be installed for this type.
+  ///
+  /// You can define the specific driver version such as "470.103.01", following
+  /// the driver version requirements in
+  /// https://cloud.google.com/compute/docs/gpus/install-drivers-gpu#minimum-driver.
+  /// Batch will install the specific accelerator driver if qualified.
+  ///
+  /// Optional.
+  core.String? driverVersion;
+
   /// Deprecated: please use instances\[0\].install_gpu_drivers instead.
   core.bool? installGpuDrivers;
 
@@ -737,6 +752,7 @@ class Accelerator {
 
   Accelerator({
     this.count,
+    this.driverVersion,
     this.installGpuDrivers,
     this.type,
   });
@@ -745,6 +761,9 @@ class Accelerator {
       : this(
           count:
               json_.containsKey('count') ? json_['count'] as core.String : null,
+          driverVersion: json_.containsKey('driverVersion')
+              ? json_['driverVersion'] as core.String
+              : null,
           installGpuDrivers: json_.containsKey('installGpuDrivers')
               ? json_['installGpuDrivers'] as core.bool
               : null,
@@ -753,6 +772,7 @@ class Accelerator {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
+        if (driverVersion != null) 'driverVersion': driverVersion!,
         if (installGpuDrivers != null) 'installGpuDrivers': installGpuDrivers!,
         if (type != null) 'type': type!,
       };
@@ -910,6 +930,8 @@ class AgentEnvironment {
 /// VM Agent Info.
 class AgentInfo {
   /// The assigned Job ID
+  ///
+  /// Optional.
   core.String? jobId;
 
   /// When the AgentInfo is generated.
@@ -1666,16 +1688,15 @@ class Disk {
   /// support "SCSI" for persistent disks now.
   core.String? diskInterface;
 
-  /// Name of a public or custom image used as the data source.
+  /// Name of an image used as the data source.
   ///
   /// For example, the following are all valid URLs: * Specify the image by its
-  /// family name: projects/{project}/global/images/family/{image_family} *
-  /// Specify the image version:
-  /// projects/{project}/global/images/{image_version} You can also use Batch
-  /// customized image in short names. The following image values are supported
-  /// for a boot disk: * "batch-debian": use Batch Debian images. *
-  /// "batch-centos": use Batch CentOS images. * "batch-cos": use Batch
-  /// Container-Optimized images. * "batch-hpc-centos": use Batch HPC CentOS
+  /// family name: projects/project/global/images/family/image_family * Specify
+  /// the image version: projects/project/global/images/image_version You can
+  /// also use Batch customized image in short names. The following image values
+  /// are supported for a boot disk: * `batch-debian`: use Batch Debian images.
+  /// * `batch-centos`: use Batch CentOS images. * `batch-cos`: use Batch
+  /// Container-Optimized images. * `batch-hpc-centos`: use Batch HPC CentOS
   /// images.
   core.String? image;
 
@@ -1912,7 +1933,11 @@ class InstancePolicyOrTemplate {
   /// party location and install them for GPUs specified in policy.accelerators
   /// or instance_template on their behalf.
   ///
-  /// Default is false.
+  /// Default is false. For Container-Optimized Image cases, Batch will install
+  /// the accelerator driver following milestones of
+  /// https://cloud.google.com/container-optimized-os/docs/release-notes. For
+  /// non Container-Optimized Image cases, following
+  /// https://github.com/GoogleCloudPlatform/compute-gpu-installation/blob/main/linux/install_gpu_driver.py.
   core.bool? installGpuDrivers;
 
   /// Name of an instance template used to create VMs.
@@ -2613,9 +2638,9 @@ class NetworkInterface {
   /// The URL of an existing network resource.
   ///
   /// You can specify the network as a full or partial URL. For example, the
-  /// following are all valid URLs: *
-  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
-  /// * projects/{project}/global/networks/{network} * global/networks/{network}
+  /// following are all valid URLs:
+  /// https://www.googleapis.com/compute/v1/projects/project/global/networks/network
+  /// projects/project/global/networks/network global/networks/network
   core.String? network;
 
   /// Default is false (with an external IP address).
@@ -2631,10 +2656,10 @@ class NetworkInterface {
   /// The URL of an existing subnetwork resource in the network.
   ///
   /// You can specify the subnetwork as a full or partial URL. For example, the
-  /// following are all valid URLs: *
-  /// https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork}
-  /// * projects/{project}/regions/{region}/subnetworks/{subnetwork} *
-  /// regions/{region}/subnetworks/{subnetwork}
+  /// following are all valid URLs:
+  /// https://www.googleapis.com/compute/v1/projects/project/regions/region/subnetworks/subnetwork
+  /// projects/project/regions/region/subnetworks/subnetwork
+  /// regions/region/subnetworks/subnetwork
   core.String? subnetwork;
 
   NetworkInterface({

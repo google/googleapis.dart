@@ -534,6 +534,7 @@ api.AppVersion buildAppVersion() {
   buildCounterAppVersion++;
   if (buildCounterAppVersion < 3) {
     o.isProduction = true;
+    o.targetSdkVersion = 42;
     o.track = 'foo';
     o.trackId = buildUnnamed7();
     o.versionCode = 42;
@@ -547,6 +548,10 @@ void checkAppVersion(api.AppVersion o) {
   buildCounterAppVersion++;
   if (buildCounterAppVersion < 3) {
     unittest.expect(o.isProduction!, unittest.isTrue);
+    unittest.expect(
+      o.targetSdkVersion!,
+      unittest.equals(42),
+    );
     unittest.expect(
       o.track!,
       unittest.equals('foo'),

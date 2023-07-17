@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230629",
+    "revision": "20230706",
     "rootUrl": "https://vmmigration.googleapis.com/",
     "servicePath": "",
     "title": "VM Migration API",
@@ -3892,6 +3892,7 @@
                     "type": "string"
                 },
                 "progressPercent": {
+                    "deprecated": true,
                     "description": "The current progress in percentage of this cycle. Was replaced by 'steps' field, which breaks down the cycle progression more accurately.",
                     "format": "int32",
                     "type": "integer"

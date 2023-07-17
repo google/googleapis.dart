@@ -5343,6 +5343,19 @@ class GoogleCloudIdentitytoolkitV2PasswordPolicy {
   /// The custom strength options enforced by the password policy.
   GoogleCloudIdentitytoolkitV2CustomStrengthOptions? customStrengthOptions;
 
+  /// Which enforcement mode to use for the password policy.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ENFORCEMENT_STATE_UNSPECIFIED" : Enforcement state has not been set.
+  /// - "OFF" : Password Policy will not be used on the project.
+  /// - "ENFORCE" : Passwords non-compliant with the password policy will be
+  /// rejected with an error thrown.
+  core.String? enforcementState;
+
+  /// Users must have a password compliant with the password policy to sign-in.
+  core.bool? forceUpgradeOnSignin;
+
   /// schema version number for the password policy
   ///
   /// Output only.
@@ -5351,6 +5364,8 @@ class GoogleCloudIdentitytoolkitV2PasswordPolicy {
   GoogleCloudIdentitytoolkitV2PasswordPolicy({
     this.allowedNonAlphanumericCharacters,
     this.customStrengthOptions,
+    this.enforcementState,
+    this.forceUpgradeOnSignin,
     this.schemaVersion,
   });
 
@@ -5367,6 +5382,12 @@ class GoogleCloudIdentitytoolkitV2PasswordPolicy {
                   json_['customStrengthOptions']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          enforcementState: json_.containsKey('enforcementState')
+              ? json_['enforcementState'] as core.String
+              : null,
+          forceUpgradeOnSignin: json_.containsKey('forceUpgradeOnSignin')
+              ? json_['forceUpgradeOnSignin'] as core.bool
+              : null,
           schemaVersion: json_.containsKey('schemaVersion')
               ? json_['schemaVersion'] as core.int
               : null,
@@ -5377,6 +5398,9 @@ class GoogleCloudIdentitytoolkitV2PasswordPolicy {
           'allowedNonAlphanumericCharacters': allowedNonAlphanumericCharacters!,
         if (customStrengthOptions != null)
           'customStrengthOptions': customStrengthOptions!,
+        if (enforcementState != null) 'enforcementState': enforcementState!,
+        if (forceUpgradeOnSignin != null)
+          'forceUpgradeOnSignin': forceUpgradeOnSignin!,
         if (schemaVersion != null) 'schemaVersion': schemaVersion!,
       };
 }

@@ -3526,111 +3526,6 @@ class $CreativeClickThroughUrl {
 
 /// Used by:
 ///
-/// - cloudkms:v1 : CryptoKeyVersionTemplate
-/// - kmsinventory:v1 : GoogleCloudKmsV1CryptoKeyVersionTemplate
-class $CryptoKeyVersionTemplate {
-  /// Algorithm to use when creating a CryptoKeyVersion based on this template.
-  ///
-  /// For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if
-  /// both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
-  /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
-  /// - "AES_128_GCM" : AES-GCM (Galois Counter Mode) using 128-bit keys.
-  /// - "AES_256_GCM" : AES-GCM (Galois Counter Mode) using 256-bit keys.
-  /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
-  /// digest.
-  /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256
-  /// digest.
-  /// - "RSA_SIGN_PSS_4096_SHA256" : RSASSA-PSS 4096 bit key with a SHA256
-  /// digest.
-  /// - "RSA_SIGN_PSS_4096_SHA512" : RSASSA-PSS 4096 bit key with a SHA512
-  /// digest.
-  /// - "RSA_SIGN_PKCS1_2048_SHA256" : RSASSA-PKCS1-v1_5 with a 2048 bit key and
-  /// a SHA256 digest.
-  /// - "RSA_SIGN_PKCS1_3072_SHA256" : RSASSA-PKCS1-v1_5 with a 3072 bit key and
-  /// a SHA256 digest.
-  /// - "RSA_SIGN_PKCS1_4096_SHA256" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
-  /// a SHA256 digest.
-  /// - "RSA_SIGN_PKCS1_4096_SHA512" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
-  /// a SHA512 digest.
-  /// - "RSA_SIGN_RAW_PKCS1_2048" : RSASSA-PKCS1-v1_5 signing without encoding,
-  /// with a 2048 bit key.
-  /// - "RSA_SIGN_RAW_PKCS1_3072" : RSASSA-PKCS1-v1_5 signing without encoding,
-  /// with a 3072 bit key.
-  /// - "RSA_SIGN_RAW_PKCS1_4096" : RSASSA-PKCS1-v1_5 signing without encoding,
-  /// with a 4096 bit key.
-  /// - "RSA_DECRYPT_OAEP_2048_SHA256" : RSAES-OAEP 2048 bit key with a SHA256
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_3072_SHA256" : RSAES-OAEP 3072 bit key with a SHA256
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_4096_SHA256" : RSAES-OAEP 4096 bit key with a SHA256
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_4096_SHA512" : RSAES-OAEP 4096 bit key with a SHA512
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_2048_SHA1" : RSAES-OAEP 2048 bit key with a SHA1
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_3072_SHA1" : RSAES-OAEP 3072 bit key with a SHA1
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_4096_SHA1" : RSAES-OAEP 4096 bit key with a SHA1
-  /// digest.
-  /// - "EC_SIGN_P256_SHA256" : ECDSA on the NIST P-256 curve with a SHA256
-  /// digest. Other hash functions can also be used:
-  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
-  /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
-  /// digest. Other hash functions can also be used:
-  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
-  /// - "EC_SIGN_SECP256K1_SHA256" : ECDSA on the non-NIST secp256k1 curve. This
-  /// curve is only supported for HSM protection level. Other hash functions can
-  /// also be used:
-  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
-  /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
-  /// - "HMAC_SHA1" : HMAC-SHA1 signing with a 160 bit key.
-  /// - "HMAC_SHA384" : HMAC-SHA384 signing with a 384 bit key.
-  /// - "HMAC_SHA512" : HMAC-SHA512 signing with a 512 bit key.
-  /// - "HMAC_SHA224" : HMAC-SHA224 signing with a 224 bit key.
-  /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
-  /// encryption by an external key manager.
-  core.String? algorithm;
-
-  /// ProtectionLevel to use when creating a CryptoKeyVersion based on this
-  /// template.
-  ///
-  /// Immutable. Defaults to SOFTWARE.
-  /// Possible string values are:
-  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
-  /// - "SOFTWARE" : Crypto operations are performed in software.
-  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
-  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
-  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
-  /// backend.
-  core.String? protectionLevel;
-
-  $CryptoKeyVersionTemplate({
-    this.algorithm,
-    this.protectionLevel,
-  });
-
-  $CryptoKeyVersionTemplate.fromJson(core.Map json_)
-      : this(
-          algorithm: json_.containsKey('algorithm')
-              ? json_['algorithm'] as core.String
-              : null,
-          protectionLevel: json_.containsKey('protectionLevel')
-              ? json_['protectionLevel'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (algorithm != null) 'algorithm': algorithm!,
-        if (protectionLevel != null) 'protectionLevel': protectionLevel!,
-      };
-}
-
-/// Used by:
-///
 /// - displayvideo:v1 : CustomBiddingScriptRef
 /// - displayvideo:v2 : CustomBiddingScriptRef
 class $CustomBiddingScriptRef {
@@ -5173,7 +5068,6 @@ class $EgressFrom {
 /// - datamigration:v1 : RestartMigrationJobRequest
 /// - datamigration:v1 : ResumeMigrationJobRequest
 /// - datamigration:v1 : RollbackConversionWorkspaceRequest
-/// - datamigration:v1 : StartMigrationJobRequest
 /// - datamigration:v1 : StaticIpConnectivity
 /// - datamigration:v1 : StaticServiceIpConnectivity
 /// - datamigration:v1 : StopMigrationJobRequest
@@ -5257,7 +5151,6 @@ class $EgressFrom {
 /// - driveactivity:v2 : DeletedUser
 /// - driveactivity:v2 : DriveFile
 /// - driveactivity:v2 : Edit
-/// - driveactivity:v2 : File
 /// - driveactivity:v2 : Legacy
 /// - driveactivity:v2 : New
 /// - driveactivity:v2 : NoConsolidation
@@ -5401,6 +5294,10 @@ class $EgressFrom {
 /// - notebooks:v1 : TriggerScheduleRequest
 /// - notebooks:v2 : CancelOperationRequest
 /// - notebooks:v2 : Empty
+/// - notebooks:v2 : ResetInstanceRequest
+/// - notebooks:v2 : StartInstanceRequest
+/// - notebooks:v2 : StopInstanceRequest
+/// - notebooks:v2 : UpgradeInstanceRequest
 /// - ondemandscanning:v1 : Empty
 /// - orgpolicy:v2 : GoogleCloudOrgpolicyV2ConstraintBooleanConstraint
 /// - orgpolicy:v2 : GoogleProtobufEmpty
@@ -13273,6 +13170,102 @@ class $PublisherReviewStatus {
 
 /// Used by:
 ///
+/// - pubsub:v1 : PubsubMessage
+/// - workflowexecutions:v1 : PubsubMessage
+class $PubsubMessage {
+  /// Attributes for this message.
+  ///
+  /// If this field is empty, the message must contain non-empty data. This can
+  /// be used to filter messages on the subscription.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? attributes;
+
+  /// The message data field.
+  ///
+  /// If this field is empty, the message must contain at least one attribute.
+  ///
+  /// Optional.
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
+
+  set dataAsBytes(core.List<core.int> bytes_) {
+    data =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// ID of this message, assigned by the server when the message is published.
+  ///
+  /// Guaranteed to be unique within the topic. This value may be read by a
+  /// subscriber that receives a `PubsubMessage` via a `Pull` call or a push
+  /// delivery. It must not be populated by the publisher in a `Publish` call.
+  ///
+  /// Optional.
+  core.String? messageId;
+
+  /// If non-empty, identifies related messages for which publish order should
+  /// be respected.
+  ///
+  /// If a `Subscription` has `enable_message_ordering` set to `true`, messages
+  /// published with the same non-empty `ordering_key` value will be delivered
+  /// to subscribers in the order in which they are received by the Pub/Sub
+  /// system. All `PubsubMessage`s published in a given `PublishRequest` must
+  /// specify the same `ordering_key` value. For more information, see
+  /// [ordering messages](https://cloud.google.com/pubsub/docs/ordering).
+  ///
+  /// Optional.
+  core.String? orderingKey;
+
+  /// The time at which the message was published, populated by the server when
+  /// it receives the `Publish` call.
+  ///
+  /// It must not be populated by the publisher in a `Publish` call.
+  ///
+  /// Optional.
+  core.String? publishTime;
+
+  $PubsubMessage({
+    this.attributes,
+    this.data,
+    this.messageId,
+    this.orderingKey,
+    this.publishTime,
+  });
+
+  $PubsubMessage.fromJson(core.Map json_)
+      : this(
+          attributes: json_.containsKey('attributes')
+              ? (json_['attributes'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          data: json_.containsKey('data') ? json_['data'] as core.String : null,
+          messageId: json_.containsKey('messageId')
+              ? json_['messageId'] as core.String
+              : null,
+          orderingKey: json_.containsKey('orderingKey')
+              ? json_['orderingKey'] as core.String
+              : null,
+          publishTime: json_.containsKey('publishTime')
+              ? json_['publishTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributes != null) 'attributes': attributes!,
+        if (data != null) 'data': data!,
+        if (messageId != null) 'messageId': messageId!,
+        if (orderingKey != null) 'orderingKey': orderingKey!,
+        if (publishTime != null) 'publishTime': publishTime!,
+      };
+}
+
+/// Used by:
+///
 /// - androidpublisher:v3 : ProductPurchasesAcknowledgeRequest
 /// - androidpublisher:v3 : SubscriptionPurchasesAcknowledgeRequest
 class $PurchasesAcknowledgeRequest {
@@ -13993,6 +13986,86 @@ class $Request07 {
 
 /// Used by:
 ///
+/// - notebooks:v1 : RefreshRuntimeTokenInternalRequest
+/// - notebooks:v2 : UpgradeInstanceSystemRequest
+class $Request08 {
+  /// The VM hardware token for authenticating the VM.
+  ///
+  /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity
+  ///
+  /// Required.
+  core.String? vmId;
+
+  $Request08({
+    this.vmId,
+  });
+
+  $Request08.fromJson(core.Map json_)
+      : this(
+          vmId: json_.containsKey('vmId') ? json_['vmId'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (vmId != null) 'vmId': vmId!,
+      };
+}
+
+/// Used by:
+///
+/// - notebooks:v1 : IsInstanceUpgradeableResponse
+/// - notebooks:v2 : CheckInstanceUpgradabilityResponse
+class $Response {
+  /// The new image self link this instance will be upgraded to if calling the
+  /// upgrade endpoint.
+  ///
+  /// This field will only be populated if field upgradeable is true.
+  core.String? upgradeImage;
+
+  /// Additional information about upgrade.
+  core.String? upgradeInfo;
+
+  /// The version this instance will be upgraded to if calling the upgrade
+  /// endpoint.
+  ///
+  /// This field will only be populated if field upgradeable is true.
+  core.String? upgradeVersion;
+
+  /// If an instance is upgradeable.
+  core.bool? upgradeable;
+
+  $Response({
+    this.upgradeImage,
+    this.upgradeInfo,
+    this.upgradeVersion,
+    this.upgradeable,
+  });
+
+  $Response.fromJson(core.Map json_)
+      : this(
+          upgradeImage: json_.containsKey('upgradeImage')
+              ? json_['upgradeImage'] as core.String
+              : null,
+          upgradeInfo: json_.containsKey('upgradeInfo')
+              ? json_['upgradeInfo'] as core.String
+              : null,
+          upgradeVersion: json_.containsKey('upgradeVersion')
+              ? json_['upgradeVersion'] as core.String
+              : null,
+          upgradeable: json_.containsKey('upgradeable')
+              ? json_['upgradeable'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (upgradeImage != null) 'upgradeImage': upgradeImage!,
+        if (upgradeInfo != null) 'upgradeInfo': upgradeInfo!,
+        if (upgradeVersion != null) 'upgradeVersion': upgradeVersion!,
+        if (upgradeable != null) 'upgradeable': upgradeable!,
+      };
+}
+
+/// Used by:
+///
 /// - jobs:v3 : ResponseMetadata
 /// - jobs:v4 : ResponseMetadata
 class $ResponseMetadata {
@@ -14176,6 +14249,42 @@ class $RuntimeRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
+      };
+}
+
+/// Used by:
+///
+/// - containeranalysis:v1 : SBOMStatus
+/// - ondemandscanning:v1 : SBOMStatus
+class $SBOMStatus {
+  /// If there was an error generating an SBOM, this will indicate what that
+  /// error was.
+  core.String? error;
+
+  /// The progress of the SBOM generation.
+  /// Possible string values are:
+  /// - "SBOM_STATE_UNSPECIFIED" : Default unknown state.
+  /// - "PENDING" : SBOM scanning is pending.
+  /// - "COMPLETE" : SBOM scanning has completed.
+  core.String? sbomState;
+
+  $SBOMStatus({
+    this.error,
+    this.sbomState,
+  });
+
+  $SBOMStatus.fromJson(core.Map json_)
+      : this(
+          error:
+              json_.containsKey('error') ? json_['error'] as core.String : null,
+          sbomState: json_.containsKey('sbomState')
+              ? json_['sbomState'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (error != null) 'error': error!,
+        if (sbomState != null) 'sbomState': sbomState!,
       };
 }
 

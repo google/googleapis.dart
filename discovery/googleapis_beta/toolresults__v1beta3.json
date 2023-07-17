@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230710",
+    "revision": "20230717",
     "rootUrl": "https://toolresults.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Tool Results API",
@@ -3589,6 +3589,7 @@
                 },
                 "stackTrace": {
                     "$ref": "StackTrace",
+                    "deprecated": true,
                     "description": "Deprecated in favor of stack trace fields inside specific warnings."
                 },
                 "type": {

@@ -4317,6 +4317,12 @@ class AppVersion {
   /// True if this version is a production APK.
   core.bool? isProduction;
 
+  /// The SDK version this app targets, as specified in the manifest of the APK.
+  ///
+  /// See
+  /// http://developer.android.com/guide/topics/manifest/uses-sdk-element.html
+  core.int? targetSdkVersion;
+
   /// Deprecated, use trackId instead.
   /// Possible string values are:
   /// - "appTrackUnspecified"
@@ -4343,6 +4349,7 @@ class AppVersion {
 
   AppVersion({
     this.isProduction,
+    this.targetSdkVersion,
     this.track,
     this.trackId,
     this.versionCode,
@@ -4353,6 +4360,9 @@ class AppVersion {
       : this(
           isProduction: json_.containsKey('isProduction')
               ? json_['isProduction'] as core.bool
+              : null,
+          targetSdkVersion: json_.containsKey('targetSdkVersion')
+              ? json_['targetSdkVersion'] as core.int
               : null,
           track:
               json_.containsKey('track') ? json_['track'] as core.String : null,
@@ -4371,6 +4381,7 @@ class AppVersion {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (isProduction != null) 'isProduction': isProduction!,
+        if (targetSdkVersion != null) 'targetSdkVersion': targetSdkVersion!,
         if (track != null) 'track': track!,
         if (trackId != null) 'trackId': trackId!,
         if (versionCode != null) 'versionCode': versionCode!,

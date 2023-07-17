@@ -2456,6 +2456,9 @@ class DiscoveryOccurrence {
   /// The last time this resource was scanned.
   core.String? lastScanTime;
 
+  /// The status of an SBOM generation.
+  SBOMStatus? sbomStatus;
+
   DiscoveryOccurrence({
     this.analysisCompleted,
     this.analysisError,
@@ -2465,6 +2468,7 @@ class DiscoveryOccurrence {
     this.continuousAnalysis,
     this.cpe,
     this.lastScanTime,
+    this.sbomStatus,
   });
 
   DiscoveryOccurrence.fromJson(core.Map json_)
@@ -2496,6 +2500,10 @@ class DiscoveryOccurrence {
           lastScanTime: json_.containsKey('lastScanTime')
               ? json_['lastScanTime'] as core.String
               : null,
+          sbomStatus: json_.containsKey('sbomStatus')
+              ? SBOMStatus.fromJson(
+                  json_['sbomStatus'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2509,6 +2517,7 @@ class DiscoveryOccurrence {
           'continuousAnalysis': continuousAnalysis!,
         if (cpe != null) 'cpe': cpe!,
         if (lastScanTime != null) 'lastScanTime': lastScanTime!,
+        if (sbomStatus != null) 'sbomStatus': sbomStatus!,
       };
 }
 
@@ -4578,6 +4587,9 @@ class SBOMReferenceOccurrence {
         if (signatures != null) 'signatures': signatures!,
       };
 }
+
+/// The status of an SBOM generation.
+typedef SBOMStatus = $SBOMStatus;
 
 /// The actual payload that contains the SBOM Reference data.
 ///

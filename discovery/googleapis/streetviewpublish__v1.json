@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230711",
+    "revision": "20230716",
     "rootUrl": "https://streetviewpublish.googleapis.com/",
     "servicePath": "",
     "title": "Street View Publish API",
@@ -329,6 +329,7 @@
                             "type": "string"
                         },
                         "view": {
+                            "deprecated": true,
                             "description": "Specifies if a download URL for the photo sequence should be returned in `download_url` of individual photos in the PhotoSequence response. > Note: Currently not implemented.",
                             "enum": [
                                 "BASIC",

@@ -5551,6 +5551,7 @@ api.PlaylistStatus buildPlaylistStatus() {
   final o = api.PlaylistStatus();
   buildCounterPlaylistStatus++;
   if (buildCounterPlaylistStatus < 3) {
+    o.podcastStatus = 'foo';
     o.privacyStatus = 'foo';
   }
   buildCounterPlaylistStatus--;
@@ -5560,6 +5561,10 @@ api.PlaylistStatus buildPlaylistStatus() {
 void checkPlaylistStatus(api.PlaylistStatus o) {
   buildCounterPlaylistStatus++;
   if (buildCounterPlaylistStatus < 3) {
+    unittest.expect(
+      o.podcastStatus!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.privacyStatus!,
       unittest.equals('foo'),

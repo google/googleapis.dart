@@ -379,6 +379,7 @@
                             ]
                         },
                         "exchangeSafetyNetToken": {
+                            "deprecated": true,
                             "description": "Validates a [SafetyNet token](https://developer.android.com/training/safetynet/attestation#request-attestation-step). If valid, returns an AppCheckToken.",
                             "flatPath": "v1/projects/{projectsId}/apps/{appsId}:exchangeSafetyNetToken",
                             "httpMethod": "POST",
@@ -1110,8 +1111,10 @@
                             }
                         },
                         "safetyNetConfig": {
+                            "deprecated": true,
                             "methods": {
                                 "batchGet": {
+                                    "deprecated": true,
                                     "description": "Atomically gets the SafetyNetConfigs for the specified list of apps.",
                                     "flatPath": "v1/projects/{projectsId}/apps/-/safetyNetConfig:batchGet",
                                     "httpMethod": "GET",
@@ -1144,6 +1147,7 @@
                                     ]
                                 },
                                 "get": {
+                                    "deprecated": true,
                                     "description": "Gets the SafetyNetConfig for the specified app.",
                                     "flatPath": "v1/projects/{projectsId}/apps/{appsId}/safetyNetConfig",
                                     "httpMethod": "GET",
@@ -1170,6 +1174,7 @@
                                     ]
                                 },
                                 "patch": {
+                                    "deprecated": true,
                                     "description": "Updates the SafetyNetConfig for the specified app. While this configuration is incomplete or invalid, the app will be unable to exchange SafetyNet tokens for App Check tokens.",
                                     "flatPath": "v1/projects/{projectsId}/apps/{appsId}/safetyNetConfig",
                                     "httpMethod": "PATCH",
@@ -1446,6 +1451,7 @@
             "type": "object"
         },
         "GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse": {
+            "deprecated": true,
             "description": "Response message for the BatchGetSafetyNetConfigs method.",
             "id": "GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse",
             "properties": {
@@ -1699,6 +1705,7 @@
             "type": "object"
         },
         "GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest": {
+            "deprecated": true,
             "description": "Request message for the ExchangeSafetyNetToken method.",
             "id": "GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest",
             "properties": {
@@ -1897,6 +1904,7 @@
             "type": "object"
         },
         "GoogleFirebaseAppcheckV1SafetyNetConfig": {
+            "deprecated": true,
             "description": "An app's SafetyNet configuration object. This configuration controls certain properties of the `AppCheckToken` returned by ExchangeSafetyNetToken, such as its ttl. Note that your registered SHA-256 certificate fingerprints are used to validate tokens issued by SafetyNet; please register them via the Firebase Console or programmatically via the [Firebase Management Service](https://firebase.google.com/docs/projects/api/reference/rest/v11/projects.androidApps.sha/create).",
             "id": "GoogleFirebaseAppcheckV1SafetyNetConfig",
             "properties": {

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230711",
+    "revision": "20230716",
     "rootUrl": "https://cloudsupport.googleapis.com/",
     "servicePath": "",
     "title": "Google Cloud Support API",
@@ -826,6 +826,7 @@
             "id": "CompositeMedia",
             "properties": {
                 "blobRef": {
+                    "deprecated": true,
                     "description": "# gdata.* are outside protos with mising documentation",
                     "format": "byte",
                     "type": "string"
@@ -1133,15 +1134,18 @@
             "id": "Media",
             "properties": {
                 "algorithm": {
+                    "deprecated": true,
                     "description": "# gdata.* are outside protos with mising documentation",
                     "type": "string"
                 },
                 "bigstoreObjectRef": {
+                    "deprecated": true,
                     "description": "# gdata.* are outside protos with mising documentation",
                     "format": "byte",
                     "type": "string"
                 },
                 "blobRef": {
+                    "deprecated": true,
                     "description": "# gdata.* are outside protos with mising documentation",
                     "format": "byte",
                     "type": "string"
@@ -1204,6 +1208,7 @@
                     "type": "string"
                 },
                 "hash": {
+                    "deprecated": true,
                     "description": "# gdata.* are outside protos with mising documentation",
                     "type": "string"
                 },

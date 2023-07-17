@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230702",
+    "revision": "20230707",
     "rootUrl": "https://dlp.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Data Loss Prevention (DLP)",
@@ -6039,6 +6039,7 @@
             "id": "GooglePrivacyDlpV2InfoTypeSummary",
             "properties": {
                 "estimatedPrevalence": {
+                    "deprecated": true,
                     "description": "Not populated for predicted infotypes.",
                     "format": "int32",
                     "type": "integer"

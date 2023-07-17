@@ -1215,7 +1215,15 @@ class FieldValueChange {
 }
 
 /// This item is deprecated; please see `DriveFile` instead.
-typedef File = $Empty;
+class File {
+  File();
+
+  File.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map json_);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
 
 /// A comment on a file.
 class FileComment {

@@ -11054,7 +11054,7 @@ class CmekSettings {
   /// For
   /// example:"projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key"To
   /// enable CMEK for the Log Router, set this field to a valid kms_key_name for
-  /// which the associated service account has the required
+  /// which the associated service account has the needed
   /// cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.The Cloud
   /// KMS key used by the Log Router can be updated by changing the kms_key_name
   /// to a new valid key name or disabled by setting the key name to an empty
@@ -13775,11 +13775,13 @@ class Settings {
   /// Output only.
   core.String? name;
 
-  /// The Cloud region that will be used for _Default and _Required log buckets
-  /// for newly created projects and folders.
+  /// The storage location that Cloud Logging will use to create new resources
+  /// when a location is needed but not explicitly provided.
   ///
-  /// For example europe-west1. This setting does not affect the location of
-  /// custom log buckets.
+  /// The use cases includes: The location of _Default and _Required log bucket
+  /// for newly created projects and folders.Example value: europe-west1.Note:
+  /// this setting does not affect the location of resources where a location is
+  /// explicitly provided when created, such as custom log buckets.
   ///
   /// Optional.
   core.String? storageLocation;

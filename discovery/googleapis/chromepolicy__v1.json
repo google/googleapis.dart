@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230711",
+    "revision": "20230716",
     "rootUrl": "https://chromepolicy.googleapis.com/",
     "servicePath": "",
     "title": "Chrome Policy API",
@@ -1144,6 +1144,7 @@
                     "type": "any"
                 },
                 "description": {
+                    "deprecated": true,
                     "description": "Deprecated. Use name and field_description instead. The description for the field.",
                     "type": "string"
                 },

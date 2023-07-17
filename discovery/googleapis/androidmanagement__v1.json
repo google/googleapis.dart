@@ -119,6 +119,7 @@
                     "parameterOrder": [],
                     "parameters": {
                         "agreementAccepted": {
+                            "deprecated": true,
                             "description": "Whether the enterprise admin has seen and agreed to the managed Google Play Agreement (https://www.android.com/enterprise/terms/). Do not set this field for any customer-managed enterprise (https://developers.google.com/android/management/create-enterprise#customer-managed_enterprises). Set this to field to true for all EMM-managed enterprises (https://developers.google.com/android/management/create-enterprise#emm-managed_enterprises).",
                             "location": "query",
                             "type": "boolean"
@@ -1204,6 +1205,7 @@
             "type": "object"
         },
         "ApiLevelCondition": {
+            "deprecated": true,
             "description": "A compliance rule condition which is satisfied if the Android Framework API level on the device doesn't meet a minimum requirement. There can only be one rule with this type of condition per policy.",
             "id": "ApiLevelCondition",
             "properties": {
@@ -1664,6 +1666,7 @@
                     "type": "string"
                 },
                 "lockTaskAllowed": {
+                    "deprecated": true,
                     "description": "Whether the app is allowed to lock itself in full-screen mode. DEPRECATED. Use InstallType KIOSK or kioskCustomLauncherEnabled to configure a dedicated device.",
                     "type": "boolean"
                 },
@@ -2089,6 +2092,7 @@
             "type": "object"
         },
         "ComplianceRule": {
+            "deprecated": true,
             "description": "A rule declaring which mitigating actions to take when a device is not compliant with its policy. For every rule, there is always an implicit mitigating action to set policy_compliant to false for the Device resource, and display a message on the device indicating that the device is not compliant with its policy. Other mitigating actions may optionally be taken as well, depending on the field values in the rule.",
             "id": "ComplianceRule",
             "properties": {
@@ -2383,6 +2387,7 @@
                     "type": "array"
                 },
                 "lastPolicyComplianceReportTime": {
+                    "deprecated": true,
                     "description": "Deprecated.",
                     "format": "google-datetime",
                     "type": "string"
@@ -2813,6 +2818,7 @@
             "id": "Enterprise",
             "properties": {
                 "appAutoApprovalEnabled": {
+                    "deprecated": true,
                     "description": "Deprecated and unused.",
                     "type": "boolean"
                 },
@@ -2830,6 +2836,14 @@
                             "STATUS_REPORT",
                             "COMMAND",
                             "USAGE_LOGS"
+                        ],
+                        "enumDeprecated": [
+                            false,
+                            false,
+                            true,
+                            false,
+                            false,
+                            false
                         ],
                         "enumDescriptions": [
                             "This value is ignored.",
@@ -3674,6 +3688,7 @@
                     "type": "string"
                 },
                 "networkOperatorName": {
+                    "deprecated": true,
                     "description": "Alphabetic name of current registered operator. For example, Vodafone.",
                     "type": "string"
                 },
@@ -3803,6 +3818,7 @@
             "type": "object"
         },
         "NonComplianceDetailCondition": {
+            "deprecated": true,
             "description": "A compliance rule condition which is satisfied if there exists any matching NonComplianceDetail for the device. A NonComplianceDetail matches a NonComplianceDetailCondition if all the fields which are set within the NonComplianceDetailCondition match the corresponding NonComplianceDetail fields.",
             "id": "NonComplianceDetailCondition",
             "properties": {
@@ -4259,6 +4275,12 @@
                         "BLOCKLIST",
                         "ALLOWLIST"
                     ],
+                    "enumDeprecated": [
+                        false,
+                        true,
+                        false,
+                        false
+                    ],
                     "enumDescriptions": [
                         "Unspecified. Defaults to BLOCKLIST.",
                         "All Play Store apps are available for installation in the personal profile, except those whose installType is BLOCKED in personalApplications.",
@@ -4358,10 +4380,12 @@
                     "type": "string"
                 },
                 "autoTimeRequired": {
+                    "deprecated": true,
                     "description": "Whether auto time is required, which prevents the user from manually setting the date and time. If autoDateAndTimeZone is set, this field is ignored.",
                     "type": "boolean"
                 },
                 "blockApplicationsEnabled": {
+                    "deprecated": true,
                     "description": "Whether applications other than the ones configured in applications are blocked from being installed. When set, applications that were installed under a previous policy but no longer appear in the policy are automatically uninstalled.",
                     "type": "boolean"
                 },
@@ -4394,6 +4418,7 @@
                     "type": "string"
                 },
                 "cameraDisabled": {
+                    "deprecated": true,
                     "description": "If camera_access is set to any value other than CAMERA_ACCESS_UNSPECIFIED, this has no effect. Otherwise this field controls whether cameras are disabled: If true, all cameras are disabled, otherwise they are available. For fully managed devices this field applies for all apps on the device. For work profiles, this field applies only to apps in the work profile, and the camera access of apps outside the work profile is unaffected.",
                     "type": "boolean"
                 },
@@ -4409,6 +4434,7 @@
                     "type": "array"
                 },
                 "complianceRules": {
+                    "deprecated": true,
                     "description": "Rules declaring which mitigating actions to take when a device is not compliant with its policy. When the conditions for multiple rules are satisfied, all of the mitigating actions for the rules are taken. There is a maximum limit of 100 rules. Use policy enforcement rules instead.",
                     "items": {
                         "$ref": "ComplianceRule"
@@ -4432,6 +4458,7 @@
                     "type": "boolean"
                 },
                 "debuggingFeaturesAllowed": {
+                    "deprecated": true,
                     "description": "Whether the user is allowed to enable debugging features.",
                     "type": "boolean"
                 },
@@ -4478,6 +4505,7 @@
                     "type": "string"
                 },
                 "ensureVerifyAppsEnabled": {
+                    "deprecated": true,
                     "description": "Whether app verification is force-enabled.",
                     "type": "boolean"
                 },
@@ -4501,6 +4529,7 @@
                     "type": "boolean"
                 },
                 "installUnknownSourcesAllowed": {
+                    "deprecated": true,
                     "description": "This field has no effect.",
                     "type": "boolean"
                 },
@@ -4560,6 +4589,16 @@
                         "LOCATION_USER_CHOICE",
                         "LOCATION_ENFORCED",
                         "LOCATION_DISABLED"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        true,
+                        true,
+                        true,
+                        true,
+                        false,
+                        false,
+                        false
                     ],
                     "enumDescriptions": [
                         "Defaults to LOCATION_USER_CHOICE.",
@@ -4659,6 +4698,7 @@
                 },
                 "passwordRequirements": {
                     "$ref": "PasswordRequirements",
+                    "deprecated": true,
                     "description": "Password requirements. The field password_requirements.require_password_unlock must not be set. DEPRECATED - Use passwordPolicies.Note:Complexity-based values of PasswordQuality, that is, COMPLEXITY_LOW, COMPLEXITY_MEDIUM, and COMPLEXITY_HIGH, cannot be used here. unified_lock_settings cannot be used here."
                 },
                 "permissionGrants": {
@@ -4735,6 +4775,7 @@
                     "type": "boolean"
                 },
                 "safeBootDisabled": {
+                    "deprecated": true,
                     "description": "Whether rebooting the device into safe boot is disabled.",
                     "type": "boolean"
                 },
@@ -4774,6 +4815,7 @@
                     "type": "boolean"
                 },
                 "statusBarDisabled": {
+                    "deprecated": true,
                     "description": "Whether the status bar is disabled. This disables notifications, quick settings, and other screen overlays that allow escape from full-screen mode. DEPRECATED. To disable the status bar on a kiosk device, use InstallType KIOSK or kioskCustomLauncherEnabled.",
                     "type": "boolean"
                 },
@@ -4805,6 +4847,7 @@
                     "description": "The system update policy, which controls how OS updates are applied. If the update type is WINDOWED, the update window will automatically apply to Play app updates as well."
                 },
                 "tetheringConfigDisabled": {
+                    "deprecated": true,
                     "description": "Whether configuring tethering and portable hotspots is disabled. If tetheringSettings is set to anything other than TETHERING_SETTINGS_UNSPECIFIED, this setting is ignored.",
                     "type": "boolean"
                 },
@@ -4813,6 +4856,7 @@
                     "type": "boolean"
                 },
                 "unmuteMicrophoneDisabled": {
+                    "deprecated": true,
                     "description": "If microphone_access is set to any value other than MICROPHONE_ACCESS_UNSPECIFIED, this has no effect. Otherwise this field controls whether microphones are disabled: If true, all microphones are disabled, otherwise they are available. This is available only on fully managed devices.",
                     "type": "boolean"
                 },
@@ -4821,10 +4865,12 @@
                     "description": "Configuration of device activity logging."
                 },
                 "usbFileTransferDisabled": {
+                    "deprecated": true,
                     "description": "Whether transferring files over USB is disabled. This is supported only on company-owned devices.",
                     "type": "boolean"
                 },
                 "usbMassStorageEnabled": {
+                    "deprecated": true,
                     "description": "Whether USB storage is enabled. Deprecated.",
                     "type": "boolean"
                 },
@@ -4838,10 +4884,12 @@
                     "type": "boolean"
                 },
                 "wifiConfigDisabled": {
+                    "deprecated": true,
                     "description": "Whether configuring Wi-Fi networks is disabled. Supported on fully managed devices and work profiles on company-owned devices. For fully managed devices, setting this to true removes all configured networks and retains only the networks configured using openNetworkConfiguration. For work profiles on company-owned devices, existing configured networks are not affected and the user is not allowed to add, remove, or modify Wi-Fi networks. If configureWifi is set to anything other than CONFIGURE_WIFI_UNSPECIFIED, this setting is ignored. Note: If a network connection can't be made at boot time and configuring Wi-Fi is disabled then network escape hatch will be shown in order to refresh the device policy (see networkEscapeHatchEnabled).",
                     "type": "boolean"
                 },
                 "wifiConfigsLockdownEnabled": {
+                    "deprecated": true,
                     "description": "DEPRECATED - Use wifi_config_disabled.",
                     "type": "boolean"
                 }
@@ -5744,6 +5792,7 @@
                     "type": "string"
                 },
                 "permissions": {
+                    "deprecated": true,
                     "description": "Permissions available to an admin in the embedded UI. An admin must have all of these permissions in order to view the UI. This field is deprecated.",
                     "items": {
                         "enum": [

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230628",
+    "revision": "20230709",
     "rootUrl": "https://dataplex.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Dataplex API",
@@ -4050,6 +4050,7 @@
                                                             ],
                                                             "parameters": {
                                                                 "etag": {
+                                                                    "deprecated": true,
                                                                     "description": "Optional. The etag associated with the partition.",
                                                                     "location": "query",
                                                                     "type": "string"
@@ -7479,6 +7480,7 @@
             "id": "GoogleCloudDataplexV1Partition",
             "properties": {
                 "etag": {
+                    "deprecated": true,
                     "description": "Optional. The etag for this partition.",
                     "type": "string"
                 },

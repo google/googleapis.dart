@@ -2420,6 +2420,7 @@
                             ]
                         },
                         "signBlob": {
+                            "deprecated": true,
                             "description": "**Note:** This method is deprecated. Use the [`signBlob`](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signBlob) method in the IAM Service Account Credentials API instead. If you currently use this method, see the [migration guide](https://cloud.google.com/iam/help/credentials/migrate-api) for instructions. Signs a blob using the system-managed private key for a ServiceAccount.",
                             "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}:signBlob",
                             "httpMethod": "POST",
@@ -2448,6 +2449,7 @@
                             ]
                         },
                         "signJwt": {
+                            "deprecated": true,
                             "description": "**Note:** This method is deprecated. Use the [`signJwt`](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signJwt) method in the IAM Service Account Credentials API instead. If you currently use this method, see the [migration guide](https://cloud.google.com/iam/help/credentials/migrate-api) for instructions. Signs a JSON Web Token (JWT) using the system-managed private key for a ServiceAccount.",
                             "flatPath": "v1/projects/{projectsId}/serviceAccounts/{serviceAccountsId}:signJwt",
                             "httpMethod": "POST",
@@ -3675,6 +3677,7 @@
                     "type": "string"
                 },
                 "onlyInPredefinedRoles": {
+                    "deprecated": true,
                     "type": "boolean"
                 },
                 "primaryPermission": {
@@ -3971,6 +3974,7 @@
                     "type": "string"
                 },
                 "etag": {
+                    "deprecated": true,
                     "description": "Deprecated. Do not use.",
                     "format": "byte",
                     "type": "string"
@@ -4109,6 +4113,7 @@
             "id": "SignBlobRequest",
             "properties": {
                 "bytesToSign": {
+                    "deprecated": true,
                     "description": "Required. Deprecated. [Migrate to Service Account Credentials API](https://cloud.google.com/iam/help/credentials/migrate-api). The bytes to sign.",
                     "format": "byte",
                     "type": "string"
@@ -4121,10 +4126,12 @@
             "id": "SignBlobResponse",
             "properties": {
                 "keyId": {
+                    "deprecated": true,
                     "description": "Deprecated. [Migrate to Service Account Credentials API](https://cloud.google.com/iam/help/credentials/migrate-api). The id of the key used to sign the blob.",
                     "type": "string"
                 },
                 "signature": {
+                    "deprecated": true,
                     "description": "Deprecated. [Migrate to Service Account Credentials API](https://cloud.google.com/iam/help/credentials/migrate-api). The signed blob.",
                     "format": "byte",
                     "type": "string"
@@ -4137,6 +4144,7 @@
             "id": "SignJwtRequest",
             "properties": {
                 "payload": {
+                    "deprecated": true,
                     "description": "Required. Deprecated. [Migrate to Service Account Credentials API](https://cloud.google.com/iam/help/credentials/migrate-api). The JWT payload to sign. Must be a serialized JSON object that contains a JWT Claims Set. For example: `{\"sub\": \"user@example.com\", \"iat\": 313435}` If the JWT Claims Set contains an expiration time (`exp`) claim, it must be an integer timestamp that is not in the past and no more than 12 hours in the future. If the JWT Claims Set does not contain an expiration time (`exp`) claim, this claim is added automatically, with a timestamp that is 1 hour in the future.",
                     "type": "string"
                 }
@@ -4148,10 +4156,12 @@
             "id": "SignJwtResponse",
             "properties": {
                 "keyId": {
+                    "deprecated": true,
                     "description": "Deprecated. [Migrate to Service Account Credentials API](https://cloud.google.com/iam/help/credentials/migrate-api). The id of the key used to sign the JWT.",
                     "type": "string"
                 },
                 "signedJwt": {
+                    "deprecated": true,
                     "description": "Deprecated. [Migrate to Service Account Credentials API](https://cloud.google.com/iam/help/credentials/migrate-api). The signed JWT.",
                     "type": "string"
                 }

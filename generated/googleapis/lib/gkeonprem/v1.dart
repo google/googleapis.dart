@@ -9456,12 +9456,8 @@ class VmwareControlPlaneVsphereConfig {
   /// The Vsphere datastore used by the control plane Node.
   core.String? datastore;
 
-  /// The Vsphere storage policy used by the control plane Node.
-  core.String? storagePolicyName;
-
   VmwareControlPlaneVsphereConfig({
     this.datastore,
-    this.storagePolicyName,
   });
 
   VmwareControlPlaneVsphereConfig.fromJson(core.Map json_)
@@ -9469,14 +9465,10 @@ class VmwareControlPlaneVsphereConfig {
           datastore: json_.containsKey('datastore')
               ? json_['datastore'] as core.String
               : null,
-          storagePolicyName: json_.containsKey('storagePolicyName')
-              ? json_['storagePolicyName'] as core.String
-              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (datastore != null) 'datastore': datastore!,
-        if (storagePolicyName != null) 'storagePolicyName': storagePolicyName!,
       };
 }
 
@@ -10371,9 +10363,6 @@ class VmwareVCenterConfig {
   /// The name of the vCenter resource pool for the user cluster.
   core.String? resourcePool;
 
-  /// The name of the vCenter storage policy for the user cluster.
-  core.String? storagePolicyName;
-
   VmwareVCenterConfig({
     this.address,
     this.caCertData,
@@ -10382,7 +10371,6 @@ class VmwareVCenterConfig {
     this.datastore,
     this.folder,
     this.resourcePool,
-    this.storagePolicyName,
   });
 
   VmwareVCenterConfig.fromJson(core.Map json_)
@@ -10408,9 +10396,6 @@ class VmwareVCenterConfig {
           resourcePool: json_.containsKey('resourcePool')
               ? json_['resourcePool'] as core.String
               : null,
-          storagePolicyName: json_.containsKey('storagePolicyName')
-              ? json_['storagePolicyName'] as core.String
-              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10421,7 +10406,6 @@ class VmwareVCenterConfig {
         if (datastore != null) 'datastore': datastore!,
         if (folder != null) 'folder': folder!,
         if (resourcePool != null) 'resourcePool': resourcePool!,
-        if (storagePolicyName != null) 'storagePolicyName': storagePolicyName!,
       };
 }
 
@@ -10506,17 +10490,11 @@ class VmwareVsphereConfig {
   /// Inherited from the user cluster.
   core.String? datastore;
 
-  /// The name of the vCenter storage policy.
-  ///
-  /// Inherited from the user cluster.
-  core.String? storagePolicyName;
-
   /// Tags to apply to VMs.
   core.List<VmwareVsphereTag>? tags;
 
   VmwareVsphereConfig({
     this.datastore,
-    this.storagePolicyName,
     this.tags,
   });
 
@@ -10524,9 +10502,6 @@ class VmwareVsphereConfig {
       : this(
           datastore: json_.containsKey('datastore')
               ? json_['datastore'] as core.String
-              : null,
-          storagePolicyName: json_.containsKey('storagePolicyName')
-              ? json_['storagePolicyName'] as core.String
               : null,
           tags: json_.containsKey('tags')
               ? (json_['tags'] as core.List)
@@ -10538,7 +10513,6 @@ class VmwareVsphereConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (datastore != null) 'datastore': datastore!,
-        if (storagePolicyName != null) 'storagePolicyName': storagePolicyName!,
         if (tags != null) 'tags': tags!,
       };
 }

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230711",
+    "revision": "20230716",
     "rootUrl": "https://orgpolicy.googleapis.com/",
     "servicePath": "",
     "title": "Organization Policy API",
@@ -1130,6 +1130,7 @@
             "properties": {
                 "alternate": {
                     "$ref": "GoogleCloudOrgpolicyV2AlternatePolicySpec",
+                    "deprecated": true,
                     "description": "Deprecated."
                 },
                 "dryRunSpec": {

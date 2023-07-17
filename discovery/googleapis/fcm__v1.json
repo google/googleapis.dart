@@ -233,6 +233,7 @@
                     "type": "string"
                 },
                 "bypassProxyNotification": {
+                    "deprecated": true,
                     "description": "If set, display notifications delivered to the device will be handled by the app instead of the proxy.",
                     "type": "boolean"
                 },

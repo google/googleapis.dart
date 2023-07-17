@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230629",
+    "revision": "20230707",
     "rootUrl": "https://clouddebugger.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Debugger API (Deprecated)",
@@ -378,6 +378,7 @@
                                             "type": "boolean"
                                         },
                                         "stripResults": {
+                                            "deprecated": true,
                                             "description": "This field is deprecated. The following fields are always stripped out of the result: `stack_frames`, `evaluated_expressions` and `variable_table`.",
                                             "location": "query",
                                             "type": "boolean"
@@ -618,6 +619,7 @@
                     "description": "An alias, which may be a branch or tag."
                 },
                 "aliasName": {
+                    "deprecated": true,
                     "description": "The name of an alias (branch, tag, etc.).",
                     "type": "string"
                 },
@@ -693,6 +695,7 @@
                     "type": "string"
                 },
                 "extSourceContexts": {
+                    "deprecated": true,
                     "description": "References to the locations and revisions of the source code used in the deployed application.",
                     "items": {
                         "$ref": "ExtendedSourceContext"
@@ -791,6 +794,7 @@
                     "description": "An alias, which may be a branch or tag."
                 },
                 "aliasName": {
+                    "deprecated": true,
                     "description": "The name of an alias (branch, tag, etc.).",
                     "type": "string"
                 },

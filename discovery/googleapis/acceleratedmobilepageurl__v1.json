@@ -16,7 +16,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230708",
+    "revision": "20230712",
     "rootUrl": "https://acceleratedmobilepageurl.googleapis.com/",
     "servicePath": "",
     "title": "Accelerated Mobile Pages (AMP) URL API",
@@ -153,6 +153,14 @@
                         "APPLICATION_ERROR",
                         "URL_IS_VALID_AMP",
                         "URL_IS_INVALID_AMP"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        false,
+                        true,
+                        false
                     ],
                     "enumDescriptions": [
                         "Not specified error.",
