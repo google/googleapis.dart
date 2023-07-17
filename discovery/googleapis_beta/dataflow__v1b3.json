@@ -244,6 +244,7 @@
                                     "type": "string"
                                 },
                                 "view": {
+                                    "deprecated": true,
                                     "description": "Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews.",
                                     "enum": [
                                         "JOB_VIEW_UNKNOWN",
@@ -484,6 +485,7 @@
                                     "type": "string"
                                 },
                                 "view": {
+                                    "deprecated": true,
                                     "description": "Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews.",
                                     "enum": [
                                         "JOB_VIEW_UNKNOWN",
@@ -1200,6 +1202,7 @@
                                             "type": "string"
                                         },
                                         "view": {
+                                            "deprecated": true,
                                             "description": "Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews.",
                                             "enum": [
                                                 "JOB_VIEW_UNKNOWN",
@@ -2220,15 +2223,18 @@
             "id": "ApproximateProgress",
             "properties": {
                 "percentComplete": {
+                    "deprecated": true,
                     "description": "Obsolete.",
                     "format": "float",
                     "type": "number"
                 },
                 "position": {
                     "$ref": "Position",
+                    "deprecated": true,
                     "description": "Obsolete."
                 },
                 "remainingTime": {
+                    "deprecated": true,
                     "description": "Obsolete.",
                     "format": "google-duration",
                     "type": "string"
@@ -4098,6 +4104,7 @@
                     "type": "string"
                 },
                 "deprecatedPersistentDirectory": {
+                    "deprecated": true,
                     "description": "DEPRECATED. The location of the persistent state for this range, as a persistent directory in the worker local filesystem.",
                     "type": "string"
                 },
@@ -5819,6 +5826,7 @@
                     "type": "string"
                 },
                 "desiredShardSizeBytes": {
+                    "deprecated": true,
                     "description": "DEPRECATED in favor of desired_bundle_size_bytes.",
                     "format": "int64",
                     "type": "string"
@@ -5867,6 +5875,7 @@
                     "type": "string"
                 },
                 "shards": {
+                    "deprecated": true,
                     "description": "DEPRECATED in favor of bundles.",
                     "items": {
                         "$ref": "SourceSplitShard"
@@ -6855,10 +6864,12 @@
                 },
                 "suggestedStopPoint": {
                     "$ref": "ApproximateProgress",
+                    "deprecated": true,
                     "description": "DEPRECATED in favor of split_request."
                 },
                 "suggestedStopPosition": {
                     "$ref": "Position",
+                    "deprecated": true,
                     "description": "Obsolete, always empty."
                 }
             },
@@ -6891,6 +6902,7 @@
                     "type": "array"
                 },
                 "metricUpdates": {
+                    "deprecated": true,
                     "description": "DEPRECATED in favor of counter_updates.",
                     "items": {
                         "$ref": "MetricUpdate"
@@ -6899,6 +6911,7 @@
                 },
                 "progress": {
                     "$ref": "ApproximateProgress",
+                    "deprecated": true,
                     "description": "DEPRECATED in favor of reported_progress."
                 },
                 "reportIndex": {
@@ -6917,6 +6930,7 @@
                 },
                 "sourceFork": {
                     "$ref": "SourceFork",
+                    "deprecated": true,
                     "description": "DEPRECATED in favor of dynamic_source_split."
                 },
                 "sourceOperationResponse": {

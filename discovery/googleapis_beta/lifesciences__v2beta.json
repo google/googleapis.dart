@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230630",
+    "revision": "20230707",
     "rootUrl": "https://lifesciences.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Life Sciences API",
@@ -1130,6 +1130,7 @@
                     "description": "The VM network configuration."
                 },
                 "nvidiaDriverVersion": {
+                    "deprecated": true,
                     "description": "The NVIDIA driver version to use when attaching an NVIDIA GPU accelerator. The version specified here must be compatible with the GPU libraries contained in the container being executed, and must be one of the drivers hosted in the `nvidia-drivers-us-public` bucket on Google Cloud Storage.",
                     "type": "string"
                 },

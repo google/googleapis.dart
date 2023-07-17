@@ -852,6 +852,7 @@ api.Instance buildInstance() {
     o.labels = buildUnnamed8();
     o.machineType = 'foo';
     o.metadata = buildUnnamed9();
+    o.migrated = true;
     o.name = 'foo';
     o.network = 'foo';
     o.nicType = 'foo';
@@ -927,6 +928,7 @@ void checkInstance(api.Instance o) {
       unittest.equals('foo'),
     );
     checkUnnamed9(o.metadata!);
+    unittest.expect(o.migrated!, unittest.isTrue);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -2102,6 +2104,7 @@ api.Runtime buildRuntime() {
     o.healthState = 'foo';
     o.labels = buildUnnamed35();
     o.metrics = buildRuntimeMetrics();
+    o.migrated = true;
     o.name = 'foo';
     o.softwareConfig = buildRuntimeSoftwareConfig();
     o.state = 'foo';
@@ -2126,6 +2129,7 @@ void checkRuntime(api.Runtime o) {
     );
     checkUnnamed35(o.labels!);
     checkRuntimeMetrics(o.metrics!);
+    unittest.expect(o.migrated!, unittest.isTrue);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),

@@ -2823,37 +2823,7 @@ class SBOMReferenceOccurrence {
 }
 
 /// The status of an SBOM generation.
-class SBOMStatus {
-  /// If there was an error generating an SBOM, this will indicate what that
-  /// error was.
-  core.String? error;
-
-  /// The progress of the SBOM generation.
-  /// Possible string values are:
-  /// - "SBOM_STATE_UNSPECIFIED" : Default unknown state.
-  /// - "PENDING" : SBOM scanning is pending.
-  /// - "COMPLETE" : SBOM scanning has completed.
-  core.String? sbomState;
-
-  SBOMStatus({
-    this.error,
-    this.sbomState,
-  });
-
-  SBOMStatus.fromJson(core.Map json_)
-      : this(
-          error:
-              json_.containsKey('error') ? json_['error'] as core.String : null,
-          sbomState: json_.containsKey('sbomState')
-              ? json_['sbomState'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (error != null) 'error': error!,
-        if (sbomState != null) 'sbomState': sbomState!,
-      };
-}
+typedef SBOMStatus = $SBOMStatus;
 
 /// The actual payload that contains the SBOM Reference data.
 ///

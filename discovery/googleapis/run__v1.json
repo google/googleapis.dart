@@ -2361,6 +2361,7 @@
                     "type": "string"
                 },
                 "name": {
+                    "deprecated": true,
                     "description": "Deprecated Read only. Full path to the `AuthorizedDomain` resource in the API. Example: `projects/myproject/authorizedDomains/example.com`.",
                     "type": "string"
                 }
@@ -2401,6 +2402,7 @@
             "properties": {
                 "localObjectReference": {
                     "$ref": "LocalObjectReference",
+                    "deprecated": true,
                     "description": "This field should not be used directly as it is meant to be inlined directly into the message. Use the \"name\" field instead."
                 },
                 "name": {
@@ -2424,6 +2426,7 @@
                 },
                 "localObjectReference": {
                     "$ref": "LocalObjectReference",
+                    "deprecated": true,
                     "description": "Not supported by Cloud Run."
                 },
                 "name": {
@@ -4060,6 +4063,7 @@
             "properties": {
                 "localObjectReference": {
                     "$ref": "LocalObjectReference",
+                    "deprecated": true,
                     "description": "This field should not be used directly as it is meant to be inlined directly into the message. Use the \"name\" field instead."
                 },
                 "name": {
@@ -4083,6 +4087,7 @@
                 },
                 "localObjectReference": {
                     "$ref": "LocalObjectReference",
+                    "deprecated": true,
                     "description": "This field should not be used directly as it is meant to be inlined directly into the message. Use the \"name\" field instead."
                 },
                 "name": {
@@ -4510,6 +4515,7 @@
             "id": "TrafficTarget",
             "properties": {
                 "configurationName": {
+                    "deprecated": true,
                     "description": "[Deprecated] Not supported in Cloud Run. It must be empty.",
                     "type": "string"
                 },

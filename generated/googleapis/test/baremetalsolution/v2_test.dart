@@ -2435,6 +2435,7 @@ api.VlanAttachment buildVlanAttachment() {
   buildCounterVlanAttachment++;
   if (buildCounterVlanAttachment < 3) {
     o.id = 'foo';
+    o.interconnectAttachment = 'foo';
     o.pairingKey = 'foo';
     o.peerIp = 'foo';
     o.peerVlanId = 'foo';
@@ -2450,6 +2451,10 @@ void checkVlanAttachment(api.VlanAttachment o) {
   if (buildCounterVlanAttachment < 3) {
     unittest.expect(
       o.id!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.interconnectAttachment!,
       unittest.equals('foo'),
     );
     unittest.expect(

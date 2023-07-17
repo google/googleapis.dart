@@ -1551,6 +1551,9 @@ class GoogleCloudDocumentaiV1BatchProcessRequest {
   /// The input documents for the BatchProcessDocuments method.
   GoogleCloudDocumentaiV1BatchDocumentsInputConfig? inputDocuments;
 
+  /// Inference-time options for the process API
+  GoogleCloudDocumentaiV1ProcessOptions? processOptions;
+
   /// Whether human review should be skipped for this request.
   ///
   /// Default to `false`.
@@ -1559,6 +1562,7 @@ class GoogleCloudDocumentaiV1BatchProcessRequest {
   GoogleCloudDocumentaiV1BatchProcessRequest({
     this.documentOutputConfig,
     this.inputDocuments,
+    this.processOptions,
     this.skipHumanReview,
   });
 
@@ -1574,6 +1578,11 @@ class GoogleCloudDocumentaiV1BatchProcessRequest {
                   json_['inputDocuments']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          processOptions: json_.containsKey('processOptions')
+              ? GoogleCloudDocumentaiV1ProcessOptions.fromJson(
+                  json_['processOptions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           skipHumanReview: json_.containsKey('skipHumanReview')
               ? json_['skipHumanReview'] as core.bool
               : null,
@@ -1583,6 +1592,7 @@ class GoogleCloudDocumentaiV1BatchProcessRequest {
         if (documentOutputConfig != null)
           'documentOutputConfig': documentOutputConfig!,
         if (inputDocuments != null) 'inputDocuments': inputDocuments!,
+        if (processOptions != null) 'processOptions': processOptions!,
         if (skipHumanReview != null) 'skipHumanReview': skipHumanReview!,
       };
 }
@@ -4655,6 +4665,138 @@ class GoogleCloudDocumentaiV1ListProcessorsResponse {
 typedef GoogleCloudDocumentaiV1NormalizedVertex
     = $GoogleCloudDocumentaiV1NormalizedVertex;
 
+/// Config for Document OCR.
+class GoogleCloudDocumentaiV1OcrConfig {
+  /// A list of advanced OCR options to further fine-tune OCR behavior.
+  ///
+  /// Current valid values are: - `legacy_layout`: a heuristics layout detection
+  /// algorithm, which serves as an alternative to the current ML-based layout
+  /// detection algorithm. Customers can choose the best suitable layout
+  /// algorithm based on their situation.
+  core.List<core.String>? advancedOcrOptions;
+
+  /// Turn on font id model and returns font style information.
+  core.bool? computeStyleInfo;
+
+  /// Enables intelligent document quality scores after OCR.
+  ///
+  /// Can help with diagnosing why OCR responses are of poor quality for a given
+  /// input. Adds additional latency comparable to regular OCR to the process
+  /// call.
+  core.bool? enableImageQualityScores;
+
+  /// Enables special handling for PDFs with existing text information.
+  ///
+  /// Results in better text extraction quality in such PDF inputs.
+  core.bool? enableNativePdfParsing;
+
+  /// Includes symbol level OCR information if set to true.
+  core.bool? enableSymbol;
+
+  /// Hints for the OCR model.
+  GoogleCloudDocumentaiV1OcrConfigHints? hints;
+
+  GoogleCloudDocumentaiV1OcrConfig({
+    this.advancedOcrOptions,
+    this.computeStyleInfo,
+    this.enableImageQualityScores,
+    this.enableNativePdfParsing,
+    this.enableSymbol,
+    this.hints,
+  });
+
+  GoogleCloudDocumentaiV1OcrConfig.fromJson(core.Map json_)
+      : this(
+          advancedOcrOptions: json_.containsKey('advancedOcrOptions')
+              ? (json_['advancedOcrOptions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          computeStyleInfo: json_.containsKey('computeStyleInfo')
+              ? json_['computeStyleInfo'] as core.bool
+              : null,
+          enableImageQualityScores:
+              json_.containsKey('enableImageQualityScores')
+                  ? json_['enableImageQualityScores'] as core.bool
+                  : null,
+          enableNativePdfParsing: json_.containsKey('enableNativePdfParsing')
+              ? json_['enableNativePdfParsing'] as core.bool
+              : null,
+          enableSymbol: json_.containsKey('enableSymbol')
+              ? json_['enableSymbol'] as core.bool
+              : null,
+          hints: json_.containsKey('hints')
+              ? GoogleCloudDocumentaiV1OcrConfigHints.fromJson(
+                  json_['hints'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (advancedOcrOptions != null)
+          'advancedOcrOptions': advancedOcrOptions!,
+        if (computeStyleInfo != null) 'computeStyleInfo': computeStyleInfo!,
+        if (enableImageQualityScores != null)
+          'enableImageQualityScores': enableImageQualityScores!,
+        if (enableNativePdfParsing != null)
+          'enableNativePdfParsing': enableNativePdfParsing!,
+        if (enableSymbol != null) 'enableSymbol': enableSymbol!,
+        if (hints != null) 'hints': hints!,
+      };
+}
+
+/// Hints for OCR Engine
+class GoogleCloudDocumentaiV1OcrConfigHints {
+  /// List of BCP-47 language codes to use for OCR.
+  ///
+  /// In most cases, not specifying it yields the best results since it enables
+  /// automatic language detection. For languages based on the Latin alphabet,
+  /// setting hints is not needed. In rare cases, when the language of the text
+  /// in the image is known, setting a hint will help get better results
+  /// (although it will be a significant hindrance if the hint is wrong).
+  core.List<core.String>? languageHints;
+
+  GoogleCloudDocumentaiV1OcrConfigHints({
+    this.languageHints,
+  });
+
+  GoogleCloudDocumentaiV1OcrConfigHints.fromJson(core.Map json_)
+      : this(
+          languageHints: json_.containsKey('languageHints')
+              ? (json_['languageHints'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (languageHints != null) 'languageHints': languageHints!,
+      };
+}
+
+/// Options for Process API
+class GoogleCloudDocumentaiV1ProcessOptions {
+  /// Only applicable to `OCR_PROCESSOR`.
+  ///
+  /// Returns error if set on other processor types.
+  GoogleCloudDocumentaiV1OcrConfig? ocrConfig;
+
+  GoogleCloudDocumentaiV1ProcessOptions({
+    this.ocrConfig,
+  });
+
+  GoogleCloudDocumentaiV1ProcessOptions.fromJson(core.Map json_)
+      : this(
+          ocrConfig: json_.containsKey('ocrConfig')
+              ? GoogleCloudDocumentaiV1OcrConfig.fromJson(
+                  json_['ocrConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ocrConfig != null) 'ocrConfig': ocrConfig!,
+      };
+}
+
 /// Request message for the ProcessDocument method.
 class GoogleCloudDocumentaiV1ProcessRequest {
   /// Specifies which fields to include in the ProcessResponse.document output.
@@ -4663,8 +4805,14 @@ class GoogleCloudDocumentaiV1ProcessRequest {
   /// form of `{document_field_name}` or `pages.{page_field_name}`.
   core.String? fieldMask;
 
+  /// A raw document on Google Cloud Storage.
+  GoogleCloudDocumentaiV1GcsDocument? gcsDocument;
+
   /// An inline document proto.
   GoogleCloudDocumentaiV1Document? inlineDocument;
+
+  /// Inference-time options for the process API
+  GoogleCloudDocumentaiV1ProcessOptions? processOptions;
 
   /// A raw document content (bytes).
   GoogleCloudDocumentaiV1RawDocument? rawDocument;
@@ -4676,7 +4824,9 @@ class GoogleCloudDocumentaiV1ProcessRequest {
 
   GoogleCloudDocumentaiV1ProcessRequest({
     this.fieldMask,
+    this.gcsDocument,
     this.inlineDocument,
+    this.processOptions,
     this.rawDocument,
     this.skipHumanReview,
   });
@@ -4686,9 +4836,18 @@ class GoogleCloudDocumentaiV1ProcessRequest {
           fieldMask: json_.containsKey('fieldMask')
               ? json_['fieldMask'] as core.String
               : null,
+          gcsDocument: json_.containsKey('gcsDocument')
+              ? GoogleCloudDocumentaiV1GcsDocument.fromJson(
+                  json_['gcsDocument'] as core.Map<core.String, core.dynamic>)
+              : null,
           inlineDocument: json_.containsKey('inlineDocument')
               ? GoogleCloudDocumentaiV1Document.fromJson(json_['inlineDocument']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          processOptions: json_.containsKey('processOptions')
+              ? GoogleCloudDocumentaiV1ProcessOptions.fromJson(
+                  json_['processOptions']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           rawDocument: json_.containsKey('rawDocument')
               ? GoogleCloudDocumentaiV1RawDocument.fromJson(
@@ -4701,7 +4860,9 @@ class GoogleCloudDocumentaiV1ProcessRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fieldMask != null) 'fieldMask': fieldMask!,
+        if (gcsDocument != null) 'gcsDocument': gcsDocument!,
         if (inlineDocument != null) 'inlineDocument': inlineDocument!,
+        if (processOptions != null) 'processOptions': processOptions!,
         if (rawDocument != null) 'rawDocument': rawDocument!,
         if (skipHumanReview != null) 'skipHumanReview': skipHumanReview!,
       };

@@ -19835,6 +19835,10 @@ class InsertionOrder {
 
   /// The billable outcome of the insertion order.
   ///
+  /// Outcome based buying will be deprecated on **August 1, 2023**. Read more
+  /// on our \[Announced Deprecations
+  /// page\](/display-video/api/deprecations#features.obb).
+  ///
   /// Immutable.
   /// Possible string values are:
   /// - "BILLABLE_OUTCOME_UNSPECIFIED" : Unspecified billable outcome.

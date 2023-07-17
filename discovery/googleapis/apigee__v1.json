@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230630",
+    "revision": "20230707",
     "rootUrl": "https://apigee.googleapis.com/",
     "servicePath": "",
     "title": "Apigee API",
@@ -11696,6 +11696,7 @@
                     "type": "array"
                 },
                 "name": {
+                    "deprecated": true,
                     "description": "Comma joined dimension names. E.g. \"dim1_name,dim2_name\". Deprecated. If name already has comma before join, we may get wrong splits. Please use individual_names.",
                     "type": "string"
                 }
@@ -12493,6 +12494,7 @@
                     "type": "string"
                 },
                 "peeringCidrRange": {
+                    "deprecated": true,
                     "description": "Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.",
                     "enum": [
                         "CIDR_RANGE_UNSPECIFIED",
@@ -13669,6 +13671,7 @@
                     "description": "Addon configurations of the Apigee organization."
                 },
                 "analyticsRegion": {
+                    "deprecated": true,
                     "description": "Required. DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).",
                     "type": "string"
                 },
@@ -13820,6 +13823,7 @@
                     "type": "string"
                 },
                 "subscriptionType": {
+                    "deprecated": true,
                     "description": "Output only. DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).",
                     "enum": [
                         "SUBSCRIPTION_TYPE_UNSPECIFIED",
@@ -13870,6 +13874,7 @@
                     "type": "string"
                 },
                 "projectIds": {
+                    "deprecated": true,
                     "description": "DEPRECATED: Use `project_id`. An Apigee Organization is mapped to a single project.",
                     "items": {
                         "type": "string"
@@ -14409,6 +14414,7 @@
                     "type": "string"
                 },
                 "paymentFundingModel": {
+                    "deprecated": true,
                     "description": "DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.",
                     "enum": [
                         "PAYMENT_FUNDING_MODEL_UNSPECIFIED",

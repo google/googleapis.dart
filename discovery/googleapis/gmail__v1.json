@@ -64,7 +64,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230703",
+    "revision": "20230710",
     "rootUrl": "https://gmail.googleapis.com/",
     "servicePath": "",
     "title": "Gmail API",
@@ -4350,6 +4350,7 @@
             "id": "WatchRequest",
             "properties": {
                 "labelFilterAction": {
+                    "deprecated": true,
                     "description": "Filtering behavior of `labelIds list` specified. This field is deprecated because it caused incorrect behavior in some cases; use `label_filter_behavior` instead.",
                     "enum": [
                         "include",

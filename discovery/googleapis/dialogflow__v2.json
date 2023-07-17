@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230707",
+    "revision": "20230715",
     "rootUrl": "https://dialogflow.googleapis.com/",
     "servicePath": "",
     "title": "Dialogflow API",
@@ -2617,6 +2617,7 @@
                             ],
                             "parameters": {
                                 "filter": {
+                                    "deprecated": true,
                                     "description": "Optional. Filters to restrict results to specific answer records. Marked deprecated as it hasn't been, and isn't currently, supported. For more information about filtering, see [API Filtering](https://aip.dev/160).",
                                     "location": "query",
                                     "type": "string"
@@ -6346,6 +6347,7 @@
                                     ],
                                     "parameters": {
                                         "filter": {
+                                            "deprecated": true,
                                             "description": "Optional. Filters to restrict results to specific answer records. Marked deprecated as it hasn't been, and isn't currently, supported. For more information about filtering, see [API Filtering](https://aip.dev/160).",
                                             "location": "query",
                                             "type": "string"
@@ -9887,6 +9889,7 @@
                     "type": "object"
                 },
                 "password": {
+                    "deprecated": true,
                     "description": "The password for HTTP Basic authentication.",
                     "type": "string"
                 },
@@ -9906,6 +9909,7 @@
                     "type": "string"
                 },
                 "username": {
+                    "deprecated": true,
                     "description": "The user name for HTTP Basic authentication.",
                     "type": "string"
                 },
@@ -11817,6 +11821,7 @@
                     "type": "object"
                 },
                 "password": {
+                    "deprecated": true,
                     "description": "The password for HTTP Basic authentication.",
                     "type": "string"
                 },
@@ -11836,6 +11841,7 @@
                     "type": "string"
                 },
                 "username": {
+                    "deprecated": true,
                     "description": "The user name for HTTP Basic authentication.",
                     "type": "string"
                 },
@@ -12120,6 +12126,7 @@
                     "type": "boolean"
                 },
                 "matchMode": {
+                    "deprecated": true,
                     "description": "Optional. Determines how intents are detected from user queries.",
                     "enum": [
                         "MATCH_MODE_UNSPECIFIED",
@@ -12151,6 +12158,12 @@
                         "TIER_STANDARD",
                         "TIER_ENTERPRISE",
                         "TIER_ENTERPRISE_PLUS"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        true
                     ],
                     "enumDescriptions": [
                         "Not specified. This value should never be used.",
@@ -13893,6 +13906,7 @@
             "id": "GoogleCloudDialogflowV2FulfillmentGenericWebService",
             "properties": {
                 "isCloudFunction": {
+                    "deprecated": true,
                     "description": "Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web service now.",
                     "type": "boolean"
                 },
@@ -14513,6 +14527,7 @@
                     "type": "string"
                 },
                 "phraseHints": {
+                    "deprecated": true,
                     "description": "A list of strings containing words and phrases that the speech recognizer should recognize with higher likelihood. See [the Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints) for more details. This field is deprecated. Please use [speech_contexts]() instead. If you specify both [phrase_hints]() and [speech_contexts](), Dialogflow will treat the [phrase_hints]() as a single additional [SpeechContext]().",
                     "items": {
                         "type": "string"
@@ -15450,6 +15465,11 @@
                         "TYPE_UNSPECIFIED",
                         "EXAMPLE",
                         "TEMPLATE"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        true
                     ],
                     "enumDescriptions": [
                         "Not specified. This value should never be used.",
@@ -17604,6 +17624,7 @@
                     "type": "boolean"
                 },
                 "mlEnabled": {
+                    "deprecated": true,
                     "description": "Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.",
                     "type": "boolean"
                 },
@@ -18704,6 +18725,11 @@
                         "TYPE_UNSPECIFIED",
                         "EXAMPLE",
                         "TEMPLATE"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        true
                     ],
                     "enumDescriptions": [
                         "Not specified. This value should never be used.",

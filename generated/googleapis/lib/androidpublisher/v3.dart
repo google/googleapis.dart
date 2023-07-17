@@ -9788,6 +9788,20 @@ class RegionalPriceMigrationConfig {
   /// Required.
   core.String? oldestAllowedPriceVersionTime;
 
+  /// The behavior the caller wants users to see if there is a price increase
+  /// during migration.
+  ///
+  /// If left unset, the behavior defaults to PRICE_INCREASE_TYPE_OPT_IN.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRICE_INCREASE_TYPE_UNSPECIFIED" : Unspecified state.
+  /// - "PRICE_INCREASE_TYPE_OPT_IN" : Price increase will be presented to users
+  /// on an opt-in basis.
+  /// - "PRICE_INCREASE_TYPE_OPT_OUT" : Price increase will be presented to
+  /// users on an opt-out basis.
+  core.String? priceIncreaseType;
+
   /// Region code this configuration applies to, as defined by ISO 3166-2, e.g.
   /// "US".
   ///
@@ -9796,6 +9810,7 @@ class RegionalPriceMigrationConfig {
 
   RegionalPriceMigrationConfig({
     this.oldestAllowedPriceVersionTime,
+    this.priceIncreaseType,
     this.regionCode,
   });
 
@@ -9805,6 +9820,9 @@ class RegionalPriceMigrationConfig {
               json_.containsKey('oldestAllowedPriceVersionTime')
                   ? json_['oldestAllowedPriceVersionTime'] as core.String
                   : null,
+          priceIncreaseType: json_.containsKey('priceIncreaseType')
+              ? json_['priceIncreaseType'] as core.String
+              : null,
           regionCode: json_.containsKey('regionCode')
               ? json_['regionCode'] as core.String
               : null,
@@ -9813,6 +9831,7 @@ class RegionalPriceMigrationConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (oldestAllowedPriceVersionTime != null)
           'oldestAllowedPriceVersionTime': oldestAllowedPriceVersionTime!,
+        if (priceIncreaseType != null) 'priceIncreaseType': priceIncreaseType!,
         if (regionCode != null) 'regionCode': regionCode!,
       };
 }

@@ -4353,6 +4353,11 @@ class Fleet {
   /// Optional.
   core.String? displayName;
 
+  /// Labels for this Fleet.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
   /// The full, unique resource name of this fleet in the format of
   /// `projects/{project}/locations/{location}/fleets/{fleet}`.
   ///
@@ -4385,6 +4390,7 @@ class Fleet {
     this.createTime,
     this.deleteTime,
     this.displayName,
+    this.labels,
     this.name,
     this.state,
     this.uid,
@@ -4402,6 +4408,14 @@ class Fleet {
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           state: json_.containsKey('state')
               ? FleetLifecycleState.fromJson(
@@ -4417,6 +4431,7 @@ class Fleet {
         if (createTime != null) 'createTime': createTime!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
         if (uid != null) 'uid': uid!,
@@ -4773,7 +4788,7 @@ class IdentityServiceAuthMethod {
   /// AzureAD specific Configuration.
   IdentityServiceAzureADConfig? azureadConfig;
 
-  /// GoogleConfig specific configuration
+  /// GoogleConfig specific configuration.
   IdentityServiceGoogleConfig? googleConfig;
 
   /// Identifier for auth config.
@@ -4852,12 +4867,18 @@ class IdentityServiceAzureADConfig {
   /// Supported values are or for accounts belonging to a specific tenant.
   core.String? tenant;
 
+  /// Claim in the AzureAD ID Token that holds the user details.
+  ///
+  /// Optional.
+  core.String? userClaim;
+
   IdentityServiceAzureADConfig({
     this.clientId,
     this.clientSecret,
     this.encryptedClientSecret,
     this.kubectlRedirectUri,
     this.tenant,
+    this.userClaim,
   });
 
   IdentityServiceAzureADConfig.fromJson(core.Map json_)
@@ -4877,6 +4898,9 @@ class IdentityServiceAzureADConfig {
           tenant: json_.containsKey('tenant')
               ? json_['tenant'] as core.String
               : null,
+          userClaim: json_.containsKey('userClaim')
+              ? json_['userClaim'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4887,6 +4911,7 @@ class IdentityServiceAzureADConfig {
         if (kubectlRedirectUri != null)
           'kubectlRedirectUri': kubectlRedirectUri!,
         if (tenant != null) 'tenant': tenant!,
+        if (userClaim != null) 'userClaim': userClaim!,
       };
 }
 
@@ -5754,6 +5779,11 @@ class MembershipBinding {
   /// Membership should be bound to all Namespaces in this entire Fleet.
   core.bool? fleet;
 
+  /// Labels for this MembershipBinding.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
   /// The resource name for the membershipbinding itself
   /// `projects/{project}/locations/{location}/memberships/{membership}/bindings/{membershipbinding}`
   core.String? name;
@@ -5785,6 +5815,7 @@ class MembershipBinding {
     this.createTime,
     this.deleteTime,
     this.fleet,
+    this.labels,
     this.name,
     this.scope,
     this.state,
@@ -5802,6 +5833,14 @@ class MembershipBinding {
               : null,
           fleet:
               json_.containsKey('fleet') ? json_['fleet'] as core.bool : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           scope:
               json_.containsKey('scope') ? json_['scope'] as core.String : null,
@@ -5819,6 +5858,7 @@ class MembershipBinding {
         if (createTime != null) 'createTime': createTime!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (fleet != null) 'fleet': fleet!,
+        if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (scope != null) 'scope': scope!,
         if (state != null) 'state': state!,
@@ -6660,6 +6700,11 @@ class Scope {
   /// Output only.
   core.String? deleteTime;
 
+  /// Labels for this Scope.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
   /// The resource name for the scope
   /// `projects/{project}/locations/{location}/scopes/{scope}`
   core.String? name;
@@ -6687,6 +6732,7 @@ class Scope {
     this.allMemberships,
     this.createTime,
     this.deleteTime,
+    this.labels,
     this.name,
     this.state,
     this.uid,
@@ -6704,6 +6750,14 @@ class Scope {
           deleteTime: json_.containsKey('deleteTime')
               ? json_['deleteTime'] as core.String
               : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           state: json_.containsKey('state')
               ? ScopeLifecycleState.fromJson(
@@ -6719,6 +6773,7 @@ class Scope {
         if (allMemberships != null) 'allMemberships': allMemberships!,
         if (createTime != null) 'createTime': createTime!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
+        if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
         if (uid != null) 'uid': uid!,

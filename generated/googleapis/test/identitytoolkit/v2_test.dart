@@ -2464,6 +2464,8 @@ api.GoogleCloudIdentitytoolkitV2PasswordPolicy
     o.allowedNonAlphanumericCharacters = buildUnnamed19();
     o.customStrengthOptions =
         buildGoogleCloudIdentitytoolkitV2CustomStrengthOptions();
+    o.enforcementState = 'foo';
+    o.forceUpgradeOnSignin = true;
     o.schemaVersion = 42;
   }
   buildCounterGoogleCloudIdentitytoolkitV2PasswordPolicy--;
@@ -2477,6 +2479,11 @@ void checkGoogleCloudIdentitytoolkitV2PasswordPolicy(
     checkUnnamed19(o.allowedNonAlphanumericCharacters!);
     checkGoogleCloudIdentitytoolkitV2CustomStrengthOptions(
         o.customStrengthOptions!);
+    unittest.expect(
+      o.enforcementState!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.forceUpgradeOnSignin!, unittest.isTrue);
     unittest.expect(
       o.schemaVersion!,
       unittest.equals(42),

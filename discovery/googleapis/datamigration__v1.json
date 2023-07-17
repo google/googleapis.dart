@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230703",
+    "revision": "20230710",
     "rootUrl": "https://datamigration.googleapis.com/",
     "servicePath": "",
     "title": "Database Migration API",
@@ -5492,7 +5492,12 @@
         "StartMigrationJobRequest": {
             "description": "Request message for 'StartMigrationJob' request.",
             "id": "StartMigrationJobRequest",
-            "properties": {},
+            "properties": {
+                "skipValidation": {
+                    "description": "Optional. Start the migration job without running prior configuration verification. Defaults to `false`.",
+                    "type": "boolean"
+                }
+            },
             "type": "object"
         },
         "StaticIpConnectivity": {

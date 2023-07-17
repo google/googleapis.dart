@@ -34,7 +34,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230703",
+    "revision": "20230708",
     "rootUrl": "https://monitoring.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Monitoring API",
@@ -3904,6 +3904,7 @@
             "type": "object"
         },
         "InternalChecker": {
+            "deprecated": true,
             "description": "An internal checker allows Uptime checks to run on private/internal GCP resources.",
             "id": "InternalChecker",
             "properties": {
@@ -4535,6 +4536,7 @@
                     "type": "string"
                 },
                 "launchStage": {
+                    "deprecated": true,
                     "description": "Deprecated. Must use the MetricDescriptor.launch_stage instead.",
                     "enum": [
                         "LAUNCH_STAGE_UNSPECIFIED",
@@ -4926,6 +4928,7 @@
                     "type": "string"
                 },
                 "supportedTiers": {
+                    "deprecated": true,
                     "description": "The tiers that support this notification channel; the project service tier must be one of the supported_tiers.",
                     "items": {
                         "enum": [
@@ -5809,6 +5812,7 @@
                     "description": "Contains information needed to make an HTTP or HTTPS check."
                 },
                 "internalCheckers": {
+                    "deprecated": true,
                     "description": "The internal checkers that this check will egress from. If is_internal is true and this list is empty, the check will egress from all the InternalCheckers configured for the project that owns this UptimeCheckConfig.",
                     "items": {
                         "$ref": "InternalChecker"
@@ -5816,6 +5820,7 @@
                     "type": "array"
                 },
                 "isInternal": {
+                    "deprecated": true,
                     "description": "If this is true, then checks are made only from the 'internal_checkers'. If it is false, then checks are made only from the 'selected_regions'. It is an error to provide 'selected_regions' when is_internal is true, or to provide 'internal_checkers' when is_internal is false.",
                     "type": "boolean"
                 },

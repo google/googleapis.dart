@@ -8925,7 +8925,29 @@ class SslConfig {
 }
 
 /// Request message for 'StartMigrationJob' request.
-typedef StartMigrationJobRequest = $Empty;
+class StartMigrationJobRequest {
+  /// Start the migration job without running prior configuration verification.
+  ///
+  /// Defaults to `false`.
+  ///
+  /// Optional.
+  core.bool? skipValidation;
+
+  StartMigrationJobRequest({
+    this.skipValidation,
+  });
+
+  StartMigrationJobRequest.fromJson(core.Map json_)
+      : this(
+          skipValidation: json_.containsKey('skipValidation')
+              ? json_['skipValidation'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (skipValidation != null) 'skipValidation': skipValidation!,
+      };
+}
 
 /// The source database will allow incoming connections from the public IP of
 /// the destination database.

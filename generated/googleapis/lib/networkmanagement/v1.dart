@@ -875,6 +875,11 @@ class AbortInfo {
   /// by the node and managed by the Konnectivity proxy.
   /// - "RESOURCE_CONFIG_NOT_FOUND" : Aborted because expected resource
   /// configuration was missing.
+  /// - "GOOGLE_MANAGED_SERVICE_AMBIGUOUS_PSC_ENDPOINT" : Aborted because a PSC
+  /// endpoint selection for the Google-managed service is ambiguous (several
+  /// PSC endpoints satisfy test input).
+  /// - "SOURCE_PSC_CLOUD_SQL_UNSUPPORTED" : Aborted because tests with a
+  /// PSC-based Cloud SQL instance as a source are not supported.
   core.String? cause;
 
   /// List of project IDs that the user has specified in the request but does
@@ -1675,6 +1680,15 @@ class Endpoint {
   /// A [Cloud SQL](https://cloud.google.com/sql) instance URI.
   core.String? cloudSqlInstance;
 
+  /// A forwarding rule and its corresponding IP address represent the frontend
+  /// configuration of a Google Cloud load balancer.
+  ///
+  /// Forwarding rules are also used for protocol forwarding, Private Service
+  /// Connect and other network services to provide forwarding information in
+  /// the control plane. Format: projects/{project}/global/forwardingRules/{id}
+  /// or projects/{project}/regions/{region}/forwardingRules/{id}
+  core.String? forwardingRule;
+
   /// A cluster URI for
   /// [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
   core.String? gkeMasterCluster;
@@ -1723,6 +1737,7 @@ class Endpoint {
     this.cloudFunction,
     this.cloudRunRevision,
     this.cloudSqlInstance,
+    this.forwardingRule,
     this.gkeMasterCluster,
     this.instance,
     this.ipAddress,
@@ -1748,6 +1763,9 @@ class Endpoint {
               : null,
           cloudSqlInstance: json_.containsKey('cloudSqlInstance')
               ? json_['cloudSqlInstance'] as core.String
+              : null,
+          forwardingRule: json_.containsKey('forwardingRule')
+              ? json_['forwardingRule'] as core.String
               : null,
           gkeMasterCluster: json_.containsKey('gkeMasterCluster')
               ? json_['gkeMasterCluster'] as core.String
@@ -1775,6 +1793,7 @@ class Endpoint {
         if (cloudFunction != null) 'cloudFunction': cloudFunction!,
         if (cloudRunRevision != null) 'cloudRunRevision': cloudRunRevision!,
         if (cloudSqlInstance != null) 'cloudSqlInstance': cloudSqlInstance!,
+        if (forwardingRule != null) 'forwardingRule': forwardingRule!,
         if (gkeMasterCluster != null) 'gkeMasterCluster': gkeMasterCluster!,
         if (instance != null) 'instance': instance!,
         if (ipAddress != null) 'ipAddress': ipAddress!,

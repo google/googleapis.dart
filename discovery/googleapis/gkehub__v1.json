@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230627",
+    "revision": "20230707",
     "rootUrl": "https://gkehub.googleapis.com/",
     "servicePath": "",
     "title": "GKE Hub API",
@@ -1703,6 +1703,7 @@
             "id": "ConfigManagementConfigSync",
             "properties": {
                 "allowVerticalScale": {
+                    "deprecated": true,
                     "description": "Set to true to allow the vertical scaling. Defaults to false which disallows vertical scaling. This field is deprecated.",
                     "type": "boolean"
                 },
@@ -2489,6 +2490,7 @@
                     "type": "string"
                 },
                 "lastSync": {
+                    "deprecated": true,
                     "description": "Deprecated: use last_sync_time instead. Timestamp of when ACM last successfully synced the repo The time format is specified in https://golang.org/pkg/time/#Time.String",
                     "type": "string"
                 },
@@ -2726,6 +2728,13 @@
                 "displayName": {
                     "description": "Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`",
                     "type": "string"
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Labels for this Fleet.",
+                    "type": "object"
                 },
                 "name": {
                     "description": "Output only. The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each Google Cloud project can have at most one fleet resource, named \"default\".",
@@ -2987,7 +2996,7 @@
                 },
                 "googleConfig": {
                     "$ref": "IdentityServiceGoogleConfig",
-                    "description": "GoogleConfig specific configuration"
+                    "description": "GoogleConfig specific configuration."
                 },
                 "name": {
                     "description": "Identifier for auth config.",
@@ -3028,6 +3037,10 @@
                 },
                 "tenant": {
                     "description": "Kind of Azure AD account to be authenticated. Supported values are or for accounts belonging to a specific tenant.",
+                    "type": "string"
+                },
+                "userClaim": {
+                    "description": "Optional. Claim in the AzureAD ID Token that holds the user details.",
                     "type": "string"
                 }
             },
@@ -3489,6 +3502,13 @@
                     "description": "Whether the membershipbinding is Fleet-wide; true means that this Membership should be bound to all Namespaces in this entire Fleet.",
                     "type": "boolean"
                 },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Labels for this MembershipBinding.",
+                    "type": "object"
+                },
                 "name": {
                     "description": "The resource name for the membershipbinding itself `projects/{project}/locations/{location}/memberships/{membership}/bindings/{membershipbinding}`",
                     "type": "string"
@@ -3946,6 +3966,13 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Labels for this Scope.",
+                    "type": "object"
+                },
                 "name": {
                     "description": "The resource name for the scope `projects/{project}/locations/{location}/scopes/{scope}`",
                     "type": "string"
@@ -4094,6 +4121,7 @@
             "id": "ServiceMeshMembershipSpec",
             "properties": {
                 "controlPlane": {
+                    "deprecated": true,
                     "description": "Deprecated: use `management` instead Enables automatic control plane management.",
                     "enum": [
                         "CONTROL_PLANE_MANAGEMENT_UNSPECIFIED",

@@ -421,6 +421,7 @@
             "id": "AnalyzePackagesRequestV1",
             "properties": {
                 "includeOsvData": {
+                    "deprecated": true,
                     "description": "[DEPRECATED] Whether to include OSV data in the scan. For backwards compatibility reasons, this field can be neither removed nor renamed.",
                     "type": "boolean"
                 },

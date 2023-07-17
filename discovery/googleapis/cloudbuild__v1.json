@@ -464,6 +464,7 @@
                                     "type": "string"
                                 },
                                 "projectId": {
+                                    "deprecated": true,
                                     "description": "ID of the project.",
                                     "location": "query",
                                     "type": "string"
@@ -490,6 +491,7 @@
                             ],
                             "parameters": {
                                 "configId": {
+                                    "deprecated": true,
                                     "description": "Unique identifier of the `GitHubEnterpriseConfig`",
                                     "location": "query",
                                     "type": "string"
@@ -502,6 +504,7 @@
                                     "type": "string"
                                 },
                                 "projectId": {
+                                    "deprecated": true,
                                     "description": "ID of the project",
                                     "location": "query",
                                     "type": "string"
@@ -525,6 +528,7 @@
                             ],
                             "parameters": {
                                 "configId": {
+                                    "deprecated": true,
                                     "description": "Unique identifier of the `GitHubEnterpriseConfig`",
                                     "location": "query",
                                     "type": "string"
@@ -537,6 +541,7 @@
                                     "type": "string"
                                 },
                                 "projectId": {
+                                    "deprecated": true,
                                     "description": "ID of the project",
                                     "location": "query",
                                     "type": "string"
@@ -567,6 +572,7 @@
                                     "type": "string"
                                 },
                                 "projectId": {
+                                    "deprecated": true,
                                     "description": "ID of the project",
                                     "location": "query",
                                     "type": "string"
@@ -1362,6 +1368,7 @@
                                             "type": "string"
                                         },
                                         "projectId": {
+                                            "deprecated": true,
                                             "description": "ID of the project.",
                                             "location": "query",
                                             "type": "string"
@@ -1388,6 +1395,7 @@
                                     ],
                                     "parameters": {
                                         "configId": {
+                                            "deprecated": true,
                                             "description": "Unique identifier of the `GitHubEnterpriseConfig`",
                                             "location": "query",
                                             "type": "string"
@@ -1400,6 +1408,7 @@
                                             "type": "string"
                                         },
                                         "projectId": {
+                                            "deprecated": true,
                                             "description": "ID of the project",
                                             "location": "query",
                                             "type": "string"
@@ -1423,6 +1432,7 @@
                                     ],
                                     "parameters": {
                                         "configId": {
+                                            "deprecated": true,
                                             "description": "Unique identifier of the `GitHubEnterpriseConfig`",
                                             "location": "query",
                                             "type": "string"
@@ -1435,6 +1445,7 @@
                                             "type": "string"
                                         },
                                         "projectId": {
+                                            "deprecated": true,
                                             "description": "ID of the project",
                                             "location": "query",
                                             "type": "string"
@@ -1465,6 +1476,7 @@
                                             "type": "string"
                                         },
                                         "projectId": {
+                                            "deprecated": true,
                                             "description": "ID of the project",
                                             "location": "query",
                                             "type": "string"

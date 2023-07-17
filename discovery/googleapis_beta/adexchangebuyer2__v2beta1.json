@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230711",
+    "revision": "20230717",
     "rootUrl": "https://adexchangebuyer.googleapis.com/",
     "servicePath": "",
     "title": "Ad Exchange Buyer API II",
@@ -3166,6 +3166,7 @@
                     "type": "array"
                 },
                 "corrections": {
+                    "deprecated": true,
                     "description": "Output only. Shows any corrections that were applied to this creative.",
                     "items": {
                         "$ref": "Correction"
@@ -4237,6 +4238,7 @@
                     "type": "string"
                 },
                 "formats": {
+                    "deprecated": true,
                     "description": "Creative formats bidded on or allowed to bid on, can be empty. Although this field is a list, it can only be populated with a single item. A HTTP 400 bad request error will be returned in the response if you specify multiple items.",
                     "items": {
                         "enum": [
@@ -4352,6 +4354,7 @@
                     "type": "string"
                 },
                 "detailId": {
+                    "deprecated": true,
                     "description": "Note: this field will be deprecated, use \"detail\" field instead. When \"detail\" field represents an integer value, this field is populated as the same integer value \"detail\" field represents, otherwise this field will be 0. The ID of the detail. The associated value can be looked up in the dictionary file corresponding to the DetailType in the response message.",
                     "format": "int32",
                     "type": "integer"
@@ -5082,6 +5085,7 @@
                     "type": "number"
                 },
                 "storeUrl": {
+                    "deprecated": true,
                     "description": "The URL to the app store to purchase/download the promoted app.",
                     "type": "string"
                 },
@@ -5474,6 +5478,7 @@
                     "type": "boolean"
                 },
                 "isSetupComplete": {
+                    "deprecated": true,
                     "description": "Output only. True, if the buyside inventory setup is complete for this proposal.",
                     "readOnly": true,
                     "type": "boolean"
@@ -5788,6 +5793,7 @@
             "type": "object"
         },
         "SecurityContext": {
+            "deprecated": true,
             "description": "Output only. A security context.",
             "id": "SecurityContext",
             "properties": {
@@ -5857,6 +5863,7 @@
                 },
                 "securityType": {
                     "$ref": "SecurityContext",
+                    "deprecated": true,
                     "description": "Matches impressions for a particular security type."
                 }
             },
@@ -5878,6 +5885,7 @@
                     "description": "Disapproval bound to this restriction. Only present if status=DISAPPROVED. Can be used to filter the response of the creatives.list method."
                 },
                 "disapprovalReasons": {
+                    "deprecated": true,
                     "description": "Any disapprovals bound to this restriction. Only present if status=DISAPPROVED. Can be used to filter the response of the creatives.list method. Deprecated; use disapproval field instead.",
                     "items": {
                         "$ref": "Disapproval"

@@ -34,7 +34,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230707",
+    "revision": "20230713",
     "rootUrl": "https://displayvideo.googleapis.com/",
     "servicePath": "",
     "title": "Display & Video 360 API",
@@ -10898,6 +10898,20 @@
                         "SDF_VERSION_5_5",
                         "SDF_VERSION_6"
                     ],
+                    "enumDeprecated": [
+                        false,
+                        true,
+                        true,
+                        true,
+                        true,
+                        true,
+                        true,
+                        true,
+                        true,
+                        false,
+                        false,
+                        false
+                    ],
                     "enumDescriptions": [
                         "SDF version value is not specified or is unknown in this version.",
                         "SDF version 3.1",
@@ -13122,6 +13136,17 @@
                         "YOUTUBE_USERS",
                         "LICENSED"
                     ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        false,
+                        true,
+                        true,
+                        false,
+                        false,
+                        false
+                    ],
                     "enumDescriptions": [
                         "Default value when type is not specified or is unknown.",
                         "Audience was generated through matching customers to known contact information.",
@@ -13723,6 +13748,15 @@
                         "GOOGLE_AUDIENCE_TYPE_LIFE_EVENT",
                         "GOOGLE_AUDIENCE_TYPE_EXTENDED_DEMOGRAPHIC"
                     ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        true,
+                        true,
+                        false,
+                        false
+                    ],
                     "enumDescriptions": [
                         "Default value when type is not specified or is unknown.",
                         "Affinity type Google audience.",
@@ -14194,7 +14228,7 @@
                     "description": "The bidding strategy of the insertion order. By default, fixed_bid is set."
                 },
                 "billableOutcome": {
-                    "description": "Immutable. The billable outcome of the insertion order.",
+                    "description": "Immutable. The billable outcome of the insertion order. Outcome based buying will be deprecated on **August 1, 2023**. Read more on our [Announced Deprecations page](/display-video/api/deprecations#features.obb).",
                     "enum": [
                         "BILLABLE_OUTCOME_UNSPECIFIED",
                         "BILLABLE_OUTCOME_PAY_PER_IMPRESSION",
@@ -17102,6 +17136,12 @@
                         "PARTNER_REVENUE_MODEL_MARKUP_TYPE_MEDIA_COST_MARKUP",
                         "PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP"
                     ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        true,
+                        false
+                    ],
                     "enumDescriptions": [
                         "Type value is not specified or is unknown in this version.",
                         "Calculate the partner revenue based on a fixed CPM.",
@@ -17664,6 +17704,20 @@
                         "SDF_VERSION_5_5",
                         "SDF_VERSION_6"
                     ],
+                    "enumDeprecated": [
+                        false,
+                        true,
+                        true,
+                        true,
+                        true,
+                        true,
+                        true,
+                        true,
+                        true,
+                        false,
+                        false,
+                        false
+                    ],
                     "enumDescriptions": [
                         "SDF version value is not specified or is unknown in this version.",
                         "SDF version 3.1",
@@ -17723,6 +17777,20 @@
                         "SDF_VERSION_5_4",
                         "SDF_VERSION_5_5",
                         "SDF_VERSION_6"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        true,
+                        true,
+                        true,
+                        true,
+                        true,
+                        true,
+                        true,
+                        true,
+                        false,
+                        false,
+                        false
                     ],
                     "enumDescriptions": [
                         "SDF version value is not specified or is unknown in this version.",
@@ -17973,6 +18041,7 @@
             "id": "TargetingExpansionConfig",
             "properties": {
                 "excludeFirstPartyAudience": {
+                    "deprecated": true,
                     "description": "Whether to exclude first-party audiences from use in targeting expansion. This field was deprecated with the launch of [optimized targeting](//support.google.com/displayvideo/answer/12060859). This field will be set to `false`. If this field is set to `true` when deprecated, all positive first-party audience targeting assigned to this line item will be replaced with negative targeting of the same first-party audiences to ensure the continued exclusion of those audiences.",
                     "type": "boolean"
                 },
@@ -17986,6 +18055,15 @@
                         "BALANCED_EXPANSION",
                         "MORE_EXPANSION",
                         "MOST_EXPANSION"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        true,
+                        true,
+                        true,
+                        true
                     ],
                     "enumDescriptions": [
                         "The optimized targeting setting is not specified or is unknown in this version.",

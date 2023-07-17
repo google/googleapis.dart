@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230712",
+    "revision": "20230717",
     "rootUrl": "https://realtimebidding.googleapis.com/",
     "servicePath": "",
     "title": "Real-time Bidding API",
@@ -1811,6 +1811,7 @@
                     "type": "string"
                 },
                 "restrictedCategories": {
+                    "deprecated": true,
                     "description": "All restricted categories for the ads that may be shown from this creative.",
                     "items": {
                         "enum": [
@@ -1826,6 +1827,7 @@
                     "type": "array"
                 },
                 "version": {
+                    "deprecated": true,
                     "description": "Output only. The version of the creative. Version for a new creative is 1 and it increments during subsequent creative updates.",
                     "format": "int32",
                     "readOnly": true,

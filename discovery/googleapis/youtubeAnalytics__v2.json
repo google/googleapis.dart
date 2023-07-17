@@ -37,7 +37,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230711",
+    "revision": "20230716",
     "rootUrl": "https://youtubeanalytics.googleapis.com/",
     "servicePath": "",
     "title": "YouTube Analytics API",
@@ -489,6 +489,7 @@
             "id": "Errors",
             "properties": {
                 "code": {
+                    "deprecated": true,
                     "description": "Global error code. Deprecated and ignored. Set custom error codes in ErrorProto.domain and ErrorProto.code instead.",
                     "enum": [
                         "BAD_REQUEST",

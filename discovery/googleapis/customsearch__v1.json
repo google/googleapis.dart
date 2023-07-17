@@ -16,7 +16,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230711",
+    "revision": "20230716",
     "rootUrl": "https://customsearch.googleapis.com/",
     "servicePath": "",
     "title": "Custom Search API",
@@ -326,6 +326,13 @@
                                 "medium",
                                 "off"
                             ],
+                            "enumDeprecated": [
+                                false,
+                                false,
+                                true,
+                                true,
+                                false
+                            ],
                             "enumDescriptions": [
                                 "SafeSearch mode unspecified. (Falls back to engine's configuration.)",
                                 "Turn SafeSearch on.",
@@ -613,6 +620,13 @@
                                         "high",
                                         "medium",
                                         "off"
+                                    ],
+                                    "enumDeprecated": [
+                                        false,
+                                        false,
+                                        true,
+                                        true,
+                                        false
                                     ],
                                     "enumDescriptions": [
                                         "SafeSearch mode unspecified. (Falls back to engine's configuration.)",

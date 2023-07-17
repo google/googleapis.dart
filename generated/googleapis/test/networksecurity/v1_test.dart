@@ -1993,6 +1993,23 @@ void checkStatus(api.Status o) {
   buildCounterStatus--;
 }
 
+core.List<core.String> buildUnnamed45() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed45(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterTlsInspectionPolicy = 0;
 api.TlsInspectionPolicy buildTlsInspectionPolicy() {
   final o = api.TlsInspectionPolicy();
@@ -2000,8 +2017,13 @@ api.TlsInspectionPolicy buildTlsInspectionPolicy() {
   if (buildCounterTlsInspectionPolicy < 3) {
     o.caPool = 'foo';
     o.createTime = 'foo';
+    o.customTlsFeatures = buildUnnamed45();
     o.description = 'foo';
+    o.excludePublicCaSet = true;
+    o.minTlsVersion = 'foo';
     o.name = 'foo';
+    o.tlsFeatureProfile = 'foo';
+    o.trustConfig = 'foo';
     o.updateTime = 'foo';
   }
   buildCounterTlsInspectionPolicy--;
@@ -2019,12 +2041,26 @@ void checkTlsInspectionPolicy(api.TlsInspectionPolicy o) {
       o.createTime!,
       unittest.equals('foo'),
     );
+    checkUnnamed45(o.customTlsFeatures!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.excludePublicCaSet!, unittest.isTrue);
+    unittest.expect(
+      o.minTlsVersion!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tlsFeatureProfile!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.trustConfig!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2035,12 +2071,12 @@ void checkTlsInspectionPolicy(api.TlsInspectionPolicy o) {
   buildCounterTlsInspectionPolicy--;
 }
 
-core.List<core.String> buildUnnamed45() => [
+core.List<core.String> buildUnnamed46() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed45(core.List<core.String> o) {
+void checkUnnamed46(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2061,7 +2097,7 @@ api.UrlList buildUrlList() {
     o.description = 'foo';
     o.name = 'foo';
     o.updateTime = 'foo';
-    o.values = buildUnnamed45();
+    o.values = buildUnnamed46();
   }
   buildCounterUrlList--;
   return o;
@@ -2086,7 +2122,7 @@ void checkUrlList(api.UrlList o) {
       o.updateTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed45(o.values!);
+    checkUnnamed46(o.values!);
   }
   buildCounterUrlList--;
 }

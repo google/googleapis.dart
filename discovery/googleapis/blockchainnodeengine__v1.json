@@ -628,6 +628,11 @@
                         "LIGHTHOUSE",
                         "ERIGON_EMBEDDED_CONSENSUS_LAYER"
                     ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        true
+                    ],
                     "enumDescriptions": [
                         "Consensus client has not been specified, but should be.",
                         "Consensus client implementation written in Rust, maintained by Sigma Prime. See [Lighthouse - Sigma Prime](https://lighthouse.sigmaprime.io/) for details.",

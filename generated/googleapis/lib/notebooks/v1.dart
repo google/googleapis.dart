@@ -3969,6 +3969,12 @@ class Instance {
   /// Custom metadata to apply to this instance.
   core.Map<core.String, core.String>? metadata;
 
+  /// Bool indicating whether this notebook has been migrated to a Workbench
+  /// Instance
+  ///
+  /// Output only.
+  core.bool? migrated;
+
   /// The name of this notebook instance.
   ///
   /// Format:
@@ -4121,6 +4127,7 @@ class Instance {
     this.labels,
     this.machineType,
     this.metadata,
+    this.migrated,
     this.name,
     this.network,
     this.nicType,
@@ -4215,6 +4222,9 @@ class Instance {
                   ),
                 )
               : null,
+          migrated: json_.containsKey('migrated')
+              ? json_['migrated'] as core.bool
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           network: json_.containsKey('network')
               ? json_['network'] as core.String
@@ -4302,6 +4312,7 @@ class Instance {
         if (labels != null) 'labels': labels!,
         if (machineType != null) 'machineType': machineType!,
         if (metadata != null) 'metadata': metadata!,
+        if (migrated != null) 'migrated': migrated!,
         if (name != null) 'name': name!,
         if (network != null) 'network': network!,
         if (nicType != null) 'nicType': nicType!,
@@ -4361,55 +4372,7 @@ class InstanceConfig {
 }
 
 /// Response for checking if a notebook instance is upgradeable.
-class IsInstanceUpgradeableResponse {
-  /// The new image self link this instance will be upgraded to if calling the
-  /// upgrade endpoint.
-  ///
-  /// This field will only be populated if field upgradeable is true.
-  core.String? upgradeImage;
-
-  /// Additional information about upgrade.
-  core.String? upgradeInfo;
-
-  /// The version this instance will be upgraded to if calling the upgrade
-  /// endpoint.
-  ///
-  /// This field will only be populated if field upgradeable is true.
-  core.String? upgradeVersion;
-
-  /// If an instance is upgradeable.
-  core.bool? upgradeable;
-
-  IsInstanceUpgradeableResponse({
-    this.upgradeImage,
-    this.upgradeInfo,
-    this.upgradeVersion,
-    this.upgradeable,
-  });
-
-  IsInstanceUpgradeableResponse.fromJson(core.Map json_)
-      : this(
-          upgradeImage: json_.containsKey('upgradeImage')
-              ? json_['upgradeImage'] as core.String
-              : null,
-          upgradeInfo: json_.containsKey('upgradeInfo')
-              ? json_['upgradeInfo'] as core.String
-              : null,
-          upgradeVersion: json_.containsKey('upgradeVersion')
-              ? json_['upgradeVersion'] as core.String
-              : null,
-          upgradeable: json_.containsKey('upgradeable')
-              ? json_['upgradeable'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (upgradeImage != null) 'upgradeImage': upgradeImage!,
-        if (upgradeInfo != null) 'upgradeInfo': upgradeInfo!,
-        if (upgradeVersion != null) 'upgradeVersion': upgradeVersion!,
-        if (upgradeable != null) 'upgradeable': upgradeable!,
-      };
-}
+typedef IsInstanceUpgradeableResponse = $Response;
 
 /// Response for listing environments.
 class ListEnvironmentsResponse {
@@ -5180,27 +5143,7 @@ class PreMigrationCheck {
 }
 
 /// Request for getting a new access token.
-class RefreshRuntimeTokenInternalRequest {
-  /// The VM hardware token for authenticating the VM.
-  ///
-  /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity
-  ///
-  /// Required.
-  core.String? vmId;
-
-  RefreshRuntimeTokenInternalRequest({
-    this.vmId,
-  });
-
-  RefreshRuntimeTokenInternalRequest.fromJson(core.Map json_)
-      : this(
-          vmId: json_.containsKey('vmId') ? json_['vmId'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (vmId != null) 'vmId': vmId!,
-      };
-}
+typedef RefreshRuntimeTokenInternalRequest = $Request08;
 
 /// Response with a new access token.
 class RefreshRuntimeTokenInternalResponse {
@@ -5489,6 +5432,12 @@ class Runtime {
   /// Output only.
   RuntimeMetrics? metrics;
 
+  /// Bool indicating whether this notebook has been migrated to a Workbench
+  /// Instance
+  ///
+  /// Output only.
+  core.bool? migrated;
+
   /// The resource name of the runtime.
   ///
   /// Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`
@@ -5532,6 +5481,7 @@ class Runtime {
     this.healthState,
     this.labels,
     this.metrics,
+    this.migrated,
     this.name,
     this.softwareConfig,
     this.state,
@@ -5563,6 +5513,9 @@ class Runtime {
               ? RuntimeMetrics.fromJson(
                   json_['metrics'] as core.Map<core.String, core.dynamic>)
               : null,
+          migrated: json_.containsKey('migrated')
+              ? json_['migrated'] as core.bool
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           softwareConfig: json_.containsKey('softwareConfig')
               ? RuntimeSoftwareConfig.fromJson(json_['softwareConfig']
@@ -5585,6 +5538,7 @@ class Runtime {
         if (healthState != null) 'healthState': healthState!,
         if (labels != null) 'labels': labels!,
         if (metrics != null) 'metrics': metrics!,
+        if (migrated != null) 'migrated': migrated!,
         if (name != null) 'name': name!,
         if (softwareConfig != null) 'softwareConfig': softwareConfig!,
         if (state != null) 'state': state!,

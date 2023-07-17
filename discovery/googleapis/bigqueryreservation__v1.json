@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230706",
+    "revision": "20230713",
     "rootUrl": "https://bigqueryreservation.googleapis.com/",
     "servicePath": "",
     "title": "BigQuery Reservation API",
@@ -185,6 +185,7 @@
                             ]
                         },
                         "searchAssignments": {
+                            "deprecated": true,
                             "description": "Deprecated: Looks up assignments for a specified resource for a particular region. If the request is about a project: 1. Assignments created on the project will be returned if they exist. 2. Otherwise assignments created on the closest ancestor will be returned. 3. Assignments for different JobTypes will all be returned. The same logic applies if the request is about a folder. If the request is about an organization, then assignments created on the organization will be returned (organization doesn't have ancestors). Comparing to ListAssignments, there are some behavior differences: 1. permission on the assignee will be verified in this API. 2. Hierarchy lookup (project->folder->organization) happens in this API. 3. Parent here is `projects/*/locations/*`, instead of `projects/*/locations/*reservations/*`. **Note** \"-\" cannot be used for projects nor locations.",
                             "flatPath": "v1/projects/{projectsId}/locations/{locationsId}:searchAssignments",
                             "httpMethod": "GET",
@@ -989,6 +990,18 @@
                         "THREE_YEAR",
                         "NONE"
                     ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        true,
+                        true,
+                        false,
+                        true,
+                        false,
+                        true,
+                        false,
+                        false
+                    ],
                     "enumDescriptions": [
                         "Invalid plan value. Requests with this value will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`.",
                         "Flex commitments have committed period of 1 minute after becoming ACTIVE. After that, they are not in a committed period anymore and can be removed any time.",
@@ -1016,6 +1029,18 @@
                         "ANNUAL_FLAT_RATE",
                         "THREE_YEAR",
                         "NONE"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        true,
+                        true,
+                        false,
+                        true,
+                        false,
+                        true,
+                        false,
+                        false
                     ],
                     "enumDescriptions": [
                         "Invalid plan value. Requests with this value will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`.",

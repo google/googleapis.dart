@@ -971,7 +971,7 @@ class AcceleratorType {
   /// The resource name.
   core.String? name;
 
-  /// the accelerator type.
+  /// The accelerator type.
   core.String? type;
 
   AcceleratorType({
@@ -1507,7 +1507,7 @@ class Node {
 
   /// The type of hardware accelerators associated with this node.
   ///
-  /// Required.
+  /// Optional.
   core.String? acceleratorType;
 
   /// The API version that created this Node.
@@ -1575,6 +1575,11 @@ class Node {
   /// Can set startup-script and shutdown-script
   core.Map<core.String, core.String>? metadata;
 
+  /// Whether the Node belongs to a Multislice group.
+  ///
+  /// Output only.
+  core.bool? multisliceNode;
+
   /// The name of the TPU.
   ///
   /// Output only. Immutable.
@@ -1590,6 +1595,11 @@ class Node {
   ///
   /// Output only.
   core.List<NetworkEndpoint>? networkEndpoints;
+
+  /// The qualified name of the QueuedResource that requested this Node.
+  ///
+  /// Output only.
+  core.String? queuedResource;
 
   /// The runtime version running in the Node.
   ///
@@ -1654,9 +1664,11 @@ class Node {
     this.id,
     this.labels,
     this.metadata,
+    this.multisliceNode,
     this.name,
     this.networkConfig,
     this.networkEndpoints,
+    this.queuedResource,
     this.runtimeVersion,
     this.schedulingConfig,
     this.serviceAccount,
@@ -1716,6 +1728,9 @@ class Node {
                   ),
                 )
               : null,
+          multisliceNode: json_.containsKey('multisliceNode')
+              ? json_['multisliceNode'] as core.bool
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           networkConfig: json_.containsKey('networkConfig')
               ? NetworkConfig.fromJson(
@@ -1726,6 +1741,9 @@ class Node {
                   .map((value) => NetworkEndpoint.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          queuedResource: json_.containsKey('queuedResource')
+              ? json_['queuedResource'] as core.String
               : null,
           runtimeVersion: json_.containsKey('runtimeVersion')
               ? json_['runtimeVersion'] as core.String
@@ -1770,9 +1788,11 @@ class Node {
         if (id != null) 'id': id!,
         if (labels != null) 'labels': labels!,
         if (metadata != null) 'metadata': metadata!,
+        if (multisliceNode != null) 'multisliceNode': multisliceNode!,
         if (name != null) 'name': name!,
         if (networkConfig != null) 'networkConfig': networkConfig!,
         if (networkEndpoints != null) 'networkEndpoints': networkEndpoints!,
+        if (queuedResource != null) 'queuedResource': queuedResource!,
         if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
         if (schedulingConfig != null) 'schedulingConfig': schedulingConfig!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,

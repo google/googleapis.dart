@@ -4673,14 +4673,18 @@ core.int buildCounterStartMigrationJobRequest = 0;
 api.StartMigrationJobRequest buildStartMigrationJobRequest() {
   final o = api.StartMigrationJobRequest();
   buildCounterStartMigrationJobRequest++;
-  if (buildCounterStartMigrationJobRequest < 3) {}
+  if (buildCounterStartMigrationJobRequest < 3) {
+    o.skipValidation = true;
+  }
   buildCounterStartMigrationJobRequest--;
   return o;
 }
 
 void checkStartMigrationJobRequest(api.StartMigrationJobRequest o) {
   buildCounterStartMigrationJobRequest++;
-  if (buildCounterStartMigrationJobRequest < 3) {}
+  if (buildCounterStartMigrationJobRequest < 3) {
+    unittest.expect(o.skipValidation!, unittest.isTrue);
+  }
   buildCounterStartMigrationJobRequest--;
 }
 

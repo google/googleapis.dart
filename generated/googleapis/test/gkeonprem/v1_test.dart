@@ -4282,7 +4282,6 @@ api.VmwareControlPlaneVsphereConfig buildVmwareControlPlaneVsphereConfig() {
   buildCounterVmwareControlPlaneVsphereConfig++;
   if (buildCounterVmwareControlPlaneVsphereConfig < 3) {
     o.datastore = 'foo';
-    o.storagePolicyName = 'foo';
   }
   buildCounterVmwareControlPlaneVsphereConfig--;
   return o;
@@ -4294,10 +4293,6 @@ void checkVmwareControlPlaneVsphereConfig(
   if (buildCounterVmwareControlPlaneVsphereConfig < 3) {
     unittest.expect(
       o.datastore!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.storagePolicyName!,
       unittest.equals('foo'),
     );
   }
@@ -4982,7 +4977,6 @@ api.VmwareVCenterConfig buildVmwareVCenterConfig() {
     o.datastore = 'foo';
     o.folder = 'foo';
     o.resourcePool = 'foo';
-    o.storagePolicyName = 'foo';
   }
   buildCounterVmwareVCenterConfig--;
   return o;
@@ -5017,10 +5011,6 @@ void checkVmwareVCenterConfig(api.VmwareVCenterConfig o) {
     );
     unittest.expect(
       o.resourcePool!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.storagePolicyName!,
       unittest.equals('foo'),
     );
   }
@@ -5097,7 +5087,6 @@ api.VmwareVsphereConfig buildVmwareVsphereConfig() {
   buildCounterVmwareVsphereConfig++;
   if (buildCounterVmwareVsphereConfig < 3) {
     o.datastore = 'foo';
-    o.storagePolicyName = 'foo';
     o.tags = buildUnnamed74();
   }
   buildCounterVmwareVsphereConfig--;
@@ -5109,10 +5098,6 @@ void checkVmwareVsphereConfig(api.VmwareVsphereConfig o) {
   if (buildCounterVmwareVsphereConfig < 3) {
     unittest.expect(
       o.datastore!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.storagePolicyName!,
       unittest.equals('foo'),
     );
     checkUnnamed74(o.tags!);

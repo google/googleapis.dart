@@ -945,6 +945,12 @@ class GoogleCloudAssuredworkloadsV1Violation {
   /// Output only. Immutable.
   core.String? exceptionAuditLogLink;
 
+  /// List of all the exception detail added for the violation.
+  ///
+  /// Output only.
+  core.List<GoogleCloudAssuredworkloadsV1ViolationExceptionContext>?
+      exceptionContexts;
+
   /// Name of the Violation.
   ///
   /// Format:
@@ -998,6 +1004,7 @@ class GoogleCloudAssuredworkloadsV1Violation {
     this.category,
     this.description,
     this.exceptionAuditLogLink,
+    this.exceptionContexts,
     this.name,
     this.nonCompliantOrgPolicy,
     this.remediation,
@@ -1029,6 +1036,14 @@ class GoogleCloudAssuredworkloadsV1Violation {
           exceptionAuditLogLink: json_.containsKey('exceptionAuditLogLink')
               ? json_['exceptionAuditLogLink'] as core.String
               : null,
+          exceptionContexts: json_.containsKey('exceptionContexts')
+              ? (json_['exceptionContexts'] as core.List)
+                  .map((value) =>
+                      GoogleCloudAssuredworkloadsV1ViolationExceptionContext
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           nonCompliantOrgPolicy: json_.containsKey('nonCompliantOrgPolicy')
               ? json_['nonCompliantOrgPolicy'] as core.String
@@ -1057,6 +1072,7 @@ class GoogleCloudAssuredworkloadsV1Violation {
         if (description != null) 'description': description!,
         if (exceptionAuditLogLink != null)
           'exceptionAuditLogLink': exceptionAuditLogLink!,
+        if (exceptionContexts != null) 'exceptionContexts': exceptionContexts!,
         if (name != null) 'name': name!,
         if (nonCompliantOrgPolicy != null)
           'nonCompliantOrgPolicy': nonCompliantOrgPolicy!,
@@ -1064,6 +1080,48 @@ class GoogleCloudAssuredworkloadsV1Violation {
         if (resolveTime != null) 'resolveTime': resolveTime!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Violation exception detail.
+///
+/// Next Id: 6
+class GoogleCloudAssuredworkloadsV1ViolationExceptionContext {
+  /// Timestamp when the violation was acknowledged.
+  core.String? acknowledgementTime;
+
+  /// Business justification provided towards the acknowledgement of the
+  /// violation.
+  core.String? comment;
+
+  /// Name of the user (or service account) who acknowledged the violation.
+  core.String? userName;
+
+  GoogleCloudAssuredworkloadsV1ViolationExceptionContext({
+    this.acknowledgementTime,
+    this.comment,
+    this.userName,
+  });
+
+  GoogleCloudAssuredworkloadsV1ViolationExceptionContext.fromJson(
+      core.Map json_)
+      : this(
+          acknowledgementTime: json_.containsKey('acknowledgementTime')
+              ? json_['acknowledgementTime'] as core.String
+              : null,
+          comment: json_.containsKey('comment')
+              ? json_['comment'] as core.String
+              : null,
+          userName: json_.containsKey('userName')
+              ? json_['userName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (acknowledgementTime != null)
+          'acknowledgementTime': acknowledgementTime!,
+        if (comment != null) 'comment': comment!,
+        if (userName != null) 'userName': userName!,
       };
 }
 

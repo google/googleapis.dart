@@ -7660,18 +7660,38 @@ void checkUnnamed125(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed126() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed126(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterTrainingOptions = 0;
 api.TrainingOptions buildTrainingOptions() {
   final o = api.TrainingOptions();
   buildCounterTrainingOptions++;
   if (buildCounterTrainingOptions < 3) {
+    o.activationFn = 'foo';
     o.adjustStepChanges = true;
     o.approxGlobalFeatureContrib = true;
     o.autoArima = true;
     o.autoArimaMaxOrder = 'foo';
     o.autoArimaMinOrder = 'foo';
+    o.autoClassWeights = true;
     o.batchSize = 'foo';
     o.boosterType = 'foo';
+    o.budgetHours = 42.0;
     o.calculatePValues = true;
     o.cleanSpikesAndDips = true;
     o.colorSpace = 'foo';
@@ -7689,6 +7709,7 @@ api.TrainingOptions buildTrainingOptions() {
     o.earlyStop = true;
     o.enableGlobalExplain = true;
     o.feedbackType = 'foo';
+    o.fitIntercept = true;
     o.hiddenUnits = buildUnnamed121();
     o.holidayRegion = 'foo';
     o.horizon = 'foo';
@@ -7701,6 +7722,7 @@ api.TrainingOptions buildTrainingOptions() {
     o.itemColumn = 'foo';
     o.kmeansInitializationColumn = 'foo';
     o.kmeansInitializationMethod = 'foo';
+    o.l1RegActivation = 42.0;
     o.l1Regularization = 42.0;
     o.l2Regularization = 42.0;
     o.labelClassWeights = buildUnnamed124();
@@ -7715,14 +7737,21 @@ api.TrainingOptions buildTrainingOptions() {
     o.minSplitLoss = 42.0;
     o.minTimeSeriesLength = 'foo';
     o.minTreeChildWeight = 'foo';
+    o.modelRegistry = 'foo';
     o.modelUri = 'foo';
     o.nonSeasonalOrder = buildArimaOrder();
     o.numClusters = 'foo';
     o.numFactors = 'foo';
     o.numParallelTree = 'foo';
+    o.numPrincipalComponents = 'foo';
     o.numTrials = 'foo';
     o.optimizationStrategy = 'foo';
+    o.optimizer = 'foo';
+    o.pcaExplainedVarianceRatio = 42.0;
+    o.pcaSolver = 'foo';
     o.sampledShapleyNumPaths = 'foo';
+    o.scaleFeatures = true;
+    o.standardizeFeatures = true;
     o.subsample = 42.0;
     o.tfVersion = 'foo';
     o.timeSeriesDataColumn = 'foo';
@@ -7733,6 +7762,7 @@ api.TrainingOptions buildTrainingOptions() {
     o.treeMethod = 'foo';
     o.trendSmoothingWindowSize = 'foo';
     o.userColumn = 'foo';
+    o.vertexAiModelVersionAliases = buildUnnamed126();
     o.walsAlpha = 42.0;
     o.warmStart = true;
     o.xgboostVersion = 'foo';
@@ -7744,6 +7774,10 @@ api.TrainingOptions buildTrainingOptions() {
 void checkTrainingOptions(api.TrainingOptions o) {
   buildCounterTrainingOptions++;
   if (buildCounterTrainingOptions < 3) {
+    unittest.expect(
+      o.activationFn!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.adjustStepChanges!, unittest.isTrue);
     unittest.expect(o.approxGlobalFeatureContrib!, unittest.isTrue);
     unittest.expect(o.autoArima!, unittest.isTrue);
@@ -7755,6 +7789,7 @@ void checkTrainingOptions(api.TrainingOptions o) {
       o.autoArimaMinOrder!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.autoClassWeights!, unittest.isTrue);
     unittest.expect(
       o.batchSize!,
       unittest.equals('foo'),
@@ -7762,6 +7797,10 @@ void checkTrainingOptions(api.TrainingOptions o) {
     unittest.expect(
       o.boosterType!,
       unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.budgetHours!,
+      unittest.equals(42.0),
     );
     unittest.expect(o.calculatePValues!, unittest.isTrue);
     unittest.expect(o.cleanSpikesAndDips!, unittest.isTrue);
@@ -7816,6 +7855,7 @@ void checkTrainingOptions(api.TrainingOptions o) {
       o.feedbackType!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.fitIntercept!, unittest.isTrue);
     checkUnnamed121(o.hiddenUnits!);
     unittest.expect(
       o.holidayRegion!,
@@ -7851,6 +7891,10 @@ void checkTrainingOptions(api.TrainingOptions o) {
     unittest.expect(
       o.kmeansInitializationMethod!,
       unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.l1RegActivation!,
+      unittest.equals(42.0),
     );
     unittest.expect(
       o.l1Regularization!,
@@ -7906,6 +7950,10 @@ void checkTrainingOptions(api.TrainingOptions o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.modelRegistry!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.modelUri!,
       unittest.equals('foo'),
     );
@@ -7923,6 +7971,10 @@ void checkTrainingOptions(api.TrainingOptions o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.numPrincipalComponents!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.numTrials!,
       unittest.equals('foo'),
     );
@@ -7931,9 +7983,23 @@ void checkTrainingOptions(api.TrainingOptions o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.optimizer!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pcaExplainedVarianceRatio!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.pcaSolver!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.sampledShapleyNumPaths!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.scaleFeatures!, unittest.isTrue);
+    unittest.expect(o.standardizeFeatures!, unittest.isTrue);
     unittest.expect(
       o.subsample!,
       unittest.equals(42.0),
@@ -7971,6 +8037,7 @@ void checkTrainingOptions(api.TrainingOptions o) {
       o.userColumn!,
       unittest.equals('foo'),
     );
+    checkUnnamed126(o.vertexAiModelVersionAliases!);
     unittest.expect(
       o.walsAlpha!,
       unittest.equals(42.0),
@@ -7984,23 +8051,23 @@ void checkTrainingOptions(api.TrainingOptions o) {
   buildCounterTrainingOptions--;
 }
 
-core.List<api.GlobalExplanation> buildUnnamed126() => [
+core.List<api.GlobalExplanation> buildUnnamed127() => [
       buildGlobalExplanation(),
       buildGlobalExplanation(),
     ];
 
-void checkUnnamed126(core.List<api.GlobalExplanation> o) {
+void checkUnnamed127(core.List<api.GlobalExplanation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGlobalExplanation(o[0]);
   checkGlobalExplanation(o[1]);
 }
 
-core.List<api.IterationResult> buildUnnamed127() => [
+core.List<api.IterationResult> buildUnnamed128() => [
       buildIterationResult(),
       buildIterationResult(),
     ];
 
-void checkUnnamed127(core.List<api.IterationResult> o) {
+void checkUnnamed128(core.List<api.IterationResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIterationResult(o[0]);
   checkIterationResult(o[1]);
@@ -8011,11 +8078,11 @@ api.TrainingRun buildTrainingRun() {
   final o = api.TrainingRun();
   buildCounterTrainingRun++;
   if (buildCounterTrainingRun < 3) {
-    o.classLevelGlobalExplanations = buildUnnamed126();
+    o.classLevelGlobalExplanations = buildUnnamed127();
     o.dataSplitResult = buildDataSplitResult();
     o.evaluationMetrics = buildEvaluationMetrics();
     o.modelLevelGlobalExplanation = buildGlobalExplanation();
-    o.results = buildUnnamed127();
+    o.results = buildUnnamed128();
     o.startTime = 'foo';
     o.trainingOptions = buildTrainingOptions();
     o.trainingStartTime = 'foo';
@@ -8029,11 +8096,11 @@ api.TrainingRun buildTrainingRun() {
 void checkTrainingRun(api.TrainingRun o) {
   buildCounterTrainingRun++;
   if (buildCounterTrainingRun < 3) {
-    checkUnnamed126(o.classLevelGlobalExplanations!);
+    checkUnnamed127(o.classLevelGlobalExplanations!);
     checkDataSplitResult(o.dataSplitResult!);
     checkEvaluationMetrics(o.evaluationMetrics!);
     checkGlobalExplanation(o.modelLevelGlobalExplanation!);
-    checkUnnamed127(o.results!);
+    checkUnnamed128(o.results!);
     unittest.expect(
       o.startTime!,
       unittest.equals('foo'),
@@ -8104,12 +8171,12 @@ void checkUserDefinedFunctionResource(api.UserDefinedFunctionResource o) {
   buildCounterUserDefinedFunctionResource--;
 }
 
-core.List<api.UserDefinedFunctionResource> buildUnnamed128() => [
+core.List<api.UserDefinedFunctionResource> buildUnnamed129() => [
       buildUserDefinedFunctionResource(),
       buildUserDefinedFunctionResource(),
     ];
 
-void checkUnnamed128(core.List<api.UserDefinedFunctionResource> o) {
+void checkUnnamed129(core.List<api.UserDefinedFunctionResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserDefinedFunctionResource(o[0]);
   checkUserDefinedFunctionResource(o[1]);
@@ -8123,7 +8190,7 @@ api.ViewDefinition buildViewDefinition() {
     o.query = 'foo';
     o.useExplicitColumnNames = true;
     o.useLegacySql = true;
-    o.userDefinedFunctionResources = buildUnnamed128();
+    o.userDefinedFunctionResources = buildUnnamed129();
   }
   buildCounterViewDefinition--;
   return o;
@@ -8138,17 +8205,17 @@ void checkViewDefinition(api.ViewDefinition o) {
     );
     unittest.expect(o.useExplicitColumnNames!, unittest.isTrue);
     unittest.expect(o.useLegacySql!, unittest.isTrue);
-    checkUnnamed128(o.userDefinedFunctionResources!);
+    checkUnnamed129(o.userDefinedFunctionResources!);
   }
   buildCounterViewDefinition--;
 }
 
-core.List<core.String> buildUnnamed129() => [
+core.List<core.String> buildUnnamed130() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed129(core.List<core.String> o) {
+void checkUnnamed130(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -10785,7 +10852,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_parentJobId = 'foo';
       final arg_projection = 'foo';
-      final arg_stateFilter = buildUnnamed129();
+      final arg_stateFilter = buildUnnamed130();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;

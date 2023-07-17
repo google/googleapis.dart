@@ -76,7 +76,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230707",
+    "revision": "20230708",
     "rootUrl": "https://script.googleapis.com/",
     "servicePath": "",
     "title": "Apps Script API",

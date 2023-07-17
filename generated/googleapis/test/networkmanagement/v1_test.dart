@@ -597,6 +597,7 @@ api.Endpoint buildEndpoint() {
     o.cloudFunction = buildCloudFunctionEndpoint();
     o.cloudRunRevision = buildCloudRunRevisionEndpoint();
     o.cloudSqlInstance = 'foo';
+    o.forwardingRule = 'foo';
     o.gkeMasterCluster = 'foo';
     o.instance = 'foo';
     o.ipAddress = 'foo';
@@ -617,6 +618,10 @@ void checkEndpoint(api.Endpoint o) {
     checkCloudRunRevisionEndpoint(o.cloudRunRevision!);
     unittest.expect(
       o.cloudSqlInstance!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.forwardingRule!,
       unittest.equals('foo'),
     );
     unittest.expect(

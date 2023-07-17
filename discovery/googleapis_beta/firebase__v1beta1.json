@@ -34,7 +34,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230711",
+    "revision": "20230713",
     "rootUrl": "https://firebase.googleapis.com/",
     "servicePath": "",
     "title": "Firebase Management API",
@@ -2277,6 +2277,7 @@
                     "type": "string"
                 },
                 "webId": {
+                    "deprecated": true,
                     "description": "Output only. Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated Apps.",
                     "readOnly": true,
                     "type": "string"

@@ -399,6 +399,25 @@ void checkCardWithId(api.CardWithId o) {
   buildCounterCardWithId--;
 }
 
+core.int buildCounterChatClientDataSourceMarkup = 0;
+api.ChatClientDataSourceMarkup buildChatClientDataSourceMarkup() {
+  final o = api.ChatClientDataSourceMarkup();
+  buildCounterChatClientDataSourceMarkup++;
+  if (buildCounterChatClientDataSourceMarkup < 3) {
+    o.spaceDataSource = buildSpaceDataSource();
+  }
+  buildCounterChatClientDataSourceMarkup--;
+  return o;
+}
+
+void checkChatClientDataSourceMarkup(api.ChatClientDataSourceMarkup o) {
+  buildCounterChatClientDataSourceMarkup++;
+  if (buildCounterChatClientDataSourceMarkup < 3) {
+    checkSpaceDataSource(o.spaceDataSource!);
+  }
+  buildCounterChatClientDataSourceMarkup--;
+}
+
 core.int buildCounterColor = 0;
 api.Color buildColor() {
   final o = api.Color();
@@ -842,6 +861,7 @@ api.GoogleAppsCardV1Card buildGoogleAppsCardV1Card() {
     o.header = buildGoogleAppsCardV1CardHeader();
     o.name = 'foo';
     o.peekCardHeader = buildGoogleAppsCardV1CardHeader();
+    o.sectionDividerStyle = 'foo';
     o.sections = buildUnnamed6();
   }
   buildCounterGoogleAppsCardV1Card--;
@@ -863,6 +883,10 @@ void checkGoogleAppsCardV1Card(api.GoogleAppsCardV1Card o) {
       unittest.equals('foo'),
     );
     checkGoogleAppsCardV1CardHeader(o.peekCardHeader!);
+    unittest.expect(
+      o.sectionDividerStyle!,
+      unittest.equals('foo'),
+    );
     checkUnnamed6(o.sections!);
   }
   buildCounterGoogleAppsCardV1Card--;
@@ -1400,6 +1424,32 @@ void checkGoogleAppsCardV1OpenLink(api.GoogleAppsCardV1OpenLink o) {
   buildCounterGoogleAppsCardV1OpenLink--;
 }
 
+core.int buildCounterGoogleAppsCardV1PlatformDataSource = 0;
+api.GoogleAppsCardV1PlatformDataSource
+    buildGoogleAppsCardV1PlatformDataSource() {
+  final o = api.GoogleAppsCardV1PlatformDataSource();
+  buildCounterGoogleAppsCardV1PlatformDataSource++;
+  if (buildCounterGoogleAppsCardV1PlatformDataSource < 3) {
+    o.commonDataSource = 'foo';
+    o.hostAppDataSource = buildHostAppDataSourceMarkup();
+  }
+  buildCounterGoogleAppsCardV1PlatformDataSource--;
+  return o;
+}
+
+void checkGoogleAppsCardV1PlatformDataSource(
+    api.GoogleAppsCardV1PlatformDataSource o) {
+  buildCounterGoogleAppsCardV1PlatformDataSource++;
+  if (buildCounterGoogleAppsCardV1PlatformDataSource < 3) {
+    unittest.expect(
+      o.commonDataSource!,
+      unittest.equals('foo'),
+    );
+    checkHostAppDataSourceMarkup(o.hostAppDataSource!);
+  }
+  buildCounterGoogleAppsCardV1PlatformDataSource--;
+}
+
 core.List<api.GoogleAppsCardV1Widget> buildUnnamed10() => [
       buildGoogleAppsCardV1Widget(),
       buildGoogleAppsCardV1Widget(),
@@ -1458,10 +1508,14 @@ api.GoogleAppsCardV1SelectionInput buildGoogleAppsCardV1SelectionInput() {
   final o = api.GoogleAppsCardV1SelectionInput();
   buildCounterGoogleAppsCardV1SelectionInput++;
   if (buildCounterGoogleAppsCardV1SelectionInput < 3) {
+    o.externalDataSource = buildGoogleAppsCardV1Action();
     o.items = buildUnnamed11();
     o.label = 'foo';
+    o.multiSelectMaxSelectedItems = 42;
+    o.multiSelectMinQueryLength = 42;
     o.name = 'foo';
     o.onChangeAction = buildGoogleAppsCardV1Action();
+    o.platformDataSource = buildGoogleAppsCardV1PlatformDataSource();
     o.type = 'foo';
   }
   buildCounterGoogleAppsCardV1SelectionInput--;
@@ -1471,16 +1525,26 @@ api.GoogleAppsCardV1SelectionInput buildGoogleAppsCardV1SelectionInput() {
 void checkGoogleAppsCardV1SelectionInput(api.GoogleAppsCardV1SelectionInput o) {
   buildCounterGoogleAppsCardV1SelectionInput++;
   if (buildCounterGoogleAppsCardV1SelectionInput < 3) {
+    checkGoogleAppsCardV1Action(o.externalDataSource!);
     checkUnnamed11(o.items!);
     unittest.expect(
       o.label!,
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.multiSelectMaxSelectedItems!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.multiSelectMinQueryLength!,
+      unittest.equals(42),
+    );
+    unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
     checkGoogleAppsCardV1Action(o.onChangeAction!);
+    checkGoogleAppsCardV1PlatformDataSource(o.platformDataSource!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -1494,7 +1558,9 @@ api.GoogleAppsCardV1SelectionItem buildGoogleAppsCardV1SelectionItem() {
   final o = api.GoogleAppsCardV1SelectionItem();
   buildCounterGoogleAppsCardV1SelectionItem++;
   if (buildCounterGoogleAppsCardV1SelectionItem < 3) {
+    o.bottomText = 'foo';
     o.selected = true;
+    o.startIconUri = 'foo';
     o.text = 'foo';
     o.value = 'foo';
   }
@@ -1505,7 +1571,15 @@ api.GoogleAppsCardV1SelectionItem buildGoogleAppsCardV1SelectionItem() {
 void checkGoogleAppsCardV1SelectionItem(api.GoogleAppsCardV1SelectionItem o) {
   buildCounterGoogleAppsCardV1SelectionItem++;
   if (buildCounterGoogleAppsCardV1SelectionItem < 3) {
+    unittest.expect(
+      o.bottomText!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.selected!, unittest.isTrue);
+    unittest.expect(
+      o.startIconUri!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.text!,
       unittest.equals('foo'),
@@ -1747,6 +1821,25 @@ void checkGoogleAppsCardV1Widgets(api.GoogleAppsCardV1Widgets o) {
     checkGoogleAppsCardV1TextParagraph(o.textParagraph!);
   }
   buildCounterGoogleAppsCardV1Widgets--;
+}
+
+core.int buildCounterHostAppDataSourceMarkup = 0;
+api.HostAppDataSourceMarkup buildHostAppDataSourceMarkup() {
+  final o = api.HostAppDataSourceMarkup();
+  buildCounterHostAppDataSourceMarkup++;
+  if (buildCounterHostAppDataSourceMarkup < 3) {
+    o.chatDataSource = buildChatClientDataSourceMarkup();
+  }
+  buildCounterHostAppDataSourceMarkup--;
+  return o;
+}
+
+void checkHostAppDataSourceMarkup(api.HostAppDataSourceMarkup o) {
+  buildCounterHostAppDataSourceMarkup++;
+  if (buildCounterHostAppDataSourceMarkup < 3) {
+    checkChatClientDataSourceMarkup(o.chatDataSource!);
+  }
+  buildCounterHostAppDataSourceMarkup--;
 }
 
 core.int buildCounterImage = 0;
@@ -2517,6 +2610,25 @@ void checkSpace(api.Space o) {
   buildCounterSpace--;
 }
 
+core.int buildCounterSpaceDataSource = 0;
+api.SpaceDataSource buildSpaceDataSource() {
+  final o = api.SpaceDataSource();
+  buildCounterSpaceDataSource++;
+  if (buildCounterSpaceDataSource < 3) {
+    o.defaultToCurrentSpace = true;
+  }
+  buildCounterSpaceDataSource--;
+  return o;
+}
+
+void checkSpaceDataSource(api.SpaceDataSource o) {
+  buildCounterSpaceDataSource++;
+  if (buildCounterSpaceDataSource < 3) {
+    unittest.expect(o.defaultToCurrentSpace!, unittest.isTrue);
+  }
+  buildCounterSpaceDataSource--;
+}
+
 core.int buildCounterSpaceDetails = 0;
 api.SpaceDetails buildSpaceDetails() {
   final o = api.SpaceDetails();
@@ -2878,6 +2990,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ChatClientDataSourceMarkup', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildChatClientDataSourceMarkup();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ChatClientDataSourceMarkup.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkChatClientDataSourceMarkup(od);
+    });
+  });
+
   unittest.group('obj-schema-Color', () {
     unittest.test('to-json--from-json', () async {
       final o = buildColor();
@@ -3198,6 +3320,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleAppsCardV1PlatformDataSource', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleAppsCardV1PlatformDataSource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsCardV1PlatformDataSource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsCardV1PlatformDataSource(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleAppsCardV1Section', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleAppsCardV1Section();
@@ -3295,6 +3427,16 @@ void main() {
       final od = api.GoogleAppsCardV1Widgets.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCardV1Widgets(od);
+    });
+  });
+
+  unittest.group('obj-schema-HostAppDataSourceMarkup', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildHostAppDataSourceMarkup();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.HostAppDataSourceMarkup.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkHostAppDataSourceMarkup(od);
     });
   });
 
@@ -3495,6 +3637,16 @@ void main() {
       final od =
           api.Space.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkSpace(od);
+    });
+  });
+
+  unittest.group('obj-schema-SpaceDataSource', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSpaceDataSource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SpaceDataSource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSpaceDataSource(od);
     });
   });
 

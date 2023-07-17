@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230627",
+    "revision": "20230710",
     "rootUrl": "https://notebooks.googleapis.com/",
     "servicePath": "",
     "title": "Notebooks API",
@@ -2382,6 +2382,7 @@
                     "type": "string"
                 },
                 "scaleTier": {
+                    "deprecated": true,
                     "description": "Required. Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.",
                     "enum": [
                         "SCALE_TIER_UNSPECIFIED",
@@ -2617,6 +2618,11 @@
                     },
                     "description": "Custom metadata to apply to this instance.",
                     "type": "object"
+                },
+                "migrated": {
+                    "description": "Output only. Bool indicating whether this notebook has been migrated to a Workbench Instance",
+                    "readOnly": true,
+                    "type": "boolean"
                 },
                 "name": {
                     "description": "Output only. The name of this notebook instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`",
@@ -3418,6 +3424,11 @@
                     "description": "Output only. Contains Runtime daemon metrics such as Service status and JupyterLab stats.",
                     "readOnly": true
                 },
+                "migrated": {
+                    "description": "Output only. Bool indicating whether this notebook has been migrated to a Workbench Instance",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
                 "name": {
                     "description": "Output only. The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`",
                     "readOnly": true,
@@ -3492,6 +3503,21 @@
                         "NVIDIA_TESLA_T4_VWS",
                         "NVIDIA_TESLA_P100_VWS",
                         "NVIDIA_TESLA_P4_VWS"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        true,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false
                     ],
                     "enumDescriptions": [
                         "Accelerator type is not specified.",
@@ -4090,6 +4116,7 @@
                     "type": "string"
                 },
                 "targetImage": {
+                    "deprecated": true,
                     "description": "Target VM Image. Format: `ainotebooks-vm/project/image-name/name`.",
                     "type": "string"
                 },

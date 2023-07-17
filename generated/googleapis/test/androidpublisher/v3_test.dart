@@ -3584,6 +3584,7 @@ api.RegionalPriceMigrationConfig buildRegionalPriceMigrationConfig() {
   buildCounterRegionalPriceMigrationConfig++;
   if (buildCounterRegionalPriceMigrationConfig < 3) {
     o.oldestAllowedPriceVersionTime = 'foo';
+    o.priceIncreaseType = 'foo';
     o.regionCode = 'foo';
   }
   buildCounterRegionalPriceMigrationConfig--;
@@ -3595,6 +3596,10 @@ void checkRegionalPriceMigrationConfig(api.RegionalPriceMigrationConfig o) {
   if (buildCounterRegionalPriceMigrationConfig < 3) {
     unittest.expect(
       o.oldestAllowedPriceVersionTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.priceIncreaseType!,
       unittest.equals('foo'),
     );
     unittest.expect(

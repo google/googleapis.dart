@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230707",
+    "revision": "20230715",
     "rootUrl": "https://dialogflow.googleapis.com/",
     "servicePath": "",
     "title": "Dialogflow API",
@@ -3884,6 +3884,7 @@
                     "type": "boolean"
                 },
                 "enableStackdriverLogging": {
+                    "deprecated": true,
                     "description": "Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.",
                     "type": "boolean"
                 },
@@ -6524,9 +6525,11 @@
                 },
                 "intent": {
                     "$ref": "GoogleCloudDialogflowCxV3Intent",
+                    "deprecated": true,
                     "description": "The Intent that matched the conversational query. Some, not all fields are filled in this message, including but not limited to: `name` and `display_name`. This field is deprecated, please use QueryResult.match instead."
                 },
                 "intentDetectionConfidence": {
+                    "deprecated": true,
                     "description": "The intent detection confidence. Values range from 0.0 (completely uncertain) to 1.0 (completely certain). This value is for informational purpose only and is only used to help match the best intent within the classification threshold. This value may change for the same end-user expression at any time due to a model retraining or change in implementation. This field is deprecated, please use QueryResult.match instead.",
                     "format": "float",
                     "type": "number"
@@ -7757,6 +7760,7 @@
                     "type": "string"
                 },
                 "resources": {
+                    "deprecated": true,
                     "description": "The names of the resources where the message is found.",
                     "items": {
                         "type": "string"
@@ -7982,6 +7986,7 @@
                     "type": "object"
                 },
                 "password": {
+                    "deprecated": true,
                     "description": "The password for HTTP Basic authentication.",
                     "type": "string"
                 },
@@ -8001,6 +8006,7 @@
                     "type": "string"
                 },
                 "username": {
+                    "deprecated": true,
                     "description": "The user name for HTTP Basic authentication.",
                     "type": "string"
                 },
@@ -9912,6 +9918,7 @@
                     "type": "object"
                 },
                 "password": {
+                    "deprecated": true,
                     "description": "The password for HTTP Basic authentication.",
                     "type": "string"
                 },
@@ -9931,6 +9938,7 @@
                     "type": "string"
                 },
                 "username": {
+                    "deprecated": true,
                     "description": "The user name for HTTP Basic authentication.",
                     "type": "string"
                 },
@@ -11711,6 +11719,11 @@
                         "EXAMPLE",
                         "TEMPLATE"
                     ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        true
+                    ],
                     "enumDescriptions": [
                         "Not specified. This value should never be used.",
                         "Examples do not contain @-prefixed entity type names, but example parts can be annotated with entity types.",
@@ -12808,6 +12821,7 @@
                     "type": "boolean"
                 },
                 "mlEnabled": {
+                    "deprecated": true,
                     "description": "Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.",
                     "type": "boolean"
                 },
@@ -13908,6 +13922,11 @@
                         "TYPE_UNSPECIFIED",
                         "EXAMPLE",
                         "TEMPLATE"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        true
                     ],
                     "enumDescriptions": [
                         "Not specified. This value should never be used.",

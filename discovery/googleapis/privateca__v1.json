@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230620",
+    "revision": "20230705",
     "rootUrl": "https://privateca.googleapis.com/",
     "servicePath": "",
     "title": "Certificate Authority API",
@@ -3042,6 +3042,7 @@
             "id": "ReconciliationOperationMetadata",
             "properties": {
                 "deleteResource": {
+                    "deprecated": true,
                     "description": "DEPRECATED. Use exclusive_action instead.",
                     "type": "boolean"
                 },
@@ -3051,6 +3052,11 @@
                         "UNKNOWN_REPAIR_ACTION",
                         "DELETE",
                         "RETRY"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        true,
+                        false
                     ],
                     "enumDescriptions": [
                         "Unknown repair action.",
