@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -37,7 +38,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -2627,6 +2627,9 @@ class ConfigManagementConfigSync {
   ///
   /// Defaults to false which disallows vertical scaling. This field is
   /// deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? allowVerticalScale;
 
   /// Enables the installation of ConfigSync.
@@ -3884,6 +3887,9 @@ class ConfigManagementSyncState {
   ///
   /// Timestamp of when ACM last successfully synced the repo The time format is
   /// specified in https://golang.org/pkg/time/#Time.String
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? lastSync;
 
   /// Timestamp type of when ACM last successfully synced the repo
@@ -6937,6 +6943,9 @@ class ServiceMeshMembershipSpec {
   /// managed service, or a managed install.
   /// - "MANUAL" : User will manually configure the control plane (e.g. via CLI,
   /// or via the ControlPlaneRevision KRM API)
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? controlPlane;
 
   /// Enables automatic Service Mesh management.

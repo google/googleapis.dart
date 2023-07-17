@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -64,7 +65,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -4675,6 +4675,9 @@ class Creative {
   /// Shows any corrections that were applied to this creative.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<Correction>? corrections;
 
   /// The buyer-defined creative ID of this creative.
@@ -6247,6 +6250,9 @@ class FilterSet {
   /// Although this field is a list, it can only be populated with a single
   /// item. A HTTP 400 bad request error will be returned in the response if you
   /// specify multiple items.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? formats;
 
   /// A user-defined name of the filter set.
@@ -6454,6 +6460,9 @@ class FilteredBidDetailRow {
   /// will be 0. The ID of the detail. The associated value can be looked up in
   /// the dictionary file corresponding to the DetailType in the response
   /// message.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? detailId;
 
   /// The values of all dimensions associated with metric values in this row.
@@ -7839,6 +7848,9 @@ class NativeContent {
   core.double? starRating;
 
   /// The URL to the app store to purchase/download the promoted app.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? storeUrl;
 
   /// The URL to fetch a native video ad.
@@ -8592,6 +8604,9 @@ class Proposal {
   /// True, if the buyside inventory setup is complete for this proposal.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? isSetupComplete;
 
   /// The role of the last user that either updated the proposal or left a
@@ -9275,6 +9290,9 @@ class ServingContext {
   PlatformContext? platform;
 
   /// Matches impressions for a particular security type.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   SecurityContext? securityType;
 
   ServingContext({
@@ -9342,6 +9360,9 @@ class ServingRestriction {
   ///
   /// Only present if status=DISAPPROVED. Can be used to filter the response of
   /// the creatives.list method. Deprecated; use disapproval field instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<Disapproval>? disapprovalReasons;
 
   /// The status of the creative in this context (for example, it has been

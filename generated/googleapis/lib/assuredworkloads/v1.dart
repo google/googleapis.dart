@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -30,7 +31,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -707,6 +707,9 @@ class GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest {
   /// organizations/{organization_id}/policies/{constraint_name}
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? nonCompliantOrgPolicy;
 
   GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest({
@@ -1417,6 +1420,9 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In
   /// order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT
   /// or KEYRING in ResourceSettings.resource_type field.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleCloudAssuredworkloadsV1WorkloadKMSSettings? kmsSettings;
 
   /// Labels applied to the workload.
@@ -1784,6 +1790,9 @@ class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions {
   core.bool? dataLogsViewer;
 
   /// Allow partner to monitor folder and remediate violations
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? remediateFolderViolations;
 
   GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions({

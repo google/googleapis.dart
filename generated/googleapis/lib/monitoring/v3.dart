@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -46,7 +47,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -8870,6 +8870,9 @@ class NotificationChannelDescriptor {
 
   /// The tiers that support this notification channel; the project service tier
   /// must be one of the supported_tiers.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? supportedTiers;
 
   /// The type of notification channel, such as "email" and "sms".
@@ -10459,6 +10462,9 @@ class UptimeCheckConfig {
   /// If is_internal is true and this list is empty, the check will egress from
   /// all the InternalCheckers configured for the project that owns this
   /// UptimeCheckConfig.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<InternalChecker>? internalCheckers;
 
   /// If this is true, then checks are made only from the 'internal_checkers'.
@@ -10466,6 +10472,9 @@ class UptimeCheckConfig {
   /// If it is false, then checks are made only from the 'selected_regions'. It
   /// is an error to provide 'selected_regions' when is_internal is true, or to
   /// provide 'internal_checkers' when is_internal is false.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? isInternal;
 
   /// The monitored resource (https://cloud.google.com/monitoring/api/resources)

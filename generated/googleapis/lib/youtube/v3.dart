@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -59,7 +60,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -6184,6 +6184,9 @@ class ActivityListResponse {
   core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? eventId;
   core.List<Activity>? items;
 
@@ -6202,9 +6205,15 @@ class ActivityListResponse {
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the previous page in the result set.
   core.String? prevPageToken;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? visitorId;
 
   ActivityListResponse({
@@ -6419,6 +6428,9 @@ class CaptionListResponse {
   core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? eventId;
 
   /// A list of captions that match the request criteria.
@@ -6430,6 +6442,9 @@ class CaptionListResponse {
   core.String? kind;
 
   /// The visitorId identifies the visitor.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? visitorId;
 
   CaptionListResponse({
@@ -6631,6 +6646,9 @@ class CaptionSnippet {
 /// Brief description of the live stream cdn settings.
 class CdnSettings {
   /// The format of the video stream that you are sending to Youtube.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? format;
 
   /// The frame rate of the inbound video data.
@@ -6721,6 +6739,9 @@ class Channel {
 
   /// The conversionPings object encapsulates information about conversion pings
   /// that need to be respected by the channel.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   ChannelConversionPings? conversionPings;
 
   /// Etag of this resource.
@@ -6921,12 +6942,18 @@ class ChannelBrandingSettings {
   ChannelSettings? channel;
 
   /// Additional experimental branding properties.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<PropertyValue>? hints;
 
   /// Branding properties for branding images.
   ImageSettings? image;
 
   /// Branding properties for the watch page.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   WatchSettings? watch;
 
   ChannelBrandingSettings({
@@ -6971,6 +6998,9 @@ class ChannelContentDetailsRelatedPlaylists {
   ///
   /// Use the playlistItems.insert and playlistItems.delete to add or remove
   /// items from that list.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? favorites;
 
   /// The ID of the playlist that contains the channel"s liked videos.
@@ -6989,12 +7019,18 @@ class ChannelContentDetailsRelatedPlaylists {
   ///
   /// Use the playlistItems.insert and playlistItems.delete to add or remove
   /// items from that list.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? watchHistory;
 
   /// The ID of the playlist that contains the channel"s watch later playlist.
   ///
   /// Use the playlistItems.insert and playlistItems.delete to add or remove
   /// items from that list.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? watchLater;
 
   ChannelContentDetailsRelatedPlaylists({
@@ -7161,6 +7197,9 @@ class ChannelListResponse {
   core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? eventId;
   core.List<Channel>? items;
 
@@ -7179,9 +7218,15 @@ class ChannelListResponse {
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the previous page in the result set.
   core.String? prevPageToken;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? visitorId;
 
   ChannelListResponse({
@@ -7330,6 +7375,9 @@ class ChannelSection {
   core.String? kind;
 
   /// Localizations for different languages
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.Map<core.String, ChannelSectionLocalization>? localizations;
 
   /// The snippet object contains basic details about the channel section, such
@@ -7338,6 +7386,9 @@ class ChannelSection {
 
   /// The targeting object contains basic targeting settings about the channel
   /// section.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   ChannelSectionTargeting? targeting;
 
   ChannelSection({
@@ -7430,6 +7481,9 @@ class ChannelSectionListResponse {
   core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? eventId;
 
   /// A list of ChannelSections that match the request criteria.
@@ -7441,6 +7495,9 @@ class ChannelSectionListResponse {
   core.String? kind;
 
   /// The visitorId identifies the visitor.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? visitorId;
 
   ChannelSectionListResponse({
@@ -7481,6 +7538,9 @@ class ChannelSectionListResponse {
 /// ChannelSection localization setting
 class ChannelSectionLocalization {
   /// The localized strings for channel section's title.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? title;
 
   ChannelSectionLocalization({
@@ -7505,9 +7565,15 @@ class ChannelSectionSnippet {
   core.String? channelId;
 
   /// The language of the channel section's default title and description.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? defaultLanguage;
 
   /// Localized title, read-only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   ChannelSectionLocalization? localized;
 
   /// The position of the channel section in the channel.
@@ -7518,6 +7584,9 @@ class ChannelSectionSnippet {
   /// - "channelsectionStyleUnspecified"
   /// - "horizontalRow"
   /// - "verticalList"
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? style;
 
   /// The channel section's title for multiple_playlists and multiple_channels.
@@ -7590,12 +7659,21 @@ class ChannelSectionSnippet {
 /// ChannelSection targeting setting.
 class ChannelSectionTargeting {
   /// The country the channel section is targeting.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? countries;
 
   /// The language the channel section is targeting.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? languages;
 
   /// The region the channel section is targeting.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? regions;
 
   ChannelSectionTargeting({
@@ -7637,15 +7715,24 @@ class ChannelSettings {
   core.String? defaultLanguage;
 
   /// Which content tab users should see when viewing the channel.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? defaultTab;
 
   /// Specifies the channel description.
   core.String? description;
 
   /// Title for the featured channels tab.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? featuredChannelsTitle;
 
   /// The list of featured channels.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? featuredChannelsUrls;
 
   /// Lists keywords associated with the channel, comma-separated.
@@ -7656,12 +7743,21 @@ class ChannelSettings {
   core.bool? moderateComments;
 
   /// A prominent color that can be rendered on this channel page.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? profileColor;
 
   /// Whether the tab to browse the videos should be displayed.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? showBrowseView;
 
   /// Whether related channels should be proposed.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? showRelatedChannels;
 
   /// Specifies the channel title.
@@ -8019,6 +8115,9 @@ class ChannelTopicDetails {
   ///
   /// You can retrieve information about each topic using the Freebase Topic
   /// API.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? topicIds;
 
   ChannelTopicDetails({
@@ -8093,6 +8192,9 @@ class CommentListResponse {
   core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? eventId;
 
   /// A list of comments that match the request criteria.
@@ -8109,9 +8211,15 @@ class CommentListResponse {
 
   /// General pagination information.
   PageInfo? pageInfo;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? visitorId;
 
   CommentListResponse({
@@ -8391,6 +8499,9 @@ class CommentThreadListResponse {
   core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? eventId;
 
   /// A list of comment threads that match the request criteria.
@@ -8407,9 +8518,15 @@ class CommentThreadListResponse {
 
   /// General pagination information.
   PageInfo? pageInfo;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? visitorId;
 
   CommentThreadListResponse({
@@ -8940,6 +9057,9 @@ class ContentRating {
   /// - "fmoc18" : 18
   /// - "fmocE" : E
   /// - "fmocUnrated"
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? fmocRating;
 
   /// The video's rating from South Africa's Film and Publication Board.
@@ -10145,6 +10265,9 @@ class I18nRegionListResponse {
   core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? eventId;
 
   /// A list of regions where YouTube is available.
@@ -10159,6 +10282,9 @@ class I18nRegionListResponse {
   core.String? kind;
 
   /// The visitorId identifies the visitor.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? visitorId;
 
   I18nRegionListResponse({
@@ -10227,6 +10353,9 @@ class ImageSettings {
   /// The URL for the background image shown on the video watch page.
   ///
   /// The image should be 1200px by 615px, with a maximum file size of 128k.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   LocalizedProperty? backgroundImageUrl;
 
   /// This is generated when a ChannelBanner.Insert request has succeeded for
@@ -10236,81 +10365,132 @@ class ImageSettings {
   /// Banner image.
   ///
   /// Desktop size (1060x175).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? bannerImageUrl;
 
   /// Banner image.
   ///
   /// Mobile size high resolution (1440x395).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? bannerMobileExtraHdImageUrl;
 
   /// Banner image.
   ///
   /// Mobile size high resolution (1280x360).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? bannerMobileHdImageUrl;
 
   /// Banner image.
   ///
   /// Mobile size (640x175).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? bannerMobileImageUrl;
 
   /// Banner image.
   ///
   /// Mobile size low resolution (320x88).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? bannerMobileLowImageUrl;
 
   /// Banner image.
   ///
   /// Mobile size medium/high resolution (960x263).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? bannerMobileMediumHdImageUrl;
 
   /// Banner image.
   ///
   /// Tablet size extra high resolution (2560x424).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? bannerTabletExtraHdImageUrl;
 
   /// Banner image.
   ///
   /// Tablet size high resolution (2276x377).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? bannerTabletHdImageUrl;
 
   /// Banner image.
   ///
   /// Tablet size (1707x283).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? bannerTabletImageUrl;
 
   /// Banner image.
   ///
   /// Tablet size low resolution (1138x188).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? bannerTabletLowImageUrl;
 
   /// Banner image.
   ///
   /// TV size high resolution (1920x1080).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? bannerTvHighImageUrl;
 
   /// Banner image.
   ///
   /// TV size extra high resolution (2120x1192).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? bannerTvImageUrl;
 
   /// Banner image.
   ///
   /// TV size low resolution (854x480).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? bannerTvLowImageUrl;
 
   /// Banner image.
   ///
   /// TV size medium resolution (1280x720).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? bannerTvMediumImageUrl;
 
   /// The image map script for the large banner image.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   LocalizedProperty? largeBrandedBannerImageImapScript;
 
   /// The URL for the 854px by 70px image that appears below the video player in
   /// the expanded video view of the video watch page.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   LocalizedProperty? largeBrandedBannerImageUrl;
 
   /// The image map script for the small banner image.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   LocalizedProperty? smallBrandedBannerImageImapScript;
 
   /// The URL for the 640px by 70px banner image that appears below the video
@@ -10319,11 +10499,20 @@ class ImageSettings {
   /// The URL for the image that appears above the top-left corner of the video
   /// player. This is a 25-pixel-high image with a flexible width that cannot
   /// exceed 170 pixels.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   LocalizedProperty? smallBrandedBannerImageUrl;
 
   /// The URL for a 1px by 1px tracking pixel that can be used to collect
   /// statistics for views of the channel or video pages.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? trackingImageUrl;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? watchIconImageUrl;
 
   ImageSettings({
@@ -10841,6 +11030,9 @@ class LiveBroadcastContentDetails {
   /// liveStreams API. This is mutually exclusive with using the
   /// closed_captions_type property, and is equivalent to setting
   /// closed_captions_type to CLOSED_CAPTIONS_HTTP_POST.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? enableClosedCaptions;
 
   /// This setting indicates whether YouTube should enable content encryption
@@ -10865,6 +11057,9 @@ class LiveBroadcastContentDetails {
   core.bool? enableEmbed;
 
   /// Indicates whether this broadcast has low latency enabled.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? enableLowLatency;
 
   /// If both this and enable_low_latency are set, they must match.
@@ -11046,6 +11241,9 @@ class LiveBroadcastListResponse {
   core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? eventId;
 
   /// A list of broadcasts that match the request criteria.
@@ -11066,9 +11264,15 @@ class LiveBroadcastListResponse {
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the previous page in the result set.
   core.String? prevPageToken;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? visitorId;
 
   LiveBroadcastListResponse({
@@ -11804,6 +12008,9 @@ class LiveChatMessageListResponse {
   core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? eventId;
   core.List<LiveChatMessage>? items;
 
@@ -11821,9 +12028,15 @@ class LiveChatMessageListResponse {
 
   /// The amount of time the client should wait before polling again.
   core.int? pollingIntervalMillis;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? visitorId;
 
   LiveChatMessageListResponse({
@@ -11935,6 +12148,9 @@ class LiveChatMessageSnippet {
 
   /// Details about the funding event, this is only set if the type is
   /// 'fanFundingEvent'.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   LiveChatFanFundingEventDetails? fanFundingEventDetails;
 
   /// Details about the Gift Membership Received event, this is only set if the
@@ -12174,6 +12390,9 @@ class LiveChatModeratorListResponse {
   core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? eventId;
 
   /// A list of moderators that match the request criteria.
@@ -12194,9 +12413,15 @@ class LiveChatModeratorListResponse {
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the previous page in the result set.
   core.String? prevPageToken;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? visitorId;
 
   LiveChatModeratorListResponse({
@@ -12742,6 +12967,9 @@ class LiveStreamListResponse {
   core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? eventId;
 
   /// A list of live streams that match the request criteria.
@@ -12760,9 +12988,15 @@ class LiveStreamListResponse {
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the previous page in the result set.
   core.String? prevPageToken;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? visitorId;
 
   LiveStreamListResponse({
@@ -13018,6 +13252,9 @@ class MemberListResponse {
   core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? eventId;
 
   /// A list of members that match the request criteria.
@@ -13032,9 +13269,15 @@ class MemberListResponse {
   /// retrieve the next page in the result set.
   core.String? nextPageToken;
   PageInfo? pageInfo;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? visitorId;
 
   MemberListResponse({
@@ -13321,6 +13564,9 @@ class MembershipsLevelListResponse {
   core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? eventId;
 
   /// A list of pricing levels offered by a creator to the fans.
@@ -13332,6 +13578,9 @@ class MembershipsLevelListResponse {
   core.String? kind;
 
   /// The visitorId identifies the visitor.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? visitorId;
 
   MembershipsLevelListResponse({
@@ -13686,6 +13935,9 @@ class PlaylistItemContentDetails {
   /// (The playlist owner can specify the times when the video should start and
   /// stop playing when the video is played in the context of the playlist.) By
   /// default, assume that the video.endTime is the end of the video.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? endAt;
 
   /// A user-generated note for this item.
@@ -13697,6 +13949,9 @@ class PlaylistItemContentDetails {
   /// (The playlist owner can specify the times when the video should start and
   /// stop playing when the video is played in the context of the playlist.) The
   /// default value is 0.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? startAt;
 
   /// The ID that YouTube uses to uniquely identify a video.
@@ -13976,6 +14231,9 @@ class PlaylistListResponse {
   core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? eventId;
 
   /// A list of playlists that match the request criteria
@@ -13996,9 +14254,15 @@ class PlaylistListResponse {
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the previous page in the result set.
   core.String? prevPageToken;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? visitorId;
 
   PlaylistListResponse({
@@ -14128,6 +14392,9 @@ class PlaylistSnippet {
   core.DateTime? publishedAt;
 
   /// Keyword tags associated with the playlist.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? tags;
 
   /// Note: if the playlist has a custom thumbnail, this field will not be
@@ -14705,6 +14972,9 @@ class SubscriptionListResponse {
   core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? eventId;
 
   /// A list of subscriptions that match the request criteria.
@@ -14723,9 +14993,15 @@ class SubscriptionListResponse {
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the previous page in the result set.
   core.String? prevPageToken;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? visitorId;
 
   SubscriptionListResponse({
@@ -14956,6 +15232,9 @@ class SuperChatEventListResponse {
   core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? eventId;
 
   /// A list of Super Chat purchases that match the request criteria.
@@ -14970,9 +15249,15 @@ class SuperChatEventListResponse {
   /// retrieve the next page in the result set.
   core.String? nextPageToken;
   PageInfo? pageInfo;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? visitorId;
 
   SuperChatEventListResponse({
@@ -15458,6 +15743,9 @@ class ThumbnailSetResponse {
   core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? eventId;
 
   /// A list of thumbnails.
@@ -15469,6 +15757,9 @@ class ThumbnailSetResponse {
   core.String? kind;
 
   /// The visitorId identifies the visitor.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? visitorId;
 
   ThumbnailSetResponse({
@@ -15581,6 +15872,9 @@ class Video {
   /// https://developers.google.com/resources/api-libraries/documentation/youtube/v3/csharp/latest/classGoogle_1_1Apis_1_1YouTube_1_1v3_1_1Data_1_1VideoProjectDetails.html
   /// \[2\]
   /// http://google3/video/youtube/src/python/servers/data_api/common.py?l=1565-1569&rcl=344141677
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   VideoProjectDetails? projectDetails;
 
   /// The recordingDetails object encapsulates information about the location,
@@ -15835,6 +16129,9 @@ class VideoAbuseReportReasonListResponse {
   core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? eventId;
 
   /// A list of valid abuse reasons that are used with `video.ReportAbuse`.
@@ -15846,6 +16143,9 @@ class VideoAbuseReportReasonListResponse {
   core.String? kind;
 
   /// The `visitorId` identifies the visitor.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? visitorId;
 
   VideoAbuseReportReasonListResponse({
@@ -16038,6 +16338,9 @@ class VideoCategoryListResponse {
   core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? eventId;
 
   /// A list of video categories that can be associated with YouTube videos.
@@ -16061,9 +16364,15 @@ class VideoCategoryListResponse {
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the previous page in the result set.
   core.String? prevPageToken;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? visitorId;
 
   VideoCategoryListResponse({
@@ -16217,6 +16526,9 @@ class VideoContentDetails {
   /// The object will contain either the
   /// contentDetails.regionRestriction.allowed property or the
   /// contentDetails.regionRestriction.blocked property.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   VideoContentDetailsRegionRestriction? regionRestriction;
 
   VideoContentDetails({
@@ -16588,6 +16900,9 @@ class VideoGetRatingResponse {
   core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? eventId;
 
   /// A list of ratings that match the request criteria.
@@ -16599,6 +16914,9 @@ class VideoGetRatingResponse {
   core.String? kind;
 
   /// The visitorId identifies the visitor.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? visitorId;
 
   VideoGetRatingResponse({
@@ -16641,6 +16959,9 @@ class VideoListResponse {
   core.String? etag;
 
   /// Serialized EventId of the request which produced this response.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? eventId;
   core.List<Video>? items;
 
@@ -16659,9 +16980,15 @@ class VideoListResponse {
   /// The token that can be used as the value of the pageToken parameter to
   /// retrieve the previous page in the result set.
   core.String? prevPageToken;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   TokenPagination? tokenPagination;
 
   /// The visitorId identifies the visitor.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? visitorId;
 
   VideoListResponse({
@@ -17308,6 +17635,9 @@ class VideoStatistics {
 
   /// The number of users who currently have the video marked as a favorite
   /// video.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? favoriteCount;
 
   /// The number of users who have indicated that they liked the video by giving

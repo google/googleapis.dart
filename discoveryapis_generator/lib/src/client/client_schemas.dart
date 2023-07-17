@@ -175,8 +175,13 @@ DartSchemaTypeDB parseSchemas(
                   classScope.newIdentifier('${jsonPName}AsBytes');
             }
             final property = DartClassProperty(
-                propertyName, comment, propertyType, jsonPName,
-                byteArrayAccessor: byteArrayAccessor);
+              propertyName,
+              comment,
+              propertyType,
+              jsonPName,
+              byteArrayAccessor: byteArrayAccessor,
+              deprecated: value.deprecated ?? false,
+            );
             properties.add(property);
           });
         }

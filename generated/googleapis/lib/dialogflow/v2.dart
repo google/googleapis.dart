@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -88,7 +89,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -12824,6 +12824,9 @@ class GoogleCloudDialogflowV2Agent {
   /// - "MATCH_MODE_ML_ONLY" : Can be used for agents with a large number of
   /// examples in intents, especially the ones using @sys.any or very large
   /// custom entities.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? matchMode;
 
   /// The project of this agent.
@@ -16078,6 +16081,9 @@ class GoogleCloudDialogflowV2FulfillmentGenericWebService {
   /// configured by its uri as a regular web service now.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? isCloudFunction;
 
   /// The password for HTTP Basic authentication.
@@ -17367,6 +17373,9 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   /// \[speech_contexts\]() instead. If you specify both \[phrase_hints\]() and
   /// \[speech_contexts\](), Dialogflow will treat the \[phrase_hints\]() as a
   /// single additional \[SpeechContext\]().
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? phraseHints;
 
   /// Sample rate (in Hertz) of the audio content sent in the query.

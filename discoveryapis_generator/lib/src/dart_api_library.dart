@@ -16,6 +16,7 @@ const ignoreForFileSet = {
   'camel_case_types',
   // Can remove when https://github.com/dart-lang/linter/issues/2442 is fixed!
   'comment_references',
+  'deprecated_member_use_from_same_package',
   'lines_longer_than_80_chars',
   'non_constant_identifier_names',
   'prefer_interpolation_to_compose_strings',
@@ -50,6 +51,9 @@ class DartApiImports {
 
   String get coreJsonMap =>
       '${core.ref()}Map<${core.ref()}String, ${core.ref()}dynamic>';
+
+  String get deprecatedMsg => "@${core.ref()}Deprecated('Not supported. "
+      "Member documentation may have more information.',)";
 }
 
 const exportedMediaClasses = {
@@ -130,10 +134,7 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as ${imports
       yield '';
 
       yield* [
-        if (generatedDuplicateLibraries())
-          """
-// ignore: deprecated_member_use_from_same_package
-import '../$sharedLibraryName';""",
+        if (generatedDuplicateLibraries()) "import '../$sharedLibraryName';",
         "import '../$userAgentDartFilePath';",
       ];
     }

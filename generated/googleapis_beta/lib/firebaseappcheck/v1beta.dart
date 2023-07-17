@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -41,7 +42,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -767,6 +767,9 @@ class ProjectsAppsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleFirebaseAppcheckV1betaAppCheckToken>
       exchangeRecaptchaToken(
     GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest request,
@@ -867,6 +870,9 @@ class ProjectsAppsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleFirebaseAppcheckV1betaAppCheckToken>
       exchangeSafetyNetToken(
     GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest request,
@@ -1699,6 +1705,9 @@ class ProjectsAppsPlayIntegrityConfigResource {
   }
 }
 
+@core.Deprecated(
+  'Not supported. Member documentation may have more information.',
+)
 class ProjectsAppsRecaptchaConfigResource {
   final commons.ApiRequester _requester;
 
@@ -1735,6 +1744,9 @@ class ProjectsAppsRecaptchaConfigResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse>
       batchGet(
     core.String parent, {
@@ -1781,6 +1793,9 @@ class ProjectsAppsRecaptchaConfigResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleFirebaseAppcheckV1betaRecaptchaConfig> get(
     core.String name, {
     core.String? $fields,
@@ -1828,6 +1843,9 @@ class ProjectsAppsRecaptchaConfigResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleFirebaseAppcheckV1betaRecaptchaConfig> patch(
     GoogleFirebaseAppcheckV1betaRecaptchaConfig request,
     core.String name, {
@@ -2160,6 +2178,9 @@ class ProjectsAppsRecaptchaV3ConfigResource {
   }
 }
 
+@core.Deprecated(
+  'Not supported. Member documentation may have more information.',
+)
 class ProjectsAppsSafetyNetConfigResource {
   final commons.ApiRequester _requester;
 
@@ -2193,6 +2214,9 @@ class ProjectsAppsSafetyNetConfigResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse>
       batchGet(
     core.String parent, {
@@ -2236,6 +2260,9 @@ class ProjectsAppsSafetyNetConfigResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleFirebaseAppcheckV1betaSafetyNetConfig> get(
     core.String name, {
     core.String? $fields,
@@ -2282,6 +2309,9 @@ class ProjectsAppsSafetyNetConfigResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleFirebaseAppcheckV1betaSafetyNetConfig> patch(
     GoogleFirebaseAppcheckV1betaSafetyNetConfig request,
     core.String name, {
@@ -2564,6 +2594,9 @@ class GoogleFirebaseAppcheckV1betaAppCheckToken {
   /// App Check tokens are signed [JWTs](https://tools.ietf.org/html/rfc7519)
   /// containing claims that identify the attested app and Firebase project.
   /// This token is used to access Firebase services protected by App Check.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? attestationToken;
 
   /// An App Check token.
@@ -3188,6 +3221,9 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse {
   }
 
   /// Encapsulates an App Check token.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleFirebaseAppcheckV1betaAttestationTokenResponse? attestationToken;
 
   GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse({

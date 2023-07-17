@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -32,7 +33,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -898,11 +898,17 @@ class AndroidRoboTest {
   ///
   /// Needs to be at least 2 to make Robo explore the app beyond the first
   /// activity. Default is 50.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? maxDepth;
 
   /// The max number of steps Robo can execute.
   ///
   /// Default is no limit.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? maxSteps;
 
   /// A set of directives Robo should apply during the crawl.
@@ -2852,6 +2858,9 @@ class ProvidedSoftwareCatalog {
   /// A string representing the current version of Android Test Orchestrator
   /// that is used in the environment. The package is available at
   /// https://maven.google.com/web/index.html#com.android.support.test:orchestrator.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? orchestratorVersion;
 
   ProvidedSoftwareCatalog({
@@ -3313,6 +3322,9 @@ class SystraceSetup {
   /// Systrace duration in seconds.
   ///
   /// Should be between 1 and 30 seconds. 0 disables systrace.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? durationSeconds;
 
   SystraceSetup({
@@ -3896,6 +3908,9 @@ class TestSetup {
   /// Deprecated: Systrace used Python 2 which was sunsetted on 2020-01-01.
   /// Systrace is no longer supported in the Cloud Testing API, and no Systrace
   /// file will be provided in the results.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   SystraceSetup? systrace;
 
   TestSetup({

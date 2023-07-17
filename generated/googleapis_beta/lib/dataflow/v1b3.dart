@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -44,7 +45,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -2755,12 +2755,21 @@ class ProjectsTemplatesResource {
 /// ApproximateSplitRequest.
 class ApproximateProgress {
   /// Obsolete.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.double? percentComplete;
 
   /// Obsolete.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Position? position;
 
   /// Obsolete.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? remainingTime;
 
   ApproximateProgress({
@@ -6360,6 +6369,9 @@ class KeyRangeLocation {
   /// directory in the worker local filesystem.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? deprecatedPersistentDirectory;
 
   /// The end (exclusive) of the key range.
@@ -9698,6 +9710,9 @@ class SourceSplitOptions {
   core.String? desiredBundleSizeBytes;
 
   /// DEPRECATED in favor of desired_bundle_size_bytes.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? desiredShardSizeBytes;
 
   SourceSplitOptions({
@@ -9790,6 +9805,9 @@ class SourceSplitResponse {
   core.String? outcome;
 
   /// DEPRECATED in favor of bundles.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<SourceSplitShard>? shards;
 
   SourceSplitResponse({
@@ -11563,9 +11581,15 @@ class WorkItemServiceState {
   ApproximateSplitRequest? splitRequest;
 
   /// DEPRECATED in favor of split_request.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   ApproximateProgress? suggestedStopPoint;
 
   /// Obsolete, always empty.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Position? suggestedStopPosition;
 
   WorkItemServiceState({
@@ -11659,9 +11683,15 @@ class WorkItemStatus {
   core.List<Status>? errors;
 
   /// DEPRECATED in favor of counter_updates.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<MetricUpdate>? metricUpdates;
 
   /// DEPRECATED in favor of reported_progress.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   ApproximateProgress? progress;
 
   /// The report index.
@@ -11684,6 +11714,9 @@ class WorkItemStatus {
   core.String? requestedLeaseDuration;
 
   /// DEPRECATED in favor of dynamic_source_split.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   SourceFork? sourceFork;
 
   /// If the work item represented a SourceOperationRequest, and the work is

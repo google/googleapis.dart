@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -31,7 +32,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -7360,6 +7360,9 @@ class SustainabilityCertifications {
   /// - "LEED_SILVER" : LEED Silver.
   /// - "LEED_GOLD" : LEED Gold.
   /// - "LEED_PLATINUM" : LEED Platinum.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? leedCertification;
 
   /// LEED certification exception.
@@ -7374,6 +7377,9 @@ class SustainabilityCertifications {
   /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
   /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
   /// the day of the week.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? leedCertificationException;
 
   SustainabilityCertifications({

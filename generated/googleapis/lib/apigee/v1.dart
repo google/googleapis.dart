@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -117,7 +118,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -19288,6 +19288,9 @@ class GoogleCloudApigeeV1DimensionMetric {
   ///
   /// E.g. "dim1_name,dim2_name". Deprecated. If name already has comma before
   /// join, we may get wrong splits. Please use individual_names.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? name;
 
   GoogleCloudApigeeV1DimensionMetric({
@@ -20809,6 +20812,9 @@ class GoogleCloudApigeeV1Instance {
   /// - "SLASH_20" : `/20` CIDR range.
   /// - "SLASH_22" : `/22` CIDR range. Supported for evaluation only.
   /// - "SLASH_23" : `/23` CIDR range. Supported for evaluation only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? peeringCidrRange;
 
   /// Port number of the exposed Apigee endpoint.
@@ -22890,6 +22896,9 @@ class GoogleCloudApigeeV1Organization {
   /// [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
   ///
   /// Required.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? analyticsRegion;
 
   /// Cloud KMS key name used for encrypting API consumer data.
@@ -23081,6 +23090,9 @@ class GoogleCloudApigeeV1Organization {
   /// - "PAID" : Full subscription to Apigee has been purchased.
   /// - "TRIAL" : Subscription to Apigee is free, limited, and used for
   /// evaluation purposes only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? subscriptionType;
 
   /// Not used by Apigee.
@@ -23264,6 +23276,9 @@ class GoogleCloudApigeeV1OrganizationProjectMapping {
   /// DEPRECATED: Use `project_id`.
   ///
   /// An Apigee Organization is mapped to a single project.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? projectIds;
 
   GoogleCloudApigeeV1OrganizationProjectMapping({
@@ -24281,6 +24296,9 @@ class GoogleCloudApigeeV1RatePlan {
   /// account balance. **Note**: Not supported by Apigee at this time.
   /// - "POSTPAID" : Postpaid billing account type. Developer is billed through
   /// an invoice after using your API products.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? paymentFundingModel;
 
   /// Details of the revenue sharing model.

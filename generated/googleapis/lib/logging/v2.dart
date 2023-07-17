@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -79,7 +80,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -11704,6 +11704,9 @@ class ListLogEntriesRequest {
   /// log entries. Example: "my-project-1A".
   ///
   /// Optional. Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? projectIds;
 
   /// Names of one or more parent resources from which to retrieve log entries:
@@ -12249,6 +12252,9 @@ class LogEntry {
   /// Any value written to it is cleared.
   ///
   /// Output only. Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   MonitoredResourceMetadata? metadata;
 
   /// Information about an operation associated with the log entry, if
@@ -12829,6 +12835,9 @@ class LogMetric {
   /// Possible string values are:
   /// - "V2" : Logging API v2.
   /// - "V1" : Logging API v1.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? version;
 
   LogMetric({
@@ -13005,6 +13014,9 @@ class LogSink {
   /// default to V2.
   /// - "V2" : LogEntry version 2 format.
   /// - "V1" : LogEntry version 1 format.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? outputVersionFormat;
 
   /// The last update timestamp of the sink.This field may not be present for

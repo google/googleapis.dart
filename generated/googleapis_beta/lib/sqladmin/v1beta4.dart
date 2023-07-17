@@ -2,6 +2,7 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_interpolation_to_compose_strings
@@ -38,7 +39,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -3774,6 +3774,9 @@ class DatabaseInstance {
   /// Monitoring API instead. Please see
   /// [this announcement](https://groups.google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/BtvFtdFeAgAJ)
   /// for details.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? currentDiskSize;
 
   /// Stores the current database version running on the instance including
@@ -3887,6 +3890,9 @@ class DatabaseInstance {
   ///
   /// (Deprecated) This property was applicable only to First Generation
   /// instances.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? ipv6Address;
 
   /// This is always `sql#instance`.
@@ -3900,6 +3906,9 @@ class DatabaseInstance {
   core.String? masterInstanceName;
 
   /// The maximum disk size of the instance in bytes.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? maxDiskSize;
 
   /// Name of the Cloud SQL instance.
@@ -4528,6 +4537,9 @@ class ExportContextBakExportOptions {
   /// Deprecated: copy_only is deprecated.
   ///
   /// Use differential_base instead
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? copyOnly;
 
   /// Whether or not the backup can be used as a differential base copy_only
@@ -5885,6 +5897,9 @@ class LocationPreference {
   /// Cloud SQL instance.
   ///
   /// WARNING: Changing this might restart the instance.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? followGaeApplication;
 
   /// This is always `sql#locationPreference`.
@@ -6832,6 +6847,9 @@ class Settings {
   /// The App Engine app IDs that can access this instance.
   ///
   /// (Deprecated) Applied to First Generation instances only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? authorizedGaeApplications;
 
   /// Availability type.
@@ -6876,6 +6894,9 @@ class Settings {
   ///
   /// Indicates whether database flags for crash-safe replication are enabled.
   /// This property was only applicable to First Generation instances.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? crashSafeReplicationEnabled;
 
   /// Configuration for data cache.
@@ -6974,6 +6995,9 @@ class Settings {
   /// instances. It provides a slight performance gain, but if an outage occurs
   /// while this option is set to asynchronous, you can lose up to a few seconds
   /// of updates to your data.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? replicationType;
 
   /// The version of instance settings.
@@ -7642,6 +7666,9 @@ class SqlOutOfDiskReport {
 
 /// Any scheduled maintenance for this instance.
 class SqlScheduledMaintenance {
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? canDefer;
 
   /// If the scheduled maintenance can be rescheduled.
@@ -8376,6 +8403,9 @@ class UsersListResponse {
   core.String? kind;
 
   /// Unused.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? nextPageToken;
 
   UsersListResponse({
