@@ -615,6 +615,7 @@ api.ContentRestriction buildContentRestriction() {
   final o = api.ContentRestriction();
   buildCounterContentRestriction++;
   if (buildCounterContentRestriction < 3) {
+    o.ownerRestricted = true;
     o.readOnly = true;
     o.reason = 'foo';
     o.restrictingUser = buildUser();
@@ -628,6 +629,7 @@ api.ContentRestriction buildContentRestriction() {
 void checkContentRestriction(api.ContentRestriction o) {
   buildCounterContentRestriction++;
   if (buildCounterContentRestriction < 3) {
+    unittest.expect(o.ownerRestricted!, unittest.isTrue);
     unittest.expect(o.readOnly!, unittest.isTrue);
     unittest.expect(
       o.reason!,
@@ -914,7 +916,9 @@ api.FileCapabilities buildFileCapabilities() {
     o.canListChildren = true;
     o.canModifyContent = true;
     o.canModifyContentRestriction = true;
+    o.canModifyEditorContentRestriction = true;
     o.canModifyLabels = true;
+    o.canModifyOwnerContentRestriction = true;
     o.canMoveChildrenOutOfDrive = true;
     o.canMoveChildrenOutOfTeamDrive = true;
     o.canMoveChildrenWithinDrive = true;
@@ -930,6 +934,7 @@ api.FileCapabilities buildFileCapabilities() {
     o.canReadRevisions = true;
     o.canReadTeamDrive = true;
     o.canRemoveChildren = true;
+    o.canRemoveContentRestriction = true;
     o.canRemoveMyDriveParent = true;
     o.canRename = true;
     o.canShare = true;
@@ -960,7 +965,9 @@ void checkFileCapabilities(api.FileCapabilities o) {
     unittest.expect(o.canListChildren!, unittest.isTrue);
     unittest.expect(o.canModifyContent!, unittest.isTrue);
     unittest.expect(o.canModifyContentRestriction!, unittest.isTrue);
+    unittest.expect(o.canModifyEditorContentRestriction!, unittest.isTrue);
     unittest.expect(o.canModifyLabels!, unittest.isTrue);
+    unittest.expect(o.canModifyOwnerContentRestriction!, unittest.isTrue);
     unittest.expect(o.canMoveChildrenOutOfDrive!, unittest.isTrue);
     unittest.expect(o.canMoveChildrenOutOfTeamDrive!, unittest.isTrue);
     unittest.expect(o.canMoveChildrenWithinDrive!, unittest.isTrue);
@@ -976,6 +983,7 @@ void checkFileCapabilities(api.FileCapabilities o) {
     unittest.expect(o.canReadRevisions!, unittest.isTrue);
     unittest.expect(o.canReadTeamDrive!, unittest.isTrue);
     unittest.expect(o.canRemoveChildren!, unittest.isTrue);
+    unittest.expect(o.canRemoveContentRestriction!, unittest.isTrue);
     unittest.expect(o.canRemoveMyDriveParent!, unittest.isTrue);
     unittest.expect(o.canRename!, unittest.isTrue);
     unittest.expect(o.canShare!, unittest.isTrue);

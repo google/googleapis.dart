@@ -3469,6 +3469,9 @@ class PullRequest {
   /// not set this field.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? returnImmediately;
 
   PullRequest({

@@ -837,6 +837,7 @@ api.BuildOptions buildBuildOptions() {
   final o = api.BuildOptions();
   buildCounterBuildOptions++;
   if (buildCounterBuildOptions < 3) {
+    o.automapSubstitutions = true;
     o.defaultLogsBucketBehavior = 'foo';
     o.diskSizeGb = 'foo';
     o.dynamicSubstitutions = true;
@@ -859,6 +860,7 @@ api.BuildOptions buildBuildOptions() {
 void checkBuildOptions(api.BuildOptions o) {
   buildCounterBuildOptions++;
   if (buildCounterBuildOptions < 3) {
+    unittest.expect(o.automapSubstitutions!, unittest.isTrue);
     unittest.expect(
       o.defaultLogsBucketBehavior!,
       unittest.equals('foo'),
@@ -1005,6 +1007,7 @@ api.BuildStep buildBuildStep() {
     o.allowExitCodes = buildUnnamed19();
     o.allowFailure = true;
     o.args = buildUnnamed20();
+    o.automapSubstitutions = true;
     o.dir = 'foo';
     o.entrypoint = 'foo';
     o.env = buildUnnamed21();
@@ -1030,6 +1033,7 @@ void checkBuildStep(api.BuildStep o) {
     checkUnnamed19(o.allowExitCodes!);
     unittest.expect(o.allowFailure!, unittest.isTrue);
     checkUnnamed20(o.args!);
+    unittest.expect(o.automapSubstitutions!, unittest.isTrue);
     unittest.expect(
       o.dir!,
       unittest.equals('foo'),

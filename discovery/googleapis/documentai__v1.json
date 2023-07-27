@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230706",
+    "revision": "20230727",
     "rootUrl": "https://documentai.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Document AI API",
@@ -1053,7 +1053,7 @@
             "properties": {
                 "commonMetadata": {
                     "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata",
-                    "description": "The basic metadata of the long running operation."
+                    "description": "The basic metadata of the long-running operation."
                 },
                 "individualAutoLabelStatuses": {
                     "description": "The list of individual auto-labeling statuses of the dataset documents.",
@@ -1096,7 +1096,7 @@
             "properties": {
                 "commonMetadata": {
                     "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata",
-                    "description": "The basic metadata of the long running operation."
+                    "description": "The basic metadata of the long-running operation."
                 },
                 "errorDocumentCount": {
                     "description": "Total number of documents that failed to be deleted in storage.",
@@ -1144,7 +1144,7 @@
             "properties": {
                 "commonMetadata": {
                     "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata",
-                    "description": "The basic metadata of the long running operation."
+                    "description": "The basic metadata of the long-running operation."
                 },
                 "destDatasetType": {
                     "deprecated": true,
@@ -1156,7 +1156,7 @@
                         "DATASET_SPLIT_UNASSIGNED"
                     ],
                     "enumDescriptions": [
-                        "Default value if the enum is not set. go/protodosdonts#do-include-an-unspecified-value-in-an-enum",
+                        "Default value if the enum is not set.",
                         "Identifies the train documents.",
                         "Identifies the test documents.",
                         "Identifies the unassigned documents."
@@ -1172,7 +1172,7 @@
                         "DATASET_SPLIT_UNASSIGNED"
                     ],
                     "enumDescriptions": [
-                        "Default value if the enum is not set. go/protodosdonts#do-include-an-unspecified-value-in-an-enum",
+                        "Default value if the enum is not set.",
                         "Identifies the train documents.",
                         "Identifies the test documents.",
                         "Identifies the unassigned documents."
@@ -1424,7 +1424,7 @@
             "properties": {
                 "commonMetadata": {
                     "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata",
-                    "description": "The basic metadata of the long running operation."
+                    "description": "The basic metadata of the long-running operation."
                 },
                 "individualExportStatuses": {
                     "description": "The list of response details of each document.",
@@ -1475,7 +1475,7 @@
                         "DATASET_SPLIT_UNASSIGNED"
                     ],
                     "enumDescriptions": [
-                        "Default value if the enum is not set. go/protodosdonts#do-include-an-unspecified-value-in-an-enum",
+                        "Default value if the enum is not set.",
                         "Identifies the train documents.",
                         "Identifies the test documents.",
                         "Identifies the unassigned documents."
@@ -1524,7 +1524,7 @@
             "properties": {
                 "commonMetadata": {
                     "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata",
-                    "description": "The basic metadata of the long running operation."
+                    "description": "The basic metadata of the long-running operation."
                 },
                 "importConfigValidationResults": {
                     "description": "Validation statuses of the batch documents import config.",
@@ -1549,7 +1549,7 @@
             "type": "object"
         },
         "GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult": {
-            "description": "The validation status of each import config. Status is set to errors if there is no documents to import in the import_config, or OK if the operation will try to proceed at least one document.",
+            "description": "The validation status of each import config. Status is set to an error if there are no documents to import in the `import_config`, or `OK` if the operation will try to proceed with at least one document.",
             "id": "GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult",
             "properties": {
                 "inputGcsSource": {
@@ -1620,7 +1620,7 @@
             "properties": {
                 "commonMetadata": {
                     "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata",
-                    "description": "The basic metadata of the long running operation."
+                    "description": "The basic metadata of the long-running operation."
                 },
                 "datasetResyncStatuses": {
                     "description": "The list of dataset resync statuses. Not checked when `dataset_documents` is specified in ResyncRequest.",
@@ -1716,7 +1716,7 @@
                         "BASE_OCR_REVISION"
                     ],
                     "enumDescriptions": [
-                        "Unspecified case, fallback to read the LATEST_HUMAN_REVIEW.",
+                        "Unspecified case, fall back to read the `LATEST_HUMAN_REVIEW`.",
                         "The latest revision made by a human.",
                         "The latest revision based on timestamp.",
                         "The first (OCR) revision."
@@ -1736,7 +1736,7 @@
             "properties": {
                 "commonMetadata": {
                     "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata",
-                    "description": "The basic metadata of the long running operation."
+                    "description": "The basic metadata of the long-running operation."
                 }
             },
             "type": "object"
@@ -1873,7 +1873,7 @@
             "properties": {
                 "commonMetadata": {
                     "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata",
-                    "description": "The basic metadata of the long running operation."
+                    "description": "The basic metadata of the long-running operation."
                 }
             },
             "type": "object"
@@ -4113,6 +4113,14 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "processorVersionAliases": {
+                    "description": "Output only. The processor version aliases.",
+                    "items": {
+                        "$ref": "GoogleCloudDocumentaiV1ProcessorVersionAlias"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
                 "state": {
                     "description": "Output only. The state of the processor.",
                     "enum": [
@@ -4239,7 +4247,8 @@
                     "description": "The schema of the processor version. Describes the output."
                 },
                 "googleManaged": {
-                    "description": "Denotes that this `ProcessorVersion` is managed by Google.",
+                    "description": "Output only. Denotes that this `ProcessorVersion` is managed by Google.",
+                    "readOnly": true,
                     "type": "boolean"
                 },
                 "kmsKeyName": {
@@ -4287,6 +4296,21 @@
             },
             "type": "object"
         },
+        "GoogleCloudDocumentaiV1ProcessorVersionAlias": {
+            "description": "Contains the alias and the aliased resource name of processor version.",
+            "id": "GoogleCloudDocumentaiV1ProcessorVersionAlias",
+            "properties": {
+                "alias": {
+                    "description": "The alias in the form of `processor_version` resource name.",
+                    "type": "string"
+                },
+                "processorVersion": {
+                    "description": "The resource name of aliased processor version.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo": {
             "description": "Information about the upcoming deprecation of this processor version.",
             "id": "GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo",
@@ -4310,6 +4334,10 @@
                 "content": {
                     "description": "Inline document content.",
                     "format": "byte",
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "The display name of the document, it supports all Unicode characters except the following: `*`, `?`, `[`, `]`, `%`, `{`, `}`,`'`, `\\\"`, `,` `~`, `=` and `:` are reserved. If not specified, a default ID will be generated.",
                     "type": "string"
                 },
                 "mimeType": {
@@ -7371,7 +7399,7 @@
             "properties": {
                 "commonMetadata": {
                     "$ref": "GoogleCloudDocumentaiV1beta3CommonOperationMetadata",
-                    "description": "The basic metadata of the long running operation."
+                    "description": "The basic metadata of the long-running operation."
                 },
                 "errorDocumentCount": {
                     "description": "Total number of documents that failed to be deleted in storage.",
@@ -7817,7 +7845,7 @@
             "properties": {
                 "commonMetadata": {
                     "$ref": "GoogleCloudDocumentaiV1beta3CommonOperationMetadata",
-                    "description": "The basic metadata of the long running operation."
+                    "description": "The basic metadata of the long-running operation."
                 },
                 "importConfigValidationResults": {
                     "description": "Validation statuses of the batch documents import config.",
@@ -7842,7 +7870,7 @@
             "type": "object"
         },
         "GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataImportConfigValidationResult": {
-            "description": "The validation status of each import config. Status is set to errors if there is no documents to import in the import_config, or OK if the operation will try to proceed at least one document.",
+            "description": "The validation status of each import config. Status is set to an error if there are no documents to import in the `import_config`, or `OK` if the operation will try to proceed with at least one document.",
             "id": "GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataImportConfigValidationResult",
             "properties": {
                 "inputGcsSource": {
@@ -7998,7 +8026,7 @@
                         "BASE_OCR_REVISION"
                     ],
                     "enumDescriptions": [
-                        "Unspecified case, fallback to read the LATEST_HUMAN_REVIEW.",
+                        "Unspecified case, fall back to read the `LATEST_HUMAN_REVIEW`.",
                         "The latest revision made by a human.",
                         "The latest revision based on timestamp.",
                         "The first (OCR) revision."
@@ -8112,7 +8140,7 @@
             "properties": {
                 "commonMetadata": {
                     "$ref": "GoogleCloudDocumentaiV1beta3CommonOperationMetadata",
-                    "description": "The basic metadata of the long running operation."
+                    "description": "The basic metadata of the long-running operation."
                 }
             },
             "type": "object"

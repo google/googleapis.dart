@@ -648,36 +648,7 @@ class BuildDefinition {
       };
 }
 
-class BuildMetadata {
-  core.String? finishedOn;
-  core.String? invocationId;
-  core.String? startedOn;
-
-  BuildMetadata({
-    this.finishedOn,
-    this.invocationId,
-    this.startedOn,
-  });
-
-  BuildMetadata.fromJson(core.Map json_)
-      : this(
-          finishedOn: json_.containsKey('finishedOn')
-              ? json_['finishedOn'] as core.String
-              : null,
-          invocationId: json_.containsKey('invocationId')
-              ? json_['invocationId'] as core.String
-              : null,
-          startedOn: json_.containsKey('startedOn')
-              ? json_['startedOn'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (finishedOn != null) 'finishedOn': finishedOn!,
-        if (invocationId != null) 'invocationId': invocationId!,
-        if (startedOn != null) 'startedOn': startedOn!,
-      };
-}
+typedef BuildMetadata = $BuildMetadata;
 
 /// Details of a build occurrence.
 class BuildOccurrence {
@@ -2673,72 +2644,7 @@ class RepoId {
       };
 }
 
-class ResourceDescriptor {
-  ///
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? annotations;
-  core.String? content;
-  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
-
-  set contentAsBytes(core.List<core.int> bytes_) {
-    content =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  core.Map<core.String, core.String>? digest;
-  core.String? downloadLocation;
-  core.String? mediaType;
-  core.String? name;
-  core.String? uri;
-
-  ResourceDescriptor({
-    this.annotations,
-    this.content,
-    this.digest,
-    this.downloadLocation,
-    this.mediaType,
-    this.name,
-    this.uri,
-  });
-
-  ResourceDescriptor.fromJson(core.Map json_)
-      : this(
-          annotations: json_.containsKey('annotations')
-              ? json_['annotations'] as core.Map<core.String, core.dynamic>
-              : null,
-          content: json_.containsKey('content')
-              ? json_['content'] as core.String
-              : null,
-          digest: json_.containsKey('digest')
-              ? (json_['digest'] as core.Map<core.String, core.dynamic>).map(
-                  (key, value) => core.MapEntry(
-                    key,
-                    value as core.String,
-                  ),
-                )
-              : null,
-          downloadLocation: json_.containsKey('downloadLocation')
-              ? json_['downloadLocation'] as core.String
-              : null,
-          mediaType: json_.containsKey('mediaType')
-              ? json_['mediaType'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (content != null) 'content': content!,
-        if (digest != null) 'digest': digest!,
-        if (downloadLocation != null) 'downloadLocation': downloadLocation!,
-        if (mediaType != null) 'mediaType': mediaType!,
-        if (name != null) 'name': name!,
-        if (uri != null) 'uri': uri!,
-      };
-}
+typedef ResourceDescriptor = $ResourceDescriptor;
 
 class RunDetails {
   ProvenanceBuilder? builder;
@@ -3340,6 +3246,11 @@ typedef Version = $Version;
 class VexAssessment {
   /// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE)
   /// tracking number for the vulnerability.
+  ///
+  /// Deprecated: Use vulnerability_id instead to denote CVEs.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? cve;
 
   /// Contains information about the impact of this vulnerability, this will
@@ -3375,6 +3286,11 @@ class VexAssessment {
   /// investigation.
   core.String? state;
 
+  /// The vulnerability identifier for this Assessment.
+  ///
+  /// Will hold one of common identifiers e.g. CVE, GHSA etc.
+  core.String? vulnerabilityId;
+
   VexAssessment({
     this.cve,
     this.impacts,
@@ -3383,6 +3299,7 @@ class VexAssessment {
     this.relatedUris,
     this.remediations,
     this.state,
+    this.vulnerabilityId,
   });
 
   VexAssessment.fromJson(core.Map json_)
@@ -3414,6 +3331,9 @@ class VexAssessment {
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          vulnerabilityId: json_.containsKey('vulnerabilityId')
+              ? json_['vulnerabilityId'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3424,6 +3344,7 @@ class VexAssessment {
         if (relatedUris != null) 'relatedUris': relatedUris!,
         if (remediations != null) 'remediations': remediations!,
         if (state != null) 'state': state!,
+        if (vulnerabilityId != null) 'vulnerabilityId': vulnerabilityId!,
       };
 }
 

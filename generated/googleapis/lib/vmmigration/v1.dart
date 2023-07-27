@@ -3479,6 +3479,11 @@ typedef CancelOperationRequest = $Empty;
 /// it will never touch the instance it created. It will only delete it in case
 /// of the CloneJob being cancelled or upon failure to clone.
 class CloneJob {
+  /// Details of the target Persistent Disks in Compute Engine.
+  ///
+  /// Output only.
+  ComputeEngineDisksTargetDetails? computeEngineDisksTargetDetails;
+
   /// Details of the target VM in Compute Engine.
   ///
   /// Output only.
@@ -3532,6 +3537,7 @@ class CloneJob {
   core.List<CloneStep>? steps;
 
   CloneJob({
+    this.computeEngineDisksTargetDetails,
     this.computeEngineTargetDetails,
     this.createTime,
     this.endTime,
@@ -3544,6 +3550,12 @@ class CloneJob {
 
   CloneJob.fromJson(core.Map json_)
       : this(
+          computeEngineDisksTargetDetails:
+              json_.containsKey('computeEngineDisksTargetDetails')
+                  ? ComputeEngineDisksTargetDetails.fromJson(
+                      json_['computeEngineDisksTargetDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           computeEngineTargetDetails:
               json_.containsKey('computeEngineTargetDetails')
                   ? ComputeEngineTargetDetails.fromJson(
@@ -3575,6 +3587,8 @@ class CloneJob {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (computeEngineDisksTargetDetails != null)
+          'computeEngineDisksTargetDetails': computeEngineDisksTargetDetails!,
         if (computeEngineTargetDetails != null)
           'computeEngineTargetDetails': computeEngineTargetDetails!,
         if (createTime != null) 'createTime': createTime!,
@@ -3645,6 +3659,71 @@ class CloneStep {
       };
 }
 
+/// ComputeEngineDisksTargetDefaults is a collection of details for creating
+/// Persistent Disks in a target Compute Engine project.
+class ComputeEngineDisksTargetDefaults {
+  /// The details of each Persistent Disk to create.
+  core.List<PersistentDiskDefaults>? disks;
+
+  /// The full path of the resource of type TargetProject which represents the
+  /// Compute Engine project in which to create the Persistent Disks.
+  core.String? targetProject;
+
+  /// The zone in which to create the Persistent Disks.
+  core.String? zone;
+
+  ComputeEngineDisksTargetDefaults({
+    this.disks,
+    this.targetProject,
+    this.zone,
+  });
+
+  ComputeEngineDisksTargetDefaults.fromJson(core.Map json_)
+      : this(
+          disks: json_.containsKey('disks')
+              ? (json_['disks'] as core.List)
+                  .map((value) => PersistentDiskDefaults.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          targetProject: json_.containsKey('targetProject')
+              ? json_['targetProject'] as core.String
+              : null,
+          zone: json_.containsKey('zone') ? json_['zone'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (disks != null) 'disks': disks!,
+        if (targetProject != null) 'targetProject': targetProject!,
+        if (zone != null) 'zone': zone!,
+      };
+}
+
+/// ComputeEngineDisksTargetDetails is a collection of created Persistent Disks
+/// details.
+class ComputeEngineDisksTargetDetails {
+  /// The details of each created Persistent Disk.
+  core.List<PersistentDisk>? disks;
+
+  ComputeEngineDisksTargetDetails({
+    this.disks,
+  });
+
+  ComputeEngineDisksTargetDetails.fromJson(core.Map json_)
+      : this(
+          disks: json_.containsKey('disks')
+              ? (json_['disks'] as core.List)
+                  .map((value) => PersistentDisk.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (disks != null) 'disks': disks!,
+      };
+}
+
 /// ComputeEngineTargetDefaults is a collection of details for creating a VM in
 /// a target Compute Engine project.
 class ComputeEngineTargetDefaults {
@@ -3656,7 +3735,7 @@ class ComputeEngineTargetDefaults {
   /// Output only.
   AppliedLicense? appliedLicense;
 
-  /// The VM Boot Option, as set in the source vm.
+  /// The VM Boot Option, as set in the source VM.
   ///
   /// Output only.
   /// Possible string values are:
@@ -3706,12 +3785,12 @@ class ComputeEngineTargetDefaults {
   /// List of NICs connected to this VM.
   core.List<NetworkInterface>? networkInterfaces;
 
-  /// A map of network tags to associate with the VM.
+  /// A list of network tags to associate with the VM.
   core.List<core.String>? networkTags;
 
   /// Defines whether the instance has Secure Boot enabled.
   ///
-  /// This can be set to true only if the vm boot option is EFI.
+  /// This can be set to true only if the VM boot option is EFI.
   core.bool? secureBoot;
 
   /// The service account to associate the VM with.
@@ -3855,7 +3934,7 @@ class ComputeEngineTargetDetails {
   /// The OS license returned from the adaptation module report.
   AppliedLicense? appliedLicense;
 
-  /// The VM Boot Option, as set in the source vm.
+  /// The VM Boot Option, as set in the source VM.
   /// Possible string values are:
   /// - "COMPUTE_ENGINE_BOOT_OPTION_UNSPECIFIED" : The boot option is unknown.
   /// - "COMPUTE_ENGINE_BOOT_OPTION_EFI" : The boot option is EFI.
@@ -3903,7 +3982,7 @@ class ComputeEngineTargetDetails {
   /// List of NICs connected to this VM.
   core.List<NetworkInterface>? networkInterfaces;
 
-  /// A map of network tags to associate with the VM.
+  /// A list of network tags to associate with the VM.
   core.List<core.String>? networkTags;
 
   /// The Google Cloud target project ID or project name.
@@ -3911,7 +3990,7 @@ class ComputeEngineTargetDetails {
 
   /// Defines whether the instance has Secure Boot enabled.
   ///
-  /// This can be set to true only if the vm boot option is EFI.
+  /// This can be set to true only if the VM boot option is EFI.
   core.bool? secureBoot;
 
   /// The service account to associate the VM with.
@@ -4145,6 +4224,11 @@ class CutoverForecast {
 /// The CutoverJob is the operation of shutting down the VM, creating a snapshot
 /// and clonning the VM using the replicated snapshot.
 class CutoverJob {
+  /// Details of the target Persistent Disks in Compute Engine.
+  ///
+  /// Output only.
+  ComputeEngineDisksTargetDetails? computeEngineDisksTargetDetails;
+
   /// Details of the target VM in Compute Engine.
   ///
   /// Output only.
@@ -4208,6 +4292,7 @@ class CutoverJob {
   core.List<CutoverStep>? steps;
 
   CutoverJob({
+    this.computeEngineDisksTargetDetails,
     this.computeEngineTargetDetails,
     this.createTime,
     this.endTime,
@@ -4222,6 +4307,12 @@ class CutoverJob {
 
   CutoverJob.fromJson(core.Map json_)
       : this(
+          computeEngineDisksTargetDetails:
+              json_.containsKey('computeEngineDisksTargetDetails')
+                  ? ComputeEngineDisksTargetDetails.fromJson(
+                      json_['computeEngineDisksTargetDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           computeEngineTargetDetails:
               json_.containsKey('computeEngineTargetDetails')
                   ? ComputeEngineTargetDetails.fromJson(
@@ -4259,6 +4350,8 @@ class CutoverJob {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (computeEngineDisksTargetDetails != null)
+          'computeEngineDisksTargetDetails': computeEngineDisksTargetDetails!,
         if (computeEngineTargetDetails != null)
           'computeEngineTargetDetails': computeEngineTargetDetails!,
         if (createTime != null) 'createTime': createTime!,
@@ -4673,6 +4766,18 @@ class Group {
   /// Display name is a user defined name for this group which can be updated.
   core.String? displayName;
 
+  /// The target type of this group.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "MIGRATION_TARGET_TYPE_UNSPECIFIED" : Group type is not specified. This
+  /// defaults to Compute Engine targets.
+  /// - "MIGRATION_TARGET_TYPE_GCE" : All MigratingVMs in the group must have
+  /// Compute Engine targets.
+  /// - "MIGRATION_TARGET_TYPE_DISKS" : All MigratingVMs in the group must have
+  /// Compute Engine Disks targets.
+  core.String? migrationTargetType;
+
   /// The Group name.
   ///
   /// Output only.
@@ -4687,6 +4792,7 @@ class Group {
     this.createTime,
     this.description,
     this.displayName,
+    this.migrationTargetType,
     this.name,
     this.updateTime,
   });
@@ -4702,6 +4808,9 @@ class Group {
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
+          migrationTargetType: json_.containsKey('migrationTargetType')
+              ? json_['migrationTargetType'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
@@ -4712,6 +4821,8 @@ class Group {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
+        if (migrationTargetType != null)
+          'migrationTargetType': migrationTargetType!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -5257,6 +5368,9 @@ class MigratingVm {
   /// Output only.
   AwsSourceVmDetails? awsSourceVmDetails;
 
+  /// Details of the target Persistent Disks in Compute Engine.
+  ComputeEngineDisksTargetDefaults? computeEngineDisksTargetDefaults;
+
   /// Details of the target VM in Compute Engine.
   ComputeEngineTargetDefaults? computeEngineTargetDefaults;
 
@@ -5388,6 +5502,7 @@ class MigratingVm {
 
   MigratingVm({
     this.awsSourceVmDetails,
+    this.computeEngineDisksTargetDefaults,
     this.computeEngineTargetDefaults,
     this.createTime,
     this.currentSyncInfo,
@@ -5415,6 +5530,12 @@ class MigratingVm {
               ? AwsSourceVmDetails.fromJson(json_['awsSourceVmDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          computeEngineDisksTargetDefaults:
+              json_.containsKey('computeEngineDisksTargetDefaults')
+                  ? ComputeEngineDisksTargetDefaults.fromJson(
+                      json_['computeEngineDisksTargetDefaults']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           computeEngineTargetDefaults:
               json_.containsKey('computeEngineTargetDefaults')
                   ? ComputeEngineTargetDefaults.fromJson(
@@ -5493,6 +5614,8 @@ class MigratingVm {
   core.Map<core.String, core.dynamic> toJson() => {
         if (awsSourceVmDetails != null)
           'awsSourceVmDetails': awsSourceVmDetails!,
+        if (computeEngineDisksTargetDefaults != null)
+          'computeEngineDisksTargetDefaults': computeEngineDisksTargetDefaults!,
         if (computeEngineTargetDefaults != null)
           'computeEngineTargetDefaults': computeEngineTargetDefaults!,
         if (createTime != null) 'createTime': createTime!,
@@ -5706,6 +5829,98 @@ class Operation {
 
 /// Request message for 'PauseMigration' request.
 typedef PauseMigrationRequest = $Empty;
+
+/// Details of a created Persistent Disk.
+class PersistentDisk {
+  /// The URI of the Persistent Disk.
+  core.String? diskUri;
+
+  /// The ordinal number of the source VM disk.
+  core.int? sourceDiskNumber;
+
+  PersistentDisk({
+    this.diskUri,
+    this.sourceDiskNumber,
+  });
+
+  PersistentDisk.fromJson(core.Map json_)
+      : this(
+          diskUri: json_.containsKey('diskUri')
+              ? json_['diskUri'] as core.String
+              : null,
+          sourceDiskNumber: json_.containsKey('sourceDiskNumber')
+              ? json_['sourceDiskNumber'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (diskUri != null) 'diskUri': diskUri!,
+        if (sourceDiskNumber != null) 'sourceDiskNumber': sourceDiskNumber!,
+      };
+}
+
+/// Details for creation of a Persistent Disk.
+class PersistentDiskDefaults {
+  /// A map of labels to associate with the Persistent Disk.
+  core.Map<core.String, core.String>? additionalLabels;
+
+  /// The name of the Persistent Disk to create.
+  ///
+  /// Optional.
+  core.String? diskName;
+
+  /// The disk type to use.
+  /// Possible string values are:
+  /// - "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED" : An unspecified disk type. Will
+  /// be used as STANDARD.
+  /// - "COMPUTE_ENGINE_DISK_TYPE_STANDARD" : A Standard disk type.
+  /// - "COMPUTE_ENGINE_DISK_TYPE_SSD" : SSD hard disk type.
+  /// - "COMPUTE_ENGINE_DISK_TYPE_BALANCED" : An alternative to SSD persistent
+  /// disks that balance performance and cost.
+  core.String? diskType;
+
+  /// The ordinal number of the source VM disk.
+  ///
+  /// Required.
+  core.int? sourceDiskNumber;
+
+  PersistentDiskDefaults({
+    this.additionalLabels,
+    this.diskName,
+    this.diskType,
+    this.sourceDiskNumber,
+  });
+
+  PersistentDiskDefaults.fromJson(core.Map json_)
+      : this(
+          additionalLabels: json_.containsKey('additionalLabels')
+              ? (json_['additionalLabels']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          diskName: json_.containsKey('diskName')
+              ? json_['diskName'] as core.String
+              : null,
+          diskType: json_.containsKey('diskType')
+              ? json_['diskType'] as core.String
+              : null,
+          sourceDiskNumber: json_.containsKey('sourceDiskNumber')
+              ? json_['sourceDiskNumber'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalLabels != null) 'additionalLabels': additionalLabels!,
+        if (diskName != null) 'diskName': diskName!,
+        if (diskType != null) 'diskType': diskType!,
+        if (sourceDiskNumber != null) 'sourceDiskNumber': sourceDiskNumber!,
+      };
+}
 
 /// PostProcessingStep contains specific step details.
 typedef PostProcessingStep = $Empty;

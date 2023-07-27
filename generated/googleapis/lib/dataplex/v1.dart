@@ -8025,6 +8025,12 @@ class GoogleCloudDataplexV1DataAttributeBindingPath {
 ///
 /// Each field of the table will have field type specific profile result.
 class GoogleCloudDataplexV1DataProfileResult {
+  /// The result of post scan actions.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataProfileResultPostScanActionsResult?
+      postScanActionsResult;
+
   /// The profile information per field.
   GoogleCloudDataplexV1DataProfileResultProfile? profile;
 
@@ -8035,6 +8041,7 @@ class GoogleCloudDataplexV1DataProfileResult {
   GoogleCloudDataplexV1ScannedData? scannedData;
 
   GoogleCloudDataplexV1DataProfileResult({
+    this.postScanActionsResult,
     this.profile,
     this.rowCount,
     this.scannedData,
@@ -8042,6 +8049,11 @@ class GoogleCloudDataplexV1DataProfileResult {
 
   GoogleCloudDataplexV1DataProfileResult.fromJson(core.Map json_)
       : this(
+          postScanActionsResult: json_.containsKey('postScanActionsResult')
+              ? GoogleCloudDataplexV1DataProfileResultPostScanActionsResult
+                  .fromJson(json_['postScanActionsResult']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           profile: json_.containsKey('profile')
               ? GoogleCloudDataplexV1DataProfileResultProfile.fromJson(
                   json_['profile'] as core.Map<core.String, core.dynamic>)
@@ -8056,11 +8068,45 @@ class GoogleCloudDataplexV1DataProfileResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (postScanActionsResult != null)
+          'postScanActionsResult': postScanActionsResult!,
         if (profile != null) 'profile': profile!,
         if (rowCount != null) 'rowCount': rowCount!,
         if (scannedData != null) 'scannedData': scannedData!,
       };
 }
+
+/// The result of post scan actions of DataProfileScan job.
+class GoogleCloudDataplexV1DataProfileResultPostScanActionsResult {
+  /// The result of BigQuery export post scan action.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult?
+      bigqueryExportResult;
+
+  GoogleCloudDataplexV1DataProfileResultPostScanActionsResult({
+    this.bigqueryExportResult,
+  });
+
+  GoogleCloudDataplexV1DataProfileResultPostScanActionsResult.fromJson(
+      core.Map json_)
+      : this(
+          bigqueryExportResult: json_.containsKey('bigqueryExportResult')
+              ? GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult
+                  .fromJson(json_['bigqueryExportResult']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bigqueryExportResult != null)
+          'bigqueryExportResult': bigqueryExportResult!,
+      };
+}
+
+/// The result of BigQuery export post scan action.
+typedef GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult
+    = $ResultPostScanActionsResultBigQueryExportResult;
 
 /// Contains name, type, mode and field type specific profile information.
 class GoogleCloudDataplexV1DataProfileResultProfile {
@@ -8459,6 +8505,11 @@ class GoogleCloudDataplexV1DataProfileSpec {
   /// Optional.
   GoogleCloudDataplexV1DataProfileSpecSelectedFields? includeFields;
 
+  /// Actions to take upon job completion..
+  ///
+  /// Optional.
+  GoogleCloudDataplexV1DataProfileSpecPostScanActions? postScanActions;
+
   /// A filter applied to all rows in a single DataScan job.
   ///
   /// The filter needs to be a valid SQL expression for a WHERE clause in
@@ -8480,6 +8531,7 @@ class GoogleCloudDataplexV1DataProfileSpec {
   GoogleCloudDataplexV1DataProfileSpec({
     this.excludeFields,
     this.includeFields,
+    this.postScanActions,
     this.rowFilter,
     this.samplingPercent,
   });
@@ -8494,6 +8546,11 @@ class GoogleCloudDataplexV1DataProfileSpec {
               ? GoogleCloudDataplexV1DataProfileSpecSelectedFields.fromJson(
                   json_['includeFields'] as core.Map<core.String, core.dynamic>)
               : null,
+          postScanActions: json_.containsKey('postScanActions')
+              ? GoogleCloudDataplexV1DataProfileSpecPostScanActions.fromJson(
+                  json_['postScanActions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           rowFilter: json_.containsKey('rowFilter')
               ? json_['rowFilter'] as core.String
               : null,
@@ -8505,8 +8562,61 @@ class GoogleCloudDataplexV1DataProfileSpec {
   core.Map<core.String, core.dynamic> toJson() => {
         if (excludeFields != null) 'excludeFields': excludeFields!,
         if (includeFields != null) 'includeFields': includeFields!,
+        if (postScanActions != null) 'postScanActions': postScanActions!,
         if (rowFilter != null) 'rowFilter': rowFilter!,
         if (samplingPercent != null) 'samplingPercent': samplingPercent!,
+      };
+}
+
+/// The configuration of post scan actions of DataProfileScan job.
+class GoogleCloudDataplexV1DataProfileSpecPostScanActions {
+  /// If set, results will be exported to the provided BigQuery table.
+  ///
+  /// Optional.
+  GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport?
+      bigqueryExport;
+
+  GoogleCloudDataplexV1DataProfileSpecPostScanActions({
+    this.bigqueryExport,
+  });
+
+  GoogleCloudDataplexV1DataProfileSpecPostScanActions.fromJson(core.Map json_)
+      : this(
+          bigqueryExport: json_.containsKey('bigqueryExport')
+              ? GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport
+                  .fromJson(json_['bigqueryExport']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bigqueryExport != null) 'bigqueryExport': bigqueryExport!,
+      };
+}
+
+/// The configuration of BigQuery export post scan action.
+class GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport {
+  /// The BigQuery table to export DataProfileScan results to.
+  ///
+  /// Format: projects/{project}/datasets/{dataset}/tables/{table}
+  ///
+  /// Optional.
+  core.String? resultsTable;
+
+  GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport({
+    this.resultsTable,
+  });
+
+  GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport.fromJson(
+      core.Map json_)
+      : this(
+          resultsTable: json_.containsKey('resultsTable')
+              ? json_['resultsTable'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resultsTable != null) 'resultsTable': resultsTable!,
       };
 }
 
@@ -8568,6 +8678,12 @@ class GoogleCloudDataplexV1DataQualityResult {
   /// Overall data quality result -- true if all rules passed.
   core.bool? passed;
 
+  /// The result of post scan actions.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataQualityResultPostScanActionsResult?
+      postScanActionsResult;
+
   /// The count of rows processed.
   core.String? rowCount;
 
@@ -8580,6 +8696,7 @@ class GoogleCloudDataplexV1DataQualityResult {
   GoogleCloudDataplexV1DataQualityResult({
     this.dimensions,
     this.passed,
+    this.postScanActionsResult,
     this.rowCount,
     this.rules,
     this.scannedData,
@@ -8596,6 +8713,11 @@ class GoogleCloudDataplexV1DataQualityResult {
               : null,
           passed:
               json_.containsKey('passed') ? json_['passed'] as core.bool : null,
+          postScanActionsResult: json_.containsKey('postScanActionsResult')
+              ? GoogleCloudDataplexV1DataQualityResultPostScanActionsResult
+                  .fromJson(json_['postScanActionsResult']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           rowCount: json_.containsKey('rowCount')
               ? json_['rowCount'] as core.String
               : null,
@@ -8615,11 +8737,45 @@ class GoogleCloudDataplexV1DataQualityResult {
   core.Map<core.String, core.dynamic> toJson() => {
         if (dimensions != null) 'dimensions': dimensions!,
         if (passed != null) 'passed': passed!,
+        if (postScanActionsResult != null)
+          'postScanActionsResult': postScanActionsResult!,
         if (rowCount != null) 'rowCount': rowCount!,
         if (rules != null) 'rules': rules!,
         if (scannedData != null) 'scannedData': scannedData!,
       };
 }
+
+/// The result of post scan actions of DataQualityScan job.
+class GoogleCloudDataplexV1DataQualityResultPostScanActionsResult {
+  /// The result of BigQuery export post scan action.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult?
+      bigqueryExportResult;
+
+  GoogleCloudDataplexV1DataQualityResultPostScanActionsResult({
+    this.bigqueryExportResult,
+  });
+
+  GoogleCloudDataplexV1DataQualityResultPostScanActionsResult.fromJson(
+      core.Map json_)
+      : this(
+          bigqueryExportResult: json_.containsKey('bigqueryExportResult')
+              ? GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult
+                  .fromJson(json_['bigqueryExportResult']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bigqueryExportResult != null)
+          'bigqueryExportResult': bigqueryExportResult!,
+      };
+}
+
+/// The result of BigQuery export post scan action.
+typedef GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult
+    = $ResultPostScanActionsResultBigQueryExportResult;
 
 /// A rule captures data quality intent about a data source.
 class GoogleCloudDataplexV1DataQualityRule {
@@ -8699,7 +8855,7 @@ class GoogleCloudDataplexV1DataQualityRule {
   /// Optional.
   core.double? threshold;
 
-  /// Aggregate rule which evaluates whether the column has duplicates.
+  /// Row-level rule which evaluates whether each column value is unique.
   GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation?
       uniquenessExpectation;
 
@@ -8874,6 +9030,8 @@ class GoogleCloudDataplexV1DataQualityRuleRangeExpectation {
 /// Evaluates whether each column value matches a specified regex.
 class GoogleCloudDataplexV1DataQualityRuleRegexExpectation {
   /// A regular expression the column value is expected to match.
+  ///
+  /// Optional.
   core.String? regex;
 
   GoogleCloudDataplexV1DataQualityRuleRegexExpectation({
@@ -8977,6 +9135,8 @@ typedef GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation
 /// Evaluates whether each column value is contained by a specified set.
 class GoogleCloudDataplexV1DataQualityRuleSetExpectation {
   /// Expected values for the column value.
+  ///
+  /// Optional.
   core.List<core.String>? values;
 
   GoogleCloudDataplexV1DataQualityRuleSetExpectation({
@@ -9002,13 +9162,19 @@ class GoogleCloudDataplexV1DataQualityRuleSetExpectation {
 class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation {
   /// The maximum column statistic value allowed for a row to pass this
   /// validation.At least one of min_value and max_value need to be provided.
+  ///
+  /// Optional.
   core.String? maxValue;
 
   /// The minimum column statistic value allowed for a row to pass this
   /// validation.At least one of min_value and max_value need to be provided.
+  ///
+  /// Optional.
   core.String? minValue;
 
   /// The aggregate metric to evaluate.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "STATISTIC_UNDEFINED" : Unspecified statistic type
   /// - "MEAN" : Evaluate the column mean
@@ -9021,6 +9187,8 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation {
   /// defined.
   ///
   /// Default = false.
+  ///
+  /// Optional.
   core.bool? strictMaxEnabled;
 
   /// Whether column statistic needs to be strictly greater than ('\>') the
@@ -9028,6 +9196,8 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation {
   /// defined.
   ///
   /// Default = false.
+  ///
+  /// Optional.
   core.bool? strictMinEnabled;
 
   GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation({
@@ -9078,6 +9248,11 @@ typedef GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation = $Empty;
 
 /// DataQualityScan related setting.
 class GoogleCloudDataplexV1DataQualitySpec {
+  /// Actions to take upon job completion.
+  ///
+  /// Optional.
+  GoogleCloudDataplexV1DataQualitySpecPostScanActions? postScanActions;
+
   /// A filter applied to all rows in a single DataScan job.
   ///
   /// The filter needs to be a valid SQL expression for a WHERE clause in
@@ -9089,6 +9264,8 @@ class GoogleCloudDataplexV1DataQualitySpec {
   /// The list of rules to evaluate against a data source.
   ///
   /// At least one rule is required.
+  ///
+  /// Required.
   core.List<GoogleCloudDataplexV1DataQualityRule>? rules;
 
   /// The percentage of the records to be selected from the dataset for
@@ -9102,6 +9279,7 @@ class GoogleCloudDataplexV1DataQualitySpec {
   core.double? samplingPercent;
 
   GoogleCloudDataplexV1DataQualitySpec({
+    this.postScanActions,
     this.rowFilter,
     this.rules,
     this.samplingPercent,
@@ -9109,6 +9287,11 @@ class GoogleCloudDataplexV1DataQualitySpec {
 
   GoogleCloudDataplexV1DataQualitySpec.fromJson(core.Map json_)
       : this(
+          postScanActions: json_.containsKey('postScanActions')
+              ? GoogleCloudDataplexV1DataQualitySpecPostScanActions.fromJson(
+                  json_['postScanActions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           rowFilter: json_.containsKey('rowFilter')
               ? json_['rowFilter'] as core.String
               : null,
@@ -9124,9 +9307,62 @@ class GoogleCloudDataplexV1DataQualitySpec {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (postScanActions != null) 'postScanActions': postScanActions!,
         if (rowFilter != null) 'rowFilter': rowFilter!,
         if (rules != null) 'rules': rules!,
         if (samplingPercent != null) 'samplingPercent': samplingPercent!,
+      };
+}
+
+/// The configuration of post scan actions of DataQualityScan.
+class GoogleCloudDataplexV1DataQualitySpecPostScanActions {
+  /// If set, results will be exported to the provided BigQuery table.
+  ///
+  /// Optional.
+  GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport?
+      bigqueryExport;
+
+  GoogleCloudDataplexV1DataQualitySpecPostScanActions({
+    this.bigqueryExport,
+  });
+
+  GoogleCloudDataplexV1DataQualitySpecPostScanActions.fromJson(core.Map json_)
+      : this(
+          bigqueryExport: json_.containsKey('bigqueryExport')
+              ? GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport
+                  .fromJson(json_['bigqueryExport']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bigqueryExport != null) 'bigqueryExport': bigqueryExport!,
+      };
+}
+
+/// The configuration of BigQuery export post scan action.
+class GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport {
+  /// The BigQuery table to export DataQualityScan results to.
+  ///
+  /// Format: projects/{project}/datasets/{dataset}/tables/{table}
+  ///
+  /// Optional.
+  core.String? resultsTable;
+
+  GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport({
+    this.resultsTable,
+  });
+
+  GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport.fromJson(
+      core.Map json_)
+      : this(
+          resultsTable: json_.containsKey('resultsTable')
+              ? json_['resultsTable'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resultsTable != null) 'resultsTable': resultsTable!,
       };
 }
 
@@ -9593,6 +9829,11 @@ class GoogleCloudDataplexV1DataTaxonomy {
   /// Output only.
   core.int? attributeCount;
 
+  /// The number of classes in the DataTaxonomy.
+  ///
+  /// Output only.
+  core.int? classCount;
+
   /// The time when the DataTaxonomy was created.
   ///
   /// Output only.
@@ -9639,6 +9880,7 @@ class GoogleCloudDataplexV1DataTaxonomy {
 
   GoogleCloudDataplexV1DataTaxonomy({
     this.attributeCount,
+    this.classCount,
     this.createTime,
     this.description,
     this.displayName,
@@ -9653,6 +9895,9 @@ class GoogleCloudDataplexV1DataTaxonomy {
       : this(
           attributeCount: json_.containsKey('attributeCount')
               ? json_['attributeCount'] as core.int
+              : null,
+          classCount: json_.containsKey('classCount')
+              ? json_['classCount'] as core.int
               : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
@@ -9681,6 +9926,7 @@ class GoogleCloudDataplexV1DataTaxonomy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (attributeCount != null) 'attributeCount': attributeCount!,
+        if (classCount != null) 'classCount': classCount!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,

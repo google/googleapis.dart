@@ -1359,8 +1359,10 @@ class ProjectsDatabasesDocumentsResource {
   /// [mask_fieldPaths] - The list of field paths in the mask. See
   /// Document.fields for a field path syntax reference.
   ///
-  /// [readTime] - Reads the version of the document at the given time. This may
-  /// not be older than 270 seconds.
+  /// [readTime] - Reads the version of the document at the given time. This
+  /// must be a microsecond precision timestamp within the past one hour, or if
+  /// Point-in-Time Recovery is enabled, can additionally be a whole minute
+  /// timestamp within the past 7 days.
   ///
   /// [transaction] - Reads the document in a transaction.
   ///
@@ -1431,8 +1433,10 @@ class ProjectsDatabasesDocumentsResource {
   /// When paginating, all other parameters (with the exception of `page_size`)
   /// must match the values set in the request that generated the page token.
   ///
-  /// [readTime] - Perform the read at the provided time. This may not be older
-  /// than 270 seconds.
+  /// [readTime] - Perform the read at the provided time. This must be a
+  /// microsecond precision timestamp within the past one hour, or if
+  /// Point-in-Time Recovery is enabled, can additionally be a whole minute
+  /// timestamp within the past 7 days.
   ///
   /// [showMissing] - If the list should show missing documents. A document is
   /// missing if it does not exist, but there are sub-documents nested
@@ -1566,8 +1570,10 @@ class ProjectsDatabasesDocumentsResource {
   /// When paginating, all other parameters (with the exception of `page_size`)
   /// must match the values set in the request that generated the page token.
   ///
-  /// [readTime] - Perform the read at the provided time. This may not be older
-  /// than 270 seconds.
+  /// [readTime] - Perform the read at the provided time. This must be a
+  /// microsecond precision timestamp within the past one hour, or if
+  /// Point-in-Time Recovery is enabled, can additionally be a whole minute
+  /// timestamp within the past 7 days.
   ///
   /// [showMissing] - If the list should show missing documents. A document is
   /// missing if it does not exist, but there are sub-documents nested
@@ -2349,27 +2355,45 @@ class Aggregation {
   /// Optional.
   core.String? alias;
 
+  /// Average aggregator.
+  Avg? avg;
+
   /// Count aggregator.
   Count? count;
 
+  /// Sum aggregator.
+  Sum? sum;
+
   Aggregation({
     this.alias,
+    this.avg,
     this.count,
+    this.sum,
   });
 
   Aggregation.fromJson(core.Map json_)
       : this(
           alias:
               json_.containsKey('alias') ? json_['alias'] as core.String : null,
+          avg: json_.containsKey('avg')
+              ? Avg.fromJson(
+                  json_['avg'] as core.Map<core.String, core.dynamic>)
+              : null,
           count: json_.containsKey('count')
               ? Count.fromJson(
                   json_['count'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sum: json_.containsKey('sum')
+              ? Sum.fromJson(
+                  json_['sum'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alias != null) 'alias': alias!,
+        if (avg != null) 'avg': avg!,
         if (count != null) 'count': count!,
+        if (sum != null) 'sum': sum!,
       };
 }
 
@@ -2433,6 +2457,33 @@ class ArrayValue {
       };
 }
 
+/// Average of the values of the requested field.
+///
+/// * Only numeric values will be aggregated. All non-numeric values including
+/// `NULL` are skipped. * If the aggregated values contain `NaN`, returns `NaN`.
+/// * If the aggregated value set is empty, returns `NULL`. * Always returns the
+/// result as a double.
+class Avg {
+  /// The field to aggregate on.
+  FieldReference? field;
+
+  Avg({
+    this.field,
+  });
+
+  Avg.fromJson(core.Map json_)
+      : this(
+          field: json_.containsKey('field')
+              ? FieldReference.fromJson(
+                  json_['field'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (field != null) 'field': field!,
+      };
+}
+
 /// The request for Firestore.BatchGetDocuments.
 class BatchGetDocumentsRequest {
   /// The names of the documents to retrieve.
@@ -2457,7 +2508,9 @@ class BatchGetDocumentsRequest {
 
   /// Reads documents as they were at the given time.
   ///
-  /// This may not be older than 270 seconds.
+  /// This must be a microsecond precision timestamp within the past one hour,
+  /// or if Point-in-Time Recovery is enabled, can additionally be a whole
+  /// minute timestamp within the past 7 days.
   core.String? readTime;
 
   /// Reads documents in a transaction.
@@ -3452,8 +3505,8 @@ class GoogleFirestoreAdminV1BackupSchedule {
   /// Output only.
   core.String? name;
 
-  /// At what relative time in the future, compared to the creation time of the
-  /// backup should the backup be deleted, i.e. keep backups for 7 days.
+  /// At what relative time in the future, compared to its creation time, the
+  /// backup should be deleted, e.g. keep backups for 7 days.
   core.String? retention;
 
   /// The timestamp at which this backup schedule was most recently updated.
@@ -4586,7 +4639,9 @@ class ListCollectionIdsRequest {
 
   /// Reads documents as they were at the given time.
   ///
-  /// This may not be older than 270 seconds.
+  /// This must be a microsecond precision timestamp within the past one hour,
+  /// or if Point-in-Time Recovery is enabled, can additionally be a whole
+  /// minute timestamp within the past 7 days.
   core.String? readTime;
 
   ListCollectionIdsRequest({
@@ -4817,7 +4872,9 @@ class PartitionQueryRequest {
 
   /// Reads documents as they were at the given time.
   ///
-  /// This may not be older than 270 seconds.
+  /// This must be a microsecond precision timestamp within the past one hour,
+  /// or if Point-in-Time Recovery is enabled, can additionally be a whole
+  /// minute timestamp within the past 7 days.
   core.String? readTime;
 
   /// A structured query.
@@ -4974,7 +5031,9 @@ class Projection {
 class ReadOnly {
   /// Reads documents at the given time.
   ///
-  /// This may not be older than 60 seconds.
+  /// This must be a microsecond precision timestamp within the past one hour,
+  /// or if Point-in-Time Recovery is enabled, can additionally be a whole
+  /// minute timestamp within the past 7 days.
   core.String? readTime;
 
   ReadOnly({
@@ -5064,7 +5123,9 @@ class RunAggregationQueryRequest {
 
   /// Executes the query at the given timestamp.
   ///
-  /// Requires: * Cannot be more than 270 seconds in the past.
+  /// This must be a microsecond precision timestamp within the past one hour,
+  /// or if Point-in-Time Recovery is enabled, can additionally be a whole
+  /// minute timestamp within the past 7 days.
   core.String? readTime;
 
   /// An aggregation query.
@@ -5187,7 +5248,9 @@ class RunQueryRequest {
 
   /// Reads documents as they were at the given time.
   ///
-  /// This may not be older than 270 seconds.
+  /// This must be a microsecond precision timestamp within the past one hour,
+  /// or if Point-in-Time Recovery is enabled, can additionally be a whole
+  /// minute timestamp within the past 7 days.
   core.String? readTime;
 
   /// A structured query.
@@ -5483,6 +5546,41 @@ class StructuredQuery {
         if (select != null) 'select': select!,
         if (startAt != null) 'startAt': startAt!,
         if (where != null) 'where': where!,
+      };
+}
+
+/// Sum of the values of the requested field.
+///
+/// * Only numeric values will be aggregated. All non-numeric values including
+/// `NULL` are skipped. * If the aggregated values contain `NaN`, returns `NaN`.
+/// * If the aggregated value set is empty, returns 0. * Returns a 64-bit
+/// integer if the sum result is an integer value and does not overflow.
+/// Otherwise, the result is returned as a double. Note that even if all the
+/// aggregated values are integers, the result is returned as a double if it
+/// cannot fit within a 64-bit signed integer. When this occurs, the returned
+/// value will lose precision. * When underflow occurs, floating-point
+/// aggregation is non-deterministic. This means that running the same query
+/// repeatedly without any changes to the underlying values could produce
+/// slightly different results each time. In those cases, values should be
+/// stored as integers over floating-point numbers.
+class Sum {
+  /// The field to aggregate on.
+  FieldReference? field;
+
+  Sum({
+    this.field,
+  });
+
+  Sum.fromJson(core.Map json_)
+      : this(
+          field: json_.containsKey('field')
+              ? FieldReference.fromJson(
+                  json_['field'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (field != null) 'field': field!,
       };
 }
 

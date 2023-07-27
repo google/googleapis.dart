@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230717",
+    "revision": "20230807",
     "rootUrl": "https://firebaseappcheck.googleapis.com/",
     "servicePath": "",
     "title": "Firebase App Check API",
@@ -2271,8 +2271,18 @@
                     ],
                     "type": "string"
                 },
+                "etag": {
+                    "description": "This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. This etag is strongly validated as defined by RFC 7232.",
+                    "type": "string"
+                },
                 "name": {
                     "description": "Required. The relative resource name of the service configuration object, in the format: ``` projects/{project_number}/services/{service_id} ``` Note that the `service_id` element must be a supported service ID. Currently, the following service IDs are supported: * `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com` (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore) * `identitytoolkit.googleapis.com` (Firebase Authentication with Identity Platform)",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "Output only. Timestamp when this service configuration object was most recently updated.",
+                    "format": "google-datetime",
+                    "readOnly": true,
                     "type": "string"
                 }
             },

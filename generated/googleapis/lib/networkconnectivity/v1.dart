@@ -223,15 +223,15 @@ class ProjectsLocationsGlobalHubsResource {
   ///
   /// [hubId] - Required. A unique identifier for the hub.
   ///
-  /// [requestId] - Optional. A unique request ID (optional). If you specify
-  /// this ID, you can use it in cases when you need to retry your request. When
-  /// you need to retry, this ID lets the server know that it can ignore the
-  /// request if it has already been completed. The server guarantees that for
-  /// at least 60 minutes after the first request. For example, consider a
-  /// situation where you make an initial request and the request times out. If
-  /// you make the request again with the same request ID, the server can check
-  /// to see whether the original operation was received. If it was, the server
-  /// ignores the second request. This behavior prevents clients from mistakenly
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check to see
+  /// whether the original operation was received. If it was, the server ignores
+  /// the second request. This behavior prevents clients from mistakenly
   /// creating duplicate commitments. The request ID must be a valid UUID, with
   /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
@@ -280,15 +280,15 @@ class ProjectsLocationsGlobalHubsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/global/hubs/\[^/\]+$`.
   ///
-  /// [requestId] - Optional. A unique request ID (optional). If you specify
-  /// this ID, you can use it in cases when you need to retry your request. When
-  /// you need to retry, this ID lets the server know that it can ignore the
-  /// request if it has already been completed. The server guarantees that for
-  /// at least 60 minutes after the first request. For example, consider a
-  /// situation where you make an initial request and the request times out. If
-  /// you make the request again with the same request ID, the server can check
-  /// to see whether the original operation was received. If it was, the server
-  /// ignores the second request. This behavior prevents clients from mistakenly
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check to see
+  /// whether the original operation was received. If it was, the server ignores
+  /// the second request. This behavior prevents clients from mistakenly
   /// creating duplicate commitments. The request ID must be a valid UUID, with
   /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
@@ -497,7 +497,7 @@ class ProjectsLocationsGlobalHubsResource {
   /// spokes in the specified location. If the spoke_locations field is not
   /// populated, the list of results includes spokes in all locations.
   ///
-  /// [view] - The view of the spoke to return. The view you use determines
+  /// [view] - The view of the spoke to return. The view that you use determines
   /// which spoke fields are included in the response.
   /// Possible string values are:
   /// - "SPOKE_VIEW_UNSPECIFIED" : The spoke view is unspecified. When the spoke
@@ -562,15 +562,15 @@ class ProjectsLocationsGlobalHubsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/global/hubs/\[^/\]+$`.
   ///
-  /// [requestId] - Optional. A unique request ID (optional). If you specify
-  /// this ID, you can use it in cases when you need to retry your request. When
-  /// you need to retry, this ID lets the server know that it can ignore the
-  /// request if it has already been completed. The server guarantees that for
-  /// at least 60 minutes after the first request. For example, consider a
-  /// situation where you make an initial request and the request times out. If
-  /// you make the request again with the same request ID, the server can check
-  /// to see whether the original operation was received. If it was, the server
-  /// ignores the second request. This behavior prevents clients from mistakenly
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check to see
+  /// whether the original operation was received. If it was, the server ignores
+  /// the second request. This behavior prevents clients from mistakenly
   /// creating duplicate commitments. The request ID must be a valid UUID, with
   /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
@@ -722,6 +722,42 @@ class ProjectsLocationsGlobalHubsGroupsResource {
   ProjectsLocationsGlobalHubsGroupsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Gets details about a Network Connectivity Center group.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the route table resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/hubs/\[^/\]+/groups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Group].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Group> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Group.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -777,6 +813,59 @@ class ProjectsLocationsGlobalHubsGroupsResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists groups in a given hub.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource's name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/hubs/\[^/\]+$`.
+  ///
+  /// [filter] - An expression that filters the list of results.
+  ///
+  /// [orderBy] - Sort the results by a certain order.
+  ///
+  /// [pageSize] - The maximum number of results to return per page.
+  ///
+  /// [pageToken] - The page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListGroupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListGroupsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/groups';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListGroupsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1861,7 +1950,8 @@ class ProjectsLocationsServiceClassesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource's name.
+  /// [parent] - Required. The parent resource's name. ex.
+  /// projects/123/locations/us-east1
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - A filter expression that filters the results listed in the
@@ -2089,7 +2179,7 @@ class ProjectsLocationsServiceConnectionMapsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource's name of the
-  /// ServiceConnectionMap.
+  /// ServiceConnectionMap. ex. projects/123/locations/us-east1
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
@@ -2302,7 +2392,8 @@ class ProjectsLocationsServiceConnectionMapsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource's name.
+  /// [parent] - Required. The parent resource's name. ex.
+  /// projects/123/locations/us-east1
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - A filter expression that filters the results listed in the
@@ -2532,7 +2623,7 @@ class ProjectsLocationsServiceConnectionPoliciesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource's name of the
-  /// ServiceConnectionPolicy.
+  /// ServiceConnectionPolicy. ex. projects/123/locations/us-east1
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
@@ -2744,7 +2835,8 @@ class ProjectsLocationsServiceConnectionPoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource's name.
+  /// [parent] - Required. The parent resource's name. ex.
+  /// projects/123/locations/us-east1
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - A filter expression that filters the results listed in the
@@ -2973,7 +3065,7 @@ class ProjectsLocationsServiceConnectionTokensResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource's name of the
-  /// ServiceConnectionToken.
+  /// ServiceConnectionToken. ex. projects/123/locations/us-east1
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [requestId] - Optional. An optional request ID to identify requests.
@@ -3129,7 +3221,8 @@ class ProjectsLocationsServiceConnectionTokensResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource's name.
+  /// [parent] - Required. The parent resource's name. ex.
+  /// projects/123/locations/us-east1
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - A filter expression that filters the results listed in the
@@ -3239,15 +3332,15 @@ class ProjectsLocationsSpokesResource {
   /// [parent] - Required. The parent resource.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [requestId] - Optional. A unique request ID (optional). If you specify
-  /// this ID, you can use it in cases when you need to retry your request. When
-  /// you need to retry, this ID lets the server know that it can ignore the
-  /// request if it has already been completed. The server guarantees that for
-  /// at least 60 minutes after the first request. For example, consider a
-  /// situation where you make an initial request and the request times out. If
-  /// you make the request again with the same request ID, the server can check
-  /// to see whether the original operation was received. If it was, the server
-  /// ignores the second request. This behavior prevents clients from mistakenly
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check to see
+  /// whether the original operation was received. If it was, the server ignores
+  /// the second request. This behavior prevents clients from mistakenly
   /// creating duplicate commitments. The request ID must be a valid UUID, with
   /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
@@ -3298,15 +3391,15 @@ class ProjectsLocationsSpokesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/spokes/\[^/\]+$`.
   ///
-  /// [requestId] - Optional. A unique request ID (optional). If you specify
-  /// this ID, you can use it in cases when you need to retry your request. When
-  /// you need to retry, this ID lets the server know that it can ignore the
-  /// request if it has already been completed. The server guarantees that for
-  /// at least 60 minutes after the first request. For example, consider a
-  /// situation where you make an initial request and the request times out. If
-  /// you make the request again with the same request ID, the server can check
-  /// to see whether the original operation was received. If it was, the server
-  /// ignores the second request. This behavior prevents clients from mistakenly
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check to see
+  /// whether the original operation was received. If it was, the server ignores
+  /// the second request. This behavior prevents clients from mistakenly
   /// creating duplicate commitments. The request ID must be a valid UUID, with
   /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
@@ -3500,15 +3593,15 @@ class ProjectsLocationsSpokesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/spokes/\[^/\]+$`.
   ///
-  /// [requestId] - Optional. A unique request ID (optional). If you specify
-  /// this ID, you can use it in cases when you need to retry your request. When
-  /// you need to retry, this ID lets the server know that it can ignore the
-  /// request if it has already been completed. The server guarantees that for
-  /// at least 60 minutes after the first request. For example, consider a
-  /// situation where you make an initial request and the request times out. If
-  /// you make the request again with the same request ID, the server can check
-  /// to see whether the original operation was received. If it was, the server
-  /// ignores the second request. This behavior prevents clients from mistakenly
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check to see
+  /// whether the original operation was received. If it was, the server ignores
+  /// the second request. This behavior prevents clients from mistakenly
   /// creating duplicate commitments. The request ID must be a valid UUID, with
   /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
@@ -3555,10 +3648,12 @@ class ProjectsLocationsSpokesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Does one of the following: * Rejects a proposal to attach a Network
-  /// Connectivity Center spoke to the hub.
+  /// Rejects a Network Connectivity Center spoke from being attached to the
+  /// hub.
   ///
-  /// * Rejects and removes a previously attached spoke from the hub.
+  /// If the spoke was previously in the `ACTIVE` state, it transitions to the
+  /// `INACTIVE` state and is no longer able to connect to other spokes that are
+  /// attached to the hub.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3701,18 +3796,18 @@ class ProjectsLocationsSpokesResource {
 
 /// The request for HubService.AcceptSpoke.
 class AcceptSpokeRequest {
-  /// A unique request ID (optional).
+  /// A request ID to identify requests.
   ///
-  /// If you specify this ID, you can use it in cases when you need to retry
-  /// your request. When you need to retry, this ID lets the server know that it
-  /// can ignore the request if it has already been completed. The server
-  /// guarantees that for at least 60 minutes after the first request. For
-  /// example, consider a situation where you make an initial request and the
-  /// request times out. If you make the request again with the same request ID,
-  /// the server can check to see whether the original operation was received.
-  /// If it was, the server ignores the second request. This behavior prevents
-  /// clients from mistakenly creating duplicate commitments. The request ID
-  /// must be a valid UUID, with the exception that zero UUID is not supported
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server guarantees that a request doesn't result in creation of
+  /// duplicate commitments for at least 60 minutes. For example, consider a
+  /// situation where you make an initial request and the request times out. If
+  /// you make the request again with the same request ID, the server can check
+  /// to see whether the original operation was received. If it was, the server
+  /// ignores the second request. This behavior prevents clients from mistakenly
+  /// creating duplicate commitments. The request ID must be a valid UUID, with
+  /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
   ///
   /// Optional.
@@ -3904,6 +3999,8 @@ class ConsumerPscConfig {
   /// constraints like connections limit.
   /// - "CONNECTION_POLICY_MISSING" : No Service Connection Policy found for
   /// this network and Service Class
+  /// - "POLICY_LIMIT_REACHED" : Service Connection Policy limit reached for
+  /// this network and Service Class
   core.String? state;
 
   ConsumerPscConfig({
@@ -3941,6 +4038,11 @@ class ConsumerPscConfig {
 class ConsumerPscConnection {
   /// The most recent error during operating this connection.
   GoogleRpcStatus? error;
+
+  /// The error info for the latest error during operating this connection.
+  ///
+  /// Output only.
+  GoogleRpcErrorInfo? errorInfo;
 
   /// The error type indicates whether the error is consumer facing, producer
   /// facing or system internal.
@@ -3995,6 +4097,7 @@ class ConsumerPscConnection {
 
   ConsumerPscConnection({
     this.error,
+    this.errorInfo,
     this.errorType,
     this.forwardingRule,
     this.gceOperation,
@@ -4011,6 +4114,10 @@ class ConsumerPscConnection {
           error: json_.containsKey('error')
               ? GoogleRpcStatus.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          errorInfo: json_.containsKey('errorInfo')
+              ? GoogleRpcErrorInfo.fromJson(
+                  json_['errorInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           errorType: json_.containsKey('errorType')
               ? json_['errorType'] as core.String
@@ -4040,6 +4147,7 @@ class ConsumerPscConnection {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (error != null) 'error': error!,
+        if (errorInfo != null) 'errorInfo': errorInfo!,
         if (errorType != null) 'errorType': errorType!,
         if (forwardingRule != null) 'forwardingRule': forwardingRule!,
         if (gceOperation != null) 'gceOperation': gceOperation!,
@@ -4192,6 +4300,75 @@ class GoogleLongrunningOperation {
       };
 }
 
+/// Describes the cause of the error with structured details.
+///
+/// Example of an error when contacting the "pubsub.googleapis.com" API when it
+/// is not enabled: { "reason": "API_DISABLED" "domain": "googleapis.com"
+/// "metadata": { "resource": "projects/123", "service": "pubsub.googleapis.com"
+/// } } This response indicates that the pubsub.googleapis.com API is not
+/// enabled. Example of an error that is returned when attempting to create a
+/// Spanner instance in a region that is out of stock: { "reason": "STOCKOUT"
+/// "domain": "spanner.googleapis.com", "metadata": { "availableRegions":
+/// "us-central1,us-east2" } }
+class GoogleRpcErrorInfo {
+  /// The logical grouping to which the "reason" belongs.
+  ///
+  /// The error domain is typically the registered service name of the tool or
+  /// product that generates the error. Example: "pubsub.googleapis.com". If the
+  /// error is generated by some common infrastructure, the error domain must be
+  /// a globally unique value that identifies the infrastructure. For Google API
+  /// infrastructure, the error domain is "googleapis.com".
+  core.String? domain;
+
+  /// Additional structured details about this error.
+  ///
+  /// Keys should match /\[a-zA-Z0-9-_\]/ and be limited to 64 characters in
+  /// length. When identifying the current value of an exceeded limit, the units
+  /// should be contained in the key, not the value. For example, rather than
+  /// {"instanceLimit": "100/request"}, should be returned as,
+  /// {"instanceLimitPerRequest": "100"}, if the client exceeds the number of
+  /// instances that can be created in a single (batch) request.
+  core.Map<core.String, core.String>? metadata;
+
+  /// The reason of the error.
+  ///
+  /// This is a constant value that identifies the proximate cause of the error.
+  /// Error reasons are unique within a particular domain of errors. This should
+  /// be at most 63 characters and match a regular expression of `A-Z+[A-Z0-9]`,
+  /// which represents UPPER_SNAKE_CASE.
+  core.String? reason;
+
+  GoogleRpcErrorInfo({
+    this.domain,
+    this.metadata,
+    this.reason,
+  });
+
+  GoogleRpcErrorInfo.fromJson(core.Map json_)
+      : this(
+          domain: json_.containsKey('domain')
+              ? json_['domain'] as core.String
+              : null,
+          metadata: json_.containsKey('metadata')
+              ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          reason: json_.containsKey('reason')
+              ? json_['reason'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (domain != null) 'domain': domain!,
+        if (metadata != null) 'metadata': metadata!,
+        if (reason != null) 'reason': reason!,
+      };
+}
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -4200,6 +4377,114 @@ class GoogleLongrunningOperation {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef GoogleRpcStatus = $Status;
+
+/// A group is a set of spokes to which you can apply policies.
+///
+/// Each group of spokes has its own route table. For each group, you can also
+/// set different rules for whether spokes can be automatically attached to the
+/// hub.
+class Group {
+  /// The time the group was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The description of the group.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Labels in key:value format.
+  ///
+  /// For more information about labels, see
+  /// [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The name of the group.
+  ///
+  /// Group names must be unique. They use the following form:
+  /// `projects/{project_number}/locations/global/hubs/{hub}/groups/{group_id}`
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The current lifecycle state of this group.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : No state information available
+  /// - "CREATING" : The resource's create operation is in progress.
+  /// - "ACTIVE" : The resource is active
+  /// - "DELETING" : The resource's delete operation is in progress.
+  /// - "ACCEPTING" : The resource's accept operation is in progress.
+  /// - "REJECTING" : The resource's reject operation is in progress.
+  /// - "UPDATING" : The resource's update operation is in progress.
+  /// - "INACTIVE" : The resource is inactive.
+  /// - "OBSOLETE" : The hub associated with this spoke resource has been
+  /// deleted. This state applies to spoke resources only.
+  core.String? state;
+
+  /// The Google-generated UUID for the group.
+  ///
+  /// This value is unique across all group resources. If a group is deleted and
+  /// another with the same name is created, the new route table is assigned a
+  /// different unique_id.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The time the group was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Group({
+    this.createTime,
+    this.description,
+    this.labels,
+    this.name,
+    this.state,
+    this.uid,
+    this.updateTime,
+  });
+
+  Group.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
 
 /// A Network Connectivity Center hub is a global management resource to which
 /// you attach spokes.
@@ -4657,12 +4942,12 @@ class LinkedRouterApplianceInstances {
 
 /// An existing VPC network.
 class LinkedVpcNetwork {
-  /// IP Ranges encompassing the subnets to be excluded from peering.
+  /// IP ranges encompassing the subnets to be excluded from peering.
   ///
   /// Optional.
   core.List<core.String>? excludeExportRanges;
 
-  /// The URI of the VPC network resource
+  /// The URI of the VPC network resource.
   ///
   /// Required.
   core.String? uri;
@@ -4737,6 +5022,51 @@ class LinkedVpnTunnels {
           'siteToSiteDataTransfer': siteToSiteDataTransfer!,
         if (uris != null) 'uris': uris!,
         if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
+      };
+}
+
+/// Response for HubService.ListGroups method.
+class ListGroupsResponse {
+  /// The requested groups.
+  core.List<Group>? groups;
+
+  /// The token for the next page of the response.
+  ///
+  /// To see more results, use this value as the page_token for your next
+  /// request. If this value is empty, there are no more results.
+  core.String? nextPageToken;
+
+  /// Hubs that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListGroupsResponse({
+    this.groups,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListGroupsResponse.fromJson(core.Map json_)
+      : this(
+          groups: json_.containsKey('groups')
+              ? (json_['groups'] as core.List)
+                  .map((value) => Group.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (groups != null) 'groups': groups!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -5447,6 +5777,11 @@ class PscConnection {
   /// The most recent error during operating this connection.
   GoogleRpcStatus? error;
 
+  /// The error info for the latest error during operating this connection.
+  ///
+  /// Output only.
+  GoogleRpcErrorInfo? errorInfo;
+
   /// The error type indicates whether the error is consumer facing, producer
   /// facing or system internal.
   /// Possible string values are:
@@ -5479,6 +5814,7 @@ class PscConnection {
     this.consumerForwardingRule,
     this.consumerTargetProject,
     this.error,
+    this.errorInfo,
     this.errorType,
     this.gceOperation,
     this.pscConnectionId,
@@ -5500,6 +5836,10 @@ class PscConnection {
               ? GoogleRpcStatus.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
               : null,
+          errorInfo: json_.containsKey('errorInfo')
+              ? GoogleRpcErrorInfo.fromJson(
+                  json_['errorInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
           errorType: json_.containsKey('errorType')
               ? json_['errorType'] as core.String
               : null,
@@ -5520,6 +5860,7 @@ class PscConnection {
         if (consumerTargetProject != null)
           'consumerTargetProject': consumerTargetProject!,
         if (error != null) 'error': error!,
+        if (errorInfo != null) 'errorInfo': errorInfo!,
         if (errorType != null) 'errorType': errorType!,
         if (gceOperation != null) 'gceOperation': gceOperation!,
         if (pscConnectionId != null) 'pscConnectionId': pscConnectionId!,
@@ -5529,23 +5870,24 @@ class PscConnection {
 
 /// The request for HubService.RejectSpoke.
 class RejectSpokeRequest {
-  /// Additional Details behind the rejection
+  /// Additional information provided by the hub administrator in the
+  /// `RejectSpoke` call.
   ///
   /// Optional.
   core.String? details;
 
-  /// A unique request ID (optional).
+  /// A request ID to identify requests.
   ///
-  /// If you specify this ID, you can use it in cases when you need to retry
-  /// your request. When you need to retry, this ID lets the server know that it
-  /// can ignore the request if it has already been completed. The server
-  /// guarantees that for at least 60 minutes after the first request. For
-  /// example, consider a situation where you make an initial request and the
-  /// request times out. If you make the request again with the same request ID,
-  /// the server can check to see whether the original operation was received.
-  /// If it was, the server ignores the second request. This behavior prevents
-  /// clients from mistakenly creating duplicate commitments. The request ID
-  /// must be a valid UUID, with the exception that zero UUID is not supported
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server guarantees that a request doesn't result in creation of
+  /// duplicate commitments for at least 60 minutes. For example, consider a
+  /// situation where you make an initial request and the request times out. If
+  /// you make the request again with the same request ID, the server can check
+  /// to see whether the original operation was received. If it was, the server
+  /// ignores the second request. This behavior prevents clients from mistakenly
+  /// creating duplicate commitments. The request ID must be a valid UUID, with
+  /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
   ///
   /// Optional.
@@ -5604,7 +5946,7 @@ class Route {
 
   /// The name of the route.
   ///
-  /// Route names must be unique. They use the following form:
+  /// Route names must be unique. Route names use the following form:
   /// `projects/{project_number}/locations/global/hubs/{hub}/routeTables/{route_table_id}/routes/{route_id}`
   ///
   /// Immutable.
@@ -5655,7 +5997,7 @@ class Route {
   ///
   /// This value is unique across all Network Connectivity Center route
   /// resources. If a route is deleted and another with the same name is
-  /// created, the new route is assigned a different unique_id.
+  /// created, the new route is assigned a different `uid`.
   ///
   /// Output only.
   core.String? uid;
@@ -5751,7 +6093,7 @@ class RouteTable {
 
   /// The name of the route table.
   ///
-  /// Route Table names must be unique. They use the following form:
+  /// Route table names must be unique. They use the following form:
   /// `projects/{project_number}/locations/global/hubs/{hub}/routeTables/{route_table_id}`
   ///
   /// Immutable.
@@ -5777,7 +6119,7 @@ class RouteTable {
   ///
   /// This value is unique across all route table resources. If a route table is
   /// deleted and another with the same name is created, the new route table is
-  /// assigned a different unique_id.
+  /// assigned a different `uid`.
   ///
   /// Output only.
   core.String? uid;
@@ -5943,11 +6285,6 @@ class ServiceClass {
   /// Output only.
   core.String? serviceClass;
 
-  /// URIs of all Service Connection Maps using this service class.
-  ///
-  /// Output only.
-  core.List<core.String>? serviceConnectionMaps;
-
   /// Time when the ServiceClass was updated.
   ///
   /// Output only.
@@ -5960,7 +6297,6 @@ class ServiceClass {
     this.labels,
     this.name,
     this.serviceClass,
-    this.serviceConnectionMaps,
     this.updateTime,
   });
 
@@ -5985,11 +6321,6 @@ class ServiceClass {
           serviceClass: json_.containsKey('serviceClass')
               ? json_['serviceClass'] as core.String
               : null,
-          serviceConnectionMaps: json_.containsKey('serviceConnectionMaps')
-              ? (json_['serviceConnectionMaps'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -6002,8 +6333,6 @@ class ServiceClass {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (serviceClass != null) 'serviceClass': serviceClass!,
-        if (serviceConnectionMaps != null)
-          'serviceConnectionMaps': serviceConnectionMaps!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -6466,6 +6795,9 @@ class Spoke {
   /// An optional description of the spoke.
   core.String? description;
 
+  /// The name of the group that this spoke is associated with.
+  core.String? group;
+
   /// The name of the hub that this spoke is attached to.
   ///
   /// Immutable.
@@ -6501,6 +6833,8 @@ class Spoke {
 
   /// The reasons for current state of the spoke.
   ///
+  /// Only present when the spoke is in the `INACTIVE` state.
+  ///
   /// Output only.
   core.List<StateReason>? reasons;
 
@@ -6535,7 +6869,7 @@ class Spoke {
   ///
   /// This value is unique across all spoke resources. If a spoke is deleted and
   /// another with the same name is created, the new spoke is assigned a
-  /// different unique_id.
+  /// different `unique_id`.
   ///
   /// Output only.
   core.String? uniqueId;
@@ -6548,6 +6882,7 @@ class Spoke {
   Spoke({
     this.createTime,
     this.description,
+    this.group,
     this.hub,
     this.labels,
     this.linkedInterconnectAttachments,
@@ -6570,6 +6905,8 @@ class Spoke {
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
+          group:
+              json_.containsKey('group') ? json_['group'] as core.String : null,
           hub: json_.containsKey('hub') ? json_['hub'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -6622,6 +6959,7 @@ class Spoke {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (group != null) 'group': group!,
         if (hub != null) 'hub': hub!,
         if (labels != null) 'labels': labels!,
         if (linkedInterconnectAttachments != null)

@@ -1491,53 +1491,6 @@ class RowAccessPoliciesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Sets the access control policy on the specified resource.
-  ///
-  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
-  /// and `PERMISSION_DENIED` errors.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/datasets/\[^/\]+/tables/\[^/\]+/rowAccessPolicies/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> setIamPolicy(
-    SetIamPolicyRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = core.Uri.encodeFull('$resource') + ':setIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Returns permissions that a caller has on the specified resource.
   ///
   /// If the resource does not exist, this will return an empty set of
@@ -9377,6 +9330,15 @@ class Model {
   /// Information for all training runs in increasing order of start_time.
   core.List<TrainingRun>? trainingRuns;
 
+  /// This field will be populated if a TRANSFORM clause was used to train a
+  /// model.
+  ///
+  /// TRANSFORM clause (if used) takes feature_columns as input and outputs
+  /// transform_columns. transform_columns then are used to train the model.
+  ///
+  /// Output only.
+  core.List<TransformColumn>? transformColumns;
+
   Model({
     this.bestTrialId,
     this.creationTime,
@@ -9398,6 +9360,7 @@ class Model {
     this.optimalTrialIds,
     this.remoteModelInfo,
     this.trainingRuns,
+    this.transformColumns,
   });
 
   Model.fromJson(core.Map json_)
@@ -9484,6 +9447,12 @@ class Model {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          transformColumns: json_.containsKey('transformColumns')
+              ? (json_['transformColumns'] as core.List)
+                  .map((value) => TransformColumn.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9509,6 +9478,7 @@ class Model {
         if (optimalTrialIds != null) 'optimalTrialIds': optimalTrialIds!,
         if (remoteModelInfo != null) 'remoteModelInfo': remoteModelInfo!,
         if (trainingRuns != null) 'trainingRuns': trainingRuns!,
+        if (transformColumns != null) 'transformColumns': transformColumns!,
       };
 }
 
@@ -14614,6 +14584,48 @@ class TransactionInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (transactionId != null) 'transactionId': transactionId!,
+      };
+}
+
+/// Information about a single transform column.
+class TransformColumn {
+  /// Name of the column.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The SQL expression used in the column transform.
+  ///
+  /// Output only.
+  core.String? transformSql;
+
+  /// Data type of the column after the transform.
+  ///
+  /// Output only.
+  StandardSqlDataType? type;
+
+  TransformColumn({
+    this.name,
+    this.transformSql,
+    this.type,
+  });
+
+  TransformColumn.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          transformSql: json_.containsKey('transformSql')
+              ? json_['transformSql'] as core.String
+              : null,
+          type: json_.containsKey('type')
+              ? StandardSqlDataType.fromJson(
+                  json_['type'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (transformSql != null) 'transformSql': transformSql!,
+        if (type != null) 'type': type!,
       };
 }
 

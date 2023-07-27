@@ -497,12 +497,57 @@ void checkRestDescriptionAuth(api.RestDescriptionAuth o) {
   buildCounterRestDescriptionAuth--;
 }
 
-core.List<core.String> buildUnnamed9() => [
+core.int buildCounterRestDescriptionEndpoints = 0;
+api.RestDescriptionEndpoints buildRestDescriptionEndpoints() {
+  final o = api.RestDescriptionEndpoints();
+  buildCounterRestDescriptionEndpoints++;
+  if (buildCounterRestDescriptionEndpoints < 3) {
+    o.deprecated = true;
+    o.description = 'foo';
+    o.endpointUrl = 'foo';
+    o.location = 'foo';
+  }
+  buildCounterRestDescriptionEndpoints--;
+  return o;
+}
+
+void checkRestDescriptionEndpoints(api.RestDescriptionEndpoints o) {
+  buildCounterRestDescriptionEndpoints++;
+  if (buildCounterRestDescriptionEndpoints < 3) {
+    unittest.expect(o.deprecated!, unittest.isTrue);
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.endpointUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRestDescriptionEndpoints--;
+}
+
+core.List<api.RestDescriptionEndpoints> buildUnnamed9() => [
+      buildRestDescriptionEndpoints(),
+      buildRestDescriptionEndpoints(),
+    ];
+
+void checkUnnamed9(core.List<api.RestDescriptionEndpoints> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRestDescriptionEndpoints(o[0]);
+  checkRestDescriptionEndpoints(o[1]);
+}
+
+core.List<core.String> buildUnnamed10() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed9(core.List<core.String> o) {
+void checkUnnamed10(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -541,12 +586,12 @@ void checkRestDescriptionIcons(api.RestDescriptionIcons o) {
   buildCounterRestDescriptionIcons--;
 }
 
-core.List<core.String> buildUnnamed10() => [
+core.List<core.String> buildUnnamed11() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed10(core.List<core.String> o) {
+void checkUnnamed11(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -558,45 +603,45 @@ void checkUnnamed10(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, api.RestMethod> buildUnnamed11() => {
+core.Map<core.String, api.RestMethod> buildUnnamed12() => {
       'x': buildRestMethod(),
       'y': buildRestMethod(),
     };
 
-void checkUnnamed11(core.Map<core.String, api.RestMethod> o) {
+void checkUnnamed12(core.Map<core.String, api.RestMethod> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRestMethod(o['x']!);
   checkRestMethod(o['y']!);
 }
 
-core.Map<core.String, api.JsonSchema> buildUnnamed12() => {
+core.Map<core.String, api.JsonSchema> buildUnnamed13() => {
       'x': buildJsonSchema(),
       'y': buildJsonSchema(),
     };
 
-void checkUnnamed12(core.Map<core.String, api.JsonSchema> o) {
+void checkUnnamed13(core.Map<core.String, api.JsonSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJsonSchema(o['x']!);
   checkJsonSchema(o['y']!);
 }
 
-core.Map<core.String, api.RestResource> buildUnnamed13() => {
+core.Map<core.String, api.RestResource> buildUnnamed14() => {
       'x': buildRestResource(),
       'y': buildRestResource(),
     };
 
-void checkUnnamed13(core.Map<core.String, api.RestResource> o) {
+void checkUnnamed14(core.Map<core.String, api.RestResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRestResource(o['x']!);
   checkRestResource(o['y']!);
 }
 
-core.Map<core.String, api.JsonSchema> buildUnnamed14() => {
+core.Map<core.String, api.JsonSchema> buildUnnamed15() => {
       'x': buildJsonSchema(),
       'y': buildJsonSchema(),
     };
 
-void checkUnnamed14(core.Map<core.String, api.JsonSchema> o) {
+void checkUnnamed15(core.Map<core.String, api.JsonSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJsonSchema(o['x']!);
   checkJsonSchema(o['y']!);
@@ -615,24 +660,25 @@ api.RestDescription buildRestDescription() {
     o.description = 'foo';
     o.discoveryVersion = 'foo';
     o.documentationLink = 'foo';
+    o.endpoints = buildUnnamed9();
     o.etag = 'foo';
     o.exponentialBackoffDefault = true;
-    o.features = buildUnnamed9();
+    o.features = buildUnnamed10();
     o.icons = buildRestDescriptionIcons();
     o.id = 'foo';
     o.kind = 'foo';
-    o.labels = buildUnnamed10();
-    o.methods = buildUnnamed11();
+    o.labels = buildUnnamed11();
+    o.methods = buildUnnamed12();
     o.name = 'foo';
     o.ownerDomain = 'foo';
     o.ownerName = 'foo';
     o.packagePath = 'foo';
-    o.parameters = buildUnnamed12();
+    o.parameters = buildUnnamed13();
     o.protocol = 'foo';
-    o.resources = buildUnnamed13();
+    o.resources = buildUnnamed14();
     o.revision = 'foo';
     o.rootUrl = 'foo';
-    o.schemas = buildUnnamed14();
+    o.schemas = buildUnnamed15();
     o.servicePath = 'foo';
     o.title = 'foo';
     o.version = 'foo';
@@ -674,12 +720,13 @@ void checkRestDescription(api.RestDescription o) {
       o.documentationLink!,
       unittest.equals('foo'),
     );
+    checkUnnamed9(o.endpoints!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
     );
     unittest.expect(o.exponentialBackoffDefault!, unittest.isTrue);
-    checkUnnamed9(o.features!);
+    checkUnnamed10(o.features!);
     checkRestDescriptionIcons(o.icons!);
     unittest.expect(
       o.id!,
@@ -689,8 +736,8 @@ void checkRestDescription(api.RestDescription o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed10(o.labels!);
-    checkUnnamed11(o.methods!);
+    checkUnnamed11(o.labels!);
+    checkUnnamed12(o.methods!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -707,12 +754,12 @@ void checkRestDescription(api.RestDescription o) {
       o.packagePath!,
       unittest.equals('foo'),
     );
-    checkUnnamed12(o.parameters!);
+    checkUnnamed13(o.parameters!);
     unittest.expect(
       o.protocol!,
       unittest.equals('foo'),
     );
-    checkUnnamed13(o.resources!);
+    checkUnnamed14(o.resources!);
     unittest.expect(
       o.revision!,
       unittest.equals('foo'),
@@ -721,7 +768,7 @@ void checkRestDescription(api.RestDescription o) {
       o.rootUrl!,
       unittest.equals('foo'),
     );
-    checkUnnamed14(o.schemas!);
+    checkUnnamed15(o.schemas!);
     unittest.expect(
       o.servicePath!,
       unittest.equals('foo'),
@@ -739,12 +786,12 @@ void checkRestDescription(api.RestDescription o) {
   buildCounterRestDescription--;
 }
 
-core.List<core.String> buildUnnamed15() => [
+core.List<core.String> buildUnnamed16() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed15(core.List<core.String> o) {
+void checkUnnamed16(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -834,7 +881,7 @@ api.RestMethodMediaUpload buildRestMethodMediaUpload() {
   final o = api.RestMethodMediaUpload();
   buildCounterRestMethodMediaUpload++;
   if (buildCounterRestMethodMediaUpload < 3) {
-    o.accept = buildUnnamed15();
+    o.accept = buildUnnamed16();
     o.maxSize = 'foo';
     o.protocols = buildRestMethodMediaUploadProtocols();
   }
@@ -845,7 +892,7 @@ api.RestMethodMediaUpload buildRestMethodMediaUpload() {
 void checkRestMethodMediaUpload(api.RestMethodMediaUpload o) {
   buildCounterRestMethodMediaUpload++;
   if (buildCounterRestMethodMediaUpload < 3) {
-    checkUnnamed15(o.accept!);
+    checkUnnamed16(o.accept!);
     unittest.expect(
       o.maxSize!,
       unittest.equals('foo'),
@@ -855,12 +902,12 @@ void checkRestMethodMediaUpload(api.RestMethodMediaUpload o) {
   buildCounterRestMethodMediaUpload--;
 }
 
-core.List<core.String> buildUnnamed16() => [
+core.List<core.String> buildUnnamed17() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed16(core.List<core.String> o) {
+void checkUnnamed17(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -872,12 +919,12 @@ void checkUnnamed16(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, api.JsonSchema> buildUnnamed17() => {
+core.Map<core.String, api.JsonSchema> buildUnnamed18() => {
       'x': buildJsonSchema(),
       'y': buildJsonSchema(),
     };
 
-void checkUnnamed17(core.Map<core.String, api.JsonSchema> o) {
+void checkUnnamed18(core.Map<core.String, api.JsonSchema> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJsonSchema(o['x']!);
   checkJsonSchema(o['y']!);
@@ -932,12 +979,12 @@ void checkRestMethodResponse(api.RestMethodResponse o) {
   buildCounterRestMethodResponse--;
 }
 
-core.List<core.String> buildUnnamed18() => [
+core.List<core.String> buildUnnamed19() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed18(core.List<core.String> o) {
+void checkUnnamed19(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -961,12 +1008,12 @@ api.RestMethod buildRestMethod() {
     o.httpMethod = 'foo';
     o.id = 'foo';
     o.mediaUpload = buildRestMethodMediaUpload();
-    o.parameterOrder = buildUnnamed16();
-    o.parameters = buildUnnamed17();
+    o.parameterOrder = buildUnnamed17();
+    o.parameters = buildUnnamed18();
     o.path = 'foo';
     o.request = buildRestMethodRequest();
     o.response = buildRestMethodResponse();
-    o.scopes = buildUnnamed18();
+    o.scopes = buildUnnamed19();
     o.supportsMediaDownload = true;
     o.supportsMediaUpload = true;
     o.supportsSubscription = true;
@@ -998,15 +1045,15 @@ void checkRestMethod(api.RestMethod o) {
       unittest.equals('foo'),
     );
     checkRestMethodMediaUpload(o.mediaUpload!);
-    checkUnnamed16(o.parameterOrder!);
-    checkUnnamed17(o.parameters!);
+    checkUnnamed17(o.parameterOrder!);
+    checkUnnamed18(o.parameters!);
     unittest.expect(
       o.path!,
       unittest.equals('foo'),
     );
     checkRestMethodRequest(o.request!);
     checkRestMethodResponse(o.response!);
-    checkUnnamed18(o.scopes!);
+    checkUnnamed19(o.scopes!);
     unittest.expect(o.supportsMediaDownload!, unittest.isTrue);
     unittest.expect(o.supportsMediaUpload!, unittest.isTrue);
     unittest.expect(o.supportsSubscription!, unittest.isTrue);
@@ -1015,23 +1062,23 @@ void checkRestMethod(api.RestMethod o) {
   buildCounterRestMethod--;
 }
 
-core.Map<core.String, api.RestMethod> buildUnnamed19() => {
+core.Map<core.String, api.RestMethod> buildUnnamed20() => {
       'x': buildRestMethod(),
       'y': buildRestMethod(),
     };
 
-void checkUnnamed19(core.Map<core.String, api.RestMethod> o) {
+void checkUnnamed20(core.Map<core.String, api.RestMethod> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRestMethod(o['x']!);
   checkRestMethod(o['y']!);
 }
 
-core.Map<core.String, api.RestResource> buildUnnamed20() => {
+core.Map<core.String, api.RestResource> buildUnnamed21() => {
       'x': buildRestResource(),
       'y': buildRestResource(),
     };
 
-void checkUnnamed20(core.Map<core.String, api.RestResource> o) {
+void checkUnnamed21(core.Map<core.String, api.RestResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRestResource(o['x']!);
   checkRestResource(o['y']!);
@@ -1043,8 +1090,8 @@ api.RestResource buildRestResource() {
   buildCounterRestResource++;
   if (buildCounterRestResource < 3) {
     o.deprecated = true;
-    o.methods = buildUnnamed19();
-    o.resources = buildUnnamed20();
+    o.methods = buildUnnamed20();
+    o.resources = buildUnnamed21();
   }
   buildCounterRestResource--;
   return o;
@@ -1054,8 +1101,8 @@ void checkRestResource(api.RestResource o) {
   buildCounterRestResource++;
   if (buildCounterRestResource < 3) {
     unittest.expect(o.deprecated!, unittest.isTrue);
-    checkUnnamed19(o.methods!);
-    checkUnnamed20(o.resources!);
+    checkUnnamed20(o.methods!);
+    checkUnnamed21(o.resources!);
   }
   buildCounterRestResource--;
 }
@@ -1158,6 +1205,16 @@ void main() {
       final od = api.RestDescriptionAuth.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkRestDescriptionAuth(od);
+    });
+  });
+
+  unittest.group('obj-schema-RestDescriptionEndpoints', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRestDescriptionEndpoints();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RestDescriptionEndpoints.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRestDescriptionEndpoints(od);
     });
   });
 

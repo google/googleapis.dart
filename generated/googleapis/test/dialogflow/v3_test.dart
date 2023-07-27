@@ -4366,6 +4366,7 @@ api.GoogleCloudDialogflowCxV3ResponseMessage
         buildGoogleCloudDialogflowCxV3ResponseMessageOutputAudioText();
     o.payload = buildUnnamed72();
     o.playAudio = buildGoogleCloudDialogflowCxV3ResponseMessagePlayAudio();
+    o.responseType = 'foo';
     o.telephonyTransferCall =
         buildGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall();
     o.text = buildGoogleCloudDialogflowCxV3ResponseMessageText();
@@ -4393,6 +4394,10 @@ void checkGoogleCloudDialogflowCxV3ResponseMessage(
         o.outputAudioText!);
     checkUnnamed72(o.payload!);
     checkGoogleCloudDialogflowCxV3ResponseMessagePlayAudio(o.playAudio!);
+    unittest.expect(
+      o.responseType!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall(
         o.telephonyTransferCall!);
     checkGoogleCloudDialogflowCxV3ResponseMessageText(o.text!);

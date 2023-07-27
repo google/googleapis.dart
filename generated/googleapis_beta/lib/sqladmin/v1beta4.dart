@@ -3502,6 +3502,9 @@ class ConnectSettings {
   /// This is always `sql#connectSettings`.
   core.String? kind;
 
+  /// Whether PSC connectivity is enabled for this instance.
+  core.bool? pscEnabled;
+
   /// The cloud region for the instance.
   ///
   /// e.g. `us-central1`, `europe-west1`. The region cannot be changed after
@@ -3517,6 +3520,7 @@ class ConnectSettings {
     this.dnsName,
     this.ipAddresses,
     this.kind,
+    this.pscEnabled,
     this.region,
     this.serverCaCert,
   });
@@ -3539,6 +3543,9 @@ class ConnectSettings {
                   .toList()
               : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          pscEnabled: json_.containsKey('pscEnabled')
+              ? json_['pscEnabled'] as core.bool
+              : null,
           region: json_.containsKey('region')
               ? json_['region'] as core.String
               : null,
@@ -3554,6 +3561,7 @@ class ConnectSettings {
         if (dnsName != null) 'dnsName': dnsName!,
         if (ipAddresses != null) 'ipAddresses': ipAddresses!,
         if (kind != null) 'kind': kind!,
+        if (pscEnabled != null) 'pscEnabled': pscEnabled!,
         if (region != null) 'region': region!,
         if (serverCaCert != null) 'serverCaCert': serverCaCert!,
       };
@@ -3856,6 +3864,11 @@ class DatabaseInstance {
   /// Disk encryption status specific to an instance.
   DiskEncryptionStatus? diskEncryptionStatus;
 
+  /// The dns name of the instance.
+  ///
+  /// Output only.
+  core.String? dnsName;
+
   /// This field is deprecated and will be removed from a future version of the
   /// API.
   ///
@@ -3930,6 +3943,11 @@ class DatabaseInstance {
   ///
   /// The Google apps domain is prefixed if applicable.
   core.String? project;
+
+  /// The link to service attachment of PSC instance.
+  ///
+  /// Output only.
+  core.String? pscServiceAttachmentLink;
 
   /// The geographical region.
   ///
@@ -4008,6 +4026,7 @@ class DatabaseInstance {
     this.databaseVersion,
     this.diskEncryptionConfiguration,
     this.diskEncryptionStatus,
+    this.dnsName,
     this.etag,
     this.failoverReplica,
     this.gceZone,
@@ -4022,6 +4041,7 @@ class DatabaseInstance {
     this.onPremisesConfiguration,
     this.outOfDiskReport,
     this.project,
+    this.pscServiceAttachmentLink,
     this.region,
     this.replicaConfiguration,
     this.replicaNames,
@@ -4074,6 +4094,9 @@ class DatabaseInstance {
               ? DiskEncryptionStatus.fromJson(json_['diskEncryptionStatus']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          dnsName: json_.containsKey('dnsName')
+              ? json_['dnsName'] as core.String
+              : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           failoverReplica: json_.containsKey('failoverReplica')
               ? DatabaseInstanceFailoverReplica.fromJson(
@@ -4118,6 +4141,10 @@ class DatabaseInstance {
           project: json_.containsKey('project')
               ? json_['project'] as core.String
               : null,
+          pscServiceAttachmentLink:
+              json_.containsKey('pscServiceAttachmentLink')
+                  ? json_['pscServiceAttachmentLink'] as core.String
+                  : null,
           region: json_.containsKey('region')
               ? json_['region'] as core.String
               : null,
@@ -4181,6 +4208,7 @@ class DatabaseInstance {
           'diskEncryptionConfiguration': diskEncryptionConfiguration!,
         if (diskEncryptionStatus != null)
           'diskEncryptionStatus': diskEncryptionStatus!,
+        if (dnsName != null) 'dnsName': dnsName!,
         if (etag != null) 'etag': etag!,
         if (failoverReplica != null) 'failoverReplica': failoverReplica!,
         if (gceZone != null) 'gceZone': gceZone!,
@@ -4198,6 +4226,8 @@ class DatabaseInstance {
           'onPremisesConfiguration': onPremisesConfiguration!,
         if (outOfDiskReport != null) 'outOfDiskReport': outOfDiskReport!,
         if (project != null) 'project': project!,
+        if (pscServiceAttachmentLink != null)
+          'pscServiceAttachmentLink': pscServiceAttachmentLink!,
         if (region != null) 'region': region!,
         if (replicaConfiguration != null)
           'replicaConfiguration': replicaConfiguration!,
@@ -4529,9 +4559,10 @@ typedef Empty = $Empty;
 class ExportContextBakExportOptions {
   /// Type of this bak file will be export, FULL or DIFF, SQL Server only
   /// Possible string values are:
-  /// - "BAK_TYPE_UNSPECIFIED" : default type.
+  /// - "BAK_TYPE_UNSPECIFIED" : Default type.
   /// - "FULL" : Full backup.
   /// - "DIFF" : Differential backup.
+  /// - "TLOG" : SQL Server Transaction Log
   core.String? bakType;
 
   /// Deprecated: copy_only is deprecated.
@@ -5128,9 +5159,10 @@ class ImportContextBakImportOptionsEncryptionOptions {
 class ImportContextBakImportOptions {
   /// Type of the bak content, FULL or DIFF.
   /// Possible string values are:
-  /// - "BAK_TYPE_UNSPECIFIED" : default type.
+  /// - "BAK_TYPE_UNSPECIFIED" : Default type.
   /// - "FULL" : Full backup.
   /// - "DIFF" : Differential backup.
+  /// - "TLOG" : SQL Server Transaction Log
   core.String? bakType;
   ImportContextBakImportOptionsEncryptionOptions? encryptionOptions;
 
@@ -5145,6 +5177,18 @@ class ImportContextBakImportOptions {
   /// Applies only to Cloud SQL for SQL Server.
   core.bool? recoveryOnly;
 
+  /// StopAt keyword for transaction log import, Applies to Cloud SQL for SQL
+  /// Server only
+  ///
+  /// Optional.
+  core.String? stopAt;
+
+  /// StopAtMark keyword for transaction log import, Applies to Cloud SQL for
+  /// SQL Server only
+  ///
+  /// Optional.
+  core.String? stopAtMark;
+
   /// Whether or not the backup set being restored is striped.
   ///
   /// Applies only to Cloud SQL for SQL Server.
@@ -5155,6 +5199,8 @@ class ImportContextBakImportOptions {
     this.encryptionOptions,
     this.noRecovery,
     this.recoveryOnly,
+    this.stopAt,
+    this.stopAtMark,
     this.striped,
   });
 
@@ -5174,6 +5220,12 @@ class ImportContextBakImportOptions {
           recoveryOnly: json_.containsKey('recoveryOnly')
               ? json_['recoveryOnly'] as core.bool
               : null,
+          stopAt: json_.containsKey('stopAt')
+              ? json_['stopAt'] as core.String
+              : null,
+          stopAtMark: json_.containsKey('stopAtMark')
+              ? json_['stopAtMark'] as core.String
+              : null,
           striped: json_.containsKey('striped')
               ? json_['striped'] as core.bool
               : null,
@@ -5184,6 +5236,8 @@ class ImportContextBakImportOptions {
         if (encryptionOptions != null) 'encryptionOptions': encryptionOptions!,
         if (noRecovery != null) 'noRecovery': noRecovery!,
         if (recoveryOnly != null) 'recoveryOnly': recoveryOnly!,
+        if (stopAt != null) 'stopAt': stopAt!,
+        if (stopAtMark != null) 'stopAtMark': stopAtMark!,
         if (striped != null) 'striped': striped!,
       };
 }
@@ -5780,6 +5834,9 @@ class IpConfiguration {
   /// can be updated, but it cannot be removed after it is set.
   core.String? privateNetwork;
 
+  /// PSC settings for this instance.
+  PscConfig? pscConfig;
+
   /// Whether SSL connections over IP are enforced or not.
   core.bool? requireSsl;
 
@@ -5789,6 +5846,7 @@ class IpConfiguration {
     this.enablePrivatePathForGoogleCloudServices,
     this.ipv4Enabled,
     this.privateNetwork,
+    this.pscConfig,
     this.requireSsl,
   });
 
@@ -5813,6 +5871,10 @@ class IpConfiguration {
           privateNetwork: json_.containsKey('privateNetwork')
               ? json_['privateNetwork'] as core.String
               : null,
+          pscConfig: json_.containsKey('pscConfig')
+              ? PscConfig.fromJson(
+                  json_['pscConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           requireSsl: json_.containsKey('requireSsl')
               ? json_['requireSsl'] as core.bool
               : null,
@@ -5827,6 +5889,7 @@ class IpConfiguration {
               enablePrivatePathForGoogleCloudServices!,
         if (ipv4Enabled != null) 'ipv4Enabled': ipv4Enabled!,
         if (privateNetwork != null) 'privateNetwork': privateNetwork!,
+        if (pscConfig != null) 'pscConfig': pscConfig!,
         if (requireSsl != null) 'requireSsl': requireSsl!,
       };
 }
@@ -6650,6 +6713,43 @@ class PerformDiskShrinkContext {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (targetSizeGb != null) 'targetSizeGb': targetSizeGb!,
+      };
+}
+
+/// PSC settings for a Cloud SQL instance.
+class PscConfig {
+  /// List of consumer projects that are allow-listed for PSC connections to
+  /// this instance.
+  ///
+  /// This instance can be connected to with PSC from any network in these
+  /// projects. Each consumer project in this list may be represented by a
+  /// project number (numeric) or by a project id (alphanumeric).
+  core.List<core.String>? allowedConsumerProjects;
+
+  /// Whether PSC connectivity is enabled for this instance.
+  core.bool? pscEnabled;
+
+  PscConfig({
+    this.allowedConsumerProjects,
+    this.pscEnabled,
+  });
+
+  PscConfig.fromJson(core.Map json_)
+      : this(
+          allowedConsumerProjects: json_.containsKey('allowedConsumerProjects')
+              ? (json_['allowedConsumerProjects'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          pscEnabled: json_.containsKey('pscEnabled')
+              ? json_['pscEnabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowedConsumerProjects != null)
+          'allowedConsumerProjects': allowedConsumerProjects!,
+        if (pscEnabled != null) 'pscEnabled': pscEnabled!,
       };
 }
 

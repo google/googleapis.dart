@@ -58,7 +58,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230713",
+    "revision": "20230803",
     "rootUrl": "https://people.googleapis.com/",
     "servicePath": "",
     "title": "People API",

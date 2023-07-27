@@ -4090,6 +4090,13 @@ class GoogleFirebaseAppcheckV1betaService {
   /// effect and App Check will not work with that service.
   core.String? enforcementMode;
 
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  ///
+  /// This etag is strongly validated as defined by RFC 7232.
+  core.String? etag;
+
   /// The relative resource name of the service configuration object, in the
   /// format: ``` projects/{project_number}/services/{service_id} ``` Note that
   /// the `service_id` element must be a supported service ID.
@@ -4104,9 +4111,17 @@ class GoogleFirebaseAppcheckV1betaService {
   /// Required.
   core.String? name;
 
+  /// Timestamp when this service configuration object was most recently
+  /// updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
   GoogleFirebaseAppcheckV1betaService({
     this.enforcementMode,
+    this.etag,
     this.name,
+    this.updateTime,
   });
 
   GoogleFirebaseAppcheckV1betaService.fromJson(core.Map json_)
@@ -4114,12 +4129,18 @@ class GoogleFirebaseAppcheckV1betaService {
           enforcementMode: json_.containsKey('enforcementMode')
               ? json_['enforcementMode'] as core.String
               : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enforcementMode != null) 'enforcementMode': enforcementMode!,
+        if (etag != null) 'etag': etag!,
         if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 

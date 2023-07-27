@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230712",
+    "revision": "20230801",
     "rootUrl": "https://resourcesettings.googleapis.com/",
     "servicePath": "",
     "title": "Resource Settings API",

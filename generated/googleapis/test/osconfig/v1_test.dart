@@ -1203,6 +1203,7 @@ api.OSPolicy buildOSPolicy() {
   if (buildCounterOSPolicy < 3) {
     o.allowNoResourceGroupMatch = true;
     o.description = 'foo';
+    o.fingerprint = 'foo';
     o.id = 'foo';
     o.mode = 'foo';
     o.resourceGroups = buildUnnamed15();
@@ -1217,6 +1218,10 @@ void checkOSPolicy(api.OSPolicy o) {
     unittest.expect(o.allowNoResourceGroupMatch!, unittest.isTrue);
     unittest.expect(
       o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.fingerprint!,
       unittest.equals('foo'),
     );
     unittest.expect(

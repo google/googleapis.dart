@@ -6698,6 +6698,14 @@ class MigrationJob {
   /// projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
   core.String? name;
 
+  /// Data dump parallelism settings used by the migration.
+  ///
+  /// Currently applicable only for MySQL to Cloud SQL for MySQL migrations
+  /// only.
+  ///
+  /// Optional.
+  PerformanceConfig? performanceConfig;
+
   /// The current migration job phase.
   ///
   /// Output only.
@@ -6783,6 +6791,7 @@ class MigrationJob {
     this.filter,
     this.labels,
     this.name,
+    this.performanceConfig,
     this.phase,
     this.reverseSshConnectivity,
     this.source,
@@ -6845,6 +6854,10 @@ class MigrationJob {
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          performanceConfig: json_.containsKey('performanceConfig')
+              ? PerformanceConfig.fromJson(json_['performanceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           phase:
               json_.containsKey('phase') ? json_['phase'] as core.String : null,
           reverseSshConnectivity: json_.containsKey('reverseSshConnectivity')
@@ -6891,6 +6904,7 @@ class MigrationJob {
         if (filter != null) 'filter': filter!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (performanceConfig != null) 'performanceConfig': performanceConfig!,
         if (phase != null) 'phase': phase!,
         if (reverseSshConnectivity != null)
           'reverseSshConnectivity': reverseSshConnectivity!,
@@ -7413,6 +7427,33 @@ class PackageEntity {
       };
 }
 
+/// Performance configuration definition.
+class PerformanceConfig {
+  /// Initial dump parallelism level.
+  /// Possible string values are:
+  /// - "DUMP_PARALLEL_LEVEL_UNSPECIFIED" : Unknown dump parallel level. Will be
+  /// defaulted to OPTIMAL.
+  /// - "MIN" : Minimal parallel level.
+  /// - "OPTIMAL" : Optimal parallel level.
+  /// - "MAX" : Maximum parallel level.
+  core.String? dumpParallelLevel;
+
+  PerformanceConfig({
+    this.dumpParallelLevel,
+  });
+
+  PerformanceConfig.fromJson(core.Map json_)
+      : this(
+          dumpParallelLevel: json_.containsKey('dumpParallelLevel')
+              ? json_['dumpParallelLevel'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dumpParallelLevel != null) 'dumpParallelLevel': dumpParallelLevel!,
+      };
+}
+
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
 ///
@@ -7906,8 +7947,7 @@ class PrivateConnectivity {
       };
 }
 
-/// Private Service Connect connectivity
-/// (https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
+/// [Private Service Connect connectivity](https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
 class PrivateServiceConnectConnectivity {
   /// A service attachment that exposes a database, and has the following
   /// format:
@@ -7936,7 +7976,30 @@ class PrivateServiceConnectConnectivity {
 typedef PromoteMigrationJobRequest = $Empty;
 
 /// Request message for 'RestartMigrationJob' request.
-typedef RestartMigrationJobRequest = $Empty;
+class RestartMigrationJobRequest {
+  /// Restart the migration job without running prior configuration
+  /// verification.
+  ///
+  /// Defaults to `false`.
+  ///
+  /// Optional.
+  core.bool? skipValidation;
+
+  RestartMigrationJobRequest({
+    this.skipValidation,
+  });
+
+  RestartMigrationJobRequest.fromJson(core.Map json_)
+      : this(
+          skipValidation: json_.containsKey('skipValidation')
+              ? json_['skipValidation'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (skipValidation != null) 'skipValidation': skipValidation!,
+      };
+}
 
 /// Request message for 'ResumeMigrationJob' request.
 typedef ResumeMigrationJobRequest = $Empty;

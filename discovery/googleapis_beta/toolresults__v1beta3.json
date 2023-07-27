@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230717",
+    "revision": "20230803",
     "rootUrl": "https://toolresults.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Tool Results API",
@@ -1620,6 +1620,12 @@
             },
             "type": "object"
         },
+        "AssetIssue": {
+            "description": "There was an issue with the assets in this test.",
+            "id": "AssetIssue",
+            "properties": {},
+            "type": "object"
+        },
         "AvailableDeepLinks": {
             "description": "A suggestion to use deep links for a Robo run.",
             "id": "AvailableDeepLinks",
@@ -1961,7 +1967,7 @@
             "type": "object"
         },
         "FailedToInstall": {
-            "description": "Failed to install the APK.",
+            "description": "Failed to install the App.",
             "id": "FailedToInstall",
             "properties": {},
             "type": "object"
@@ -3626,7 +3632,8 @@
                         "unityException",
                         "deviceOutOfMemory",
                         "logcatCollectionError",
-                        "detectedAppSplashScreen"
+                        "detectedAppSplashScreen",
+                        "assetIssue"
                     ],
                     "enumDescriptions": [
                         "Default unspecified type. Do not use. For versioning only.",
@@ -3660,7 +3667,8 @@
                         "An uncaught Unity exception was detected (these don't crash apps).",
                         "Device running out of memory was detected",
                         "Problems detected while collecting logcat",
-                        "Robo detected a splash screen provided by app (vs. Android OS splash screen)."
+                        "Robo detected a splash screen provided by app (vs. Android OS splash screen).",
+                        "There was an issue with the assets in this test."
                     ],
                     "type": "string"
                 },

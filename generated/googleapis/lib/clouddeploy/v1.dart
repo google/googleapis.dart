@@ -11,7 +11,7 @@
 // ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Google Cloud Deploy API - v1
+/// Cloud Deploy API - v1
 ///
 /// For more information, see <https://cloud.google.com/deploy/>
 ///
@@ -2464,11 +2464,27 @@ class CanaryDeployment {
   /// Required.
   core.List<core.int>? percentages;
 
+  /// Configuration for the postdeploy job of the last phase.
+  ///
+  /// If this is not configured, postdeploy job will not be present.
+  ///
+  /// Optional.
+  Postdeploy? postdeploy;
+
+  /// Configuration for the predeploy job of the first phase.
+  ///
+  /// If this is not configured, predeploy job will not be present.
+  ///
+  /// Optional.
+  Predeploy? predeploy;
+
   /// Whether to run verify tests after each percentage deployment.
   core.bool? verify;
 
   CanaryDeployment({
     this.percentages,
+    this.postdeploy,
+    this.predeploy,
     this.verify,
   });
 
@@ -2479,12 +2495,22 @@ class CanaryDeployment {
                   .map((value) => value as core.int)
                   .toList()
               : null,
+          postdeploy: json_.containsKey('postdeploy')
+              ? Postdeploy.fromJson(
+                  json_['postdeploy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          predeploy: json_.containsKey('predeploy')
+              ? Predeploy.fromJson(
+                  json_['predeploy'] as core.Map<core.String, core.dynamic>)
+              : null,
           verify:
               json_.containsKey('verify') ? json_['verify'] as core.bool : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (percentages != null) 'percentages': percentages!,
+        if (postdeploy != null) 'postdeploy': postdeploy!,
+        if (predeploy != null) 'predeploy': predeploy!,
         if (verify != null) 'verify': verify!,
       };
 }
@@ -2823,15 +2849,15 @@ class DefaultPool {
       };
 }
 
-/// A `DeliveryPipeline` resource in the Google Cloud Deploy API.
+/// A `DeliveryPipeline` resource in the Cloud Deploy API.
 ///
 /// A `DeliveryPipeline` defines a pipeline through which a Skaffold
 /// configuration can progress.
 class DeliveryPipeline {
   /// User annotations.
   ///
-  /// These attributes can only be set and used by the user, and not by Google
-  /// Cloud Deploy.
+  /// These attributes can only be set and used by the user, and not by Cloud
+  /// Deploy.
   core.Map<core.String, core.String>? annotations;
 
   /// Information around the state of the Delivery Pipeline.
@@ -2855,7 +2881,7 @@ class DeliveryPipeline {
   core.String? etag;
 
   /// Labels are attributes that can be set and used by both the user and by
-  /// Google Cloud Deploy.
+  /// Cloud Deploy.
   ///
   /// Labels must meet the following constraints: * Keys and values can contain
   /// only lowercase letters, numeric characters, underscores, and dashes. * All
@@ -3029,9 +3055,9 @@ class DeployJobRun {
   /// Possible string values are:
   /// - "FAILURE_CAUSE_UNSPECIFIED" : No reason for failure is specified.
   /// - "CLOUD_BUILD_UNAVAILABLE" : Cloud Build is not available, either because
-  /// it is not enabled or because Google Cloud Deploy has insufficient
-  /// permissions. See \[Required
-  /// permission\](/deploy/docs/cloud-deploy-service-account#required_permissions).
+  /// it is not enabled or because Cloud Deploy has insufficient permissions.
+  /// See
+  /// [Required permission](https://cloud.google.com/deploy/docs/cloud-deploy-service-account#required_permissions).
   /// - "EXECUTION_FAILED" : The deploy operation did not complete successfully;
   /// check Cloud Build logs.
   /// - "DEADLINE_EXCEEDED" : The deploy build did not complete within the
@@ -3039,8 +3065,8 @@ class DeployJobRun {
   /// - "MISSING_RESOURCES_FOR_CANARY" : There were missing resources in the
   /// runtime environment required for a canary deployment. Check the Cloud
   /// Build logs for more information.
-  /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Google
-  /// Cloud Deploy's request. See failure_message for additional details.
+  /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Cloud
+  /// Deploy's request. See failure_message for additional details.
   core.String? failureCause;
 
   /// Additional information about the deploy failure, if available.
@@ -3173,6 +3199,22 @@ class DeploymentJobs {
   /// Output only.
   Job? deployJob;
 
+  /// The postdeploy Job.
+  ///
+  /// This is the postdeploy job in the phase. This is the last job of the
+  /// phase.
+  ///
+  /// Output only.
+  Job? postdeployJob;
+
+  /// The predeploy Job.
+  ///
+  /// This is the predeploy job in the phase. This is the first job of the
+  /// phase.
+  ///
+  /// Output only.
+  Job? predeployJob;
+
   /// The verify Job.
   ///
   /// Runs after a deploy if the deploy succeeds.
@@ -3182,6 +3224,8 @@ class DeploymentJobs {
 
   DeploymentJobs({
     this.deployJob,
+    this.postdeployJob,
+    this.predeployJob,
     this.verifyJob,
   });
 
@@ -3191,6 +3235,14 @@ class DeploymentJobs {
               ? Job.fromJson(
                   json_['deployJob'] as core.Map<core.String, core.dynamic>)
               : null,
+          postdeployJob: json_.containsKey('postdeployJob')
+              ? Job.fromJson(
+                  json_['postdeployJob'] as core.Map<core.String, core.dynamic>)
+              : null,
+          predeployJob: json_.containsKey('predeployJob')
+              ? Job.fromJson(
+                  json_['predeployJob'] as core.Map<core.String, core.dynamic>)
+              : null,
           verifyJob: json_.containsKey('verifyJob')
               ? Job.fromJson(
                   json_['verifyJob'] as core.Map<core.String, core.dynamic>)
@@ -3199,6 +3251,8 @@ class DeploymentJobs {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deployJob != null) 'deployJob': deployJob!,
+        if (postdeployJob != null) 'postdeployJob': postdeployJob!,
+        if (predeployJob != null) 'predeployJob': predeployJob!,
         if (verifyJob != null) 'verifyJob': verifyJob!,
       };
 }
@@ -3345,6 +3399,14 @@ class GatewayServiceMesh {
   /// Required.
   core.String? httpRoute;
 
+  /// The time to wait for route updates to propagate.
+  ///
+  /// The maximum configurable time is 3 hours, in seconds format. If
+  /// unspecified, there is no wait time.
+  ///
+  /// Optional.
+  core.String? routeUpdateWaitTime;
+
   /// Name of the Kubernetes Service.
   ///
   /// Required.
@@ -3353,6 +3415,7 @@ class GatewayServiceMesh {
   GatewayServiceMesh({
     this.deployment,
     this.httpRoute,
+    this.routeUpdateWaitTime,
     this.service,
   });
 
@@ -3364,6 +3427,9 @@ class GatewayServiceMesh {
           httpRoute: json_.containsKey('httpRoute')
               ? json_['httpRoute'] as core.String
               : null,
+          routeUpdateWaitTime: json_.containsKey('routeUpdateWaitTime')
+              ? json_['routeUpdateWaitTime'] as core.String
+              : null,
           service: json_.containsKey('service')
               ? json_['service'] as core.String
               : null,
@@ -3372,6 +3438,8 @@ class GatewayServiceMesh {
   core.Map<core.String, core.dynamic> toJson() => {
         if (deployment != null) 'deployment': deployment!,
         if (httpRoute != null) 'httpRoute': httpRoute!,
+        if (routeUpdateWaitTime != null)
+          'routeUpdateWaitTime': routeUpdateWaitTime!,
         if (service != null) 'service': service!,
       };
 }
@@ -3480,6 +3548,16 @@ class Job {
   /// Output only.
   core.String? jobRun;
 
+  /// A postdeploy Job.
+  ///
+  /// Output only.
+  PostdeployJob? postdeployJob;
+
+  /// A predeploy Job.
+  ///
+  /// Output only.
+  PredeployJob? predeployJob;
+
   /// Additional information on why the Job was skipped, if available.
   ///
   /// Output only.
@@ -3512,6 +3590,8 @@ class Job {
     this.deployJob,
     this.id,
     this.jobRun,
+    this.postdeployJob,
+    this.predeployJob,
     this.skipMessage,
     this.state,
     this.verifyJob,
@@ -3535,6 +3615,14 @@ class Job {
           jobRun: json_.containsKey('jobRun')
               ? json_['jobRun'] as core.String
               : null,
+          postdeployJob: json_.containsKey('postdeployJob')
+              ? PostdeployJob.fromJson(
+                  json_['postdeployJob'] as core.Map<core.String, core.dynamic>)
+              : null,
+          predeployJob: json_.containsKey('predeployJob')
+              ? PredeployJob.fromJson(
+                  json_['predeployJob'] as core.Map<core.String, core.dynamic>)
+              : null,
           skipMessage: json_.containsKey('skipMessage')
               ? json_['skipMessage'] as core.String
               : null,
@@ -3554,13 +3642,15 @@ class Job {
         if (deployJob != null) 'deployJob': deployJob!,
         if (id != null) 'id': id!,
         if (jobRun != null) 'jobRun': jobRun!,
+        if (postdeployJob != null) 'postdeployJob': postdeployJob!,
+        if (predeployJob != null) 'predeployJob': predeployJob!,
         if (skipMessage != null) 'skipMessage': skipMessage!,
         if (state != null) 'state': state!,
         if (verifyJob != null) 'verifyJob': verifyJob!,
       };
 }
 
-/// A `JobRun` resource in the Google Cloud Deploy API.
+/// A `JobRun` resource in the Cloud Deploy API.
 ///
 /// A `JobRun` contains information of a single `Rollout` job evaluation.
 class JobRun {
@@ -3615,6 +3705,16 @@ class JobRun {
   /// Output only.
   core.String? phaseId;
 
+  /// Information specific to a postdeploy `JobRun`.
+  ///
+  /// Output only.
+  PostdeployJobRun? postdeployJobRun;
+
+  /// Information specific to a predeploy `JobRun`.
+  ///
+  /// Output only.
+  PredeployJobRun? predeployJobRun;
+
   /// Time at which the `JobRun` was started.
   ///
   /// Output only.
@@ -3652,6 +3752,8 @@ class JobRun {
     this.jobId,
     this.name,
     this.phaseId,
+    this.postdeployJobRun,
+    this.predeployJobRun,
     this.startTime,
     this.state,
     this.uid,
@@ -3689,6 +3791,14 @@ class JobRun {
           phaseId: json_.containsKey('phaseId')
               ? json_['phaseId'] as core.String
               : null,
+          postdeployJobRun: json_.containsKey('postdeployJobRun')
+              ? PostdeployJobRun.fromJson(json_['postdeployJobRun']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          predeployJobRun: json_.containsKey('predeployJobRun')
+              ? PredeployJobRun.fromJson(json_['predeployJobRun']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           startTime: json_.containsKey('startTime')
               ? json_['startTime'] as core.String
               : null,
@@ -3713,6 +3823,8 @@ class JobRun {
         if (jobId != null) 'jobId': jobId!,
         if (name != null) 'name': name!,
         if (phaseId != null) 'phaseId': phaseId!,
+        if (postdeployJobRun != null) 'postdeployJobRun': postdeployJobRun!,
+        if (predeployJobRun != null) 'predeployJobRun': predeployJobRun!,
         if (startTime != null) 'startTime': startTime!,
         if (state != null) 'state': state!,
         if (uid != null) 'uid': uid!,
@@ -4299,6 +4411,22 @@ class PhaseConfig {
   /// Required.
   core.String? phaseId;
 
+  /// Configuration for the postdeploy job of this phase.
+  ///
+  /// If this is not configured, postdeploy job will not be present for this
+  /// phase.
+  ///
+  /// Optional.
+  Postdeploy? postdeploy;
+
+  /// Configuration for the predeploy job of this phase.
+  ///
+  /// If this is not configured, predeploy job will not be present for this
+  /// phase.
+  ///
+  /// Optional.
+  Predeploy? predeploy;
+
   /// Skaffold profiles to use when rendering the manifest for this phase.
   ///
   /// These are in addition to the profiles list specified in the
@@ -4311,6 +4439,8 @@ class PhaseConfig {
   PhaseConfig({
     this.percentage,
     this.phaseId,
+    this.postdeploy,
+    this.predeploy,
     this.profiles,
     this.verify,
   });
@@ -4322,6 +4452,14 @@ class PhaseConfig {
               : null,
           phaseId: json_.containsKey('phaseId')
               ? json_['phaseId'] as core.String
+              : null,
+          postdeploy: json_.containsKey('postdeploy')
+              ? Postdeploy.fromJson(
+                  json_['postdeploy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          predeploy: json_.containsKey('predeploy')
+              ? Predeploy.fromJson(
+                  json_['predeploy'] as core.Map<core.String, core.dynamic>)
               : null,
           profiles: json_.containsKey('profiles')
               ? (json_['profiles'] as core.List)
@@ -4335,6 +4473,8 @@ class PhaseConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (percentage != null) 'percentage': percentage!,
         if (phaseId != null) 'phaseId': phaseId!,
+        if (postdeploy != null) 'postdeploy': postdeploy!,
+        if (predeploy != null) 'predeploy': predeploy!,
         if (profiles != null) 'profiles': profiles!,
         if (verify != null) 'verify': verify!,
       };
@@ -4539,6 +4679,228 @@ class Policy {
       };
 }
 
+/// Postdeploy contains the postdeploy job configuration information.
+class Postdeploy {
+  /// A sequence of skaffold custom actions to invoke during execution of the
+  /// postdeploy job.
+  ///
+  /// Optional.
+  core.List<core.String>? actions;
+
+  Postdeploy({
+    this.actions,
+  });
+
+  Postdeploy.fromJson(core.Map json_)
+      : this(
+          actions: json_.containsKey('actions')
+              ? (json_['actions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actions != null) 'actions': actions!,
+      };
+}
+
+/// A postdeploy Job.
+class PostdeployJob {
+  /// The custom actions that the postdeploy Job executes.
+  ///
+  /// Output only.
+  core.List<core.String>? actions;
+
+  PostdeployJob({
+    this.actions,
+  });
+
+  PostdeployJob.fromJson(core.Map json_)
+      : this(
+          actions: json_.containsKey('actions')
+              ? (json_['actions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actions != null) 'actions': actions!,
+      };
+}
+
+/// PostdeployJobRun contains information specific to a postdeploy `JobRun`.
+class PostdeployJobRun {
+  /// The resource name of the Cloud Build `Build` object that is used to
+  /// execute the custom actions associated with the postdeploy Job.
+  ///
+  /// Format is projects/{project}/locations/{location}/builds/{build}.
+  ///
+  /// Output only.
+  core.String? build;
+
+  /// The reason the postdeploy failed.
+  ///
+  /// This will always be unspecified while the postdeploy is in progress or if
+  /// it succeeded.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "FAILURE_CAUSE_UNSPECIFIED" : No reason for failure is specified.
+  /// - "CLOUD_BUILD_UNAVAILABLE" : Cloud Build is not available, either because
+  /// it is not enabled or because Cloud Deploy has insufficient permissions.
+  /// See
+  /// [required permission](https://cloud.google.com/deploy/docs/cloud-deploy-service-account#required_permissions).
+  /// - "EXECUTION_FAILED" : The postdeploy operation did not complete
+  /// successfully; check Cloud Build logs.
+  /// - "DEADLINE_EXCEEDED" : The postdeploy build did not complete within the
+  /// alloted time.
+  /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Cloud
+  /// Deploy's request. See failure_message for additional details.
+  core.String? failureCause;
+
+  /// Additional information about the postdeploy failure, if available.
+  ///
+  /// Output only.
+  core.String? failureMessage;
+
+  PostdeployJobRun({
+    this.build,
+    this.failureCause,
+    this.failureMessage,
+  });
+
+  PostdeployJobRun.fromJson(core.Map json_)
+      : this(
+          build:
+              json_.containsKey('build') ? json_['build'] as core.String : null,
+          failureCause: json_.containsKey('failureCause')
+              ? json_['failureCause'] as core.String
+              : null,
+          failureMessage: json_.containsKey('failureMessage')
+              ? json_['failureMessage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (build != null) 'build': build!,
+        if (failureCause != null) 'failureCause': failureCause!,
+        if (failureMessage != null) 'failureMessage': failureMessage!,
+      };
+}
+
+/// Predeploy contains the predeploy job configuration information.
+class Predeploy {
+  /// A sequence of skaffold custom actions to invoke during execution of the
+  /// predeploy job.
+  ///
+  /// Optional.
+  core.List<core.String>? actions;
+
+  Predeploy({
+    this.actions,
+  });
+
+  Predeploy.fromJson(core.Map json_)
+      : this(
+          actions: json_.containsKey('actions')
+              ? (json_['actions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actions != null) 'actions': actions!,
+      };
+}
+
+/// A predeploy Job.
+class PredeployJob {
+  /// The custom actions that the predeploy Job executes.
+  ///
+  /// Output only.
+  core.List<core.String>? actions;
+
+  PredeployJob({
+    this.actions,
+  });
+
+  PredeployJob.fromJson(core.Map json_)
+      : this(
+          actions: json_.containsKey('actions')
+              ? (json_['actions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actions != null) 'actions': actions!,
+      };
+}
+
+/// PredeployJobRun contains information specific to a predeploy `JobRun`.
+class PredeployJobRun {
+  /// The resource name of the Cloud Build `Build` object that is used to
+  /// execute the custom actions associated with the predeploy Job.
+  ///
+  /// Format is projects/{project}/locations/{location}/builds/{build}.
+  ///
+  /// Output only.
+  core.String? build;
+
+  /// The reason the predeploy failed.
+  ///
+  /// This will always be unspecified while the predeploy is in progress or if
+  /// it succeeded.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "FAILURE_CAUSE_UNSPECIFIED" : No reason for failure is specified.
+  /// - "CLOUD_BUILD_UNAVAILABLE" : Cloud Build is not available, either because
+  /// it is not enabled or because Cloud Deploy has insufficient permissions.
+  /// See
+  /// [required permission](https://cloud.google.com/deploy/docs/cloud-deploy-service-account#required_permissions).
+  /// - "EXECUTION_FAILED" : The predeploy operation did not complete
+  /// successfully; check Cloud Build logs.
+  /// - "DEADLINE_EXCEEDED" : The predeploy build did not complete within the
+  /// alloted time.
+  /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Cloud
+  /// Deploy's request. See failure_message for additional details.
+  core.String? failureCause;
+
+  /// Additional information about the predeploy failure, if available.
+  ///
+  /// Output only.
+  core.String? failureMessage;
+
+  PredeployJobRun({
+    this.build,
+    this.failureCause,
+    this.failureMessage,
+  });
+
+  PredeployJobRun.fromJson(core.Map json_)
+      : this(
+          build:
+              json_.containsKey('build') ? json_['build'] as core.String : null,
+          failureCause: json_.containsKey('failureCause')
+              ? json_['failureCause'] as core.String
+              : null,
+          failureMessage: json_.containsKey('failureMessage')
+              ? json_['failureMessage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (build != null) 'build': build!,
+        if (failureCause != null) 'failureCause': failureCause!,
+        if (failureMessage != null) 'failureMessage': failureMessage!,
+      };
+}
+
 /// Execution using a private Cloud Build pool.
 class PrivatePool {
   /// Cloud Storage location where execution outputs should be stored.
@@ -4592,7 +4954,7 @@ class PrivatePool {
       };
 }
 
-/// A `Release` resource in the Google Cloud Deploy API.
+/// A `Release` resource in the Cloud Deploy API.
 ///
 /// A `Release` defines a specific Skaffold configuration instance that can be
 /// deployed.
@@ -4604,9 +4966,9 @@ class Release {
 
   /// User annotations.
   ///
-  /// These attributes can only be set and used by the user, and not by Google
-  /// Cloud Deploy. See https://google.aip.dev/128#annotations for more details
-  /// such as format and size limitations.
+  /// These attributes can only be set and used by the user, and not by Cloud
+  /// Deploy. See https://google.aip.dev/128#annotations for more details such
+  /// as format and size limitations.
   core.Map<core.String, core.String>? annotations;
 
   /// List of artifacts to pass through to Skaffold command.
@@ -4643,7 +5005,7 @@ class Release {
   core.String? etag;
 
   /// Labels are attributes that can be set and used by both the user and by
-  /// Google Cloud Deploy.
+  /// Cloud Deploy.
   ///
   /// Labels must meet the following constraints: * Keys and values can contain
   /// only lowercase letters, numeric characters, underscores, and dashes. * All
@@ -4692,7 +5054,7 @@ class Release {
   /// The Skaffold version to use when operating on this release, such as
   /// "1.20.0".
   ///
-  /// Not all versions are valid; Google Cloud Deploy supports a specific set of
+  /// Not all versions are valid; Cloud Deploy supports a specific set of
   /// versions. If unset, the most recent supported Skaffold version will be
   /// used.
   core.String? skaffoldVersion;
@@ -4992,15 +5354,15 @@ class RetryJobRequest {
 /// The response object from 'RetryJob'.
 typedef RetryJobResponse = $Empty;
 
-/// A `Rollout` resource in the Google Cloud Deploy API.
+/// A `Rollout` resource in the Cloud Deploy API.
 ///
 /// A `Rollout` contains information around a specific deployment to a `Target`.
 class Rollout {
   /// User annotations.
   ///
-  /// These attributes can only be set and used by the user, and not by Google
-  /// Cloud Deploy. See https://google.aip.dev/128#annotations for more details
-  /// such as format and size limitations.
+  /// These attributes can only be set and used by the user, and not by Cloud
+  /// Deploy. See https://google.aip.dev/128#annotations for more details such
+  /// as format and size limitations.
   core.Map<core.String, core.String>? annotations;
 
   /// Approval state of the `Rollout`.
@@ -5048,8 +5410,8 @@ class Rollout {
   /// - "FAILURE_CAUSE_UNSPECIFIED" : No reason for failure is specified.
   /// - "CLOUD_BUILD_UNAVAILABLE" : Cloud Build is not available, either because
   /// it is not enabled or because Cloud Deploy has insufficient permissions.
-  /// See \[required
-  /// permission\](/deploy/docs/cloud-deploy-service-account#required_permissions).
+  /// See
+  /// [required permission](https://cloud.google.com/deploy/docs/cloud-deploy-service-account#required_permissions).
   /// - "EXECUTION_FAILED" : The deploy operation did not complete successfully;
   /// check Cloud Build logs.
   /// - "DEADLINE_EXCEEDED" : Deployment did not complete within the alloted
@@ -5058,8 +5420,8 @@ class Rollout {
   /// - "RELEASE_ABANDONED" : Release is abandoned.
   /// - "VERIFICATION_CONFIG_NOT_FOUND" : No skaffold verify configuration was
   /// found.
-  /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Google
-  /// Cloud Deploy's request. See failure_message for additional details.
+  /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Cloud
+  /// Deploy's request. See failure_message for additional details.
   core.String? deployFailureCause;
 
   /// Time at which the `Rollout` started deploying.
@@ -5096,7 +5458,7 @@ class Rollout {
   core.String? failureReason;
 
   /// Labels are attributes that can be set and used by both the user and by
-  /// Google Cloud Deploy.
+  /// Cloud Deploy.
   ///
   /// Labels must meet the following constraints: * Keys and values can contain
   /// only lowercase letters, numeric characters, underscores, and dashes. * All
@@ -5592,20 +5954,46 @@ class Stage {
 
 /// Standard represents the standard deployment strategy.
 class Standard {
+  /// Configuration for the postdeploy job.
+  ///
+  /// If this is not configured, postdeploy job will not be present.
+  ///
+  /// Optional.
+  Postdeploy? postdeploy;
+
+  /// Configuration for the predeploy job.
+  ///
+  /// If this is not configured, predeploy job will not be present.
+  ///
+  /// Optional.
+  Predeploy? predeploy;
+
   /// Whether to verify a deployment.
   core.bool? verify;
 
   Standard({
+    this.postdeploy,
+    this.predeploy,
     this.verify,
   });
 
   Standard.fromJson(core.Map json_)
       : this(
+          postdeploy: json_.containsKey('postdeploy')
+              ? Postdeploy.fromJson(
+                  json_['postdeploy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          predeploy: json_.containsKey('predeploy')
+              ? Predeploy.fromJson(
+                  json_['predeploy'] as core.Map<core.String, core.dynamic>)
+              : null,
           verify:
               json_.containsKey('verify') ? json_['verify'] as core.bool : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (postdeploy != null) 'postdeploy': postdeploy!,
+        if (predeploy != null) 'predeploy': predeploy!,
         if (verify != null) 'verify': verify!,
       };
 }
@@ -5652,16 +6040,16 @@ class Strategy {
       };
 }
 
-/// A `Target` resource in the Google Cloud Deploy API.
+/// A `Target` resource in the Cloud Deploy API.
 ///
 /// A `Target` defines a location to which a Skaffold configuration can be
 /// deployed.
 class Target {
   /// User annotations.
   ///
-  /// These attributes can only be set and used by the user, and not by Google
-  /// Cloud Deploy. See https://google.aip.dev/128#annotations for more details
-  /// such as format and size limitations.
+  /// These attributes can only be set and used by the user, and not by Cloud
+  /// Deploy. See https://google.aip.dev/128#annotations for more details such
+  /// as format and size limitations.
   ///
   /// Optional.
   core.Map<core.String, core.String>? annotations;
@@ -5710,7 +6098,7 @@ class Target {
   GkeCluster? gke;
 
   /// Labels are attributes that can be set and used by both the user and by
-  /// Google Cloud Deploy.
+  /// Cloud Deploy.
   ///
   /// Labels must meet the following constraints: * Keys and values can contain
   /// only lowercase letters, numeric characters, underscores, and dashes. * All
@@ -5943,13 +6331,17 @@ class TargetRender {
   /// Possible string values are:
   /// - "FAILURE_CAUSE_UNSPECIFIED" : No reason for failure is specified.
   /// - "CLOUD_BUILD_UNAVAILABLE" : Cloud Build is not available, either because
-  /// it is not enabled or because Google Cloud Deploy has insufficient
-  /// permissions. See \[required
-  /// permission\](/deploy/docs/cloud-deploy-service-account#required_permissions).
+  /// it is not enabled or because Cloud Deploy has insufficient permissions.
+  /// See
+  /// [required permission](https://cloud.google.com/deploy/docs/cloud-deploy-service-account#required_permissions).
   /// - "EXECUTION_FAILED" : The render operation did not complete successfully;
   /// check Cloud Build logs.
-  /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Google
-  /// Cloud Deploy's request. See failure_message for additional details.
+  /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Cloud
+  /// Deploy's request. See failure_message for additional details.
+  /// - "CUSTOM_ACTION_NOT_FOUND" : The render operation did not complete
+  /// successfully because the custom action required for predeploy or
+  /// postdeploy was not found in the skaffold configuration. See
+  /// failure_message for additional details.
   core.String? failureCause;
 
   /// Additional information about the render failure, if available.
@@ -6138,17 +6530,17 @@ class VerifyJobRun {
   /// Possible string values are:
   /// - "FAILURE_CAUSE_UNSPECIFIED" : No reason for failure is specified.
   /// - "CLOUD_BUILD_UNAVAILABLE" : Cloud Build is not available, either because
-  /// it is not enabled or because Google Cloud Deploy has insufficient
-  /// permissions. See \[required
-  /// permission\](/deploy/docs/cloud-deploy-service-account#required_permissions).
+  /// it is not enabled or because Cloud Deploy has insufficient permissions.
+  /// See
+  /// [required permission](https://cloud.google.com/deploy/docs/cloud-deploy-service-account#required_permissions).
   /// - "EXECUTION_FAILED" : The verify operation did not complete successfully;
   /// check Cloud Build logs.
   /// - "DEADLINE_EXCEEDED" : The verify build did not complete within the
   /// alloted time.
   /// - "VERIFICATION_CONFIG_NOT_FOUND" : No Skaffold verify configuration was
   /// found.
-  /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Google
-  /// Cloud Deploy's request. See failure_message for additional details.
+  /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Cloud
+  /// Deploy's request. See failure_message for additional details.
   core.String? failureCause;
 
   /// Additional information about the verify failure, if available.

@@ -4,6 +4,9 @@
             "scopes": {
                 "https://www.googleapis.com/auth/sdm.service": {
                     "description": "See and/or control the devices that you selected"
+                },
+                "https://www.googleapis.com/auth/userinfo.email": {
+                    "description": "See your primary Google Account email address"
                 }
             }
         }
@@ -25,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230618",
+    "revision": "20230726",
     "rootUrl": "https://smartdevicemanagement.googleapis.com/",
     "servicePath": "",
     "title": "Smart Device Management API",
@@ -138,7 +141,8 @@
                                 "$ref": "GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sdm.service"
+                                "https://www.googleapis.com/auth/sdm.service",
+                                "https://www.googleapis.com/auth/userinfo.email"
                             ]
                         },
                         "get": {
@@ -163,7 +167,8 @@
                                 "$ref": "GoogleHomeEnterpriseSdmV1Device"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sdm.service"
+                                "https://www.googleapis.com/auth/sdm.service",
+                                "https://www.googleapis.com/auth/userinfo.email"
                             ]
                         },
                         "list": {
@@ -180,17 +185,6 @@
                                     "location": "query",
                                     "type": "string"
                                 },
-                                "pageSize": {
-                                    "description": "Optional requested page size. Server may return fewer devices than requested. If unspecified, server will pick an appropriate default.",
-                                    "format": "int32",
-                                    "location": "query",
-                                    "type": "integer"
-                                },
-                                "pageToken": {
-                                    "description": "Optional token of the page to retrieve.",
-                                    "location": "query",
-                                    "type": "string"
-                                },
                                 "parent": {
                                     "description": "The parent enterprise to list devices under. E.g. \"enterprises/XYZ\".",
                                     "location": "path",
@@ -204,7 +198,8 @@
                                 "$ref": "GoogleHomeEnterpriseSdmV1ListDevicesResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sdm.service"
+                                "https://www.googleapis.com/auth/sdm.service",
+                                "https://www.googleapis.com/auth/userinfo.email"
                             ]
                         }
                     }
@@ -233,7 +228,8 @@
                                 "$ref": "GoogleHomeEnterpriseSdmV1Structure"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sdm.service"
+                                "https://www.googleapis.com/auth/sdm.service",
+                                "https://www.googleapis.com/auth/userinfo.email"
                             ]
                         },
                         "list": {
@@ -250,17 +246,6 @@
                                     "location": "query",
                                     "type": "string"
                                 },
-                                "pageSize": {
-                                    "description": "Requested page size. Server may return fewer structures than requested. If unspecified, server will pick an appropriate default.",
-                                    "format": "int32",
-                                    "location": "query",
-                                    "type": "integer"
-                                },
-                                "pageToken": {
-                                    "description": "The token of the page to retrieve.",
-                                    "location": "query",
-                                    "type": "string"
-                                },
                                 "parent": {
                                     "description": "The parent enterprise to list structures under. E.g. \"enterprises/XYZ\".",
                                     "location": "path",
@@ -274,7 +259,8 @@
                                 "$ref": "GoogleHomeEnterpriseSdmV1ListStructuresResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sdm.service"
+                                "https://www.googleapis.com/auth/sdm.service",
+                                "https://www.googleapis.com/auth/userinfo.email"
                             ]
                         }
                     },
@@ -303,7 +289,8 @@
                                         "$ref": "GoogleHomeEnterpriseSdmV1Room"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sdm.service"
+                                        "https://www.googleapis.com/auth/sdm.service",
+                                        "https://www.googleapis.com/auth/userinfo.email"
                                     ]
                                 },
                                 "list": {
@@ -315,17 +302,6 @@
                                         "parent"
                                     ],
                                     "parameters": {
-                                        "pageSize": {
-                                            "description": "Requested page size. Server may return fewer rooms than requested. If unspecified, server will pick an appropriate default.",
-                                            "format": "int32",
-                                            "location": "query",
-                                            "type": "integer"
-                                        },
-                                        "pageToken": {
-                                            "description": "The token of the page to retrieve.",
-                                            "location": "query",
-                                            "type": "string"
-                                        },
                                         "parent": {
                                             "description": "The parent resource name of the rooms requested. For example: \"enterprises/XYZ/structures/ABC\".",
                                             "location": "path",
@@ -339,7 +315,8 @@
                                         "$ref": "GoogleHomeEnterpriseSdmV1ListRoomsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sdm.service"
+                                        "https://www.googleapis.com/auth/sdm.service",
+                                        "https://www.googleapis.com/auth/userinfo.email"
                                     ]
                                 }
                             }
@@ -426,10 +403,6 @@
                         "$ref": "GoogleHomeEnterpriseSdmV1Device"
                     },
                     "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "The pagination token to retrieve the next page of results.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -438,10 +411,6 @@
             "description": "Response message for SmartDeviceManagementService.ListRooms",
             "id": "GoogleHomeEnterpriseSdmV1ListRoomsResponse",
             "properties": {
-                "nextPageToken": {
-                    "description": "The pagination token to retrieve the next page of results. If this field is omitted, there are no subsequent pages.",
-                    "type": "string"
-                },
                 "rooms": {
                     "description": "The list of rooms.",
                     "items": {
@@ -456,10 +425,6 @@
             "description": "Response message for SmartDeviceManagementService.ListStructures",
             "id": "GoogleHomeEnterpriseSdmV1ListStructuresResponse",
             "properties": {
-                "nextPageToken": {
-                    "description": "The pagination token to retrieve the next page of results. If this field is omitted, there are no subsequent pages.",
-                    "type": "string"
-                },
                 "structures": {
                     "description": "The list of structures.",
                     "items": {

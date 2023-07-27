@@ -236,7 +236,7 @@ class FoldersPoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name of the policy. See `Policy` for naming
+  /// [name] - Required. Resource name of the policy. See Policy for naming
   /// requirements.
   /// Value must have pattern `^folders/\[^/\]+/policies/\[^/\]+$`.
   ///
@@ -279,8 +279,8 @@ class FoldersPoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The effective policy to compute. See `Policy` for
-  /// naming rules.
+  /// [name] - Required. The effective policy to compute. See Policy for naming
+  /// requirements.
   /// Value must have pattern `^folders/\[^/\]+/policies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -377,12 +377,12 @@ class FoldersPoliciesResource {
   /// Request parameters:
   ///
   /// [name] - Immutable. The resource name of the policy. Must be one of the
-  /// following forms, where constraint_name is the name of the constraint which
-  /// this policy configures: *
+  /// following forms, where `constraint_name` is the name of the constraint
+  /// which this policy configures: *
   /// `projects/{project_number}/policies/{constraint_name}` *
   /// `folders/{folder_id}/policies/{constraint_name}` *
   /// `organizations/{organization_id}/policies/{constraint_name}` For example,
-  /// "projects/123/policies/compute.disableSerialPortAccess". Note:
+  /// `projects/123/policies/compute.disableSerialPortAccess`. Note:
   /// `projects/{project_id}/policies/{constraint_name}` is also an acceptable
   /// name for API requests, but responses will return the name using the
   /// equivalent project number.
@@ -840,7 +840,7 @@ class OrganizationsPoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name of the policy. See `Policy` for naming
+  /// [name] - Required. Resource name of the policy. See Policy for naming
   /// requirements.
   /// Value must have pattern `^organizations/\[^/\]+/policies/\[^/\]+$`.
   ///
@@ -883,8 +883,8 @@ class OrganizationsPoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The effective policy to compute. See `Policy` for
-  /// naming rules.
+  /// [name] - Required. The effective policy to compute. See Policy for naming
+  /// requirements.
   /// Value must have pattern `^organizations/\[^/\]+/policies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -981,12 +981,12 @@ class OrganizationsPoliciesResource {
   /// Request parameters:
   ///
   /// [name] - Immutable. The resource name of the policy. Must be one of the
-  /// following forms, where constraint_name is the name of the constraint which
-  /// this policy configures: *
+  /// following forms, where `constraint_name` is the name of the constraint
+  /// which this policy configures: *
   /// `projects/{project_number}/policies/{constraint_name}` *
   /// `folders/{folder_id}/policies/{constraint_name}` *
   /// `organizations/{organization_id}/policies/{constraint_name}` For example,
-  /// "projects/123/policies/compute.disableSerialPortAccess". Note:
+  /// `projects/123/policies/compute.disableSerialPortAccess`. Note:
   /// `projects/{project_id}/policies/{constraint_name}` is also an acceptable
   /// name for API requests, but responses will return the name using the
   /// equivalent project number.
@@ -1201,7 +1201,7 @@ class ProjectsPoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name of the policy. See `Policy` for naming
+  /// [name] - Required. Resource name of the policy. See Policy for naming
   /// requirements.
   /// Value must have pattern `^projects/\[^/\]+/policies/\[^/\]+$`.
   ///
@@ -1244,8 +1244,8 @@ class ProjectsPoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The effective policy to compute. See `Policy` for
-  /// naming rules.
+  /// [name] - Required. The effective policy to compute. See Policy for naming
+  /// requirements.
   /// Value must have pattern `^projects/\[^/\]+/policies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1342,12 +1342,12 @@ class ProjectsPoliciesResource {
   /// Request parameters:
   ///
   /// [name] - Immutable. The resource name of the policy. Must be one of the
-  /// following forms, where constraint_name is the name of the constraint which
-  /// this policy configures: *
+  /// following forms, where `constraint_name` is the name of the constraint
+  /// which this policy configures: *
   /// `projects/{project_number}/policies/{constraint_name}` *
   /// `folders/{folder_id}/policies/{constraint_name}` *
   /// `organizations/{organization_id}/policies/{constraint_name}` For example,
-  /// "projects/123/policies/compute.disableSerialPortAccess". Note:
+  /// `projects/123/policies/compute.disableSerialPortAccess`. Note:
   /// `projects/{project_id}/policies/{constraint_name}` is also an acceptable
   /// name for API requests, but responses will return the name using the
   /// equivalent project number.
@@ -1591,10 +1591,9 @@ class GoogleCloudOrgpolicyV2CustomConstraint {
 
   /// Org policy condition/expression.
   ///
-  /// For example:
-  /// `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or,
-  /// `resource.management.auto_upgrade == true` The max length of the condition
-  /// is 1000 characters.
+  /// For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")`
+  /// or, `resource.management.auto_upgrade == true` The max length of the
+  /// condition is 1000 characters.
   core.String? condition;
 
   /// Detailed information about this custom policy constraint.
@@ -1822,12 +1821,12 @@ class GoogleCloudOrgpolicyV2Policy {
 
   /// The resource name of the policy.
   ///
-  /// Must be one of the following forms, where constraint_name is the name of
+  /// Must be one of the following forms, where `constraint_name` is the name of
   /// the constraint which this policy configures: *
   /// `projects/{project_number}/policies/{constraint_name}` *
   /// `folders/{folder_id}/policies/{constraint_name}` *
   /// `organizations/{organization_id}/policies/{constraint_name}` For example,
-  /// "projects/123/policies/compute.disableSerialPortAccess". Note:
+  /// `projects/123/policies/compute.disableSerialPortAccess`. Note:
   /// `projects/{project_id}/policies/{constraint_name}` is also an acceptable
   /// name for API requests, but responses will return the name using the
   /// equivalent project number.
@@ -2038,10 +2037,10 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
 /// `is:` prefix is used to denote specific values, and is required only if the
 /// value contains a ":". Values prefixed with "is:" are treated the same as
 /// values with no prefix. Ancestry subtrees must be in one of the following
-/// formats: - "projects/", e.g. "projects/tokyo-rain-123" - "folders/", e.g.
-/// "folders/1234" - "organizations/", e.g. "organizations/1234" The
-/// `supports_under` field of the associated `Constraint` defines whether
-/// ancestry prefixes can be used.
+/// formats: - `projects/` (for example, `projects/tokyo-rain-123`) - `folders/`
+/// (for example, `folders/1234`) - `organizations/` (for example,
+/// `organizations/1234`) The `supports_under` field of the associated
+/// `Constraint` defines whether ancestry prefixes can be used.
 typedef GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues = $StringValues;
 
 /// A generic empty message that you can re-use to avoid defining duplicated

@@ -524,7 +524,7 @@ class Animation {
 
 /// End previous overlay animation from the video.
 ///
-/// Without AnimationEnd, the overlay object will keep the state of previous
+/// Without `AnimationEnd`, the overlay object will keep the state of previous
 /// animation until the end of the video.
 class AnimationEnd {
   /// The time to end overlay object, in seconds.
@@ -695,10 +695,10 @@ class Audio {
       };
 }
 
-/// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
+/// The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
 class AudioMapping {
-  /// The `EditAtom.key` that references the atom with audio inputs in the
-  /// `Job.edit_list`.
+  /// The EditAtom.key that references the atom with audio inputs in the
+  /// JobConfig.edit_list.
   ///
   /// Required.
   core.String? atomKey;
@@ -714,7 +714,7 @@ class AudioMapping {
   /// Required.
   core.int? inputChannel;
 
-  /// The `Input.key` that identifies the input file.
+  /// The Input.key that identifies the input file.
   ///
   /// Required.
   core.String? inputKey;
@@ -812,7 +812,7 @@ class AudioStream {
   /// supported in MP4 files.
   core.String? languageCode;
 
-  /// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
+  /// The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
   core.List<AudioMapping>? mapping;
 
   /// The audio sample rate in Hertz.
@@ -1031,13 +1031,17 @@ class Crop {
 class DashConfig {
   /// The segment reference scheme for a `DASH` manifest.
   ///
-  /// The default is `SEGMENT_LIST`
+  /// The default is `SEGMENT_LIST`.
   /// Possible string values are:
   /// - "SEGMENT_REFERENCE_SCHEME_UNSPECIFIED" : The segment reference scheme is
   /// not specified.
-  /// - "SEGMENT_LIST" : Lists the URLs of media files for each segment.
-  /// - "SEGMENT_TEMPLATE_NUMBER" : Lists each segment from a template with
-  /// $Number$ variable.
+  /// - "SEGMENT_LIST" : Explicitly lists the URLs of media files for each
+  /// segment. For example, if SegmentSettings.individual_segments is `true`,
+  /// then the manifest contains fields similar to the following: ```xml ... ```
+  /// - "SEGMENT_TEMPLATE_NUMBER" : SegmentSettings.individual_segments must be
+  /// set to `true` to use this segment reference scheme. Uses the DASH
+  /// specification `` tag to determine the URLs of media files for each
+  /// segment. For example: ```xml ... ```
   core.String? segmentReferenceScheme;
 
   DashConfig({
@@ -1216,7 +1220,8 @@ class EditAtom {
   /// end of the atom.
   core.String? endTimeOffset;
 
-  /// List of `Input.key`s identifying files that should be used in this atom.
+  /// List of Input.key values identifying files that should be used in this
+  /// atom.
   ///
   /// The listed `inputs` must have the same timeline.
   core.List<core.String>? inputs;
@@ -1413,7 +1418,7 @@ class H264CodecSettings {
   /// The number of consecutive B-frames.
   ///
   /// Must be greater than or equal to zero. Must be less than
-  /// `VideoStream.gop_frame_count` if set. The default is 0.
+  /// H264CodecSettings.gop_frame_count if set. The default is 0.
   core.int? bFrameCount;
 
   /// Allow B-pyramid for reference frame selection.
@@ -1436,7 +1441,7 @@ class H264CodecSettings {
 
   /// Use two-pass encoding strategy to achieve better video quality.
   ///
-  /// `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
+  /// H264CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
   core.bool? enableTwoPass;
 
   /// The entropy coder to use.
@@ -1505,7 +1510,7 @@ class H264CodecSettings {
   /// override other fields you set in the `H264CodecSettings` message.
   core.String? profile;
 
-  /// Specify the `rate_control_mode`.
+  /// Specify the mode.
   ///
   /// The default is `vbr`. Supported rate control modes: - `vbr` - variable
   /// bitrate - `crf` - constant rate factor
@@ -1522,13 +1527,13 @@ class H264CodecSettings {
   /// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits.
   ///
   /// Must be greater than zero. The default is equal to 90% of
-  /// `VideoStream.vbv_size_bits`.
+  /// H264CodecSettings.vbv_size_bits.
   core.int? vbvFullnessBits;
 
   /// Size of the Video Buffering Verifier (VBV) buffer in bits.
   ///
   /// Must be greater than zero. The default is equal to
-  /// `VideoStream.bitrate_bps`.
+  /// H264CodecSettings.bitrate_bps.
   core.int? vbvSizeBits;
 
   /// The width of the video in pixels.
@@ -1669,7 +1674,7 @@ class H265CodecSettings {
   /// The number of consecutive B-frames.
   ///
   /// Must be greater than or equal to zero. Must be less than
-  /// `VideoStream.gop_frame_count` if set. The default is 0.
+  /// H265CodecSettings.gop_frame_count if set. The default is 0.
   core.int? bFrameCount;
 
   /// Allow B-pyramid for reference frame selection.
@@ -1692,7 +1697,7 @@ class H265CodecSettings {
 
   /// Use two-pass encoding strategy to achieve better video quality.
   ///
-  /// `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
+  /// H265CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
   core.bool? enableTwoPass;
 
   /// The target video frame rate in frames per second (FPS).
@@ -1760,7 +1765,7 @@ class H265CodecSettings {
   /// you set in the `H265CodecSettings` message.
   core.String? profile;
 
-  /// Specify the `rate_control_mode`.
+  /// Specify the mode.
   ///
   /// The default is `vbr`. Supported rate control modes: - `vbr` - variable
   /// bitrate - `crf` - constant rate factor
@@ -1777,7 +1782,7 @@ class H265CodecSettings {
   /// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits.
   ///
   /// Must be greater than zero. The default is equal to 90% of
-  /// `VideoStream.vbv_size_bits`.
+  /// H265CodecSettings.vbv_size_bits.
   core.int? vbvFullnessBits;
 
   /// Size of the Video Buffering Verifier (VBV) buffer in bits.
@@ -1963,7 +1968,7 @@ class Input {
   ///
   /// Input files must be at least 5 seconds in duration and stored in Cloud
   /// Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value
-  /// is populated from `Job.input_uri`. See
+  /// is populated from Job.input_uri. See
   /// [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
   core.String? uri;
 
@@ -1995,8 +2000,8 @@ class Input {
 class Job {
   /// The processing priority of a batch job.
   ///
-  /// This field can only be set for batch mode jobs, and the default value is
-  /// 0. This value cannot be negative. Higher values correspond to higher
+  /// This field can only be set for batch mode jobs. The default value is 0.
+  /// This value cannot be negative. Higher values correspond to higher
   /// priorities for the job.
   core.int? batchModePriority;
 
@@ -2015,7 +2020,7 @@ class Job {
 
   /// An error object that describes the reason for the failure.
   ///
-  /// This property is always present when `state` is `FAILED`.
+  /// This property is always present when ProcessingState is `FAILED`.
   ///
   /// Output only.
   Status? error;
@@ -2087,7 +2092,7 @@ class Job {
   /// - "RUNNING" : The job is being processed.
   /// - "SUCCEEDED" : The job has been completed successfully.
   /// - "FAILED" : The job has failed. For additional information, see
-  /// `failure_reason` and `failure_details`
+  /// [Troubleshooting](https://cloud.google.com/transcoder/docs/troubleshooting).
   core.String? state;
 
   /// Input only.
@@ -2200,7 +2205,7 @@ class JobConfig {
   /// Specifies where to insert ad break tags in the output manifests.
   core.List<AdBreak>? adBreaks;
 
-  /// List of `Edit atom`s.
+  /// List of edit atoms.
   ///
   /// Defines the ultimate timeline of the resulting file or manifest.
   core.List<EditAtom>? editList;
@@ -2471,14 +2476,14 @@ class Manifest {
   /// The name of the generated file.
   ///
   /// The default is `manifest` with the extension suffix corresponding to the
-  /// `Manifest.type`.
+  /// Manifest.type.
   core.String? fileName;
 
-  /// List of user given `MuxStream.key`s that should appear in this manifest.
+  /// List of user supplied MuxStream.key values that should appear in this
+  /// manifest.
   ///
-  /// When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key`
-  /// and `.m3u8` extension is generated for each element of the
-  /// `Manifest.mux_streams`.
+  /// When Manifest.type is `HLS`, a media manifest with name MuxStream.key and
+  /// `.m3u8` extension is generated for each element in this list.
   ///
   /// Required.
   core.List<core.String>? muxStreams;
@@ -2560,7 +2565,7 @@ class MuxStream {
   /// [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)
   core.String? container;
 
-  /// List of `ElementaryStream.key`s multiplexed in this stream.
+  /// List of ElementaryStream.key values multiplexed in this stream.
   core.List<core.String>? elementaryStreams;
 
   /// Identifier of the encryption configuration to use.
@@ -2570,16 +2575,13 @@ class MuxStream {
 
   /// The name of the generated file.
   ///
-  /// The default is `MuxStream.key` with the extension suffix corresponding to
-  /// the `MuxStream.container`. Individual segments also have an incremental
+  /// The default is MuxStream.key with the extension suffix corresponding to
+  /// the MuxStream.container. Individual segments also have an incremental
   /// 10-digit zero-padded suffix starting from 0 before the extension, such as
   /// `mux_stream0000000123.ts`.
   core.String? fileName;
 
   /// A unique key for this multiplexed stream.
-  ///
-  /// HLS media manifests will be named `MuxStream.key` with the `.m3u8`
-  /// extension suffix.
   core.String? key;
 
   /// Segment settings for `ts`, `fmp4` and `vtt`.
@@ -2663,7 +2665,7 @@ class Output {
   /// URI for the output file(s).
   ///
   /// For example, `gs://my-bucket/outputs/`. If empty, the value is populated
-  /// from `Job.output_uri`. See
+  /// from Job.output_uri. See
   /// [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
   core.String? uri;
 
@@ -2683,7 +2685,7 @@ class Output {
 
 /// Overlay configuration.
 class Overlay {
-  /// List of Animations.
+  /// List of animations.
   ///
   /// The list should be chronological, without any time overlap.
   core.List<Animation>? animations;
@@ -3101,15 +3103,15 @@ class SpriteSheet {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
 
-/// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+/// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
 class TextMapping {
-  /// The `EditAtom.key` that references atom with text inputs in the
-  /// `Job.edit_list`.
+  /// The EditAtom.key that references atom with text inputs in the
+  /// JobConfig.edit_list.
   ///
   /// Required.
   core.String? atomKey;
 
-  /// The `Input.key` that identifies the input file.
+  /// The Input.key that identifies the input file.
   ///
   /// Required.
   core.String? inputKey;
@@ -3168,7 +3170,7 @@ class TextStream {
   /// supported in MP4 files.
   core.String? languageCode;
 
-  /// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+  /// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
   core.List<TextMapping>? mapping;
 
   TextStream({
@@ -3313,7 +3315,7 @@ class Vp9CodecSettings {
   /// fields you set in the `Vp9CodecSettings` message.
   core.String? profile;
 
-  /// Specify the `rate_control_mode`.
+  /// Specify the mode.
   ///
   /// The default is `vbr`. Supported rate control modes: - `vbr` - variable
   /// bitrate

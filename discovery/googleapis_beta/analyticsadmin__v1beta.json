@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230713",
+    "revision": "20230803",
     "rootUrl": "https://analyticsadmin.googleapis.com/",
     "servicePath": "",
     "title": "Google Analytics Admin API",
@@ -1352,7 +1352,7 @@
                                             "type": "string"
                                         },
                                         "updateMask": {
-                                            "description": "The list of fields to be updated. Omitted fields will not be updated.",
+                                            "description": "Required. The list of fields to be updated. Omitted fields will not be updated.",
                                             "format": "google-fieldmask",
                                             "location": "query",
                                             "type": "string"

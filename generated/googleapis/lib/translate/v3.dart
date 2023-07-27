@@ -2024,6 +2024,11 @@ class BatchTranslateDocumentRequest {
   /// Optional.
   core.String? customizedAttribution;
 
+  /// If true, enable auto rotation correction in DVS.
+  ///
+  /// Optional.
+  core.bool? enableRotationCorrection;
+
   /// If true, use the text removal server to remove the shadow text on
   /// background image for native pdf translation.
   ///
@@ -2092,6 +2097,7 @@ class BatchTranslateDocumentRequest {
 
   BatchTranslateDocumentRequest({
     this.customizedAttribution,
+    this.enableRotationCorrection,
     this.enableShadowRemovalNativePdf,
     this.formatConversions,
     this.glossaries,
@@ -2107,6 +2113,10 @@ class BatchTranslateDocumentRequest {
           customizedAttribution: json_.containsKey('customizedAttribution')
               ? json_['customizedAttribution'] as core.String
               : null,
+          enableRotationCorrection:
+              json_.containsKey('enableRotationCorrection')
+                  ? json_['enableRotationCorrection'] as core.bool
+                  : null,
           enableShadowRemovalNativePdf:
               json_.containsKey('enableShadowRemovalNativePdf')
                   ? json_['enableShadowRemovalNativePdf'] as core.bool
@@ -2162,6 +2172,8 @@ class BatchTranslateDocumentRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (customizedAttribution != null)
           'customizedAttribution': customizedAttribution!,
+        if (enableRotationCorrection != null)
+          'enableRotationCorrection': enableRotationCorrection!,
         if (enableShadowRemovalNativePdf != null)
           'enableShadowRemovalNativePdf': enableShadowRemovalNativePdf!,
         if (formatConversions != null) 'formatConversions': formatConversions!,

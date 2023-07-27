@@ -16,7 +16,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230711",
+    "revision": "20230801",
     "rootUrl": "https://civicinfo.googleapis.com/",
     "servicePath": "",
     "title": "Google Civic Information API",

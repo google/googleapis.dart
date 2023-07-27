@@ -1052,6 +1052,11 @@ typedef Artifact = $Artifact;
 class Assessment {
   /// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE)
   /// tracking number for the vulnerability.
+  ///
+  /// Deprecated: Use vulnerability_id instead to denote CVEs.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? cve;
 
   /// Contains information about the impact of this vulnerability, this will
@@ -1091,6 +1096,11 @@ class Assessment {
   /// investigation.
   core.String? state;
 
+  /// The vulnerability identifier for this Assessment.
+  ///
+  /// Will hold one of common identifiers e.g. CVE, GHSA etc.
+  core.String? vulnerabilityId;
+
   Assessment({
     this.cve,
     this.impacts,
@@ -1100,6 +1110,7 @@ class Assessment {
     this.remediations,
     this.shortDescription,
     this.state,
+    this.vulnerabilityId,
   });
 
   Assessment.fromJson(core.Map json_)
@@ -1134,6 +1145,9 @@ class Assessment {
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          vulnerabilityId: json_.containsKey('vulnerabilityId')
+              ? json_['vulnerabilityId'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1145,6 +1159,7 @@ class Assessment {
         if (remediations != null) 'remediations': remediations!,
         if (shortDescription != null) 'shortDescription': shortDescription!,
         if (state != null) 'state': state!,
+        if (vulnerabilityId != null) 'vulnerabilityId': vulnerabilityId!,
       };
 }
 
@@ -1439,6 +1454,63 @@ class Binding {
       };
 }
 
+class BuildDefinition {
+  core.String? buildType;
+
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? externalParameters;
+
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? internalParameters;
+  core.List<ResourceDescriptor>? resolvedDependencies;
+
+  BuildDefinition({
+    this.buildType,
+    this.externalParameters,
+    this.internalParameters,
+    this.resolvedDependencies,
+  });
+
+  BuildDefinition.fromJson(core.Map json_)
+      : this(
+          buildType: json_.containsKey('buildType')
+              ? json_['buildType'] as core.String
+              : null,
+          externalParameters: json_.containsKey('externalParameters')
+              ? json_['externalParameters']
+                  as core.Map<core.String, core.dynamic>
+              : null,
+          internalParameters: json_.containsKey('internalParameters')
+              ? json_['internalParameters']
+                  as core.Map<core.String, core.dynamic>
+              : null,
+          resolvedDependencies: json_.containsKey('resolvedDependencies')
+              ? (json_['resolvedDependencies'] as core.List)
+                  .map((value) => ResourceDescriptor.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buildType != null) 'buildType': buildType!,
+        if (externalParameters != null)
+          'externalParameters': externalParameters!,
+        if (internalParameters != null)
+          'internalParameters': internalParameters!,
+        if (resolvedDependencies != null)
+          'resolvedDependencies': resolvedDependencies!,
+      };
+}
+
+typedef BuildMetadata = $BuildMetadata;
+
 /// Note holding the version of the provider's builder and the signature of the
 /// provenance message in the build details occurrence.
 class BuildNote {
@@ -1465,6 +1537,13 @@ class BuildNote {
 
 /// Details of a build occurrence.
 class BuildOccurrence {
+  /// In-Toto Slsa Provenance V1 represents a slsa provenance meeting the slsa
+  /// spec, wrapped in an in-toto statement.
+  ///
+  /// This allows for direct jsonification of a to-spec in-toto slsa statement
+  /// with a to-spec slsa provenance.
+  InTotoSlsaProvenanceV1? inTotoSlsaProvenanceV1;
+
   /// See InTotoStatement for the replacement.
   ///
   /// In-toto Provenance representation as defined in spec.
@@ -1495,6 +1574,7 @@ class BuildOccurrence {
   core.String? provenanceBytes;
 
   BuildOccurrence({
+    this.inTotoSlsaProvenanceV1,
     this.intotoProvenance,
     this.intotoStatement,
     this.provenance,
@@ -1503,6 +1583,10 @@ class BuildOccurrence {
 
   BuildOccurrence.fromJson(core.Map json_)
       : this(
+          inTotoSlsaProvenanceV1: json_.containsKey('inTotoSlsaProvenanceV1')
+              ? InTotoSlsaProvenanceV1.fromJson(json_['inTotoSlsaProvenanceV1']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           intotoProvenance: json_.containsKey('intotoProvenance')
               ? InTotoProvenance.fromJson(json_['intotoProvenance']
                   as core.Map<core.String, core.dynamic>)
@@ -1521,6 +1605,8 @@ class BuildOccurrence {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (inTotoSlsaProvenanceV1 != null)
+          'inTotoSlsaProvenanceV1': inTotoSlsaProvenanceV1!,
         if (intotoProvenance != null) 'intotoProvenance': intotoProvenance!,
         if (intotoStatement != null) 'intotoStatement': intotoStatement!,
         if (provenance != null) 'provenance': provenance!,
@@ -3129,6 +3215,48 @@ class InTotoProvenance {
       };
 }
 
+class InTotoSlsaProvenanceV1 {
+  /// InToto spec defined at
+  /// https://github.com/in-toto/attestation/tree/main/spec#statement
+  core.String? P_type;
+  SlsaProvenanceV1? predicate;
+  core.String? predicateType;
+  core.List<Subject>? subject;
+
+  InTotoSlsaProvenanceV1({
+    this.P_type,
+    this.predicate,
+    this.predicateType,
+    this.subject,
+  });
+
+  InTotoSlsaProvenanceV1.fromJson(core.Map json_)
+      : this(
+          P_type:
+              json_.containsKey('_type') ? json_['_type'] as core.String : null,
+          predicate: json_.containsKey('predicate')
+              ? SlsaProvenanceV1.fromJson(
+                  json_['predicate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          predicateType: json_.containsKey('predicateType')
+              ? json_['predicateType'] as core.String
+              : null,
+          subject: json_.containsKey('subject')
+              ? (json_['subject'] as core.List)
+                  .map((value) => Subject.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (P_type != null) '_type': P_type!,
+        if (predicate != null) 'predicate': predicate!,
+        if (predicateType != null) 'predicateType': predicateType!,
+        if (subject != null) 'subject': subject!,
+      };
+}
+
 /// Spec defined at
 /// https://github.com/in-toto/attestation/tree/main/spec#statement The
 /// serialized InTotoStatement will be stored as Envelope.payload.
@@ -4380,6 +4508,44 @@ class Product {
 /// winged-cargo-31) and a repo name within that project.
 typedef ProjectRepoId = $ProjectRepoId;
 
+class ProvenanceBuilder {
+  core.List<ResourceDescriptor>? builderDependencies;
+  core.String? id;
+  core.Map<core.String, core.String>? version;
+
+  ProvenanceBuilder({
+    this.builderDependencies,
+    this.id,
+    this.version,
+  });
+
+  ProvenanceBuilder.fromJson(core.Map json_)
+      : this(
+          builderDependencies: json_.containsKey('builderDependencies')
+              ? (json_['builderDependencies'] as core.List)
+                  .map((value) => ResourceDescriptor.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          version: json_.containsKey('version')
+              ? (json_['version'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (builderDependencies != null)
+          'builderDependencies': builderDependencies!,
+        if (id != null) 'id': id!,
+        if (version != null) 'version': version!,
+      };
+}
+
 /// Publisher contains information about the publisher of this Note.
 class Publisher {
   /// Provides information about the authority of the issuing party to release
@@ -4503,6 +4669,44 @@ class RepoId {
   core.Map<core.String, core.dynamic> toJson() => {
         if (projectRepoId != null) 'projectRepoId': projectRepoId!,
         if (uid != null) 'uid': uid!,
+      };
+}
+
+typedef ResourceDescriptor = $ResourceDescriptor;
+
+class RunDetails {
+  ProvenanceBuilder? builder;
+  core.List<ResourceDescriptor>? byproducts;
+  BuildMetadata? metadata;
+
+  RunDetails({
+    this.builder,
+    this.byproducts,
+    this.metadata,
+  });
+
+  RunDetails.fromJson(core.Map json_)
+      : this(
+          builder: json_.containsKey('builder')
+              ? ProvenanceBuilder.fromJson(
+                  json_['builder'] as core.Map<core.String, core.dynamic>)
+              : null,
+          byproducts: json_.containsKey('byproducts')
+              ? (json_['byproducts'] as core.List)
+                  .map((value) => ResourceDescriptor.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          metadata: json_.containsKey('metadata')
+              ? BuildMetadata.fromJson(
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (builder != null) 'builder': builder!,
+        if (byproducts != null) 'byproducts': byproducts!,
+        if (metadata != null) 'metadata': metadata!,
       };
 }
 
@@ -4814,6 +5018,36 @@ class SlsaProvenance {
         if (materials != null) 'materials': materials!,
         if (metadata != null) 'metadata': metadata!,
         if (recipe != null) 'recipe': recipe!,
+      };
+}
+
+/// Keep in sync with schema at
+/// https://github.com/slsa-framework/slsa/blob/main/docs/provenance/schema/v1/provenance.proto
+/// Builder renamed to ProvenanceBuilder because of Java conflicts.
+class SlsaProvenanceV1 {
+  BuildDefinition? buildDefinition;
+  RunDetails? runDetails;
+
+  SlsaProvenanceV1({
+    this.buildDefinition,
+    this.runDetails,
+  });
+
+  SlsaProvenanceV1.fromJson(core.Map json_)
+      : this(
+          buildDefinition: json_.containsKey('buildDefinition')
+              ? BuildDefinition.fromJson(json_['buildDefinition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          runDetails: json_.containsKey('runDetails')
+              ? RunDetails.fromJson(
+                  json_['runDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buildDefinition != null) 'buildDefinition': buildDefinition!,
+        if (runDetails != null) 'runDetails': runDetails!,
       };
 }
 
@@ -5166,6 +5400,11 @@ typedef Version = $Version;
 class VexAssessment {
   /// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE)
   /// tracking number for the vulnerability.
+  ///
+  /// Deprecated: Use vulnerability_id instead to denote CVEs.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? cve;
 
   /// Contains information about the impact of this vulnerability, this will
@@ -5201,6 +5440,11 @@ class VexAssessment {
   /// investigation.
   core.String? state;
 
+  /// The vulnerability identifier for this Assessment.
+  ///
+  /// Will hold one of common identifiers e.g. CVE, GHSA etc.
+  core.String? vulnerabilityId;
+
   VexAssessment({
     this.cve,
     this.impacts,
@@ -5209,6 +5453,7 @@ class VexAssessment {
     this.relatedUris,
     this.remediations,
     this.state,
+    this.vulnerabilityId,
   });
 
   VexAssessment.fromJson(core.Map json_)
@@ -5240,6 +5485,9 @@ class VexAssessment {
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          vulnerabilityId: json_.containsKey('vulnerabilityId')
+              ? json_['vulnerabilityId'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5250,6 +5498,7 @@ class VexAssessment {
         if (relatedUris != null) 'relatedUris': relatedUris!,
         if (remediations != null) 'remediations': remediations!,
         if (state != null) 'state': state!,
+        if (vulnerabilityId != null) 'vulnerabilityId': vulnerabilityId!,
       };
 }
 

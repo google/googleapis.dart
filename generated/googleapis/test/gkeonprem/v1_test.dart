@@ -916,6 +916,7 @@ api.BareMetalCluster buildBareMetalCluster() {
     o.storage = buildBareMetalStorageConfig();
     o.uid = 'foo';
     o.updateTime = 'foo';
+    o.upgradePolicy = buildBareMetalClusterUpgradePolicy();
     o.validationCheck = buildValidationCheck();
   }
   buildCounterBareMetalCluster--;
@@ -993,6 +994,7 @@ void checkBareMetalCluster(api.BareMetalCluster o) {
       o.updateTime!,
       unittest.equals('foo'),
     );
+    checkBareMetalClusterUpgradePolicy(o.upgradePolicy!);
     checkValidationCheck(o.validationCheck!);
   }
   buildCounterBareMetalCluster--;
@@ -1016,6 +1018,28 @@ void checkBareMetalClusterOperationsConfig(
     unittest.expect(o.enableApplicationLogs!, unittest.isTrue);
   }
   buildCounterBareMetalClusterOperationsConfig--;
+}
+
+core.int buildCounterBareMetalClusterUpgradePolicy = 0;
+api.BareMetalClusterUpgradePolicy buildBareMetalClusterUpgradePolicy() {
+  final o = api.BareMetalClusterUpgradePolicy();
+  buildCounterBareMetalClusterUpgradePolicy++;
+  if (buildCounterBareMetalClusterUpgradePolicy < 3) {
+    o.policy = 'foo';
+  }
+  buildCounterBareMetalClusterUpgradePolicy--;
+  return o;
+}
+
+void checkBareMetalClusterUpgradePolicy(api.BareMetalClusterUpgradePolicy o) {
+  buildCounterBareMetalClusterUpgradePolicy++;
+  if (buildCounterBareMetalClusterUpgradePolicy < 3) {
+    unittest.expect(
+      o.policy!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterBareMetalClusterUpgradePolicy--;
 }
 
 core.List<api.BareMetalApiServerArgument> buildUnnamed13() => [
@@ -3744,6 +3768,7 @@ api.VmwareAdminControlPlaneNodeConfig buildVmwareAdminControlPlaneNodeConfig() {
   if (buildCounterVmwareAdminControlPlaneNodeConfig < 3) {
     o.cpus = 'foo';
     o.memory = 'foo';
+    o.replicas = 'foo';
   }
   buildCounterVmwareAdminControlPlaneNodeConfig--;
   return o;
@@ -3759,6 +3784,10 @@ void checkVmwareAdminControlPlaneNodeConfig(
     );
     unittest.expect(
       o.memory!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.replicas!,
       unittest.equals('foo'),
     );
   }
@@ -3797,6 +3826,26 @@ void checkVmwareAdminF5BigIpConfig(api.VmwareAdminF5BigIpConfig o) {
   buildCounterVmwareAdminF5BigIpConfig--;
 }
 
+core.int buildCounterVmwareAdminHAControlPlaneConfig = 0;
+api.VmwareAdminHAControlPlaneConfig buildVmwareAdminHAControlPlaneConfig() {
+  final o = api.VmwareAdminHAControlPlaneConfig();
+  buildCounterVmwareAdminHAControlPlaneConfig++;
+  if (buildCounterVmwareAdminHAControlPlaneConfig < 3) {
+    o.controlPlaneIpBlock = buildVmwareIpBlock();
+  }
+  buildCounterVmwareAdminHAControlPlaneConfig--;
+  return o;
+}
+
+void checkVmwareAdminHAControlPlaneConfig(
+    api.VmwareAdminHAControlPlaneConfig o) {
+  buildCounterVmwareAdminHAControlPlaneConfig++;
+  if (buildCounterVmwareAdminHAControlPlaneConfig < 3) {
+    checkVmwareIpBlock(o.controlPlaneIpBlock!);
+  }
+  buildCounterVmwareAdminHAControlPlaneConfig--;
+}
+
 core.int buildCounterVmwareAdminLoadBalancerConfig = 0;
 api.VmwareAdminLoadBalancerConfig buildVmwareAdminLoadBalancerConfig() {
   final o = api.VmwareAdminLoadBalancerConfig();
@@ -3805,6 +3854,7 @@ api.VmwareAdminLoadBalancerConfig buildVmwareAdminLoadBalancerConfig() {
     o.f5Config = buildVmwareAdminF5BigIpConfig();
     o.manualLbConfig = buildVmwareAdminManualLbConfig();
     o.metalLbConfig = buildVmwareAdminMetalLbConfig();
+    o.seesawConfig = buildVmwareAdminSeesawConfig();
     o.vipConfig = buildVmwareAdminVipConfig();
   }
   buildCounterVmwareAdminLoadBalancerConfig--;
@@ -3817,6 +3867,7 @@ void checkVmwareAdminLoadBalancerConfig(api.VmwareAdminLoadBalancerConfig o) {
     checkVmwareAdminF5BigIpConfig(o.f5Config!);
     checkVmwareAdminManualLbConfig(o.manualLbConfig!);
     checkVmwareAdminMetalLbConfig(o.metalLbConfig!);
+    checkVmwareAdminSeesawConfig(o.seesawConfig!);
     checkVmwareAdminVipConfig(o.vipConfig!);
   }
   buildCounterVmwareAdminLoadBalancerConfig--;
@@ -3919,6 +3970,7 @@ api.VmwareAdminNetworkConfig buildVmwareAdminNetworkConfig() {
   buildCounterVmwareAdminNetworkConfig++;
   if (buildCounterVmwareAdminNetworkConfig < 3) {
     o.dhcpIpConfig = buildVmwareDhcpIpConfig();
+    o.haControlPlaneConfig = buildVmwareAdminHAControlPlaneConfig();
     o.hostConfig = buildVmwareHostConfig();
     o.podAddressCidrBlocks = buildUnnamed59();
     o.serviceAddressCidrBlocks = buildUnnamed60();
@@ -3933,6 +3985,7 @@ void checkVmwareAdminNetworkConfig(api.VmwareAdminNetworkConfig o) {
   buildCounterVmwareAdminNetworkConfig++;
   if (buildCounterVmwareAdminNetworkConfig < 3) {
     checkVmwareDhcpIpConfig(o.dhcpIpConfig!);
+    checkVmwareAdminHAControlPlaneConfig(o.haControlPlaneConfig!);
     checkVmwareHostConfig(o.hostConfig!);
     checkUnnamed59(o.podAddressCidrBlocks!);
     checkUnnamed60(o.serviceAddressCidrBlocks!);
@@ -3943,6 +3996,67 @@ void checkVmwareAdminNetworkConfig(api.VmwareAdminNetworkConfig o) {
     );
   }
   buildCounterVmwareAdminNetworkConfig--;
+}
+
+core.List<api.VmwareIpBlock> buildUnnamed61() => [
+      buildVmwareIpBlock(),
+      buildVmwareIpBlock(),
+    ];
+
+void checkUnnamed61(core.List<api.VmwareIpBlock> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkVmwareIpBlock(o[0]);
+  checkVmwareIpBlock(o[1]);
+}
+
+core.List<core.String> buildUnnamed62() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed62(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterVmwareAdminSeesawConfig = 0;
+api.VmwareAdminSeesawConfig buildVmwareAdminSeesawConfig() {
+  final o = api.VmwareAdminSeesawConfig();
+  buildCounterVmwareAdminSeesawConfig++;
+  if (buildCounterVmwareAdminSeesawConfig < 3) {
+    o.enableHa = true;
+    o.group = 'foo';
+    o.ipBlocks = buildUnnamed61();
+    o.masterIp = 'foo';
+    o.vms = buildUnnamed62();
+  }
+  buildCounterVmwareAdminSeesawConfig--;
+  return o;
+}
+
+void checkVmwareAdminSeesawConfig(api.VmwareAdminSeesawConfig o) {
+  buildCounterVmwareAdminSeesawConfig++;
+  if (buildCounterVmwareAdminSeesawConfig < 3) {
+    unittest.expect(o.enableHa!, unittest.isTrue);
+    unittest.expect(
+      o.group!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed61(o.ipBlocks!);
+    unittest.expect(
+      o.masterIp!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed62(o.vms!);
+  }
+  buildCounterVmwareAdminSeesawConfig--;
 }
 
 core.int buildCounterVmwareAdminVCenterConfig = 0;
@@ -4091,12 +4205,12 @@ void checkVmwareBundleConfig(api.VmwareBundleConfig o) {
   buildCounterVmwareBundleConfig--;
 }
 
-core.Map<core.String, core.String> buildUnnamed61() => {
+core.Map<core.String, core.String> buildUnnamed63() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed61(core.Map<core.String, core.String> o) {
+void checkUnnamed63(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -4115,7 +4229,7 @@ api.VmwareCluster buildVmwareCluster() {
   if (buildCounterVmwareCluster < 3) {
     o.adminClusterMembership = 'foo';
     o.adminClusterName = 'foo';
-    o.annotations = buildUnnamed61();
+    o.annotations = buildUnnamed63();
     o.antiAffinityGroups = buildVmwareAAGConfig();
     o.authorization = buildAuthorization();
     o.autoRepairConfig = buildVmwareAutoRepairConfig();
@@ -4158,7 +4272,7 @@ void checkVmwareCluster(api.VmwareCluster o) {
       o.adminClusterName!,
       unittest.equals('foo'),
     );
-    checkUnnamed61(o.annotations!);
+    checkUnnamed63(o.annotations!);
     checkVmwareAAGConfig(o.antiAffinityGroups!);
     checkAuthorization(o.authorization!);
     checkVmwareAutoRepairConfig(o.autoRepairConfig!);
@@ -4374,40 +4488,6 @@ void checkVmwareF5BigIpConfig(api.VmwareF5BigIpConfig o) {
   buildCounterVmwareF5BigIpConfig--;
 }
 
-core.List<core.String> buildUnnamed62() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed62(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed63() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed63(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.List<core.String> buildUnnamed64() => [
       'foo',
       'foo',
@@ -4425,14 +4505,48 @@ void checkUnnamed64(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed65() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed65(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed66() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed66(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterVmwareHostConfig = 0;
 api.VmwareHostConfig buildVmwareHostConfig() {
   final o = api.VmwareHostConfig();
   buildCounterVmwareHostConfig++;
   if (buildCounterVmwareHostConfig < 3) {
-    o.dnsSearchDomains = buildUnnamed62();
-    o.dnsServers = buildUnnamed63();
-    o.ntpServers = buildUnnamed64();
+    o.dnsSearchDomains = buildUnnamed64();
+    o.dnsServers = buildUnnamed65();
+    o.ntpServers = buildUnnamed66();
   }
   buildCounterVmwareHostConfig--;
   return o;
@@ -4441,9 +4555,9 @@ api.VmwareHostConfig buildVmwareHostConfig() {
 void checkVmwareHostConfig(api.VmwareHostConfig o) {
   buildCounterVmwareHostConfig++;
   if (buildCounterVmwareHostConfig < 3) {
-    checkUnnamed62(o.dnsSearchDomains!);
-    checkUnnamed63(o.dnsServers!);
-    checkUnnamed64(o.ntpServers!);
+    checkUnnamed64(o.dnsSearchDomains!);
+    checkUnnamed65(o.dnsServers!);
+    checkUnnamed66(o.ntpServers!);
   }
   buildCounterVmwareHostConfig--;
 }
@@ -4475,12 +4589,12 @@ void checkVmwareHostIp(api.VmwareHostIp o) {
   buildCounterVmwareHostIp--;
 }
 
-core.List<api.VmwareHostIp> buildUnnamed65() => [
+core.List<api.VmwareHostIp> buildUnnamed67() => [
       buildVmwareHostIp(),
       buildVmwareHostIp(),
     ];
 
-void checkUnnamed65(core.List<api.VmwareHostIp> o) {
+void checkUnnamed67(core.List<api.VmwareHostIp> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVmwareHostIp(o[0]);
   checkVmwareHostIp(o[1]);
@@ -4492,7 +4606,7 @@ api.VmwareIpBlock buildVmwareIpBlock() {
   buildCounterVmwareIpBlock++;
   if (buildCounterVmwareIpBlock < 3) {
     o.gateway = 'foo';
-    o.ips = buildUnnamed65();
+    o.ips = buildUnnamed67();
     o.netmask = 'foo';
   }
   buildCounterVmwareIpBlock--;
@@ -4506,7 +4620,7 @@ void checkVmwareIpBlock(api.VmwareIpBlock o) {
       o.gateway!,
       unittest.equals('foo'),
     );
-    checkUnnamed65(o.ips!);
+    checkUnnamed67(o.ips!);
     unittest.expect(
       o.netmask!,
       unittest.equals('foo'),
@@ -4577,12 +4691,12 @@ void checkVmwareManualLbConfig(api.VmwareManualLbConfig o) {
   buildCounterVmwareManualLbConfig--;
 }
 
-core.List<api.VmwareAddressPool> buildUnnamed66() => [
+core.List<api.VmwareAddressPool> buildUnnamed68() => [
       buildVmwareAddressPool(),
       buildVmwareAddressPool(),
     ];
 
-void checkUnnamed66(core.List<api.VmwareAddressPool> o) {
+void checkUnnamed68(core.List<api.VmwareAddressPool> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVmwareAddressPool(o[0]);
   checkVmwareAddressPool(o[1]);
@@ -4593,7 +4707,7 @@ api.VmwareMetalLbConfig buildVmwareMetalLbConfig() {
   final o = api.VmwareMetalLbConfig();
   buildCounterVmwareMetalLbConfig++;
   if (buildCounterVmwareMetalLbConfig < 3) {
-    o.addressPools = buildUnnamed66();
+    o.addressPools = buildUnnamed68();
   }
   buildCounterVmwareMetalLbConfig--;
   return o;
@@ -4602,17 +4716,17 @@ api.VmwareMetalLbConfig buildVmwareMetalLbConfig() {
 void checkVmwareMetalLbConfig(api.VmwareMetalLbConfig o) {
   buildCounterVmwareMetalLbConfig++;
   if (buildCounterVmwareMetalLbConfig < 3) {
-    checkUnnamed66(o.addressPools!);
+    checkUnnamed68(o.addressPools!);
   }
   buildCounterVmwareMetalLbConfig--;
 }
 
-core.List<core.String> buildUnnamed67() => [
+core.List<core.String> buildUnnamed69() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed67(core.List<core.String> o) {
+void checkUnnamed69(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4624,12 +4738,12 @@ void checkUnnamed67(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed68() => [
+core.List<core.String> buildUnnamed70() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed68(core.List<core.String> o) {
+void checkUnnamed70(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4649,8 +4763,8 @@ api.VmwareNetworkConfig buildVmwareNetworkConfig() {
     o.controlPlaneV2Config = buildVmwareControlPlaneV2Config();
     o.dhcpIpConfig = buildVmwareDhcpIpConfig();
     o.hostConfig = buildVmwareHostConfig();
-    o.podAddressCidrBlocks = buildUnnamed67();
-    o.serviceAddressCidrBlocks = buildUnnamed68();
+    o.podAddressCidrBlocks = buildUnnamed69();
+    o.serviceAddressCidrBlocks = buildUnnamed70();
     o.staticIpConfig = buildVmwareStaticIpConfig();
     o.vcenterNetwork = 'foo';
   }
@@ -4664,8 +4778,8 @@ void checkVmwareNetworkConfig(api.VmwareNetworkConfig o) {
     checkVmwareControlPlaneV2Config(o.controlPlaneV2Config!);
     checkVmwareDhcpIpConfig(o.dhcpIpConfig!);
     checkVmwareHostConfig(o.hostConfig!);
-    checkUnnamed67(o.podAddressCidrBlocks!);
-    checkUnnamed68(o.serviceAddressCidrBlocks!);
+    checkUnnamed69(o.podAddressCidrBlocks!);
+    checkUnnamed70(o.serviceAddressCidrBlocks!);
     checkVmwareStaticIpConfig(o.staticIpConfig!);
     unittest.expect(
       o.vcenterNetwork!,
@@ -4675,12 +4789,12 @@ void checkVmwareNetworkConfig(api.VmwareNetworkConfig o) {
   buildCounterVmwareNetworkConfig--;
 }
 
-core.Map<core.String, core.String> buildUnnamed69() => {
+core.Map<core.String, core.String> buildUnnamed71() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed69(core.Map<core.String, core.String> o) {
+void checkUnnamed71(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -4692,12 +4806,12 @@ void checkUnnamed69(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.NodeTaint> buildUnnamed70() => [
+core.List<api.NodeTaint> buildUnnamed72() => [
       buildNodeTaint(),
       buildNodeTaint(),
     ];
 
-void checkUnnamed70(core.List<api.NodeTaint> o) {
+void checkUnnamed72(core.List<api.NodeTaint> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNodeTaint(o[0]);
   checkNodeTaint(o[1]);
@@ -4713,10 +4827,10 @@ api.VmwareNodeConfig buildVmwareNodeConfig() {
     o.enableLoadBalancer = true;
     o.image = 'foo';
     o.imageType = 'foo';
-    o.labels = buildUnnamed69();
+    o.labels = buildUnnamed71();
     o.memoryMb = 'foo';
     o.replicas = 'foo';
-    o.taints = buildUnnamed70();
+    o.taints = buildUnnamed72();
     o.vsphereConfig = buildVmwareVsphereConfig();
   }
   buildCounterVmwareNodeConfig--;
@@ -4743,7 +4857,7 @@ void checkVmwareNodeConfig(api.VmwareNodeConfig o) {
       o.imageType!,
       unittest.equals('foo'),
     );
-    checkUnnamed69(o.labels!);
+    checkUnnamed71(o.labels!);
     unittest.expect(
       o.memoryMb!,
       unittest.equals('foo'),
@@ -4752,18 +4866,18 @@ void checkVmwareNodeConfig(api.VmwareNodeConfig o) {
       o.replicas!,
       unittest.equals('foo'),
     );
-    checkUnnamed70(o.taints!);
+    checkUnnamed72(o.taints!);
     checkVmwareVsphereConfig(o.vsphereConfig!);
   }
   buildCounterVmwareNodeConfig--;
 }
 
-core.Map<core.String, core.String> buildUnnamed71() => {
+core.Map<core.String, core.String> buildUnnamed73() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed71(core.Map<core.String, core.String> o) {
+void checkUnnamed73(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -4780,7 +4894,7 @@ api.VmwareNodePool buildVmwareNodePool() {
   final o = api.VmwareNodePool();
   buildCounterVmwareNodePool++;
   if (buildCounterVmwareNodePool < 3) {
-    o.annotations = buildUnnamed71();
+    o.annotations = buildUnnamed73();
     o.config = buildVmwareNodeConfig();
     o.createTime = 'foo';
     o.deleteTime = 'foo';
@@ -4802,7 +4916,7 @@ api.VmwareNodePool buildVmwareNodePool() {
 void checkVmwareNodePool(api.VmwareNodePool o) {
   buildCounterVmwareNodePool++;
   if (buildCounterVmwareNodePool < 3) {
-    checkUnnamed71(o.annotations!);
+    checkUnnamed73(o.annotations!);
     checkVmwareNodeConfig(o.config!);
     unittest.expect(
       o.createTime!,
@@ -4875,12 +4989,12 @@ void checkVmwareNodePoolAutoscalingConfig(
   buildCounterVmwareNodePoolAutoscalingConfig--;
 }
 
-core.List<api.VmwareBundleConfig> buildUnnamed72() => [
+core.List<api.VmwareBundleConfig> buildUnnamed74() => [
       buildVmwareBundleConfig(),
       buildVmwareBundleConfig(),
     ];
 
-void checkUnnamed72(core.List<api.VmwareBundleConfig> o) {
+void checkUnnamed74(core.List<api.VmwareBundleConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVmwareBundleConfig(o[0]);
   checkVmwareBundleConfig(o[1]);
@@ -4891,7 +5005,7 @@ api.VmwarePlatformConfig buildVmwarePlatformConfig() {
   final o = api.VmwarePlatformConfig();
   buildCounterVmwarePlatformConfig++;
   if (buildCounterVmwarePlatformConfig < 3) {
-    o.bundles = buildUnnamed72();
+    o.bundles = buildUnnamed74();
     o.platformVersion = 'foo';
     o.requiredPlatformVersion = 'foo';
     o.status = buildResourceStatus();
@@ -4903,7 +5017,7 @@ api.VmwarePlatformConfig buildVmwarePlatformConfig() {
 void checkVmwarePlatformConfig(api.VmwarePlatformConfig o) {
   buildCounterVmwarePlatformConfig++;
   if (buildCounterVmwarePlatformConfig < 3) {
-    checkUnnamed72(o.bundles!);
+    checkUnnamed74(o.bundles!);
     unittest.expect(
       o.platformVersion!,
       unittest.equals('foo'),
@@ -4917,12 +5031,12 @@ void checkVmwarePlatformConfig(api.VmwarePlatformConfig o) {
   buildCounterVmwarePlatformConfig--;
 }
 
-core.List<api.VmwareIpBlock> buildUnnamed73() => [
+core.List<api.VmwareIpBlock> buildUnnamed75() => [
       buildVmwareIpBlock(),
       buildVmwareIpBlock(),
     ];
 
-void checkUnnamed73(core.List<api.VmwareIpBlock> o) {
+void checkUnnamed75(core.List<api.VmwareIpBlock> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVmwareIpBlock(o[0]);
   checkVmwareIpBlock(o[1]);
@@ -4933,7 +5047,7 @@ api.VmwareStaticIpConfig buildVmwareStaticIpConfig() {
   final o = api.VmwareStaticIpConfig();
   buildCounterVmwareStaticIpConfig++;
   if (buildCounterVmwareStaticIpConfig < 3) {
-    o.ipBlocks = buildUnnamed73();
+    o.ipBlocks = buildUnnamed75();
   }
   buildCounterVmwareStaticIpConfig--;
   return o;
@@ -4942,7 +5056,7 @@ api.VmwareStaticIpConfig buildVmwareStaticIpConfig() {
 void checkVmwareStaticIpConfig(api.VmwareStaticIpConfig o) {
   buildCounterVmwareStaticIpConfig++;
   if (buildCounterVmwareStaticIpConfig < 3) {
-    checkUnnamed73(o.ipBlocks!);
+    checkUnnamed75(o.ipBlocks!);
   }
   buildCounterVmwareStaticIpConfig--;
 }
@@ -5071,12 +5185,29 @@ void checkVmwareVipConfig(api.VmwareVipConfig o) {
   buildCounterVmwareVipConfig--;
 }
 
-core.List<api.VmwareVsphereTag> buildUnnamed74() => [
+core.List<core.String> buildUnnamed76() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed76(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<api.VmwareVsphereTag> buildUnnamed77() => [
       buildVmwareVsphereTag(),
       buildVmwareVsphereTag(),
     ];
 
-void checkUnnamed74(core.List<api.VmwareVsphereTag> o) {
+void checkUnnamed77(core.List<api.VmwareVsphereTag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVmwareVsphereTag(o[0]);
   checkVmwareVsphereTag(o[1]);
@@ -5088,7 +5219,8 @@ api.VmwareVsphereConfig buildVmwareVsphereConfig() {
   buildCounterVmwareVsphereConfig++;
   if (buildCounterVmwareVsphereConfig < 3) {
     o.datastore = 'foo';
-    o.tags = buildUnnamed74();
+    o.hostGroups = buildUnnamed76();
+    o.tags = buildUnnamed77();
   }
   buildCounterVmwareVsphereConfig--;
   return o;
@@ -5101,7 +5233,8 @@ void checkVmwareVsphereConfig(api.VmwareVsphereConfig o) {
       o.datastore!,
       unittest.equals('foo'),
     );
-    checkUnnamed74(o.tags!);
+    checkUnnamed76(o.hostGroups!);
+    checkUnnamed77(o.tags!);
   }
   buildCounterVmwareVsphereConfig--;
 }
@@ -5411,6 +5544,16 @@ void main() {
       final od = api.BareMetalClusterOperationsConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkBareMetalClusterOperationsConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-BareMetalClusterUpgradePolicy', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBareMetalClusterUpgradePolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BareMetalClusterUpgradePolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBareMetalClusterUpgradePolicy(od);
     });
   });
 
@@ -6174,6 +6317,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-VmwareAdminHAControlPlaneConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildVmwareAdminHAControlPlaneConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.VmwareAdminHAControlPlaneConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkVmwareAdminHAControlPlaneConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-VmwareAdminLoadBalancerConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildVmwareAdminLoadBalancerConfig();
@@ -6211,6 +6364,16 @@ void main() {
       final od = api.VmwareAdminNetworkConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkVmwareAdminNetworkConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-VmwareAdminSeesawConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildVmwareAdminSeesawConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.VmwareAdminSeesawConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkVmwareAdminSeesawConfig(od);
     });
   });
 

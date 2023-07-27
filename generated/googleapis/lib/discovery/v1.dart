@@ -681,6 +681,51 @@ class RestDescriptionAuth {
       };
 }
 
+/// A single endpoint object
+class RestDescriptionEndpoints {
+  /// Whether this endpoint is deprecated
+  core.bool? deprecated;
+
+  /// A string describing the host designated by the URL
+  core.String? description;
+
+  /// The URL of the endpoint target host
+  core.String? endpointUrl;
+
+  /// The location of the endpoint
+  core.String? location;
+
+  RestDescriptionEndpoints({
+    this.deprecated,
+    this.description,
+    this.endpointUrl,
+    this.location,
+  });
+
+  RestDescriptionEndpoints.fromJson(core.Map json_)
+      : this(
+          deprecated: json_.containsKey('deprecated')
+              ? json_['deprecated'] as core.bool
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          endpointUrl: json_.containsKey('endpointUrl')
+              ? json_['endpointUrl'] as core.String
+              : null,
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deprecated != null) 'deprecated': deprecated!,
+        if (description != null) 'description': description!,
+        if (endpointUrl != null) 'endpointUrl': endpointUrl!,
+        if (location != null) 'location': location!,
+      };
+}
+
 /// Links to 16x16 and 32x32 icons representing the API.
 class RestDescriptionIcons {
   /// The URL of the 16x16 icon.
@@ -737,6 +782,12 @@ class RestDescription {
 
   /// A link to human readable documentation for the API.
   core.String? documentationLink;
+
+  /// A list of location-based endpoint objects for this API.
+  ///
+  /// Each object contains the endpoint URL, location, description and
+  /// deprecation status.
+  core.List<RestDescriptionEndpoints>? endpoints;
 
   /// The ETag for this response.
   core.String? etag;
@@ -819,6 +870,7 @@ class RestDescription {
     this.description,
     this.discoveryVersion,
     this.documentationLink,
+    this.endpoints,
     this.etag,
     this.exponentialBackoffDefault,
     this.features,
@@ -869,6 +921,12 @@ class RestDescription {
               : null,
           documentationLink: json_.containsKey('documentationLink')
               ? json_['documentationLink'] as core.String
+              : null,
+          endpoints: json_.containsKey('endpoints')
+              ? (json_['endpoints'] as core.List)
+                  .map((value) => RestDescriptionEndpoints.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           exponentialBackoffDefault:
@@ -969,6 +1027,7 @@ class RestDescription {
         if (description != null) 'description': description!,
         if (discoveryVersion != null) 'discoveryVersion': discoveryVersion!,
         if (documentationLink != null) 'documentationLink': documentationLink!,
+        if (endpoints != null) 'endpoints': endpoints!,
         if (etag != null) 'etag': etag!,
         if (exponentialBackoffDefault != null)
           'exponentialBackoffDefault': exponentialBackoffDefault!,

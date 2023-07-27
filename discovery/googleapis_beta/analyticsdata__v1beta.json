@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230716",
+    "revision": "20230804",
     "rootUrl": "https://analyticsdata.googleapis.com/",
     "servicePath": "",
     "title": "Google Analytics Data API",

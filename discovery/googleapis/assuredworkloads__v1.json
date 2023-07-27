@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230707",
+    "revision": "20230731",
     "rootUrl": "https://assuredworkloads.googleapis.com/",
     "servicePath": "",
     "title": "Assured Workloads API",
@@ -750,6 +750,12 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "orgPolicyConstraint": {
+                    "deprecated": true,
+                    "description": "Output only. Immutable. The org-policy-constraint that was incorrectly changed, which resulted in this violation.",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "remediation": {
                     "$ref": "GoogleCloudAssuredworkloadsV1ViolationRemediation",
                     "description": "Output only. Compliance violation remediation",
@@ -1184,13 +1190,16 @@
             "description": "Permissions granted to the AW Partner SA account for the customer workload",
             "id": "GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions",
             "properties": {
+                "assuredWorkloadsMonitoring": {
+                    "description": "Optional. Allow partner to view violation alerts.",
+                    "type": "boolean"
+                },
                 "dataLogsViewer": {
                     "description": "Allow the partner to view inspectability logs and monitoring violations.",
                     "type": "boolean"
                 },
-                "remediateFolderViolations": {
-                    "deprecated": true,
-                    "description": "Allow partner to monitor folder and remediate violations",
+                "serviceAccessApprover": {
+                    "description": "Optional. Allow partner to view access approval logs.",
                     "type": "boolean"
                 }
             },

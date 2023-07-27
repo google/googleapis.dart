@@ -2978,6 +2978,7 @@ api.MigrationJob buildMigrationJob() {
     o.filter = 'foo';
     o.labels = buildUnnamed46();
     o.name = 'foo';
+    o.performanceConfig = buildPerformanceConfig();
     o.phase = 'foo';
     o.reverseSshConnectivity = buildReverseSshConnectivity();
     o.source = 'foo';
@@ -3036,6 +3037,7 @@ void checkMigrationJob(api.MigrationJob o) {
       o.name!,
       unittest.equals('foo'),
     );
+    checkPerformanceConfig(o.performanceConfig!);
     unittest.expect(
       o.phase!,
       unittest.equals('foo'),
@@ -3481,6 +3483,28 @@ void checkPackageEntity(api.PackageEntity o) {
   buildCounterPackageEntity--;
 }
 
+core.int buildCounterPerformanceConfig = 0;
+api.PerformanceConfig buildPerformanceConfig() {
+  final o = api.PerformanceConfig();
+  buildCounterPerformanceConfig++;
+  if (buildCounterPerformanceConfig < 3) {
+    o.dumpParallelLevel = 'foo';
+  }
+  buildCounterPerformanceConfig--;
+  return o;
+}
+
+void checkPerformanceConfig(api.PerformanceConfig o) {
+  buildCounterPerformanceConfig++;
+  if (buildCounterPerformanceConfig < 3) {
+    unittest.expect(
+      o.dumpParallelLevel!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPerformanceConfig--;
+}
+
 core.List<api.AuditConfig> buildUnnamed51() => [
       buildAuditConfig(),
       buildAuditConfig(),
@@ -3824,14 +3848,18 @@ core.int buildCounterRestartMigrationJobRequest = 0;
 api.RestartMigrationJobRequest buildRestartMigrationJobRequest() {
   final o = api.RestartMigrationJobRequest();
   buildCounterRestartMigrationJobRequest++;
-  if (buildCounterRestartMigrationJobRequest < 3) {}
+  if (buildCounterRestartMigrationJobRequest < 3) {
+    o.skipValidation = true;
+  }
   buildCounterRestartMigrationJobRequest--;
   return o;
 }
 
 void checkRestartMigrationJobRequest(api.RestartMigrationJobRequest o) {
   buildCounterRestartMigrationJobRequest++;
-  if (buildCounterRestartMigrationJobRequest < 3) {}
+  if (buildCounterRestartMigrationJobRequest < 3) {
+    unittest.expect(o.skipValidation!, unittest.isTrue);
+  }
   buildCounterRestartMigrationJobRequest--;
 }
 
@@ -6355,6 +6383,16 @@ void main() {
       final od = api.PackageEntity.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkPackageEntity(od);
+    });
+  });
+
+  unittest.group('obj-schema-PerformanceConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPerformanceConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PerformanceConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPerformanceConfig(od);
     });
   });
 

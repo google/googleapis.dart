@@ -15719,6 +15719,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DisplayVideoApi(mock).advertisers;
       final arg_filter = 'foo';
+      final arg_internalDebuggingConfig = 'foo';
       final arg_orderBy = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -15760,6 +15761,10 @@ void main() {
           unittest.equals(arg_filter),
         );
         unittest.expect(
+          queryMap['internalDebuggingConfig']!.first,
+          unittest.equals(arg_internalDebuggingConfig),
+        );
+        unittest.expect(
           queryMap['orderBy']!.first,
           unittest.equals(arg_orderBy),
         );
@@ -15788,6 +15793,7 @@ void main() {
       }), true);
       final response = await res.list(
           filter: arg_filter,
+          internalDebuggingConfig: arg_internalDebuggingConfig,
           orderBy: arg_orderBy,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,

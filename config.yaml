@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 11.4.0-wip
+    version: 12.0.0
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -26,6 +26,7 @@ packages:
     - adsense:v2
     - adsensehost:v4.1 # https://developers.google.com/adsense/host/
     - advisorynotifications:v1
+    - aiplatform:v1
     - analytics:v3 # https://developers.google.com/analytics/
     - analyticshub:v1
     - analyticsreporting:v4 # https://developers.google.com/analytics/devguides/reporting/core/v4/
@@ -66,7 +67,6 @@ packages:
     - cloudbilling:v1 # https://cloud.google.com/billing/
     - cloudbuild:v1 # https://cloud.google.com/container-builder/docs/
     - cloudchannel:v1
-    - clouddebugger:v2 # https://cloud.google.com/tools/cloud-debugger
     - clouddeploy:v1
     - cloudfunctions:v1 # https://cloud.google.com/functions/docs/
     - cloudfunctions:v2
@@ -172,6 +172,7 @@ packages:
     - manufacturers:v1 # https://developers.google.com/manufacturers/
     - memcache:v1
     - metastore:v1
+    - migrationcenter:v1
     - ml:v1 # https://cloud.google.com/ml-engine/
     - monitoring:v3 # https://cloud.google.com/monitoring/api/
     - mybusinessaccountmanagement:v1
@@ -196,6 +197,7 @@ packages:
     - paymentsresellersubscription:v1
     - people:v1 # https://developers.google.com/people/
     - photoslibrary:v1
+    - places:v1
     - playcustomapp:v1 # https://developers.google.com/android/work/play/custom-app-api
     - playintegrity:v1
     - policyanalyzer:v1
@@ -241,7 +243,7 @@ packages:
     - sts:v1
     - tagmanager:v1 # https://developers.google.com/tag-manager/
     - tagmanager:v2 # https://developers.google.com/tag-manager/
-    - tasks:v1 # https://developers.google.com/google-apps/tasks/
+    - tasks:v1 # https://developers.google.com/google-appqs/tasks/
     - testing:v1 # https://developers.google.com/cloud-test-lab/
     - texttospeech:v1 # https://cloud.google.com/text-to-speech/
     - tpu:v1 # https://cloud.google.com/tpu/
@@ -306,6 +308,7 @@ packages:
 additional_apis:
   "firebaseremoteconfig:v1": https://firebaseremoteconfig.googleapis.com/$discovery/rest?version=v1
   "photoslibrary:v1": https://photoslibrary.googleapis.com/$discovery/rest?version=v1
+  "aiplatform": https://aiplatform.googleapis.com/$discovery/rest?version=v1
 
 # APIs that we do not wish to include in this package
 skipped_apis:

@@ -253,6 +253,7 @@ api.DiagnoseInstanceRequest buildDiagnoseInstanceRequest() {
   buildCounterDiagnoseInstanceRequest++;
   if (buildCounterDiagnoseInstanceRequest < 3) {
     o.diagnosticConfig = buildDiagnosticConfig();
+    o.timeoutMinutes = 42;
   }
   buildCounterDiagnoseInstanceRequest--;
   return o;
@@ -262,6 +263,10 @@ void checkDiagnoseInstanceRequest(api.DiagnoseInstanceRequest o) {
   buildCounterDiagnoseInstanceRequest++;
   if (buildCounterDiagnoseInstanceRequest < 3) {
     checkDiagnosticConfig(o.diagnosticConfig!);
+    unittest.expect(
+      o.timeoutMinutes!,
+      unittest.equals(42),
+    );
   }
   buildCounterDiagnoseInstanceRequest--;
 }

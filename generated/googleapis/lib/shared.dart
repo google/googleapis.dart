@@ -1612,6 +1612,41 @@ class $BrowserTargetingOptionDetails {
 
 /// Used by:
 ///
+/// - containeranalysis:v1 : BuildMetadata
+/// - ondemandscanning:v1 : BuildMetadata
+class $BuildMetadata {
+  core.String? finishedOn;
+  core.String? invocationId;
+  core.String? startedOn;
+
+  $BuildMetadata({
+    this.finishedOn,
+    this.invocationId,
+    this.startedOn,
+  });
+
+  $BuildMetadata.fromJson(core.Map json_)
+      : this(
+          finishedOn: json_.containsKey('finishedOn')
+              ? json_['finishedOn'] as core.String
+              : null,
+          invocationId: json_.containsKey('invocationId')
+              ? json_['invocationId'] as core.String
+              : null,
+          startedOn: json_.containsKey('startedOn')
+              ? json_['startedOn'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (finishedOn != null) 'finishedOn': finishedOn!,
+        if (invocationId != null) 'invocationId': invocationId!,
+        if (startedOn != null) 'startedOn': startedOn!,
+      };
+}
+
+/// Used by:
+///
 /// - displayvideo:v1 : BusinessChainAssignedTargetingOptionDetails
 /// - displayvideo:v2 : BusinessChainAssignedTargetingOptionDetails
 class $BusinessChainAssignedTargetingOptionDetails {
@@ -2949,6 +2984,8 @@ class $Completeness {
 /// - dataplex:v1 : GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation
 class $ConditionExpectation {
   /// The SQL expression.
+  ///
+  /// Optional.
   core.String? sqlExpression;
 
   $ConditionExpectation({
@@ -3373,6 +3410,32 @@ class $ContentStreamTypeTargetingOptionDetails {
 
 /// Used by:
 ///
+/// - aiplatform:v1 : GoogleCloudAiplatformV1AddContextChildrenRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1RemoveContextChildrenRequest
+class $ContextChildrenRequest {
+  /// The resource names of the child Contexts.
+  core.List<core.String>? childContexts;
+
+  $ContextChildrenRequest({
+    this.childContexts,
+  });
+
+  $ContextChildrenRequest.fromJson(core.Map json_)
+      : this(
+          childContexts: json_.containsKey('childContexts')
+              ? (json_['childContexts'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (childContexts != null) 'childContexts': childContexts!,
+      };
+}
+
+/// Used by:
+///
 /// - displayvideo:v1 : CounterEvent
 /// - displayvideo:v2 : CounterEvent
 class $CounterEvent {
@@ -3527,6 +3590,115 @@ class $CreativeClickThroughUrl {
 
 /// Used by:
 ///
+/// - cloudkms:v1 : CryptoKeyVersionTemplate
+/// - kmsinventory:v1 : GoogleCloudKmsV1CryptoKeyVersionTemplate
+class $CryptoKeyVersionTemplate {
+  /// Algorithm to use when creating a CryptoKeyVersion based on this template.
+  ///
+  /// For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if
+  /// both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
+  /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
+  /// - "AES_128_GCM" : AES-GCM (Galois Counter Mode) using 128-bit keys.
+  /// - "AES_256_GCM" : AES-GCM (Galois Counter Mode) using 256-bit keys.
+  /// - "AES_128_CBC" : AES-CBC (Cipher Block Chaining Mode) using 128-bit keys.
+  /// - "AES_256_CBC" : AES-CBC (Cipher Block Chaining Mode) using 256-bit keys.
+  /// - "AES_128_CTR" : AES-CTR (Counter Mode) using 128-bit keys.
+  /// - "AES_256_CTR" : AES-CTR (Counter Mode) using 256-bit keys.
+  /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_4096_SHA256" : RSASSA-PSS 4096 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_4096_SHA512" : RSASSA-PSS 4096 bit key with a SHA512
+  /// digest.
+  /// - "RSA_SIGN_PKCS1_2048_SHA256" : RSASSA-PKCS1-v1_5 with a 2048 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_3072_SHA256" : RSASSA-PKCS1-v1_5 with a 3072 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_4096_SHA256" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_4096_SHA512" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
+  /// a SHA512 digest.
+  /// - "RSA_SIGN_RAW_PKCS1_2048" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 2048 bit key.
+  /// - "RSA_SIGN_RAW_PKCS1_3072" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 3072 bit key.
+  /// - "RSA_SIGN_RAW_PKCS1_4096" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 4096 bit key.
+  /// - "RSA_DECRYPT_OAEP_2048_SHA256" : RSAES-OAEP 2048 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_3072_SHA256" : RSAES-OAEP 3072 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA256" : RSAES-OAEP 4096 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA512" : RSAES-OAEP 4096 bit key with a SHA512
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_2048_SHA1" : RSAES-OAEP 2048 bit key with a SHA1
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_3072_SHA1" : RSAES-OAEP 3072 bit key with a SHA1
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA1" : RSAES-OAEP 4096 bit key with a SHA1
+  /// digest.
+  /// - "EC_SIGN_P256_SHA256" : ECDSA on the NIST P-256 curve with a SHA256
+  /// digest. Other hash functions can also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
+  /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
+  /// digest. Other hash functions can also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
+  /// - "EC_SIGN_SECP256K1_SHA256" : ECDSA on the non-NIST secp256k1 curve. This
+  /// curve is only supported for HSM protection level. Other hash functions can
+  /// also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
+  /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
+  /// - "HMAC_SHA1" : HMAC-SHA1 signing with a 160 bit key.
+  /// - "HMAC_SHA384" : HMAC-SHA384 signing with a 384 bit key.
+  /// - "HMAC_SHA512" : HMAC-SHA512 signing with a 512 bit key.
+  /// - "HMAC_SHA224" : HMAC-SHA224 signing with a 224 bit key.
+  /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
+  /// encryption by an external key manager.
+  core.String? algorithm;
+
+  /// ProtectionLevel to use when creating a CryptoKeyVersion based on this
+  /// template.
+  ///
+  /// Immutable. Defaults to SOFTWARE.
+  /// Possible string values are:
+  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
+  /// - "SOFTWARE" : Crypto operations are performed in software.
+  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
+  /// backend.
+  core.String? protectionLevel;
+
+  $CryptoKeyVersionTemplate({
+    this.algorithm,
+    this.protectionLevel,
+  });
+
+  $CryptoKeyVersionTemplate.fromJson(core.Map json_)
+      : this(
+          algorithm: json_.containsKey('algorithm')
+              ? json_['algorithm'] as core.String
+              : null,
+          protectionLevel: json_.containsKey('protectionLevel')
+              ? json_['protectionLevel'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm!,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel!,
+      };
+}
+
+/// Used by:
+///
 /// - displayvideo:v1 : CustomBiddingScriptRef
 /// - displayvideo:v2 : CustomBiddingScriptRef
 class $CustomBiddingScriptRef {
@@ -3651,9 +3823,11 @@ class $CustomListTargetingSetting {
 /// - documentai:v1 : GoogleTypeDate
 /// - doubleclickbidmanager:v2 : Date
 /// - drivelabels:v2 : GoogleTypeDate
+/// - migrationcenter:v1 : Date
 /// - mybusinessbusinessinformation:v1 : Date
 /// - osconfig:v1 : Date
 /// - people:v1 : Date
+/// - places:v1 : GoogleTypeDate
 /// - policysimulator:v1 : GoogleTypeDate
 /// - realtimebidding:v1 : Date
 /// - retail:v2 : GoogleTypeDate
@@ -4879,10 +5053,38 @@ class $EgressFrom {
 /// - accesscontextmanager:v1 : Empty
 /// - admin:directory_v1 : Empty
 /// - adsense:v2 : Empty
+/// - aiplatform:v1 : GoogleCloudAiplatformV1AddContextArtifactsAndExecutionsResponse
+/// - aiplatform:v1 : GoogleCloudAiplatformV1AddContextChildrenResponse
+/// - aiplatform:v1 : GoogleCloudAiplatformV1AddExecutionEventsResponse
+/// - aiplatform:v1 : GoogleCloudAiplatformV1CancelBatchPredictionJobRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1CancelCustomJobRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1CancelDataLabelingJobRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1CancelHyperparameterTuningJobRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1CancelNasJobRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1CancelPipelineJobRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1CancelTrainingPipelineRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1CheckTrialEarlyStoppingStateRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1ListOptimalTrialsRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1PauseModelDeploymentMonitoringJobRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1PauseScheduleRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1RemoveContextChildrenResponse
+/// - aiplatform:v1 : GoogleCloudAiplatformV1RemoveDatapointsResponse
+/// - aiplatform:v1 : GoogleCloudAiplatformV1ResumeModelDeploymentMonitoringJobRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1StopTrialRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1UpsertDatapointsResponse
+/// - aiplatform:v1 : GoogleCloudAiplatformV1WriteFeatureValuesResponse
+/// - aiplatform:v1 : GoogleCloudAiplatformV1WriteTensorboardExperimentDataResponse
+/// - aiplatform:v1 : GoogleCloudAiplatformV1WriteTensorboardRunDataResponse
+/// - aiplatform:v1 : GoogleProtobufEmpty
+/// - analyticshub:v1 : DcrExchangeConfig
+/// - analyticshub:v1 : DefaultExchangeConfig
 /// - analyticshub:v1 : Empty
-/// - analyticshub:v1 : SubscribeListingResponse
+/// - analyticshub:v1 : RefreshSubscriptionRequest
+/// - analyticshub:v1 : RevokeSubscriptionRequest
+/// - analyticshub:v1 : RevokeSubscriptionResponse
 /// - androiddeviceprovisioning:v1 : Empty
 /// - androidmanagement:v1 : Empty
+/// - androidmanagement:v1 : StopLostModeParams
 /// - androidpublisher:v3 : ActivateBasePlanRequest
 /// - androidpublisher:v3 : ActivateSubscriptionOfferRequest
 /// - androidpublisher:v3 : ArchiveSubscriptionRequest
@@ -4973,8 +5175,6 @@ class $EgressFrom {
 /// - cloudchannel:v1 : GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity
 /// - cloudchannel:v1 : GoogleLongrunningCancelOperationRequest
 /// - cloudchannel:v1 : GoogleProtobufEmpty
-/// - clouddebugger:v2 : Empty
-/// - clouddebugger:v2 : UpdateActiveBreakpointResponse
 /// - clouddeploy:v1 : AbandonReleaseRequest
 /// - clouddeploy:v1 : AbandonReleaseResponse
 /// - clouddeploy:v1 : AdvanceChildRolloutJob
@@ -5066,7 +5266,6 @@ class $EgressFrom {
 /// - datamigration:v1 : CancelOperationRequest
 /// - datamigration:v1 : Empty
 /// - datamigration:v1 : PromoteMigrationJobRequest
-/// - datamigration:v1 : RestartMigrationJobRequest
 /// - datamigration:v1 : ResumeMigrationJobRequest
 /// - datamigration:v1 : RollbackConversionWorkspaceRequest
 /// - datamigration:v1 : StaticIpConnectivity
@@ -5097,6 +5296,8 @@ class $EgressFrom {
 /// - datastream:v1 : CancelOperationRequest
 /// - datastream:v1 : DropLargeObjects
 /// - datastream:v1 : Empty
+/// - datastream:v1 : MostRecentStartPosition
+/// - datastream:v1 : NextAvailableStartPosition
 /// - datastream:v1 : StartBackfillJobRequest
 /// - datastream:v1 : StaticServiceIpConnectivity
 /// - datastream:v1 : StopBackfillJobRequest
@@ -5259,6 +5460,12 @@ class $EgressFrom {
 /// - memcache:v1 : Empty
 /// - metastore:v1 : CancelOperationRequest
 /// - metastore:v1 : Empty
+/// - migrationcenter:v1 : AggregationCount
+/// - migrationcenter:v1 : AggregationFrequency
+/// - migrationcenter:v1 : AggregationSum
+/// - migrationcenter:v1 : CancelOperationRequest
+/// - migrationcenter:v1 : Empty
+/// - migrationcenter:v1 : ReportAssetFramesResponse
 /// - ml:v1 : GoogleCloudMlV1__CancelJobRequest
 /// - ml:v1 : GoogleCloudMlV1__CheckTrialEarlyStoppingStateRequest
 /// - ml:v1 : GoogleCloudMlV1__ListOptimalTrialsRequest
@@ -6157,6 +6364,7 @@ class $ExportOptions {
 /// Used by:
 ///
 /// - accesscontextmanager:v1 : Expr
+/// - aiplatform:v1 : GoogleTypeExpr
 /// - analyticshub:v1 : Expr
 /// - apigateway:v1 : ApigatewayExpr
 /// - apigee:v1 : GoogleTypeExpr
@@ -6622,6 +6830,47 @@ class $ForwardSshTunnelConnectivity {
         if (port != null) 'port': port!,
         if (privateKey != null) 'privateKey': privateKey!,
         if (username != null) 'username': username!,
+      };
+}
+
+/// Used by:
+///
+/// - aiplatform:v1 : GoogleCloudAiplatformV1ExportFractionSplit
+/// - aiplatform:v1 : GoogleCloudAiplatformV1FractionSplit
+class $FractionSplit {
+  /// The fraction of the input data that is to be used to evaluate the Model.
+  core.double? testFraction;
+
+  /// The fraction of the input data that is to be used to train the Model.
+  core.double? trainingFraction;
+
+  /// The fraction of the input data that is to be used to validate the Model.
+  core.double? validationFraction;
+
+  $FractionSplit({
+    this.testFraction,
+    this.trainingFraction,
+    this.validationFraction,
+  });
+
+  $FractionSplit.fromJson(core.Map json_)
+      : this(
+          testFraction: json_.containsKey('testFraction')
+              ? (json_['testFraction'] as core.num).toDouble()
+              : null,
+          trainingFraction: json_.containsKey('trainingFraction')
+              ? (json_['trainingFraction'] as core.num).toDouble()
+              : null,
+          validationFraction: json_.containsKey('validationFraction')
+              ? (json_['validationFraction'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (testFraction != null) 'testFraction': testFraction!,
+        if (trainingFraction != null) 'trainingFraction': trainingFraction!,
+        if (validationFraction != null)
+          'validationFraction': validationFraction!,
       };
 }
 
@@ -7681,6 +7930,39 @@ class $GoogleCloudDocumentaiV1Vertex {
 
 /// Used by:
 ///
+/// - paymentsresellersubscription:v1 : GoogleTypeLocalizedText
+/// - places:v1 : GoogleTypeLocalizedText
+class $GoogleTypeLocalizedText {
+  /// The text's BCP-47 language code, such as "en-US" or "sr-Latn".
+  ///
+  /// For more information, see
+  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+  core.String? languageCode;
+
+  /// Localized string in the language corresponding to \`language_code' below.
+  core.String? text;
+
+  $GoogleTypeLocalizedText({
+    this.languageCode,
+    this.text,
+  });
+
+  $GoogleTypeLocalizedText.fromJson(core.Map json_)
+      : this(
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
+              : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (text != null) 'text': text!,
+      };
+}
+
+/// Used by:
+///
 /// - containeranalysis:v1 : GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness
 /// - ondemandscanning:v1 : GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness
 class $GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness {
@@ -8031,6 +8313,7 @@ class $HouseholdIncomeTargetingOptionDetails {
 /// Used by:
 ///
 /// - adsense:v2 : HttpBody
+/// - aiplatform:v1 : GoogleApiHttpBody
 /// - apigee:v1 : GoogleApiHttpBody
 /// - apigeeregistry:v1 : HttpBody
 /// - cloudbuild:v1 : HttpBody
@@ -8209,6 +8492,43 @@ class $Identity {
   core.Map<core.String, core.dynamic> toJson() => {
         if (revision != null) 'revision': revision!,
         if (updateId != null) 'updateId': updateId!,
+      };
+}
+
+/// Used by:
+///
+/// - migrationcenter:v1 : RunImportJobRequest
+/// - migrationcenter:v1 : ValidateImportJobRequest
+class $ImportJobRequest {
+  /// An optional request ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  $ImportJobRequest({
+    this.requestId,
+  });
+
+  $ImportJobRequest.fromJson(core.Map json_)
+      : this(
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -8627,6 +8947,7 @@ class $IntegrationDetails {
 
 /// Used by:
 ///
+/// - aiplatform:v1 : GoogleTypeInterval
 /// - apigee:v1 : GoogleTypeInterval
 /// - contentwarehouse:v1 : GoogleTypeInterval
 /// - sheets:v4 : Interval
@@ -9405,6 +9726,7 @@ class $LanguageTargetingOptionDetails {
 /// - jobs:v4 : LatLng
 /// - mybusinessbusinessinformation:v1 : LatLng
 /// - photoslibrary:v1 : LatLng
+/// - places:v1 : GoogleTypeLatLng
 /// - streetviewpublish:v1 : LatLng
 /// - vision:v1 : LatLng
 class $LatLng {
@@ -9909,6 +10231,7 @@ class $LocalizedMessage {
 
 /// Used by:
 ///
+/// - aiplatform:v1 : GoogleCloudLocationLocation
 /// - apigateway:v1 : ApigatewayLocation
 /// - apigeeregistry:v1 : Location
 /// - artifactregistry:v1 : Location
@@ -9944,6 +10267,7 @@ class $LocalizedMessage {
 /// - ids:v1 : Location
 /// - managedidentities:v1 : Location
 /// - memcache:v1 : Location
+/// - migrationcenter:v1 : Location
 /// - networkconnectivity:v1 : Location
 /// - networkmanagement:v1 : Location
 /// - networksecurity:v1 : Location
@@ -10857,6 +11181,7 @@ class $MobileDeviceIdList {
 
 /// Used by:
 ///
+/// - aiplatform:v1 : GoogleTypeMoney
 /// - androidpublisher:v3 : Money
 /// - apigee:v1 : GoogleTypeMoney
 /// - authorizedbuyersmarketplace:v1 : Money
@@ -10870,6 +11195,7 @@ class $MobileDeviceIdList {
 /// - domains:v1 : Money
 /// - jobs:v3 : Money
 /// - jobs:v4 : Money
+/// - migrationcenter:v1 : Money
 /// - mybusinessbusinessinformation:v1 : Money
 /// - recommender:v1 : GoogleTypeMoney
 /// - servicecontrol:v1 : Money
@@ -12542,6 +12868,7 @@ class $Permissions {
 /// Used by:
 ///
 /// - accesscontextmanager:v1 : TestIamPermissionsResponse
+/// - aiplatform:v1 : GoogleIamV1TestIamPermissionsResponse
 /// - analyticshub:v1 : TestIamPermissionsResponse
 /// - apigateway:v1 : ApigatewayTestIamPermissionsResponse
 /// - apigee:v1 : GoogleIamV1TestIamPermissionsResponse
@@ -13078,7 +13405,6 @@ class $ProgramStatusReviewIneligibilityReasonDetails {
 
 /// Used by:
 ///
-/// - clouddebugger:v2 : ProjectRepoId
 /// - containeranalysis:v1 : ProjectRepoId
 /// - ondemandscanning:v1 : ProjectRepoId
 class $ProjectRepoId {
@@ -14022,6 +14348,77 @@ class $Request08 {
 
 /// Used by:
 ///
+/// - containeranalysis:v1 : ResourceDescriptor
+/// - ondemandscanning:v1 : ResourceDescriptor
+class $ResourceDescriptor {
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? annotations;
+  core.String? content;
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
+
+  set contentAsBytes(core.List<core.int> bytes_) {
+    content =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  core.Map<core.String, core.String>? digest;
+  core.String? downloadLocation;
+  core.String? mediaType;
+  core.String? name;
+  core.String? uri;
+
+  $ResourceDescriptor({
+    this.annotations,
+    this.content,
+    this.digest,
+    this.downloadLocation,
+    this.mediaType,
+    this.name,
+    this.uri,
+  });
+
+  $ResourceDescriptor.fromJson(core.Map json_)
+      : this(
+          annotations: json_.containsKey('annotations')
+              ? json_['annotations'] as core.Map<core.String, core.dynamic>
+              : null,
+          content: json_.containsKey('content')
+              ? json_['content'] as core.String
+              : null,
+          digest: json_.containsKey('digest')
+              ? (json_['digest'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          downloadLocation: json_.containsKey('downloadLocation')
+              ? json_['downloadLocation'] as core.String
+              : null,
+          mediaType: json_.containsKey('mediaType')
+              ? json_['mediaType'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
+        if (content != null) 'content': content!,
+        if (digest != null) 'digest': digest!,
+        if (downloadLocation != null) 'downloadLocation': downloadLocation!,
+        if (mediaType != null) 'mediaType': mediaType!,
+        if (name != null) 'name': name!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Used by:
+///
 /// - notebooks:v1 : IsInstanceUpgradeableResponse
 /// - notebooks:v2 : CheckInstanceUpgradabilityResponse
 class $Response {
@@ -14097,6 +14494,47 @@ class $ResponseMetadata {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
+      };
+}
+
+/// Used by:
+///
+/// - dataplex:v1 : GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult
+/// - dataplex:v1 : GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult
+class $ResultPostScanActionsResultBigQueryExportResult {
+  /// Additional information about the BigQuery exporting.
+  ///
+  /// Output only.
+  core.String? message;
+
+  /// Execution state for the BigQuery exporting.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The exporting state is unspecified.
+  /// - "SUCCEEDED" : The exporting completed successfully.
+  /// - "FAILED" : The exporting is no longer running due to an error.
+  /// - "SKIPPED" : The exporting is skipped due to no valid scan result to
+  /// export (usually caused by scan failed).
+  core.String? state;
+
+  $ResultPostScanActionsResultBigQueryExportResult({
+    this.message,
+    this.state,
+  });
+
+  $ResultPostScanActionsResultBigQueryExportResult.fromJson(core.Map json_)
+      : this(
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (message != null) 'message': message!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -14694,21 +15132,56 @@ class $Shared01 {
 
 /// Used by:
 ///
+/// - aiplatform:v1 : GoogleCloudAiplatformV1DiskSpec
+/// - ml:v1 : GoogleCloudMlV1__DiskConfig
+class $Shared02 {
+  /// Size in GB of the boot disk (default is 100GB).
+  core.int? bootDiskSizeGb;
+
+  /// Type of the boot disk (default is "pd-ssd").
+  ///
+  /// Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or
+  /// "pd-standard" (Persistent Disk Hard Disk Drive).
+  core.String? bootDiskType;
+
+  $Shared02({
+    this.bootDiskSizeGb,
+    this.bootDiskType,
+  });
+
+  $Shared02.fromJson(core.Map json_)
+      : this(
+          bootDiskSizeGb: json_.containsKey('bootDiskSizeGb')
+              ? json_['bootDiskSizeGb'] as core.int
+              : null,
+          bootDiskType: json_.containsKey('bootDiskType')
+              ? json_['bootDiskType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb!,
+        if (bootDiskType != null) 'bootDiskType': bootDiskType!,
+      };
+}
+
+/// Used by:
+///
 /// - compute:v1 : InstancesSetServiceAccountRequest
 /// - compute:v1 : ServiceAccount
-class $Shared02 {
+class $Shared03 {
   /// Email address of the service account.
   core.String? email;
 
   /// The list of scopes to be made available for this service account.
   core.List<core.String>? scopes;
 
-  $Shared02({
+  $Shared03({
     this.email,
     this.scopes,
   });
 
-  $Shared02.fromJson(core.Map json_)
+  $Shared03.fromJson(core.Map json_)
       : this(
           email:
               json_.containsKey('email') ? json_['email'] as core.String : null,
@@ -14729,19 +15202,19 @@ class $Shared02 {
 ///
 /// - content:v2.1 : Price
 /// - content:v2.1 : PriceAmount
-class $Shared03 {
+class $Shared04 {
   /// The currency of the price.
   core.String? currency;
 
   /// The price represented as a number.
   core.String? value;
 
-  $Shared03({
+  $Shared04({
     this.currency,
     this.value,
   });
 
-  $Shared03.fromJson(core.Map json_)
+  $Shared04.fromJson(core.Map json_)
       : this(
           currency: json_.containsKey('currency')
               ? json_['currency'] as core.String
@@ -14760,7 +15233,7 @@ class $Shared03 {
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2Sentiment
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3SentimentAnalysisResult
-class $Shared04 {
+class $Shared05 {
   /// A non-negative number in the \[0, +inf) range, which represents the
   /// absolute magnitude of sentiment, regardless of score (positive or
   /// negative).
@@ -14770,12 +15243,12 @@ class $Shared04 {
   /// sentiment).
   core.double? score;
 
-  $Shared04({
+  $Shared05({
     this.magnitude,
     this.score,
   });
 
-  $Shared04.fromJson(core.Map json_)
+  $Shared05.fromJson(core.Map json_)
       : this(
           magnitude: json_.containsKey('magnitude')
               ? (json_['magnitude'] as core.num).toDouble()
@@ -14795,7 +15268,7 @@ class $Shared04 {
 ///
 /// - osconfig:v1 : OSPolicyAssignmentInstanceFilterInventory
 /// - osconfig:v1 : OSPolicyInventoryFilter
-class $Shared05 {
+class $Shared06 {
   /// The OS short name
   ///
   /// Required.
@@ -14809,12 +15282,12 @@ class $Shared05 {
   /// versions.
   core.String? osVersion;
 
-  $Shared05({
+  $Shared06({
     this.osShortName,
     this.osVersion,
   });
 
-  $Shared05.fromJson(core.Map json_)
+  $Shared06.fromJson(core.Map json_)
       : this(
           osShortName: json_.containsKey('osShortName')
               ? json_['osShortName'] as core.String
@@ -14834,14 +15307,14 @@ class $Shared05 {
 ///
 /// - youtube:v3 : CommentSnippetAuthorChannelId
 /// - youtube:v3 : LanguageTag
-class $Shared06 {
+class $Shared07 {
   core.String? value;
 
-  $Shared06({
+  $Shared07({
     this.value,
   });
 
-  $Shared06.fromJson(core.Map json_)
+  $Shared07.fromJson(core.Map json_)
       : this(
           value:
               json_.containsKey('value') ? json_['value'] as core.String : null,
@@ -15229,6 +15702,8 @@ class $StateError {
 /// Used by:
 ///
 /// - accesscontextmanager:v1 : Status
+/// - aiplatform:v1 : GoogleRpcStatus
+/// - analyticshub:v1 : Status
 /// - androiddeviceprovisioning:v1 : Status
 /// - androidmanagement:v1 : Status
 /// - apigateway:v1 : ApigatewayStatus
@@ -15263,6 +15738,7 @@ class $StateError {
 /// - cloudtasks:v2 : Status
 /// - cloudtrace:v2 : Status
 /// - composer:v1 : Status
+/// - compute:v1 : Status
 /// - connectors:v1 : Status
 /// - contactcenterinsights:v1 : GoogleRpcStatus
 /// - container:v1 : Status
@@ -15303,6 +15779,7 @@ class $StateError {
 /// - managedidentities:v1 : Status
 /// - memcache:v1 : Status
 /// - metastore:v1 : Status
+/// - migrationcenter:v1 : Status
 /// - ml:v1 : GoogleRpc__Status
 /// - monitoring:v3 : Status
 /// - networkconnectivity:v1 : GoogleRpcStatus

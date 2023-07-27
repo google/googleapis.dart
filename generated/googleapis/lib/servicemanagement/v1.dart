@@ -2434,8 +2434,12 @@ class Control {
   /// servicecontrol.googleapis.com
   core.String? environment;
 
+  /// Defines policies applying to the API methods of the service.
+  core.List<MethodPolicy>? methodPolicies;
+
   Control({
     this.environment,
+    this.methodPolicies,
   });
 
   Control.fromJson(core.Map json_)
@@ -2443,10 +2447,17 @@ class Control {
           environment: json_.containsKey('environment')
               ? json_['environment'] as core.String
               : null,
+          methodPolicies: json_.containsKey('methodPolicies')
+              ? (json_['methodPolicies'] as core.List)
+                  .map((value) => MethodPolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (environment != null) 'environment': environment!,
+        if (methodPolicies != null) 'methodPolicies': methodPolicies!,
       };
 }
 
@@ -3106,6 +3117,63 @@ class Field {
         if (options != null) 'options': options!,
         if (packed != null) 'packed': packed!,
         if (typeUrl != null) 'typeUrl': typeUrl!,
+      };
+}
+
+/// Google API Policy Annotation This message defines a simple API policy
+/// annotation that can be used to annotate API request and response message
+/// fields with applicable policies.
+///
+/// One field may have multiple applicable policies that must all be satisfied
+/// before a request can be processed. This policy annotation is used to
+/// generate the overall policy that will be used for automatic runtime policy
+/// enforcement and documentation generation.
+class FieldPolicy {
+  /// Specifies the required permission(s) for the resource referred to by the
+  /// field.
+  ///
+  /// It requires the field contains a valid resource reference, and the request
+  /// must pass the permission checks to proceed. For example,
+  /// "resourcemanager.projects.get".
+  core.String? resourcePermission;
+
+  /// Specifies the resource type for the resource referred to by the field.
+  core.String? resourceType;
+
+  /// Selects one or more request or response message fields to apply this
+  /// `FieldPolicy`.
+  ///
+  /// When a `FieldPolicy` is used in proto annotation, the selector must be
+  /// left as empty. The service config generator will automatically fill the
+  /// correct value. When a `FieldPolicy` is used in service config, the
+  /// selector must be a comma-separated string with valid request or response
+  /// field paths, such as "foo.bar" or "foo.bar,foo.baz".
+  core.String? selector;
+
+  FieldPolicy({
+    this.resourcePermission,
+    this.resourceType,
+    this.selector,
+  });
+
+  FieldPolicy.fromJson(core.Map json_)
+      : this(
+          resourcePermission: json_.containsKey('resourcePermission')
+              ? json_['resourcePermission'] as core.String
+              : null,
+          resourceType: json_.containsKey('resourceType')
+              ? json_['resourceType'] as core.String
+              : null,
+          selector: json_.containsKey('selector')
+              ? json_['selector'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resourcePermission != null)
+          'resourcePermission': resourcePermission!,
+        if (resourceType != null) 'resourceType': resourceType!,
+        if (selector != null) 'selector': selector!,
       };
 }
 
@@ -4074,6 +4142,43 @@ class Method {
         if (responseStreaming != null) 'responseStreaming': responseStreaming!,
         if (responseTypeUrl != null) 'responseTypeUrl': responseTypeUrl!,
         if (syntax != null) 'syntax': syntax!,
+      };
+}
+
+/// Defines policies applying to an RPC method.
+class MethodPolicy {
+  /// Policies that are applicable to the request message.
+  core.List<FieldPolicy>? requestPolicies;
+
+  /// Selects a method to which these policies should be enforced, for example,
+  /// "google.pubsub.v1.Subscriber.CreateSubscription".
+  ///
+  /// Refer to selector for syntax details. NOTE: This field must not be set in
+  /// the proto annotation. It will be automatically filled by the service
+  /// config compiler .
+  core.String? selector;
+
+  MethodPolicy({
+    this.requestPolicies,
+    this.selector,
+  });
+
+  MethodPolicy.fromJson(core.Map json_)
+      : this(
+          requestPolicies: json_.containsKey('requestPolicies')
+              ? (json_['requestPolicies'] as core.List)
+                  .map((value) => FieldPolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          selector: json_.containsKey('selector')
+              ? json_['selector'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requestPolicies != null) 'requestPolicies': requestPolicies!,
+        if (selector != null) 'selector': selector!,
       };
 }
 

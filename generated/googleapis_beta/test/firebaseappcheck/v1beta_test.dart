@@ -1310,7 +1310,9 @@ api.GoogleFirebaseAppcheckV1betaService
   buildCounterGoogleFirebaseAppcheckV1betaService++;
   if (buildCounterGoogleFirebaseAppcheckV1betaService < 3) {
     o.enforcementMode = 'foo';
+    o.etag = 'foo';
     o.name = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterGoogleFirebaseAppcheckV1betaService--;
   return o;
@@ -1325,7 +1327,15 @@ void checkGoogleFirebaseAppcheckV1betaService(
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
       unittest.equals('foo'),
     );
   }

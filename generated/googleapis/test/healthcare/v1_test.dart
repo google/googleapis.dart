@@ -79,6 +79,7 @@ api.AnalyzeEntitiesRequest buildAnalyzeEntitiesRequest() {
   final o = api.AnalyzeEntitiesRequest();
   buildCounterAnalyzeEntitiesRequest++;
   if (buildCounterAnalyzeEntitiesRequest < 3) {
+    o.alternativeOutputFormat = 'foo';
     o.documentContent = 'foo';
     o.licensedVocabularies = buildUnnamed0();
   }
@@ -89,6 +90,10 @@ api.AnalyzeEntitiesRequest buildAnalyzeEntitiesRequest() {
 void checkAnalyzeEntitiesRequest(api.AnalyzeEntitiesRequest o) {
   buildCounterAnalyzeEntitiesRequest++;
   if (buildCounterAnalyzeEntitiesRequest < 3) {
+    unittest.expect(
+      o.alternativeOutputFormat!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.documentContent!,
       unittest.equals('foo'),
@@ -138,6 +143,7 @@ api.AnalyzeEntitiesResponse buildAnalyzeEntitiesResponse() {
   if (buildCounterAnalyzeEntitiesResponse < 3) {
     o.entities = buildUnnamed1();
     o.entityMentions = buildUnnamed2();
+    o.fhirBundle = 'foo';
     o.relationships = buildUnnamed3();
   }
   buildCounterAnalyzeEntitiesResponse--;
@@ -149,6 +155,10 @@ void checkAnalyzeEntitiesResponse(api.AnalyzeEntitiesResponse o) {
   if (buildCounterAnalyzeEntitiesResponse < 3) {
     checkUnnamed1(o.entities!);
     checkUnnamed2(o.entityMentions!);
+    unittest.expect(
+      o.fhirBundle!,
+      unittest.equals('foo'),
+    );
     checkUnnamed3(o.relationships!);
   }
   buildCounterAnalyzeEntitiesResponse--;

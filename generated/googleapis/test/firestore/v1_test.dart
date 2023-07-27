@@ -31,7 +31,9 @@ api.Aggregation buildAggregation() {
   buildCounterAggregation++;
   if (buildCounterAggregation < 3) {
     o.alias = 'foo';
+    o.avg = buildAvg();
     o.count = buildCount();
+    o.sum = buildSum();
   }
   buildCounterAggregation--;
   return o;
@@ -44,7 +46,9 @@ void checkAggregation(api.Aggregation o) {
       o.alias!,
       unittest.equals('foo'),
     );
+    checkAvg(o.avg!);
     checkCount(o.count!);
+    checkSum(o.sum!);
   }
   buildCounterAggregation--;
 }
@@ -107,6 +111,25 @@ void checkArrayValue(api.ArrayValue o) {
     checkUnnamed1(o.values!);
   }
   buildCounterArrayValue--;
+}
+
+core.int buildCounterAvg = 0;
+api.Avg buildAvg() {
+  final o = api.Avg();
+  buildCounterAvg++;
+  if (buildCounterAvg < 3) {
+    o.field = buildFieldReference();
+  }
+  buildCounterAvg--;
+  return o;
+}
+
+void checkAvg(api.Avg o) {
+  buildCounterAvg++;
+  if (buildCounterAvg < 3) {
+    checkFieldReference(o.field!);
+  }
+  buildCounterAvg--;
 }
 
 core.List<core.String> buildUnnamed2() => [
@@ -2556,6 +2579,25 @@ void checkStructuredQuery(api.StructuredQuery o) {
   buildCounterStructuredQuery--;
 }
 
+core.int buildCounterSum = 0;
+api.Sum buildSum() {
+  final o = api.Sum();
+  buildCounterSum++;
+  if (buildCounterSum < 3) {
+    o.field = buildFieldReference();
+  }
+  buildCounterSum--;
+  return o;
+}
+
+void checkSum(api.Sum o) {
+  buildCounterSum++;
+  if (buildCounterSum < 3) {
+    checkFieldReference(o.field!);
+  }
+  buildCounterSum--;
+}
+
 core.int buildCounterTransactionOptions = 0;
 api.TransactionOptions buildTransactionOptions() {
   final o = api.TransactionOptions();
@@ -2973,6 +3015,15 @@ void main() {
       final od =
           api.ArrayValue.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkArrayValue(od);
+    });
+  });
+
+  unittest.group('obj-schema-Avg', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAvg();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Avg.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkAvg(od);
     });
   });
 
@@ -3650,6 +3701,15 @@ void main() {
       final od = api.StructuredQuery.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkStructuredQuery(od);
+    });
+  });
+
+  unittest.group('obj-schema-Sum', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSum();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Sum.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkSum(od);
     });
   });
 

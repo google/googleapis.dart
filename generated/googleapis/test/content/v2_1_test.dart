@@ -2363,6 +2363,52 @@ void checkCarriersCarrier(api.CarriersCarrier o) {
   buildCounterCarriersCarrier--;
 }
 
+core.int buildCounterCheckoutSettings = 0;
+api.CheckoutSettings buildCheckoutSettings() {
+  final o = api.CheckoutSettings();
+  buildCounterCheckoutSettings++;
+  if (buildCounterCheckoutSettings < 3) {
+    o.effectiveEnrollmentState = 'foo';
+    o.effectiveReviewState = 'foo';
+    o.effectiveUriSettings = buildUrlSettings();
+    o.enrollmentState = 'foo';
+    o.merchantId = 'foo';
+    o.reviewState = 'foo';
+    o.uriSettings = buildUrlSettings();
+  }
+  buildCounterCheckoutSettings--;
+  return o;
+}
+
+void checkCheckoutSettings(api.CheckoutSettings o) {
+  buildCounterCheckoutSettings++;
+  if (buildCounterCheckoutSettings < 3) {
+    unittest.expect(
+      o.effectiveEnrollmentState!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.effectiveReviewState!,
+      unittest.equals('foo'),
+    );
+    checkUrlSettings(o.effectiveUriSettings!);
+    unittest.expect(
+      o.enrollmentState!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.merchantId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.reviewState!,
+      unittest.equals('foo'),
+    );
+    checkUrlSettings(o.uriSettings!);
+  }
+  buildCounterCheckoutSettings--;
+}
+
 core.List<core.double> buildUnnamed30() => [
       42.0,
       42.0,
@@ -2827,6 +2873,77 @@ void checkCollectionStatusItemLevelIssue(api.CollectionStatusItemLevelIssue o) {
     );
   }
   buildCounterCollectionStatusItemLevelIssue--;
+}
+
+core.int buildCounterCompetitiveVisibility = 0;
+api.CompetitiveVisibility buildCompetitiveVisibility() {
+  final o = api.CompetitiveVisibility();
+  buildCounterCompetitiveVisibility++;
+  if (buildCounterCompetitiveVisibility < 3) {
+    o.adsOrganicRatio = 42.0;
+    o.categoryBenchmarkVisibilityTrend = 42.0;
+    o.categoryId = 'foo';
+    o.countryCode = 'foo';
+    o.date = buildDate();
+    o.domain = 'foo';
+    o.higherPositionRate = 42.0;
+    o.isYourDomain = true;
+    o.pageOverlapRate = 42.0;
+    o.rank = 'foo';
+    o.trafficSource = 'foo';
+    o.yourDomainVisibilityTrend = 42.0;
+  }
+  buildCounterCompetitiveVisibility--;
+  return o;
+}
+
+void checkCompetitiveVisibility(api.CompetitiveVisibility o) {
+  buildCounterCompetitiveVisibility++;
+  if (buildCounterCompetitiveVisibility < 3) {
+    unittest.expect(
+      o.adsOrganicRatio!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.categoryBenchmarkVisibilityTrend!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.categoryId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.countryCode!,
+      unittest.equals('foo'),
+    );
+    checkDate(o.date!);
+    unittest.expect(
+      o.domain!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.higherPositionRate!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(o.isYourDomain!, unittest.isTrue);
+    unittest.expect(
+      o.pageOverlapRate!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.rank!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.trafficSource!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.yourDomainVisibilityTrend!,
+      unittest.equals(42.0),
+    );
+  }
+  buildCounterCompetitiveVisibility--;
 }
 
 core.int buildCounterConversionSource = 0;
@@ -4670,6 +4787,25 @@ void checkInapplicabilityDetails(api.InapplicabilityDetails o) {
     );
   }
   buildCounterInapplicabilityDetails--;
+}
+
+core.int buildCounterInsertCheckoutSettingsRequest = 0;
+api.InsertCheckoutSettingsRequest buildInsertCheckoutSettingsRequest() {
+  final o = api.InsertCheckoutSettingsRequest();
+  buildCounterInsertCheckoutSettingsRequest++;
+  if (buildCounterInsertCheckoutSettingsRequest < 3) {
+    o.uriSettings = buildUrlSettings();
+  }
+  buildCounterInsertCheckoutSettingsRequest--;
+  return o;
+}
+
+void checkInsertCheckoutSettingsRequest(api.InsertCheckoutSettingsRequest o) {
+  buildCounterInsertCheckoutSettingsRequest++;
+  if (buildCounterInsertCheckoutSettingsRequest < 3) {
+    checkUrlSettings(o.uriSettings!);
+  }
+  buildCounterInsertCheckoutSettingsRequest--;
 }
 
 core.int buildCounterInstallment = 0;
@@ -10633,6 +10769,8 @@ api.PosInventory buildPosInventory() {
     o.gtin = 'foo';
     o.itemId = 'foo';
     o.kind = 'foo';
+    o.pickupMethod = 'foo';
+    o.pickupSla = 'foo';
     o.price = buildPrice();
     o.quantity = 'foo';
     o.storeCode = 'foo';
@@ -10660,6 +10798,14 @@ void checkPosInventory(api.PosInventory o) {
     );
     unittest.expect(
       o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pickupMethod!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pickupSla!,
       unittest.equals('foo'),
     );
     checkPrice(o.price!);
@@ -10691,6 +10837,8 @@ api.PosInventoryRequest buildPosInventoryRequest() {
     o.contentLanguage = 'foo';
     o.gtin = 'foo';
     o.itemId = 'foo';
+    o.pickupMethod = 'foo';
+    o.pickupSla = 'foo';
     o.price = buildPrice();
     o.quantity = 'foo';
     o.storeCode = 'foo';
@@ -10714,6 +10862,14 @@ void checkPosInventoryRequest(api.PosInventoryRequest o) {
     );
     unittest.expect(
       o.itemId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pickupMethod!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pickupSla!,
       unittest.equals('foo'),
     );
     checkPrice(o.price!);
@@ -10746,6 +10902,8 @@ api.PosInventoryResponse buildPosInventoryResponse() {
     o.gtin = 'foo';
     o.itemId = 'foo';
     o.kind = 'foo';
+    o.pickupMethod = 'foo';
+    o.pickupSla = 'foo';
     o.price = buildPrice();
     o.quantity = 'foo';
     o.storeCode = 'foo';
@@ -10773,6 +10931,14 @@ void checkPosInventoryResponse(api.PosInventoryResponse o) {
     );
     unittest.expect(
       o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pickupMethod!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pickupSla!,
       unittest.equals('foo'),
     );
     checkPrice(o.price!);
@@ -11653,6 +11819,7 @@ api.Product buildProduct() {
     o.transitTimeLabel = 'foo';
     o.unitPricingBaseMeasure = buildProductUnitPricingBaseMeasure();
     o.unitPricingMeasure = buildProductUnitPricingMeasure();
+    o.virtualModelLink = 'foo';
   }
   buildCounterProduct--;
   return o;
@@ -11937,6 +12104,10 @@ void checkProduct(api.Product o) {
     );
     checkProductUnitPricingBaseMeasure(o.unitPricingBaseMeasure!);
     checkProductUnitPricingMeasure(o.unitPricingMeasure!);
+    unittest.expect(
+      o.virtualModelLink!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterProduct--;
 }
@@ -14676,6 +14847,7 @@ api.ReportRow buildReportRow() {
   if (buildCounterReportRow < 3) {
     o.bestSellers = buildBestSellers();
     o.brand = buildBrand();
+    o.competitiveVisibility = buildCompetitiveVisibility();
     o.metrics = buildMetrics();
     o.priceCompetitiveness = buildPriceCompetitiveness();
     o.priceInsights = buildPriceInsights();
@@ -14692,6 +14864,7 @@ void checkReportRow(api.ReportRow o) {
   if (buildCounterReportRow < 3) {
     checkBestSellers(o.bestSellers!);
     checkBrand(o.brand!);
+    checkCompetitiveVisibility(o.competitiveVisibility!);
     checkMetrics(o.metrics!);
     checkPriceCompetitiveness(o.priceCompetitiveness!);
     checkPriceInsights(o.priceInsights!);
@@ -18350,6 +18523,33 @@ void checkUnitInvoiceTaxLine(api.UnitInvoiceTaxLine o) {
   buildCounterUnitInvoiceTaxLine--;
 }
 
+core.int buildCounterUrlSettings = 0;
+api.UrlSettings buildUrlSettings() {
+  final o = api.UrlSettings();
+  buildCounterUrlSettings++;
+  if (buildCounterUrlSettings < 3) {
+    o.cartUriTemplate = 'foo';
+    o.checkoutUriTemplate = 'foo';
+  }
+  buildCounterUrlSettings--;
+  return o;
+}
+
+void checkUrlSettings(api.UrlSettings o) {
+  buildCounterUrlSettings++;
+  if (buildCounterUrlSettings < 3) {
+    unittest.expect(
+      o.cartUriTemplate!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.checkoutUriTemplate!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterUrlSettings--;
+}
+
 core.int buildCounterValue = 0;
 api.Value buildValue() {
   final o = api.Value();
@@ -19409,6 +19609,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-CheckoutSettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCheckoutSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CheckoutSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCheckoutSettings(od);
+    });
+  });
+
   unittest.group('obj-schema-CloudExportAdditionalProperties', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCloudExportAdditionalProperties();
@@ -19466,6 +19676,16 @@ void main() {
       final od = api.CollectionStatusItemLevelIssue.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkCollectionStatusItemLevelIssue(od);
+    });
+  });
+
+  unittest.group('obj-schema-CompetitiveVisibility', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCompetitiveVisibility();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CompetitiveVisibility.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCompetitiveVisibility(od);
     });
   });
 
@@ -19898,6 +20118,16 @@ void main() {
       final od = api.InapplicabilityDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkInapplicabilityDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-InsertCheckoutSettingsRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildInsertCheckoutSettingsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InsertCheckoutSettingsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkInsertCheckoutSettingsRequest(od);
     });
   });
 
@@ -23100,6 +23330,16 @@ void main() {
       final od = api.UnitInvoiceTaxLine.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkUnitInvoiceTaxLine(od);
+    });
+  });
+
+  unittest.group('obj-schema-UrlSettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUrlSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UrlSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUrlSettings(od);
     });
   });
 
@@ -26813,6 +27053,154 @@ void main() {
       }), true);
       await res.requestreview(arg_request, arg_merchantId,
           $fields: arg_$fields);
+    });
+  });
+
+  unittest.group('resource-FreelistingsprogramCheckoutsettingsResource', () {
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.ShoppingContentApi(mock).freelistingsprogram.checkoutsettings;
+      final arg_merchantId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = '';
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      await res.delete(arg_merchantId, $fields: arg_$fields);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.ShoppingContentApi(mock).freelistingsprogram.checkoutsettings;
+      final arg_merchantId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildCheckoutSettings());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_merchantId, $fields: arg_$fields);
+      checkCheckoutSettings(response as api.CheckoutSettings);
+    });
+
+    unittest.test('method--insert', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.ShoppingContentApi(mock).freelistingsprogram.checkoutsettings;
+      final arg_request = buildInsertCheckoutSettingsRequest();
+      final arg_merchantId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.InsertCheckoutSettingsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInsertCheckoutSettingsRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildCheckoutSettings());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.insert(arg_request, arg_merchantId, $fields: arg_$fields);
+      checkCheckoutSettings(response as api.CheckoutSettings);
     });
   });
 

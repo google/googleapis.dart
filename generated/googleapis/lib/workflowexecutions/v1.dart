@@ -475,6 +475,8 @@ class Execution {
   /// - "CANCELLED" : The execution was stopped intentionally.
   /// - "UNAVAILABLE" : Execution data is unavailable. See the `state_error`
   /// field.
+  /// - "QUEUED" : Request has been placed in the backlog for processing at a
+  /// later time.
   core.String? state;
 
   /// Error regarding the state of the Execution resource.

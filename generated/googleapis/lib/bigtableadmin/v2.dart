@@ -29,7 +29,6 @@
 ///       - [ProjectsInstancesClustersBackupsResource]
 ///       - [ProjectsInstancesClustersHotTabletsResource]
 ///     - [ProjectsInstancesTablesResource]
-///       - [ProjectsInstancesTablesViewsResource]
 ///   - [ProjectsLocationsResource]
 library bigtableadmin_v2;
 
@@ -1792,9 +1791,6 @@ class ProjectsInstancesClustersHotTabletsResource {
 class ProjectsInstancesTablesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsInstancesTablesViewsResource get views =>
-      ProjectsInstancesTablesViewsResource(_requester);
-
   ProjectsInstancesTablesResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -2477,152 +2473,6 @@ class ProjectsInstancesTablesResource {
   }
 }
 
-class ProjectsInstancesTablesViewsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsInstancesTablesViewsResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Gets the access control policy for a Table resource.
-  ///
-  /// Returns an empty policy if the resource exists but does not have a policy
-  /// set.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+/views/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(
-    GetIamPolicyRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Sets the access control policy on a Table resource.
-  ///
-  /// Replaces any existing policy.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+/views/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> setIamPolicy(
-    SetIamPolicyRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v2/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Returns permissions that the caller has on the specified table resource.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy detail is being
-  /// requested. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+/views/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TestIamPermissionsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TestIamPermissionsResponse> testIamPermissions(
-    TestIamPermissionsRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ =
-        'v2/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
@@ -2934,7 +2784,7 @@ class Backup {
   core.String? endTime;
 
   /// The expiration time of the backup, with microseconds granularity that must
-  /// be at least 6 hours and at most 30 days from the time the request is
+  /// be at least 6 hours and at most 90 days from the time the request is
   /// received.
   ///
   /// Once the `expire_time` has passed, Cloud Bigtable will delete the backup

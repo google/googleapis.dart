@@ -4665,7 +4665,9 @@ class RRSetRoutingPolicyLoadBalancerTarget {
   /// LoadBalancerTarget's IP address/port and region.
   /// Possible string values are:
   /// - "none"
-  /// - "regionalL4ilb"
+  /// - "globalL7ilb" : Cross-region internal Application Load Balancer
+  /// - "regionalL4ilb" : Regional internal passthrough Network Load Balancer
+  /// - "regionalL7ilb" : Regional internal Application Load Balancer
   core.String? loadBalancerType;
 
   /// The fully qualified url of the network on which the ILB is present.

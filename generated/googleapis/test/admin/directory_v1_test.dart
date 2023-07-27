@@ -1646,6 +1646,7 @@ api.ChromeOsDevice buildChromeOsDevice() {
     o.deprovisionReason = 'foo';
     o.deviceFiles = buildUnnamed26();
     o.deviceId = 'foo';
+    o.deviceLicenseType = 'foo';
     o.diskVolumeReports = buildUnnamed28();
     o.dockMacAddress = 'foo';
     o.etag = 'foo';
@@ -1716,6 +1717,10 @@ void checkChromeOsDevice(api.ChromeOsDevice o) {
     checkUnnamed26(o.deviceFiles!);
     unittest.expect(
       o.deviceId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.deviceLicenseType!,
       unittest.equals('foo'),
     );
     checkUnnamed28(o.diskVolumeReports!);

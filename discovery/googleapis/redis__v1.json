@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230711",
+    "revision": "20230728",
     "rootUrl": "https://redis.googleapis.com/",
     "servicePath": "",
     "title": "Google Cloud Memorystore for Redis API",

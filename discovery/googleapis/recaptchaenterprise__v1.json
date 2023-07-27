@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230708",
+    "revision": "20230729",
     "rootUrl": "https://recaptchaenterprise.googleapis.com/",
     "servicePath": "",
     "title": "reCAPTCHA Enterprise API",
@@ -1176,7 +1176,7 @@
                     "description": "Assessment of this transaction for risk of a stolen instrument."
                 },
                 "transactionRisk": {
-                    "description": "Probability (0-1) of this transaction being fraudulent. Summarizes the combined risk of attack vectors below.",
+                    "description": "Probability of this transaction being fraudulent. Summarizes the combined risk of attack vectors below. Values are from 0.0 (lowest) to 1.0 (highest).",
                     "format": "float",
                     "type": "number"
                 }
@@ -1188,7 +1188,7 @@
             "id": "GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict",
             "properties": {
                 "trust": {
-                    "description": "Probability (0-1) of this transaction attempt being executed in a behaviorally trustworthy way.",
+                    "description": "Probability of this transaction attempt being executed in a behaviorally trustworthy way. Values are from 0.0 (lowest) to 1.0 (highest).",
                     "format": "float",
                     "type": "number"
                 }
@@ -1200,7 +1200,7 @@
             "id": "GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict",
             "properties": {
                 "risk": {
-                    "description": "Probability (0-1) of this transaction attempt being part of a card testing attack.",
+                    "description": "Probability of this transaction attempt being part of a card testing attack. Values are from 0.0 (lowest) to 1.0 (highest).",
                     "format": "float",
                     "type": "number"
                 }
@@ -1212,7 +1212,7 @@
             "id": "GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict",
             "properties": {
                 "risk": {
-                    "description": "Probability (0-1) of this transaction being executed with a stolen instrument.",
+                    "description": "Probability of this transaction being executed with a stolen instrument. Values are from 0.0 (lowest) to 1.0 (highest).",
                     "format": "float",
                     "type": "number"
                 }

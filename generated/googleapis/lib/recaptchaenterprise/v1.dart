@@ -1886,9 +1886,10 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment {
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict?
       stolenInstrumentVerdict;
 
-  /// Probability (0-1) of this transaction being fraudulent.
+  /// Probability of this transaction being fraudulent.
   ///
-  /// Summarizes the combined risk of attack vectors below.
+  /// Summarizes the combined risk of attack vectors below. Values are from 0.0
+  /// (lowest) to 1.0 (highest).
   core.double? transactionRisk;
 
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment({
@@ -1934,8 +1935,10 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment {
 
 /// Information about behavioral trust of the transaction.
 class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict {
-  /// Probability (0-1) of this transaction attempt being executed in a
-  /// behaviorally trustworthy way.
+  /// Probability of this transaction attempt being executed in a behaviorally
+  /// trustworthy way.
+  ///
+  /// Values are from 0.0 (lowest) to 1.0 (highest).
   core.double? trust;
 
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict({
@@ -1958,8 +1961,10 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVe
 /// Information about card testing fraud, where an adversary is testing
 /// fraudulently obtained cards or brute forcing their details.
 class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict {
-  /// Probability (0-1) of this transaction attempt being part of a card testing
+  /// Probability of this transaction attempt being part of a card testing
   /// attack.
+  ///
+  /// Values are from 0.0 (lowest) to 1.0 (highest).
   core.double? risk;
 
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict({
@@ -1982,8 +1987,9 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdic
 /// Information about stolen instrument fraud, where the user is not the
 /// legitimate owner of the instrument being used for the purchase.
 class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict {
-  /// Probability (0-1) of this transaction being executed with a stolen
-  /// instrument.
+  /// Probability of this transaction being executed with a stolen instrument.
+  ///
+  /// Values are from 0.0 (lowest) to 1.0 (highest).
   core.double? risk;
 
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict({

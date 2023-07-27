@@ -1940,6 +1940,9 @@ class BandingProperties {
   /// The first color that is alternating.
   ///
   /// (Required) Deprecated: Use first_band_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? firstBandColor;
 
   /// The first color that is alternating.
@@ -1952,6 +1955,9 @@ class BandingProperties {
   /// If this field is not set, the last row or column is filled with either
   /// first_band_color or second_band_color, depending on the color of the
   /// previous row or column. Deprecated: Use footer_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? footerColor;
 
   /// The color of the last row or column.
@@ -1969,6 +1975,9 @@ class BandingProperties {
   /// starting from the second row or column. Otherwise, the first row or column
   /// is filled with first_band_color and the colors proceed to alternate as
   /// they normally would. Deprecated: Use header_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? headerColor;
 
   /// The color of the first row or column.
@@ -1984,6 +1993,9 @@ class BandingProperties {
   /// The second color that is alternating.
   ///
   /// (Required) Deprecated: Use second_band_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? secondBandColor;
 
   /// The second color that is alternating.
@@ -2072,6 +2084,9 @@ class BaselineValueFormat {
   /// key value.
   ///
   /// This field is optional. Deprecated: Use negative_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? negativeColor;
 
   /// Color to be used, in case baseline value represents a negative change for
@@ -2090,6 +2105,9 @@ class BaselineValueFormat {
   /// key value.
   ///
   /// This field is optional. Deprecated: Use positive_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? positiveColor;
 
   /// Color to be used, in case baseline value represents a positive change for
@@ -2279,6 +2297,9 @@ class BasicChartSeries {
   /// this series.
   ///
   /// If empty, a default color is used. Deprecated: Use color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? color;
 
   /// The color for elements (such as bars, lines, and points) associated with
@@ -2592,6 +2613,9 @@ class BasicFilter {
   ///
   /// The map's key is the column index, and the value is the criteria for that
   /// column. This field is deprecated in favor of filter_specs.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.Map<core.String, FilterCriteria>? criteria;
 
   /// The filter criteria per column.
@@ -2658,6 +2682,9 @@ class BasicSeriesDataPointStyleOverride {
   /// Color of the series data point.
   ///
   /// If empty, the series default is used. Deprecated: Use color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? color;
 
   /// Color of the series data point.
@@ -3753,6 +3780,9 @@ class Border {
   /// The color of the border.
   ///
   /// Deprecated: Use color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? color;
 
   /// The color of the border.
@@ -3776,6 +3806,9 @@ class Border {
   /// The width of the border, in pixels.
   ///
   /// Deprecated; the width is determined by the "style" field.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? width;
 
   Border({
@@ -3862,6 +3895,9 @@ class BubbleChartSpec {
   /// The bubble border color.
   ///
   /// Deprecated: Use bubble_border_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? bubbleBorderColor;
 
   /// The bubble border color.
@@ -4332,6 +4368,9 @@ class CellFormat {
   /// The background color of the cell.
   ///
   /// Deprecated: Use background_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? backgroundColor;
 
   /// The background color of the cell.
@@ -4821,6 +4860,9 @@ class ChartSpec {
   /// The background color of the entire chart.
   ///
   /// Not applicable to Org charts. Deprecated: Use background_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? backgroundColor;
 
   /// The background color of the entire chart.
@@ -7662,6 +7704,9 @@ class EmbeddedObjectBorder {
   /// The color of the border.
   ///
   /// Deprecated: Use color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? color;
 
   /// The color of the border.
@@ -7853,6 +7898,9 @@ class FilterCriteria {
   ///
   /// Mutually exclusive with visible_foreground_color. Deprecated: Use
   /// visible_background_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? visibleBackgroundColor;
 
   /// The background fill color to filter by; only cells with this fill color
@@ -7868,6 +7916,9 @@ class FilterCriteria {
   ///
   /// Mutually exclusive with visible_background_color. Deprecated: Use
   /// visible_foreground_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? visibleForegroundColor;
 
   /// The foreground color to filter by; only cells with this foreground color
@@ -7980,6 +8031,9 @@ class FilterView {
   ///
   /// The map's key is the column index, and the value is the criteria for that
   /// column. This field is deprecated in favor of filter_specs.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.Map<core.String, FilterCriteria>? criteria;
 
   /// The filter criteria for showing/hiding values per column.
@@ -8694,6 +8748,9 @@ class HistogramSeries {
   /// The color of the column representing this series in each bucket.
   ///
   /// This field is optional. Deprecated: Use bar_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? barColor;
 
   /// The color of the column representing this series in each bucket.
@@ -8821,6 +8878,9 @@ class InterpolationPoint {
   /// The color this interpolation point should use.
   ///
   /// Deprecated: Use color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? color;
 
   /// The color this interpolation point should use.
@@ -9334,6 +9394,9 @@ class OrgChartSpec {
   /// The color of the org chart nodes.
   ///
   /// Deprecated: Use node_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? nodeColor;
 
   /// The color of the org chart nodes.
@@ -9358,6 +9421,9 @@ class OrgChartSpec {
   /// The color of the selected org chart nodes.
   ///
   /// Deprecated: Use selected_node_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? selectedNodeColor;
 
   /// The color of the selected org chart nodes.
@@ -10052,6 +10118,9 @@ class PivotTable {
   /// source was `C10:E15`, a key of `0` will have the filter for column `C`,
   /// whereas the key `1` is for column `D`. This field is deprecated in favor
   /// of filter_specs.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.Map<core.String, PivotFilterCriteria>? criteria;
 
   /// The data execution status for data source pivot tables.
@@ -11963,6 +12032,9 @@ class SheetProperties {
   /// The color of the tab in the UI.
   ///
   /// Deprecated: Use tab_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? tabColor;
 
   /// The color of the tab in the UI.
@@ -12090,6 +12162,9 @@ class SlicerSpec {
   /// The background color of the slicer.
   ///
   /// Deprecated: Use background_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? backgroundColor;
 
   /// The background color of the slicer.
@@ -12231,6 +12306,9 @@ class SortSpec {
   ///
   /// Mutually exclusive with foreground_color. Deprecated: Use
   /// background_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? backgroundColor;
 
   /// The background fill color to sort by; cells with this fill color are
@@ -12251,6 +12329,9 @@ class SortSpec {
   ///
   /// Mutually exclusive with background_color. Deprecated: Use
   /// foreground_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? foregroundColor;
 
   /// The foreground color to sort by; cells with this foreground color are
@@ -12615,6 +12696,9 @@ class TextFormat {
   /// The foreground color of the text.
   ///
   /// Deprecated: Use foreground_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? foregroundColor;
 
   /// The foreground color of the text.
@@ -12903,6 +12987,9 @@ class TreemapChartColorScale {
   ///
   /// Defaults to #109618 if not specified. Deprecated: Use
   /// max_value_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? maxValueColor;
 
   /// The background color for cells with a color value greater than or equal to
@@ -12917,6 +13004,9 @@ class TreemapChartColorScale {
   ///
   /// Defaults to #efe6dc if not specified. Deprecated: Use
   /// mid_value_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? midValueColor;
 
   /// The background color for cells with a color value at the midpoint between
@@ -12931,6 +13021,9 @@ class TreemapChartColorScale {
   ///
   /// Defaults to #dc3912 if not specified. Deprecated: Use
   /// min_value_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? minValueColor;
 
   /// The background color for cells with a color value less than or equal to
@@ -12944,6 +13037,9 @@ class TreemapChartColorScale {
   /// them.
   ///
   /// Defaults to #000000 if not specified. Deprecated: Use no_data_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? noDataColor;
 
   /// The background color for cells that have no color data associated with
@@ -13042,6 +13138,9 @@ class TreemapChartSpec {
   /// The background color for header cells.
   ///
   /// Deprecated: Use header_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? headerColor;
 
   /// The background color for header cells.
@@ -14336,6 +14435,9 @@ class WaterfallChartColumnStyle {
   /// The color of the column.
   ///
   /// Deprecated: Use color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? color;
 
   /// The color of the column.

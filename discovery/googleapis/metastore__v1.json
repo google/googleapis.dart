@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230710",
+    "revision": "20230727",
     "rootUrl": "https://metastore.googleapis.com/",
     "servicePath": "",
     "title": "Dataproc Metastore API",
@@ -1551,7 +1551,7 @@
             "type": "object"
         },
         "Consumer": {
-            "description": "Contains information of the customer's network configurations.",
+            "description": "Contains information of the customer's network configurations.Next available ID: 5",
             "id": "Consumer",
             "properties": {
                 "endpointUri": {
@@ -2229,7 +2229,7 @@
             "type": "object"
         },
         "NetworkConfig": {
-            "description": "Network configuration for the Dataproc Metastore service.",
+            "description": "Network configuration for the Dataproc Metastore service.Next available ID: 4",
             "id": "NetworkConfig",
             "properties": {
                 "consumers": {

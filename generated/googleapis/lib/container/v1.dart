@@ -3803,6 +3803,9 @@ class AddonsConfig {
   /// to use the Cloud Console to manage and monitor your Kubernetes clusters,
   /// workloads and applications. For more information, see:
   /// https://cloud.google.com/kubernetes-engine/docs/concepts/dashboards
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   KubernetesDashboard? kubernetesDashboard;
 
   /// Configuration for NetworkPolicy.
@@ -4185,6 +4188,9 @@ class AutoprovisioningNodePoolDefaults {
   /// To unset the min cpu platform field pass "automatic" as field value.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? minCpuPlatform;
 
   /// Scopes that are used by NAP when creating node pools.
@@ -4335,6 +4341,9 @@ class BinaryAuthorization {
   /// Leave this unset and instead configure BinaryAuthorization using
   /// evaluation_mode. If evaluation_mode is set to anything other than
   /// EVALUATION_MODE_UNSPECIFIED, this field is ignored.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? enabled;
 
   /// Mode of operation for binauthz policy evaluation.
@@ -4490,6 +4499,9 @@ class CancelOperationRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? operationId;
 
   /// The Google Developers Console
@@ -4498,6 +4510,9 @@ class CancelOperationRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -4507,6 +4522,9 @@ class CancelOperationRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   CancelOperationRequest({
@@ -4707,6 +4725,9 @@ class Cluster {
   /// Deprecated. Call Kubernetes API directly to retrieve node information.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? currentNodeCount;
 
   /// Deprecated, use
@@ -4718,6 +4739,9 @@ class Cluster {
   /// this reflects the minimum version of all nodes.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? currentNodeVersion;
 
   /// Configuration of etcd encryption.
@@ -4800,11 +4824,17 @@ class Cluster {
   /// "node_config") will be used to create a "NodePool" object with an
   /// auto-generated name. Do not use this and a node_pool at the same time.
   /// This field is deprecated, use node_pool.initial_node_count instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? initialNodeCount;
 
   /// Use node_pools.instance_group_urls.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? instanceGroupUrls;
 
   /// Configuration for cluster IP allocation.
@@ -4913,6 +4943,9 @@ class Cluster {
   /// configuration of each node pool, see `node_pool.config`) If unspecified,
   /// the defaults are used. This field is deprecated, use node_pool.config
   /// instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   NodeConfig? nodeConfig;
 
   /// The size of the address space on each node for hosting containers.
@@ -5011,6 +5044,9 @@ class Cluster {
   /// available.
   ///
   /// Output only. Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? statusMessage;
 
   /// The name of the Google Compute Engine
@@ -5039,6 +5075,9 @@ class Cluster {
   /// This field is deprecated, use location instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   Cluster({
@@ -6174,6 +6213,9 @@ class CompleteIPRotationRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The name (project, location, cluster name) of the cluster to complete IP
@@ -6188,6 +6230,9 @@ class CompleteIPRotationRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -6197,6 +6242,9 @@ class CompleteIPRotationRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   CompleteIPRotationRequest({
@@ -6337,6 +6385,9 @@ class CreateClusterRequest {
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -6346,6 +6397,9 @@ class CreateClusterRequest {
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   CreateClusterRequest({
@@ -6385,6 +6439,9 @@ class CreateNodePoolRequest {
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The node pool to create.
@@ -6404,6 +6461,9 @@ class CreateNodePoolRequest {
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -6413,6 +6473,9 @@ class CreateNodePoolRequest {
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   CreateNodePoolRequest({
@@ -7194,6 +7257,9 @@ class IPAllocationPolicy {
   AdditionalPodRangesConfig? additionalPodRangesConfig;
 
   /// This field is deprecated, use cluster_ipv4_cidr_block.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterIpv4Cidr;
 
   /// The IP address range for the cluster pod IPs.
@@ -7238,6 +7304,9 @@ class IPAllocationPolicy {
   core.String? ipv6AccessType;
 
   /// This field is deprecated, use node_ipv4_cidr_block.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? nodeIpv4Cidr;
 
   /// The IP address range of the instance IPs in this cluster.
@@ -7262,6 +7331,9 @@ class IPAllocationPolicy {
   PodCIDROverprovisionConfig? podCidrOverprovisionConfig;
 
   /// This field is deprecated, use services_ipv4_cidr_block.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? servicesIpv4Cidr;
 
   /// The IP address range of the services IPs in this cluster.
@@ -8104,6 +8176,9 @@ class MasterAuth {
   /// be removed in GKE control plane versions 1.19 and newer. For a list of
   /// recommended authentication methods, see:
   /// https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? password;
 
   /// The username to use for HTTP basic authentication to the master endpoint.
@@ -8114,6 +8189,9 @@ class MasterAuth {
   /// plane versions 1.19 and newer. For a list of recommended authentication
   /// methods, see:
   /// https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? username;
 
   MasterAuth({
@@ -9547,6 +9625,9 @@ class NodePool {
   /// instance, if available.
   ///
   /// Output only. Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? statusMessage;
 
   /// Update info contains relevant information during a node pool update.
@@ -9946,6 +10027,9 @@ class Operation {
   /// Which conditions caused the current cluster state.
   ///
   /// Deprecated. Use field error instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<StatusCondition>? clusterConditions;
 
   /// Detailed operation progress, if available.
@@ -9975,6 +10059,9 @@ class Operation {
   /// Which conditions caused the current node pool state.
   ///
   /// Deprecated. Use field error instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<StatusCondition>? nodepoolConditions;
 
   /// The operation type.
@@ -10081,6 +10168,9 @@ class Operation {
   /// Deprecated. Use the field error instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? statusMessage;
 
   /// Server-defined URI for the target of the operation.
@@ -10099,6 +10189,9 @@ class Operation {
   /// operation is taking place.
   ///
   /// This field is deprecated, use location instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   Operation({
@@ -10794,6 +10887,9 @@ class RollbackNodePoolUpgradeRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The name (project, location, cluster, node pool id) of the node poll to
@@ -10808,6 +10904,9 @@ class RollbackNodePoolUpgradeRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? nodePoolId;
 
   /// The Google Developers Console
@@ -10816,6 +10915,9 @@ class RollbackNodePoolUpgradeRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// Option for rollback to ignore the PodDisruptionBudget.
@@ -10830,6 +10932,9 @@ class RollbackNodePoolUpgradeRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   RollbackNodePoolUpgradeRequest({
@@ -11035,6 +11140,9 @@ class SetAddonsConfigRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The name (project, location, cluster) of the cluster to set addons.
@@ -11048,6 +11156,9 @@ class SetAddonsConfigRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -11057,6 +11168,9 @@ class SetAddonsConfigRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   SetAddonsConfigRequest({
@@ -11101,6 +11215,9 @@ class SetLabelsRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The fingerprint of the previous set of labels for this resource, used to
@@ -11125,6 +11242,9 @@ class SetLabelsRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The labels to set for that cluster.
@@ -11139,6 +11259,9 @@ class SetLabelsRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   SetLabelsRequest({
@@ -11192,6 +11315,9 @@ class SetLegacyAbacRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// Whether ABAC authorization will be enabled in the cluster.
@@ -11211,6 +11337,9 @@ class SetLegacyAbacRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -11220,6 +11349,9 @@ class SetLegacyAbacRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   SetLegacyAbacRequest({
@@ -11261,6 +11393,9 @@ class SetLocationsRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The desired list of Google Compute Engine
@@ -11286,6 +11421,9 @@ class SetLocationsRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -11295,6 +11433,9 @@ class SetLocationsRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   SetLocationsRequest({
@@ -11338,6 +11479,9 @@ class SetLoggingServiceRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The logging service the cluster should use to write logs.
@@ -11364,6 +11508,9 @@ class SetLoggingServiceRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -11373,6 +11520,9 @@ class SetLoggingServiceRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   SetLoggingServiceRequest({
@@ -11493,6 +11643,9 @@ class SetMasterAuthRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The name (project, location, cluster) of the cluster to set auth.
@@ -11506,6 +11659,9 @@ class SetMasterAuthRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// A description of the update.
@@ -11520,6 +11676,9 @@ class SetMasterAuthRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   SetMasterAuthRequest({
@@ -11567,6 +11726,9 @@ class SetMonitoringServiceRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The monitoring service the cluster should use to write metrics.
@@ -11593,6 +11755,9 @@ class SetMonitoringServiceRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -11602,6 +11767,9 @@ class SetMonitoringServiceRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   SetMonitoringServiceRequest({
@@ -11643,6 +11811,9 @@ class SetNetworkPolicyRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The name (project, location, cluster name) of the cluster to set
@@ -11662,6 +11833,9 @@ class SetNetworkPolicyRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -11671,6 +11845,9 @@ class SetNetworkPolicyRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   SetNetworkPolicyRequest({
@@ -11718,6 +11895,9 @@ class SetNodePoolAutoscalingRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The name (project, location, cluster, node pool) of the node pool to set
@@ -11732,6 +11912,9 @@ class SetNodePoolAutoscalingRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? nodePoolId;
 
   /// The Google Developers Console
@@ -11740,6 +11923,9 @@ class SetNodePoolAutoscalingRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -11749,6 +11935,9 @@ class SetNodePoolAutoscalingRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   SetNodePoolAutoscalingRequest({
@@ -11797,6 +11986,9 @@ class SetNodePoolManagementRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// NodeManagement configuration for the node pool.
@@ -11816,6 +12008,9 @@ class SetNodePoolManagementRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? nodePoolId;
 
   /// The Google Developers Console
@@ -11824,6 +12019,9 @@ class SetNodePoolManagementRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -11833,6 +12031,9 @@ class SetNodePoolManagementRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   SetNodePoolManagementRequest({
@@ -11880,6 +12081,9 @@ class SetNodePoolSizeRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The name (project, location, cluster, node pool id) of the node pool to
@@ -11899,6 +12103,9 @@ class SetNodePoolSizeRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? nodePoolId;
 
   /// The Google Developers Console
@@ -11907,6 +12114,9 @@ class SetNodePoolSizeRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -11916,6 +12126,9 @@ class SetNodePoolSizeRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   SetNodePoolSizeRequest({
@@ -12090,6 +12303,9 @@ class StartIPRotationRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The name (project, location, cluster name) of the cluster to start IP
@@ -12104,6 +12320,9 @@ class StartIPRotationRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// Whether to rotate credentials during IP rotation.
@@ -12116,6 +12335,9 @@ class StartIPRotationRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   StartIPRotationRequest({
@@ -12260,6 +12482,9 @@ class StatusCondition {
   /// - "CLOUD_KMS_KEY_ERROR" : Unable to perform an encrypt operation against
   /// the CloudKMS key used for etcd level encryption.
   /// - "CA_EXPIRING" : Cluster CA is expiring soon.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? code;
 
   /// Human-friendly representation of the condition
@@ -12340,6 +12565,9 @@ class UpdateClusterRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The name (project, location, cluster) of the cluster to update.
@@ -12353,6 +12581,9 @@ class UpdateClusterRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// A description of the update.
@@ -12367,6 +12598,9 @@ class UpdateClusterRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   UpdateClusterRequest({
@@ -12432,6 +12666,9 @@ class UpdateMasterRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The Kubernetes version to change the master to.
@@ -12457,6 +12694,9 @@ class UpdateMasterRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -12466,6 +12706,9 @@ class UpdateMasterRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   UpdateMasterRequest({
@@ -12507,6 +12750,9 @@ class UpdateNodePoolRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// Confidential nodes config.
@@ -12577,6 +12823,9 @@ class UpdateNodePoolRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? nodePoolId;
 
   /// The Kubernetes version to change the nodes to (typically an upgrade).
@@ -12597,6 +12846,9 @@ class UpdateNodePoolRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The resource labels for the node pool to use to annotate any related
@@ -12631,6 +12883,9 @@ class UpdateNodePoolRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   UpdateNodePoolRequest({

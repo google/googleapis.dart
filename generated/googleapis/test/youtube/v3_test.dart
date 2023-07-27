@@ -2695,6 +2695,40 @@ void checkCuepoint(api.Cuepoint o) {
   buildCounterCuepoint--;
 }
 
+core.int buildCounterCuepointSchedule = 0;
+api.CuepointSchedule buildCuepointSchedule() {
+  final o = api.CuepointSchedule();
+  buildCounterCuepointSchedule++;
+  if (buildCounterCuepointSchedule < 3) {
+    o.enabled = true;
+    o.pauseAdsUntil = 'foo';
+    o.repeatInterval = 'foo';
+    o.scheduleStrategy = 'foo';
+  }
+  buildCounterCuepointSchedule--;
+  return o;
+}
+
+void checkCuepointSchedule(api.CuepointSchedule o) {
+  buildCounterCuepointSchedule++;
+  if (buildCounterCuepointSchedule < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+    unittest.expect(
+      o.pauseAdsUntil!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.repeatInterval!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.scheduleStrategy!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCuepointSchedule--;
+}
+
 core.int buildCounterEntity = 0;
 api.Entity buildEntity() {
   final o = api.Entity();
@@ -3283,6 +3317,7 @@ api.LiveBroadcast buildLiveBroadcast() {
     o.etag = 'foo';
     o.id = 'foo';
     o.kind = 'foo';
+    o.monetizationDetails = buildLiveBroadcastMonetizationDetails();
     o.snippet = buildLiveBroadcastSnippet();
     o.statistics = buildLiveBroadcastStatistics();
     o.status = buildLiveBroadcastStatus();
@@ -3307,6 +3342,7 @@ void checkLiveBroadcast(api.LiveBroadcast o) {
       o.kind!,
       unittest.equals('foo'),
     );
+    checkLiveBroadcastMonetizationDetails(o.monetizationDetails!);
     checkLiveBroadcastSnippet(o.snippet!);
     checkLiveBroadcastStatistics(o.statistics!);
     checkLiveBroadcastStatus(o.status!);
@@ -3448,6 +3484,26 @@ void checkLiveBroadcastListResponse(api.LiveBroadcastListResponse o) {
     );
   }
   buildCounterLiveBroadcastListResponse--;
+}
+
+core.int buildCounterLiveBroadcastMonetizationDetails = 0;
+api.LiveBroadcastMonetizationDetails buildLiveBroadcastMonetizationDetails() {
+  final o = api.LiveBroadcastMonetizationDetails();
+  buildCounterLiveBroadcastMonetizationDetails++;
+  if (buildCounterLiveBroadcastMonetizationDetails < 3) {
+    o.cuepointSchedule = buildCuepointSchedule();
+  }
+  buildCounterLiveBroadcastMonetizationDetails--;
+  return o;
+}
+
+void checkLiveBroadcastMonetizationDetails(
+    api.LiveBroadcastMonetizationDetails o) {
+  buildCounterLiveBroadcastMonetizationDetails++;
+  if (buildCounterLiveBroadcastMonetizationDetails < 3) {
+    checkCuepointSchedule(o.cuepointSchedule!);
+  }
+  buildCounterLiveBroadcastMonetizationDetails--;
 }
 
 core.int buildCounterLiveBroadcastSnippet = 0;
@@ -9777,6 +9833,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-CuepointSchedule', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCuepointSchedule();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CuepointSchedule.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCuepointSchedule(od);
+    });
+  });
+
   unittest.group('obj-schema-Entity', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEntity();
@@ -9954,6 +10020,16 @@ void main() {
       final od = api.LiveBroadcastListResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkLiveBroadcastListResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-LiveBroadcastMonetizationDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLiveBroadcastMonetizationDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LiveBroadcastMonetizationDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkLiveBroadcastMonetizationDetails(od);
     });
   });
 

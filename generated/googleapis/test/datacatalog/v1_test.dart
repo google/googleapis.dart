@@ -2199,6 +2199,7 @@ api.GoogleCloudDatacatalogV1SearchCatalogRequest
   final o = api.GoogleCloudDatacatalogV1SearchCatalogRequest();
   buildCounterGoogleCloudDatacatalogV1SearchCatalogRequest++;
   if (buildCounterGoogleCloudDatacatalogV1SearchCatalogRequest < 3) {
+    o.adminSearch = true;
     o.orderBy = 'foo';
     o.pageSize = 42;
     o.pageToken = 'foo';
@@ -2213,6 +2214,7 @@ void checkGoogleCloudDatacatalogV1SearchCatalogRequest(
     api.GoogleCloudDatacatalogV1SearchCatalogRequest o) {
   buildCounterGoogleCloudDatacatalogV1SearchCatalogRequest++;
   if (buildCounterGoogleCloudDatacatalogV1SearchCatalogRequest < 3) {
+    unittest.expect(o.adminSearch!, unittest.isTrue);
     unittest.expect(
       o.orderBy!,
       unittest.equals('foo'),

@@ -44,6 +44,10 @@ class SmartDeviceManagementApi {
   /// See and/or control the devices that you selected
   static const sdmServiceScope = 'https://www.googleapis.com/auth/sdm.service';
 
+  /// See your primary Google Account email address
+  static const userinfoEmailScope =
+      'https://www.googleapis.com/auth/userinfo.email';
+
   final commons.ApiRequester _requester;
 
   EnterprisesResource get enterprises => EnterprisesResource(_requester);
@@ -162,11 +166,6 @@ class EnterprisesDevicesResource {
   /// [filter] - Optional filter to list devices. Filters can be done on: Device
   /// custom name (substring match): 'customName=wing'
   ///
-  /// [pageSize] - Optional requested page size. Server may return fewer devices
-  /// than requested. If unspecified, server will pick an appropriate default.
-  ///
-  /// [pageToken] - Optional token of the page to retrieve.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -180,14 +179,10 @@ class EnterprisesDevicesResource {
   async.Future<GoogleHomeEnterpriseSdmV1ListDevicesResponse> list(
     core.String parent, {
     core.String? filter,
-    core.int? pageSize,
-    core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -259,11 +254,6 @@ class EnterprisesStructuresResource {
   ///
   /// [filter] - Optional filter to list structures.
   ///
-  /// [pageSize] - Requested page size. Server may return fewer structures than
-  /// requested. If unspecified, server will pick an appropriate default.
-  ///
-  /// [pageToken] - The token of the page to retrieve.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -277,14 +267,10 @@ class EnterprisesStructuresResource {
   async.Future<GoogleHomeEnterpriseSdmV1ListStructuresResponse> list(
     core.String parent, {
     core.String? filter,
-    core.int? pageSize,
-    core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -352,11 +338,6 @@ class EnterprisesStructuresRoomsResource {
   /// "enterprises/XYZ/structures/ABC".
   /// Value must have pattern `^enterprises/\[^/\]+/structures/\[^/\]+$`.
   ///
-  /// [pageSize] - Requested page size. Server may return fewer rooms than
-  /// requested. If unspecified, server will pick an appropriate default.
-  ///
-  /// [pageToken] - The token of the page to retrieve.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -369,13 +350,9 @@ class EnterprisesStructuresRoomsResource {
   /// this method will complete with the same error.
   async.Future<GoogleHomeEnterpriseSdmV1ListRoomsResponse> list(
     core.String parent, {
-    core.int? pageSize,
-    core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -514,12 +491,8 @@ class GoogleHomeEnterpriseSdmV1ListDevicesResponse {
   /// The list of devices.
   core.List<GoogleHomeEnterpriseSdmV1Device>? devices;
 
-  /// The pagination token to retrieve the next page of results.
-  core.String? nextPageToken;
-
   GoogleHomeEnterpriseSdmV1ListDevicesResponse({
     this.devices,
-    this.nextPageToken,
   });
 
   GoogleHomeEnterpriseSdmV1ListDevicesResponse.fromJson(core.Map json_)
@@ -530,37 +503,24 @@ class GoogleHomeEnterpriseSdmV1ListDevicesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (devices != null) 'devices': devices!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
 /// Response message for SmartDeviceManagementService.ListRooms
 class GoogleHomeEnterpriseSdmV1ListRoomsResponse {
-  /// The pagination token to retrieve the next page of results.
-  ///
-  /// If this field is omitted, there are no subsequent pages.
-  core.String? nextPageToken;
-
   /// The list of rooms.
   core.List<GoogleHomeEnterpriseSdmV1Room>? rooms;
 
   GoogleHomeEnterpriseSdmV1ListRoomsResponse({
-    this.nextPageToken,
     this.rooms,
   });
 
   GoogleHomeEnterpriseSdmV1ListRoomsResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
           rooms: json_.containsKey('rooms')
               ? (json_['rooms'] as core.List)
                   .map((value) => GoogleHomeEnterpriseSdmV1Room.fromJson(
@@ -570,31 +530,21 @@ class GoogleHomeEnterpriseSdmV1ListRoomsResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (rooms != null) 'rooms': rooms!,
       };
 }
 
 /// Response message for SmartDeviceManagementService.ListStructures
 class GoogleHomeEnterpriseSdmV1ListStructuresResponse {
-  /// The pagination token to retrieve the next page of results.
-  ///
-  /// If this field is omitted, there are no subsequent pages.
-  core.String? nextPageToken;
-
   /// The list of structures.
   core.List<GoogleHomeEnterpriseSdmV1Structure>? structures;
 
   GoogleHomeEnterpriseSdmV1ListStructuresResponse({
-    this.nextPageToken,
     this.structures,
   });
 
   GoogleHomeEnterpriseSdmV1ListStructuresResponse.fromJson(core.Map json_)
       : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
           structures: json_.containsKey('structures')
               ? (json_['structures'] as core.List)
                   .map((value) => GoogleHomeEnterpriseSdmV1Structure.fromJson(
@@ -604,7 +554,6 @@ class GoogleHomeEnterpriseSdmV1ListStructuresResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (structures != null) 'structures': structures!,
       };
 }

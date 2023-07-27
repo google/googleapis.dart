@@ -549,8 +549,8 @@ class ProjectsLocationsBatchesResource {
 
   /// Deletes the batch workload resource.
   ///
-  /// If the batch is not in terminal state, the delete fails and the response
-  /// returns FAILED_PRECONDITION.
+  /// If the batch is not in a CANCELLED, SUCCEEDED or FAILED State, the delete
+  /// operation fails and the response returns FAILED_PRECONDITION.
   ///
   /// Request parameters:
   ///
@@ -5032,6 +5032,9 @@ class ClusterConfig {
   /// secondary_worker_config, and autoscaling_config.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GkeClusterConfig? gkeClusterConfig;
 
   /// Commands to execute on each node after config is completed.
@@ -5447,6 +5450,9 @@ class DiagnoseClusterRequest {
   /// Format: projects/{project}/regions/{region}/jobs/{job}
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? job;
 
   /// Specifies a list of jobs on which diagnosis is to be performed.
@@ -5460,6 +5466,9 @@ class DiagnoseClusterRequest {
   /// performed.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? yarnApplicationId;
 
   /// Specifies a list of yarn applications on which diagnosis is to be
@@ -5733,11 +5742,12 @@ class EnvironmentConfig {
 
 /// Execution configuration for a workload.
 class ExecutionConfig {
-  /// The duration to keep the session alive while it's idling.
+  /// Applies to sessions only.
   ///
-  /// Exceeding this threshold causes the session to terminate. This field
-  /// cannot be set on a batch workload. Minimum value is 10 minutes; maximum
-  /// value is 14 days (see JSON representation of Duration
+  /// The duration to keep the session alive while it's idling. Exceeding this
+  /// threshold causes the session to terminate. This field cannot be set on a
+  /// batch workload. Minimum value is 10 minutes; maximum value is 14 days (see
+  /// JSON representation of Duration
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
   /// Defaults to 4 hours if not set. If both ttl and idle_ttl are specified for
   /// an interactive session, the conditions are treated as OR conditions: the
@@ -5875,6 +5885,110 @@ class ExecutionConfig {
 /// information.
 typedef Expr = $Expr;
 
+/// A Dataproc job for running Apache Flink (https://flink.apache.org/)
+/// applications on YARN.
+class FlinkJob {
+  /// The arguments to pass to the driver.
+  ///
+  /// Do not include arguments, such as --conf, that can be set as job
+  /// properties, since a collision may occur that causes an incorrect job
+  /// submission.
+  ///
+  /// Optional.
+  core.List<core.String>? args;
+
+  /// HCFS URIs of jar files to add to the CLASSPATHs of the Flink driver and
+  /// tasks.
+  ///
+  /// Optional.
+  core.List<core.String>? jarFileUris;
+
+  /// The runtime log config for job execution.
+  ///
+  /// Optional.
+  LoggingConfig? loggingConfig;
+
+  /// The name of the driver's main class.
+  ///
+  /// The jar file that contains the class must be in the default CLASSPATH or
+  /// specified in jar_file_uris.
+  core.String? mainClass;
+
+  /// The HCFS URI of the jar file that contains the main class.
+  core.String? mainJarFileUri;
+
+  /// A mapping of property names to values, used to configure Flink.
+  ///
+  /// Properties that conflict with values set by the Dataproc API may
+  /// beoverwritten. Can include properties set
+  /// in/etc/flink/conf/flink-defaults.conf and classes in user code.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? properties;
+
+  /// HCFS URI of the savepoint which contains the last saved progress for this
+  /// job
+  ///
+  /// Optional.
+  core.String? savepointUri;
+
+  FlinkJob({
+    this.args,
+    this.jarFileUris,
+    this.loggingConfig,
+    this.mainClass,
+    this.mainJarFileUri,
+    this.properties,
+    this.savepointUri,
+  });
+
+  FlinkJob.fromJson(core.Map json_)
+      : this(
+          args: json_.containsKey('args')
+              ? (json_['args'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          jarFileUris: json_.containsKey('jarFileUris')
+              ? (json_['jarFileUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          loggingConfig: json_.containsKey('loggingConfig')
+              ? LoggingConfig.fromJson(
+                  json_['loggingConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          mainClass: json_.containsKey('mainClass')
+              ? json_['mainClass'] as core.String
+              : null,
+          mainJarFileUri: json_.containsKey('mainJarFileUri')
+              ? json_['mainJarFileUri'] as core.String
+              : null,
+          properties: json_.containsKey('properties')
+              ? (json_['properties'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          savepointUri: json_.containsKey('savepointUri')
+              ? json_['savepointUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (args != null) 'args': args!,
+        if (jarFileUris != null) 'jarFileUris': jarFileUris!,
+        if (loggingConfig != null) 'loggingConfig': loggingConfig!,
+        if (mainClass != null) 'mainClass': mainClass!,
+        if (mainJarFileUri != null) 'mainJarFileUri': mainJarFileUri!,
+        if (properties != null) 'properties': properties!,
+        if (savepointUri != null) 'savepointUri': savepointUri!,
+      };
+}
+
 /// Common config settings for resources of Compute Engine cluster instances,
 /// applicable to all instances in the cluster.
 class GceClusterConfig {
@@ -5899,6 +6013,8 @@ class GceClusterConfig {
   /// The Compute Engine metadata entries to add to all instances (see Project
   /// and instance metadata
   /// (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? metadata;
 
   /// The Compute Engine network to be used for machine communications.
@@ -6169,6 +6285,9 @@ class GkeClusterConfig {
   /// Used only for the deprecated beta. A target for the deployment.
   ///
   /// Optional. Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   NamespacedGkeDeploymentTarget? namespacedGkeDeploymentTarget;
 
   /// GKE node pools where workloads will be scheduled.
@@ -7242,6 +7361,11 @@ class Job {
   /// Optional.
   DriverSchedulingConfig? driverSchedulingConfig;
 
+  /// Job is a Flink job.
+  ///
+  /// Optional.
+  FlinkJob? flinkJob;
+
   /// Job is a Hadoop job.
   ///
   /// Optional.
@@ -7351,6 +7475,7 @@ class Job {
     this.driverControlFilesUri,
     this.driverOutputResourceUri,
     this.driverSchedulingConfig,
+    this.flinkJob,
     this.hadoopJob,
     this.hiveJob,
     this.jobUuid,
@@ -7382,6 +7507,10 @@ class Job {
           driverSchedulingConfig: json_.containsKey('driverSchedulingConfig')
               ? DriverSchedulingConfig.fromJson(json_['driverSchedulingConfig']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          flinkJob: json_.containsKey('flinkJob')
+              ? FlinkJob.fromJson(
+                  json_['flinkJob'] as core.Map<core.String, core.dynamic>)
               : null,
           hadoopJob: json_.containsKey('hadoopJob')
               ? HadoopJob.fromJson(
@@ -7468,6 +7597,7 @@ class Job {
           'driverOutputResourceUri': driverOutputResourceUri!,
         if (driverSchedulingConfig != null)
           'driverSchedulingConfig': driverSchedulingConfig!,
+        if (flinkJob != null) 'flinkJob': flinkJob!,
         if (hadoopJob != null) 'hadoopJob': hadoopJob!,
         if (hiveJob != null) 'hiveJob': hiveJob!,
         if (jobUuid != null) 'jobUuid': jobUuid!,
@@ -8487,6 +8617,7 @@ class Metric {
   /// - "SPARK_HISTORY_SERVER" : Spark History Server metric source.
   /// - "HIVESERVER2" : Hiveserver2 metric source.
   /// - "HIVEMETASTORE" : hivemetastore metric source
+  /// - "FLINK" : flink metric source
   core.String? metricSource;
 
   Metric({
@@ -9923,9 +10054,14 @@ class RuntimeConfig {
 
 /// Runtime information about workload execution.
 class RuntimeInfo {
-  /// Approximate workload resource usage calculated after workload finishes
-  /// (see Dataproc Serverless pricing
-  /// (https://cloud.google.com/dataproc-serverless/pricing)).
+  /// Approximate workload resource usage, calculated when the workload
+  /// completes (see Dataproc Serverless pricing
+  /// (https://cloud.google.com/dataproc-serverless/pricing)).Note: This metric
+  /// calculation may change in the future, for example, to capture cumulative
+  /// workload resource consumption during workload execution (see the Dataproc
+  /// Serverless release notes
+  /// (https://cloud.google.com/dataproc-serverless/docs/release-notes) for
+  /// announcements, changes, fixes and other Dataproc developments).
   ///
   /// Output only.
   UsageMetrics? approximateUsage;
@@ -11245,7 +11381,7 @@ class UsageMetrics {
       };
 }
 
-/// The usage snaphot represents the resources consumed by a workload at a
+/// The usage snapshot represents the resources consumed by a workload at a
 /// specified time.
 class UsageSnapshot {
   /// Milli (one-thousandth) Dataproc Compute Units (DCUs) (see Dataproc
@@ -11255,6 +11391,13 @@ class UsageSnapshot {
   /// Optional.
   core.String? milliDcu;
 
+  /// Milli (one-thousandth) Dataproc Compute Units (DCUs) charged at premium
+  /// tier (see Dataproc Serverless pricing
+  /// (https://cloud.google.com/dataproc-serverless/pricing)).
+  ///
+  /// Optional.
+  core.String? milliDcuPremium;
+
   /// Shuffle Storage in gigabytes (GB).
   ///
   /// (see Dataproc Serverless pricing
@@ -11263,6 +11406,14 @@ class UsageSnapshot {
   /// Optional.
   core.String? shuffleStorageGb;
 
+  /// Shuffle Storage in gigabytes (GB) charged at premium tier.
+  ///
+  /// (see Dataproc Serverless pricing
+  /// (https://cloud.google.com/dataproc-serverless/pricing))
+  ///
+  /// Optional.
+  core.String? shuffleStorageGbPremium;
+
   /// The timestamp of the usage snapshot.
   ///
   /// Optional.
@@ -11270,7 +11421,9 @@ class UsageSnapshot {
 
   UsageSnapshot({
     this.milliDcu,
+    this.milliDcuPremium,
     this.shuffleStorageGb,
+    this.shuffleStorageGbPremium,
     this.snapshotTime,
   });
 
@@ -11279,8 +11432,14 @@ class UsageSnapshot {
           milliDcu: json_.containsKey('milliDcu')
               ? json_['milliDcu'] as core.String
               : null,
+          milliDcuPremium: json_.containsKey('milliDcuPremium')
+              ? json_['milliDcuPremium'] as core.String
+              : null,
           shuffleStorageGb: json_.containsKey('shuffleStorageGb')
               ? json_['shuffleStorageGb'] as core.String
+              : null,
+          shuffleStorageGbPremium: json_.containsKey('shuffleStorageGbPremium')
+              ? json_['shuffleStorageGbPremium'] as core.String
               : null,
           snapshotTime: json_.containsKey('snapshotTime')
               ? json_['snapshotTime'] as core.String
@@ -11289,7 +11448,10 @@ class UsageSnapshot {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (milliDcu != null) 'milliDcu': milliDcu!,
+        if (milliDcuPremium != null) 'milliDcuPremium': milliDcuPremium!,
         if (shuffleStorageGb != null) 'shuffleStorageGb': shuffleStorageGb!,
+        if (shuffleStorageGbPremium != null)
+          'shuffleStorageGbPremium': shuffleStorageGbPremium!,
         if (snapshotTime != null) 'snapshotTime': snapshotTime!,
       };
 }

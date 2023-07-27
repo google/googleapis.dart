@@ -35,14 +35,24 @@
 /// - [OrganizationsResource]
 ///   - [OrganizationsAssetsResource]
 ///   - [OrganizationsBigQueryExportsResource]
+///   - [OrganizationsEventThreatDetectionSettingsResource]
+///     - [OrganizationsEventThreatDetectionSettingsCustomModulesResource]
 ///   - [OrganizationsFindingsResource]
 ///   - [OrganizationsMuteConfigsResource]
 ///   - [OrganizationsNotificationConfigsResource]
 ///   - [OrganizationsOperationsResource]
+///   - [OrganizationsResourceValueConfigsResource]
 ///   - [OrganizationsSecurityHealthAnalyticsSettingsResource]
 ///     - [OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource]
 /// -
 /// [OrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource]
+///   - [OrganizationsSimulationsResource]
+///     - [OrganizationsSimulationsAttackExposureResultsResource]
+///       - [OrganizationsSimulationsAttackExposureResultsAttackPathsResource]
+/// - [OrganizationsSimulationsAttackExposureResultsValuedResourcesResource]
+///     - [OrganizationsSimulationsAttackPathsResource]
+///     - [OrganizationsSimulationsValuedResourcesResource]
+///       - [OrganizationsSimulationsValuedResourcesAttackPathsResource]
 ///   - [OrganizationsSourcesResource]
 ///     - [OrganizationsSourcesFindingsResource]
 ///       - [OrganizationsSourcesFindingsExternalSystemsResource]
@@ -2106,6 +2116,9 @@ class OrganizationsResource {
       OrganizationsAssetsResource(_requester);
   OrganizationsBigQueryExportsResource get bigQueryExports =>
       OrganizationsBigQueryExportsResource(_requester);
+  OrganizationsEventThreatDetectionSettingsResource
+      get eventThreatDetectionSettings =>
+          OrganizationsEventThreatDetectionSettingsResource(_requester);
   OrganizationsFindingsResource get findings =>
       OrganizationsFindingsResource(_requester);
   OrganizationsMuteConfigsResource get muteConfigs =>
@@ -2114,9 +2127,13 @@ class OrganizationsResource {
       OrganizationsNotificationConfigsResource(_requester);
   OrganizationsOperationsResource get operations =>
       OrganizationsOperationsResource(_requester);
+  OrganizationsResourceValueConfigsResource get resourceValueConfigs =>
+      OrganizationsResourceValueConfigsResource(_requester);
   OrganizationsSecurityHealthAnalyticsSettingsResource
       get securityHealthAnalyticsSettings =>
           OrganizationsSecurityHealthAnalyticsSettingsResource(_requester);
+  OrganizationsSimulationsResource get simulations =>
+      OrganizationsSimulationsResource(_requester);
   OrganizationsSourcesResource get sources =>
       OrganizationsSourcesResource(_requester);
 
@@ -2752,6 +2769,295 @@ class OrganizationsBigQueryExportsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1BigQueryExport.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsEventThreatDetectionSettingsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsEventThreatDetectionSettingsCustomModulesResource
+      get customModules =>
+          OrganizationsEventThreatDetectionSettingsCustomModulesResource(
+              _requester);
+
+  OrganizationsEventThreatDetectionSettingsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Validates the given Event Threat Detection custom module.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the parent to validate the Custom
+  /// Module under. Its format is: *
+  /// "organizations/{organization}/eventThreatDetectionSettings".
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/eventThreatDetectionSettings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ValidateEventThreatDetectionCustomModuleResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ValidateEventThreatDetectionCustomModuleResponse>
+      validateCustomModule(
+    ValidateEventThreatDetectionCustomModuleRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + ':validateCustomModule';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ValidateEventThreatDetectionCustomModuleResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsEventThreatDetectionSettingsCustomModulesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an Event Threat Detection custom module.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The new custom module's parent. Its format is: *
+  /// "organizations/{organization}/eventThreatDetectionSettings".
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/eventThreatDetectionSettings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EventThreatDetectionCustomModule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EventThreatDetectionCustomModule> create(
+    EventThreatDetectionCustomModule request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/customModules';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return EventThreatDetectionCustomModule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an Event Threat Detection custom module.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the custom module to delete. Its format is: *
+  /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an Event Threat Detection custom module.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the custom module to get. Its format is: *
+  /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EventThreatDetectionCustomModule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EventThreatDetectionCustomModule> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return EventThreatDetectionCustomModule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Event Threat Detection custom modules.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent to list custom modules under. Its
+  /// format is: * "organizations/{organization}/eventThreatDetectionSettings".
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/eventThreatDetectionSettings$`.
+  ///
+  /// [pageSize] - The maximum number of modules to return. The service may
+  /// return fewer than this value. If unspecified, at most 10 configs will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListEventThreatDetectionCustomModules` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListEventThreatDetectionCustomModules` must match the call that provided
+  /// the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListEventThreatDetectionCustomModulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListEventThreatDetectionCustomModulesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/customModules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListEventThreatDetectionCustomModulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an Event Threat Detection custom module.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. The resource name of the Event Threat Detection custom
+  /// module. Its format is: *
+  /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
+  /// * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}".
+  /// *
+  /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to be updated. If empty all mutable
+  /// fields will be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EventThreatDetectionCustomModule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EventThreatDetectionCustomModule> patch(
+    EventThreatDetectionCustomModule request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return EventThreatDetectionCustomModule.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -3464,6 +3770,234 @@ class OrganizationsOperationsResource {
   }
 }
 
+class OrganizationsResourceValueConfigsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsResourceValueConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a ResourceValueConfig for an organization.
+  ///
+  /// Maps user's tags to difference resource values for use by the attack path
+  /// simulation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the new ResourceValueConfig's
+  /// parent. The parent field in the CreateResourceValueConfigRequest messages
+  /// must either be empty or match this field.
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchCreateResourceValueConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchCreateResourceValueConfigsResponse> batchCreate(
+    BatchCreateResourceValueConfigsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/resourceValueConfigs:batchCreate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BatchCreateResourceValueConfigsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a ResourceValueConfig.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the ResourceValueConfig to delete
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/resourceValueConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a ResourceValueConfig.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource value config to retrieve. Its
+  /// format is organizations/{organization}/resourceValueConfigs/{config_id}.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/resourceValueConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudSecuritycenterV1ResourceValueConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1ResourceValueConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudSecuritycenterV1ResourceValueConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all ResourceValueConfigs.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns the collection of resource
+  /// value configs. Its format is "organizations/\[organization_id\]"
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [pageSize] - The number of results to return. The service may return fewer
+  /// than this value. If unspecified, at most 10 configs will be returned. The
+  /// maximum value is 1000; values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListResourceValueConfigs` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListResourceValueConfigs` must match the call that provided the page
+  /// token. page_size can be specified, and the new page_size will be used.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListResourceValueConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListResourceValueConfigsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/resourceValueConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListResourceValueConfigsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing ResourceValueConfigs with new rules.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Name for the resource value config
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/resourceValueConfigs/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to be updated. If empty all mutable
+  /// fields will be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudSecuritycenterV1ResourceValueConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1ResourceValueConfig> patch(
+    GoogleCloudSecuritycenterV1ResourceValueConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudSecuritycenterV1ResourceValueConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class OrganizationsSecurityHealthAnalyticsSettingsResource {
   final commons.ApiRequester _requester;
 
@@ -3902,6 +4436,406 @@ class OrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResource
       queryParams: queryParams_,
     );
     return ListEffectiveSecurityHealthAnalyticsCustomModulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsSimulationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsSimulationsAttackExposureResultsResource
+      get attackExposureResults =>
+          OrganizationsSimulationsAttackExposureResultsResource(_requester);
+  OrganizationsSimulationsAttackPathsResource get attackPaths =>
+      OrganizationsSimulationsAttackPathsResource(_requester);
+  OrganizationsSimulationsValuedResourcesResource get valuedResources =>
+      OrganizationsSimulationsValuedResourcesResource(_requester);
+
+  OrganizationsSimulationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get the simulation by name or the latest simulation for the given
+  /// organization.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The organization name or simulation name of this
+  /// simulation Valid format: "organizations/{organization}/simulations/latest"
+  /// "organizations/{organization}/simulations/{simulation}"
+  /// Value must have pattern `^organizations/\[^/\]+/simulations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Simulation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Simulation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Simulation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsSimulationsAttackExposureResultsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsSimulationsAttackExposureResultsAttackPathsResource
+      get attackPaths =>
+          OrganizationsSimulationsAttackExposureResultsAttackPathsResource(
+              _requester);
+  OrganizationsSimulationsAttackExposureResultsValuedResourcesResource
+      get valuedResources =>
+          OrganizationsSimulationsAttackExposureResultsValuedResourcesResource(
+              _requester);
+
+  OrganizationsSimulationsAttackExposureResultsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+}
+
+class OrganizationsSimulationsAttackExposureResultsAttackPathsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsSimulationsAttackExposureResultsAttackPathsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the attack paths for a set of simulation results or valued resources
+  /// and filter.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of parent to list attack paths. Valid formats:
+  /// "organizations/{organization}",
+  /// "organizations/{organization}/simulations/{simulation}"
+  /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
+  /// "organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}"
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/simulations/\[^/\]+/attackExposureResults/\[^/\]+$`.
+  ///
+  /// [filter] - The filter expression that filters the attack path in the
+  /// response. Supported fields: * `valued_resources` supports =
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last `ListAttackPathsResponse`;
+  /// indicates that this is a continuation of a prior `ListAttackPaths` call,
+  /// and that the system should return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAttackPathsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAttackPathsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/attackPaths';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAttackPathsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsSimulationsAttackExposureResultsValuedResourcesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsSimulationsAttackExposureResultsValuedResourcesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the valued resources for a set of simulation results and filter.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of parent to list valued resources. Valid
+  /// formats: "organizations/{organization}",
+  /// "organizations/{organization}/simulations/{simulation}"
+  /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/simulations/\[^/\]+/attackExposureResults/\[^/\]+$`.
+  ///
+  /// [filter] - The filter expression that filters the valued resources in the
+  /// response. Supported fields: * `resource_value` supports = *
+  /// `resource_type` supports =
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last
+  /// `ListValuedResourcesResponse`; indicates that this is a continuation of a
+  /// prior `ListValuedResources` call, and that the system should return the
+  /// next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListValuedResourcesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListValuedResourcesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/valuedResources';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListValuedResourcesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsSimulationsAttackPathsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsSimulationsAttackPathsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the attack paths for a set of simulation results or valued resources
+  /// and filter.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of parent to list attack paths. Valid formats:
+  /// "organizations/{organization}",
+  /// "organizations/{organization}/simulations/{simulation}"
+  /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
+  /// "organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}"
+  /// Value must have pattern `^organizations/\[^/\]+/simulations/\[^/\]+$`.
+  ///
+  /// [filter] - The filter expression that filters the attack path in the
+  /// response. Supported fields: * `valued_resources` supports =
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last `ListAttackPathsResponse`;
+  /// indicates that this is a continuation of a prior `ListAttackPaths` call,
+  /// and that the system should return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAttackPathsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAttackPathsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/attackPaths';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAttackPathsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsSimulationsValuedResourcesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsSimulationsValuedResourcesAttackPathsResource get attackPaths =>
+      OrganizationsSimulationsValuedResourcesAttackPathsResource(_requester);
+
+  OrganizationsSimulationsValuedResourcesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the valued resources for a set of simulation results and filter.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of parent to list valued resources. Valid
+  /// formats: "organizations/{organization}",
+  /// "organizations/{organization}/simulations/{simulation}"
+  /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
+  /// Value must have pattern `^organizations/\[^/\]+/simulations/\[^/\]+$`.
+  ///
+  /// [filter] - The filter expression that filters the valued resources in the
+  /// response. Supported fields: * `resource_value` supports = *
+  /// `resource_type` supports =
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last
+  /// `ListValuedResourcesResponse`; indicates that this is a continuation of a
+  /// prior `ListValuedResources` call, and that the system should return the
+  /// next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListValuedResourcesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListValuedResourcesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/valuedResources';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListValuedResourcesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsSimulationsValuedResourcesAttackPathsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsSimulationsValuedResourcesAttackPathsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the attack paths for a set of simulation results or valued resources
+  /// and filter.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of parent to list attack paths. Valid formats:
+  /// "organizations/{organization}",
+  /// "organizations/{organization}/simulations/{simulation}"
+  /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
+  /// "organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}"
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/simulations/\[^/\]+/valuedResources/\[^/\]+$`.
+  ///
+  /// [filter] - The filter expression that filters the attack path in the
+  /// response. Supported fields: * `valued_resources` supports =
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last `ListAttackPathsResponse`;
+  /// indicates that this is a continuation of a prior `ListAttackPaths` call,
+  /// and that the system should return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAttackPathsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAttackPathsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/attackPaths';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAttackPathsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -7128,6 +8062,302 @@ class AssetDiscoveryConfig {
       };
 }
 
+/// An attack exposure contains the results of an attack path simulation run.
+class AttackExposure {
+  /// The resource name of the attack path simulation result that contains the
+  /// details regarding this attack exposure score.
+  ///
+  /// Example: organizations/123/attackExposureResults/456
+  core.String? attackExposureResult;
+
+  /// The number of high value resources that are exposed as a result of this
+  /// finding.
+  core.int? exposedHighValueResourcesCount;
+
+  /// The number of high value resources that are exposed as a result of this
+  /// finding.
+  core.int? exposedLowValueResourcesCount;
+
+  /// The number of medium value resources that are exposed as a result of this
+  /// finding.
+  core.int? exposedMediumValueResourcesCount;
+
+  /// The most recent time the attack exposure was updated on this finding.
+  core.String? latestCalculationTime;
+
+  /// A number between 0 (inclusive) and infinity that represents how important
+  /// this finding is to remediate.
+  ///
+  /// The higher the score, the more important it is to remediate.
+  core.double? score;
+
+  /// What state this AttackExposure is in.
+  ///
+  /// This captures whether or not an attack exposure has been calculated or
+  /// not.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state is not specified.
+  /// - "CALCULATED" : The attack exposure has been calculated.
+  /// - "NOT_CALCULATED" : The attack exposure has not been calculated.
+  core.String? state;
+
+  AttackExposure({
+    this.attackExposureResult,
+    this.exposedHighValueResourcesCount,
+    this.exposedLowValueResourcesCount,
+    this.exposedMediumValueResourcesCount,
+    this.latestCalculationTime,
+    this.score,
+    this.state,
+  });
+
+  AttackExposure.fromJson(core.Map json_)
+      : this(
+          attackExposureResult: json_.containsKey('attackExposureResult')
+              ? json_['attackExposureResult'] as core.String
+              : null,
+          exposedHighValueResourcesCount:
+              json_.containsKey('exposedHighValueResourcesCount')
+                  ? json_['exposedHighValueResourcesCount'] as core.int
+                  : null,
+          exposedLowValueResourcesCount:
+              json_.containsKey('exposedLowValueResourcesCount')
+                  ? json_['exposedLowValueResourcesCount'] as core.int
+                  : null,
+          exposedMediumValueResourcesCount:
+              json_.containsKey('exposedMediumValueResourcesCount')
+                  ? json_['exposedMediumValueResourcesCount'] as core.int
+                  : null,
+          latestCalculationTime: json_.containsKey('latestCalculationTime')
+              ? json_['latestCalculationTime'] as core.String
+              : null,
+          score: json_.containsKey('score')
+              ? (json_['score'] as core.num).toDouble()
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attackExposureResult != null)
+          'attackExposureResult': attackExposureResult!,
+        if (exposedHighValueResourcesCount != null)
+          'exposedHighValueResourcesCount': exposedHighValueResourcesCount!,
+        if (exposedLowValueResourcesCount != null)
+          'exposedLowValueResourcesCount': exposedLowValueResourcesCount!,
+        if (exposedMediumValueResourcesCount != null)
+          'exposedMediumValueResourcesCount': exposedMediumValueResourcesCount!,
+        if (latestCalculationTime != null)
+          'latestCalculationTime': latestCalculationTime!,
+        if (score != null) 'score': score!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// A path that an attacker could take to reach an exposed resource.
+class AttackPath {
+  /// A list of the edges between nodes in this attack path.
+  core.List<AttackPathEdge>? edges;
+
+  /// The attack path name, for example,
+  /// `organizations/12/simulation/34/valuedResources/56/attackPaths/78`
+  core.String? name;
+
+  /// A list of nodes that exist in this attack path.
+  core.List<AttackPathNode>? pathNodes;
+
+  AttackPath({
+    this.edges,
+    this.name,
+    this.pathNodes,
+  });
+
+  AttackPath.fromJson(core.Map json_)
+      : this(
+          edges: json_.containsKey('edges')
+              ? (json_['edges'] as core.List)
+                  .map((value) => AttackPathEdge.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          pathNodes: json_.containsKey('pathNodes')
+              ? (json_['pathNodes'] as core.List)
+                  .map((value) => AttackPathNode.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (edges != null) 'edges': edges!,
+        if (name != null) 'name': name!,
+        if (pathNodes != null) 'pathNodes': pathNodes!,
+      };
+}
+
+/// Represents a connection between a source node and a destination node in this
+/// attack path.
+class AttackPathEdge {
+  /// The attack node uuid of the destination node.
+  core.String? destination;
+
+  /// The attack node uuid of the source node.
+  core.String? source;
+
+  AttackPathEdge({
+    this.destination,
+    this.source,
+  });
+
+  AttackPathEdge.fromJson(core.Map json_)
+      : this(
+          destination: json_.containsKey('destination')
+              ? json_['destination'] as core.String
+              : null,
+          source: json_.containsKey('source')
+              ? json_['source'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (destination != null) 'destination': destination!,
+        if (source != null) 'source': source!,
+      };
+}
+
+/// Represents one point that an attacker passes through in this attack path.
+class AttackPathNode {
+  /// The findings associated with this node in the attack path.
+  core.List<PathNodeAssociatedFinding>? associatedFindings;
+
+  /// A list of attack step nodes that exist in this attack path node.
+  core.List<AttackStepNode>? attackSteps;
+
+  /// Human-readable name of this resource.
+  core.String? displayName;
+
+  /// The name of the resource at this point in the attack path.
+  ///
+  /// The format of the name follows the Cloud Asset Inventory \[resource name
+  /// format\]("https://cloud.google.com/asset-inventory/docs/resource-name-format")
+  core.String? resource;
+
+  /// The
+  /// [supported resource type](http://cloud/asset-inventory/docs/supported-asset-types")
+  core.String? resourceType;
+
+  /// Unique id of the attack path node.
+  core.String? uuid;
+
+  AttackPathNode({
+    this.associatedFindings,
+    this.attackSteps,
+    this.displayName,
+    this.resource,
+    this.resourceType,
+    this.uuid,
+  });
+
+  AttackPathNode.fromJson(core.Map json_)
+      : this(
+          associatedFindings: json_.containsKey('associatedFindings')
+              ? (json_['associatedFindings'] as core.List)
+                  .map((value) => PathNodeAssociatedFinding.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          attackSteps: json_.containsKey('attackSteps')
+              ? (json_['attackSteps'] as core.List)
+                  .map((value) => AttackStepNode.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          resource: json_.containsKey('resource')
+              ? json_['resource'] as core.String
+              : null,
+          resourceType: json_.containsKey('resourceType')
+              ? json_['resourceType'] as core.String
+              : null,
+          uuid: json_.containsKey('uuid') ? json_['uuid'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (associatedFindings != null)
+          'associatedFindings': associatedFindings!,
+        if (attackSteps != null) 'attackSteps': attackSteps!,
+        if (displayName != null) 'displayName': displayName!,
+        if (resource != null) 'resource': resource!,
+        if (resourceType != null) 'resourceType': resourceType!,
+        if (uuid != null) 'uuid': uuid!,
+      };
+}
+
+/// Detailed steps the attack can take between path nodes.
+class AttackStepNode {
+  /// Attack step description
+  core.String? description;
+
+  /// User friendly name of the attack step
+  core.String? displayName;
+
+  /// Attack step labels for metadata
+  core.Map<core.String, core.String>? labels;
+
+  /// Attack step type.
+  ///
+  /// Can be either AND, OR or DEFENSE
+  /// Possible string values are:
+  /// - "NODE_TYPE_UNSPECIFIED" : Type not specified
+  /// - "NODE_TYPE_AND" : Incoming edge joined with AND
+  /// - "NODE_TYPE_OR" : Incoming edge joined with OR
+  /// - "NODE_TYPE_DEFENSE" : Incoming edge is defense
+  /// - "NODE_TYPE_ATTACKER" : Incoming edge is attacker
+  core.String? type;
+
+  /// Unique ID for one Node
+  core.String? uuid;
+
+  AttackStepNode({
+    this.description,
+    this.displayName,
+    this.labels,
+    this.type,
+    this.uuid,
+  });
+
+  AttackStepNode.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          uuid: json_.containsKey('uuid') ? json_['uuid'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (type != null) 'type': type!,
+        if (uuid != null) 'uuid': uuid!,
+      };
+}
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -7186,6 +8416,59 @@ class AuditConfig {
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
+
+/// Request message to create multiple resource value configs
+class BatchCreateResourceValueConfigsRequest {
+  /// The resource value configs to be created.
+  ///
+  /// Required.
+  core.List<CreateResourceValueConfigRequest>? requests;
+
+  BatchCreateResourceValueConfigsRequest({
+    this.requests,
+  });
+
+  BatchCreateResourceValueConfigsRequest.fromJson(core.Map json_)
+      : this(
+          requests: json_.containsKey('requests')
+              ? (json_['requests'] as core.List)
+                  .map((value) => CreateResourceValueConfigRequest.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+/// Response message for BatchCreateResourceValueConfigs
+class BatchCreateResourceValueConfigsResponse {
+  /// The resource value configs created
+  core.List<GoogleCloudSecuritycenterV1ResourceValueConfig>?
+      resourceValueConfigs;
+
+  BatchCreateResourceValueConfigsResponse({
+    this.resourceValueConfigs,
+  });
+
+  BatchCreateResourceValueConfigsResponse.fromJson(core.Map json_)
+      : this(
+          resourceValueConfigs: json_.containsKey('resourceValueConfigs')
+              ? (json_['resourceValueConfigs'] as core.List)
+                  .map((value) =>
+                      GoogleCloudSecuritycenterV1ResourceValueConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resourceValueConfigs != null)
+          'resourceValueConfigs': resourceValueConfigs!,
+      };
+}
 
 /// Associates `members`, or principals, with a `role`.
 class Binding {
@@ -7556,6 +8839,9 @@ class ContactDetails {
 
 /// Container associated with the finding.
 class Container {
+  /// The time that the container was created.
+  core.String? createTime;
+
   /// Optional container image ID, if provided by the container runtime.
   ///
   /// Uniquely identifies the container image launched using a container image
@@ -7574,6 +8860,7 @@ class Container {
   core.String? uri;
 
   Container({
+    this.createTime,
     this.imageId,
     this.labels,
     this.name,
@@ -7582,6 +8869,9 @@ class Container {
 
   Container.fromJson(core.Map json_)
       : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
           imageId: json_.containsKey('imageId')
               ? json_['imageId'] as core.String
               : null,
@@ -7596,10 +8886,131 @@ class Container {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
         if (imageId != null) 'imageId': imageId!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Request message to create single resource value config
+class CreateResourceValueConfigRequest {
+  /// Resource name of the new ResourceValueConfig's parent.
+  ///
+  /// Required.
+  core.String? parent;
+
+  /// The resource value config being created.
+  ///
+  /// Required.
+  GoogleCloudSecuritycenterV1ResourceValueConfig? resourceValueConfig;
+
+  CreateResourceValueConfigRequest({
+    this.parent,
+    this.resourceValueConfig,
+  });
+
+  CreateResourceValueConfigRequest.fromJson(core.Map json_)
+      : this(
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
+              : null,
+          resourceValueConfig: json_.containsKey('resourceValueConfig')
+              ? GoogleCloudSecuritycenterV1ResourceValueConfig.fromJson(
+                  json_['resourceValueConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (parent != null) 'parent': parent!,
+        if (resourceValueConfig != null)
+          'resourceValueConfig': resourceValueConfig!,
+      };
+}
+
+/// An error encountered while validating the uploaded configuration of an Event
+/// Threat Detection Custom Module.
+class CustomModuleValidationError {
+  /// A description of the error, suitable for human consumption.
+  ///
+  /// Required.
+  core.String? description;
+
+  /// The end position of the error in the uploaded text version of the module.
+  ///
+  /// This field may be omitted if no specific position applies, or if one could
+  /// not be computed..
+  Position? end;
+
+  /// The path, in RFC 8901 JSON Pointer format, to the field that failed
+  /// validation.
+  ///
+  /// This may be left empty if no specific field is affected.
+  core.String? fieldPath;
+
+  /// The initial position of the error in the uploaded text version of the
+  /// module.
+  ///
+  /// This field may be omitted if no specific position applies, or if one could
+  /// not be computed.
+  Position? start;
+
+  CustomModuleValidationError({
+    this.description,
+    this.end,
+    this.fieldPath,
+    this.start,
+  });
+
+  CustomModuleValidationError.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          end: json_.containsKey('end')
+              ? Position.fromJson(
+                  json_['end'] as core.Map<core.String, core.dynamic>)
+              : null,
+          fieldPath: json_.containsKey('fieldPath')
+              ? json_['fieldPath'] as core.String
+              : null,
+          start: json_.containsKey('start')
+              ? Position.fromJson(
+                  json_['start'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (end != null) 'end': end!,
+        if (fieldPath != null) 'fieldPath': fieldPath!,
+        if (start != null) 'start': start!,
+      };
+}
+
+/// A list of zero or more errors encountered while validating the uploaded
+/// configuration of an Event Threat Detection Custom Module.
+class CustomModuleValidationErrors {
+  core.List<CustomModuleValidationError>? errors;
+
+  CustomModuleValidationErrors({
+    this.errors,
+  });
+
+  CustomModuleValidationErrors.fromJson(core.Map json_)
+      : this(
+          errors: json_.containsKey('errors')
+              ? (json_['errors'] as core.List)
+                  .map((value) => CustomModuleValidationError.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (errors != null) 'errors': errors!,
       };
 }
 
@@ -7969,6 +9380,108 @@ class EnvironmentVariable {
       };
 }
 
+/// Represents an instance of an Event Threat Detection custom module, including
+/// its full module name, display name, enablement state, and last updated time.
+///
+/// You can create a custom module at the organization level only.
+class EventThreatDetectionCustomModule {
+  /// Config for the module.
+  ///
+  /// For the resident module, its config value is defined at this level. For
+  /// the inherited module, its config value is inherited from the ancestor
+  /// module.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? config;
+
+  /// The description for the module.
+  core.String? description;
+
+  /// The human readable name to be displayed for the module.
+  core.String? displayName;
+
+  /// The state of enablement for the module at the given level of the
+  /// hierarchy.
+  /// Possible string values are:
+  /// - "ENABLEMENT_STATE_UNSPECIFIED" : Unspecified enablement state.
+  /// - "ENABLED" : The module is enabled at the given level.
+  /// - "DISABLED" : The module is disabled at the given level.
+  core.String? enablementState;
+
+  /// The editor the module was last updated by.
+  ///
+  /// Output only.
+  core.String? lastEditor;
+
+  /// The resource name of the Event Threat Detection custom module.
+  ///
+  /// Its format is: *
+  /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
+  /// * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}".
+  /// *
+  /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// Type for the module.
+  ///
+  /// e.g. CONFIGURABLE_BAD_IP.
+  core.String? type;
+
+  /// The time the module was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  EventThreatDetectionCustomModule({
+    this.config,
+    this.description,
+    this.displayName,
+    this.enablementState,
+    this.lastEditor,
+    this.name,
+    this.type,
+    this.updateTime,
+  });
+
+  EventThreatDetectionCustomModule.fromJson(core.Map json_)
+      : this(
+          config: json_.containsKey('config')
+              ? json_['config'] as core.Map<core.String, core.dynamic>
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          enablementState: json_.containsKey('enablementState')
+              ? json_['enablementState'] as core.String
+              : null,
+          lastEditor: json_.containsKey('lastEditor')
+              ? json_['lastEditor'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (config != null) 'config': config!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (enablementState != null) 'enablementState': enablementState!,
+        if (lastEditor != null) 'lastEditor': lastEditor!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// Resource where data was exfiltrated from or exfiltrated to.
 class ExfilResource {
   /// Subcomponents of the asset that was exfiltrated, like URIs used during
@@ -8143,6 +9656,9 @@ class Finding {
   /// Access details associated with the finding, such as more information on
   /// the caller, which method was accessed, and from where.
   Access? access;
+
+  /// The results of an attack path simulation relevant to this finding.
+  AttackExposure? attackExposure;
 
   /// The canonical name of the finding.
   ///
@@ -8412,6 +9928,7 @@ class Finding {
 
   Finding({
     this.access,
+    this.attackExposure,
     this.canonicalName,
     this.category,
     this.cloudDlpDataProfile,
@@ -8456,6 +9973,10 @@ class Finding {
           access: json_.containsKey('access')
               ? Access.fromJson(
                   json_['access'] as core.Map<core.String, core.dynamic>)
+              : null,
+          attackExposure: json_.containsKey('attackExposure')
+              ? AttackExposure.fromJson(json_['attackExposure']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           canonicalName: json_.containsKey('canonicalName')
               ? json_['canonicalName'] as core.String
@@ -8609,6 +10130,7 @@ class Finding {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (access != null) 'access': access!,
+        if (attackExposure != null) 'attackExposure': attackExposure!,
         if (canonicalName != null) 'canonicalName': canonicalName!,
         if (category != null) 'category': category!,
         if (cloudDlpDataProfile != null)
@@ -9306,6 +10828,130 @@ class GoogleCloudSecuritycenterV1ResourceSelector {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resourceTypes != null) 'resourceTypes': resourceTypes!,
+      };
+}
+
+/// A resource value config is a mapping configuration of user's tag values to
+/// resource values.
+///
+/// Used by the attack path simulation.
+class GoogleCloudSecuritycenterV1ResourceValueConfig {
+  /// Timestamp this resource value config was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Description of the resource value config.
+  core.String? description;
+
+  /// Name for the resource value config
+  core.String? name;
+
+  /// List of resource labels to search for, evaluated with AND.
+  ///
+  /// E.g. "resource_labels_selector": {"key": "value", "env": "prod"} will
+  /// match resources with labels "key": "value" AND "env": "prod"
+  /// https://cloud.google.com/resource-manager/docs/creating-managing-labels
+  core.Map<core.String, core.String>? resourceLabelsSelector;
+
+  /// Apply resource_value only to resources that match resource_type.
+  ///
+  /// resource_type will be checked with "AND" of other resources. E.g.
+  /// "storage.googleapis.com/Bucket" with resource_value "HIGH" will apply
+  /// "HIGH" value only to "storage.googleapis.com/Bucket" resources.
+  core.String? resourceType;
+
+  /// Resource value level this expression represents
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "RESOURCE_VALUE_UNSPECIFIED" : Unspecific value
+  /// - "HIGH" : High resource value
+  /// - "MEDIUM" : Medium resource value
+  /// - "LOW" : Low resource value
+  /// - "NONE" : No resource value, e.g. ignore these resources
+  core.String? resourceValue;
+
+  /// Project or folder to scope this config to.
+  ///
+  /// For example, "project/456" would apply this config only to resources in
+  /// "project/456" scope will be checked with "AND" of other resources.
+  core.String? scope;
+
+  /// Tag values combined with AND to check against.
+  ///
+  /// Values in the form "tagValues/123" E.g. \[ "tagValues/123",
+  /// "tagValues/456", "tagValues/789" \]
+  /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
+  ///
+  /// Required.
+  core.List<core.String>? tagValues;
+
+  /// Timestamp this resource value config was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudSecuritycenterV1ResourceValueConfig({
+    this.createTime,
+    this.description,
+    this.name,
+    this.resourceLabelsSelector,
+    this.resourceType,
+    this.resourceValue,
+    this.scope,
+    this.tagValues,
+    this.updateTime,
+  });
+
+  GoogleCloudSecuritycenterV1ResourceValueConfig.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          resourceLabelsSelector: json_.containsKey('resourceLabelsSelector')
+              ? (json_['resourceLabelsSelector']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          resourceType: json_.containsKey('resourceType')
+              ? json_['resourceType'] as core.String
+              : null,
+          resourceValue: json_.containsKey('resourceValue')
+              ? json_['resourceValue'] as core.String
+              : null,
+          scope:
+              json_.containsKey('scope') ? json_['scope'] as core.String : null,
+          tagValues: json_.containsKey('tagValues')
+              ? (json_['tagValues'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (resourceLabelsSelector != null)
+          'resourceLabelsSelector': resourceLabelsSelector!,
+        if (resourceType != null) 'resourceType': resourceType!,
+        if (resourceValue != null) 'resourceValue': resourceValue!,
+        if (scope != null) 'scope': scope!,
+        if (tagValues != null) 'tagValues': tagValues!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -10261,6 +11907,40 @@ class ListAssetsResult {
       };
 }
 
+/// Response message for listing the attack paths for a given simulation or
+/// valued resource.
+class ListAttackPathsResponse {
+  /// The attack paths that the attack path simulation identified.
+  core.List<AttackPath>? attackPaths;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results.
+  core.String? nextPageToken;
+
+  ListAttackPathsResponse({
+    this.attackPaths,
+    this.nextPageToken,
+  });
+
+  ListAttackPathsResponse.fromJson(core.Map json_)
+      : this(
+          attackPaths: json_.containsKey('attackPaths')
+              ? (json_['attackPaths'] as core.List)
+                  .map((value) => AttackPath.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attackPaths != null) 'attackPaths': attackPaths!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response message for listing BigQuery exports.
 class ListBigQueryExportsResponse {
   /// The BigQuery exports from the specified parent.
@@ -10376,6 +12056,44 @@ class ListEffectiveSecurityHealthAnalyticsCustomModulesResponse {
         if (effectiveSecurityHealthAnalyticsCustomModules != null)
           'effectiveSecurityHealthAnalyticsCustomModules':
               effectiveSecurityHealthAnalyticsCustomModules!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response for listing Event Threat Detection custom modules.
+class ListEventThreatDetectionCustomModulesResponse {
+  /// Custom modules belonging to the requested parent.
+  core.List<EventThreatDetectionCustomModule>?
+      eventThreatDetectionCustomModules;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListEventThreatDetectionCustomModulesResponse({
+    this.eventThreatDetectionCustomModules,
+    this.nextPageToken,
+  });
+
+  ListEventThreatDetectionCustomModulesResponse.fromJson(core.Map json_)
+      : this(
+          eventThreatDetectionCustomModules:
+              json_.containsKey('eventThreatDetectionCustomModules')
+                  ? (json_['eventThreatDetectionCustomModules'] as core.List)
+                      .map((value) => EventThreatDetectionCustomModule.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventThreatDetectionCustomModules != null)
+          'eventThreatDetectionCustomModules':
+              eventThreatDetectionCustomModules!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -10582,6 +12300,43 @@ class ListOperationsResponse {
       };
 }
 
+/// Response message to list resource value configs
+class ListResourceValueConfigsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is empty, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The resource value configs from the specified parent.
+  core.List<GoogleCloudSecuritycenterV1ResourceValueConfig>?
+      resourceValueConfigs;
+
+  ListResourceValueConfigsResponse({
+    this.nextPageToken,
+    this.resourceValueConfigs,
+  });
+
+  ListResourceValueConfigsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          resourceValueConfigs: json_.containsKey('resourceValueConfigs')
+              ? (json_['resourceValueConfigs'] as core.List)
+                  .map((value) =>
+                      GoogleCloudSecuritycenterV1ResourceValueConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (resourceValueConfigs != null)
+          'resourceValueConfigs': resourceValueConfigs!,
+      };
+}
+
 /// Response message for listing Security Health Analytics custom modules.
 class ListSecurityHealthAnalyticsCustomModulesResponse {
   /// If not empty, indicates that there may be more custom modules to be
@@ -10651,6 +12406,47 @@ class ListSourcesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (sources != null) 'sources': sources!,
+      };
+}
+
+/// Response message for listing the valued resources for a given simulation.
+class ListValuedResourcesResponse {
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results.
+  core.String? nextPageToken;
+
+  /// The estimated total number of results matching the query.
+  core.int? totalSize;
+
+  /// The valued resources that the attack path simulation identified.
+  core.List<ValuedResource>? valuedResources;
+
+  ListValuedResourcesResponse({
+    this.nextPageToken,
+    this.totalSize,
+    this.valuedResources,
+  });
+
+  ListValuedResourcesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          totalSize: json_.containsKey('totalSize')
+              ? json_['totalSize'] as core.int
+              : null,
+          valuedResources: json_.containsKey('valuedResources')
+              ? (json_['valuedResources'] as core.List)
+                  .map((value) => ValuedResource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalSize != null) 'totalSize': totalSize!,
+        if (valuedResources != null) 'valuedResources': valuedResources!,
       };
 }
 
@@ -11016,6 +12812,43 @@ class OrganizationSettings {
       };
 }
 
+/// A finding that is associated with this node in the attack path.
+class PathNodeAssociatedFinding {
+  /// Canonical name of the associated findings.
+  ///
+  /// Example: organizations/123/sources/456/findings/789
+  core.String? canonicalFinding;
+
+  /// The additional taxonomy group within findings from a given source.
+  core.String? findingCategory;
+
+  /// Full resource name of the finding.
+  core.String? name;
+
+  PathNodeAssociatedFinding({
+    this.canonicalFinding,
+    this.findingCategory,
+    this.name,
+  });
+
+  PathNodeAssociatedFinding.fromJson(core.Map json_)
+      : this(
+          canonicalFinding: json_.containsKey('canonicalFinding')
+              ? json_['canonicalFinding'] as core.String
+              : null,
+          findingCategory: json_.containsKey('findingCategory')
+              ? json_['findingCategory'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (canonicalFinding != null) 'canonicalFinding': canonicalFinding!,
+        if (findingCategory != null) 'findingCategory': findingCategory!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// A Kubernetes Pod.
 class Pod {
   /// Pod containers associated with this finding, if any.
@@ -11183,6 +13016,32 @@ class Policy {
         if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// A position in the uploaded text version of a module.
+class Position {
+  core.int? columnNumber;
+  core.int? lineNumber;
+
+  Position({
+    this.columnNumber,
+    this.lineNumber,
+  });
+
+  Position.fromJson(core.Map json_)
+      : this(
+          columnNumber: json_.containsKey('columnNumber')
+              ? json_['columnNumber'] as core.int
+              : null,
+          lineNumber: json_.containsKey('lineNumber')
+              ? json_['lineNumber'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (columnNumber != null) 'columnNumber': columnNumber!,
+        if (lineNumber != null) 'lineNumber': lineNumber!,
       };
 }
 
@@ -11433,6 +13292,27 @@ class Resource {
           'projectDisplayName': projectDisplayName!,
         if (projectName != null) 'projectName': projectName!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Metadata about a ResourceValueConfig.
+///
+/// For example, id and name.
+class ResourceValueConfigMetadata {
+  /// Resource value config name
+  core.String? name;
+
+  ResourceValueConfigMetadata({
+    this.name,
+  });
+
+  ResourceValueConfigMetadata.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
@@ -11790,6 +13670,50 @@ class SetMuteRequest {
       };
 }
 
+/// Attack path simulation
+class Simulation {
+  /// Time simulation was created
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Full resource name of the Simulation: organizations/123/simulations/456
+  core.String? name;
+
+  /// Resource value configurations' metadata used in this simulation.
+  ///
+  /// Maximum of 100.
+  core.List<ResourceValueConfigMetadata>? resourceValueConfigsMetadata;
+
+  Simulation({
+    this.createTime,
+    this.name,
+    this.resourceValueConfigsMetadata,
+  });
+
+  Simulation.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          resourceValueConfigsMetadata:
+              json_.containsKey('resourceValueConfigsMetadata')
+                  ? (json_['resourceValueConfigsMetadata'] as core.List)
+                      .map((value) => ResourceValueConfigMetadata.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (name != null) 'name': name!,
+        if (resourceValueConfigsMetadata != null)
+          'resourceValueConfigsMetadata': resourceValueConfigsMetadata!,
+      };
+}
+
 /// Security Command Center finding source.
 ///
 /// A finding source is an entity or a mechanism that can produce a finding. A
@@ -11940,6 +13864,150 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// Request to validate an Event Threat Detection custom module.
+class ValidateEventThreatDetectionCustomModuleRequest {
+  /// The raw text of the module's contents.
+  ///
+  /// Used to generate error messages.
+  ///
+  /// Required.
+  core.String? rawText;
+
+  /// The type of the module (e.g. CONFIGURABLE_BAD_IP).
+  ///
+  /// Required.
+  core.String? type;
+
+  ValidateEventThreatDetectionCustomModuleRequest({
+    this.rawText,
+    this.type,
+  });
+
+  ValidateEventThreatDetectionCustomModuleRequest.fromJson(core.Map json_)
+      : this(
+          rawText: json_.containsKey('rawText')
+              ? json_['rawText'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rawText != null) 'rawText': rawText!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Response to validating an Event Threat Detection custom module.
+class ValidateEventThreatDetectionCustomModuleResponse {
+  /// A list of errors returned by the validator.
+  ///
+  /// If the list is empty, there were no errors.
+  CustomModuleValidationErrors? errors;
+
+  ValidateEventThreatDetectionCustomModuleResponse({
+    this.errors,
+  });
+
+  ValidateEventThreatDetectionCustomModuleResponse.fromJson(core.Map json_)
+      : this(
+          errors: json_.containsKey('errors')
+              ? CustomModuleValidationErrors.fromJson(
+                  json_['errors'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (errors != null) 'errors': errors!,
+      };
+}
+
+/// A resource that is determined to have value to a user's system
+class ValuedResource {
+  /// Human-readable name of the valued resource.
+  core.String? displayName;
+
+  /// Exposed score for this valued resource.
+  ///
+  /// A value of 0 means no exposure was detected exposure.
+  core.double? exposedScore;
+
+  /// Valued resource name, for example, e.g.:
+  /// `organizations/123/simulations/456/valuedResources/789`
+  core.String? name;
+
+  /// The
+  /// [full resource name](https://cloud.google.com/apis/design/resource_names#full_resource_name)
+  /// of the valued resource.
+  core.String? resource;
+
+  /// The
+  /// [resource type](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+  /// of the valued resource.
+  core.String? resourceType;
+
+  /// How valuable this resource is.
+  /// Possible string values are:
+  /// - "RESOURCE_VALUE_UNSPECIFIED" : The resource value isn't specified.
+  /// - "RESOURCE_VALUE_LOW" : This is a low-value resource.
+  /// - "RESOURCE_VALUE_MEDIUM" : This is a medium-value resource.
+  /// - "RESOURCE_VALUE_HIGH" : This is a high-value resource.
+  core.String? resourceValue;
+
+  /// List of resource value configurations' metadata used to determine the
+  /// value of this resource.
+  ///
+  /// Maximum of 100.
+  core.List<ResourceValueConfigMetadata>? resourceValueConfigsUsed;
+
+  ValuedResource({
+    this.displayName,
+    this.exposedScore,
+    this.name,
+    this.resource,
+    this.resourceType,
+    this.resourceValue,
+    this.resourceValueConfigsUsed,
+  });
+
+  ValuedResource.fromJson(core.Map json_)
+      : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          exposedScore: json_.containsKey('exposedScore')
+              ? (json_['exposedScore'] as core.num).toDouble()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          resource: json_.containsKey('resource')
+              ? json_['resource'] as core.String
+              : null,
+          resourceType: json_.containsKey('resourceType')
+              ? json_['resourceType'] as core.String
+              : null,
+          resourceValue: json_.containsKey('resourceValue')
+              ? json_['resourceValue'] as core.String
+              : null,
+          resourceValueConfigsUsed:
+              json_.containsKey('resourceValueConfigsUsed')
+                  ? (json_['resourceValueConfigsUsed'] as core.List)
+                      .map((value) => ResourceValueConfigMetadata.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (exposedScore != null) 'exposedScore': exposedScore!,
+        if (name != null) 'name': name!,
+        if (resource != null) 'resource': resource!,
+        if (resourceType != null) 'resourceType': resourceType!,
+        if (resourceValue != null) 'resourceValue': resourceValue!,
+        if (resourceValueConfigsUsed != null)
+          'resourceValueConfigsUsed': resourceValueConfigsUsed!,
+      };
+}
 
 /// Refers to common vulnerability fields e.g. cve, cvss, cwe etc.
 class Vulnerability {

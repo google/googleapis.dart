@@ -1490,6 +1490,49 @@ class ProjectsLocationsStreamsResource {
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Use this method to start, resume or recover a stream with a non default
+  /// CDC strategy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the stream resource to start, in the format:
+  /// projects/{project_id}/locations/{location}/streams/{stream_name}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/streams/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> run(
+    RunStreamRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':run';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsStreamsObjectsResource {
@@ -1903,6 +1946,58 @@ typedef BigQueryProfile = $Empty;
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
+
+/// The strategy that the stream uses for CDC replication.
+class CdcStrategy {
+  /// Start replicating from the most recent position in the source.
+  ///
+  /// Optional.
+  MostRecentStartPosition? mostRecentStartPosition;
+
+  /// Resume replication from the next available position in the source.
+  ///
+  /// Optional.
+  NextAvailableStartPosition? nextAvailableStartPosition;
+
+  /// Start replicating from a specific position in the source.
+  ///
+  /// Optional.
+  SpecificStartPosition? specificStartPosition;
+
+  CdcStrategy({
+    this.mostRecentStartPosition,
+    this.nextAvailableStartPosition,
+    this.specificStartPosition,
+  });
+
+  CdcStrategy.fromJson(core.Map json_)
+      : this(
+          mostRecentStartPosition: json_.containsKey('mostRecentStartPosition')
+              ? MostRecentStartPosition.fromJson(
+                  json_['mostRecentStartPosition']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          nextAvailableStartPosition:
+              json_.containsKey('nextAvailableStartPosition')
+                  ? NextAvailableStartPosition.fromJson(
+                      json_['nextAvailableStartPosition']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          specificStartPosition: json_.containsKey('specificStartPosition')
+              ? SpecificStartPosition.fromJson(json_['specificStartPosition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mostRecentStartPosition != null)
+          'mostRecentStartPosition': mostRecentStartPosition!,
+        if (nextAvailableStartPosition != null)
+          'nextAvailableStartPosition': nextAvailableStartPosition!,
+        if (specificStartPosition != null)
+          'specificStartPosition': specificStartPosition!,
+      };
+}
 
 /// A set of reusable connection configurations to be used as a source or
 /// destination for a stream.
@@ -2798,6 +2893,10 @@ class LookupStreamObjectRequest {
       };
 }
 
+/// CDC strategy to start replicating from the most recent position in the
+/// source.
+typedef MostRecentStartPosition = $Empty;
+
 /// MySQL Column.
 class MysqlColumn {
   /// Column collation.
@@ -2821,8 +2920,14 @@ class MysqlColumn {
   /// The ordinal position of the column in the table.
   core.int? ordinalPosition;
 
+  /// Column precision.
+  core.int? precision;
+
   /// Whether or not the column represents a primary key.
   core.bool? primaryKey;
+
+  /// Column scale.
+  core.int? scale;
 
   MysqlColumn({
     this.collation,
@@ -2831,7 +2936,9 @@ class MysqlColumn {
     this.length,
     this.nullable,
     this.ordinalPosition,
+    this.precision,
     this.primaryKey,
+    this.scale,
   });
 
   MysqlColumn.fromJson(core.Map json_)
@@ -2853,9 +2960,13 @@ class MysqlColumn {
           ordinalPosition: json_.containsKey('ordinalPosition')
               ? json_['ordinalPosition'] as core.int
               : null,
+          precision: json_.containsKey('precision')
+              ? json_['precision'] as core.int
+              : null,
           primaryKey: json_.containsKey('primaryKey')
               ? json_['primaryKey'] as core.bool
               : null,
+          scale: json_.containsKey('scale') ? json_['scale'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2865,7 +2976,9 @@ class MysqlColumn {
         if (length != null) 'length': length!,
         if (nullable != null) 'nullable': nullable!,
         if (ordinalPosition != null) 'ordinalPosition': ordinalPosition!,
+        if (precision != null) 'precision': precision!,
         if (primaryKey != null) 'primaryKey': primaryKey!,
+        if (scale != null) 'scale': scale!,
       };
 }
 
@@ -2898,6 +3011,37 @@ class MysqlDatabase {
   core.Map<core.String, core.dynamic> toJson() => {
         if (database != null) 'database': database!,
         if (mysqlTables != null) 'mysqlTables': mysqlTables!,
+      };
+}
+
+/// MySQL log position
+class MysqlLogPosition {
+  /// The binary log file name.
+  core.String? logFile;
+
+  /// The position within the binary log file.
+  ///
+  /// Default is head of file.
+  core.int? logPosition;
+
+  MysqlLogPosition({
+    this.logFile,
+    this.logPosition,
+  });
+
+  MysqlLogPosition.fromJson(core.Map json_)
+      : this(
+          logFile: json_.containsKey('logFile')
+              ? json_['logFile'] as core.String
+              : null,
+          logPosition: json_.containsKey('logPosition')
+              ? json_['logPosition'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (logFile != null) 'logFile': logFile!,
+        if (logPosition != null) 'logPosition': logPosition!,
       };
 }
 
@@ -3185,6 +3329,10 @@ class MysqlTable {
         if (table != null) 'table': table!,
       };
 }
+
+/// CDC strategy to resume replication from the next available position in the
+/// source.
+typedef NextAvailableStartPosition = $Empty;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -4095,6 +4243,32 @@ class Route {
       };
 }
 
+/// Request message for running a stream.
+class RunStreamRequest {
+  /// The CDC strategy of the stream.
+  ///
+  /// If not set, the system's default value will be used.
+  ///
+  /// Optional.
+  CdcStrategy? cdcStrategy;
+
+  RunStreamRequest({
+    this.cdcStrategy,
+  });
+
+  RunStreamRequest.fromJson(core.Map json_)
+      : this(
+          cdcStrategy: json_.containsKey('cdcStrategy')
+              ? CdcStrategy.fromJson(
+                  json_['cdcStrategy'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cdcStrategy != null) 'cdcStrategy': cdcStrategy!,
+      };
+}
+
 /// A single target dataset to which all data will be streamed.
 class SingleTargetDataset {
   /// The dataset ID of the target dataset.
@@ -4237,6 +4411,28 @@ class SourceObjectIdentifier {
         if (oracleIdentifier != null) 'oracleIdentifier': oracleIdentifier!,
         if (postgresqlIdentifier != null)
           'postgresqlIdentifier': postgresqlIdentifier!,
+      };
+}
+
+/// CDC strategy to start replicating from a specific position in the source.
+class SpecificStartPosition {
+  /// MySQL specific log position to start replicating from.
+  MysqlLogPosition? mysqlLogPosition;
+
+  SpecificStartPosition({
+    this.mysqlLogPosition,
+  });
+
+  SpecificStartPosition.fromJson(core.Map json_)
+      : this(
+          mysqlLogPosition: json_.containsKey('mysqlLogPosition')
+              ? MysqlLogPosition.fromJson(json_['mysqlLogPosition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mysqlLogPosition != null) 'mysqlLogPosition': mysqlLogPosition!,
       };
 }
 

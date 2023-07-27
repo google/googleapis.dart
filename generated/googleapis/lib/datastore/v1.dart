@@ -899,27 +899,45 @@ class Aggregation {
   /// Optional.
   core.String? alias;
 
+  /// Average aggregator.
+  Avg? avg;
+
   /// Count aggregator.
   Count? count;
 
+  /// Sum aggregator.
+  Sum? sum;
+
   Aggregation({
     this.alias,
+    this.avg,
     this.count,
+    this.sum,
   });
 
   Aggregation.fromJson(core.Map json_)
       : this(
           alias:
               json_.containsKey('alias') ? json_['alias'] as core.String : null,
+          avg: json_.containsKey('avg')
+              ? Avg.fromJson(
+                  json_['avg'] as core.Map<core.String, core.dynamic>)
+              : null,
           count: json_.containsKey('count')
               ? Count.fromJson(
                   json_['count'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sum: json_.containsKey('sum')
+              ? Sum.fromJson(
+                  json_['sum'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alias != null) 'alias': alias!,
+        if (avg != null) 'avg': avg!,
         if (count != null) 'count': count!,
+        if (sum != null) 'sum': sum!,
       };
 }
 
@@ -1143,6 +1161,33 @@ class ArrayValue {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (values != null) 'values': values!,
+      };
+}
+
+/// Average of the values of the requested property.
+///
+/// * Only numeric values will be aggregated. All non-numeric values including
+/// `NULL` are skipped. * If the aggregated values contain `NaN`, returns `NaN`.
+/// * If the aggregated value set is empty, returns `NULL`. * Always returns the
+/// result as a double.
+class Avg {
+  /// The property to aggregate on.
+  PropertyReference? property;
+
+  Avg({
+    this.property,
+  });
+
+  Avg.fromJson(core.Map json_)
+      : this(
+          property: json_.containsKey('property')
+              ? PropertyReference.fromJson(
+                  json_['property'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (property != null) 'property': property!,
       };
 }
 
@@ -2961,7 +3006,9 @@ class QueryResultBatch {
 class ReadOnly {
   /// Reads entities at the given time.
   ///
-  /// This may not be older than 60 seconds.
+  /// This must be a microsecond precision timestamp within the past one hour,
+  /// or if Point-in-Time Recovery is enabled, can additionally be a whole
+  /// minute timestamp within the past 7 days.
   core.String? readTime;
 
   ReadOnly({
@@ -2999,8 +3046,10 @@ class ReadOptions {
 
   /// Reads entities as they were at the given time.
   ///
-  /// This may not be older than 270 seconds. This value is only supported for
-  /// Cloud Firestore in Datastore mode.
+  /// This value is only supported for Cloud Firestore in Datastore mode. This
+  /// must be a microsecond precision timestamp within the past one hour, or if
+  /// Point-in-Time Recovery is enabled, can additionally be a whole minute
+  /// timestamp within the past 7 days.
   core.String? readTime;
 
   /// The identifier of the transaction in which to read.
@@ -3405,6 +3454,41 @@ class RunQueryResponse {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// Sum of the values of the requested property.
+///
+/// * Only numeric values will be aggregated. All non-numeric values including
+/// `NULL` are skipped. * If the aggregated values contain `NaN`, returns `NaN`.
+/// * If the aggregated value set is empty, returns 0. * Returns a 64-bit
+/// integer if the sum result is an integer value and does not overflow.
+/// Otherwise, the result is returned as a double. Note that even if all the
+/// aggregated values are integers, the result is returned as a double if it
+/// cannot fit within a 64-bit signed integer. When this occurs, the returned
+/// value will lose precision. * When underflow occurs, floating-point
+/// aggregation is non-deterministic. This means that running the same query
+/// repeatedly without any changes to the underlying values could produce
+/// slightly different results each time. In those cases, values should be
+/// stored as integers over floating-point numbers.
+class Sum {
+  /// The property to aggregate on.
+  PropertyReference? property;
+
+  Sum({
+    this.property,
+  });
+
+  Sum.fromJson(core.Map json_)
+      : this(
+          property: json_.containsKey('property')
+              ? PropertyReference.fromJson(
+                  json_['property'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (property != null) 'property': property!,
+      };
+}
 
 /// Options for beginning a new transaction.
 ///

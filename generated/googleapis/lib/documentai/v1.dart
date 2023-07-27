@@ -4967,6 +4967,12 @@ class GoogleCloudDocumentaiV1Processor {
   /// Output only. Immutable.
   core.String? processEndpoint;
 
+  /// The processor version aliases.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDocumentaiV1ProcessorVersionAlias>?
+      processorVersionAliases;
+
   /// The state of the processor.
   ///
   /// Output only.
@@ -5004,6 +5010,7 @@ class GoogleCloudDocumentaiV1Processor {
     this.kmsKeyName,
     this.name,
     this.processEndpoint,
+    this.processorVersionAliases,
     this.state,
     this.type,
   });
@@ -5026,6 +5033,13 @@ class GoogleCloudDocumentaiV1Processor {
           processEndpoint: json_.containsKey('processEndpoint')
               ? json_['processEndpoint'] as core.String
               : null,
+          processorVersionAliases: json_.containsKey('processorVersionAliases')
+              ? (json_['processorVersionAliases'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDocumentaiV1ProcessorVersionAlias.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
@@ -5039,6 +5053,8 @@ class GoogleCloudDocumentaiV1Processor {
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (name != null) 'name': name!,
         if (processEndpoint != null) 'processEndpoint': processEndpoint!,
+        if (processorVersionAliases != null)
+          'processorVersionAliases': processorVersionAliases!,
         if (state != null) 'state': state!,
         if (type != null) 'type': type!,
       };
@@ -5201,6 +5217,8 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
   GoogleCloudDocumentaiV1DocumentSchema? documentSchema;
 
   /// Denotes that this `ProcessorVersion` is managed by Google.
+  ///
+  /// Output only.
   core.bool? googleManaged;
 
   /// The KMS key name used for encryption.
@@ -5298,6 +5316,34 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
       };
 }
 
+/// Contains the alias and the aliased resource name of processor version.
+class GoogleCloudDocumentaiV1ProcessorVersionAlias {
+  /// The alias in the form of `processor_version` resource name.
+  core.String? alias;
+
+  /// The resource name of aliased processor version.
+  core.String? processorVersion;
+
+  GoogleCloudDocumentaiV1ProcessorVersionAlias({
+    this.alias,
+    this.processorVersion,
+  });
+
+  GoogleCloudDocumentaiV1ProcessorVersionAlias.fromJson(core.Map json_)
+      : this(
+          alias:
+              json_.containsKey('alias') ? json_['alias'] as core.String : null,
+          processorVersion: json_.containsKey('processorVersion')
+              ? json_['processorVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alias != null) 'alias': alias!,
+        if (processorVersion != null) 'processorVersion': processorVersion!,
+      };
+}
+
 /// Information about the upcoming deprecation of this processor version.
 class GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo {
   /// The time at which this processor version will be deprecated.
@@ -5341,12 +5387,20 @@ class GoogleCloudDocumentaiV1RawDocument {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
+  /// The display name of the document, it supports all Unicode characters
+  /// except the following: `*`, `?`, `[`, `]`, `%`, `{`, `}`,`'`, `\"`, `,`
+  /// `~`, `=` and `:` are reserved.
+  ///
+  /// If not specified, a default ID will be generated.
+  core.String? displayName;
+
   /// An IANA MIME type (RFC6838) indicating the nature and format of the
   /// content.
   core.String? mimeType;
 
   GoogleCloudDocumentaiV1RawDocument({
     this.content,
+    this.displayName,
     this.mimeType,
   });
 
@@ -5355,6 +5409,9 @@ class GoogleCloudDocumentaiV1RawDocument {
           content: json_.containsKey('content')
               ? json_['content'] as core.String
               : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
           mimeType: json_.containsKey('mimeType')
               ? json_['mimeType'] as core.String
               : null,
@@ -5362,6 +5419,7 @@ class GoogleCloudDocumentaiV1RawDocument {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
+        if (displayName != null) 'displayName': displayName!,
         if (mimeType != null) 'mimeType': mimeType!,
       };
 }

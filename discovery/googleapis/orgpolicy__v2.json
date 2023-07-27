@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230716",
+    "revision": "20230806",
     "rootUrl": "https://orgpolicy.googleapis.com/",
     "servicePath": "",
     "title": "Organization Policy API",
@@ -216,7 +216,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. Resource name of the policy. See `Policy` for naming requirements.",
+                                    "description": "Required. Resource name of the policy. See Policy for naming requirements.",
                                     "location": "path",
                                     "pattern": "^folders/[^/]+/policies/[^/]+$",
                                     "required": true,
@@ -241,7 +241,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. The effective policy to compute. See `Policy` for naming rules.",
+                                    "description": "Required. The effective policy to compute. See Policy for naming requirements.",
                                     "location": "path",
                                     "pattern": "^folders/[^/]+/policies/[^/]+$",
                                     "required": true,
@@ -302,7 +302,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Immutable. The resource name of the policy. Must be one of the following forms, where constraint_name is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, \"projects/123/policies/compute.disableSerialPortAccess\". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.",
+                                    "description": "Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.",
                                     "location": "path",
                                     "pattern": "^folders/[^/]+/policies/[^/]+$",
                                     "required": true,
@@ -583,7 +583,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. Resource name of the policy. See `Policy` for naming requirements.",
+                                    "description": "Required. Resource name of the policy. See Policy for naming requirements.",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+/policies/[^/]+$",
                                     "required": true,
@@ -608,7 +608,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. The effective policy to compute. See `Policy` for naming rules.",
+                                    "description": "Required. The effective policy to compute. See Policy for naming requirements.",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+/policies/[^/]+$",
                                     "required": true,
@@ -669,7 +669,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Immutable. The resource name of the policy. Must be one of the following forms, where constraint_name is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, \"projects/123/policies/compute.disableSerialPortAccess\". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.",
+                                    "description": "Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+/policies/[^/]+$",
                                     "required": true,
@@ -804,7 +804,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. Resource name of the policy. See `Policy` for naming requirements.",
+                                    "description": "Required. Resource name of the policy. See Policy for naming requirements.",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+/policies/[^/]+$",
                                     "required": true,
@@ -829,7 +829,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Required. The effective policy to compute. See `Policy` for naming rules.",
+                                    "description": "Required. The effective policy to compute. See Policy for naming requirements.",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+/policies/[^/]+$",
                                     "required": true,
@@ -890,7 +890,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "Immutable. The resource name of the policy. Must be one of the following forms, where constraint_name is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, \"projects/123/policies/compute.disableSerialPortAccess\". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.",
+                                    "description": "Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+/policies/[^/]+$",
                                     "required": true,
@@ -1020,7 +1020,7 @@
                     "type": "string"
                 },
                 "condition": {
-                    "description": "Org policy condition/expression. For example: `resource.instanceName.matches(\"[production|test]_.*_(\\d)+\")'` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.",
+                    "description": "Org policy condition/expression. For example: `resource.instanceName.matches(\"[production|test]_.*_(\\d)+\")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.",
                     "type": "string"
                 },
                 "description": {
@@ -1138,7 +1138,7 @@
                     "description": "Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced."
                 },
                 "name": {
-                    "description": "Immutable. The resource name of the policy. Must be one of the following forms, where constraint_name is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, \"projects/123/policies/compute.disableSerialPortAccess\". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.",
+                    "description": "Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.",
                     "type": "string"
                 },
                 "spec": {
@@ -1208,7 +1208,7 @@
             "type": "object"
         },
         "GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues": {
-            "description": "A message that holds specific allowed and denied values. This message can define specific values and subtrees of the Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a \":\". Values prefixed with \"is:\" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - \"projects/\", e.g. \"projects/tokyo-rain-123\" - \"folders/\", e.g. \"folders/1234\" - \"organizations/\", e.g. \"organizations/1234\" The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used.",
+            "description": "A message that holds specific allowed and denied values. This message can define specific values and subtrees of the Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a \":\". Values prefixed with \"is:\" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - `projects/` (for example, `projects/tokyo-rain-123`) - `folders/` (for example, `folders/1234`) - `organizations/` (for example, `organizations/1234`) The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used.",
             "id": "GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues",
             "properties": {
                 "allowedValues": {

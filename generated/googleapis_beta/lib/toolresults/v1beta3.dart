@@ -5371,6 +5371,7 @@ class TestIssue {
   /// - "logcatCollectionError" : Problems detected while collecting logcat
   /// - "detectedAppSplashScreen" : Robo detected a splash screen provided by
   /// app (vs. Android OS splash screen).
+  /// - "assetIssue" : There was an issue with the assets in this test.
   core.String? type;
 
   /// Warning message with additional details of the issue.

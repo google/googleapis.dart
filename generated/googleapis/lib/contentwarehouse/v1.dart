@@ -260,6 +260,48 @@ class ProjectsLocationsResource {
     return GoogleLongrunningOperation.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Run a predefined pipeline.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name which owns the resources of the
+  /// pipeline. Format: projects/{project_number}/locations/{location}.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> runPipeline(
+    GoogleCloudContentwarehouseV1RunPipelineRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':runPipeline';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsDocumentSchemasResource {
@@ -2387,6 +2429,11 @@ class GoogleCloudContentwarehouseV1Document {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
+  /// Indicates if the document has a legal hold on it.
+  ///
+  /// Output only.
+  core.bool? legalHold;
+
   /// The resource name of the document.
   ///
   /// Format:
@@ -2456,6 +2503,7 @@ class GoogleCloudContentwarehouseV1Document {
     this.dispositionTime,
     this.documentSchemaName,
     this.inlineRawDocument,
+    this.legalHold,
     this.name,
     this.plainText,
     this.properties,
@@ -2499,6 +2547,9 @@ class GoogleCloudContentwarehouseV1Document {
               : null,
           inlineRawDocument: json_.containsKey('inlineRawDocument')
               ? json_['inlineRawDocument'] as core.String
+              : null,
+          legalHold: json_.containsKey('legalHold')
+              ? json_['legalHold'] as core.bool
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           plainText: json_.containsKey('plainText')
@@ -2547,6 +2598,7 @@ class GoogleCloudContentwarehouseV1Document {
         if (documentSchemaName != null)
           'documentSchemaName': documentSchemaName!,
         if (inlineRawDocument != null) 'inlineRawDocument': inlineRawDocument!,
+        if (legalHold != null) 'legalHold': legalHold!,
         if (name != null) 'name': name!,
         if (plainText != null) 'plainText': plainText!,
         if (properties != null) 'properties': properties!,
@@ -3146,6 +3198,71 @@ class GoogleCloudContentwarehouseV1EnumValue {
       };
 }
 
+/// The configuration of exporting documents from the Document Warehouse to CDW
+/// pipeline.
+class GoogleCloudContentwarehouseV1ExportToCdwPipeline {
+  /// The CDW dataset resource name.
+  ///
+  /// This field is optional. If not set, the documents will be exported to
+  /// Cloud Storage only. Format:
+  /// projects/{project}/locations/{location}/processors/{processor}/dataset
+  ///
+  /// Optional.
+  core.String? docAiDataset;
+
+  /// The list of all the resource names of the documents to be processed.
+  ///
+  /// Format:
+  /// projects/{project_number}/locations/{location}/documents/{document_id}.
+  core.List<core.String>? documents;
+
+  /// The Cloud Storage folder path used to store the exported documents before
+  /// being sent to CDW.
+  ///
+  /// Format: `gs:///`.
+  core.String? exportFolderPath;
+
+  /// Ratio of training dataset split.
+  ///
+  /// When importing into Document AI Workbench, documents will be automatically
+  /// split into training and test split category with the specified ratio. This
+  /// field is required if doc_ai_dataset is set.
+  core.double? trainingSplitRatio;
+
+  GoogleCloudContentwarehouseV1ExportToCdwPipeline({
+    this.docAiDataset,
+    this.documents,
+    this.exportFolderPath,
+    this.trainingSplitRatio,
+  });
+
+  GoogleCloudContentwarehouseV1ExportToCdwPipeline.fromJson(core.Map json_)
+      : this(
+          docAiDataset: json_.containsKey('docAiDataset')
+              ? json_['docAiDataset'] as core.String
+              : null,
+          documents: json_.containsKey('documents')
+              ? (json_['documents'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          exportFolderPath: json_.containsKey('exportFolderPath')
+              ? json_['exportFolderPath'] as core.String
+              : null,
+          trainingSplitRatio: json_.containsKey('trainingSplitRatio')
+              ? (json_['trainingSplitRatio'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (docAiDataset != null) 'docAiDataset': docAiDataset!,
+        if (documents != null) 'documents': documents!,
+        if (exportFolderPath != null) 'exportFolderPath': exportFolderPath!,
+        if (trainingSplitRatio != null)
+          'trainingSplitRatio': trainingSplitRatio!,
+      };
+}
+
 /// Request message for DocumentService.FetchAcl
 class GoogleCloudContentwarehouseV1FetchAclRequest {
   /// For Get Project ACL only.
@@ -3264,6 +3381,177 @@ class GoogleCloudContentwarehouseV1FloatArray {
 
 /// Configurations for a float property.
 typedef GoogleCloudContentwarehouseV1FloatTypeOptions = $Empty;
+
+/// The configuration of the Cloud Storage Ingestion pipeline.
+class GoogleCloudContentwarehouseV1GcsIngestPipeline {
+  /// The input Cloud Storage folder.
+  ///
+  /// All files under this folder will be imported to Document Warehouse.
+  /// Format: `gs:///`.
+  core.String? inputPath;
+
+  /// The config for the Cloud Storage Ingestion pipeline.
+  ///
+  /// It provides additional customization options to run the pipeline and can
+  /// be skipped if it is not applicable.
+  ///
+  /// Optional.
+  GoogleCloudContentwarehouseV1IngestPipelineConfig? pipelineConfig;
+
+  /// The Doc AI processor type name.
+  ///
+  /// Only used when the format of ingested files is Doc AI Document proto
+  /// format.
+  core.String? processorType;
+
+  /// The Document Warehouse schema resource name.
+  ///
+  /// All documents processed by this pipeline will use this schema. Format:
+  /// projects/{project_number}/locations/{location}/documentSchemas/{document_schema_id}.
+  core.String? schemaName;
+
+  /// The flag whether to skip ingested documents.
+  ///
+  /// If it is set to true, documents in Cloud Storage contains key "status"
+  /// with value "status=ingested" in custom metadata will be skipped to ingest.
+  core.bool? skipIngestedDocuments;
+
+  GoogleCloudContentwarehouseV1GcsIngestPipeline({
+    this.inputPath,
+    this.pipelineConfig,
+    this.processorType,
+    this.schemaName,
+    this.skipIngestedDocuments,
+  });
+
+  GoogleCloudContentwarehouseV1GcsIngestPipeline.fromJson(core.Map json_)
+      : this(
+          inputPath: json_.containsKey('inputPath')
+              ? json_['inputPath'] as core.String
+              : null,
+          pipelineConfig: json_.containsKey('pipelineConfig')
+              ? GoogleCloudContentwarehouseV1IngestPipelineConfig.fromJson(
+                  json_['pipelineConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          processorType: json_.containsKey('processorType')
+              ? json_['processorType'] as core.String
+              : null,
+          schemaName: json_.containsKey('schemaName')
+              ? json_['schemaName'] as core.String
+              : null,
+          skipIngestedDocuments: json_.containsKey('skipIngestedDocuments')
+              ? json_['skipIngestedDocuments'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (inputPath != null) 'inputPath': inputPath!,
+        if (pipelineConfig != null) 'pipelineConfig': pipelineConfig!,
+        if (processorType != null) 'processorType': processorType!,
+        if (schemaName != null) 'schemaName': schemaName!,
+        if (skipIngestedDocuments != null)
+          'skipIngestedDocuments': skipIngestedDocuments!,
+      };
+}
+
+/// The configuration of the Cloud Storage Ingestion with DocAI Processors
+/// pipeline.
+class GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline {
+  /// The extract processors information.
+  ///
+  /// One matched extract processor will be used to process documents based on
+  /// the classify processor result. If no classify processor is specified, the
+  /// first extract processor will be used.
+  core.List<GoogleCloudContentwarehouseV1ProcessorInfo>? extractProcessorInfos;
+
+  /// The input Cloud Storage folder.
+  ///
+  /// All files under this folder will be imported to Document Warehouse.
+  /// Format: `gs:///`.
+  core.String? inputPath;
+
+  /// The config for the Cloud Storage Ingestion with DocAI Processors pipeline.
+  ///
+  /// It provides additional customization options to run the pipeline and can
+  /// be skipped if it is not applicable.
+  ///
+  /// Optional.
+  GoogleCloudContentwarehouseV1IngestPipelineConfig? pipelineConfig;
+
+  /// The Cloud Storage folder path used to store the raw results from
+  /// processors.
+  ///
+  /// Format: `gs:///`.
+  core.String? processorResultsFolderPath;
+
+  /// The flag whether to skip ingested documents.
+  ///
+  /// If it is set to true, documents in Cloud Storage contains key "status"
+  /// with value "status=ingested" in custom metadata will be skipped to ingest.
+  core.bool? skipIngestedDocuments;
+
+  /// The split and classify processor information.
+  ///
+  /// The split and classify result will be used to find a matched extract
+  /// processor.
+  GoogleCloudContentwarehouseV1ProcessorInfo? splitClassifyProcessorInfo;
+
+  GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline({
+    this.extractProcessorInfos,
+    this.inputPath,
+    this.pipelineConfig,
+    this.processorResultsFolderPath,
+    this.skipIngestedDocuments,
+    this.splitClassifyProcessorInfo,
+  });
+
+  GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline.fromJson(
+      core.Map json_)
+      : this(
+          extractProcessorInfos: json_.containsKey('extractProcessorInfos')
+              ? (json_['extractProcessorInfos'] as core.List)
+                  .map((value) =>
+                      GoogleCloudContentwarehouseV1ProcessorInfo.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          inputPath: json_.containsKey('inputPath')
+              ? json_['inputPath'] as core.String
+              : null,
+          pipelineConfig: json_.containsKey('pipelineConfig')
+              ? GoogleCloudContentwarehouseV1IngestPipelineConfig.fromJson(
+                  json_['pipelineConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          processorResultsFolderPath:
+              json_.containsKey('processorResultsFolderPath')
+                  ? json_['processorResultsFolderPath'] as core.String
+                  : null,
+          skipIngestedDocuments: json_.containsKey('skipIngestedDocuments')
+              ? json_['skipIngestedDocuments'] as core.bool
+              : null,
+          splitClassifyProcessorInfo:
+              json_.containsKey('splitClassifyProcessorInfo')
+                  ? GoogleCloudContentwarehouseV1ProcessorInfo.fromJson(
+                      json_['splitClassifyProcessorInfo']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (extractProcessorInfos != null)
+          'extractProcessorInfos': extractProcessorInfos!,
+        if (inputPath != null) 'inputPath': inputPath!,
+        if (pipelineConfig != null) 'pipelineConfig': pipelineConfig!,
+        if (processorResultsFolderPath != null)
+          'processorResultsFolderPath': processorResultsFolderPath!,
+        if (skipIngestedDocuments != null)
+          'skipIngestedDocuments': skipIngestedDocuments!,
+        if (splitClassifyProcessorInfo != null)
+          'splitClassifyProcessorInfo': splitClassifyProcessorInfo!,
+      };
+}
 
 /// Request message for DocumentService.GetDocument.
 class GoogleCloudContentwarehouseV1GetDocumentRequest {
@@ -3433,6 +3721,64 @@ class GoogleCloudContentwarehouseV1HistogramQueryResult {
   core.Map<core.String, core.dynamic> toJson() => {
         if (histogram != null) 'histogram': histogram!,
         if (histogramQuery != null) 'histogramQuery': histogramQuery!,
+      };
+}
+
+/// The ingestion pipeline config.
+class GoogleCloudContentwarehouseV1IngestPipelineConfig {
+  /// The document level acl policy config.
+  ///
+  /// This refers to an Identity and Access (IAM) policy, which specifies access
+  /// controls for all documents ingested by the pipeline. The role and members
+  /// under the policy needs to be specified. The following roles are supported
+  /// for document level acl control: * roles/contentwarehouse.documentAdmin *
+  /// roles/contentwarehouse.documentEditor *
+  /// roles/contentwarehouse.documentViewer The following members are supported
+  /// for document level acl control: * user:user-email@example.com *
+  /// group:group-email@example.com Note that for documents searched with LLM,
+  /// only single level user or group acl check is supported.
+  GoogleIamV1Policy? documentAclPolicy;
+
+  /// The document text extraction enabled flag.
+  ///
+  /// If the flag is set to true, DWH will perform text extraction on the raw
+  /// document.
+  core.bool? enableDocumentTextExtraction;
+
+  /// The name of the folder to which all ingested documents will be linked
+  /// during ingestion process.
+  ///
+  /// Format is `projects/{project}/locations/{location}/documents/{folder_id}`
+  ///
+  /// Optional.
+  core.String? folder;
+
+  GoogleCloudContentwarehouseV1IngestPipelineConfig({
+    this.documentAclPolicy,
+    this.enableDocumentTextExtraction,
+    this.folder,
+  });
+
+  GoogleCloudContentwarehouseV1IngestPipelineConfig.fromJson(core.Map json_)
+      : this(
+          documentAclPolicy: json_.containsKey('documentAclPolicy')
+              ? GoogleIamV1Policy.fromJson(json_['documentAclPolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          enableDocumentTextExtraction:
+              json_.containsKey('enableDocumentTextExtraction')
+                  ? json_['enableDocumentTextExtraction'] as core.bool
+                  : null,
+          folder: json_.containsKey('folder')
+              ? json_['folder'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (documentAclPolicy != null) 'documentAclPolicy': documentAclPolicy!,
+        if (enableDocumentTextExtraction != null)
+          'enableDocumentTextExtraction': enableDocumentTextExtraction!,
+        if (folder != null) 'folder': folder!,
       };
 }
 
@@ -3936,6 +4282,110 @@ class GoogleCloudContentwarehouseV1MergeFieldsOptions {
           'replaceMessageFields': replaceMessageFields!,
         if (replaceRepeatedFields != null)
           'replaceRepeatedFields': replaceRepeatedFields!,
+      };
+}
+
+/// The configuration of processing documents in Document Warehouse with DocAi
+/// processors pipeline.
+class GoogleCloudContentwarehouseV1ProcessWithDocAiPipeline {
+  /// The list of all the resource names of the documents to be processed.
+  ///
+  /// Format:
+  /// projects/{project_number}/locations/{location}/documents/{document_id}.
+  core.List<core.String>? documents;
+
+  /// The Cloud Storage folder path used to store the exported documents before
+  /// being sent to CDW.
+  ///
+  /// Format: `gs:///`.
+  core.String? exportFolderPath;
+
+  /// The CDW processor information.
+  GoogleCloudContentwarehouseV1ProcessorInfo? processorInfo;
+
+  /// The Cloud Storage folder path used to store the raw results from
+  /// processors.
+  ///
+  /// Format: `gs:///`.
+  core.String? processorResultsFolderPath;
+
+  GoogleCloudContentwarehouseV1ProcessWithDocAiPipeline({
+    this.documents,
+    this.exportFolderPath,
+    this.processorInfo,
+    this.processorResultsFolderPath,
+  });
+
+  GoogleCloudContentwarehouseV1ProcessWithDocAiPipeline.fromJson(core.Map json_)
+      : this(
+          documents: json_.containsKey('documents')
+              ? (json_['documents'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          exportFolderPath: json_.containsKey('exportFolderPath')
+              ? json_['exportFolderPath'] as core.String
+              : null,
+          processorInfo: json_.containsKey('processorInfo')
+              ? GoogleCloudContentwarehouseV1ProcessorInfo.fromJson(
+                  json_['processorInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          processorResultsFolderPath:
+              json_.containsKey('processorResultsFolderPath')
+                  ? json_['processorResultsFolderPath'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (documents != null) 'documents': documents!,
+        if (exportFolderPath != null) 'exportFolderPath': exportFolderPath!,
+        if (processorInfo != null) 'processorInfo': processorInfo!,
+        if (processorResultsFolderPath != null)
+          'processorResultsFolderPath': processorResultsFolderPath!,
+      };
+}
+
+/// The DocAI processor information.
+class GoogleCloudContentwarehouseV1ProcessorInfo {
+  /// The processor will process the documents with this document type.
+  core.String? documentType;
+
+  /// The processor resource name.
+  ///
+  /// Format is
+  /// `projects/{project}/locations/{location}/processors/{processor}`, or
+  /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
+  core.String? processorName;
+
+  /// The Document schema resource name.
+  ///
+  /// All documents processed by this processor will use this schema. Format:
+  /// projects/{project_number}/locations/{location}/documentSchemas/{document_schema_id}.
+  core.String? schemaName;
+
+  GoogleCloudContentwarehouseV1ProcessorInfo({
+    this.documentType,
+    this.processorName,
+    this.schemaName,
+  });
+
+  GoogleCloudContentwarehouseV1ProcessorInfo.fromJson(core.Map json_)
+      : this(
+          documentType: json_.containsKey('documentType')
+              ? json_['documentType'] as core.String
+              : null,
+          processorName: json_.containsKey('processorName')
+              ? json_['processorName'] as core.String
+              : null,
+          schemaName: json_.containsKey('schemaName')
+              ? json_['schemaName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (documentType != null) 'documentType': documentType!,
+        if (processorName != null) 'processorName': processorName!,
+        if (schemaName != null) 'schemaName': schemaName!,
       };
 }
 
@@ -4891,6 +5341,79 @@ class GoogleCloudContentwarehouseV1RuleSet {
         if (name != null) 'name': name!,
         if (rules != null) 'rules': rules!,
         if (source != null) 'source': source!,
+      };
+}
+
+/// Request message for DocumentService.RunPipeline.
+class GoogleCloudContentwarehouseV1RunPipelineRequest {
+  /// Export docuemnts from Document Warehouse to CDW for training purpose.
+  GoogleCloudContentwarehouseV1ExportToCdwPipeline? exportCdwPipeline;
+
+  /// Cloud Storage ingestion pipeline.
+  GoogleCloudContentwarehouseV1GcsIngestPipeline? gcsIngestPipeline;
+
+  /// Use DocAI processors to process documents in Cloud Storage and ingest them
+  /// to Document Warehouse.
+  GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline?
+      gcsIngestWithDocAiProcessorsPipeline;
+
+  /// Use a DocAI processor to process documents in Document Warehouse, and
+  /// re-ingest the updated results into Document Warehouse.
+  GoogleCloudContentwarehouseV1ProcessWithDocAiPipeline?
+      processWithDocAiPipeline;
+
+  /// The meta information collected about the end user, used to enforce access
+  /// control for the service.
+  GoogleCloudContentwarehouseV1RequestMetadata? requestMetadata;
+
+  GoogleCloudContentwarehouseV1RunPipelineRequest({
+    this.exportCdwPipeline,
+    this.gcsIngestPipeline,
+    this.gcsIngestWithDocAiProcessorsPipeline,
+    this.processWithDocAiPipeline,
+    this.requestMetadata,
+  });
+
+  GoogleCloudContentwarehouseV1RunPipelineRequest.fromJson(core.Map json_)
+      : this(
+          exportCdwPipeline: json_.containsKey('exportCdwPipeline')
+              ? GoogleCloudContentwarehouseV1ExportToCdwPipeline.fromJson(
+                  json_['exportCdwPipeline']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          gcsIngestPipeline: json_.containsKey('gcsIngestPipeline')
+              ? GoogleCloudContentwarehouseV1GcsIngestPipeline.fromJson(
+                  json_['gcsIngestPipeline']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          gcsIngestWithDocAiProcessorsPipeline: json_
+                  .containsKey('gcsIngestWithDocAiProcessorsPipeline')
+              ? GoogleCloudContentwarehouseV1GcsIngestWithDocAiProcessorsPipeline
+                  .fromJson(json_['gcsIngestWithDocAiProcessorsPipeline']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          processWithDocAiPipeline: json_
+                  .containsKey('processWithDocAiPipeline')
+              ? GoogleCloudContentwarehouseV1ProcessWithDocAiPipeline.fromJson(
+                  json_['processWithDocAiPipeline']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          requestMetadata: json_.containsKey('requestMetadata')
+              ? GoogleCloudContentwarehouseV1RequestMetadata.fromJson(
+                  json_['requestMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (exportCdwPipeline != null) 'exportCdwPipeline': exportCdwPipeline!,
+        if (gcsIngestPipeline != null) 'gcsIngestPipeline': gcsIngestPipeline!,
+        if (gcsIngestWithDocAiProcessorsPipeline != null)
+          'gcsIngestWithDocAiProcessorsPipeline':
+              gcsIngestWithDocAiProcessorsPipeline!,
+        if (processWithDocAiPipeline != null)
+          'processWithDocAiPipeline': processWithDocAiPipeline!,
+        if (requestMetadata != null) 'requestMetadata': requestMetadata!,
       };
 }
 

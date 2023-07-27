@@ -5058,7 +5058,8 @@ class Database {
 
   /// Whether drop protection is enabled for this database.
   ///
-  /// Defaults to false, if not set.
+  /// Defaults to false, if not set. For more details, please see how to
+  /// [prevent accidental database deletion](https://cloud.google.com/spanner/docs/prevent-database-deletion).
   core.bool? enableDropProtection;
 
   /// For databases that are using customer managed encryption, this field

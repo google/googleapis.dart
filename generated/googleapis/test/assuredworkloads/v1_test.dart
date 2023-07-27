@@ -266,6 +266,7 @@ api.GoogleCloudAssuredworkloadsV1Violation
     o.exceptionContexts = buildUnnamed2();
     o.name = 'foo';
     o.nonCompliantOrgPolicy = 'foo';
+    o.orgPolicyConstraint = 'foo';
     o.remediation = buildGoogleCloudAssuredworkloadsV1ViolationRemediation();
     o.resolveTime = 'foo';
     o.state = 'foo';
@@ -311,6 +312,10 @@ void checkGoogleCloudAssuredworkloadsV1Violation(
     );
     unittest.expect(
       o.nonCompliantOrgPolicy!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.orgPolicyConstraint!,
       unittest.equals('foo'),
     );
     checkGoogleCloudAssuredworkloadsV1ViolationRemediation(o.remediation!);
@@ -862,8 +867,9 @@ api.GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions
   final o = api.GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions();
   buildCounterGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions++;
   if (buildCounterGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions < 3) {
+    o.assuredWorkloadsMonitoring = true;
     o.dataLogsViewer = true;
-    o.remediateFolderViolations = true;
+    o.serviceAccessApprover = true;
   }
   buildCounterGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions--;
   return o;
@@ -873,8 +879,9 @@ void checkGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions(
     api.GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions o) {
   buildCounterGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions++;
   if (buildCounterGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions < 3) {
+    unittest.expect(o.assuredWorkloadsMonitoring!, unittest.isTrue);
     unittest.expect(o.dataLogsViewer!, unittest.isTrue);
-    unittest.expect(o.remediateFolderViolations!, unittest.isTrue);
+    unittest.expect(o.serviceAccessApprover!, unittest.isTrue);
   }
   buildCounterGoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions--;
 }

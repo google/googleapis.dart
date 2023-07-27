@@ -317,6 +317,28 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
+core.int buildCounterEncryptionConfiguration = 0;
+api.EncryptionConfiguration buildEncryptionConfiguration() {
+  final o = api.EncryptionConfiguration();
+  buildCounterEncryptionConfiguration++;
+  if (buildCounterEncryptionConfiguration < 3) {
+    o.kmsKeyName = 'foo';
+  }
+  buildCounterEncryptionConfiguration--;
+  return o;
+}
+
+void checkEncryptionConfiguration(api.EncryptionConfiguration o) {
+  buildCounterEncryptionConfiguration++;
+  if (buildCounterEncryptionConfiguration < 3) {
+    unittest.expect(
+      o.kmsKeyName!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEncryptionConfiguration--;
+}
+
 core.List<core.String> buildUnnamed4() => [
       'foo',
       'foo',
@@ -936,6 +958,7 @@ api.TransferConfig buildTransferConfig() {
     o.disabled = true;
     o.displayName = 'foo';
     o.emailPreferences = buildEmailPreferences();
+    o.encryptionConfiguration = buildEncryptionConfiguration();
     o.name = 'foo';
     o.nextRunTime = 'foo';
     o.notificationPubsubTopic = 'foo';
@@ -976,6 +999,7 @@ void checkTransferConfig(api.TransferConfig o) {
       unittest.equals('foo'),
     );
     checkEmailPreferences(o.emailPreferences!);
+    checkEncryptionConfiguration(o.encryptionConfiguration!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1353,6 +1377,16 @@ void main() {
       final od =
           api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od);
+    });
+  });
+
+  unittest.group('obj-schema-EncryptionConfiguration', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEncryptionConfiguration();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EncryptionConfiguration.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEncryptionConfiguration(od);
     });
   });
 
