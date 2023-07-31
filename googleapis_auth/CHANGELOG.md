@@ -1,3 +1,7 @@
+## 1.4.2-wip
+
+- Require Dart 3.0 or later.
+
 ## 1.4.1
 
 - Require Dart 2.19 or later.

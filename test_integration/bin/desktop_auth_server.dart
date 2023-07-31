@@ -129,7 +129,7 @@ class _Server {
   }
 }
 
-class CacheEntry extends Comparable<CacheEntry> {
+class CacheEntry implements Comparable<CacheEntry> {
   final DateTime created;
   final String codeVerifier;
   final String state;

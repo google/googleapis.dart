@@ -1,6 +1,7 @@
 ## 11.4.0-wip
 
 - Deprecated APIs are now annotated with `@Deprecated`.
+- Require Dart 3.0
 
 ## 11.3.0
 

@@ -109,7 +109,6 @@ void main(List<String> arguments) {
         commandOptions['output-dir'] as String,
         pubspec,
       ));
-      break;
     case 'files':
       final updatePubspec = (commandOptions['update-pubspec'] as String)
           .toLowerCase()
@@ -121,7 +120,6 @@ void main(List<String> arguments) {
         updatePubspec: updatePubspec == 'true',
         useCorePrefixes: commandOptions['core-prefixes'] as bool?,
       ));
-      break;
   }
 }
 

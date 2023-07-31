@@ -27,5 +27,6 @@ linter:
     - prefer_final_locals
     - prefer_relative_imports
     - test_types_in_equals
+    - unnecessary_breaks
     - use_string_buffers
     - use_super_parameters
