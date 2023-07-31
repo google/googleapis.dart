@@ -1,10 +1,10 @@
 name: _discoveryapis_commons
-version: 1.0.6
+version: 1.0.7-wip
 description: Library for use by client APIs generated from Discovery Documents.
 repository: https://github.com/google/googleapis.dart/tree/master/discoveryapis_commons
 
 environment:
-  sdk: '>=2.19.0 <3.0.0'
+  sdk: ^3.0.0
 
 dependencies:
   http: '>=0.13.5 <2.0.0'
