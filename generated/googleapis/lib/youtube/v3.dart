@@ -14574,12 +14574,6 @@ class PlaylistSnippet {
 }
 
 class PlaylistStatus {
-  ///
-  /// Possible string values are:
-  /// - "enabled"
-  /// - "disabled"
-  core.String? podcastStatus;
-
   /// The playlist's privacy status.
   /// Possible string values are:
   /// - "public"
@@ -14588,22 +14582,17 @@ class PlaylistStatus {
   core.String? privacyStatus;
 
   PlaylistStatus({
-    this.podcastStatus,
     this.privacyStatus,
   });
 
   PlaylistStatus.fromJson(core.Map json_)
       : this(
-          podcastStatus: json_.containsKey('podcastStatus')
-              ? json_['podcastStatus'] as core.String
-              : null,
           privacyStatus: json_.containsKey('privacyStatus')
               ? json_['privacyStatus'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (podcastStatus != null) 'podcastStatus': podcastStatus!,
         if (privacyStatus != null) 'privacyStatus': privacyStatus!,
       };
 }

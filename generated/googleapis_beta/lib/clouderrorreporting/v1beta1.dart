@@ -125,12 +125,7 @@ class ProjectsEventsResource {
   /// Example: `projects/my-project-123`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [groupId] - Required. The group for which events shall be returned. The
-  /// `group_id` is a unique identifier for a particular error group. The
-  /// identifier is derived from key parts of the error-log content and is
-  /// treated as Service Data. For information about how Service Data is
-  /// handled, see
-  /// [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice).
+  /// [groupId] - Required. The group for which events shall be returned.
   ///
   /// [pageSize] - Optional. The maximum number of results to return per
   /// response.
@@ -296,12 +291,7 @@ class ProjectsGroupStatsResource {
   /// [alignmentTime] - Optional. Time where the timed counts shall be aligned
   /// if rounded alignment is chosen. Default is 00:00 UTC.
   ///
-  /// [groupId] - Optional. List all ErrorGroupStats with these IDs. The
-  /// `group_id` is a unique identifier for a particular error group. The
-  /// identifier is derived from key parts of the error-log content and is
-  /// treated as Service Data. For information about how Service Data is
-  /// handled, see
-  /// [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice).
+  /// [groupId] - Optional. List all ErrorGroupStats with these IDs.
   ///
   /// [order] - Optional. The sort order in which the results are returned.
   /// Default is `COUNT_DESC`.
@@ -416,14 +406,9 @@ class ProjectsGroupsResource {
   /// Request parameters:
   ///
   /// [groupName] - Required. The group resource name. Written as
-  /// `projects/{projectID}/groups/{group_id}`. Call groupStats.list to return a
-  /// list of groups belonging to this project. Example:
-  /// `projects/my-project-123/groups/my-group` In the group resource name, the
-  /// `group_id` is a unique identifier for a particular error group. The
-  /// identifier is derived from key parts of the error-log content and is
-  /// treated as Service Data. For information about how Service Data is
-  /// handled, see
-  /// [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice).
+  /// `projects/{projectID}/groups/{group_name}`. Call groupStats.list to return
+  /// a list of groups belonging to this project. Example:
+  /// `projects/my-project-123/groups/my-group`
   /// Value must have pattern `^projects/\[^/\]+/groups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -463,14 +448,8 @@ class ProjectsGroupsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The group resource name. Written as
-  /// `projects/{projectID}/groups/{group_id}`. Example:
-  /// `projects/my-project-123/groups/my-group` In the group resource name, the
-  /// `group_id` is a unique identifier for a particular error group. The
-  /// identifier is derived from key parts of the error-log content and is
-  /// treated as Service Data. For information about how Service Data is
-  /// handled, see
-  /// [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice).
+  /// [name] - The group resource name. Example:
+  /// projects/my-project-123/groups/CNSgkpnppqKCUw
   /// Value must have pattern `^projects/\[^/\]+/groups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -633,13 +612,7 @@ class ErrorGroup {
 
   /// The group resource name.
   ///
-  /// Written as `projects/{projectID}/groups/{group_id}`. Example:
-  /// `projects/my-project-123/groups/my-group` In the group resource name, the
-  /// `group_id` is a unique identifier for a particular error group. The
-  /// identifier is derived from key parts of the error-log content and is
-  /// treated as Service Data. For information about how Service Data is
-  /// handled, see
-  /// [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice).
+  /// Example: projects/my-project-123/groups/CNSgkpnppqKCUw
   core.String? name;
 
   /// Error group's resolution status.

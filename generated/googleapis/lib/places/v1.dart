@@ -16,7 +16,7 @@
 /// For more information, see
 /// <https://mapsplatform.google.com/maps-products/#places-section>
 ///
-/// Create an instance of [PlacesAPI__New_Api] to access these resources:
+/// Create an instance of [PlacesApi] to access these resources:
 ///
 /// - [TextResource]
 /// - [PlacesResource]
@@ -35,7 +35,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-class PlacesAPI__New_Api {
+class PlacesApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
   static const cloudPlatformScope =
@@ -55,7 +55,7 @@ class PlacesAPI__New_Api {
   TextResource get Text => TextResource(_requester);
   PlacesResource get places => PlacesResource(_requester);
 
-  PlacesAPI__New_Api(http.Client client,
+  PlacesApi(http.Client client,
       {core.String rootUrl = 'https://places.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
