@@ -998,6 +998,12 @@ class BuildConfig {
   /// Output only.
   SourceProvenance? sourceProvenance;
 
+  /// An identifier for Firebase function sources.
+  ///
+  /// Disclaimer: This field is only supported for Firebase function
+  /// deployments.
+  core.String? sourceToken;
+
   /// Name of the Cloud Build Custom Worker Pool that should be used to build
   /// the function.
   ///
@@ -1021,6 +1027,7 @@ class BuildConfig {
     this.runtime,
     this.source,
     this.sourceProvenance,
+    this.sourceToken,
     this.workerPool,
   });
 
@@ -1058,6 +1065,9 @@ class BuildConfig {
               ? SourceProvenance.fromJson(json_['sourceProvenance']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          sourceToken: json_.containsKey('sourceToken')
+              ? json_['sourceToken'] as core.String
+              : null,
           workerPool: json_.containsKey('workerPool')
               ? json_['workerPool'] as core.String
               : null,
@@ -1073,6 +1083,7 @@ class BuildConfig {
         if (runtime != null) 'runtime': runtime!,
         if (source != null) 'source': source!,
         if (sourceProvenance != null) 'sourceProvenance': sourceProvenance!,
+        if (sourceToken != null) 'sourceToken': sourceToken!,
         if (workerPool != null) 'workerPool': workerPool!,
       };
 }

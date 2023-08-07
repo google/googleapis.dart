@@ -1221,6 +1221,8 @@ api.GoogleCloudDataplexV1DataProfileResult
   final o = api.GoogleCloudDataplexV1DataProfileResult();
   buildCounterGoogleCloudDataplexV1DataProfileResult++;
   if (buildCounterGoogleCloudDataplexV1DataProfileResult < 3) {
+    o.postScanActionsResult =
+        buildGoogleCloudDataplexV1DataProfileResultPostScanActionsResult();
     o.profile = buildGoogleCloudDataplexV1DataProfileResultProfile();
     o.rowCount = 'foo';
     o.scannedData = buildGoogleCloudDataplexV1ScannedData();
@@ -1233,6 +1235,8 @@ void checkGoogleCloudDataplexV1DataProfileResult(
     api.GoogleCloudDataplexV1DataProfileResult o) {
   buildCounterGoogleCloudDataplexV1DataProfileResult++;
   if (buildCounterGoogleCloudDataplexV1DataProfileResult < 3) {
+    checkGoogleCloudDataplexV1DataProfileResultPostScanActionsResult(
+        o.postScanActionsResult!);
     checkGoogleCloudDataplexV1DataProfileResultProfile(o.profile!);
     unittest.expect(
       o.rowCount!,
@@ -1241,6 +1245,67 @@ void checkGoogleCloudDataplexV1DataProfileResult(
     checkGoogleCloudDataplexV1ScannedData(o.scannedData!);
   }
   buildCounterGoogleCloudDataplexV1DataProfileResult--;
+}
+
+core.int
+    buildCounterGoogleCloudDataplexV1DataProfileResultPostScanActionsResult = 0;
+api.GoogleCloudDataplexV1DataProfileResultPostScanActionsResult
+    buildGoogleCloudDataplexV1DataProfileResultPostScanActionsResult() {
+  final o = api.GoogleCloudDataplexV1DataProfileResultPostScanActionsResult();
+  buildCounterGoogleCloudDataplexV1DataProfileResultPostScanActionsResult++;
+  if (buildCounterGoogleCloudDataplexV1DataProfileResultPostScanActionsResult <
+      3) {
+    o.bigqueryExportResult =
+        buildGoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult();
+  }
+  buildCounterGoogleCloudDataplexV1DataProfileResultPostScanActionsResult--;
+  return o;
+}
+
+void checkGoogleCloudDataplexV1DataProfileResultPostScanActionsResult(
+    api.GoogleCloudDataplexV1DataProfileResultPostScanActionsResult o) {
+  buildCounterGoogleCloudDataplexV1DataProfileResultPostScanActionsResult++;
+  if (buildCounterGoogleCloudDataplexV1DataProfileResultPostScanActionsResult <
+      3) {
+    checkGoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult(
+        o.bigqueryExportResult!);
+  }
+  buildCounterGoogleCloudDataplexV1DataProfileResultPostScanActionsResult--;
+}
+
+core.int
+    buildCounterGoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult =
+    0;
+api.GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult
+    buildGoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult() {
+  final o = api
+      .GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult();
+  buildCounterGoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult++;
+  if (buildCounterGoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult <
+      3) {
+    o.message = 'foo';
+    o.state = 'foo';
+  }
+  buildCounterGoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult--;
+  return o;
+}
+
+void checkGoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult(
+    api.GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult
+        o) {
+  buildCounterGoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult++;
+  if (buildCounterGoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult <
+      3) {
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult--;
 }
 
 core.List<api.GoogleCloudDataplexV1DataProfileResultProfileField>
@@ -1598,6 +1663,8 @@ api.GoogleCloudDataplexV1DataProfileSpec
   if (buildCounterGoogleCloudDataplexV1DataProfileSpec < 3) {
     o.excludeFields = buildGoogleCloudDataplexV1DataProfileSpecSelectedFields();
     o.includeFields = buildGoogleCloudDataplexV1DataProfileSpecSelectedFields();
+    o.postScanActions =
+        buildGoogleCloudDataplexV1DataProfileSpecPostScanActions();
     o.rowFilter = 'foo';
     o.samplingPercent = 42.0;
   }
@@ -1611,6 +1678,8 @@ void checkGoogleCloudDataplexV1DataProfileSpec(
   if (buildCounterGoogleCloudDataplexV1DataProfileSpec < 3) {
     checkGoogleCloudDataplexV1DataProfileSpecSelectedFields(o.excludeFields!);
     checkGoogleCloudDataplexV1DataProfileSpecSelectedFields(o.includeFields!);
+    checkGoogleCloudDataplexV1DataProfileSpecPostScanActions(
+        o.postScanActions!);
     unittest.expect(
       o.rowFilter!,
       unittest.equals('foo'),
@@ -1621,6 +1690,58 @@ void checkGoogleCloudDataplexV1DataProfileSpec(
     );
   }
   buildCounterGoogleCloudDataplexV1DataProfileSpec--;
+}
+
+core.int buildCounterGoogleCloudDataplexV1DataProfileSpecPostScanActions = 0;
+api.GoogleCloudDataplexV1DataProfileSpecPostScanActions
+    buildGoogleCloudDataplexV1DataProfileSpecPostScanActions() {
+  final o = api.GoogleCloudDataplexV1DataProfileSpecPostScanActions();
+  buildCounterGoogleCloudDataplexV1DataProfileSpecPostScanActions++;
+  if (buildCounterGoogleCloudDataplexV1DataProfileSpecPostScanActions < 3) {
+    o.bigqueryExport =
+        buildGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport();
+  }
+  buildCounterGoogleCloudDataplexV1DataProfileSpecPostScanActions--;
+  return o;
+}
+
+void checkGoogleCloudDataplexV1DataProfileSpecPostScanActions(
+    api.GoogleCloudDataplexV1DataProfileSpecPostScanActions o) {
+  buildCounterGoogleCloudDataplexV1DataProfileSpecPostScanActions++;
+  if (buildCounterGoogleCloudDataplexV1DataProfileSpecPostScanActions < 3) {
+    checkGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport(
+        o.bigqueryExport!);
+  }
+  buildCounterGoogleCloudDataplexV1DataProfileSpecPostScanActions--;
+}
+
+core.int
+    buildCounterGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport =
+    0;
+api.GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport
+    buildGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport() {
+  final o =
+      api.GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport();
+  buildCounterGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport++;
+  if (buildCounterGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport <
+      3) {
+    o.resultsTable = 'foo';
+  }
+  buildCounterGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport--;
+  return o;
+}
+
+void checkGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport(
+    api.GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport o) {
+  buildCounterGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport++;
+  if (buildCounterGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport <
+      3) {
+    unittest.expect(
+      o.resultsTable!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport--;
 }
 
 core.List<core.String> buildUnnamed17() => [
@@ -1715,6 +1836,8 @@ api.GoogleCloudDataplexV1DataQualityResult
   if (buildCounterGoogleCloudDataplexV1DataQualityResult < 3) {
     o.dimensions = buildUnnamed18();
     o.passed = true;
+    o.postScanActionsResult =
+        buildGoogleCloudDataplexV1DataQualityResultPostScanActionsResult();
     o.rowCount = 'foo';
     o.rules = buildUnnamed19();
     o.scannedData = buildGoogleCloudDataplexV1ScannedData();
@@ -1729,6 +1852,8 @@ void checkGoogleCloudDataplexV1DataQualityResult(
   if (buildCounterGoogleCloudDataplexV1DataQualityResult < 3) {
     checkUnnamed18(o.dimensions!);
     unittest.expect(o.passed!, unittest.isTrue);
+    checkGoogleCloudDataplexV1DataQualityResultPostScanActionsResult(
+        o.postScanActionsResult!);
     unittest.expect(
       o.rowCount!,
       unittest.equals('foo'),
@@ -1737,6 +1862,67 @@ void checkGoogleCloudDataplexV1DataQualityResult(
     checkGoogleCloudDataplexV1ScannedData(o.scannedData!);
   }
   buildCounterGoogleCloudDataplexV1DataQualityResult--;
+}
+
+core.int
+    buildCounterGoogleCloudDataplexV1DataQualityResultPostScanActionsResult = 0;
+api.GoogleCloudDataplexV1DataQualityResultPostScanActionsResult
+    buildGoogleCloudDataplexV1DataQualityResultPostScanActionsResult() {
+  final o = api.GoogleCloudDataplexV1DataQualityResultPostScanActionsResult();
+  buildCounterGoogleCloudDataplexV1DataQualityResultPostScanActionsResult++;
+  if (buildCounterGoogleCloudDataplexV1DataQualityResultPostScanActionsResult <
+      3) {
+    o.bigqueryExportResult =
+        buildGoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult();
+  }
+  buildCounterGoogleCloudDataplexV1DataQualityResultPostScanActionsResult--;
+  return o;
+}
+
+void checkGoogleCloudDataplexV1DataQualityResultPostScanActionsResult(
+    api.GoogleCloudDataplexV1DataQualityResultPostScanActionsResult o) {
+  buildCounterGoogleCloudDataplexV1DataQualityResultPostScanActionsResult++;
+  if (buildCounterGoogleCloudDataplexV1DataQualityResultPostScanActionsResult <
+      3) {
+    checkGoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult(
+        o.bigqueryExportResult!);
+  }
+  buildCounterGoogleCloudDataplexV1DataQualityResultPostScanActionsResult--;
+}
+
+core.int
+    buildCounterGoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult =
+    0;
+api.GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult
+    buildGoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult() {
+  final o = api
+      .GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult();
+  buildCounterGoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult++;
+  if (buildCounterGoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult <
+      3) {
+    o.message = 'foo';
+    o.state = 'foo';
+  }
+  buildCounterGoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult--;
+  return o;
+}
+
+void checkGoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult(
+    api.GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult
+        o) {
+  buildCounterGoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult++;
+  if (buildCounterGoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult <
+      3) {
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult--;
 }
 
 core.int buildCounterGoogleCloudDataplexV1DataQualityRule = 0;
@@ -2110,6 +2296,8 @@ api.GoogleCloudDataplexV1DataQualitySpec
   final o = api.GoogleCloudDataplexV1DataQualitySpec();
   buildCounterGoogleCloudDataplexV1DataQualitySpec++;
   if (buildCounterGoogleCloudDataplexV1DataQualitySpec < 3) {
+    o.postScanActions =
+        buildGoogleCloudDataplexV1DataQualitySpecPostScanActions();
     o.rowFilter = 'foo';
     o.rules = buildUnnamed21();
     o.samplingPercent = 42.0;
@@ -2122,6 +2310,8 @@ void checkGoogleCloudDataplexV1DataQualitySpec(
     api.GoogleCloudDataplexV1DataQualitySpec o) {
   buildCounterGoogleCloudDataplexV1DataQualitySpec++;
   if (buildCounterGoogleCloudDataplexV1DataQualitySpec < 3) {
+    checkGoogleCloudDataplexV1DataQualitySpecPostScanActions(
+        o.postScanActions!);
     unittest.expect(
       o.rowFilter!,
       unittest.equals('foo'),
@@ -2133,6 +2323,58 @@ void checkGoogleCloudDataplexV1DataQualitySpec(
     );
   }
   buildCounterGoogleCloudDataplexV1DataQualitySpec--;
+}
+
+core.int buildCounterGoogleCloudDataplexV1DataQualitySpecPostScanActions = 0;
+api.GoogleCloudDataplexV1DataQualitySpecPostScanActions
+    buildGoogleCloudDataplexV1DataQualitySpecPostScanActions() {
+  final o = api.GoogleCloudDataplexV1DataQualitySpecPostScanActions();
+  buildCounterGoogleCloudDataplexV1DataQualitySpecPostScanActions++;
+  if (buildCounterGoogleCloudDataplexV1DataQualitySpecPostScanActions < 3) {
+    o.bigqueryExport =
+        buildGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport();
+  }
+  buildCounterGoogleCloudDataplexV1DataQualitySpecPostScanActions--;
+  return o;
+}
+
+void checkGoogleCloudDataplexV1DataQualitySpecPostScanActions(
+    api.GoogleCloudDataplexV1DataQualitySpecPostScanActions o) {
+  buildCounterGoogleCloudDataplexV1DataQualitySpecPostScanActions++;
+  if (buildCounterGoogleCloudDataplexV1DataQualitySpecPostScanActions < 3) {
+    checkGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport(
+        o.bigqueryExport!);
+  }
+  buildCounterGoogleCloudDataplexV1DataQualitySpecPostScanActions--;
+}
+
+core.int
+    buildCounterGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport =
+    0;
+api.GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport
+    buildGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport() {
+  final o =
+      api.GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport();
+  buildCounterGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport++;
+  if (buildCounterGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport <
+      3) {
+    o.resultsTable = 'foo';
+  }
+  buildCounterGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport--;
+  return o;
+}
+
+void checkGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport(
+    api.GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport o) {
+  buildCounterGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport++;
+  if (buildCounterGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport <
+      3) {
+    unittest.expect(
+      o.resultsTable!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport--;
 }
 
 core.Map<core.String, core.String> buildUnnamed22() => {
@@ -2392,6 +2634,7 @@ api.GoogleCloudDataplexV1DataTaxonomy buildGoogleCloudDataplexV1DataTaxonomy() {
   buildCounterGoogleCloudDataplexV1DataTaxonomy++;
   if (buildCounterGoogleCloudDataplexV1DataTaxonomy < 3) {
     o.attributeCount = 42;
+    o.classCount = 42;
     o.createTime = 'foo';
     o.description = 'foo';
     o.displayName = 'foo';
@@ -2411,6 +2654,10 @@ void checkGoogleCloudDataplexV1DataTaxonomy(
   if (buildCounterGoogleCloudDataplexV1DataTaxonomy < 3) {
     unittest.expect(
       o.attributeCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.classCount!,
       unittest.equals(42),
     );
     unittest.expect(
@@ -6320,6 +6567,34 @@ void main() {
     });
   });
 
+  unittest.group(
+      'obj-schema-GoogleCloudDataplexV1DataProfileResultPostScanActionsResult',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudDataplexV1DataProfileResultPostScanActionsResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDataplexV1DataProfileResultPostScanActionsResult
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDataplexV1DataProfileResultPostScanActionsResult(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult(
+          od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudDataplexV1DataProfileResultProfile',
       () {
     unittest.test('to-json--from-json', () async {
@@ -6428,6 +6703,33 @@ void main() {
   });
 
   unittest.group(
+      'obj-schema-GoogleCloudDataplexV1DataProfileSpecPostScanActions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDataplexV1DataProfileSpecPostScanActions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDataplexV1DataProfileSpecPostScanActions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDataplexV1DataProfileSpecPostScanActions(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport(
+          od);
+    });
+  });
+
+  unittest.group(
       'obj-schema-GoogleCloudDataplexV1DataProfileSpecSelectedFields', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudDataplexV1DataProfileSpecSelectedFields();
@@ -6457,6 +6759,34 @@ void main() {
       final od = api.GoogleCloudDataplexV1DataQualityResult.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDataplexV1DataQualityResult(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudDataplexV1DataQualityResultPostScanActionsResult',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudDataplexV1DataQualityResultPostScanActionsResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDataplexV1DataQualityResultPostScanActionsResult
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDataplexV1DataQualityResultPostScanActionsResult(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult(
+          od);
     });
   });
 
@@ -6589,6 +6919,33 @@ void main() {
       final od = api.GoogleCloudDataplexV1DataQualitySpec.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDataplexV1DataQualitySpec(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudDataplexV1DataQualitySpecPostScanActions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDataplexV1DataQualitySpecPostScanActions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDataplexV1DataQualitySpecPostScanActions.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDataplexV1DataQualitySpecPostScanActions(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport(
+          od);
     });
   });
 

@@ -2019,8 +2019,8 @@ class PropertiesDataStreamsMeasurementProtocolSecretsResource {
   /// Value must have pattern
   /// `^properties/\[^/\]+/dataStreams/\[^/\]+/measurementProtocolSecrets/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to be updated. Omitted fields will not
-  /// be updated.
+  /// [updateMask] - Required. The list of fields to be updated. Omitted fields
+  /// will not be updated.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

@@ -1804,9 +1804,9 @@ class BillingAccountsSinksResource {
 
   /// Creates a sink that exports specified log entries to a destination.
   ///
-  /// The export of newly-ingested log entries begins immediately, unless the
-  /// sink's writer_identity is not permitted to write to the destination. A
-  /// sink can export log entries only from the resource owning the sink.
+  /// The export begins upon ingress, unless the sink's writer_identity is not
+  /// permitted to write to the destination. A sink can export log entries only
+  /// from the resource owning the sink.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2257,7 +2257,7 @@ class EntriesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Streaming read of log entries as they are ingested.
+  /// Streaming read of log entries as they are received.
   ///
   /// Until the stream is terminated, it will continue reading logs.
   ///
@@ -4310,9 +4310,9 @@ class FoldersSinksResource {
 
   /// Creates a sink that exports specified log entries to a destination.
   ///
-  /// The export of newly-ingested log entries begins immediately, unless the
-  /// sink's writer_identity is not permitted to write to the destination. A
-  /// sink can export log entries only from the resource owning the sink.
+  /// The export begins upon ingress, unless the sink's writer_identity is not
+  /// permitted to write to the destination. A sink can export log entries only
+  /// from the resource owning the sink.
   ///
   /// [request] - The metadata request object.
   ///
@@ -7751,9 +7751,9 @@ class OrganizationsSinksResource {
 
   /// Creates a sink that exports specified log entries to a destination.
   ///
-  /// The export of newly-ingested log entries begins immediately, unless the
-  /// sink's writer_identity is not permitted to write to the destination. A
-  /// sink can export log entries only from the resource owning the sink.
+  /// The export begins upon ingress, unless the sink's writer_identity is not
+  /// permitted to write to the destination. A sink can export log entries only
+  /// from the resource owning the sink.
   ///
   /// [request] - The metadata request object.
   ///
@@ -10001,9 +10001,9 @@ class ProjectsSinksResource {
 
   /// Creates a sink that exports specified log entries to a destination.
   ///
-  /// The export of newly-ingested log entries begins immediately, unless the
-  /// sink's writer_identity is not permitted to write to the destination. A
-  /// sink can export log entries only from the resource owning the sink.
+  /// The export begins upon ingress, unless the sink's writer_identity is not
+  /// permitted to write to the destination. A sink can export log entries only
+  /// from the resource owning the sink.
   ///
   /// [request] - The metadata request object.
   ///
@@ -10378,9 +10378,9 @@ class SinksResource {
 
   /// Creates a sink that exports specified log entries to a destination.
   ///
-  /// The export of newly-ingested log entries begins immediately, unless the
-  /// sink's writer_identity is not permitted to write to the destination. A
-  /// sink can export log entries only from the resource owning the sink.
+  /// The export begins upon ingress, unless the sink's writer_identity is not
+  /// permitted to write to the destination. A sink can export log entries only
+  /// from the resource owning the sink.
   ///
   /// [request] - The metadata request object.
   ///
@@ -10947,8 +10947,8 @@ class BigQueryOptions {
   core.bool? usePartitionedTables;
 
   /// True if new timestamp column based partitioning is in use, false if legacy
-  /// ingestion-time partitioning is in use.All new sinks will have this field
-  /// set true and will use timestamp column based partitioning.
+  /// ingress-time partitioning is in use.All new sinks will have this field set
+  /// true and will use timestamp column based partitioning.
   ///
   /// If use_partitioned_tables is false, this value has no meaning and will be
   /// false. Legacy sinks using partitioned tables will have this field set to
@@ -12240,8 +12240,8 @@ class LogEntry {
   /// characters: upper and lower case alphanumeric characters, forward-slash,
   /// underscore, hyphen, and period.For backward compatibility, if log_name
   /// begins with a forward-slash, such as /projects/..., then the log entry is
-  /// ingested as usual, but the forward-slash is removed. Listing the log entry
-  /// will not show the leading slash and filtering for a log name with a
+  /// processed as usual, but the forward-slash is removed. Listing the log
+  /// entry will not show the leading slash and filtering for a log name with a
   /// leading slash will never return any results.
   ///
   /// Required.
@@ -12355,7 +12355,7 @@ class LogEntry {
   /// don't exceed the logs retention period
   /// (https://cloud.google.com/logging/quotas#logs_retention_periods) in the
   /// past, and that don't exceed 24 hours in the future. Log entries outside
-  /// those time boundaries aren't ingested by Logging.
+  /// those time boundaries are rejected by Logging.
   ///
   /// Optional.
   core.String? timestamp;
@@ -12945,9 +12945,11 @@ class LogSink {
   /// The export destination: "storage.googleapis.com/\[GCS_BUCKET\]"
   /// "bigquery.googleapis.com/projects/\[PROJECT_ID\]/datasets/\[DATASET\]"
   /// "pubsub.googleapis.com/projects/\[PROJECT_ID\]/topics/\[TOPIC_ID\]"
-  /// "logging.googleapis.com/projects/\[PROJECT_ID\]" The sink's
-  /// writer_identity, set when the sink is created, must have permission to
-  /// write to the destination or else the log entries are not exported.
+  /// "logging.googleapis.com/projects/\[PROJECT_ID\]"
+  /// "logging.googleapis.com/projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// The sink's writer_identity, set when the sink is created, must have
+  /// permission to write to the destination or else the log entries are not
+  /// exported.
   ///
   /// For more information, see Exporting Logs with Sinks
   /// (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
@@ -13734,9 +13736,9 @@ class Settings {
   /// If set to true, the _Default sink in newly created projects and folders
   /// will created in a disabled state.
   ///
-  /// This can be used to automatically disable log ingestion if there is
-  /// already an aggregated sink configured in the hierarchy. The _Default sink
-  /// can be re-enabled manually if needed.
+  /// This can be used to automatically disable log storage if there is already
+  /// an aggregated sink configured in the hierarchy. The _Default sink can be
+  /// re-enabled manually if needed.
   ///
   /// Optional.
   core.bool? disableDefaultSink;

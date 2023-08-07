@@ -27,6 +27,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsDataExchangesResource]
 ///       - [ProjectsLocationsDataExchangesListingsResource]
+///     - [ProjectsLocationsSubscriptionsResource]
 library analyticshub_v1;
 
 import 'dart:async' as async;
@@ -154,6 +155,8 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsDataExchangesResource get dataExchanges =>
       ProjectsLocationsDataExchangesResource(_requester);
+  ProjectsLocationsSubscriptionsResource get subscriptions =>
+      ProjectsLocationsSubscriptionsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 }
@@ -383,6 +386,62 @@ class ProjectsLocationsDataExchangesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Lists all subscriptions on a given Data Exchange or Listing.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - Required. Resource name of the requested target. This
+  /// resource may be either a Listing or a DataExchange. e.g.
+  /// projects/123/locations/US/dataExchanges/456 OR e.g.
+  /// projects/123/locations/US/dataExchanges/456/listings/789
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataExchanges/\[^/\]+$`.
+  ///
+  /// [includeDeletedSubscriptions] - If selected, includes deleted
+  /// subscriptions in the response (up to 63 days after deletion).
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response
+  /// page.
+  ///
+  /// [pageToken] - Page token, returned by a previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSharedResourceSubscriptionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSharedResourceSubscriptionsResponse> listSubscriptions(
+    core.String resource, {
+    core.bool? includeDeletedSubscriptions,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (includeDeletedSubscriptions != null)
+        'includeDeletedSubscriptions': ['${includeDeletedSubscriptions}'],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':listSubscriptions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSharedResourceSubscriptionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates an existing data exchange.
   ///
   /// [request] - The metadata request object.
@@ -474,6 +533,51 @@ class ProjectsLocationsDataExchangesResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a Subscription to a Data Exchange.
+  ///
+  /// This is a long-running operation as it will create one or more linked
+  /// datasets.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the Data Exchange. e.g.
+  /// `projects/publisherproject/locations/US/dataExchanges/123`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataExchanges/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> subscribe(
+    SubscribeDataExchangeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':subscribe';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the permissions that a caller has.
@@ -744,6 +848,62 @@ class ProjectsLocationsDataExchangesListingsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Lists all subscriptions on a given Data Exchange or Listing.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - Required. Resource name of the requested target. This
+  /// resource may be either a Listing or a DataExchange. e.g.
+  /// projects/123/locations/US/dataExchanges/456 OR e.g.
+  /// projects/123/locations/US/dataExchanges/456/listings/789
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataExchanges/\[^/\]+/listings/\[^/\]+$`.
+  ///
+  /// [includeDeletedSubscriptions] - If selected, includes deleted
+  /// subscriptions in the response (up to 63 days after deletion).
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response
+  /// page.
+  ///
+  /// [pageToken] - Page token, returned by a previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSharedResourceSubscriptionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSharedResourceSubscriptionsResponse> listSubscriptions(
+    core.String resource, {
+    core.bool? includeDeletedSubscriptions,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (includeDeletedSubscriptions != null)
+        'includeDeletedSubscriptions': ['${includeDeletedSubscriptions}'],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':listSubscriptions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSharedResourceSubscriptionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates an existing listing.
   ///
   /// [request] - The metadata request object.
@@ -926,6 +1086,227 @@ class ProjectsLocationsDataExchangesListingsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsSubscriptionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSubscriptionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes a subscription.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the subscription to delete. e.g.
+  /// projects/123/locations/US/subscriptions/456
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/subscriptions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the details of a Subscription.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the subscription. e.g.
+  /// projects/123/locations/US/subscriptions/456
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/subscriptions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Subscription].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Subscription> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Subscription.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all subscriptions in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource path of the subscription. e.g.
+  /// projects/myproject/locations/US
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - The filter expression may be used to filter by Data Exchange or
+  /// Listing.
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response
+  /// page.
+  ///
+  /// [pageToken] - Page token, returned by a previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSubscriptionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSubscriptionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/subscriptions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSubscriptionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Refreshes a Subscription to a Data Exchange.
+  ///
+  /// A Data Exchange can become stale when a publisher adds or removes data.
+  /// This is a long-running operation as it may create many linked datasets.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the Subscription to refresh. e.g.
+  /// `projects/subscriberproject/locations/US/subscriptions/123`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/subscriptions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> refresh(
+    RefreshSubscriptionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':refresh';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Revokes a given subscription.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the subscription to revoke. e.g.
+  /// projects/123/locations/US/subscriptions/456
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/subscriptions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RevokeSubscriptionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RevokeSubscriptionResponse> revoke(
+    RevokeSubscriptionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':revoke';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RevokeSubscriptionResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1166,6 +1547,11 @@ class DataExchange {
   /// Optional.
   core.String? primaryContact;
 
+  /// Configurable data sharing environment option for a data exchange.
+  ///
+  /// Required.
+  SharingEnvironmentConfig? sharingEnvironmentConfig;
+
   DataExchange({
     this.description,
     this.displayName,
@@ -1174,6 +1560,7 @@ class DataExchange {
     this.listingCount,
     this.name,
     this.primaryContact,
+    this.sharingEnvironmentConfig,
   });
 
   DataExchange.fromJson(core.Map json_)
@@ -1195,6 +1582,12 @@ class DataExchange {
           primaryContact: json_.containsKey('primaryContact')
               ? json_['primaryContact'] as core.String
               : null,
+          sharingEnvironmentConfig:
+              json_.containsKey('sharingEnvironmentConfig')
+                  ? SharingEnvironmentConfig.fromJson(
+                      json_['sharingEnvironmentConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1205,6 +1598,8 @@ class DataExchange {
         if (listingCount != null) 'listingCount': listingCount!,
         if (name != null) 'name': name!,
         if (primaryContact != null) 'primaryContact': primaryContact!,
+        if (sharingEnvironmentConfig != null)
+          'sharingEnvironmentConfig': sharingEnvironmentConfig!,
       };
 }
 
@@ -1240,6 +1635,12 @@ class DataProvider {
         if (primaryContact != null) 'primaryContact': primaryContact!,
       };
 }
+
+/// Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+typedef DcrExchangeConfig = $Empty;
+
+/// Default Analytics Hub data exchange, used for secured data sharing.
+typedef DefaultExchangeConfig = $Empty;
 
 /// Defines the destination bigquery dataset.
 class DestinationDataset {
@@ -1408,6 +1809,30 @@ class GetIamPolicyRequest {
 /// Encapsulates settings provided to GetIamPolicy.
 typedef GetPolicyOptions = $GetPolicyOptions;
 
+/// Reference to a linked resource tracked by this Subscription.
+class LinkedResource {
+  /// Name of the linked dataset, e.g.
+  /// projects/subscriberproject/datasets/linked_dataset
+  ///
+  /// Output only.
+  core.String? linkedDataset;
+
+  LinkedResource({
+    this.linkedDataset,
+  });
+
+  LinkedResource.fromJson(core.Map json_)
+      : this(
+          linkedDataset: json_.containsKey('linkedDataset')
+              ? json_['linkedDataset'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (linkedDataset != null) 'linkedDataset': linkedDataset!,
+      };
+}
+
 /// Message for response to the list of data exchanges.
 class ListDataExchangesResponse {
   /// The list of data exchanges.
@@ -1502,6 +1927,72 @@ class ListOrgDataExchangesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataExchanges != null) 'dataExchanges': dataExchanges!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Message for response to the listing of shared resource subscriptions.
+class ListSharedResourceSubscriptionsResponse {
+  /// Next page token.
+  core.String? nextPageToken;
+
+  /// The list of subscriptions.
+  core.List<Subscription>? sharedResourceSubscriptions;
+
+  ListSharedResourceSubscriptionsResponse({
+    this.nextPageToken,
+    this.sharedResourceSubscriptions,
+  });
+
+  ListSharedResourceSubscriptionsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          sharedResourceSubscriptions:
+              json_.containsKey('sharedResourceSubscriptions')
+                  ? (json_['sharedResourceSubscriptions'] as core.List)
+                      .map((value) => Subscription.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (sharedResourceSubscriptions != null)
+          'sharedResourceSubscriptions': sharedResourceSubscriptions!,
+      };
+}
+
+/// Message for response to the listing of subscriptions.
+class ListSubscriptionsResponse {
+  /// Next page token.
+  core.String? nextPageToken;
+
+  /// The list of subscriptions.
+  core.List<Subscription>? subscriptions;
+
+  ListSubscriptionsResponse({
+    this.nextPageToken,
+    this.subscriptions,
+  });
+
+  ListSubscriptionsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          subscriptions: json_.containsKey('subscriptions')
+              ? (json_['subscriptions'] as core.List)
+                  .map((value) => Subscription.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (subscriptions != null) 'subscriptions': subscriptions!,
       };
 }
 
@@ -1689,6 +2180,82 @@ class Listing {
       };
 }
 
+/// This resource represents a long-running operation that is the result of a
+/// network API call.
+class Operation {
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// available.
+  core.bool? done;
+
+  /// The error result of the operation in case of failure or cancellation.
+  Status? error;
+
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// The server-assigned name, which is only unique within the same service
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
+  core.String? name;
+
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? response;
+
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
+
+  Operation.fromJson(core.Map json_)
+      : this(
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
+              ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
+      };
+}
+
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
 ///
@@ -1843,6 +2410,9 @@ class Publisher {
       };
 }
 
+/// Message for refreshing a subscription.
+typedef RefreshSubscriptionRequest = $Empty;
+
 /// Restricted export config, used to configure restricted export on linked
 /// dataset.
 class RestrictedExportConfig {
@@ -1892,6 +2462,12 @@ class RestrictedExportConfig {
       };
 }
 
+/// Message for revoking a subscription.
+typedef RevokeSubscriptionRequest = $Empty;
+
+/// Message for response when you revoke a subscription.
+typedef RevokeSubscriptionResponse = $Empty;
+
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
@@ -1929,6 +2505,95 @@ class SetIamPolicyRequest {
       };
 }
 
+/// Sharing environment is a behavior model for sharing data within a data
+/// exchange.
+///
+/// This option is configurable for a data exchange.
+class SharingEnvironmentConfig {
+  /// Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+  DcrExchangeConfig? dcrExchangeConfig;
+
+  /// Default Analytics Hub data exchange, used for secured data sharing.
+  DefaultExchangeConfig? defaultExchangeConfig;
+
+  SharingEnvironmentConfig({
+    this.dcrExchangeConfig,
+    this.defaultExchangeConfig,
+  });
+
+  SharingEnvironmentConfig.fromJson(core.Map json_)
+      : this(
+          dcrExchangeConfig: json_.containsKey('dcrExchangeConfig')
+              ? DcrExchangeConfig.fromJson(json_['dcrExchangeConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          defaultExchangeConfig: json_.containsKey('defaultExchangeConfig')
+              ? DefaultExchangeConfig.fromJson(json_['defaultExchangeConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dcrExchangeConfig != null) 'dcrExchangeConfig': dcrExchangeConfig!,
+        if (defaultExchangeConfig != null)
+          'defaultExchangeConfig': defaultExchangeConfig!,
+      };
+}
+
+/// The `Status` type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+typedef Status = $Status;
+
+/// Message for subscribing to a Data Exchange.
+class SubscribeDataExchangeRequest {
+  /// The parent resource path of the Subscription.
+  ///
+  /// e.g. `projects/subscriberproject/locations/US`
+  ///
+  /// Required.
+  core.String? destination;
+
+  /// Email of the subscriber.
+  core.String? subscriberContact;
+
+  /// Name of the subscription to create.
+  ///
+  /// e.g. `subscription1`
+  ///
+  /// Required.
+  core.String? subscription;
+
+  SubscribeDataExchangeRequest({
+    this.destination,
+    this.subscriberContact,
+    this.subscription,
+  });
+
+  SubscribeDataExchangeRequest.fromJson(core.Map json_)
+      : this(
+          destination: json_.containsKey('destination')
+              ? json_['destination'] as core.String
+              : null,
+          subscriberContact: json_.containsKey('subscriberContact')
+              ? json_['subscriberContact'] as core.String
+              : null,
+          subscription: json_.containsKey('subscription')
+              ? json_['subscription'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (destination != null) 'destination': destination!,
+        if (subscriberContact != null) 'subscriberContact': subscriberContact!,
+        if (subscription != null) 'subscription': subscription!,
+      };
+}
+
 /// Message for subscribing to a listing.
 class SubscribeListingRequest {
   /// BigQuery destination dataset to create for the subscriber.
@@ -1953,7 +2618,169 @@ class SubscribeListingRequest {
 }
 
 /// Message for response when you subscribe to a listing.
-typedef SubscribeListingResponse = $Empty;
+class SubscribeListingResponse {
+  /// Subscription object created from this subscribe action.
+  Subscription? subscription;
+
+  SubscribeListingResponse({
+    this.subscription,
+  });
+
+  SubscribeListingResponse.fromJson(core.Map json_)
+      : this(
+          subscription: json_.containsKey('subscription')
+              ? Subscription.fromJson(
+                  json_['subscription'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (subscription != null) 'subscription': subscription!,
+      };
+}
+
+/// A subscription represents a subscribers' access to a particular set of
+/// published data.
+///
+/// It contains references to associated listings, data exchanges, and linked
+/// datasets. TODO(b/267528977) Consider port the new resource to v1beta1 and
+/// dataexchange APIs.
+class Subscription {
+  /// Timestamp when the subscription was created.
+  ///
+  /// Output only.
+  core.String? creationTime;
+
+  /// Resource name of the source Data Exchange.
+  ///
+  /// e.g. projects/123/locations/US/dataExchanges/456
+  ///
+  /// Output only.
+  core.String? dataExchange;
+
+  /// Timestamp when the subscription was last modified.
+  ///
+  /// Output only.
+  core.String? lastModifyTime;
+
+  /// Map of listing resource names to associated linked resource, e.g.
+  /// projects/123/locations/US/dataExchanges/456/listings/789 -\>
+  /// projects/123/datasets/my_dataset For listing-level subscriptions, this is
+  /// a map of size 1.
+  ///
+  /// Only contains values if state == STATE_ACTIVE.
+  ///
+  /// Output only.
+  core.Map<core.String, LinkedResource>? linkedDatasetMap;
+
+  /// Resource name of the source Listing.
+  ///
+  /// e.g. projects/123/locations/US/dataExchanges/456/listings/789
+  ///
+  /// Output only.
+  core.String? listing;
+
+  /// The resource name of the subscription.
+  ///
+  /// e.g. `projects/myproject/locations/US/subscriptions/123`.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Display name of the project of this subscription.
+  ///
+  /// Output only.
+  core.String? organizationDisplayName;
+
+  /// Organization of the project this subscription belongs to.
+  ///
+  /// Output only.
+  core.String? organizationId;
+
+  /// Current state of the subscription.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "STATE_ACTIVE" : This subscription is active and the data is accessible.
+  /// - "STATE_STALE" : The data referenced by this subscription is out of date
+  /// and should be refreshed. This can happen when a data provider adds or
+  /// removes datasets.
+  /// - "STATE_INACTIVE" : This subscription has been cancelled or revoked and
+  /// the data is no longer accessible.
+  core.String? state;
+
+  /// Email of the subscriber.
+  ///
+  /// Output only.
+  core.String? subscriberContact;
+
+  Subscription({
+    this.creationTime,
+    this.dataExchange,
+    this.lastModifyTime,
+    this.linkedDatasetMap,
+    this.listing,
+    this.name,
+    this.organizationDisplayName,
+    this.organizationId,
+    this.state,
+    this.subscriberContact,
+  });
+
+  Subscription.fromJson(core.Map json_)
+      : this(
+          creationTime: json_.containsKey('creationTime')
+              ? json_['creationTime'] as core.String
+              : null,
+          dataExchange: json_.containsKey('dataExchange')
+              ? json_['dataExchange'] as core.String
+              : null,
+          lastModifyTime: json_.containsKey('lastModifyTime')
+              ? json_['lastModifyTime'] as core.String
+              : null,
+          linkedDatasetMap: json_.containsKey('linkedDatasetMap')
+              ? (json_['linkedDatasetMap']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    LinkedResource.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          listing: json_.containsKey('listing')
+              ? json_['listing'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          organizationDisplayName: json_.containsKey('organizationDisplayName')
+              ? json_['organizationDisplayName'] as core.String
+              : null,
+          organizationId: json_.containsKey('organizationId')
+              ? json_['organizationId'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          subscriberContact: json_.containsKey('subscriberContact')
+              ? json_['subscriberContact'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (creationTime != null) 'creationTime': creationTime!,
+        if (dataExchange != null) 'dataExchange': dataExchange!,
+        if (lastModifyTime != null) 'lastModifyTime': lastModifyTime!,
+        if (linkedDatasetMap != null) 'linkedDatasetMap': linkedDatasetMap!,
+        if (listing != null) 'listing': listing!,
+        if (name != null) 'name': name!,
+        if (organizationDisplayName != null)
+          'organizationDisplayName': organizationDisplayName!,
+        if (organizationId != null) 'organizationId': organizationId!,
+        if (state != null) 'state': state!,
+        if (subscriberContact != null) 'subscriberContact': subscriberContact!,
+      };
+}
 
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;

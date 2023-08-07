@@ -4530,6 +4530,7 @@ class PublisherProfileMobileApplication {
   /// - "SAMSUNG" : Samsung Galaxy Store
   /// - "VIVO" : VIVO App Store
   /// - "XIAOMI" : Xiaomi GetApps
+  /// - "LG_TV" : LG TV
   core.String? appStore;
 
   /// The external ID for the app from its app store.

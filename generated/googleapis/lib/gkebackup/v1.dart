@@ -280,8 +280,8 @@ class ProjectsLocationsBackupPlansResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
   ///
-  /// [etag] - If provided, this value must match the current value of the
-  /// target BackupPlan's etag field or the request is rejected.
+  /// [etag] - Optional. If provided, this value must match the current value of
+  /// the target BackupPlan's etag field or the request is rejected.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -417,20 +417,21 @@ class ProjectsLocationsBackupPlansResource {
   /// Format: `projects / * /locations / * `
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Field match expression used to filter the results.
+  /// [filter] - Optional. Field match expression used to filter the results.
   ///
-  /// [orderBy] - Field by which to sort the results.
+  /// [orderBy] - Optional. Field by which to sort the results.
   ///
-  /// [pageSize] - The target number of results to return in a single response.
-  /// If not specified, a default value will be chosen by the service. Note that
-  /// the response may inclue a partial list and a caller should only rely on
-  /// the response's next_page_token to determine if there are more instances
-  /// left to be queried.
+  /// [pageSize] - Optional. The target number of results to return in a single
+  /// response. If not specified, a default value will be chosen by the service.
+  /// Note that the response may include a partial list and a caller should only
+  /// rely on the response's next_page_token to determine if there are more
+  /// instances left to be queried.
   ///
-  /// [pageToken] - The value of next_page_token received from a previous
-  /// `ListBackupPlans` call. Provide this to retrieve the subsequent page in a
-  /// multi-page list of results. When paginating, all other parameters provided
-  /// to `ListBackupPlans` must match the call that provided the page token.
+  /// [pageToken] - Optional. The value of next_page_token received from a
+  /// previous `ListBackupPlans` call. Provide this to retrieve the subsequent
+  /// page in a multi-page list of results. When paginating, all other
+  /// parameters provided to `ListBackupPlans` must match the call that provided
+  /// the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -480,14 +481,14 @@ class ProjectsLocationsBackupPlansResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
   ///
-  /// [updateMask] - This is used to specify the fields to be overwritten in the
-  /// BackupPlan targeted for update. The values for each of these updated
-  /// fields will be taken from the `backup_plan` provided with this request.
-  /// Field names are relative to the root of the resource (e.g., `description`,
-  /// `backup_config.include_volume_data`, etc.) If no `update_mask` is
-  /// provided, all fields in `backup_plan` will be written to the target
-  /// BackupPlan resource. Note that OUTPUT_ONLY and IMMUTABLE fields in
-  /// `backup_plan` are ignored and are not used to update the target
+  /// [updateMask] - Optional. This is used to specify the fields to be
+  /// overwritten in the BackupPlan targeted for update. The values for each of
+  /// these updated fields will be taken from the `backup_plan` provided with
+  /// this request. Field names are relative to the root of the resource (e.g.,
+  /// `description`, `backup_config.include_volume_data`, etc.) If no
+  /// `update_mask` is provided, all fields in `backup_plan` will be written to
+  /// the target BackupPlan resource. Note that OUTPUT_ONLY and IMMUTABLE fields
+  /// in `backup_plan` are ignored and are not used to update the target
   /// BackupPlan.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -643,11 +644,11 @@ class ProjectsLocationsBackupPlansBackupsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
   ///
-  /// [backupId] - The client-provided short name for the Backup resource. This
-  /// name must: - be between 1 and 63 characters long (inclusive) - consist of
-  /// only lower-case ASCII letters, numbers, and dashes - start with a
-  /// lower-case letter - end with a lower-case letter or number - be unique
-  /// within the set of Backups in this BackupPlan
+  /// [backupId] - Optional. The client-provided short name for the Backup
+  /// resource. This name must: - be between 1 and 63 characters long
+  /// (inclusive) - consist of only lower-case ASCII letters, numbers, and
+  /// dashes - start with a lower-case letter - end with a lower-case letter or
+  /// number - be unique within the set of Backups in this BackupPlan
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -692,12 +693,12 @@ class ProjectsLocationsBackupPlansBackupsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+/backups/\[^/\]+$`.
   ///
-  /// [etag] - If provided, this value must match the current value of the
-  /// target Backup's etag field or the request is rejected.
+  /// [etag] - Optional. If provided, this value must match the current value of
+  /// the target Backup's etag field or the request is rejected.
   ///
-  /// [force] - If set to true, any VolumeBackups below this Backup will also be
-  /// deleted. Otherwise, the request will only succeed if the Backup has no
-  /// VolumeBackups.
+  /// [force] - Optional. If set to true, any VolumeBackups below this Backup
+  /// will also be deleted. Otherwise, the request will only succeed if the
+  /// Backup has no VolumeBackups.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -835,20 +836,21 @@ class ProjectsLocationsBackupPlansBackupsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
   ///
-  /// [filter] - Field match expression used to filter the results.
+  /// [filter] - Optional. Field match expression used to filter the results.
   ///
-  /// [orderBy] - Field by which to sort the results.
+  /// [orderBy] - Optional. Field by which to sort the results.
   ///
-  /// [pageSize] - The target number of results to return in a single response.
-  /// If not specified, a default value will be chosen by the service. Note that
-  /// the response may inclue a partial list and a caller should only rely on
-  /// the response's next_page_token to determine if there are more instances
-  /// left to be queried.
+  /// [pageSize] - Optional. The target number of results to return in a single
+  /// response. If not specified, a default value will be chosen by the service.
+  /// Note that the response may include a partial list and a caller should only
+  /// rely on the response's next_page_token to determine if there are more
+  /// instances left to be queried.
   ///
-  /// [pageToken] - The value of next_page_token received from a previous
-  /// `ListBackups` call. Provide this to retrieve the subsequent page in a
-  /// multi-page list of results. When paginating, all other parameters provided
-  /// to `ListBackups` must match the call that provided the page token.
+  /// [pageToken] - Optional. The value of next_page_token received from a
+  /// previous `ListBackups` call. Provide this to retrieve the subsequent page
+  /// in a multi-page list of results. When paginating, all other parameters
+  /// provided to `ListBackups` must match the call that provided the page
+  /// token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -898,13 +900,13 @@ class ProjectsLocationsBackupPlansBackupsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+/backups/\[^/\]+$`.
   ///
-  /// [updateMask] - This is used to specify the fields to be overwritten in the
-  /// Backup targeted for update. The values for each of these updated fields
-  /// will be taken from the `backup_plan` provided with this request. Field
-  /// names are relative to the root of the resource. If no `update_mask` is
-  /// provided, all fields in `backup` will be written to the target Backup
-  /// resource. Note that OUTPUT_ONLY and IMMUTABLE fields in `backup` are
-  /// ignored and are not used to update the target Backup.
+  /// [updateMask] - Optional. This is used to specify the fields to be
+  /// overwritten in the Backup targeted for update. The values for each of
+  /// these updated fields will be taken from the `backup_plan` provided with
+  /// this request. Field names are relative to the root of the resource. If no
+  /// `update_mask` is provided, all fields in `backup` will be written to the
+  /// target Backup resource. Note that OUTPUT_ONLY and IMMUTABLE fields in
+  /// `backup` are ignored and are not used to update the target Backup.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1151,21 +1153,21 @@ class ProjectsLocationsBackupPlansBackupsVolumeBackupsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+/backups/\[^/\]+$`.
   ///
-  /// [filter] - Field match expression used to filter the results.
+  /// [filter] - Optional. Field match expression used to filter the results.
   ///
-  /// [orderBy] - Field by which to sort the results.
+  /// [orderBy] - Optional. Field by which to sort the results.
   ///
-  /// [pageSize] - The target number of results to return in a single response.
-  /// If not specified, a default value will be chosen by the service. Note that
-  /// the response may inclue a partial list and a caller should only rely on
-  /// the response's next_page_token to determine if there are more instances
-  /// left to be queried.
+  /// [pageSize] - Optional. The target number of results to return in a single
+  /// response. If not specified, a default value will be chosen by the service.
+  /// Note that the response may include a partial list and a caller should only
+  /// rely on the response's next_page_token to determine if there are more
+  /// instances left to be queried.
   ///
-  /// [pageToken] - The value of next_page_token received from a previous
-  /// `ListVolumeBackups` call. Provide this to retrieve the subsequent page in
-  /// a multi-page list of results. When paginating, all other parameters
-  /// provided to `ListVolumeBackups` must match the call that provided the page
-  /// token.
+  /// [pageToken] - Optional. The value of next_page_token received from a
+  /// previous `ListVolumeBackups` call. Provide this to retrieve the subsequent
+  /// page in a multi-page list of results. When paginating, all other
+  /// parameters provided to `ListVolumeBackups` must match the call that
+  /// provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1518,12 +1520,12 @@ class ProjectsLocationsRestorePlansResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+$`.
   ///
-  /// [etag] - If provided, this value must match the current value of the
-  /// target RestorePlan's etag field or the request is rejected.
+  /// [etag] - Optional. If provided, this value must match the current value of
+  /// the target RestorePlan's etag field or the request is rejected.
   ///
-  /// [force] - If set to true, any Restores below this RestorePlan will also be
-  /// deleted. Otherwise, the request will only succeed if the RestorePlan has
-  /// no Restores.
+  /// [force] - Optional. If set to true, any Restores below this RestorePlan
+  /// will also be deleted. Otherwise, the request will only succeed if the
+  /// RestorePlan has no Restores.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1661,20 +1663,21 @@ class ProjectsLocationsRestorePlansResource {
   /// Format: `projects / * /locations / * `
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Field match expression used to filter the results.
+  /// [filter] - Optional. Field match expression used to filter the results.
   ///
-  /// [orderBy] - Field by which to sort the results.
+  /// [orderBy] - Optional. Field by which to sort the results.
   ///
-  /// [pageSize] - The target number of results to return in a single response.
-  /// If not specified, a default value will be chosen by the service. Note that
-  /// the response may inclue a partial list and a caller should only rely on
-  /// the response's next_page_token to determine if there are more instances
-  /// left to be queried.
+  /// [pageSize] - Optional. The target number of results to return in a single
+  /// response. If not specified, a default value will be chosen by the service.
+  /// Note that the response may include a partial list and a caller should only
+  /// rely on the response's next_page_token to determine if there are more
+  /// instances left to be queried.
   ///
-  /// [pageToken] - The value of next_page_token received from a previous
-  /// `ListRestorePlans` call. Provide this to retrieve the subsequent page in a
-  /// multi-page list of results. When paginating, all other parameters provided
-  /// to `ListRestorePlans` must match the call that provided the page token.
+  /// [pageToken] - Optional. The value of next_page_token received from a
+  /// previous `ListRestorePlans` call. Provide this to retrieve the subsequent
+  /// page in a multi-page list of results. When paginating, all other
+  /// parameters provided to `ListRestorePlans` must match the call that
+  /// provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1724,13 +1727,13 @@ class ProjectsLocationsRestorePlansResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+$`.
   ///
-  /// [updateMask] - This is used to specify the fields to be overwritten in the
-  /// RestorePlan targeted for update. The values for each of these updated
-  /// fields will be taken from the `restore_plan` provided with this request.
-  /// Field names are relative to the root of the resource. If no `update_mask`
-  /// is provided, all fields in `restore_plan` will be written to the target
-  /// RestorePlan resource. Note that OUTPUT_ONLY and IMMUTABLE fields in
-  /// `restore_plan` are ignored and are not used to update the target
+  /// [updateMask] - Optional. This is used to specify the fields to be
+  /// overwritten in the RestorePlan targeted for update. The values for each of
+  /// these updated fields will be taken from the `restore_plan` provided with
+  /// this request. Field names are relative to the root of the resource. If no
+  /// `update_mask` is provided, all fields in `restore_plan` will be written to
+  /// the target RestorePlan resource. Note that OUTPUT_ONLY and IMMUTABLE
+  /// fields in `restore_plan` are ignored and are not used to update the target
   /// RestorePlan.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1937,12 +1940,12 @@ class ProjectsLocationsRestorePlansRestoresResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+/restores/\[^/\]+$`.
   ///
-  /// [etag] - If provided, this value must match the current value of the
-  /// target Restore's etag field or the request is rejected.
+  /// [etag] - Optional. If provided, this value must match the current value of
+  /// the target Restore's etag field or the request is rejected.
   ///
-  /// [force] - If set to true, any VolumeRestores below this restore will also
-  /// be deleted. Otherwise, the request will only succeed if the restore has no
-  /// VolumeRestores.
+  /// [force] - Optional. If set to true, any VolumeRestores below this restore
+  /// will also be deleted. Otherwise, the request will only succeed if the
+  /// restore has no VolumeRestores.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2080,20 +2083,21 @@ class ProjectsLocationsRestorePlansRestoresResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+$`.
   ///
-  /// [filter] - Field match expression used to filter the results.
+  /// [filter] - Optional. Field match expression used to filter the results.
   ///
-  /// [orderBy] - Field by which to sort the results.
+  /// [orderBy] - Optional. Field by which to sort the results.
   ///
-  /// [pageSize] - The target number of results to return in a single response.
-  /// If not specified, a default value will be chosen by the service. Note that
-  /// the response may inclue a partial list and a caller should only rely on
-  /// the response's next_page_token to determine if there are more instances
-  /// left to be queried.
+  /// [pageSize] - Optional. The target number of results to return in a single
+  /// response. If not specified, a default value will be chosen by the service.
+  /// Note that the response may include a partial list and a caller should only
+  /// rely on the response's next_page_token to determine if there are more
+  /// instances left to be queried.
   ///
-  /// [pageToken] - The value of next_page_token received from a previous
-  /// `ListRestores` call. Provide this to retrieve the subsequent page in a
-  /// multi-page list of results. When paginating, all other parameters provided
-  /// to `ListRestores` must match the call that provided the page token.
+  /// [pageToken] - Optional. The value of next_page_token received from a
+  /// previous `ListRestores` call. Provide this to retrieve the subsequent page
+  /// in a multi-page list of results. When paginating, all other parameters
+  /// provided to `ListRestores` must match the call that provided the page
+  /// token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2143,13 +2147,13 @@ class ProjectsLocationsRestorePlansRestoresResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+/restores/\[^/\]+$`.
   ///
-  /// [updateMask] - This is used to specify the fields to be overwritten in the
-  /// Restore targeted for update. The values for each of these updated fields
-  /// will be taken from the `restore` provided with this request. Field names
-  /// are relative to the root of the resource. If no `update_mask` is provided,
-  /// all fields in `restore` will be written to the target Restore resource.
-  /// Note that OUTPUT_ONLY and IMMUTABLE fields in `restore` are ignored and
-  /// are not used to update the target Restore.
+  /// [updateMask] - Optional. This is used to specify the fields to be
+  /// overwritten in the Restore targeted for update. The values for each of
+  /// these updated fields will be taken from the `restore` provided with this
+  /// request. Field names are relative to the root of the resource. If no
+  /// `update_mask` is provided, all fields in `restore` will be written to the
+  /// target Restore resource. Note that OUTPUT_ONLY and IMMUTABLE fields in
+  /// `restore` are ignored and are not used to update the target Restore.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2396,21 +2400,21 @@ class ProjectsLocationsRestorePlansRestoresVolumeRestoresResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+/restores/\[^/\]+$`.
   ///
-  /// [filter] - Field match expression used to filter the results.
+  /// [filter] - Optional. Field match expression used to filter the results.
   ///
-  /// [orderBy] - Field by which to sort the results.
+  /// [orderBy] - Optional. Field by which to sort the results.
   ///
-  /// [pageSize] - The target number of results to return in a single response.
-  /// If not specified, a default value will be chosen by the service. Note that
-  /// the response may inclue a partial list and a caller should only rely on
-  /// the response's next_page_token to determine if there are more instances
-  /// left to be queried.
+  /// [pageSize] - Optional. The target number of results to return in a single
+  /// response. If not specified, a default value will be chosen by the service.
+  /// Note that the response may include a partial list and a caller should only
+  /// rely on the response's next_page_token to determine if there are more
+  /// instances left to be queried.
   ///
-  /// [pageToken] - The value of next_page_token received from a previous
-  /// `ListVolumeRestores` call. Provide this to retrieve the subsequent page in
-  /// a multi-page list of results. When paginating, all other parameters
-  /// provided to `ListVolumeRestores` must match the call that provided the
-  /// page token.
+  /// [pageToken] - Optional. The value of next_page_token received from a
+  /// previous `ListVolumeRestores` call. Provide this to retrieve the
+  /// subsequent page in a multi-page list of results. When paginating, all
+  /// other parameters provided to `ListVolumeRestores` must match the call that
+  /// provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2661,6 +2665,8 @@ class Backup {
   /// integer value between 0-90 (inclusive). Defaults to parent BackupPlan's
   /// backup_delete_lock_days setting and may only be increased (either at
   /// creation time or in a subsequent update).
+  ///
+  /// Optional.
   core.int? deleteLockDays;
 
   /// The time at which an existing delete lock will expire for this backup
@@ -2670,6 +2676,8 @@ class Backup {
   core.String? deleteLockExpireTime;
 
   /// User specified descriptive string for this Backup.
+  ///
+  /// Optional.
   core.String? description;
 
   /// The customer managed encryption key that was used to encrypt the Backup's
@@ -2694,6 +2702,8 @@ class Backup {
   core.String? etag;
 
   /// A set of custom labels supplied by user.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// This flag indicates whether this Backup resource was created manually by a
@@ -2727,6 +2737,8 @@ class Backup {
   /// for this Backup. - If not 0, this must be \>= delete_lock_days and \<=
   /// 365. Once a Backup is created, this value may only be increased. Defaults
   /// to the parent BackupPlan's backup_retain_days value.
+  ///
+  /// Optional.
   core.int? retainDays;
 
   /// The time at which this Backup will be automatically deleted (calculated
@@ -2952,18 +2964,24 @@ class BackupConfig {
   /// via this plan.
   ///
   /// Default (empty): Config backup artifacts will not be encrypted.
+  ///
+  /// Optional.
   EncryptionKey? encryptionKey;
 
   /// This flag specifies whether Kubernetes Secret resources should be included
   /// when they fall into the scope of Backups.
   ///
   /// Default: False
+  ///
+  /// Optional.
   core.bool? includeSecrets;
 
   /// This flag specifies whether volume data should be backed up when PVCs are
   /// included in the scope of a Backup.
   ///
   /// Default: False
+  ///
+  /// Optional.
   core.bool? includeVolumeData;
 
   /// If set, include just the resources referenced by the listed
@@ -3022,9 +3040,13 @@ class BackupConfig {
 /// Defines the configuration and scheduling for a "line" of Backups.
 class BackupPlan {
   /// Defines the configuration of Backups created via this BackupPlan.
+  ///
+  /// Optional.
   BackupConfig? backupConfig;
 
   /// Defines a schedule for automatic Backup creation via this BackupPlan.
+  ///
+  /// Optional.
   Schedule? backupSchedule;
 
   /// The source cluster from which Backups will be created via this BackupPlan.
@@ -3046,9 +3068,13 @@ class BackupPlan {
   /// updates will be allowed (except deletes), including the deactivated field
   /// itself. It also prevents any new Backups from being created via this
   /// BackupPlan (including scheduled Backups). Default: False
+  ///
+  /// Optional.
   core.bool? deactivated;
 
   /// User specified descriptive string for this BackupPlan.
+  ///
+  /// Optional.
   core.String? description;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
@@ -3065,6 +3091,8 @@ class BackupPlan {
   core.String? etag;
 
   /// A set of custom labels supplied by user.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// The full name of the BackupPlan resource.
@@ -3081,6 +3109,8 @@ class BackupPlan {
   core.int? protectedPodCount;
 
   /// RetentionPolicy governs lifecycle of Backups created under this plan.
+  ///
+  /// Optional.
   RetentionPolicy? retentionPolicy;
 
   /// State of the BackupPlan.
@@ -3291,9 +3321,13 @@ class Binding {
 /// Information about the GKE cluster from which this Backup was created.
 class ClusterMetadata {
   /// Anthos version
+  ///
+  /// Output only.
   core.String? anthosVersion;
 
   /// A list of the Backup for GKE CRD versions found in the cluster.
+  ///
+  /// Output only.
   core.Map<core.String, core.String>? backupCrdVersions;
 
   /// The source cluster from which this Backup was created.
@@ -3301,12 +3335,18 @@ class ClusterMetadata {
   /// Valid formats: - `projects / * /locations / * /clusters / * ` - `projects
   /// / * /zones / * /clusters / * ` This is inherited from the parent
   /// BackupPlan's cluster field.
+  ///
+  /// Output only.
   core.String? cluster;
 
   /// GKE version
+  ///
+  /// Output only.
   core.String? gkeVersion;
 
   /// The Kubernetes server version of the source cluster.
+  ///
+  /// Output only.
   core.String? k8sVersion;
 
   ClusterMetadata({
@@ -3367,6 +3407,8 @@ class ClusterResourceRestoreScope {
   /// If True, all valid cluster-scoped resources will be restored.
   ///
   /// Mutually exclusive to any other field in the message.
+  ///
+  /// Optional.
   core.bool? allGroupKinds;
 
   /// A list of cluster-scoped resource group kinds to NOT restore from the
@@ -3375,18 +3417,24 @@ class ClusterResourceRestoreScope {
   /// If specified, all valid cluster-scoped resources will be restored except
   /// for those specified in the list. Mutually exclusive to any other field in
   /// the message.
+  ///
+  /// Optional.
   core.List<GroupKind>? excludedGroupKinds;
 
   /// If True, no cluster-scoped resources will be restored.
   ///
   /// This has the same restore scope as if the message is not defined. Mutually
   /// exclusive to any other field in the message.
+  ///
+  /// Optional.
   core.bool? noGroupKinds;
 
   /// A list of cluster-scoped resource group kinds to restore from the backup.
   ///
   /// If specified, only the selected resources will be restored. Mutually
   /// exclusive to any other field in the message.
+  ///
+  /// Optional.
   core.List<GroupKind>? selectedGroupKinds;
 
   ClusterResourceRestoreScope({
@@ -3442,6 +3490,8 @@ class EncryptionKey {
   /// Google Cloud KMS encryption key.
   ///
   /// Format: `projects / * /locations / * /keyRings / * /cryptoKeys / * `
+  ///
+  /// Optional.
   core.String? gcpKmsEncryptionKey;
 
   EncryptionKey({
@@ -3609,10 +3659,14 @@ class GroupKind {
   /// "storage.k8s.io", etc.
   ///
   /// Note: use empty string for core API group
+  ///
+  /// Optional.
   core.String? resourceGroup;
 
   /// Kind of a Kubernetes resource, e.g. "CustomResourceDefinition",
   /// "StorageClass", etc.
+  ///
+  /// Optional.
   core.String? resourceKind;
 
   GroupKind({
@@ -3920,9 +3974,13 @@ typedef Location = $Location00;
 /// A reference to a namespaced resource in Kubernetes.
 class NamespacedName {
   /// The name of the Kubernetes resource.
+  ///
+  /// Optional.
   core.String? name;
 
   /// The Namespace of the Kubernetes resource.
+  ///
+  /// Optional.
   core.String? namespace;
 
   NamespacedName({
@@ -3947,6 +4005,8 @@ class NamespacedName {
 /// A list of namespaced Kubernetes resources.
 class NamespacedNames {
   /// A list of namespaced Kubernetes resources.
+  ///
+  /// Optional.
   core.List<NamespacedName>? namespacedNames;
 
   NamespacedNames({
@@ -3971,6 +4031,8 @@ class NamespacedNames {
 /// A list of Kubernetes Namespaces
 class Namespaces {
   /// A list of Kubernetes Namespaces
+  ///
+  /// Optional.
   core.List<core.String>? namespaces;
 
   Namespaces({
@@ -4122,6 +4184,8 @@ class ResourceFilter {
   /// If this field is not provided, no type filtering will be performed (all
   /// resources of all types matching previous filtering parameters will be
   /// candidates for transformation).
+  ///
+  /// Optional.
   core.List<GroupKind>? groupKinds;
 
   /// This is a
@@ -4129,6 +4193,8 @@ class ResourceFilter {
   /// expression that matches specific fields of candidate resources and it
   /// operates as a filtering parameter (resources that are not matched with
   /// this expression will not be candidates for transformation).
+  ///
+  /// Optional.
   core.String? jsonPath;
 
   /// (Filtering parameter) Any resource subject to transformation must be
@@ -4139,6 +4205,8 @@ class ResourceFilter {
   /// will be candidates for transformation). To mix cluster-scoped and
   /// namespaced resources in the same rule, use an empty string ("") as one of
   /// the target namespaces.
+  ///
+  /// Optional.
   core.List<core.String>? namespaces;
 
   ResourceFilter({
@@ -4407,6 +4475,8 @@ class RestoreConfig {
   /// This MUST be set to a value other than
   /// CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if
   /// cluster_resource_restore_scope is not empty.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED" : Unspecified. Only
   /// allowed if no cluster-scoped resources will be restored.
@@ -4421,6 +4491,8 @@ class RestoreConfig {
   /// Identifies the cluster-scoped resources to restore from the Backup.
   ///
   /// Not specifying it means NO cluster resource will be restored.
+  ///
+  /// Optional.
   ClusterResourceRestoreScope? clusterResourceRestoreScope;
 
   /// A list of selected namespaces excluded from restoration.
@@ -4433,6 +4505,8 @@ class RestoreConfig {
   ///
   /// This MUST be set to a value other than
   /// NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED" : Unspecified (invalid).
   /// - "DELETE_AND_RESTORE" : When conflicting top-level resources (either
@@ -4473,6 +4547,8 @@ class RestoreConfig {
   /// Rules are executed in order defined - this order matters, as changes made
   /// by a rule may impact the filtering logic of subsequent rules. An empty
   /// list means no substitution will occur.
+  ///
+  /// Optional.
   core.List<SubstitutionRule>? substitutionRules;
 
   /// A list of transformation rules to be applied against Kubernetes resources
@@ -4481,12 +4557,16 @@ class RestoreConfig {
   /// Rules are executed in order defined - this order matters, as changes made
   /// by a rule may impact the filtering logic of subsequent rules. An empty
   /// list means no transformation will occur.
+  ///
+  /// Optional.
   core.List<TransformationRule>? transformationRules;
 
   /// Specifies the mechanism to be used to restore volume data.
   ///
   /// Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as
   /// NO_VOLUME_DATA_RESTORATION).
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED" : Unspecified (illegal).
   /// - "RESTORE_VOLUME_DATA_FROM_BACKUP" : For each PVC to be restored, create
@@ -4620,6 +4700,8 @@ class RestorePlan {
   core.String? createTime;
 
   /// User specified descriptive string for this RestorePlan.
+  ///
+  /// Optional.
   core.String? description;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
@@ -4636,6 +4718,8 @@ class RestorePlan {
   core.String? etag;
 
   /// A set of custom labels supplied by user.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// The full name of the RestorePlan resource.
@@ -4762,6 +4846,8 @@ class RetentionPolicy {
   /// BackupPlan does NOT affect existing Backups under it. Backups created
   /// AFTER a successful update will inherit the new value. Default: 0 (no
   /// delete blocking)
+  ///
+  /// Optional.
   core.int? backupDeleteLockDays;
 
   /// The default maximum age of a Backup created via this BackupPlan.
@@ -4775,6 +4861,8 @@ class RetentionPolicy {
   /// new value. NOTE: backup_retain_days must be \>= backup_delete_lock_days.
   /// If cron_schedule is defined, then this must be \<= 360 * the creation
   /// interval. Default: 0 (no automatic deletion)
+  ///
+  /// Optional.
   core.int? backupRetainDays;
 
   /// This flag denotes whether the retention policy of this BackupPlan is
@@ -4782,6 +4870,8 @@ class RetentionPolicy {
   ///
   /// If set to True, no further update is allowed on this policy, including the
   /// `locked` field itself. Default: False
+  ///
+  /// Optional.
   core.bool? locked;
 
   RetentionPolicy({
@@ -4820,12 +4910,16 @@ class Schedule {
   /// schedule can be defined for a BackupPlan. If this is defined, then
   /// backup_retain_days must also be defined. Default (empty): no automatic
   /// backup creation will occur.
+  ///
+  /// Optional.
   core.String? cronSchedule;
 
   /// This flag denotes whether automatic Backup creation is paused for this
   /// BackupPlan.
   ///
   /// Default: False
+  ///
+  /// Optional.
   core.bool? paused;
 
   Schedule({
@@ -4896,6 +4990,8 @@ class SubstitutionRule {
   ///
   /// To remove a value from a Kubernetes resource, either leave this field
   /// unspecified, or set it to the empty string ("").
+  ///
+  /// Optional.
   core.String? newValue;
 
   /// (Filtering parameter) This is a
@@ -4908,6 +5004,8 @@ class SubstitutionRule {
   /// matched by the target_json_path expression will undergo substitution. Note
   /// that an empty (e.g., "", rather than unspecified) value for this field
   /// will only match empty fields.
+  ///
+  /// Optional.
   core.String? originalValuePattern;
 
   /// (Filtering parameter) Any resource subject to substitution must belong to
@@ -4916,6 +5014,8 @@ class SubstitutionRule {
   /// If this field is not provided, no type filtering will be performed (all
   /// resources of all types matching previous filtering parameters will be
   /// candidates for substitution).
+  ///
+  /// Optional.
   core.List<GroupKind>? targetGroupKinds;
 
   /// This is a
@@ -4937,6 +5037,8 @@ class SubstitutionRule {
   /// will be candidates for substitution). To mix cluster-scoped and namespaced
   /// resources in the same rule, use an empty string ("") as one of the target
   /// namespaces.
+  ///
+  /// Optional.
   core.List<core.String>? targetNamespaces;
 
   SubstitutionRule({
@@ -4995,6 +5097,8 @@ typedef TestIamPermissionsResponse = $PermissionsResponse;
 class TransformationRule {
   /// The description is a user specified string description of the
   /// transformation rule.
+  ///
+  /// Optional.
   core.String? description;
 
   /// A list of transformation rule actions to take against candidate resources.
@@ -5010,6 +5114,8 @@ class TransformationRule {
   /// determine which resources in backup should be acted upon by the supplied
   /// transformation rule actions, and this will ensure that only specific
   /// resources are affected by transformation rule actions.
+  ///
+  /// Optional.
   ResourceFilter? resourceFilter;
 
   TransformationRule({
@@ -5047,6 +5153,8 @@ class TransformationRule {
 class TransformationRuleAction {
   /// A string containing a JSON Pointer value that references the location in
   /// the target document to move the value from.
+  ///
+  /// Optional.
   core.String? fromPath;
 
   /// op specifies the operation to perform.
@@ -5076,10 +5184,14 @@ class TransformationRuleAction {
 
   /// A string containing a JSON-Pointer value that references a location within
   /// the target document where the operation is performed.
+  ///
+  /// Optional.
   core.String? path;
 
   /// A string that specifies the desired value in string format to use for
   /// transformation.
+  ///
+  /// Optional.
   core.String? value;
 
   TransformationRuleAction({

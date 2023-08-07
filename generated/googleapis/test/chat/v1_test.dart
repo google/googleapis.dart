@@ -2563,6 +2563,7 @@ api.Space buildSpace() {
   if (buildCounterSpace < 3) {
     o.adminInstalled = true;
     o.displayName = 'foo';
+    o.externalUserAllowed = true;
     o.name = 'foo';
     o.singleUserBotDm = true;
     o.spaceDetails = buildSpaceDetails();
@@ -2584,6 +2585,7 @@ void checkSpace(api.Space o) {
       o.displayName!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.externalUserAllowed!, unittest.isTrue);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),

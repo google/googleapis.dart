@@ -2301,9 +2301,9 @@ class Condition {
 
   /// Whether to negate the Condition.
   ///
-  /// If true, the Condition becomes a NAND over its non-empty fields, each
-  /// field must be false for the Condition overall to be satisfied. Defaults to
-  /// false.
+  /// If true, the Condition becomes a NAND over its non-empty fields. Any
+  /// non-empty field criteria evaluating to false will result in the Condition
+  /// to be satisfied. Defaults to false.
   core.bool? negate;
 
   /// The request must originate from one of the provided countries/regions.

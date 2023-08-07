@@ -34,6 +34,7 @@
 /// - [DatafeedsResource]
 /// - [DatafeedstatusesResource]
 /// - [FreelistingsprogramResource]
+///   - [FreelistingsprogramCheckoutsettingsResource]
 /// - [LiasettingsResource]
 /// - [LocalinventoryResource]
 /// - [OrderinvoicesResource]
@@ -2962,6 +2963,9 @@ class DatafeedstatusesResource {
 class FreelistingsprogramResource {
   final commons.ApiRequester _requester;
 
+  FreelistingsprogramCheckoutsettingsResource get checkoutsettings =>
+      FreelistingsprogramCheckoutsettingsResource(_requester);
+
   FreelistingsprogramResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -3042,6 +3046,127 @@ class FreelistingsprogramResource {
       queryParams: queryParams_,
       downloadOptions: null,
     );
+  }
+}
+
+class FreelistingsprogramCheckoutsettingsResource {
+  final commons.ApiRequester _requester;
+
+  FreelistingsprogramCheckoutsettingsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes `Checkout` settings and unenrolls merchant from `Checkout`
+  /// program.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> delete(
+    core.String merchantId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = commons.escapeVariable('$merchantId') +
+        '/freelistingsprogram/checkoutsettings';
+
+    await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
+
+  /// Gets Checkout settings for the given merchant.
+  ///
+  /// This includes information about review state, enrollment state and URL
+  /// settings.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CheckoutSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CheckoutSettings> get(
+    core.String merchantId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = commons.escapeVariable('$merchantId') +
+        '/freelistingsprogram/checkoutsettings';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CheckoutSettings.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Enrolls merchant in `Checkout` program.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - Required. The ID of the account.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CheckoutSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CheckoutSettings> insert(
+    InsertCheckoutSettingsRequest request,
+    core.String merchantId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = commons.escapeVariable('$merchantId') +
+        '/freelistingsprogram/checkoutsettings';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CheckoutSettings.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -11717,6 +11842,139 @@ class CarriersCarrier {
       };
 }
 
+/// `CheckoutSettings` for a specific merchant ID.
+class CheckoutSettings {
+  /// The effective value of enrollment state for a given merchant ID.
+  ///
+  /// If account level settings are present then this value will be a copy of
+  /// the account level settings. Otherwise, it will have the value of the
+  /// parent account.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CHECKOUT_ON_MERCHANT_ENROLLMENT_STATE_UNSPECIFIED" : Default enrollment
+  /// state when enrollment state is not specified.
+  /// - "INACTIVE" : Merchant has not enrolled into the feature.
+  /// - "ENROLLED" : Merchant has enrolled into the feature by providing either
+  /// an account level URL or checkout URLs as part of their feed.
+  core.String? effectiveEnrollmentState;
+
+  /// The effective value of review state for a given merchant ID.
+  ///
+  /// If account level settings are present then this value will be a copy of
+  /// the account level settings. Otherwise, it will have the value of the
+  /// parent account.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CHECKOUT_ON_MERCHANT_REVIEW_STATE_UNSPECIFIED" : Default review state
+  /// when review state is not specified.
+  /// - "IN_REVIEW" : Merchant provided URLs are being reviewed for data quality
+  /// issues.
+  /// - "APPROVED" : Merchant account has been approved. Indicates the data
+  /// quality checks have passed.
+  /// - "DISAPPROVED" : Merchant account has been disapproved due to data
+  /// quality issues.
+  core.String? effectiveReviewState;
+
+  /// The effective value of `url_settings` for a given merchant ID.
+  ///
+  /// If account level settings are present then this value will be a copy of
+  /// the account level settings. Otherwise, it will have the value of the
+  /// parent account.
+  UrlSettings? effectiveUriSettings;
+
+  /// Reflects the merchant enrollment state in `Checkout` feature.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CHECKOUT_ON_MERCHANT_ENROLLMENT_STATE_UNSPECIFIED" : Default enrollment
+  /// state when enrollment state is not specified.
+  /// - "INACTIVE" : Merchant has not enrolled into the feature.
+  /// - "ENROLLED" : Merchant has enrolled into the feature by providing either
+  /// an account level URL or checkout URLs as part of their feed.
+  core.String? enrollmentState;
+
+  /// The ID of the account.
+  ///
+  /// Required.
+  core.String? merchantId;
+
+  /// Reflects the merchant review state in `Checkout` feature.
+  ///
+  /// This is set based on the data quality reviews of the URL provided by the
+  /// merchant. A merchant with enrollment state as `ENROLLED` can be in the
+  /// following review states: `IN_REVIEW`, `APPROVED` or `DISAPPROVED`. A
+  /// merchant must be in an enrollment_state of `ENROLLED` before a review can
+  /// begin for the merchant.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CHECKOUT_ON_MERCHANT_REVIEW_STATE_UNSPECIFIED" : Default review state
+  /// when review state is not specified.
+  /// - "IN_REVIEW" : Merchant provided URLs are being reviewed for data quality
+  /// issues.
+  /// - "APPROVED" : Merchant account has been approved. Indicates the data
+  /// quality checks have passed.
+  /// - "DISAPPROVED" : Merchant account has been disapproved due to data
+  /// quality issues.
+  core.String? reviewState;
+
+  /// URL settings for cart or checkout URL.
+  UrlSettings? uriSettings;
+
+  CheckoutSettings({
+    this.effectiveEnrollmentState,
+    this.effectiveReviewState,
+    this.effectiveUriSettings,
+    this.enrollmentState,
+    this.merchantId,
+    this.reviewState,
+    this.uriSettings,
+  });
+
+  CheckoutSettings.fromJson(core.Map json_)
+      : this(
+          effectiveEnrollmentState:
+              json_.containsKey('effectiveEnrollmentState')
+                  ? json_['effectiveEnrollmentState'] as core.String
+                  : null,
+          effectiveReviewState: json_.containsKey('effectiveReviewState')
+              ? json_['effectiveReviewState'] as core.String
+              : null,
+          effectiveUriSettings: json_.containsKey('effectiveUriSettings')
+              ? UrlSettings.fromJson(json_['effectiveUriSettings']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          enrollmentState: json_.containsKey('enrollmentState')
+              ? json_['enrollmentState'] as core.String
+              : null,
+          merchantId: json_.containsKey('merchantId')
+              ? json_['merchantId'] as core.String
+              : null,
+          reviewState: json_.containsKey('reviewState')
+              ? json_['reviewState'] as core.String
+              : null,
+          uriSettings: json_.containsKey('uriSettings')
+              ? UrlSettings.fromJson(
+                  json_['uriSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (effectiveEnrollmentState != null)
+          'effectiveEnrollmentState': effectiveEnrollmentState!,
+        if (effectiveReviewState != null)
+          'effectiveReviewState': effectiveReviewState!,
+        if (effectiveUriSettings != null)
+          'effectiveUriSettings': effectiveUriSettings!,
+        if (enrollmentState != null) 'enrollmentState': enrollmentState!,
+        if (merchantId != null) 'merchantId': merchantId!,
+        if (reviewState != null) 'reviewState': reviewState!,
+        if (uriSettings != null) 'uriSettings': uriSettings!,
+      };
+}
+
 /// Product property for the Cloud Retail API.
 ///
 /// For example, properties for a TV product could be "Screen-Resolution" or
@@ -12235,6 +12493,178 @@ class CollectionStatusItemLevelIssue {
       };
 }
 
+/// Fields related to
+/// [competitive visibility reports](https://support.google.com/merchants/answer/11366442).
+class CompetitiveVisibility {
+  /// [Ads / organic ratio](https://support.google.com/merchants/answer/11366442#zippy=%2Cadsfree-ratio)
+  /// shows how often a merchant receives impressions from Shopping ads compared
+  /// to organic traffic.
+  ///
+  /// The number is rounded and bucketed. Available only in
+  /// `CompetitiveVisibilityTopMerchantView`. Cannot be filtered on in the
+  /// 'WHERE' clause.
+  core.double? adsOrganicRatio;
+
+  /// Change in visibility based on impressions with respect to the start of the
+  /// selected time range (or first day with non-zero impressions) for a
+  /// combined set of merchants with highest visibility approximating the
+  /// market.
+  ///
+  /// Available only in `CompetitiveVisibilityBenchmarkView`. Cannot be filtered
+  /// on in the 'WHERE' clause.
+  core.double? categoryBenchmarkVisibilityTrend;
+
+  /// Google product category ID to calculate the report for, represented in
+  /// [Google's product taxonomy](https://support.google.com/merchants/answer/6324436).
+  ///
+  /// Required in the `SELECT` clause. A `WHERE` condition on
+  /// `competitive_visibility.category_id` is required in the query.
+  core.String? categoryId;
+
+  /// The country where impression appeared.
+  ///
+  /// Required in the `SELECT` clause. A `WHERE` condition on
+  /// `competitive_visibility.country_code` is required in the query.
+  core.String? countryCode;
+
+  /// Date of this row.
+  ///
+  /// Available only in `CompetitiveVisibilityBenchmarkView`. Required in the
+  /// `SELECT` clause for `CompetitiveVisibilityMarketBenchmarkView`.
+  Date? date;
+
+  /// Domain of your competitor or your domain, if 'is_your_domain' is true.
+  ///
+  /// Available only in `CompetitiveVisibilityTopMerchantView`. Required in the
+  /// `SELECT` clause for `CompetitiveVisibilityTopMerchantView`. Cannot be
+  /// filtered on in the 'WHERE' clause.
+  core.String? domain;
+
+  /// Higher position rate shows how often a competitor’s offer got placed in a
+  /// higher position on the page than your offer.
+  ///
+  /// Available only in `CompetitiveVisibilityTopMerchantView`. Cannot be
+  /// filtered on in the 'WHERE' clause.
+  core.double? higherPositionRate;
+
+  /// True if this row contains data for your domain.
+  ///
+  /// Available only in `CompetitiveVisibilityTopMerchantView`. Cannot be
+  /// filtered on in the 'WHERE' clause.
+  core.bool? isYourDomain;
+
+  /// Page overlap rate describes how frequently competing retailers’ offers are
+  /// shown together with your offers on the same page.
+  ///
+  /// Available only in `CompetitiveVisibilityTopMerchantView`. Cannot be
+  /// filtered on in the 'WHERE' clause.
+  core.double? pageOverlapRate;
+
+  /// Position of the domain in the top merchants ranking for the selected keys
+  /// (`date`, `category_id`, `country_code`, `listing_type`) based on
+  /// impressions.
+  ///
+  /// 1 is the highest. Available only in
+  /// `CompetitiveVisibilityTopMerchantView`. Cannot be filtered on in the
+  /// 'WHERE' clause.
+  core.String? rank;
+
+  /// Type of impression listing.
+  ///
+  /// Required in the `SELECT` clause for `CompetitiveVisibilityTopMerchantView`
+  /// and `CompetitiveVisibilityMarketBenchmarkView`. Cannot be filtered on in
+  /// the 'WHERE' clause.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Traffic source is unknown.
+  /// - "ORGANIC" : Organic traffic.
+  /// - "ADS" : Traffic from Ads.
+  /// - "ALL" : Organic and Ads traffic.
+  core.String? trafficSource;
+
+  /// Change in visibility based on impressions for your domain with respect to
+  /// the start of the selected time range (or first day with non-zero
+  /// impressions).
+  ///
+  /// Available only in `CompetitiveVisibilityBenchmarkView`. Cannot be filtered
+  /// on in the 'WHERE' clause.
+  core.double? yourDomainVisibilityTrend;
+
+  CompetitiveVisibility({
+    this.adsOrganicRatio,
+    this.categoryBenchmarkVisibilityTrend,
+    this.categoryId,
+    this.countryCode,
+    this.date,
+    this.domain,
+    this.higherPositionRate,
+    this.isYourDomain,
+    this.pageOverlapRate,
+    this.rank,
+    this.trafficSource,
+    this.yourDomainVisibilityTrend,
+  });
+
+  CompetitiveVisibility.fromJson(core.Map json_)
+      : this(
+          adsOrganicRatio: json_.containsKey('adsOrganicRatio')
+              ? (json_['adsOrganicRatio'] as core.num).toDouble()
+              : null,
+          categoryBenchmarkVisibilityTrend:
+              json_.containsKey('categoryBenchmarkVisibilityTrend')
+                  ? (json_['categoryBenchmarkVisibilityTrend'] as core.num)
+                      .toDouble()
+                  : null,
+          categoryId: json_.containsKey('categoryId')
+              ? json_['categoryId'] as core.String
+              : null,
+          countryCode: json_.containsKey('countryCode')
+              ? json_['countryCode'] as core.String
+              : null,
+          date: json_.containsKey('date')
+              ? Date.fromJson(
+                  json_['date'] as core.Map<core.String, core.dynamic>)
+              : null,
+          domain: json_.containsKey('domain')
+              ? json_['domain'] as core.String
+              : null,
+          higherPositionRate: json_.containsKey('higherPositionRate')
+              ? (json_['higherPositionRate'] as core.num).toDouble()
+              : null,
+          isYourDomain: json_.containsKey('isYourDomain')
+              ? json_['isYourDomain'] as core.bool
+              : null,
+          pageOverlapRate: json_.containsKey('pageOverlapRate')
+              ? (json_['pageOverlapRate'] as core.num).toDouble()
+              : null,
+          rank: json_.containsKey('rank') ? json_['rank'] as core.String : null,
+          trafficSource: json_.containsKey('trafficSource')
+              ? json_['trafficSource'] as core.String
+              : null,
+          yourDomainVisibilityTrend:
+              json_.containsKey('yourDomainVisibilityTrend')
+                  ? (json_['yourDomainVisibilityTrend'] as core.num).toDouble()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adsOrganicRatio != null) 'adsOrganicRatio': adsOrganicRatio!,
+        if (categoryBenchmarkVisibilityTrend != null)
+          'categoryBenchmarkVisibilityTrend': categoryBenchmarkVisibilityTrend!,
+        if (categoryId != null) 'categoryId': categoryId!,
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (date != null) 'date': date!,
+        if (domain != null) 'domain': domain!,
+        if (higherPositionRate != null)
+          'higherPositionRate': higherPositionRate!,
+        if (isYourDomain != null) 'isYourDomain': isYourDomain!,
+        if (pageOverlapRate != null) 'pageOverlapRate': pageOverlapRate!,
+        if (rank != null) 'rank': rank!,
+        if (trafficSource != null) 'trafficSource': trafficSource!,
+        if (yourDomainVisibilityTrend != null)
+          'yourDomainVisibilityTrend': yourDomainVisibilityTrend!,
+      };
+}
+
 /// Represents a conversion source owned by a Merchant account.
 ///
 /// A merchant account can have up to 200 conversion sources.
@@ -12398,6 +12828,12 @@ class Css {
       };
 }
 
+/// A message that represents custom attributes.
+///
+/// Exactly one of `value` or `groupValues` must be provided. Maximum allowed
+/// number of characters for each custom attribute is 10240 (represents sum of
+/// characters for name and value). Maximum 2500 custom attributes can be set
+/// per merchant, with total size of 102.4kB.
 class CustomAttribute {
   /// Subattributes within this attribute group.
   ///
@@ -14610,6 +15046,32 @@ class InapplicabilityDetails {
         if (inapplicableCount != null) 'inapplicableCount': inapplicableCount!,
         if (inapplicableReason != null)
           'inapplicableReason': inapplicableReason!,
+      };
+}
+
+/// Request message for the `InsertCheckoutSettings` method.
+class InsertCheckoutSettingsRequest {
+  /// The `UrlSettings` for the request.
+  ///
+  /// The presence of URL settings indicates `Checkout` enrollment.
+  ///
+  /// Required.
+  UrlSettings? uriSettings;
+
+  InsertCheckoutSettingsRequest({
+    this.uriSettings,
+  });
+
+  InsertCheckoutSettingsRequest.fromJson(core.Map json_)
+      : this(
+          uriSettings: json_.containsKey('uriSettings')
+              ? UrlSettings.fromJson(
+                  json_['uriSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uriSettings != null) 'uriSettings': uriSettings!,
       };
 }
 
@@ -19061,6 +19523,9 @@ class OrderTrackingSignalLineItemDetails {
 
   /// Plain text description of this product (deprecated: Please use
   /// product_title instead).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? productDescription;
 
   /// The Content API REST ID of the product, in the form
@@ -19076,10 +19541,16 @@ class OrderTrackingSignalLineItemDetails {
   core.String? quantity;
 
   /// Merchant SKU for this item (deprecated).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? sku;
 
   /// Universal product code for this item (deprecated: Please use GTIN
   /// instead).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? upc;
 
   OrderTrackingSignalLineItemDetails({
@@ -22315,6 +22786,25 @@ class PosInventory {
   /// Value: the fixed string "`content#posInventory`"
   core.String? kind;
 
+  /// Supported pickup method for this offer.
+  ///
+  /// Unless the value is "not supported", this field must be submitted together
+  /// with `pickupSla`. For accepted attribute values, see the
+  /// [local product inventory feed specification](https://support.google.com/merchants/answer/3061342).
+  ///
+  /// Optional.
+  core.String? pickupMethod;
+
+  /// Expected date that an order will be ready for pickup relative to the order
+  /// date.
+  ///
+  /// Must be submitted together with `pickupMethod`. For accepted attribute
+  /// values, see the
+  /// [local product inventory feed specification](https://support.google.com/merchants/answer/3061342).
+  ///
+  /// Optional.
+  core.String? pickupSla;
+
   /// The current price of the item.
   ///
   /// Required.
@@ -22348,6 +22838,8 @@ class PosInventory {
     this.gtin,
     this.itemId,
     this.kind,
+    this.pickupMethod,
+    this.pickupSla,
     this.price,
     this.quantity,
     this.storeCode,
@@ -22365,6 +22857,12 @@ class PosInventory {
               ? json_['itemId'] as core.String
               : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          pickupMethod: json_.containsKey('pickupMethod')
+              ? json_['pickupMethod'] as core.String
+              : null,
+          pickupSla: json_.containsKey('pickupSla')
+              ? json_['pickupSla'] as core.String
+              : null,
           price: json_.containsKey('price')
               ? Price.fromJson(
                   json_['price'] as core.Map<core.String, core.dynamic>)
@@ -22388,6 +22886,8 @@ class PosInventory {
         if (gtin != null) 'gtin': gtin!,
         if (itemId != null) 'itemId': itemId!,
         if (kind != null) 'kind': kind!,
+        if (pickupMethod != null) 'pickupMethod': pickupMethod!,
+        if (pickupSla != null) 'pickupSla': pickupSla!,
         if (price != null) 'price': price!,
         if (quantity != null) 'quantity': quantity!,
         if (storeCode != null) 'storeCode': storeCode!,
@@ -22409,6 +22909,25 @@ class PosInventoryRequest {
   ///
   /// Required.
   core.String? itemId;
+
+  /// Supported pickup method for this offer.
+  ///
+  /// Unless the value is "not supported", this field must be submitted together
+  /// with `pickupSla`. For accepted attribute values, see the
+  /// [local product inventory feed specification](https://support.google.com/merchants/answer/3061342).
+  ///
+  /// Optional.
+  core.String? pickupMethod;
+
+  /// Expected date that an order will be ready for pickup relative to the order
+  /// date.
+  ///
+  /// Must be submitted together with `pickupMethod`. For accepted attribute
+  /// values, see the
+  /// [local product inventory feed specification](https://support.google.com/merchants/answer/3061342).
+  ///
+  /// Optional.
+  core.String? pickupSla;
 
   /// The current price of the item.
   ///
@@ -22442,6 +22961,8 @@ class PosInventoryRequest {
     this.contentLanguage,
     this.gtin,
     this.itemId,
+    this.pickupMethod,
+    this.pickupSla,
     this.price,
     this.quantity,
     this.storeCode,
@@ -22457,6 +22978,12 @@ class PosInventoryRequest {
           gtin: json_.containsKey('gtin') ? json_['gtin'] as core.String : null,
           itemId: json_.containsKey('itemId')
               ? json_['itemId'] as core.String
+              : null,
+          pickupMethod: json_.containsKey('pickupMethod')
+              ? json_['pickupMethod'] as core.String
+              : null,
+          pickupSla: json_.containsKey('pickupSla')
+              ? json_['pickupSla'] as core.String
               : null,
           price: json_.containsKey('price')
               ? Price.fromJson(
@@ -22480,6 +23007,8 @@ class PosInventoryRequest {
         if (contentLanguage != null) 'contentLanguage': contentLanguage!,
         if (gtin != null) 'gtin': gtin!,
         if (itemId != null) 'itemId': itemId!,
+        if (pickupMethod != null) 'pickupMethod': pickupMethod!,
+        if (pickupSla != null) 'pickupSla': pickupSla!,
         if (price != null) 'price': price!,
         if (quantity != null) 'quantity': quantity!,
         if (storeCode != null) 'storeCode': storeCode!,
@@ -22506,6 +23035,25 @@ class PosInventoryResponse {
   ///
   /// Value: the fixed string "`content#posInventoryResponse`".
   core.String? kind;
+
+  /// Supported pickup method for this offer.
+  ///
+  /// Unless the value is "not supported", this field must be submitted together
+  /// with `pickupSla`. For accepted attribute values, see the
+  /// [local product inventory feed specification](https://support.google.com/merchants/answer/3061342).
+  ///
+  /// Optional.
+  core.String? pickupMethod;
+
+  /// Expected date that an order will be ready for pickup relative to the order
+  /// date.
+  ///
+  /// Must be submitted together with `pickupMethod`. For accepted attribute
+  /// values, see the
+  /// [local product inventory feed specification](https://support.google.com/merchants/answer/3061342).
+  ///
+  /// Optional.
+  core.String? pickupSla;
 
   /// The current price of the item.
   ///
@@ -22540,6 +23088,8 @@ class PosInventoryResponse {
     this.gtin,
     this.itemId,
     this.kind,
+    this.pickupMethod,
+    this.pickupSla,
     this.price,
     this.quantity,
     this.storeCode,
@@ -22557,6 +23107,12 @@ class PosInventoryResponse {
               ? json_['itemId'] as core.String
               : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          pickupMethod: json_.containsKey('pickupMethod')
+              ? json_['pickupMethod'] as core.String
+              : null,
+          pickupSla: json_.containsKey('pickupSla')
+              ? json_['pickupSla'] as core.String
+              : null,
           price: json_.containsKey('price')
               ? Price.fromJson(
                   json_['price'] as core.Map<core.String, core.dynamic>)
@@ -22580,6 +23136,8 @@ class PosInventoryResponse {
         if (gtin != null) 'gtin': gtin!,
         if (itemId != null) 'itemId': itemId!,
         if (kind != null) 'kind': kind!,
+        if (pickupMethod != null) 'pickupMethod': pickupMethod!,
+        if (pickupSla != null) 'pickupSla': pickupSla!,
         if (price != null) 'price': price!,
         if (quantity != null) 'quantity': quantity!,
         if (storeCode != null) 'storeCode': storeCode!,
@@ -23107,10 +23665,10 @@ class PostalCodeRange {
       };
 }
 
-typedef Price = $Shared03;
+typedef Price = $Shared04;
 
 /// The price represented as a number and currency.
-typedef PriceAmount = $Shared03;
+typedef PriceAmount = $Shared04;
 
 /// Price competitiveness fields requested by the merchant in the query.
 ///
@@ -23695,6 +24253,9 @@ class Product {
   /// The measure and dimension of an item.
   ProductUnitPricingMeasure? unitPricingMeasure;
 
+  /// URL of the 3D model of the item to provide more visuals.
+  core.String? virtualModelLink;
+
   Product({
     this.additionalImageLinks,
     this.additionalSizeType,
@@ -23792,6 +24353,7 @@ class Product {
     this.transitTimeLabel,
     this.unitPricingBaseMeasure,
     this.unitPricingMeasure,
+    this.virtualModelLink,
   });
 
   Product.fromJson(core.Map json_)
@@ -24130,6 +24692,9 @@ class Product {
               ? ProductUnitPricingMeasure.fromJson(json_['unitPricingMeasure']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          virtualModelLink: json_.containsKey('virtualModelLink')
+              ? json_['virtualModelLink'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -24246,6 +24811,7 @@ class Product {
           'unitPricingBaseMeasure': unitPricingBaseMeasure!,
         if (unitPricingMeasure != null)
           'unitPricingMeasure': unitPricingMeasure!,
+        if (virtualModelLink != null) 'virtualModelLink': virtualModelLink!,
       };
 }
 
@@ -24988,6 +25554,9 @@ class ProductStatusDestinationStatus {
   /// Destination approval status in `targetCountry` of the offer.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? status;
 
   ProductStatusDestinationStatus({
@@ -26002,6 +26571,9 @@ class ProductstatusesCustomBatchRequestEntry {
 
   /// Deprecated: Setting this field has no effect and attributes are never
   /// included.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? includeAttributes;
 
   /// The ID of the managing account.
@@ -26335,6 +26907,9 @@ class Promotion {
   /// String representation of the promotion display dates.
   ///
   /// Deprecated. Use `promotion_display_time_period` instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? promotionDisplayDates;
 
   /// `TimePeriod` representation of the promotion's display dates.
@@ -26343,6 +26918,9 @@ class Promotion {
   /// String representation of the promotion effective dates.
   ///
   /// Deprecated. Use `promotion_effective_time_period` instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? promotionEffectiveDates;
 
   /// `TimePeriod` representation of the promotion's effective dates.
@@ -27779,6 +28357,13 @@ class ReportRow {
   /// Field values are only set if the merchant queries `BestSellersBrandView`.
   Brand? brand;
 
+  /// Competitive visibility fields requested by the merchant in the query.
+  ///
+  /// Field values are only set if the merchant queries
+  /// `CompetitiveVisibilityTopMerchantView` or
+  /// `CompetitiveVisibilityBenchmarkView`.
+  CompetitiveVisibility? competitiveVisibility;
+
   /// Metrics requested by the merchant in the query.
   ///
   /// Metric values are only set for metrics requested explicitly in the query.
@@ -27816,6 +28401,7 @@ class ReportRow {
   ReportRow({
     this.bestSellers,
     this.brand,
+    this.competitiveVisibility,
     this.metrics,
     this.priceCompetitiveness,
     this.priceInsights,
@@ -27833,6 +28419,10 @@ class ReportRow {
           brand: json_.containsKey('brand')
               ? Brand.fromJson(
                   json_['brand'] as core.Map<core.String, core.dynamic>)
+              : null,
+          competitiveVisibility: json_.containsKey('competitiveVisibility')
+              ? CompetitiveVisibility.fromJson(json_['competitiveVisibility']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           metrics: json_.containsKey('metrics')
               ? Metrics.fromJson(
@@ -27863,6 +28453,8 @@ class ReportRow {
   core.Map<core.String, core.dynamic> toJson() => {
         if (bestSellers != null) 'bestSellers': bestSellers!,
         if (brand != null) 'brand': brand!,
+        if (competitiveVisibility != null)
+          'competitiveVisibility': competitiveVisibility!,
         if (metrics != null) 'metrics': metrics!,
         if (priceCompetitiveness != null)
           'priceCompetitiveness': priceCompetitiveness!,
@@ -27888,6 +28480,9 @@ class RepricingProductReport {
   core.String? applicationCount;
 
   /// Stats specific to buybox winning rules for product report (deprecated).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   RepricingProductReportBuyboxWinningProductStats? buyboxWinningProductStats;
 
   /// Date of the stats in this report.
@@ -28396,6 +28991,9 @@ class RepricingRuleEligibleOfferMatcherStringMatcher {
 /// Next ID: 11
 class RepricingRuleReport {
   /// Stats specific to buybox winning rules for rule report (deprecated).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   RepricingRuleReportBuyboxWinningRuleStats? buyboxWinningRuleStats;
 
   /// Date of the stats in this report.
@@ -32567,6 +33165,44 @@ class UnitInvoiceTaxLine {
         if (taxAmount != null) 'taxAmount': taxAmount!,
         if (taxName != null) 'taxName': taxName!,
         if (taxType != null) 'taxType': taxType!,
+      };
+}
+
+/// Specifications related to the `Checkout` URL.
+///
+/// The `UriTemplate` is of the form
+/// `https://www.mystore.com/checkout?item_id={id}` where `{id}` will be
+/// automatically replaced with data from the merchant account with this
+/// attribute
+/// [offer_id](https://developers.google.com/shopping-content/reference/rest/v2.1/products#Product.FIELDS.offer_id)
+class UrlSettings {
+  /// URL template when the placeholders are expanded will redirect the buyer to
+  /// the cart page on the merchant website with the selected item in cart.
+  core.String? cartUriTemplate;
+
+  /// URL template when the placeholders are expanded will redirect the buyer to
+  /// the merchant checkout page with the item in the cart.
+  core.String? checkoutUriTemplate;
+
+  UrlSettings({
+    this.cartUriTemplate,
+    this.checkoutUriTemplate,
+  });
+
+  UrlSettings.fromJson(core.Map json_)
+      : this(
+          cartUriTemplate: json_.containsKey('cartUriTemplate')
+              ? json_['cartUriTemplate'] as core.String
+              : null,
+          checkoutUriTemplate: json_.containsKey('checkoutUriTemplate')
+              ? json_['checkoutUriTemplate'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cartUriTemplate != null) 'cartUriTemplate': cartUriTemplate!,
+        if (checkoutUriTemplate != null)
+          'checkoutUriTemplate': checkoutUriTemplate!,
       };
 }
 

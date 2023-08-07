@@ -8436,7 +8436,7 @@ class CommentSnippet {
 }
 
 /// The id of the author's YouTube channel, if any.
-typedef CommentSnippetAuthorChannelId = $Shared06;
+typedef CommentSnippetAuthorChannelId = $Shared07;
 
 /// A *comment thread* represents information that applies to a top level
 /// comment and all its replies.
@@ -10027,6 +10027,62 @@ class Cuepoint {
       };
 }
 
+/// Schedule to insert cuepoints into a broadcast by ads automator.
+class CuepointSchedule {
+  /// This field is semantically required.
+  ///
+  /// If it is set false or not set, other fields in this message will be
+  /// ignored.
+  core.bool? enabled;
+
+  /// If set, automatic cuepoint insertion is paused until this timestamp ("No
+  /// Ad Zone").
+  core.String? pauseAdsUntil;
+
+  /// Interval frequency that api uses to insert cuepoints automatically.
+  core.String? repeatInterval;
+
+  /// The strategy to use when scheduling cuepoints.
+  /// Possible string values are:
+  /// - "scheduleStrategyUnspecified"
+  /// - "concurrent" : Strategy to schedule cuepoints at one time for all
+  /// viewers.
+  /// - "nonConcurrent" : Strategy to schedule cuepoints at an increased rate to
+  /// allow viewers to receive cuepoints when eligible. See
+  /// go/lcr-non-concurrent-ads for more details.
+  core.String? scheduleStrategy;
+
+  CuepointSchedule({
+    this.enabled,
+    this.pauseAdsUntil,
+    this.repeatInterval,
+    this.scheduleStrategy,
+  });
+
+  CuepointSchedule.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+          pauseAdsUntil: json_.containsKey('pauseAdsUntil')
+              ? json_['pauseAdsUntil'] as core.String
+              : null,
+          repeatInterval: json_.containsKey('repeatInterval')
+              ? json_['repeatInterval'] as core.String
+              : null,
+          scheduleStrategy: json_.containsKey('scheduleStrategy')
+              ? json_['scheduleStrategy'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (pauseAdsUntil != null) 'pauseAdsUntil': pauseAdsUntil!,
+        if (repeatInterval != null) 'repeatInterval': repeatInterval!,
+        if (scheduleStrategy != null) 'scheduleStrategy': scheduleStrategy!,
+      };
+}
+
 class Entity {
   core.String? id;
   core.String? typeId;
@@ -10894,7 +10950,7 @@ class InvideoTiming {
       };
 }
 
-typedef LanguageTag = $Shared06;
+typedef LanguageTag = $Shared07;
 
 class LevelDetails {
   /// The name that should be used when referring to this level.
@@ -10936,6 +10992,10 @@ class LiveBroadcast {
   /// Value: the fixed string "youtube#liveBroadcast".
   core.String? kind;
 
+  /// The monetizationDetails object contains information about the event's
+  /// monetization details.
+  LiveBroadcastMonetizationDetails? monetizationDetails;
+
   /// The snippet object contains basic details about the event, including its
   /// title, description, start time, and end time.
   LiveBroadcastSnippet? snippet;
@@ -10955,6 +11015,7 @@ class LiveBroadcast {
     this.etag,
     this.id,
     this.kind,
+    this.monetizationDetails,
     this.snippet,
     this.statistics,
     this.status,
@@ -10969,6 +11030,11 @@ class LiveBroadcast {
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          monetizationDetails: json_.containsKey('monetizationDetails')
+              ? LiveBroadcastMonetizationDetails.fromJson(
+                  json_['monetizationDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           snippet: json_.containsKey('snippet')
               ? LiveBroadcastSnippet.fromJson(
                   json_['snippet'] as core.Map<core.String, core.dynamic>)
@@ -10988,6 +11054,8 @@ class LiveBroadcast {
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
+        if (monetizationDetails != null)
+          'monetizationDetails': monetizationDetails!,
         if (snippet != null) 'snippet': snippet!,
         if (statistics != null) 'statistics': statistics!,
         if (status != null) 'status': status!,
@@ -11329,6 +11397,27 @@ class LiveBroadcastListResponse {
         if (prevPageToken != null) 'prevPageToken': prevPageToken!,
         if (tokenPagination != null) 'tokenPagination': tokenPagination!,
         if (visitorId != null) 'visitorId': visitorId!,
+      };
+}
+
+/// Monetization settings of a broadcast.
+class LiveBroadcastMonetizationDetails {
+  CuepointSchedule? cuepointSchedule;
+
+  LiveBroadcastMonetizationDetails({
+    this.cuepointSchedule,
+  });
+
+  LiveBroadcastMonetizationDetails.fromJson(core.Map json_)
+      : this(
+          cuepointSchedule: json_.containsKey('cuepointSchedule')
+              ? CuepointSchedule.fromJson(json_['cuepointSchedule']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cuepointSchedule != null) 'cuepointSchedule': cuepointSchedule!,
       };
 }
 

@@ -1139,8 +1139,8 @@ api.SapDiscoveryComponent buildSapDiscoveryComponent() {
   final o = api.SapDiscoveryComponent();
   buildCounterSapDiscoveryComponent++;
   if (buildCounterSapDiscoveryComponent < 3) {
-    o.applicationType = 'foo';
-    o.databaseType = 'foo';
+    o.applicationProperties = buildSapDiscoveryComponentApplicationProperties();
+    o.databaseProperties = buildSapDiscoveryComponentDatabaseProperties();
     o.hostProject = 'foo';
     o.resources = buildUnnamed22();
     o.sid = 'foo';
@@ -1152,14 +1152,8 @@ api.SapDiscoveryComponent buildSapDiscoveryComponent() {
 void checkSapDiscoveryComponent(api.SapDiscoveryComponent o) {
   buildCounterSapDiscoveryComponent++;
   if (buildCounterSapDiscoveryComponent < 3) {
-    unittest.expect(
-      o.applicationType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.databaseType!,
-      unittest.equals('foo'),
-    );
+    checkSapDiscoveryComponentApplicationProperties(o.applicationProperties!);
+    checkSapDiscoveryComponentDatabaseProperties(o.databaseProperties!);
     unittest.expect(
       o.hostProject!,
       unittest.equals('foo'),
@@ -1171,6 +1165,74 @@ void checkSapDiscoveryComponent(api.SapDiscoveryComponent o) {
     );
   }
   buildCounterSapDiscoveryComponent--;
+}
+
+core.int buildCounterSapDiscoveryComponentApplicationProperties = 0;
+api.SapDiscoveryComponentApplicationProperties
+    buildSapDiscoveryComponentApplicationProperties() {
+  final o = api.SapDiscoveryComponentApplicationProperties();
+  buildCounterSapDiscoveryComponentApplicationProperties++;
+  if (buildCounterSapDiscoveryComponentApplicationProperties < 3) {
+    o.applicationType = 'foo';
+    o.ascsUri = 'foo';
+    o.nfsUri = 'foo';
+  }
+  buildCounterSapDiscoveryComponentApplicationProperties--;
+  return o;
+}
+
+void checkSapDiscoveryComponentApplicationProperties(
+    api.SapDiscoveryComponentApplicationProperties o) {
+  buildCounterSapDiscoveryComponentApplicationProperties++;
+  if (buildCounterSapDiscoveryComponentApplicationProperties < 3) {
+    unittest.expect(
+      o.applicationType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ascsUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nfsUri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSapDiscoveryComponentApplicationProperties--;
+}
+
+core.int buildCounterSapDiscoveryComponentDatabaseProperties = 0;
+api.SapDiscoveryComponentDatabaseProperties
+    buildSapDiscoveryComponentDatabaseProperties() {
+  final o = api.SapDiscoveryComponentDatabaseProperties();
+  buildCounterSapDiscoveryComponentDatabaseProperties++;
+  if (buildCounterSapDiscoveryComponentDatabaseProperties < 3) {
+    o.databaseType = 'foo';
+    o.primaryInstanceUri = 'foo';
+    o.sharedNfsUri = 'foo';
+  }
+  buildCounterSapDiscoveryComponentDatabaseProperties--;
+  return o;
+}
+
+void checkSapDiscoveryComponentDatabaseProperties(
+    api.SapDiscoveryComponentDatabaseProperties o) {
+  buildCounterSapDiscoveryComponentDatabaseProperties++;
+  if (buildCounterSapDiscoveryComponentDatabaseProperties < 3) {
+    unittest.expect(
+      o.databaseType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.primaryInstanceUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sharedNfsUri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSapDiscoveryComponentDatabaseProperties--;
 }
 
 core.int buildCounterSapDiscoveryMetadata = 0;
@@ -1875,6 +1937,26 @@ void main() {
       final od = api.SapDiscoveryComponent.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSapDiscoveryComponent(od);
+    });
+  });
+
+  unittest.group('obj-schema-SapDiscoveryComponentApplicationProperties', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSapDiscoveryComponentApplicationProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SapDiscoveryComponentApplicationProperties.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSapDiscoveryComponentApplicationProperties(od);
+    });
+  });
+
+  unittest.group('obj-schema-SapDiscoveryComponentDatabaseProperties', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSapDiscoveryComponentDatabaseProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SapDiscoveryComponentDatabaseProperties.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSapDiscoveryComponentDatabaseProperties(od);
     });
   });
 

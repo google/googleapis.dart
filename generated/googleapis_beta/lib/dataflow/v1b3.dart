@@ -3909,6 +3909,128 @@ class DataDiskAssignment {
       };
 }
 
+/// Configuration options for sampling elements.
+class DataSamplingConfig {
+  /// List of given sampling behaviors to enable.
+  ///
+  /// For example, specifying behaviors = \[ALWAYS_ON\] samples in-flight
+  /// elements but does not sample exceptions. Can be used to specify multiple
+  /// behaviors like, behaviors = \[ALWAYS_ON, EXCEPTIONS\] for specifying
+  /// periodic sampling and exception sampling. If DISABLED is in the list, then
+  /// sampling will be disabled and ignore the other given behaviors. Ordering
+  /// does not matter.
+  core.List<core.String>? behaviors;
+
+  DataSamplingConfig({
+    this.behaviors,
+  });
+
+  DataSamplingConfig.fromJson(core.Map json_)
+      : this(
+          behaviors: json_.containsKey('behaviors')
+              ? (json_['behaviors'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (behaviors != null) 'behaviors': behaviors!,
+      };
+}
+
+/// Contains per-worker telemetry about the data sampling feature.
+class DataSamplingReport {
+  /// Delta of bytes written to file from previous report.
+  ///
+  /// Optional.
+  core.String? bytesWrittenDelta;
+
+  /// Delta of bytes sampled from previous report.
+  ///
+  /// Optional.
+  core.String? elementsSampledBytes;
+
+  /// Delta of number of elements sampled from previous report.
+  ///
+  /// Optional.
+  core.String? elementsSampledCount;
+
+  /// Delta of number of samples taken from user code exceptions from previous
+  /// report.
+  ///
+  /// Optional.
+  core.String? exceptionsSampledCount;
+
+  /// Delta of number of PCollections sampled from previous report.
+  ///
+  /// Optional.
+  core.String? pcollectionsSampledCount;
+
+  /// Delta of errors counts from persisting the samples from previous report.
+  ///
+  /// Optional.
+  core.String? persistenceErrorsCount;
+
+  /// Delta of errors counts from retrieving, or translating the samples from
+  /// previous report.
+  ///
+  /// Optional.
+  core.String? translationErrorsCount;
+
+  DataSamplingReport({
+    this.bytesWrittenDelta,
+    this.elementsSampledBytes,
+    this.elementsSampledCount,
+    this.exceptionsSampledCount,
+    this.pcollectionsSampledCount,
+    this.persistenceErrorsCount,
+    this.translationErrorsCount,
+  });
+
+  DataSamplingReport.fromJson(core.Map json_)
+      : this(
+          bytesWrittenDelta: json_.containsKey('bytesWrittenDelta')
+              ? json_['bytesWrittenDelta'] as core.String
+              : null,
+          elementsSampledBytes: json_.containsKey('elementsSampledBytes')
+              ? json_['elementsSampledBytes'] as core.String
+              : null,
+          elementsSampledCount: json_.containsKey('elementsSampledCount')
+              ? json_['elementsSampledCount'] as core.String
+              : null,
+          exceptionsSampledCount: json_.containsKey('exceptionsSampledCount')
+              ? json_['exceptionsSampledCount'] as core.String
+              : null,
+          pcollectionsSampledCount:
+              json_.containsKey('pcollectionsSampledCount')
+                  ? json_['pcollectionsSampledCount'] as core.String
+                  : null,
+          persistenceErrorsCount: json_.containsKey('persistenceErrorsCount')
+              ? json_['persistenceErrorsCount'] as core.String
+              : null,
+          translationErrorsCount: json_.containsKey('translationErrorsCount')
+              ? json_['translationErrorsCount'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bytesWrittenDelta != null) 'bytesWrittenDelta': bytesWrittenDelta!,
+        if (elementsSampledBytes != null)
+          'elementsSampledBytes': elementsSampledBytes!,
+        if (elementsSampledCount != null)
+          'elementsSampledCount': elementsSampledCount!,
+        if (exceptionsSampledCount != null)
+          'exceptionsSampledCount': exceptionsSampledCount!,
+        if (pcollectionsSampledCount != null)
+          'pcollectionsSampledCount': pcollectionsSampledCount!,
+        if (persistenceErrorsCount != null)
+          'persistenceErrorsCount': persistenceErrorsCount!,
+        if (translationErrorsCount != null)
+          'translationErrorsCount': translationErrorsCount!,
+      };
+}
+
 /// Metadata for a Datastore connector used by the job.
 class DatastoreIODetails {
   /// Namespace used in the connection.
@@ -3940,22 +4062,31 @@ class DatastoreIODetails {
 
 /// Describes any options that have an effect on the debugging of pipelines.
 class DebugOptions {
+  /// Configuration options for sampling elements from a running pipeline.
+  DataSamplingConfig? dataSampling;
+
   /// When true, enables the logging of the literal hot key to the user's Cloud
   /// Logging.
   core.bool? enableHotKeyLogging;
 
   DebugOptions({
+    this.dataSampling,
     this.enableHotKeyLogging,
   });
 
   DebugOptions.fromJson(core.Map json_)
       : this(
+          dataSampling: json_.containsKey('dataSampling')
+              ? DataSamplingConfig.fromJson(
+                  json_['dataSampling'] as core.Map<core.String, core.dynamic>)
+              : null,
           enableHotKeyLogging: json_.containsKey('enableHotKeyLogging')
               ? json_['enableHotKeyLogging'] as core.bool
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (dataSampling != null) 'dataSampling': dataSampling!,
         if (enableHotKeyLogging != null)
           'enableHotKeyLogging': enableHotKeyLogging!,
       };
@@ -4369,6 +4500,12 @@ class Environment {
   /// bucket.storage.googleapis.com/{object}
   core.String? tempStoragePrefix;
 
+  /// Whether the job uses the new streaming engine billing model based on
+  /// resource usage.
+  ///
+  /// Output only.
+  core.bool? useStreamingEngineResourceBasedBilling;
+
   /// A description of the process that generated the request.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -4418,6 +4555,7 @@ class Environment {
     this.serviceOptions,
     this.shuffleMode,
     this.tempStoragePrefix,
+    this.useStreamingEngineResourceBasedBilling,
     this.userAgent,
     this.version,
     this.workerPools,
@@ -4472,6 +4610,10 @@ class Environment {
           tempStoragePrefix: json_.containsKey('tempStoragePrefix')
               ? json_['tempStoragePrefix'] as core.String
               : null,
+          useStreamingEngineResourceBasedBilling:
+              json_.containsKey('useStreamingEngineResourceBasedBilling')
+                  ? json_['useStreamingEngineResourceBasedBilling'] as core.bool
+                  : null,
           userAgent: json_.containsKey('userAgent')
               ? json_['userAgent'] as core.Map<core.String, core.dynamic>
               : null,
@@ -4510,6 +4652,9 @@ class Environment {
         if (serviceOptions != null) 'serviceOptions': serviceOptions!,
         if (shuffleMode != null) 'shuffleMode': shuffleMode!,
         if (tempStoragePrefix != null) 'tempStoragePrefix': tempStoragePrefix!,
+        if (useStreamingEngineResourceBasedBilling != null)
+          'useStreamingEngineResourceBasedBilling':
+              useStreamingEngineResourceBasedBilling!,
         if (userAgent != null) 'userAgent': userAgent!,
         if (version != null) 'version': version!,
         if (workerPools != null) 'workerPools': workerPools!,
@@ -8784,6 +8929,61 @@ class SDKInfo {
       };
 }
 
+/// A bug found in the Dataflow SDK.
+class SdkBug {
+  /// How severe the SDK bug is.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : A bug of unknown severity.
+  /// - "NOTICE" : A minor bug that that may reduce reliability or performance
+  /// for some jobs. Impact will be minimal or non-existent for most jobs.
+  /// - "WARNING" : A bug that has some likelihood of causing performance
+  /// degradation, data loss, or job failures.
+  /// - "SEVERE" : A bug with extremely significant impact. Jobs may fail
+  /// erroneously, performance may be severely degraded, and data loss may be
+  /// very likely.
+  core.String? severity;
+
+  /// Describes the impact of this SDK bug.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unknown issue with this SDK.
+  /// - "GENERAL" : Catch-all for SDK bugs that don't fit in the below
+  /// categories.
+  /// - "PERFORMANCE" : Using this version of the SDK may result in degraded
+  /// performance.
+  /// - "DATALOSS" : Using this version of the SDK may cause data loss.
+  core.String? type;
+
+  /// Link to more information on the bug.
+  ///
+  /// Output only.
+  core.String? uri;
+
+  SdkBug({
+    this.severity,
+    this.type,
+    this.uri,
+  });
+
+  SdkBug.fromJson(core.Map json_)
+      : this(
+          severity: json_.containsKey('severity')
+              ? json_['severity'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (severity != null) 'severity': severity!,
+        if (type != null) 'type': type!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
 /// Defines an SDK harness container for executing Dataflow pipelines.
 class SdkHarnessContainerImage {
   /// The set of capabilities enumerated in the above Environment proto.
@@ -8844,6 +9044,11 @@ class SdkHarnessContainerImage {
 
 /// The version of the SDK used to run the job.
 class SdkVersion {
+  /// Known bugs found in this SDK version.
+  ///
+  /// Output only.
+  core.List<SdkBug>? bugs;
+
   /// The support status for this SDK version.
   /// Possible string values are:
   /// - "UNKNOWN" : Cloud Dataflow is unaware of this version.
@@ -8863,6 +9068,7 @@ class SdkVersion {
   core.String? versionDisplayName;
 
   SdkVersion({
+    this.bugs,
     this.sdkSupportStatus,
     this.version,
     this.versionDisplayName,
@@ -8870,6 +9076,12 @@ class SdkVersion {
 
   SdkVersion.fromJson(core.Map json_)
       : this(
+          bugs: json_.containsKey('bugs')
+              ? (json_['bugs'] as core.List)
+                  .map((value) => SdkBug.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           sdkSupportStatus: json_.containsKey('sdkSupportStatus')
               ? json_['sdkSupportStatus'] as core.String
               : null,
@@ -8882,6 +9094,7 @@ class SdkVersion {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bugs != null) 'bugs': bugs!,
         if (sdkSupportStatus != null) 'sdkSupportStatus': sdkSupportStatus!,
         if (version != null) 'version': version!,
         if (versionDisplayName != null)
@@ -12070,6 +12283,11 @@ class WorkerLifecycleEvent {
 
 /// WorkerMessage provides information to the backend about a worker.
 class WorkerMessage {
+  /// Contains metrics related to go/dataflow-data-sampling-telemetry.
+  ///
+  /// Optional.
+  DataSamplingReport? dataSamplingReport;
+
   /// Labels are used to group WorkerMessages.
   ///
   /// For example, a worker_message about a particular container might have the
@@ -12102,6 +12320,7 @@ class WorkerMessage {
   WorkerThreadScalingReport? workerThreadScalingReport;
 
   WorkerMessage({
+    this.dataSamplingReport,
     this.labels,
     this.time,
     this.workerHealthReport,
@@ -12114,6 +12333,10 @@ class WorkerMessage {
 
   WorkerMessage.fromJson(core.Map json_)
       : this(
+          dataSamplingReport: json_.containsKey('dataSamplingReport')
+              ? DataSamplingReport.fromJson(json_['dataSamplingReport']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -12152,6 +12375,8 @@ class WorkerMessage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (dataSamplingReport != null)
+          'dataSamplingReport': dataSamplingReport!,
         if (labels != null) 'labels': labels!,
         if (time != null) 'time': time!,
         if (workerHealthReport != null)

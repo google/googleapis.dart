@@ -2788,6 +2788,38 @@ class Command {
   /// For commands of type RESET_PASSWORD, optionally specifies flags.
   core.List<core.String>? resetPasswordFlags;
 
+  /// Parameters for the START_LOST_MODE command to put the device into lost
+  /// mode.
+  ///
+  /// See StartLostModeParams. If this is set, then it is suggested that type
+  /// should not be set. In this case, the server automatically sets it to
+  /// START_LOST_MODE. It is also acceptable to explicitly set type to
+  /// START_LOST_MODE.
+  StartLostModeParams? startLostModeParams;
+
+  /// Status of the START_LOST_MODE command to put the device into lost mode.
+  ///
+  /// See StartLostModeStatus.
+  ///
+  /// Output only.
+  StartLostModeStatus? startLostModeStatus;
+
+  /// Parameters for the STOP_LOST_MODE command to take the device out of lost
+  /// mode.
+  ///
+  /// See StopLostModeParams. If this is set, then it is suggested that type
+  /// should not be set. In this case, the server automatically sets it to
+  /// STOP_LOST_MODE. It is also acceptable to explicitly set type to
+  /// STOP_LOST_MODE.
+  StopLostModeParams? stopLostModeParams;
+
+  /// Status of the STOP_LOST_MODE command to take the device out of lost mode.
+  ///
+  /// See StopLostModeStatus.
+  ///
+  /// Output only.
+  StopLostModeStatus? stopLostModeStatus;
+
   /// The type of the command.
   /// Possible string values are:
   /// - "COMMAND_TYPE_UNSPECIFIED" : This value is disallowed.
@@ -2804,6 +2836,12 @@ class Command {
   /// is supported on Android 9 and above. Note that an application can store
   /// data outside of its application data, for example in external storage or
   /// in a user dictionary. See also clear_apps_data_params.
+  /// - "START_LOST_MODE" : Puts the device into lost mode. Only supported on
+  /// fully managed devices or organization-owned devices with a managed
+  /// profile. See also start_lost_mode_params.
+  /// - "STOP_LOST_MODE" : Takes the device out of lost mode. Only supported on
+  /// fully managed devices or organization-owned devices with a managed
+  /// profile. See also stop_lost_mode_params.
   core.String? type;
 
   /// The resource name of the user that owns the device in the form
@@ -2821,6 +2859,10 @@ class Command {
     this.errorCode,
     this.newPassword,
     this.resetPasswordFlags,
+    this.startLostModeParams,
+    this.startLostModeStatus,
+    this.stopLostModeParams,
+    this.stopLostModeStatus,
     this.type,
     this.userName,
   });
@@ -2852,6 +2894,22 @@ class Command {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          startLostModeParams: json_.containsKey('startLostModeParams')
+              ? StartLostModeParams.fromJson(json_['startLostModeParams']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          startLostModeStatus: json_.containsKey('startLostModeStatus')
+              ? StartLostModeStatus.fromJson(json_['startLostModeStatus']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          stopLostModeParams: json_.containsKey('stopLostModeParams')
+              ? StopLostModeParams.fromJson(json_['stopLostModeParams']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          stopLostModeStatus: json_.containsKey('stopLostModeStatus')
+              ? StopLostModeStatus.fromJson(json_['stopLostModeStatus']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
           userName: json_.containsKey('userName')
               ? json_['userName'] as core.String
@@ -2869,6 +2927,14 @@ class Command {
         if (newPassword != null) 'newPassword': newPassword!,
         if (resetPasswordFlags != null)
           'resetPasswordFlags': resetPasswordFlags!,
+        if (startLostModeParams != null)
+          'startLostModeParams': startLostModeParams!,
+        if (startLostModeStatus != null)
+          'startLostModeStatus': startLostModeStatus!,
+        if (stopLostModeParams != null)
+          'stopLostModeParams': stopLostModeParams!,
+        if (stopLostModeStatus != null)
+          'stopLostModeStatus': stopLostModeStatus!,
         if (type != null) 'type': type!,
         if (userName != null) 'userName': userName!,
       };
@@ -3252,6 +3318,8 @@ class Device {
   /// resets the device, the device state will remain unknown to the server.
   /// - "PROVISIONING" : The device is being provisioned. Newly enrolled devices
   /// are in this state until they have a policy applied.
+  /// - "LOST" : The device is lost. This state is only possible on
+  /// organization-owned devices.
   core.String? appliedState;
 
   /// Information about Common Criteria Mode—security standards defined in the
@@ -3403,6 +3471,8 @@ class Device {
   /// resets the device, the device state will remain unknown to the server.
   /// - "PROVISIONING" : The device is being provisioned. Newly enrolled devices
   /// are in this state until they have a policy applied.
+  /// - "LOST" : The device is lost. This state is only possible on
+  /// organization-owned devices.
   core.String? state;
 
   /// Map of selected system properties name and value related to the device.
@@ -3778,6 +3848,17 @@ class DeviceConnectivityManagement {
 
 /// Controls for device radio settings.
 class DeviceRadioState {
+  /// Controls whether airplane mode can be toggled by the user or not
+  /// Possible string values are:
+  /// - "AIRPLANE_MODE_STATE_UNSPECIFIED" : Unspecified. Defaults to
+  /// AIRPLANE_MODE_USER_CHOICE
+  /// - "AIRPLANE_MODE_USER_CHOICE" : The user is allowed to toggle airplane
+  /// mode on or off.
+  /// - "AIRPLANE_MODE_DISABLED" : Airplane mode is disabled. The user is not
+  /// allowed to toggle airplane mode on. A nonComplianceDetail with API_LEVEL
+  /// is reported if the Android version is less than 9.
+  core.String? airplaneModeState;
+
   /// Controls current state of Wi-Fi and if user can change its state.
   /// Possible string values are:
   /// - "WIFI_STATE_UNSPECIFIED" : Unspecified. Defaults to
@@ -3792,17 +3873,22 @@ class DeviceRadioState {
   core.String? wifiState;
 
   DeviceRadioState({
+    this.airplaneModeState,
     this.wifiState,
   });
 
   DeviceRadioState.fromJson(core.Map json_)
       : this(
+          airplaneModeState: json_.containsKey('airplaneModeState')
+              ? json_['airplaneModeState'] as core.String
+              : null,
           wifiState: json_.containsKey('wifiState')
               ? json_['wifiState'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (airplaneModeState != null) 'airplaneModeState': airplaneModeState!,
         if (wifiState != null) 'wifiState': wifiState!,
       };
 }
@@ -7655,10 +7741,6 @@ class ProvisioningInfo {
   /// The API level of the Android platform version running on the device.
   core.int? apiLevel;
 
-  /// The email address of the authenticated user (only present for Google
-  /// Account provisioning method).
-  core.String? authenticatedUserEmail;
-
   /// Brand of the device.
   ///
   /// For example, Google.
@@ -7694,7 +7776,6 @@ class ProvisioningInfo {
 
   ProvisioningInfo({
     this.apiLevel,
-    this.authenticatedUserEmail,
     this.brand,
     this.enterprise,
     this.managementMode,
@@ -7707,9 +7788,6 @@ class ProvisioningInfo {
       : this(
           apiLevel: json_.containsKey('apiLevel')
               ? json_['apiLevel'] as core.int
-              : null,
-          authenticatedUserEmail: json_.containsKey('authenticatedUserEmail')
-              ? json_['authenticatedUserEmail'] as core.String
               : null,
           brand:
               json_.containsKey('brand') ? json_['brand'] as core.String : null,
@@ -7729,8 +7807,6 @@ class ProvisioningInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (apiLevel != null) 'apiLevel': apiLevel!,
-        if (authenticatedUserEmail != null)
-          'authenticatedUserEmail': authenticatedUserEmail!,
         if (brand != null) 'brand': brand!,
         if (enterprise != null) 'enterprise': enterprise!,
         if (managementMode != null) 'managementMode': managementMode!,
@@ -8135,6 +8211,99 @@ class SpecificNonComplianceContext {
       };
 }
 
+/// Parameters associated with the START_LOST_MODE command to put the device
+/// into lost mode.
+///
+/// At least one of the parameters, not including the organization name, must be
+/// provided in order for the device to be put into lost mode.
+class StartLostModeParams {
+  /// The email address displayed to the user when the device is in lost mode.
+  core.String? lostEmailAddress;
+
+  /// The message displayed to the user when the device is in lost mode.
+  UserFacingMessage? lostMessage;
+
+  /// The organization name displayed to the user when the device is in lost
+  /// mode.
+  UserFacingMessage? lostOrganization;
+
+  /// The phone number displayed to the user when the device is in lost mode.
+  UserFacingMessage? lostPhoneNumber;
+
+  /// The street address displayed to the user when the device is in lost mode.
+  UserFacingMessage? lostStreetAddress;
+
+  StartLostModeParams({
+    this.lostEmailAddress,
+    this.lostMessage,
+    this.lostOrganization,
+    this.lostPhoneNumber,
+    this.lostStreetAddress,
+  });
+
+  StartLostModeParams.fromJson(core.Map json_)
+      : this(
+          lostEmailAddress: json_.containsKey('lostEmailAddress')
+              ? json_['lostEmailAddress'] as core.String
+              : null,
+          lostMessage: json_.containsKey('lostMessage')
+              ? UserFacingMessage.fromJson(
+                  json_['lostMessage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          lostOrganization: json_.containsKey('lostOrganization')
+              ? UserFacingMessage.fromJson(json_['lostOrganization']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          lostPhoneNumber: json_.containsKey('lostPhoneNumber')
+              ? UserFacingMessage.fromJson(json_['lostPhoneNumber']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          lostStreetAddress: json_.containsKey('lostStreetAddress')
+              ? UserFacingMessage.fromJson(json_['lostStreetAddress']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lostEmailAddress != null) 'lostEmailAddress': lostEmailAddress!,
+        if (lostMessage != null) 'lostMessage': lostMessage!,
+        if (lostOrganization != null) 'lostOrganization': lostOrganization!,
+        if (lostPhoneNumber != null) 'lostPhoneNumber': lostPhoneNumber!,
+        if (lostStreetAddress != null) 'lostStreetAddress': lostStreetAddress!,
+      };
+}
+
+/// Status of the START_LOST_MODE command to put the device into lost mode.
+class StartLostModeStatus {
+  /// The status.
+  ///
+  /// See StartLostModeStatus.
+  /// Possible string values are:
+  /// - "STATUS_UNSPECIFIED" : Unspecified. This value is not used.
+  /// - "SUCCESS" : The device was put into lost mode.
+  /// - "RESET_PASSWORD_RECENTLY" : The device could not be put into lost mode
+  /// because the admin reset the device's password recently.
+  /// - "USER_EXIT_LOST_MODE_RECENTLY" : The device could not be put into lost
+  /// mode because the user exited lost mode recently.
+  /// - "ALREADY_IN_LOST_MODE" : The device is already in lost mode.
+  core.String? status;
+
+  StartLostModeStatus({
+    this.status,
+  });
+
+  StartLostModeStatus.fromJson(core.Map json_)
+      : this(
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (status != null) 'status': status!,
+      };
+}
+
 /// The Status type defines a logical error model that is suitable for different
 /// programming environments, including REST APIs and RPC APIs.
 ///
@@ -8269,6 +8438,37 @@ class StatusReportingSettings {
           'softwareInfoEnabled': softwareInfoEnabled!,
         if (systemPropertiesEnabled != null)
           'systemPropertiesEnabled': systemPropertiesEnabled!,
+      };
+}
+
+/// Parameters associated with the STOP_LOST_MODE command to take the device out
+/// of lost mode.
+typedef StopLostModeParams = $Empty;
+
+/// Status of the STOP_LOST_MODE command to take the device out of lost mode.
+class StopLostModeStatus {
+  /// The status.
+  ///
+  /// See StopLostModeStatus.
+  /// Possible string values are:
+  /// - "STATUS_UNSPECIFIED" : Unspecified. This value is not used.
+  /// - "SUCCESS" : The device was taken out of lost mode.
+  /// - "NOT_IN_LOST_MODE" : The device is not in lost mode.
+  core.String? status;
+
+  StopLostModeStatus({
+    this.status,
+  });
+
+  StopLostModeStatus.fromJson(core.Map json_)
+      : this(
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (status != null) 'status': status!,
       };
 }
 

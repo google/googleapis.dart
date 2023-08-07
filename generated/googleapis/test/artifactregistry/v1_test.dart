@@ -1695,6 +1695,7 @@ api.Repository buildRepository() {
     o.name = 'foo';
     o.remoteRepositoryConfig = buildRemoteRepositoryConfig();
     o.satisfiesPzs = true;
+    o.sbomConfig = buildSbomConfig();
     o.sizeBytes = 'foo';
     o.updateTime = 'foo';
     o.virtualRepositoryConfig = buildVirtualRepositoryConfig();
@@ -1737,6 +1738,7 @@ void checkRepository(api.Repository o) {
     );
     checkRemoteRepositoryConfig(o.remoteRepositoryConfig!);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
+    checkSbomConfig(o.sbomConfig!);
     unittest.expect(
       o.sizeBytes!,
       unittest.equals('foo'),
@@ -1748,6 +1750,33 @@ void checkRepository(api.Repository o) {
     checkVirtualRepositoryConfig(o.virtualRepositoryConfig!);
   }
   buildCounterRepository--;
+}
+
+core.int buildCounterSbomConfig = 0;
+api.SbomConfig buildSbomConfig() {
+  final o = api.SbomConfig();
+  buildCounterSbomConfig++;
+  if (buildCounterSbomConfig < 3) {
+    o.enablementConfig = 'foo';
+    o.lastEnableTime = 'foo';
+  }
+  buildCounterSbomConfig--;
+  return o;
+}
+
+void checkSbomConfig(api.SbomConfig o) {
+  buildCounterSbomConfig++;
+  if (buildCounterSbomConfig < 3) {
+    unittest.expect(
+      o.enablementConfig!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.lastEnableTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSbomConfig--;
 }
 
 core.int buildCounterSetIamPolicyRequest = 0;
@@ -2754,6 +2783,16 @@ void main() {
       final od =
           api.Repository.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkRepository(od);
+    });
+  });
+
+  unittest.group('obj-schema-SbomConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSbomConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.SbomConfig.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkSbomConfig(od);
     });
   });
 

@@ -3337,36 +3337,7 @@ class GoogleCloudMlV1ContainerSpec {
 }
 
 /// Represents the config of disk options.
-class GoogleCloudMlV1DiskConfig {
-  /// Size in GB of the boot disk (default is 100GB).
-  core.int? bootDiskSizeGb;
-
-  /// Type of the boot disk (default is "pd-ssd").
-  ///
-  /// Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or
-  /// "pd-standard" (Persistent Disk Hard Disk Drive).
-  core.String? bootDiskType;
-
-  GoogleCloudMlV1DiskConfig({
-    this.bootDiskSizeGb,
-    this.bootDiskType,
-  });
-
-  GoogleCloudMlV1DiskConfig.fromJson(core.Map json_)
-      : this(
-          bootDiskSizeGb: json_.containsKey('bootDiskSizeGb')
-              ? json_['bootDiskSizeGb'] as core.int
-              : null,
-          bootDiskType: json_.containsKey('bootDiskType')
-              ? json_['bootDiskType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb!,
-        if (bootDiskType != null) 'bootDiskType': bootDiskType!,
-      };
-}
+typedef GoogleCloudMlV1DiskConfig = $Shared02;
 
 /// Represents a custom encryption key configuration that can be applied to a
 /// resource.

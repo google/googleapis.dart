@@ -184,6 +184,29 @@ void checkCancelOperationRequest(api.CancelOperationRequest o) {
   buildCounterCancelOperationRequest--;
 }
 
+core.int buildCounterCdcStrategy = 0;
+api.CdcStrategy buildCdcStrategy() {
+  final o = api.CdcStrategy();
+  buildCounterCdcStrategy++;
+  if (buildCounterCdcStrategy < 3) {
+    o.mostRecentStartPosition = buildMostRecentStartPosition();
+    o.nextAvailableStartPosition = buildNextAvailableStartPosition();
+    o.specificStartPosition = buildSpecificStartPosition();
+  }
+  buildCounterCdcStrategy--;
+  return o;
+}
+
+void checkCdcStrategy(api.CdcStrategy o) {
+  buildCounterCdcStrategy++;
+  if (buildCounterCdcStrategy < 3) {
+    checkMostRecentStartPosition(o.mostRecentStartPosition!);
+    checkNextAvailableStartPosition(o.nextAvailableStartPosition!);
+    checkSpecificStartPosition(o.specificStartPosition!);
+  }
+  buildCounterCdcStrategy--;
+}
+
 core.Map<core.String, core.String> buildUnnamed1() => {
       'x': 'foo',
       'y': 'foo',
@@ -1073,6 +1096,21 @@ void checkLookupStreamObjectRequest(api.LookupStreamObjectRequest o) {
   buildCounterLookupStreamObjectRequest--;
 }
 
+core.int buildCounterMostRecentStartPosition = 0;
+api.MostRecentStartPosition buildMostRecentStartPosition() {
+  final o = api.MostRecentStartPosition();
+  buildCounterMostRecentStartPosition++;
+  if (buildCounterMostRecentStartPosition < 3) {}
+  buildCounterMostRecentStartPosition--;
+  return o;
+}
+
+void checkMostRecentStartPosition(api.MostRecentStartPosition o) {
+  buildCounterMostRecentStartPosition++;
+  if (buildCounterMostRecentStartPosition < 3) {}
+  buildCounterMostRecentStartPosition--;
+}
+
 core.int buildCounterMysqlColumn = 0;
 api.MysqlColumn buildMysqlColumn() {
   final o = api.MysqlColumn();
@@ -1084,7 +1122,9 @@ api.MysqlColumn buildMysqlColumn() {
     o.length = 42;
     o.nullable = true;
     o.ordinalPosition = 42;
+    o.precision = 42;
     o.primaryKey = true;
+    o.scale = 42;
   }
   buildCounterMysqlColumn--;
   return o;
@@ -1114,7 +1154,15 @@ void checkMysqlColumn(api.MysqlColumn o) {
       o.ordinalPosition!,
       unittest.equals(42),
     );
+    unittest.expect(
+      o.precision!,
+      unittest.equals(42),
+    );
     unittest.expect(o.primaryKey!, unittest.isTrue);
+    unittest.expect(
+      o.scale!,
+      unittest.equals(42),
+    );
   }
   buildCounterMysqlColumn--;
 }
@@ -1152,6 +1200,33 @@ void checkMysqlDatabase(api.MysqlDatabase o) {
     checkUnnamed17(o.mysqlTables!);
   }
   buildCounterMysqlDatabase--;
+}
+
+core.int buildCounterMysqlLogPosition = 0;
+api.MysqlLogPosition buildMysqlLogPosition() {
+  final o = api.MysqlLogPosition();
+  buildCounterMysqlLogPosition++;
+  if (buildCounterMysqlLogPosition < 3) {
+    o.logFile = 'foo';
+    o.logPosition = 42;
+  }
+  buildCounterMysqlLogPosition--;
+  return o;
+}
+
+void checkMysqlLogPosition(api.MysqlLogPosition o) {
+  buildCounterMysqlLogPosition++;
+  if (buildCounterMysqlLogPosition < 3) {
+    unittest.expect(
+      o.logFile!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.logPosition!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterMysqlLogPosition--;
 }
 
 core.int buildCounterMysqlObjectIdentifier = 0;
@@ -1352,6 +1427,21 @@ void checkMysqlTable(api.MysqlTable o) {
     );
   }
   buildCounterMysqlTable--;
+}
+
+core.int buildCounterNextAvailableStartPosition = 0;
+api.NextAvailableStartPosition buildNextAvailableStartPosition() {
+  final o = api.NextAvailableStartPosition();
+  buildCounterNextAvailableStartPosition++;
+  if (buildCounterNextAvailableStartPosition < 3) {}
+  buildCounterNextAvailableStartPosition--;
+  return o;
+}
+
+void checkNextAvailableStartPosition(api.NextAvailableStartPosition o) {
+  buildCounterNextAvailableStartPosition++;
+  if (buildCounterNextAvailableStartPosition < 3) {}
+  buildCounterNextAvailableStartPosition--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed20() => {
@@ -2162,6 +2252,25 @@ void checkRoute(api.Route o) {
   buildCounterRoute--;
 }
 
+core.int buildCounterRunStreamRequest = 0;
+api.RunStreamRequest buildRunStreamRequest() {
+  final o = api.RunStreamRequest();
+  buildCounterRunStreamRequest++;
+  if (buildCounterRunStreamRequest < 3) {
+    o.cdcStrategy = buildCdcStrategy();
+  }
+  buildCounterRunStreamRequest--;
+  return o;
+}
+
+void checkRunStreamRequest(api.RunStreamRequest o) {
+  buildCounterRunStreamRequest++;
+  if (buildCounterRunStreamRequest < 3) {
+    checkCdcStrategy(o.cdcStrategy!);
+  }
+  buildCounterRunStreamRequest--;
+}
+
 core.int buildCounterSingleTargetDataset = 0;
 api.SingleTargetDataset buildSingleTargetDataset() {
   final o = api.SingleTargetDataset();
@@ -2252,6 +2361,25 @@ void checkSourceObjectIdentifier(api.SourceObjectIdentifier o) {
     checkPostgresqlObjectIdentifier(o.postgresqlIdentifier!);
   }
   buildCounterSourceObjectIdentifier--;
+}
+
+core.int buildCounterSpecificStartPosition = 0;
+api.SpecificStartPosition buildSpecificStartPosition() {
+  final o = api.SpecificStartPosition();
+  buildCounterSpecificStartPosition++;
+  if (buildCounterSpecificStartPosition < 3) {
+    o.mysqlLogPosition = buildMysqlLogPosition();
+  }
+  buildCounterSpecificStartPosition--;
+  return o;
+}
+
+void checkSpecificStartPosition(api.SpecificStartPosition o) {
+  buildCounterSpecificStartPosition++;
+  if (buildCounterSpecificStartPosition < 3) {
+    checkMysqlLogPosition(o.mysqlLogPosition!);
+  }
+  buildCounterSpecificStartPosition--;
 }
 
 core.int buildCounterStartBackfillJobRequest = 0;
@@ -2676,6 +2804,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-CdcStrategy', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCdcStrategy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CdcStrategy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCdcStrategy(od);
+    });
+  });
+
   unittest.group('obj-schema-ConnectionProfile', () {
     unittest.test('to-json--from-json', () async {
       final o = buildConnectionProfile();
@@ -2896,6 +3034,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-MostRecentStartPosition', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMostRecentStartPosition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MostRecentStartPosition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMostRecentStartPosition(od);
+    });
+  });
+
   unittest.group('obj-schema-MysqlColumn', () {
     unittest.test('to-json--from-json', () async {
       final o = buildMysqlColumn();
@@ -2913,6 +3061,16 @@ void main() {
       final od = api.MysqlDatabase.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkMysqlDatabase(od);
+    });
+  });
+
+  unittest.group('obj-schema-MysqlLogPosition', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMysqlLogPosition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MysqlLogPosition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMysqlLogPosition(od);
     });
   });
 
@@ -2973,6 +3131,16 @@ void main() {
       final od =
           api.MysqlTable.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkMysqlTable(od);
+    });
+  });
+
+  unittest.group('obj-schema-NextAvailableStartPosition', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildNextAvailableStartPosition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NextAvailableStartPosition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkNextAvailableStartPosition(od);
     });
   });
 
@@ -3156,6 +3324,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-RunStreamRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRunStreamRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RunStreamRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRunStreamRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-SingleTargetDataset', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSingleTargetDataset();
@@ -3193,6 +3371,16 @@ void main() {
       final od = api.SourceObjectIdentifier.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSourceObjectIdentifier(od);
+    });
+  });
+
+  unittest.group('obj-schema-SpecificStartPosition', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSpecificStartPosition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SpecificStartPosition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSpecificStartPosition(od);
     });
   });
 
@@ -5039,6 +5227,64 @@ void main() {
           updateMask: arg_updateMask,
           validateOnly: arg_validateOnly,
           $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--run', () async {
+      final mock = HttpServerMock();
+      final res = api.DatastreamApi(mock).projects.locations.streams;
+      final arg_request = buildRunStreamRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.RunStreamRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRunStreamRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.run(arg_request, arg_name, $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
   });

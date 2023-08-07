@@ -6180,6 +6180,16 @@ class GoogleCloudDatacatalogV1Schema {
 
 /// Request message for SearchCatalog.
 class GoogleCloudDatacatalogV1SearchCatalogRequest {
+  /// If set, use searchAll permission granted on organizations from
+  /// `include_org_ids` and projects from `include_project_ids` instead of the
+  /// fine grained per resource permissions when filtering the search results.
+  ///
+  /// The only allowed `order_by` criteria for admin_search mode is `default`.
+  /// Using this flags guarantees a full recall of the search results.
+  ///
+  /// Optional.
+  core.bool? adminSearch;
+
   /// Specifies the order of results.
   ///
   /// Currently supported case-sensitive values are: * `relevance` that can only
@@ -6230,6 +6240,7 @@ class GoogleCloudDatacatalogV1SearchCatalogRequest {
   GoogleCloudDatacatalogV1SearchCatalogRequestScope? scope;
 
   GoogleCloudDatacatalogV1SearchCatalogRequest({
+    this.adminSearch,
     this.orderBy,
     this.pageSize,
     this.pageToken,
@@ -6239,6 +6250,9 @@ class GoogleCloudDatacatalogV1SearchCatalogRequest {
 
   GoogleCloudDatacatalogV1SearchCatalogRequest.fromJson(core.Map json_)
       : this(
+          adminSearch: json_.containsKey('adminSearch')
+              ? json_['adminSearch'] as core.bool
+              : null,
           orderBy: json_.containsKey('orderBy')
               ? json_['orderBy'] as core.String
               : null,
@@ -6257,6 +6271,7 @@ class GoogleCloudDatacatalogV1SearchCatalogRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (adminSearch != null) 'adminSearch': adminSearch!,
         if (orderBy != null) 'orderBy': orderBy!,
         if (pageSize != null) 'pageSize': pageSize!,
         if (pageToken != null) 'pageToken': pageToken!,

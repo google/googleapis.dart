@@ -1699,13 +1699,13 @@ class Sentiment {
       };
 }
 
-/// Represents an output piece of text.
+/// Represents a text span in the input document.
 class TextSpan {
   /// The API calculates the beginning offset of the content in the original
   /// document according to the EncodingType specified in the API request.
   core.int? beginOffset;
 
-  /// The content of the output text.
+  /// The content of the text span, which is a substring of the document.
   core.String? content;
 
   TextSpan({

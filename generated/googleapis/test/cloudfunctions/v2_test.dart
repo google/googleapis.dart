@@ -174,6 +174,7 @@ api.BuildConfig buildBuildConfig() {
     o.runtime = 'foo';
     o.source = buildSource();
     o.sourceProvenance = buildSourceProvenance();
+    o.sourceToken = 'foo';
     o.workerPool = 'foo';
   }
   buildCounterBuildConfig--;
@@ -206,6 +207,10 @@ void checkBuildConfig(api.BuildConfig o) {
     );
     checkSource(o.source!);
     checkSourceProvenance(o.sourceProvenance!);
+    unittest.expect(
+      o.sourceToken!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.workerPool!,
       unittest.equals('foo'),

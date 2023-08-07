@@ -3274,6 +3274,8 @@ class OrgunitsResource {
   /// Possible string values are:
   /// - "all" : All sub-organizational units.
   /// - "children" : Immediate children only (default).
+  /// - "allIncludingParent" : All sub-organizational units and the specified
+  /// organizational unit (root if not specified).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8003,6 +8005,24 @@ class ChromeOsDevice {
   /// The unique ID of the Chrome device.
   core.String? deviceId;
 
+  /// Device license type.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "deviceLicenseTypeUnspecified" : UNSPECIFIED type.
+  /// - "enterprise" : Indicating the device is a
+  /// Chromebook/Chromebox/Chromebase enterprise, which is packaged with an
+  /// upgrade(license).
+  /// - "enterpriseUpgrade" : Indicating the device is consuming standalone
+  /// Chrome Enterprise Upgrade, a Chrome Enterprise license.
+  /// - "educationUpgrade" : Indicating the device is consuming Chrome Education
+  /// Upgrade(AKA Chrome EDU perpetual license).
+  /// - "education" : Packaged with a license as education.
+  /// - "terminal" : Packaged with a license as terminal.
+  /// - "kioskUpgrade" : Indicating the device is consuming standalone Chrome
+  /// Kiosk Upgrade, a Chrome Kiosk (annual) license.
+  core.String? deviceLicenseType;
+
   /// Reports of disk space and other info about mounted/connected volumes.
   core.List<ChromeOsDeviceDiskVolumeReports>? diskVolumeReports;
 
@@ -8171,6 +8191,7 @@ class ChromeOsDevice {
     this.deprovisionReason,
     this.deviceFiles,
     this.deviceId,
+    this.deviceLicenseType,
     this.diskVolumeReports,
     this.dockMacAddress,
     this.etag,
@@ -8251,6 +8272,9 @@ class ChromeOsDevice {
               : null,
           deviceId: json_.containsKey('deviceId')
               ? json_['deviceId'] as core.String
+              : null,
+          deviceLicenseType: json_.containsKey('deviceLicenseType')
+              ? json_['deviceLicenseType'] as core.String
               : null,
           diskVolumeReports: json_.containsKey('diskVolumeReports')
               ? (json_['diskVolumeReports'] as core.List)
@@ -8373,6 +8397,7 @@ class ChromeOsDevice {
         if (deprovisionReason != null) 'deprovisionReason': deprovisionReason!,
         if (deviceFiles != null) 'deviceFiles': deviceFiles!,
         if (deviceId != null) 'deviceId': deviceId!,
+        if (deviceLicenseType != null) 'deviceLicenseType': deviceLicenseType!,
         if (diskVolumeReports != null) 'diskVolumeReports': diskVolumeReports!,
         if (dockMacAddress != null) 'dockMacAddress': dockMacAddress!,
         if (etag != null) 'etag': etag!,

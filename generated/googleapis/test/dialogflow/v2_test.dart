@@ -5882,6 +5882,7 @@ api.GoogleCloudDialogflowV2QueryParameters
     o.contexts = buildUnnamed80();
     o.geoLocation = buildGoogleTypeLatLng();
     o.payload = buildUnnamed81();
+    o.platform = 'foo';
     o.resetContexts = true;
     o.sentimentAnalysisRequestConfig =
         buildGoogleCloudDialogflowV2SentimentAnalysisRequestConfig();
@@ -5900,6 +5901,10 @@ void checkGoogleCloudDialogflowV2QueryParameters(
     checkUnnamed80(o.contexts!);
     checkGoogleTypeLatLng(o.geoLocation!);
     checkUnnamed81(o.payload!);
+    unittest.expect(
+      o.platform!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.resetContexts!, unittest.isTrue);
     checkGoogleCloudDialogflowV2SentimentAnalysisRequestConfig(
         o.sentimentAnalysisRequestConfig!);

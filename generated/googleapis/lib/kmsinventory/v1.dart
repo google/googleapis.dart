@@ -750,6 +750,10 @@ class GoogleCloudKmsV1CryptoKeyVersion {
   /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
   /// - "AES_128_GCM" : AES-GCM (Galois Counter Mode) using 128-bit keys.
   /// - "AES_256_GCM" : AES-GCM (Galois Counter Mode) using 256-bit keys.
+  /// - "AES_128_CBC" : AES-CBC (Cipher Block Chaining Mode) using 128-bit keys.
+  /// - "AES_256_CBC" : AES-CBC (Cipher Block Chaining Mode) using 256-bit keys.
+  /// - "AES_128_CTR" : AES-CTR (Counter Mode) using 128-bit keys.
+  /// - "AES_256_CTR" : AES-CTR (Counter Mode) using 256-bit keys.
   /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
   /// digest.
   /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256
@@ -1041,106 +1045,7 @@ class GoogleCloudKmsV1CryptoKeyVersion {
 /// A CryptoKeyVersionTemplate specifies the properties to use when creating a
 /// new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or
 /// automatically as a result of auto-rotation.
-class GoogleCloudKmsV1CryptoKeyVersionTemplate {
-  /// Algorithm to use when creating a CryptoKeyVersion based on this template.
-  ///
-  /// For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if
-  /// both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
-  /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
-  /// - "AES_128_GCM" : AES-GCM (Galois Counter Mode) using 128-bit keys.
-  /// - "AES_256_GCM" : AES-GCM (Galois Counter Mode) using 256-bit keys.
-  /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
-  /// digest.
-  /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256
-  /// digest.
-  /// - "RSA_SIGN_PSS_4096_SHA256" : RSASSA-PSS 4096 bit key with a SHA256
-  /// digest.
-  /// - "RSA_SIGN_PSS_4096_SHA512" : RSASSA-PSS 4096 bit key with a SHA512
-  /// digest.
-  /// - "RSA_SIGN_PKCS1_2048_SHA256" : RSASSA-PKCS1-v1_5 with a 2048 bit key and
-  /// a SHA256 digest.
-  /// - "RSA_SIGN_PKCS1_3072_SHA256" : RSASSA-PKCS1-v1_5 with a 3072 bit key and
-  /// a SHA256 digest.
-  /// - "RSA_SIGN_PKCS1_4096_SHA256" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
-  /// a SHA256 digest.
-  /// - "RSA_SIGN_PKCS1_4096_SHA512" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
-  /// a SHA512 digest.
-  /// - "RSA_SIGN_RAW_PKCS1_2048" : RSASSA-PKCS1-v1_5 signing without encoding,
-  /// with a 2048 bit key.
-  /// - "RSA_SIGN_RAW_PKCS1_3072" : RSASSA-PKCS1-v1_5 signing without encoding,
-  /// with a 3072 bit key.
-  /// - "RSA_SIGN_RAW_PKCS1_4096" : RSASSA-PKCS1-v1_5 signing without encoding,
-  /// with a 4096 bit key.
-  /// - "RSA_DECRYPT_OAEP_2048_SHA256" : RSAES-OAEP 2048 bit key with a SHA256
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_3072_SHA256" : RSAES-OAEP 3072 bit key with a SHA256
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_4096_SHA256" : RSAES-OAEP 4096 bit key with a SHA256
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_4096_SHA512" : RSAES-OAEP 4096 bit key with a SHA512
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_2048_SHA1" : RSAES-OAEP 2048 bit key with a SHA1
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_3072_SHA1" : RSAES-OAEP 3072 bit key with a SHA1
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_4096_SHA1" : RSAES-OAEP 4096 bit key with a SHA1
-  /// digest.
-  /// - "EC_SIGN_P256_SHA256" : ECDSA on the NIST P-256 curve with a SHA256
-  /// digest. Other hash functions can also be used:
-  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
-  /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
-  /// digest. Other hash functions can also be used:
-  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
-  /// - "EC_SIGN_SECP256K1_SHA256" : ECDSA on the non-NIST secp256k1 curve. This
-  /// curve is only supported for HSM protection level. Other hash functions can
-  /// also be used:
-  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
-  /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
-  /// - "HMAC_SHA1" : HMAC-SHA1 signing with a 160 bit key.
-  /// - "HMAC_SHA384" : HMAC-SHA384 signing with a 384 bit key.
-  /// - "HMAC_SHA512" : HMAC-SHA512 signing with a 512 bit key.
-  /// - "HMAC_SHA224" : HMAC-SHA224 signing with a 224 bit key.
-  /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
-  /// encryption by an external key manager.
-  core.String? algorithm;
-
-  /// ProtectionLevel to use when creating a CryptoKeyVersion based on this
-  /// template.
-  ///
-  /// Immutable. Defaults to SOFTWARE.
-  /// Possible string values are:
-  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
-  /// - "SOFTWARE" : Crypto operations are performed in software.
-  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
-  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
-  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
-  /// backend.
-  core.String? protectionLevel;
-
-  GoogleCloudKmsV1CryptoKeyVersionTemplate({
-    this.algorithm,
-    this.protectionLevel,
-  });
-
-  GoogleCloudKmsV1CryptoKeyVersionTemplate.fromJson(core.Map json_)
-      : this(
-          algorithm: json_.containsKey('algorithm')
-              ? json_['algorithm'] as core.String
-              : null,
-          protectionLevel: json_.containsKey('protectionLevel')
-              ? json_['protectionLevel'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (algorithm != null) 'algorithm': algorithm!,
-        if (protectionLevel != null) 'protectionLevel': protectionLevel!,
-      };
-}
+typedef GoogleCloudKmsV1CryptoKeyVersionTemplate = $CryptoKeyVersionTemplate;
 
 /// ExternalProtectionLevelOptions stores a group of additional fields for
 /// configuring a CryptoKeyVersion that are specific to the EXTERNAL protection

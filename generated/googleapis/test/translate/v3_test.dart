@@ -142,6 +142,7 @@ api.BatchTranslateDocumentRequest buildBatchTranslateDocumentRequest() {
   buildCounterBatchTranslateDocumentRequest++;
   if (buildCounterBatchTranslateDocumentRequest < 3) {
     o.customizedAttribution = 'foo';
+    o.enableRotationCorrection = true;
     o.enableShadowRemovalNativePdf = true;
     o.formatConversions = buildUnnamed0();
     o.glossaries = buildUnnamed1();
@@ -162,6 +163,7 @@ void checkBatchTranslateDocumentRequest(api.BatchTranslateDocumentRequest o) {
       o.customizedAttribution!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.enableRotationCorrection!, unittest.isTrue);
     unittest.expect(o.enableShadowRemovalNativePdf!, unittest.isTrue);
     checkUnnamed0(o.formatConversions!);
     checkUnnamed1(o.glossaries!);

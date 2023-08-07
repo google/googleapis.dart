@@ -498,6 +498,7 @@ api.ConnectSettings buildConnectSettings() {
     o.dnsName = 'foo';
     o.ipAddresses = buildUnnamed2();
     o.kind = 'foo';
+    o.pscEnabled = true;
     o.region = 'foo';
     o.serverCaCert = buildSslCert();
   }
@@ -525,6 +526,7 @@ void checkConnectSettings(api.ConnectSettings o) {
       o.kind!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.pscEnabled!, unittest.isTrue);
     unittest.expect(
       o.region!,
       unittest.equals('foo'),
@@ -740,6 +742,7 @@ api.DatabaseInstance buildDatabaseInstance() {
     o.databaseVersion = 'foo';
     o.diskEncryptionConfiguration = buildDiskEncryptionConfiguration();
     o.diskEncryptionStatus = buildDiskEncryptionStatus();
+    o.dnsName = 'foo';
     o.etag = 'foo';
     o.failoverReplica = buildDatabaseInstanceFailoverReplica();
     o.gceZone = 'foo';
@@ -754,6 +757,7 @@ api.DatabaseInstance buildDatabaseInstance() {
     o.onPremisesConfiguration = buildOnPremisesConfiguration();
     o.outOfDiskReport = buildSqlOutOfDiskReport();
     o.project = 'foo';
+    o.pscServiceAttachmentLink = 'foo';
     o.region = 'foo';
     o.replicaConfiguration = buildReplicaConfiguration();
     o.replicaNames = buildUnnamed5();
@@ -803,6 +807,10 @@ void checkDatabaseInstance(api.DatabaseInstance o) {
     checkDiskEncryptionConfiguration(o.diskEncryptionConfiguration!);
     checkDiskEncryptionStatus(o.diskEncryptionStatus!);
     unittest.expect(
+      o.dnsName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.etag!,
       unittest.equals('foo'),
     );
@@ -844,6 +852,10 @@ void checkDatabaseInstance(api.DatabaseInstance o) {
     checkSqlOutOfDiskReport(o.outOfDiskReport!);
     unittest.expect(
       o.project!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pscServiceAttachmentLink!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1586,6 +1598,8 @@ api.ImportContextBakImportOptions buildImportContextBakImportOptions() {
     o.encryptionOptions = buildImportContextBakImportOptionsEncryptionOptions();
     o.noRecovery = true;
     o.recoveryOnly = true;
+    o.stopAt = 'foo';
+    o.stopAtMark = 'foo';
     o.striped = true;
   }
   buildCounterImportContextBakImportOptions--;
@@ -1602,6 +1616,14 @@ void checkImportContextBakImportOptions(api.ImportContextBakImportOptions o) {
     checkImportContextBakImportOptionsEncryptionOptions(o.encryptionOptions!);
     unittest.expect(o.noRecovery!, unittest.isTrue);
     unittest.expect(o.recoveryOnly!, unittest.isTrue);
+    unittest.expect(
+      o.stopAt!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.stopAtMark!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.striped!, unittest.isTrue);
   }
   buildCounterImportContextBakImportOptions--;
@@ -2064,6 +2086,7 @@ api.IpConfiguration buildIpConfiguration() {
     o.enablePrivatePathForGoogleCloudServices = true;
     o.ipv4Enabled = true;
     o.privateNetwork = 'foo';
+    o.pscConfig = buildPscConfig();
     o.requireSsl = true;
   }
   buildCounterIpConfiguration--;
@@ -2085,6 +2108,7 @@ void checkIpConfiguration(api.IpConfiguration o) {
       o.privateNetwork!,
       unittest.equals('foo'),
     );
+    checkPscConfig(o.pscConfig!);
     unittest.expect(o.requireSsl!, unittest.isTrue);
   }
   buildCounterIpConfiguration--;
@@ -2633,6 +2657,44 @@ void checkPerformDiskShrinkContext(api.PerformDiskShrinkContext o) {
   buildCounterPerformDiskShrinkContext--;
 }
 
+core.List<core.String> buildUnnamed22() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed22(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterPscConfig = 0;
+api.PscConfig buildPscConfig() {
+  final o = api.PscConfig();
+  buildCounterPscConfig++;
+  if (buildCounterPscConfig < 3) {
+    o.allowedConsumerProjects = buildUnnamed22();
+    o.pscEnabled = true;
+  }
+  buildCounterPscConfig--;
+  return o;
+}
+
+void checkPscConfig(api.PscConfig o) {
+  buildCounterPscConfig++;
+  if (buildCounterPscConfig < 3) {
+    checkUnnamed22(o.allowedConsumerProjects!);
+    unittest.expect(o.pscEnabled!, unittest.isTrue);
+  }
+  buildCounterPscConfig--;
+}
+
 core.int buildCounterReplicaConfiguration = 0;
 api.ReplicaConfiguration buildReplicaConfiguration() {
   final o = api.ReplicaConfiguration();
@@ -2750,12 +2812,12 @@ void checkRotateServerCaContext(api.RotateServerCaContext o) {
   buildCounterRotateServerCaContext--;
 }
 
-core.List<core.String> buildUnnamed22() => [
+core.List<core.String> buildUnnamed23() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed22(core.List<core.String> o) {
+void checkUnnamed23(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2767,34 +2829,34 @@ void checkUnnamed22(core.List<core.String> o) {
   );
 }
 
-core.List<api.DatabaseFlags> buildUnnamed23() => [
+core.List<api.DatabaseFlags> buildUnnamed24() => [
       buildDatabaseFlags(),
       buildDatabaseFlags(),
     ];
 
-void checkUnnamed23(core.List<api.DatabaseFlags> o) {
+void checkUnnamed24(core.List<api.DatabaseFlags> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDatabaseFlags(o[0]);
   checkDatabaseFlags(o[1]);
 }
 
-core.List<api.DenyMaintenancePeriod> buildUnnamed24() => [
+core.List<api.DenyMaintenancePeriod> buildUnnamed25() => [
       buildDenyMaintenancePeriod(),
       buildDenyMaintenancePeriod(),
     ];
 
-void checkUnnamed24(core.List<api.DenyMaintenancePeriod> o) {
+void checkUnnamed25(core.List<api.DenyMaintenancePeriod> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDenyMaintenancePeriod(o[0]);
   checkDenyMaintenancePeriod(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed25() => {
+core.Map<core.String, core.String> buildUnnamed26() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed25(core.Map<core.String, core.String> o) {
+void checkUnnamed26(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2814,7 +2876,7 @@ api.Settings buildSettings() {
     o.activationPolicy = 'foo';
     o.activeDirectoryConfig = buildSqlActiveDirectoryConfig();
     o.advancedMachineFeatures = buildAdvancedMachineFeatures();
-    o.authorizedGaeApplications = buildUnnamed22();
+    o.authorizedGaeApplications = buildUnnamed23();
     o.availabilityType = 'foo';
     o.backupConfiguration = buildBackupConfiguration();
     o.collation = 'foo';
@@ -2823,10 +2885,10 @@ api.Settings buildSettings() {
     o.dataCacheConfig = buildDataCacheConfig();
     o.dataDiskSizeGb = 'foo';
     o.dataDiskType = 'foo';
-    o.databaseFlags = buildUnnamed23();
+    o.databaseFlags = buildUnnamed24();
     o.databaseReplicationEnabled = true;
     o.deletionProtectionEnabled = true;
-    o.denyMaintenancePeriods = buildUnnamed24();
+    o.denyMaintenancePeriods = buildUnnamed25();
     o.edition = 'foo';
     o.insightsConfig = buildInsightsConfig();
     o.ipConfiguration = buildIpConfiguration();
@@ -2842,7 +2904,7 @@ api.Settings buildSettings() {
     o.storageAutoResizeLimit = 'foo';
     o.tier = 'foo';
     o.timeZone = 'foo';
-    o.userLabels = buildUnnamed25();
+    o.userLabels = buildUnnamed26();
   }
   buildCounterSettings--;
   return o;
@@ -2857,7 +2919,7 @@ void checkSettings(api.Settings o) {
     );
     checkSqlActiveDirectoryConfig(o.activeDirectoryConfig!);
     checkAdvancedMachineFeatures(o.advancedMachineFeatures!);
-    checkUnnamed22(o.authorizedGaeApplications!);
+    checkUnnamed23(o.authorizedGaeApplications!);
     unittest.expect(
       o.availabilityType!,
       unittest.equals('foo'),
@@ -2881,10 +2943,10 @@ void checkSettings(api.Settings o) {
       o.dataDiskType!,
       unittest.equals('foo'),
     );
-    checkUnnamed23(o.databaseFlags!);
+    checkUnnamed24(o.databaseFlags!);
     unittest.expect(o.databaseReplicationEnabled!, unittest.isTrue);
     unittest.expect(o.deletionProtectionEnabled!, unittest.isTrue);
-    checkUnnamed24(o.denyMaintenancePeriods!);
+    checkUnnamed25(o.denyMaintenancePeriods!);
     unittest.expect(
       o.edition!,
       unittest.equals('foo'),
@@ -2924,7 +2986,7 @@ void checkSettings(api.Settings o) {
       o.timeZone!,
       unittest.equals('foo'),
     );
-    checkUnnamed25(o.userLabels!);
+    checkUnnamed26(o.userLabels!);
   }
   buildCounterSettings--;
 }
@@ -3152,17 +3214,6 @@ void checkSqlInstancesVerifyExternalSyncSettingsRequest(
   buildCounterSqlInstancesVerifyExternalSyncSettingsRequest--;
 }
 
-core.List<api.SqlExternalSyncSettingError> buildUnnamed26() => [
-      buildSqlExternalSyncSettingError(),
-      buildSqlExternalSyncSettingError(),
-    ];
-
-void checkUnnamed26(core.List<api.SqlExternalSyncSettingError> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkSqlExternalSyncSettingError(o[0]);
-  checkSqlExternalSyncSettingError(o[1]);
-}
-
 core.List<api.SqlExternalSyncSettingError> buildUnnamed27() => [
       buildSqlExternalSyncSettingError(),
       buildSqlExternalSyncSettingError(),
@@ -3174,15 +3225,26 @@ void checkUnnamed27(core.List<api.SqlExternalSyncSettingError> o) {
   checkSqlExternalSyncSettingError(o[1]);
 }
 
+core.List<api.SqlExternalSyncSettingError> buildUnnamed28() => [
+      buildSqlExternalSyncSettingError(),
+      buildSqlExternalSyncSettingError(),
+    ];
+
+void checkUnnamed28(core.List<api.SqlExternalSyncSettingError> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSqlExternalSyncSettingError(o[0]);
+  checkSqlExternalSyncSettingError(o[1]);
+}
+
 core.int buildCounterSqlInstancesVerifyExternalSyncSettingsResponse = 0;
 api.SqlInstancesVerifyExternalSyncSettingsResponse
     buildSqlInstancesVerifyExternalSyncSettingsResponse() {
   final o = api.SqlInstancesVerifyExternalSyncSettingsResponse();
   buildCounterSqlInstancesVerifyExternalSyncSettingsResponse++;
   if (buildCounterSqlInstancesVerifyExternalSyncSettingsResponse < 3) {
-    o.errors = buildUnnamed26();
+    o.errors = buildUnnamed27();
     o.kind = 'foo';
-    o.warnings = buildUnnamed27();
+    o.warnings = buildUnnamed28();
   }
   buildCounterSqlInstancesVerifyExternalSyncSettingsResponse--;
   return o;
@@ -3192,12 +3254,12 @@ void checkSqlInstancesVerifyExternalSyncSettingsResponse(
     api.SqlInstancesVerifyExternalSyncSettingsResponse o) {
   buildCounterSqlInstancesVerifyExternalSyncSettingsResponse++;
   if (buildCounterSqlInstancesVerifyExternalSyncSettingsResponse < 3) {
-    checkUnnamed26(o.errors!);
+    checkUnnamed27(o.errors!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed27(o.warnings!);
+    checkUnnamed28(o.warnings!);
   }
   buildCounterSqlInstancesVerifyExternalSyncSettingsResponse--;
 }
@@ -3324,12 +3386,12 @@ void checkSqlServerDatabaseDetails(api.SqlServerDatabaseDetails o) {
   buildCounterSqlServerDatabaseDetails--;
 }
 
-core.List<core.String> buildUnnamed28() => [
+core.List<core.String> buildUnnamed29() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed28(core.List<core.String> o) {
+void checkUnnamed29(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3347,7 +3409,7 @@ api.SqlServerUserDetails buildSqlServerUserDetails() {
   buildCounterSqlServerUserDetails++;
   if (buildCounterSqlServerUserDetails < 3) {
     o.disabled = true;
-    o.serverRoles = buildUnnamed28();
+    o.serverRoles = buildUnnamed29();
   }
   buildCounterSqlServerUserDetails--;
   return o;
@@ -3357,7 +3419,7 @@ void checkSqlServerUserDetails(api.SqlServerUserDetails o) {
   buildCounterSqlServerUserDetails++;
   if (buildCounterSqlServerUserDetails < 3) {
     unittest.expect(o.disabled!, unittest.isTrue);
-    checkUnnamed28(o.serverRoles!);
+    checkUnnamed29(o.serverRoles!);
   }
   buildCounterSqlServerUserDetails--;
 }
@@ -3525,12 +3587,12 @@ void checkSslCertsInsertResponse(api.SslCertsInsertResponse o) {
   buildCounterSslCertsInsertResponse--;
 }
 
-core.List<api.SslCert> buildUnnamed29() => [
+core.List<api.SslCert> buildUnnamed30() => [
       buildSslCert(),
       buildSslCert(),
     ];
 
-void checkUnnamed29(core.List<api.SslCert> o) {
+void checkUnnamed30(core.List<api.SslCert> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSslCert(o[0]);
   checkSslCert(o[1]);
@@ -3541,7 +3603,7 @@ api.SslCertsListResponse buildSslCertsListResponse() {
   final o = api.SslCertsListResponse();
   buildCounterSslCertsListResponse++;
   if (buildCounterSslCertsListResponse < 3) {
-    o.items = buildUnnamed29();
+    o.items = buildUnnamed30();
     o.kind = 'foo';
   }
   buildCounterSslCertsListResponse--;
@@ -3551,7 +3613,7 @@ api.SslCertsListResponse buildSslCertsListResponse() {
 void checkSslCertsListResponse(api.SslCertsListResponse o) {
   buildCounterSslCertsListResponse++;
   if (buildCounterSslCertsListResponse < 3) {
-    checkUnnamed29(o.items!);
+    checkUnnamed30(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -3587,12 +3649,12 @@ void checkSyncFlags(api.SyncFlags o) {
   buildCounterSyncFlags--;
 }
 
-core.List<core.String> buildUnnamed30() => [
+core.List<core.String> buildUnnamed31() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed30(core.List<core.String> o) {
+void checkUnnamed31(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3612,7 +3674,7 @@ api.Tier buildTier() {
     o.DiskQuota = 'foo';
     o.RAM = 'foo';
     o.kind = 'foo';
-    o.region = buildUnnamed30();
+    o.region = buildUnnamed31();
     o.tier = 'foo';
   }
   buildCounterTier--;
@@ -3634,7 +3696,7 @@ void checkTier(api.Tier o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed30(o.region!);
+    checkUnnamed31(o.region!);
     unittest.expect(
       o.tier!,
       unittest.equals('foo'),
@@ -3643,12 +3705,12 @@ void checkTier(api.Tier o) {
   buildCounterTier--;
 }
 
-core.List<api.Tier> buildUnnamed31() => [
+core.List<api.Tier> buildUnnamed32() => [
       buildTier(),
       buildTier(),
     ];
 
-void checkUnnamed31(core.List<api.Tier> o) {
+void checkUnnamed32(core.List<api.Tier> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTier(o[0]);
   checkTier(o[1]);
@@ -3659,7 +3721,7 @@ api.TiersListResponse buildTiersListResponse() {
   final o = api.TiersListResponse();
   buildCounterTiersListResponse++;
   if (buildCounterTiersListResponse < 3) {
-    o.items = buildUnnamed31();
+    o.items = buildUnnamed32();
     o.kind = 'foo';
   }
   buildCounterTiersListResponse--;
@@ -3669,7 +3731,7 @@ api.TiersListResponse buildTiersListResponse() {
 void checkTiersListResponse(api.TiersListResponse o) {
   buildCounterTiersListResponse++;
   if (buildCounterTiersListResponse < 3) {
-    checkUnnamed31(o.items!);
+    checkUnnamed32(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -3804,12 +3866,12 @@ void checkUserPasswordValidationPolicy(api.UserPasswordValidationPolicy o) {
   buildCounterUserPasswordValidationPolicy--;
 }
 
-core.List<api.User> buildUnnamed32() => [
+core.List<api.User> buildUnnamed33() => [
       buildUser(),
       buildUser(),
     ];
 
-void checkUnnamed32(core.List<api.User> o) {
+void checkUnnamed33(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUser(o[0]);
   checkUser(o[1]);
@@ -3820,7 +3882,7 @@ api.UsersListResponse buildUsersListResponse() {
   final o = api.UsersListResponse();
   buildCounterUsersListResponse++;
   if (buildCounterUsersListResponse < 3) {
-    o.items = buildUnnamed32();
+    o.items = buildUnnamed33();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -3831,7 +3893,7 @@ api.UsersListResponse buildUsersListResponse() {
 void checkUsersListResponse(api.UsersListResponse o) {
   buildCounterUsersListResponse++;
   if (buildCounterUsersListResponse < 3) {
-    checkUnnamed32(o.items!);
+    checkUnnamed33(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -4504,6 +4566,16 @@ void main() {
       final od = api.PerformDiskShrinkContext.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkPerformDiskShrinkContext(od);
+    });
+  });
+
+  unittest.group('obj-schema-PscConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPscConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.PscConfig.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkPscConfig(od);
     });
   });
 

@@ -40,7 +40,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230704",
+    "revision": "20230802",
     "rootUrl": "https://photoslibrary.googleapis.com/",
     "servicePath": "",
     "title": "Photos Library API",

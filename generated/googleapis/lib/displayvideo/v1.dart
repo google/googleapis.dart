@@ -484,6 +484,11 @@ class AdvertisersResource {
   /// requests\](/display-video/api/guides/how-tos/filters) guide for more
   /// information.
   ///
+  /// [internalDebuggingConfig] - The config used in internal debugging and
+  /// manual testing. Use comma to separate multiple values. Examples: To allow
+  /// entity search to go through tangle `searchUsingTangle` To get only the
+  /// advertiser Ids use `idOnly`
+  ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `displayName` (default) * `entityStatus` * `updateTime` The default
   /// sorting order is ascending. To specify descending order for a field, a
@@ -514,6 +519,7 @@ class AdvertisersResource {
   /// this method will complete with the same error.
   async.Future<ListAdvertisersResponse> list({
     core.String? filter,
+    core.String? internalDebuggingConfig,
     core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
@@ -522,6 +528,8 @@ class AdvertisersResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (internalDebuggingConfig != null)
+        'internalDebuggingConfig': [internalDebuggingConfig],
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -17565,9 +17573,8 @@ class InsertionOrder {
 
   /// The billable outcome of the insertion order.
   ///
-  /// Outcome based buying will be deprecated on **August 1, 2023**. Read more
-  /// on our \[Announced Deprecations
-  /// page\](/display-video/api/deprecations#features.obb).
+  /// Outcome based buying is deprecated. `BILLABLE_OUTCOME_PAY_PER_IMPRESSION`
+  /// is the only valid value.
   ///
   /// Immutable.
   /// Possible string values are:
@@ -20531,7 +20538,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard

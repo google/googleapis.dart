@@ -49,7 +49,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230712",
+    "revision": "20230726",
     "rootUrl": "https://cloudsearch.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Search API",

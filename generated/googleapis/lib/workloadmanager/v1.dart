@@ -1959,10 +1959,14 @@ class SapDiscovery {
 /// Message describing the system component.
 class SapDiscoveryComponent {
   /// The component is a SAP application.
-  core.String? applicationType;
+  ///
+  /// Optional.
+  SapDiscoveryComponentApplicationProperties? applicationProperties;
 
   /// The component is a SAP database.
-  core.String? databaseType;
+  ///
+  /// Optional.
+  SapDiscoveryComponentDatabaseProperties? databaseProperties;
 
   /// Pantheon Project in which the resources reside.
   core.String? hostProject;
@@ -1975,8 +1979,8 @@ class SapDiscoveryComponent {
   core.String? sid;
 
   SapDiscoveryComponent({
-    this.applicationType,
-    this.databaseType,
+    this.applicationProperties,
+    this.databaseProperties,
     this.hostProject,
     this.resources,
     this.sid,
@@ -1984,11 +1988,15 @@ class SapDiscoveryComponent {
 
   SapDiscoveryComponent.fromJson(core.Map json_)
       : this(
-          applicationType: json_.containsKey('applicationType')
-              ? json_['applicationType'] as core.String
+          applicationProperties: json_.containsKey('applicationProperties')
+              ? SapDiscoveryComponentApplicationProperties.fromJson(
+                  json_['applicationProperties']
+                      as core.Map<core.String, core.dynamic>)
               : null,
-          databaseType: json_.containsKey('databaseType')
-              ? json_['databaseType'] as core.String
+          databaseProperties: json_.containsKey('databaseProperties')
+              ? SapDiscoveryComponentDatabaseProperties.fromJson(
+                  json_['databaseProperties']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           hostProject: json_.containsKey('hostProject')
               ? json_['hostProject'] as core.String
@@ -2003,11 +2011,116 @@ class SapDiscoveryComponent {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (applicationType != null) 'applicationType': applicationType!,
-        if (databaseType != null) 'databaseType': databaseType!,
+        if (applicationProperties != null)
+          'applicationProperties': applicationProperties!,
+        if (databaseProperties != null)
+          'databaseProperties': databaseProperties!,
         if (hostProject != null) 'hostProject': hostProject!,
         if (resources != null) 'resources': resources!,
         if (sid != null) 'sid': sid!,
+      };
+}
+
+/// A set of properties describing an SAP Application layer.
+class SapDiscoveryComponentApplicationProperties {
+  /// Type of the application.
+  ///
+  /// Netweaver, etc.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "APPLICATION_TYPE_UNSPECIFIED" : Unspecified application type
+  /// - "NETWEAVER" : SAP Netweaver
+  core.String? applicationType;
+
+  /// Resource URI of the recognized ASCS host of the application.
+  ///
+  /// Required.
+  core.String? ascsUri;
+
+  /// Resource URI of the recognized shared NFS of the application.
+  ///
+  /// May be empty if the application server has only a single node.
+  ///
+  /// Optional.
+  core.String? nfsUri;
+
+  SapDiscoveryComponentApplicationProperties({
+    this.applicationType,
+    this.ascsUri,
+    this.nfsUri,
+  });
+
+  SapDiscoveryComponentApplicationProperties.fromJson(core.Map json_)
+      : this(
+          applicationType: json_.containsKey('applicationType')
+              ? json_['applicationType'] as core.String
+              : null,
+          ascsUri: json_.containsKey('ascsUri')
+              ? json_['ascsUri'] as core.String
+              : null,
+          nfsUri: json_.containsKey('nfsUri')
+              ? json_['nfsUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (applicationType != null) 'applicationType': applicationType!,
+        if (ascsUri != null) 'ascsUri': ascsUri!,
+        if (nfsUri != null) 'nfsUri': nfsUri!,
+      };
+}
+
+/// A set of properties describing an SAP Database layer.
+class SapDiscoveryComponentDatabaseProperties {
+  /// Type of the database.
+  ///
+  /// HANA, DB2, etc.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DATABASE_TYPE_UNSPECIFIED" : Unspecified database type.
+  /// - "HANA" : SAP HANA
+  /// - "MAX_DB" : SAP MAX_DB
+  /// - "DB2" : IBM DB2
+  core.String? databaseType;
+
+  /// URI of the recognized primary instance of the database.
+  ///
+  /// Required.
+  core.String? primaryInstanceUri;
+
+  /// URI of the recognized shared NFS of the database.
+  ///
+  /// May be empty if the database has only a single node.
+  ///
+  /// Optional.
+  core.String? sharedNfsUri;
+
+  SapDiscoveryComponentDatabaseProperties({
+    this.databaseType,
+    this.primaryInstanceUri,
+    this.sharedNfsUri,
+  });
+
+  SapDiscoveryComponentDatabaseProperties.fromJson(core.Map json_)
+      : this(
+          databaseType: json_.containsKey('databaseType')
+              ? json_['databaseType'] as core.String
+              : null,
+          primaryInstanceUri: json_.containsKey('primaryInstanceUri')
+              ? json_['primaryInstanceUri'] as core.String
+              : null,
+          sharedNfsUri: json_.containsKey('sharedNfsUri')
+              ? json_['sharedNfsUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseType != null) 'databaseType': databaseType!,
+        if (primaryInstanceUri != null)
+          'primaryInstanceUri': primaryInstanceUri!,
+        if (sharedNfsUri != null) 'sharedNfsUri': sharedNfsUri!,
       };
 }
 
@@ -2086,9 +2199,9 @@ class SapDiscoveryResource {
   /// Required.
   /// Possible string values are:
   /// - "RESOURCE_TYPE_UNSPECIFIED" : Undefined resource type.
-  /// - "COMPUTE" : This is a compute resource.
-  /// - "STORAGE" : This a storage resource.
-  /// - "NETWORK" : This is a network resource.
+  /// - "RESOURCE_TYPE_COMPUTE" : This is a compute resource.
+  /// - "RESOURCE_TYPE_STORAGE" : This a storage resource.
+  /// - "RESOURCE_TYPE_NETWORK" : This is a network resource.
   core.String? resourceType;
 
   /// URI of the resource, includes project, location, and name.
@@ -2318,14 +2431,15 @@ class SqlserverValidationValidationDetail {
   /// The Sqlserver system that the validation data is from.
   /// Possible string values are:
   /// - "SQLSERVER_VALIDATION_TYPE_UNSPECIFIED" : Unspecified type.
-  /// - "OS" : The Sqlserver system named OS
-  /// - "DB_LOG_DISK_SEPARATION" : The LOG_DISK_SEPARATION table
-  /// - "DB_MAX_PARALLELISM" : The MAX_PARALLELISM table
-  /// - "DB_CXPACKET_WAITS" : The CXPACKET_WAITS table
-  /// - "DB_TRANSACTION_LOG_HANDLING" : The TRANSACTION_LOG_HANDLING table
-  /// - "DB_VIRTUAL_LOG_FILE_COUNT" : The VIRTUAL_LOG_FILE_COUNT table
-  /// - "DB_BUFFER_POOL_EXTENSION" : The BUFFER_POOL_EXTENSION table
-  /// - "DB_MAX_SERVER_MEMORY" : The MAX_SERVER_MEMORY table
+  /// - "OS" : The Sqlserver system named OS.
+  /// - "DB_LOG_DISK_SEPARATION" : The LOG_DISK_SEPARATION table.
+  /// - "DB_MAX_PARALLELISM" : The MAX_PARALLELISM table.
+  /// - "DB_CXPACKET_WAITS" : The CXPACKET_WAITS table.
+  /// - "DB_TRANSACTION_LOG_HANDLING" : The TRANSACTION_LOG_HANDLING table.
+  /// - "DB_VIRTUAL_LOG_FILE_COUNT" : The VIRTUAL_LOG_FILE_COUNT table.
+  /// - "DB_BUFFER_POOL_EXTENSION" : The BUFFER_POOL_EXTENSION table.
+  /// - "DB_MAX_SERVER_MEMORY" : The MAX_SERVER_MEMORY table.
+  /// - "INSTANCE_METRICS" : The INSTANCE_METRICS table.
   core.String? type;
 
   SqlserverValidationValidationDetail({

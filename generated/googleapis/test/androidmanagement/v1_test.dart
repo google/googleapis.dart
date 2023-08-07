@@ -919,6 +919,10 @@ api.Command buildCommand() {
     o.errorCode = 'foo';
     o.newPassword = 'foo';
     o.resetPasswordFlags = buildUnnamed19();
+    o.startLostModeParams = buildStartLostModeParams();
+    o.startLostModeStatus = buildStartLostModeStatus();
+    o.stopLostModeParams = buildStopLostModeParams();
+    o.stopLostModeStatus = buildStopLostModeStatus();
     o.type = 'foo';
     o.userName = 'foo';
   }
@@ -948,6 +952,10 @@ void checkCommand(api.Command o) {
       unittest.equals('foo'),
     );
     checkUnnamed19(o.resetPasswordFlags!);
+    checkStartLostModeParams(o.startLostModeParams!);
+    checkStartLostModeStatus(o.startLostModeStatus!);
+    checkStopLostModeParams(o.stopLostModeParams!);
+    checkStopLostModeStatus(o.stopLostModeStatus!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -1479,6 +1487,7 @@ api.DeviceRadioState buildDeviceRadioState() {
   final o = api.DeviceRadioState();
   buildCounterDeviceRadioState++;
   if (buildCounterDeviceRadioState < 3) {
+    o.airplaneModeState = 'foo';
     o.wifiState = 'foo';
   }
   buildCounterDeviceRadioState--;
@@ -1488,6 +1497,10 @@ api.DeviceRadioState buildDeviceRadioState() {
 void checkDeviceRadioState(api.DeviceRadioState o) {
   buildCounterDeviceRadioState++;
   if (buildCounterDeviceRadioState < 3) {
+    unittest.expect(
+      o.airplaneModeState!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.wifiState!,
       unittest.equals('foo'),
@@ -3943,7 +3956,6 @@ api.ProvisioningInfo buildProvisioningInfo() {
   buildCounterProvisioningInfo++;
   if (buildCounterProvisioningInfo < 3) {
     o.apiLevel = 42;
-    o.authenticatedUserEmail = 'foo';
     o.brand = 'foo';
     o.enterprise = 'foo';
     o.managementMode = 'foo';
@@ -3961,10 +3973,6 @@ void checkProvisioningInfo(api.ProvisioningInfo o) {
     unittest.expect(
       o.apiLevel!,
       unittest.equals(42),
-    );
-    unittest.expect(
-      o.authenticatedUserEmail!,
-      unittest.equals('foo'),
     );
     unittest.expect(
       o.brand!,
@@ -4257,6 +4265,58 @@ void checkSpecificNonComplianceContext(api.SpecificNonComplianceContext o) {
   buildCounterSpecificNonComplianceContext--;
 }
 
+core.int buildCounterStartLostModeParams = 0;
+api.StartLostModeParams buildStartLostModeParams() {
+  final o = api.StartLostModeParams();
+  buildCounterStartLostModeParams++;
+  if (buildCounterStartLostModeParams < 3) {
+    o.lostEmailAddress = 'foo';
+    o.lostMessage = buildUserFacingMessage();
+    o.lostOrganization = buildUserFacingMessage();
+    o.lostPhoneNumber = buildUserFacingMessage();
+    o.lostStreetAddress = buildUserFacingMessage();
+  }
+  buildCounterStartLostModeParams--;
+  return o;
+}
+
+void checkStartLostModeParams(api.StartLostModeParams o) {
+  buildCounterStartLostModeParams++;
+  if (buildCounterStartLostModeParams < 3) {
+    unittest.expect(
+      o.lostEmailAddress!,
+      unittest.equals('foo'),
+    );
+    checkUserFacingMessage(o.lostMessage!);
+    checkUserFacingMessage(o.lostOrganization!);
+    checkUserFacingMessage(o.lostPhoneNumber!);
+    checkUserFacingMessage(o.lostStreetAddress!);
+  }
+  buildCounterStartLostModeParams--;
+}
+
+core.int buildCounterStartLostModeStatus = 0;
+api.StartLostModeStatus buildStartLostModeStatus() {
+  final o = api.StartLostModeStatus();
+  buildCounterStartLostModeStatus++;
+  if (buildCounterStartLostModeStatus < 3) {
+    o.status = 'foo';
+  }
+  buildCounterStartLostModeStatus--;
+  return o;
+}
+
+void checkStartLostModeStatus(api.StartLostModeStatus o) {
+  buildCounterStartLostModeStatus++;
+  if (buildCounterStartLostModeStatus < 3) {
+    unittest.expect(
+      o.status!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterStartLostModeStatus--;
+}
+
 core.Map<core.String, core.Object?> buildUnnamed85() => {
       'x': {
         'list': [1, 2, 3],
@@ -4379,6 +4439,43 @@ void checkStatusReportingSettings(api.StatusReportingSettings o) {
     unittest.expect(o.systemPropertiesEnabled!, unittest.isTrue);
   }
   buildCounterStatusReportingSettings--;
+}
+
+core.int buildCounterStopLostModeParams = 0;
+api.StopLostModeParams buildStopLostModeParams() {
+  final o = api.StopLostModeParams();
+  buildCounterStopLostModeParams++;
+  if (buildCounterStopLostModeParams < 3) {}
+  buildCounterStopLostModeParams--;
+  return o;
+}
+
+void checkStopLostModeParams(api.StopLostModeParams o) {
+  buildCounterStopLostModeParams++;
+  if (buildCounterStopLostModeParams < 3) {}
+  buildCounterStopLostModeParams--;
+}
+
+core.int buildCounterStopLostModeStatus = 0;
+api.StopLostModeStatus buildStopLostModeStatus() {
+  final o = api.StopLostModeStatus();
+  buildCounterStopLostModeStatus++;
+  if (buildCounterStopLostModeStatus < 3) {
+    o.status = 'foo';
+  }
+  buildCounterStopLostModeStatus--;
+  return o;
+}
+
+void checkStopLostModeStatus(api.StopLostModeStatus o) {
+  buildCounterStopLostModeStatus++;
+  if (buildCounterStopLostModeStatus < 3) {
+    unittest.expect(
+      o.status!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterStopLostModeStatus--;
 }
 
 core.List<api.FreezePeriod> buildUnnamed87() => [
@@ -5558,6 +5655,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-StartLostModeParams', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStartLostModeParams();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StartLostModeParams.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkStartLostModeParams(od);
+    });
+  });
+
+  unittest.group('obj-schema-StartLostModeStatus', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStartLostModeStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StartLostModeStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkStartLostModeStatus(od);
+    });
+  });
+
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
       final o = buildStatus();
@@ -5575,6 +5692,26 @@ void main() {
       final od = api.StatusReportingSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkStatusReportingSettings(od);
+    });
+  });
+
+  unittest.group('obj-schema-StopLostModeParams', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStopLostModeParams();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StopLostModeParams.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkStopLostModeParams(od);
+    });
+  });
+
+  unittest.group('obj-schema-StopLostModeStatus', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStopLostModeStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StopLostModeStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkStopLostModeStatus(od);
     });
   });
 

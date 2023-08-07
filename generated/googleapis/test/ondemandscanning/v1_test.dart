@@ -3983,6 +3983,7 @@ api.VexAssessment buildVexAssessment() {
     o.relatedUris = buildUnnamed64();
     o.remediations = buildUnnamed65();
     o.state = 'foo';
+    o.vulnerabilityId = 'foo';
   }
   buildCounterVexAssessment--;
   return o;
@@ -4005,6 +4006,10 @@ void checkVexAssessment(api.VexAssessment o) {
     checkUnnamed65(o.remediations!);
     unittest.expect(
       o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.vulnerabilityId!,
       unittest.equals('foo'),
     );
   }

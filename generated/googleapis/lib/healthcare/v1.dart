@@ -6965,6 +6965,16 @@ class ActivateConsentRequest {
 
 /// The request to analyze healthcare entities in a document.
 class AnalyzeEntitiesRequest {
+  /// Alternative output format to be generated based on the results of
+  /// analysis.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ALTERNATIVE_OUTPUT_FORMAT_UNSPECIFIED" : No alternative output format
+  /// is specified.
+  /// - "FHIR_BUNDLE" : FHIR bundle output.
+  core.String? alternativeOutputFormat;
+
   /// document_content is a document to be annotated.
   core.String? documentContent;
 
@@ -6973,12 +6983,16 @@ class AnalyzeEntitiesRequest {
   core.List<core.String>? licensedVocabularies;
 
   AnalyzeEntitiesRequest({
+    this.alternativeOutputFormat,
     this.documentContent,
     this.licensedVocabularies,
   });
 
   AnalyzeEntitiesRequest.fromJson(core.Map json_)
       : this(
+          alternativeOutputFormat: json_.containsKey('alternativeOutputFormat')
+              ? json_['alternativeOutputFormat'] as core.String
+              : null,
           documentContent: json_.containsKey('documentContent')
               ? json_['documentContent'] as core.String
               : null,
@@ -6990,6 +7004,8 @@ class AnalyzeEntitiesRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (alternativeOutputFormat != null)
+          'alternativeOutputFormat': alternativeOutputFormat!,
         if (documentContent != null) 'documentContent': documentContent!,
         if (licensedVocabularies != null)
           'licensedVocabularies': licensedVocabularies!,
@@ -7008,6 +7024,11 @@ class AnalyzeEntitiesResponse {
   /// that were mentioned in the provided document.
   core.List<EntityMention>? entityMentions;
 
+  /// The FHIR bundle (\[`R4`\](http://hl7.org/fhir/R4/bundle.html)) that
+  /// includes all the entities, the entity mentions, and the relationships in
+  /// JSON format.
+  core.String? fhirBundle;
+
   /// relationships contains all the binary relationships that were identified
   /// between entity mentions within the provided document.
   core.List<EntityMentionRelationship>? relationships;
@@ -7015,6 +7036,7 @@ class AnalyzeEntitiesResponse {
   AnalyzeEntitiesResponse({
     this.entities,
     this.entityMentions,
+    this.fhirBundle,
     this.relationships,
   });
 
@@ -7032,6 +7054,9 @@ class AnalyzeEntitiesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          fhirBundle: json_.containsKey('fhirBundle')
+              ? json_['fhirBundle'] as core.String
+              : null,
           relationships: json_.containsKey('relationships')
               ? (json_['relationships'] as core.List)
                   .map((value) => EntityMentionRelationship.fromJson(
@@ -7043,6 +7068,7 @@ class AnalyzeEntitiesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (entities != null) 'entities': entities!,
         if (entityMentions != null) 'entityMentions': entityMentions!,
+        if (fhirBundle != null) 'fhirBundle': fhirBundle!,
         if (relationships != null) 'relationships': relationships!,
       };
 }
@@ -9349,6 +9375,9 @@ class FhirStore {
   /// example, "action":"CreateResource".
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   NotificationConfig? notificationConfig;
 
   /// Specifies where and whether to send notifications upon changes to a FHIR

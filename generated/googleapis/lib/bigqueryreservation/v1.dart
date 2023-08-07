@@ -1780,9 +1780,7 @@ class Reservation {
   /// baseline slots, you are limited to once an hour if you have recently
   /// changed your baseline slot capacity and your baseline slots exceed your
   /// committed slots. Otherwise, you can decrease your baseline slots every few
-  /// minutes. NOTE: for reservations in US or EU multi-regions, slot capacity
-  /// constraints are checked separately for default and auxiliary regions. See
-  /// multi_region_auxiliary flag for more details.
+  /// minutes.
   core.String? slotCapacity;
 
   /// Last update time of the reservation.

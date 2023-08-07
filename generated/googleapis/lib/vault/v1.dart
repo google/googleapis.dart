@@ -2004,6 +2004,9 @@ class DriveOptions {
   core.bool? includeSharedDrives;
 
   /// Set to true to include Team Drive.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? includeTeamDrives;
 
   /// Search the current version of the Drive file, but export the contents of
@@ -2417,6 +2420,9 @@ class HeldDriveQuery {
   core.bool? includeSharedDriveFiles;
 
   /// To include files in Team Drives in the hold, set to **true**.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? includeTeamDriveFiles;
 
   HeldDriveQuery({
@@ -3200,6 +3206,9 @@ class Query {
   /// [SitesUrlInfo](https://developers.google.com/vault/reference/rest/v1/Query#sitesurlinfo).
   /// - "SHARED_DRIVE" : Search the files in the shared drives specified in
   /// [SharedDriveInfo](https://developers.google.com/vault/reference/rest/v1/Query#shareddriveinfo).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? searchMethod;
 
   /// Required when **SearchMethod** is **SHARED_DRIVE**.
@@ -3214,6 +3223,9 @@ class Query {
   core.String? startTime;
 
   /// Required when **SearchMethod** is **TEAM_DRIVE**.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   TeamDriveInfo? teamDriveInfo;
 
   /// Service-specific
@@ -3566,6 +3578,9 @@ typedef Status = $Status;
 class TeamDriveInfo {
   /// List of Team Drive IDs, as provided by the
   /// [Drive API](https://developers.google.com/drive).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? teamDriveIds;
 
   TeamDriveInfo({

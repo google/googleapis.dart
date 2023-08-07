@@ -180,6 +180,7 @@ api.DiagnoseInstanceRequest buildDiagnoseInstanceRequest() {
   buildCounterDiagnoseInstanceRequest++;
   if (buildCounterDiagnoseInstanceRequest < 3) {
     o.diagnosticConfig = buildDiagnosticConfig();
+    o.timeoutMinutes = 42;
   }
   buildCounterDiagnoseInstanceRequest--;
   return o;
@@ -189,6 +190,10 @@ void checkDiagnoseInstanceRequest(api.DiagnoseInstanceRequest o) {
   buildCounterDiagnoseInstanceRequest++;
   if (buildCounterDiagnoseInstanceRequest < 3) {
     checkDiagnosticConfig(o.diagnosticConfig!);
+    unittest.expect(
+      o.timeoutMinutes!,
+      unittest.equals(42),
+    );
   }
   buildCounterDiagnoseInstanceRequest--;
 }
@@ -199,6 +204,7 @@ api.DiagnoseRuntimeRequest buildDiagnoseRuntimeRequest() {
   buildCounterDiagnoseRuntimeRequest++;
   if (buildCounterDiagnoseRuntimeRequest < 3) {
     o.diagnosticConfig = buildDiagnosticConfig();
+    o.timeoutMinutes = 42;
   }
   buildCounterDiagnoseRuntimeRequest--;
   return o;
@@ -208,6 +214,10 @@ void checkDiagnoseRuntimeRequest(api.DiagnoseRuntimeRequest o) {
   buildCounterDiagnoseRuntimeRequest++;
   if (buildCounterDiagnoseRuntimeRequest < 3) {
     checkDiagnosticConfig(o.diagnosticConfig!);
+    unittest.expect(
+      o.timeoutMinutes!,
+      unittest.equals(42),
+    );
   }
   buildCounterDiagnoseRuntimeRequest--;
 }

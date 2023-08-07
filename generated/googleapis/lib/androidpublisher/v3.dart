@@ -2680,7 +2680,7 @@ class InappproductsResource {
 
   InappproductsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes an in-app product (i.e. a managed product or a subscription).
+  /// Deletes an in-app product (a managed product or a subscription).
   ///
   /// This method should no longer be used to delete subscriptions. See
   /// [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
@@ -2767,7 +2767,7 @@ class InappproductsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Creates an in-app product (i.e. a managed product or a subscription).
+  /// Creates an in-app product (a managed product or a subscription).
   ///
   /// This method should no longer be used to create subscriptions. See
   /// [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
@@ -2880,7 +2880,7 @@ class InappproductsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Patches an in-app product (i.e. a managed product or a subscription).
+  /// Patches an in-app product (a managed product or a subscription).
   ///
   /// This method should no longer be used to update subscriptions. See
   /// [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
@@ -2938,7 +2938,7 @@ class InappproductsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an in-app product (i.e. a managed product or a subscription).
+  /// Updates an in-app product (a managed product or a subscription).
   ///
   /// This method should no longer be used to update subscriptions. See
   /// [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
@@ -4061,11 +4061,12 @@ class MonetizationSubscriptionsBasePlansOffersResource {
   /// subscriptions should be read.
   ///
   /// [productId] - Required. The parent subscription (ID) for which the offers
-  /// should be read.
+  /// should be read. May be specified as '-' to read all offers under an app.
   ///
   /// [basePlanId] - Required. The parent base plan (ID) for which the offers
   /// should be read. May be specified as '-' to read all offers under a
-  /// subscription.
+  /// subscription or an app. Must be specified as '-' if product_id is
+  /// specified as '-'.
   ///
   /// [pageSize] - The maximum number of subscriptions to return. The service
   /// may return fewer than this value. If unspecified, at most 50 subscriptions
@@ -9791,10 +9792,12 @@ class RegionalPriceMigrationConfig {
   /// Required.
   core.String? oldestAllowedPriceVersionTime;
 
-  /// The behavior the caller wants users to see if there is a price increase
+  /// The behavior the caller wants users to see when there is a price increase
   /// during migration.
   ///
-  /// If left unset, the behavior defaults to PRICE_INCREASE_TYPE_OPT_IN.
+  /// If left unset, the behavior defaults to PRICE_INCREASE_TYPE_OPT_IN. Note
+  /// that the first opt-out price increase migration for each app must be
+  /// initiated in Play Console.
   ///
   /// Optional.
   /// Possible string values are:

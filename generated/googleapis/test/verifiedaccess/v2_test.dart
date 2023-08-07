@@ -359,7 +359,9 @@ api.VerifyChallengeResponseResult buildVerifyChallengeResponseResult() {
   final o = api.VerifyChallengeResponseResult();
   buildCounterVerifyChallengeResponseResult++;
   if (buildCounterVerifyChallengeResponseResult < 3) {
+    o.attestedDeviceId = 'foo';
     o.customerId = 'foo';
+    o.deviceEnrollmentId = 'foo';
     o.devicePermanentId = 'foo';
     o.deviceSignal = 'foo';
     o.deviceSignals = buildDeviceSignals();
@@ -378,7 +380,15 @@ void checkVerifyChallengeResponseResult(api.VerifyChallengeResponseResult o) {
   buildCounterVerifyChallengeResponseResult++;
   if (buildCounterVerifyChallengeResponseResult < 3) {
     unittest.expect(
+      o.attestedDeviceId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.customerId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.deviceEnrollmentId!,
       unittest.equals('foo'),
     );
     unittest.expect(

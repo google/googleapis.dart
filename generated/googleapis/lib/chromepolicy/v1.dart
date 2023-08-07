@@ -1650,6 +1650,9 @@ class GoogleChromePolicyVersionsV1PolicySchema {
 
   /// Detailed description of each field that is part of the schema.
   ///
+  /// Fields are suggested to be displayed by the ordering in this list, not by
+  /// field number.
+  ///
   /// Output only.
   core.List<GoogleChromePolicyVersionsV1PolicySchemaFieldDescription>?
       fieldDescriptions;
@@ -1885,6 +1888,9 @@ class GoogleChromePolicyVersionsV1PolicySchemaFieldDescription {
 
   /// Provides the description of the fields nested in this field, if the field
   /// is a message type that defines multiple fields.
+  ///
+  /// Fields are suggested to be displayed by the ordering in this list, not by
+  /// field number.
   ///
   /// Output only.
   core.List<GoogleChromePolicyVersionsV1PolicySchemaFieldDescription>?

@@ -436,6 +436,30 @@ void checkCloudEndpoints(api.CloudEndpoints o) {
   buildCounterCloudEndpoints--;
 }
 
+core.int buildCounterCloudFunctionV2Target = 0;
+api.CloudFunctionV2Target buildCloudFunctionV2Target() {
+  final o = api.CloudFunctionV2Target();
+  buildCounterCloudFunctionV2Target++;
+  if (buildCounterCloudFunctionV2Target < 3) {
+    o.cloudRunRevision = buildMonitoredResource();
+    o.name = 'foo';
+  }
+  buildCounterCloudFunctionV2Target--;
+  return o;
+}
+
+void checkCloudFunctionV2Target(api.CloudFunctionV2Target o) {
+  buildCounterCloudFunctionV2Target++;
+  if (buildCounterCloudFunctionV2Target < 3) {
+    checkMonitoredResource(o.cloudRunRevision!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCloudFunctionV2Target--;
+}
+
 core.int buildCounterCloudRun = 0;
 api.CloudRun buildCloudRun() {
   final o = api.CloudRun();
@@ -3807,6 +3831,25 @@ void checkStatus(api.Status o) {
   buildCounterStatus--;
 }
 
+core.int buildCounterSyntheticMonitorTarget = 0;
+api.SyntheticMonitorTarget buildSyntheticMonitorTarget() {
+  final o = api.SyntheticMonitorTarget();
+  buildCounterSyntheticMonitorTarget++;
+  if (buildCounterSyntheticMonitorTarget < 3) {
+    o.cloudFunctionV2 = buildCloudFunctionV2Target();
+  }
+  buildCounterSyntheticMonitorTarget--;
+  return o;
+}
+
+void checkSyntheticMonitorTarget(api.SyntheticMonitorTarget o) {
+  buildCounterSyntheticMonitorTarget++;
+  if (buildCounterSyntheticMonitorTarget < 3) {
+    checkCloudFunctionV2Target(o.cloudFunctionV2!);
+  }
+  buildCounterSyntheticMonitorTarget--;
+}
+
 core.int buildCounterTcpCheck = 0;
 api.TcpCheck buildTcpCheck() {
   final o = api.TcpCheck();
@@ -4184,6 +4227,7 @@ api.UptimeCheckConfig buildUptimeCheckConfig() {
     o.period = 'foo';
     o.resourceGroup = buildResourceGroup();
     o.selectedRegions = buildUnnamed70();
+    o.syntheticMonitor = buildSyntheticMonitorTarget();
     o.tcpCheck = buildTcpCheck();
     o.timeout = 'foo';
     o.userLabels = buildUnnamed71();
@@ -4218,6 +4262,7 @@ void checkUptimeCheckConfig(api.UptimeCheckConfig o) {
     );
     checkResourceGroup(o.resourceGroup!);
     checkUnnamed70(o.selectedRegions!);
+    checkSyntheticMonitorTarget(o.syntheticMonitor!);
     checkTcpCheck(o.tcpCheck!);
     unittest.expect(
       o.timeout!,
@@ -4553,6 +4598,16 @@ void main() {
       final od = api.CloudEndpoints.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkCloudEndpoints(od);
+    });
+  });
+
+  unittest.group('obj-schema-CloudFunctionV2Target', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCloudFunctionV2Target();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CloudFunctionV2Target.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCloudFunctionV2Target(od);
     });
   });
 
@@ -5406,6 +5461,16 @@ void main() {
       final od =
           api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od);
+    });
+  });
+
+  unittest.group('obj-schema-SyntheticMonitorTarget', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSyntheticMonitorTarget();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SyntheticMonitorTarget.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSyntheticMonitorTarget(od);
     });
   });
 

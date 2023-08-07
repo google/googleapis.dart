@@ -6107,7 +6107,7 @@ class GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings {
   /// The GitHub repository URI related to the agent.
   core.String? repositoryUri;
 
-  /// The branch of GitHub repository tracked for this agent.
+  /// The branch of the GitHub repository tracked for this agent.
   core.String? trackingBranch;
 
   GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings({
@@ -11222,6 +11222,16 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
   /// does not try to read or process the URI in any way.
   GoogleCloudDialogflowCxV3ResponseMessagePlayAudio? playAudio;
 
+  /// Response type.
+  /// Possible string values are:
+  /// - "RESPONSE_TYPE_UNSPECIFIED" : Not specified.
+  /// - "ENTRY_PROMPT" : The response is from an entry prompt in the page.
+  /// - "PARAMETER_PROMPT" : The response is from form-filling prompt in the
+  /// page.
+  /// - "HANDLER_PROMPT" : The response is from a transition route or an event
+  /// handler in the page or flow or transition route group.
+  core.String? responseType;
+
   /// A signal that the client should transfer the phone call connected to this
   /// agent to a third-party endpoint.
   GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall?
@@ -11239,6 +11249,7 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
     this.outputAudioText,
     this.payload,
     this.playAudio,
+    this.responseType,
     this.telephonyTransferCall,
     this.text,
   });
@@ -11279,6 +11290,9 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
               ? GoogleCloudDialogflowCxV3ResponseMessagePlayAudio.fromJson(
                   json_['playAudio'] as core.Map<core.String, core.dynamic>)
               : null,
+          responseType: json_.containsKey('responseType')
+              ? json_['responseType'] as core.String
+              : null,
           telephonyTransferCall: json_.containsKey('telephonyTransferCall')
               ? GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall
                   .fromJson(json_['telephonyTransferCall']
@@ -11300,6 +11314,7 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
         if (outputAudioText != null) 'outputAudioText': outputAudioText!,
         if (payload != null) 'payload': payload!,
         if (playAudio != null) 'playAudio': playAudio!,
+        if (responseType != null) 'responseType': responseType!,
         if (telephonyTransferCall != null)
           'telephonyTransferCall': telephonyTransferCall!,
         if (text != null) 'text': text!,
@@ -12112,7 +12127,7 @@ class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings {
 /// Sentiment analysis inspects user input and identifies the prevailing
 /// subjective opinion, especially to determine a user's attitude as positive,
 /// negative, or neutral.
-typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared04;
+typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared05;
 
 /// Session entity types are referred to as **User** entity types and are
 /// entities that are built for an individual user such as favorites,

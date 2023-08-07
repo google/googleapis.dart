@@ -547,7 +547,8 @@ class ProjectsLocationsConnectionsResource {
   /// lock/unlock a connection: * `lock_config` To suspend/resume a connection:
   /// * `suspended` To update the connection details: * `description` * `labels`
   /// * `connector_version` * `config_variables` * `auth_config` *
-  /// `destination_configs` * `node_config`
+  /// `destination_configs` * `node_config` * `log_config` * `ssl_config` *
+  /// `eventing_enablement_type` * `eventing_config`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -914,7 +915,6 @@ class ProjectsLocationsConnectionsEventSubscriptionsResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
   ///
   /// [filter] - Filter.
-  /// https://g3doc.corp.google.com/cloud/control2/g3doc/dev/apihosting/list_filtering.md#filtering.
   ///
   /// [orderBy] - Order by parameters.
   ///
@@ -1311,7 +1311,6 @@ class ProjectsLocationsEndpointAttachmentsResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Filter.
-  /// https://g3doc.corp.google.com/cloud/control2/g3doc/dev/apihosting/list_filtering.md#filtering.
   ///
   /// [orderBy] - Order by parameters.
   ///
@@ -1635,7 +1634,6 @@ class ProjectsLocationsGlobalManagedZonesResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
   ///
   /// [filter] - Filter.
-  /// https://g3doc.corp.google.com/cloud/control2/g3doc/dev/apihosting/list_filtering.md#filtering.
   ///
   /// [orderBy] - Order by parameters.
   ///
@@ -2702,15 +2700,15 @@ class AuthConfigTemplate {
 /// This configuration captures the details required to render an authorization
 /// link for the OAuth Authorization Code Flow.
 class AuthorizationCodeLink {
-  /// The client ID assigned to the GCP Connectors OAuth app for the connector
-  /// data source.
+  /// The client ID assigned to the Google Cloud Connectors OAuth app for the
+  /// connector data source.
   core.String? clientId;
 
   /// Whether to enable PKCE for the auth code flow.
   core.bool? enablePkce;
 
-  /// The scopes for which the user will authorize GCP Connectors on the
-  /// connector data source.
+  /// The scopes for which the user will authorize Google Cloud Connectors on
+  /// the connector data source.
   core.List<core.String>? scopes;
 
   /// The base URI the user must click to trigger the authorization code login
@@ -3164,7 +3162,7 @@ class Connection {
   /// Optional.
   NodeConfig? nodeConfig;
 
-  /// Service account needed for runtime plane to access GCP resources.
+  /// Service account needed for runtime plane to access Google Cloud resources.
   ///
   /// Optional.
   core.String? serviceAccount;
@@ -3650,21 +3648,31 @@ class Connector {
 /// This cofiguration provides infra configs like rate limit threshold which
 /// need to be configurable for every connector version
 class ConnectorInfraConfig {
+  /// Max QPS supported for internal requests originating from Connd.
+  core.String? internalclientRatelimitThreshold;
+
   /// Max QPS supported by the connector version before throttling of requests.
   core.String? ratelimitThreshold;
 
   ConnectorInfraConfig({
+    this.internalclientRatelimitThreshold,
     this.ratelimitThreshold,
   });
 
   ConnectorInfraConfig.fromJson(core.Map json_)
       : this(
+          internalclientRatelimitThreshold:
+              json_.containsKey('internalclientRatelimitThreshold')
+                  ? json_['internalclientRatelimitThreshold'] as core.String
+                  : null,
           ratelimitThreshold: json_.containsKey('ratelimitThreshold')
               ? json_['ratelimitThreshold'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (internalclientRatelimitThreshold != null)
+          'internalclientRatelimitThreshold': internalclientRatelimitThreshold!,
         if (ratelimitThreshold != null)
           'ratelimitThreshold': ratelimitThreshold!,
       };
@@ -3902,23 +3910,35 @@ class ConnectorVersion {
 /// This cofiguration provides infra configs like rate limit threshold which
 /// need to be configurable for every connector version
 class ConnectorVersionInfraConfig {
+  /// Max QPS supported for internal requests originating from Connd.
+  ///
+  /// Output only.
+  core.String? internalclientRatelimitThreshold;
+
   /// Max QPS supported by the connector version before throttling of requests.
   ///
   /// Output only.
   core.String? ratelimitThreshold;
 
   ConnectorVersionInfraConfig({
+    this.internalclientRatelimitThreshold,
     this.ratelimitThreshold,
   });
 
   ConnectorVersionInfraConfig.fromJson(core.Map json_)
       : this(
+          internalclientRatelimitThreshold:
+              json_.containsKey('internalclientRatelimitThreshold')
+                  ? json_['internalclientRatelimitThreshold'] as core.String
+                  : null,
           ratelimitThreshold: json_.containsKey('ratelimitThreshold')
               ? json_['ratelimitThreshold'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (internalclientRatelimitThreshold != null)
+          'internalclientRatelimitThreshold': internalclientRatelimitThreshold!,
         if (ratelimitThreshold != null)
           'ratelimitThreshold': ratelimitThreshold!,
       };
@@ -6262,23 +6282,23 @@ class Operation {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -6505,18 +6525,20 @@ typedef RepairEventingRequest = $Empty;
 
 /// Resource definition
 class Resource {
-  /// Template to uniquely represent a GCP resource in a format IAM expects This
-  /// is a template that can have references to other values provided in the
-  /// config variable template.
+  /// Template to uniquely represent a Google Cloud resource in a format IAM
+  /// expects This is a template that can have references to other values
+  /// provided in the config variable template.
   core.String? pathTemplate;
 
   /// Different types of resource supported.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Value type is not specified.
-  /// - "GCP_PROJECT" : GCP Project Resource.
-  /// - "GCP_RESOURCE" : Any GCP Resource which is identified uniquely by IAM.
-  /// - "GCP_SECRETMANAGER_SECRET" : GCP Secret Resource.
-  /// - "GCP_SECRETMANAGER_SECRET_VERSION" : GCP Secret Version Resource.
+  /// - "GCP_PROJECT" : Google Cloud Project Resource.
+  /// - "GCP_RESOURCE" : Any Google Cloud Resource which is identified uniquely
+  /// by IAM.
+  /// - "GCP_SECRETMANAGER_SECRET" : Google Cloud Secret Resource.
+  /// - "GCP_SECRETMANAGER_SECRET_VERSION" : Google Cloud Secret Version
+  /// Resource.
   core.String? type;
 
   Resource({
@@ -6627,8 +6649,8 @@ class ResultMetadata {
 typedef RetryEventSubscriptionRequest = $Empty;
 
 /// This configuration defines all the Cloud IAM roles that needs to be granted
-/// to a particular GCP resource for the selected principal like service
-/// account.
+/// to a particular Google Cloud resource for the selected principal like
+/// service account.
 ///
 /// These configurations will let UI display to customers what IAM roles need to
 /// be granted by them. Or these configurations can be used by the UI to render
@@ -7295,10 +7317,6 @@ class SslConfigTemplate {
 typedef Status = $Status;
 
 /// Supported runtime features of a connector version.
-///
-/// This is passed to the management layer to add a new connector version by the
-/// connector developer. Details about how this proto is passed to the
-/// management layer is covered in this doc - go/runtime-manifest.
 class SupportedRuntimeFeatures {
   /// Specifies if the connector supports action apis like 'executeAction'.
   core.bool? actionApis;

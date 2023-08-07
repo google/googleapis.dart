@@ -2985,8 +2985,14 @@ class DiagnoseInstanceRequest {
   /// Required.
   DiagnosticConfig? diagnosticConfig;
 
+  /// Maxmium amount of time in minutes before the operation times out.
+  ///
+  /// Optional.
+  core.int? timeoutMinutes;
+
   DiagnoseInstanceRequest({
     this.diagnosticConfig,
+    this.timeoutMinutes,
   });
 
   DiagnoseInstanceRequest.fromJson(core.Map json_)
@@ -2995,10 +3001,14 @@ class DiagnoseInstanceRequest {
               ? DiagnosticConfig.fromJson(json_['diagnosticConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          timeoutMinutes: json_.containsKey('timeoutMinutes')
+              ? json_['timeoutMinutes'] as core.int
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (diagnosticConfig != null) 'diagnosticConfig': diagnosticConfig!,
+        if (timeoutMinutes != null) 'timeoutMinutes': timeoutMinutes!,
       };
 }
 
@@ -3009,8 +3019,14 @@ class DiagnoseRuntimeRequest {
   /// Required.
   DiagnosticConfig? diagnosticConfig;
 
+  /// Maxmium amount of time in minutes before the operation times out.
+  ///
+  /// Optional.
+  core.int? timeoutMinutes;
+
   DiagnoseRuntimeRequest({
     this.diagnosticConfig,
+    this.timeoutMinutes,
   });
 
   DiagnoseRuntimeRequest.fromJson(core.Map json_)
@@ -3019,10 +3035,14 @@ class DiagnoseRuntimeRequest {
               ? DiagnosticConfig.fromJson(json_['diagnosticConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          timeoutMinutes: json_.containsKey('timeoutMinutes')
+              ? json_['timeoutMinutes'] as core.int
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (diagnosticConfig != null) 'diagnosticConfig': diagnosticConfig!,
+        if (timeoutMinutes != null) 'timeoutMinutes': timeoutMinutes!,
       };
 }
 

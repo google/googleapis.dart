@@ -1073,19 +1073,19 @@ void checkExpr(api.Expr o) {
   buildCounterExpr--;
 }
 
-core.Map<core.String, core.String> buildUnnamed16() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
+core.List<core.String> buildUnnamed16() => [
+      'foo',
+      'foo',
+    ];
 
-void checkUnnamed16(core.Map<core.String, core.String> o) {
+void checkUnnamed16(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
-    o['x']!,
+    o[0],
     unittest.equals('foo'),
   );
   unittest.expect(
-    o['y']!,
+    o[1],
     unittest.equals('foo'),
   );
 }
@@ -1107,12 +1107,103 @@ void checkUnnamed17(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed18() => [
+core.Map<core.String, core.String> buildUnnamed18() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed18(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterFlinkJob = 0;
+api.FlinkJob buildFlinkJob() {
+  final o = api.FlinkJob();
+  buildCounterFlinkJob++;
+  if (buildCounterFlinkJob < 3) {
+    o.args = buildUnnamed16();
+    o.jarFileUris = buildUnnamed17();
+    o.loggingConfig = buildLoggingConfig();
+    o.mainClass = 'foo';
+    o.mainJarFileUri = 'foo';
+    o.properties = buildUnnamed18();
+    o.savepointUri = 'foo';
+  }
+  buildCounterFlinkJob--;
+  return o;
+}
+
+void checkFlinkJob(api.FlinkJob o) {
+  buildCounterFlinkJob++;
+  if (buildCounterFlinkJob < 3) {
+    checkUnnamed16(o.args!);
+    checkUnnamed17(o.jarFileUris!);
+    checkLoggingConfig(o.loggingConfig!);
+    unittest.expect(
+      o.mainClass!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.mainJarFileUri!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed18(o.properties!);
+    unittest.expect(
+      o.savepointUri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterFlinkJob--;
+}
+
+core.Map<core.String, core.String> buildUnnamed19() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed19(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed20() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed18(core.List<core.String> o) {
+void checkUnnamed20(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed21() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed21(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1131,16 +1222,16 @@ api.GceClusterConfig buildGceClusterConfig() {
   if (buildCounterGceClusterConfig < 3) {
     o.confidentialInstanceConfig = buildConfidentialInstanceConfig();
     o.internalIpOnly = true;
-    o.metadata = buildUnnamed16();
+    o.metadata = buildUnnamed19();
     o.networkUri = 'foo';
     o.nodeGroupAffinity = buildNodeGroupAffinity();
     o.privateIpv6GoogleAccess = 'foo';
     o.reservationAffinity = buildReservationAffinity();
     o.serviceAccount = 'foo';
-    o.serviceAccountScopes = buildUnnamed17();
+    o.serviceAccountScopes = buildUnnamed20();
     o.shieldedInstanceConfig = buildShieldedInstanceConfig();
     o.subnetworkUri = 'foo';
-    o.tags = buildUnnamed18();
+    o.tags = buildUnnamed21();
     o.zoneUri = 'foo';
   }
   buildCounterGceClusterConfig--;
@@ -1152,7 +1243,7 @@ void checkGceClusterConfig(api.GceClusterConfig o) {
   if (buildCounterGceClusterConfig < 3) {
     checkConfidentialInstanceConfig(o.confidentialInstanceConfig!);
     unittest.expect(o.internalIpOnly!, unittest.isTrue);
-    checkUnnamed16(o.metadata!);
+    checkUnnamed19(o.metadata!);
     unittest.expect(
       o.networkUri!,
       unittest.equals('foo'),
@@ -1167,13 +1258,13 @@ void checkGceClusterConfig(api.GceClusterConfig o) {
       o.serviceAccount!,
       unittest.equals('foo'),
     );
-    checkUnnamed17(o.serviceAccountScopes!);
+    checkUnnamed20(o.serviceAccountScopes!);
     checkShieldedInstanceConfig(o.shieldedInstanceConfig!);
     unittest.expect(
       o.subnetworkUri!,
       unittest.equals('foo'),
     );
-    checkUnnamed18(o.tags!);
+    checkUnnamed21(o.tags!);
     unittest.expect(
       o.zoneUri!,
       unittest.equals('foo'),
@@ -1223,12 +1314,12 @@ void checkGetPolicyOptions(api.GetPolicyOptions o) {
   buildCounterGetPolicyOptions--;
 }
 
-core.List<api.GkeNodePoolTarget> buildUnnamed19() => [
+core.List<api.GkeNodePoolTarget> buildUnnamed22() => [
       buildGkeNodePoolTarget(),
       buildGkeNodePoolTarget(),
     ];
 
-void checkUnnamed19(core.List<api.GkeNodePoolTarget> o) {
+void checkUnnamed22(core.List<api.GkeNodePoolTarget> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGkeNodePoolTarget(o[0]);
   checkGkeNodePoolTarget(o[1]);
@@ -1241,7 +1332,7 @@ api.GkeClusterConfig buildGkeClusterConfig() {
   if (buildCounterGkeClusterConfig < 3) {
     o.gkeClusterTarget = 'foo';
     o.namespacedGkeDeploymentTarget = buildNamespacedGkeDeploymentTarget();
-    o.nodePoolTarget = buildUnnamed19();
+    o.nodePoolTarget = buildUnnamed22();
   }
   buildCounterGkeClusterConfig--;
   return o;
@@ -1255,17 +1346,17 @@ void checkGkeClusterConfig(api.GkeClusterConfig o) {
       unittest.equals('foo'),
     );
     checkNamespacedGkeDeploymentTarget(o.namespacedGkeDeploymentTarget!);
-    checkUnnamed19(o.nodePoolTarget!);
+    checkUnnamed22(o.nodePoolTarget!);
   }
   buildCounterGkeClusterConfig--;
 }
 
-core.List<api.GkeNodePoolAcceleratorConfig> buildUnnamed20() => [
+core.List<api.GkeNodePoolAcceleratorConfig> buildUnnamed23() => [
       buildGkeNodePoolAcceleratorConfig(),
       buildGkeNodePoolAcceleratorConfig(),
     ];
 
-void checkUnnamed20(core.List<api.GkeNodePoolAcceleratorConfig> o) {
+void checkUnnamed23(core.List<api.GkeNodePoolAcceleratorConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGkeNodePoolAcceleratorConfig(o[0]);
   checkGkeNodePoolAcceleratorConfig(o[1]);
@@ -1276,7 +1367,7 @@ api.GkeNodeConfig buildGkeNodeConfig() {
   final o = api.GkeNodeConfig();
   buildCounterGkeNodeConfig++;
   if (buildCounterGkeNodeConfig < 3) {
-    o.accelerators = buildUnnamed20();
+    o.accelerators = buildUnnamed23();
     o.bootDiskKmsKey = 'foo';
     o.localSsdCount = 42;
     o.machineType = 'foo';
@@ -1291,7 +1382,7 @@ api.GkeNodeConfig buildGkeNodeConfig() {
 void checkGkeNodeConfig(api.GkeNodeConfig o) {
   buildCounterGkeNodeConfig++;
   if (buildCounterGkeNodeConfig < 3) {
-    checkUnnamed20(o.accelerators!);
+    checkUnnamed23(o.accelerators!);
     unittest.expect(
       o.bootDiskKmsKey!,
       unittest.equals('foo'),
@@ -1373,12 +1464,12 @@ void checkGkeNodePoolAutoscalingConfig(api.GkeNodePoolAutoscalingConfig o) {
   buildCounterGkeNodePoolAutoscalingConfig--;
 }
 
-core.List<core.String> buildUnnamed21() => [
+core.List<core.String> buildUnnamed24() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed21(core.List<core.String> o) {
+void checkUnnamed24(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1397,7 +1488,7 @@ api.GkeNodePoolConfig buildGkeNodePoolConfig() {
   if (buildCounterGkeNodePoolConfig < 3) {
     o.autoscaling = buildGkeNodePoolAutoscalingConfig();
     o.config = buildGkeNodeConfig();
-    o.locations = buildUnnamed21();
+    o.locations = buildUnnamed24();
   }
   buildCounterGkeNodePoolConfig--;
   return o;
@@ -1408,86 +1499,9 @@ void checkGkeNodePoolConfig(api.GkeNodePoolConfig o) {
   if (buildCounterGkeNodePoolConfig < 3) {
     checkGkeNodePoolAutoscalingConfig(o.autoscaling!);
     checkGkeNodeConfig(o.config!);
-    checkUnnamed21(o.locations!);
+    checkUnnamed24(o.locations!);
   }
   buildCounterGkeNodePoolConfig--;
-}
-
-core.List<core.String> buildUnnamed22() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed22(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterGkeNodePoolTarget = 0;
-api.GkeNodePoolTarget buildGkeNodePoolTarget() {
-  final o = api.GkeNodePoolTarget();
-  buildCounterGkeNodePoolTarget++;
-  if (buildCounterGkeNodePoolTarget < 3) {
-    o.nodePool = 'foo';
-    o.nodePoolConfig = buildGkeNodePoolConfig();
-    o.roles = buildUnnamed22();
-  }
-  buildCounterGkeNodePoolTarget--;
-  return o;
-}
-
-void checkGkeNodePoolTarget(api.GkeNodePoolTarget o) {
-  buildCounterGkeNodePoolTarget++;
-  if (buildCounterGkeNodePoolTarget < 3) {
-    unittest.expect(
-      o.nodePool!,
-      unittest.equals('foo'),
-    );
-    checkGkeNodePoolConfig(o.nodePoolConfig!);
-    checkUnnamed22(o.roles!);
-  }
-  buildCounterGkeNodePoolTarget--;
-}
-
-core.List<core.String> buildUnnamed23() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed23(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed24() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed24(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
 }
 
 core.List<core.String> buildUnnamed25() => [
@@ -1507,6 +1521,32 @@ void checkUnnamed25(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterGkeNodePoolTarget = 0;
+api.GkeNodePoolTarget buildGkeNodePoolTarget() {
+  final o = api.GkeNodePoolTarget();
+  buildCounterGkeNodePoolTarget++;
+  if (buildCounterGkeNodePoolTarget < 3) {
+    o.nodePool = 'foo';
+    o.nodePoolConfig = buildGkeNodePoolConfig();
+    o.roles = buildUnnamed25();
+  }
+  buildCounterGkeNodePoolTarget--;
+  return o;
+}
+
+void checkGkeNodePoolTarget(api.GkeNodePoolTarget o) {
+  buildCounterGkeNodePoolTarget++;
+  if (buildCounterGkeNodePoolTarget < 3) {
+    unittest.expect(
+      o.nodePool!,
+      unittest.equals('foo'),
+    );
+    checkGkeNodePoolConfig(o.nodePoolConfig!);
+    checkUnnamed25(o.roles!);
+  }
+  buildCounterGkeNodePoolTarget--;
+}
+
 core.List<core.String> buildUnnamed26() => [
       'foo',
       'foo',
@@ -1524,60 +1564,21 @@ void checkUnnamed26(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed27() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
+core.List<core.String> buildUnnamed27() => [
+      'foo',
+      'foo',
+    ];
 
-void checkUnnamed27(core.Map<core.String, core.String> o) {
+void checkUnnamed27(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
-    o['x']!,
+    o[0],
     unittest.equals('foo'),
   );
   unittest.expect(
-    o['y']!,
+    o[1],
     unittest.equals('foo'),
   );
-}
-
-core.int buildCounterHadoopJob = 0;
-api.HadoopJob buildHadoopJob() {
-  final o = api.HadoopJob();
-  buildCounterHadoopJob++;
-  if (buildCounterHadoopJob < 3) {
-    o.archiveUris = buildUnnamed23();
-    o.args = buildUnnamed24();
-    o.fileUris = buildUnnamed25();
-    o.jarFileUris = buildUnnamed26();
-    o.loggingConfig = buildLoggingConfig();
-    o.mainClass = 'foo';
-    o.mainJarFileUri = 'foo';
-    o.properties = buildUnnamed27();
-  }
-  buildCounterHadoopJob--;
-  return o;
-}
-
-void checkHadoopJob(api.HadoopJob o) {
-  buildCounterHadoopJob++;
-  if (buildCounterHadoopJob < 3) {
-    checkUnnamed23(o.archiveUris!);
-    checkUnnamed24(o.args!);
-    checkUnnamed25(o.fileUris!);
-    checkUnnamed26(o.jarFileUris!);
-    checkLoggingConfig(o.loggingConfig!);
-    unittest.expect(
-      o.mainClass!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.mainJarFileUri!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed27(o.properties!);
-  }
-  buildCounterHadoopJob--;
 }
 
 core.List<core.String> buildUnnamed28() => [
@@ -1597,19 +1598,19 @@ void checkUnnamed28(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed29() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
+core.List<core.String> buildUnnamed29() => [
+      'foo',
+      'foo',
+    ];
 
-void checkUnnamed29(core.Map<core.String, core.String> o) {
+void checkUnnamed29(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
-    o['x']!,
+    o[0],
     unittest.equals('foo'),
   );
   unittest.expect(
-    o['y']!,
+    o[1],
     unittest.equals('foo'),
   );
 }
@@ -1631,17 +1632,107 @@ void checkUnnamed30(core.Map<core.String, core.String> o) {
   );
 }
 
+core.int buildCounterHadoopJob = 0;
+api.HadoopJob buildHadoopJob() {
+  final o = api.HadoopJob();
+  buildCounterHadoopJob++;
+  if (buildCounterHadoopJob < 3) {
+    o.archiveUris = buildUnnamed26();
+    o.args = buildUnnamed27();
+    o.fileUris = buildUnnamed28();
+    o.jarFileUris = buildUnnamed29();
+    o.loggingConfig = buildLoggingConfig();
+    o.mainClass = 'foo';
+    o.mainJarFileUri = 'foo';
+    o.properties = buildUnnamed30();
+  }
+  buildCounterHadoopJob--;
+  return o;
+}
+
+void checkHadoopJob(api.HadoopJob o) {
+  buildCounterHadoopJob++;
+  if (buildCounterHadoopJob < 3) {
+    checkUnnamed26(o.archiveUris!);
+    checkUnnamed27(o.args!);
+    checkUnnamed28(o.fileUris!);
+    checkUnnamed29(o.jarFileUris!);
+    checkLoggingConfig(o.loggingConfig!);
+    unittest.expect(
+      o.mainClass!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.mainJarFileUri!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed30(o.properties!);
+  }
+  buildCounterHadoopJob--;
+}
+
+core.List<core.String> buildUnnamed31() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed31(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.Map<core.String, core.String> buildUnnamed32() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed32(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.Map<core.String, core.String> buildUnnamed33() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed33(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterHiveJob = 0;
 api.HiveJob buildHiveJob() {
   final o = api.HiveJob();
   buildCounterHiveJob++;
   if (buildCounterHiveJob < 3) {
     o.continueOnFailure = true;
-    o.jarFileUris = buildUnnamed28();
-    o.properties = buildUnnamed29();
+    o.jarFileUris = buildUnnamed31();
+    o.properties = buildUnnamed32();
     o.queryFileUri = 'foo';
     o.queryList = buildQueryList();
-    o.scriptVariables = buildUnnamed30();
+    o.scriptVariables = buildUnnamed33();
   }
   buildCounterHiveJob--;
   return o;
@@ -1651,24 +1742,24 @@ void checkHiveJob(api.HiveJob o) {
   buildCounterHiveJob++;
   if (buildCounterHiveJob < 3) {
     unittest.expect(o.continueOnFailure!, unittest.isTrue);
-    checkUnnamed28(o.jarFileUris!);
-    checkUnnamed29(o.properties!);
+    checkUnnamed31(o.jarFileUris!);
+    checkUnnamed32(o.properties!);
     unittest.expect(
       o.queryFileUri!,
       unittest.equals('foo'),
     );
     checkQueryList(o.queryList!);
-    checkUnnamed30(o.scriptVariables!);
+    checkUnnamed33(o.scriptVariables!);
   }
   buildCounterHiveJob--;
 }
 
-core.Map<core.String, core.String> buildUnnamed31() => {
+core.Map<core.String, core.String> buildUnnamed34() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed31(core.Map<core.String, core.String> o) {
+void checkUnnamed34(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1685,7 +1776,7 @@ api.IdentityConfig buildIdentityConfig() {
   final o = api.IdentityConfig();
   buildCounterIdentityConfig++;
   if (buildCounterIdentityConfig < 3) {
-    o.userServiceAccountMapping = buildUnnamed31();
+    o.userServiceAccountMapping = buildUnnamed34();
   }
   buildCounterIdentityConfig--;
   return o;
@@ -1694,7 +1785,7 @@ api.IdentityConfig buildIdentityConfig() {
 void checkIdentityConfig(api.IdentityConfig o) {
   buildCounterIdentityConfig++;
   if (buildCounterIdentityConfig < 3) {
-    checkUnnamed31(o.userServiceAccountMapping!);
+    checkUnnamed34(o.userServiceAccountMapping!);
   }
   buildCounterIdentityConfig--;
 }
@@ -1760,23 +1851,23 @@ void checkInstanceGroupAutoscalingPolicyConfig(
   buildCounterInstanceGroupAutoscalingPolicyConfig--;
 }
 
-core.List<api.AcceleratorConfig> buildUnnamed32() => [
+core.List<api.AcceleratorConfig> buildUnnamed35() => [
       buildAcceleratorConfig(),
       buildAcceleratorConfig(),
     ];
 
-void checkUnnamed32(core.List<api.AcceleratorConfig> o) {
+void checkUnnamed35(core.List<api.AcceleratorConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAcceleratorConfig(o[0]);
   checkAcceleratorConfig(o[1]);
 }
 
-core.List<core.String> buildUnnamed33() => [
+core.List<core.String> buildUnnamed36() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed33(core.List<core.String> o) {
+void checkUnnamed36(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1788,12 +1879,12 @@ void checkUnnamed33(core.List<core.String> o) {
   );
 }
 
-core.List<api.InstanceReference> buildUnnamed34() => [
+core.List<api.InstanceReference> buildUnnamed37() => [
       buildInstanceReference(),
       buildInstanceReference(),
     ];
 
-void checkUnnamed34(core.List<api.InstanceReference> o) {
+void checkUnnamed37(core.List<api.InstanceReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInstanceReference(o[0]);
   checkInstanceReference(o[1]);
@@ -1804,11 +1895,11 @@ api.InstanceGroupConfig buildInstanceGroupConfig() {
   final o = api.InstanceGroupConfig();
   buildCounterInstanceGroupConfig++;
   if (buildCounterInstanceGroupConfig < 3) {
-    o.accelerators = buildUnnamed32();
+    o.accelerators = buildUnnamed35();
     o.diskConfig = buildDiskConfig();
     o.imageUri = 'foo';
-    o.instanceNames = buildUnnamed33();
-    o.instanceReferences = buildUnnamed34();
+    o.instanceNames = buildUnnamed36();
+    o.instanceReferences = buildUnnamed37();
     o.isPreemptible = true;
     o.machineTypeUri = 'foo';
     o.managedGroupConfig = buildManagedGroupConfig();
@@ -1823,14 +1914,14 @@ api.InstanceGroupConfig buildInstanceGroupConfig() {
 void checkInstanceGroupConfig(api.InstanceGroupConfig o) {
   buildCounterInstanceGroupConfig++;
   if (buildCounterInstanceGroupConfig < 3) {
-    checkUnnamed32(o.accelerators!);
+    checkUnnamed35(o.accelerators!);
     checkDiskConfig(o.diskConfig!);
     unittest.expect(
       o.imageUri!,
       unittest.equals('foo'),
     );
-    checkUnnamed33(o.instanceNames!);
-    checkUnnamed34(o.instanceReferences!);
+    checkUnnamed36(o.instanceNames!);
+    checkUnnamed37(o.instanceReferences!);
     unittest.expect(o.isPreemptible!, unittest.isTrue);
     unittest.expect(
       o.machineTypeUri!,
@@ -1890,12 +1981,12 @@ void checkInstanceReference(api.InstanceReference o) {
   buildCounterInstanceReference--;
 }
 
-core.Map<core.String, core.String> buildUnnamed35() => {
+core.Map<core.String, core.String> buildUnnamed38() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed35(core.Map<core.String, core.String> o) {
+void checkUnnamed38(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1913,7 +2004,7 @@ api.InstantiateWorkflowTemplateRequest
   final o = api.InstantiateWorkflowTemplateRequest();
   buildCounterInstantiateWorkflowTemplateRequest++;
   if (buildCounterInstantiateWorkflowTemplateRequest < 3) {
-    o.parameters = buildUnnamed35();
+    o.parameters = buildUnnamed38();
     o.requestId = 'foo';
     o.version = 42;
   }
@@ -1925,7 +2016,7 @@ void checkInstantiateWorkflowTemplateRequest(
     api.InstantiateWorkflowTemplateRequest o) {
   buildCounterInstantiateWorkflowTemplateRequest++;
   if (buildCounterInstantiateWorkflowTemplateRequest < 3) {
-    checkUnnamed35(o.parameters!);
+    checkUnnamed38(o.parameters!);
     unittest.expect(
       o.requestId!,
       unittest.equals('foo'),
@@ -1965,12 +2056,12 @@ void checkInterval(api.Interval o) {
   buildCounterInterval--;
 }
 
-core.Map<core.String, core.String> buildUnnamed36() => {
+core.Map<core.String, core.String> buildUnnamed39() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed36(core.Map<core.String, core.String> o) {
+void checkUnnamed39(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1982,23 +2073,23 @@ void checkUnnamed36(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.JobStatus> buildUnnamed37() => [
+core.List<api.JobStatus> buildUnnamed40() => [
       buildJobStatus(),
       buildJobStatus(),
     ];
 
-void checkUnnamed37(core.List<api.JobStatus> o) {
+void checkUnnamed40(core.List<api.JobStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJobStatus(o[0]);
   checkJobStatus(o[1]);
 }
 
-core.List<api.YarnApplication> buildUnnamed38() => [
+core.List<api.YarnApplication> buildUnnamed41() => [
       buildYarnApplication(),
       buildYarnApplication(),
     ];
 
-void checkUnnamed38(core.List<api.YarnApplication> o) {
+void checkUnnamed41(core.List<api.YarnApplication> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkYarnApplication(o[0]);
   checkYarnApplication(o[1]);
@@ -2013,10 +2104,11 @@ api.Job buildJob() {
     o.driverControlFilesUri = 'foo';
     o.driverOutputResourceUri = 'foo';
     o.driverSchedulingConfig = buildDriverSchedulingConfig();
+    o.flinkJob = buildFlinkJob();
     o.hadoopJob = buildHadoopJob();
     o.hiveJob = buildHiveJob();
     o.jobUuid = 'foo';
-    o.labels = buildUnnamed36();
+    o.labels = buildUnnamed39();
     o.pigJob = buildPigJob();
     o.placement = buildJobPlacement();
     o.prestoJob = buildPrestoJob();
@@ -2027,9 +2119,9 @@ api.Job buildJob() {
     o.sparkRJob = buildSparkRJob();
     o.sparkSqlJob = buildSparkSqlJob();
     o.status = buildJobStatus();
-    o.statusHistory = buildUnnamed37();
+    o.statusHistory = buildUnnamed40();
     o.trinoJob = buildTrinoJob();
-    o.yarnApplications = buildUnnamed38();
+    o.yarnApplications = buildUnnamed41();
   }
   buildCounterJob--;
   return o;
@@ -2048,13 +2140,14 @@ void checkJob(api.Job o) {
       unittest.equals('foo'),
     );
     checkDriverSchedulingConfig(o.driverSchedulingConfig!);
+    checkFlinkJob(o.flinkJob!);
     checkHadoopJob(o.hadoopJob!);
     checkHiveJob(o.hiveJob!);
     unittest.expect(
       o.jobUuid!,
       unittest.equals('foo'),
     );
-    checkUnnamed36(o.labels!);
+    checkUnnamed39(o.labels!);
     checkPigJob(o.pigJob!);
     checkJobPlacement(o.placement!);
     checkPrestoJob(o.prestoJob!);
@@ -2065,19 +2158,19 @@ void checkJob(api.Job o) {
     checkSparkRJob(o.sparkRJob!);
     checkSparkSqlJob(o.sparkSqlJob!);
     checkJobStatus(o.status!);
-    checkUnnamed37(o.statusHistory!);
+    checkUnnamed40(o.statusHistory!);
     checkTrinoJob(o.trinoJob!);
-    checkUnnamed38(o.yarnApplications!);
+    checkUnnamed41(o.yarnApplications!);
   }
   buildCounterJob--;
 }
 
-core.Map<core.String, core.String> buildUnnamed39() => {
+core.Map<core.String, core.String> buildUnnamed42() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed39(core.Map<core.String, core.String> o) {
+void checkUnnamed42(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2094,7 +2187,7 @@ api.JobPlacement buildJobPlacement() {
   final o = api.JobPlacement();
   buildCounterJobPlacement++;
   if (buildCounterJobPlacement < 3) {
-    o.clusterLabels = buildUnnamed39();
+    o.clusterLabels = buildUnnamed42();
     o.clusterName = 'foo';
     o.clusterUuid = 'foo';
   }
@@ -2105,7 +2198,7 @@ api.JobPlacement buildJobPlacement() {
 void checkJobPlacement(api.JobPlacement o) {
   buildCounterJobPlacement++;
   if (buildCounterJobPlacement < 3) {
-    checkUnnamed39(o.clusterLabels!);
+    checkUnnamed42(o.clusterLabels!);
     unittest.expect(
       o.clusterName!,
       unittest.equals('foo'),
@@ -2324,12 +2417,12 @@ void checkKubernetesClusterConfig(api.KubernetesClusterConfig o) {
   buildCounterKubernetesClusterConfig--;
 }
 
-core.Map<core.String, core.String> buildUnnamed40() => {
+core.Map<core.String, core.String> buildUnnamed43() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed40(core.Map<core.String, core.String> o) {
+void checkUnnamed43(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2341,12 +2434,12 @@ void checkUnnamed40(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed41() => {
+core.Map<core.String, core.String> buildUnnamed44() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed41(core.Map<core.String, core.String> o) {
+void checkUnnamed44(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2363,8 +2456,8 @@ api.KubernetesSoftwareConfig buildKubernetesSoftwareConfig() {
   final o = api.KubernetesSoftwareConfig();
   buildCounterKubernetesSoftwareConfig++;
   if (buildCounterKubernetesSoftwareConfig < 3) {
-    o.componentVersion = buildUnnamed40();
-    o.properties = buildUnnamed41();
+    o.componentVersion = buildUnnamed43();
+    o.properties = buildUnnamed44();
   }
   buildCounterKubernetesSoftwareConfig--;
   return o;
@@ -2373,8 +2466,8 @@ api.KubernetesSoftwareConfig buildKubernetesSoftwareConfig() {
 void checkKubernetesSoftwareConfig(api.KubernetesSoftwareConfig o) {
   buildCounterKubernetesSoftwareConfig++;
   if (buildCounterKubernetesSoftwareConfig < 3) {
-    checkUnnamed40(o.componentVersion!);
-    checkUnnamed41(o.properties!);
+    checkUnnamed43(o.componentVersion!);
+    checkUnnamed44(o.properties!);
   }
   buildCounterKubernetesSoftwareConfig--;
 }
@@ -2416,12 +2509,12 @@ void checkLifecycleConfig(api.LifecycleConfig o) {
   buildCounterLifecycleConfig--;
 }
 
-core.List<api.AutoscalingPolicy> buildUnnamed42() => [
+core.List<api.AutoscalingPolicy> buildUnnamed45() => [
       buildAutoscalingPolicy(),
       buildAutoscalingPolicy(),
     ];
 
-void checkUnnamed42(core.List<api.AutoscalingPolicy> o) {
+void checkUnnamed45(core.List<api.AutoscalingPolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAutoscalingPolicy(o[0]);
   checkAutoscalingPolicy(o[1]);
@@ -2433,7 +2526,7 @@ api.ListAutoscalingPoliciesResponse buildListAutoscalingPoliciesResponse() {
   buildCounterListAutoscalingPoliciesResponse++;
   if (buildCounterListAutoscalingPoliciesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.policies = buildUnnamed42();
+    o.policies = buildUnnamed45();
   }
   buildCounterListAutoscalingPoliciesResponse--;
   return o;
@@ -2447,17 +2540,17 @@ void checkListAutoscalingPoliciesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed42(o.policies!);
+    checkUnnamed45(o.policies!);
   }
   buildCounterListAutoscalingPoliciesResponse--;
 }
 
-core.List<api.Batch> buildUnnamed43() => [
+core.List<api.Batch> buildUnnamed46() => [
       buildBatch(),
       buildBatch(),
     ];
 
-void checkUnnamed43(core.List<api.Batch> o) {
+void checkUnnamed46(core.List<api.Batch> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBatch(o[0]);
   checkBatch(o[1]);
@@ -2468,7 +2561,7 @@ api.ListBatchesResponse buildListBatchesResponse() {
   final o = api.ListBatchesResponse();
   buildCounterListBatchesResponse++;
   if (buildCounterListBatchesResponse < 3) {
-    o.batches = buildUnnamed43();
+    o.batches = buildUnnamed46();
     o.nextPageToken = 'foo';
   }
   buildCounterListBatchesResponse--;
@@ -2478,7 +2571,7 @@ api.ListBatchesResponse buildListBatchesResponse() {
 void checkListBatchesResponse(api.ListBatchesResponse o) {
   buildCounterListBatchesResponse++;
   if (buildCounterListBatchesResponse < 3) {
-    checkUnnamed43(o.batches!);
+    checkUnnamed46(o.batches!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2487,12 +2580,12 @@ void checkListBatchesResponse(api.ListBatchesResponse o) {
   buildCounterListBatchesResponse--;
 }
 
-core.List<api.Cluster> buildUnnamed44() => [
+core.List<api.Cluster> buildUnnamed47() => [
       buildCluster(),
       buildCluster(),
     ];
 
-void checkUnnamed44(core.List<api.Cluster> o) {
+void checkUnnamed47(core.List<api.Cluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCluster(o[0]);
   checkCluster(o[1]);
@@ -2503,7 +2596,7 @@ api.ListClustersResponse buildListClustersResponse() {
   final o = api.ListClustersResponse();
   buildCounterListClustersResponse++;
   if (buildCounterListClustersResponse < 3) {
-    o.clusters = buildUnnamed44();
+    o.clusters = buildUnnamed47();
     o.nextPageToken = 'foo';
   }
   buildCounterListClustersResponse--;
@@ -2513,7 +2606,7 @@ api.ListClustersResponse buildListClustersResponse() {
 void checkListClustersResponse(api.ListClustersResponse o) {
   buildCounterListClustersResponse++;
   if (buildCounterListClustersResponse < 3) {
-    checkUnnamed44(o.clusters!);
+    checkUnnamed47(o.clusters!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2522,12 +2615,12 @@ void checkListClustersResponse(api.ListClustersResponse o) {
   buildCounterListClustersResponse--;
 }
 
-core.List<api.Job> buildUnnamed45() => [
+core.List<api.Job> buildUnnamed48() => [
       buildJob(),
       buildJob(),
     ];
 
-void checkUnnamed45(core.List<api.Job> o) {
+void checkUnnamed48(core.List<api.Job> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJob(o[0]);
   checkJob(o[1]);
@@ -2538,7 +2631,7 @@ api.ListJobsResponse buildListJobsResponse() {
   final o = api.ListJobsResponse();
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    o.jobs = buildUnnamed45();
+    o.jobs = buildUnnamed48();
     o.nextPageToken = 'foo';
   }
   buildCounterListJobsResponse--;
@@ -2548,7 +2641,7 @@ api.ListJobsResponse buildListJobsResponse() {
 void checkListJobsResponse(api.ListJobsResponse o) {
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    checkUnnamed45(o.jobs!);
+    checkUnnamed48(o.jobs!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2557,12 +2650,12 @@ void checkListJobsResponse(api.ListJobsResponse o) {
   buildCounterListJobsResponse--;
 }
 
-core.List<api.Operation> buildUnnamed46() => [
+core.List<api.Operation> buildUnnamed49() => [
       buildOperation(),
       buildOperation(),
     ];
 
-void checkUnnamed46(core.List<api.Operation> o) {
+void checkUnnamed49(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -2574,7 +2667,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed46();
+    o.operations = buildUnnamed49();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -2587,17 +2680,17 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed46(o.operations!);
+    checkUnnamed49(o.operations!);
   }
   buildCounterListOperationsResponse--;
 }
 
-core.List<api.WorkflowTemplate> buildUnnamed47() => [
+core.List<api.WorkflowTemplate> buildUnnamed50() => [
       buildWorkflowTemplate(),
       buildWorkflowTemplate(),
     ];
 
-void checkUnnamed47(core.List<api.WorkflowTemplate> o) {
+void checkUnnamed50(core.List<api.WorkflowTemplate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWorkflowTemplate(o[0]);
   checkWorkflowTemplate(o[1]);
@@ -2609,7 +2702,7 @@ api.ListWorkflowTemplatesResponse buildListWorkflowTemplatesResponse() {
   buildCounterListWorkflowTemplatesResponse++;
   if (buildCounterListWorkflowTemplatesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.templates = buildUnnamed47();
+    o.templates = buildUnnamed50();
   }
   buildCounterListWorkflowTemplatesResponse--;
   return o;
@@ -2622,17 +2715,17 @@ void checkListWorkflowTemplatesResponse(api.ListWorkflowTemplatesResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed47(o.templates!);
+    checkUnnamed50(o.templates!);
   }
   buildCounterListWorkflowTemplatesResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed48() => {
+core.Map<core.String, core.String> buildUnnamed51() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed48(core.Map<core.String, core.String> o) {
+void checkUnnamed51(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2649,7 +2742,7 @@ api.LoggingConfig buildLoggingConfig() {
   final o = api.LoggingConfig();
   buildCounterLoggingConfig++;
   if (buildCounterLoggingConfig < 3) {
-    o.driverLogLevels = buildUnnamed48();
+    o.driverLogLevels = buildUnnamed51();
   }
   buildCounterLoggingConfig--;
   return o;
@@ -2658,17 +2751,17 @@ api.LoggingConfig buildLoggingConfig() {
 void checkLoggingConfig(api.LoggingConfig o) {
   buildCounterLoggingConfig++;
   if (buildCounterLoggingConfig < 3) {
-    checkUnnamed48(o.driverLogLevels!);
+    checkUnnamed51(o.driverLogLevels!);
   }
   buildCounterLoggingConfig--;
 }
 
-core.Map<core.String, core.String> buildUnnamed49() => {
+core.Map<core.String, core.String> buildUnnamed52() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed49(core.Map<core.String, core.String> o) {
+void checkUnnamed52(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2687,7 +2780,7 @@ api.ManagedCluster buildManagedCluster() {
   if (buildCounterManagedCluster < 3) {
     o.clusterName = 'foo';
     o.config = buildClusterConfig();
-    o.labels = buildUnnamed49();
+    o.labels = buildUnnamed52();
   }
   buildCounterManagedCluster--;
   return o;
@@ -2701,7 +2794,7 @@ void checkManagedCluster(api.ManagedCluster o) {
       unittest.equals('foo'),
     );
     checkClusterConfig(o.config!);
-    checkUnnamed49(o.labels!);
+    checkUnnamed52(o.labels!);
   }
   buildCounterManagedCluster--;
 }
@@ -2755,12 +2848,12 @@ void checkMetastoreConfig(api.MetastoreConfig o) {
   buildCounterMetastoreConfig--;
 }
 
-core.List<core.String> buildUnnamed50() => [
+core.List<core.String> buildUnnamed53() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed50(core.List<core.String> o) {
+void checkUnnamed53(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2777,7 +2870,7 @@ api.Metric buildMetric() {
   final o = api.Metric();
   buildCounterMetric++;
   if (buildCounterMetric < 3) {
-    o.metricOverrides = buildUnnamed50();
+    o.metricOverrides = buildUnnamed53();
     o.metricSource = 'foo';
   }
   buildCounterMetric--;
@@ -2787,7 +2880,7 @@ api.Metric buildMetric() {
 void checkMetric(api.Metric o) {
   buildCounterMetric++;
   if (buildCounterMetric < 3) {
-    checkUnnamed50(o.metricOverrides!);
+    checkUnnamed53(o.metricOverrides!);
     unittest.expect(
       o.metricSource!,
       unittest.equals('foo'),
@@ -2823,12 +2916,12 @@ void checkNamespacedGkeDeploymentTarget(api.NamespacedGkeDeploymentTarget o) {
   buildCounterNamespacedGkeDeploymentTarget--;
 }
 
-core.Map<core.String, core.String> buildUnnamed51() => {
+core.Map<core.String, core.String> buildUnnamed54() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed51(core.Map<core.String, core.String> o) {
+void checkUnnamed54(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2840,12 +2933,12 @@ void checkUnnamed51(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed52() => [
+core.List<core.String> buildUnnamed55() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed52(core.List<core.String> o) {
+void checkUnnamed55(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2862,10 +2955,10 @@ api.NodeGroup buildNodeGroup() {
   final o = api.NodeGroup();
   buildCounterNodeGroup++;
   if (buildCounterNodeGroup < 3) {
-    o.labels = buildUnnamed51();
+    o.labels = buildUnnamed54();
     o.name = 'foo';
     o.nodeGroupConfig = buildInstanceGroupConfig();
-    o.roles = buildUnnamed52();
+    o.roles = buildUnnamed55();
   }
   buildCounterNodeGroup--;
   return o;
@@ -2874,13 +2967,13 @@ api.NodeGroup buildNodeGroup() {
 void checkNodeGroup(api.NodeGroup o) {
   buildCounterNodeGroup++;
   if (buildCounterNodeGroup < 3) {
-    checkUnnamed51(o.labels!);
+    checkUnnamed54(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
     checkInstanceGroupConfig(o.nodeGroupConfig!);
-    checkUnnamed52(o.roles!);
+    checkUnnamed55(o.roles!);
   }
   buildCounterNodeGroup--;
 }
@@ -2934,12 +3027,12 @@ void checkNodeInitializationAction(api.NodeInitializationAction o) {
   buildCounterNodeInitializationAction--;
 }
 
-core.List<core.String> buildUnnamed53() => [
+core.List<core.String> buildUnnamed56() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed53(core.List<core.String> o) {
+void checkUnnamed56(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2957,7 +3050,7 @@ api.NodePool buildNodePool() {
   buildCounterNodePool++;
   if (buildCounterNodePool < 3) {
     o.id = 'foo';
-    o.instanceNames = buildUnnamed53();
+    o.instanceNames = buildUnnamed56();
     o.repairAction = 'foo';
   }
   buildCounterNodePool--;
@@ -2971,7 +3064,7 @@ void checkNodePool(api.NodePool o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed53(o.instanceNames!);
+    checkUnnamed56(o.instanceNames!);
     unittest.expect(
       o.repairAction!,
       unittest.equals('foo'),
@@ -2980,7 +3073,7 @@ void checkNodePool(api.NodePool o) {
   buildCounterNodePool--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed54() => {
+core.Map<core.String, core.Object?> buildUnnamed57() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2993,7 +3086,7 @@ core.Map<core.String, core.Object?> buildUnnamed54() => {
       },
     };
 
-void checkUnnamed54(core.Map<core.String, core.Object?> o) {
+void checkUnnamed57(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -3025,7 +3118,7 @@ void checkUnnamed54(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed55() => {
+core.Map<core.String, core.Object?> buildUnnamed58() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3038,7 +3131,7 @@ core.Map<core.String, core.Object?> buildUnnamed55() => {
       },
     };
 
-void checkUnnamed55(core.Map<core.String, core.Object?> o) {
+void checkUnnamed58(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -3077,9 +3170,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed54();
+    o.metadata = buildUnnamed57();
     o.name = 'foo';
-    o.response = buildUnnamed55();
+    o.response = buildUnnamed58();
   }
   buildCounterOperation--;
   return o;
@@ -3090,22 +3183,22 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed54(o.metadata!);
+    checkUnnamed57(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed55(o.response!);
+    checkUnnamed58(o.response!);
   }
   buildCounterOperation--;
 }
 
-core.Map<core.String, core.String> buildUnnamed56() => {
+core.Map<core.String, core.String> buildUnnamed59() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed56(core.Map<core.String, core.String> o) {
+void checkUnnamed59(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -3117,12 +3210,12 @@ void checkUnnamed56(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed57() => [
+core.List<core.String> buildUnnamed60() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed57(core.List<core.String> o) {
+void checkUnnamed60(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3141,9 +3234,9 @@ api.OrderedJob buildOrderedJob() {
   if (buildCounterOrderedJob < 3) {
     o.hadoopJob = buildHadoopJob();
     o.hiveJob = buildHiveJob();
-    o.labels = buildUnnamed56();
+    o.labels = buildUnnamed59();
     o.pigJob = buildPigJob();
-    o.prerequisiteStepIds = buildUnnamed57();
+    o.prerequisiteStepIds = buildUnnamed60();
     o.prestoJob = buildPrestoJob();
     o.pysparkJob = buildPySparkJob();
     o.scheduling = buildJobScheduling();
@@ -3162,9 +3255,9 @@ void checkOrderedJob(api.OrderedJob o) {
   if (buildCounterOrderedJob < 3) {
     checkHadoopJob(o.hadoopJob!);
     checkHiveJob(o.hiveJob!);
-    checkUnnamed56(o.labels!);
+    checkUnnamed59(o.labels!);
     checkPigJob(o.pigJob!);
-    checkUnnamed57(o.prerequisiteStepIds!);
+    checkUnnamed60(o.prerequisiteStepIds!);
     checkPrestoJob(o.prestoJob!);
     checkPySparkJob(o.pysparkJob!);
     checkJobScheduling(o.scheduling!);
@@ -3225,12 +3318,12 @@ void checkPeripheralsConfig(api.PeripheralsConfig o) {
   buildCounterPeripheralsConfig--;
 }
 
-core.List<core.String> buildUnnamed58() => [
+core.List<core.String> buildUnnamed61() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed58(core.List<core.String> o) {
+void checkUnnamed61(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3242,12 +3335,12 @@ void checkUnnamed58(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed59() => {
+core.Map<core.String, core.String> buildUnnamed62() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed59(core.Map<core.String, core.String> o) {
+void checkUnnamed62(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -3255,114 +3348,6 @@ void checkUnnamed59(core.Map<core.String, core.String> o) {
   );
   unittest.expect(
     o['y']!,
-    unittest.equals('foo'),
-  );
-}
-
-core.Map<core.String, core.String> buildUnnamed60() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
-
-void checkUnnamed60(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterPigJob = 0;
-api.PigJob buildPigJob() {
-  final o = api.PigJob();
-  buildCounterPigJob++;
-  if (buildCounterPigJob < 3) {
-    o.continueOnFailure = true;
-    o.jarFileUris = buildUnnamed58();
-    o.loggingConfig = buildLoggingConfig();
-    o.properties = buildUnnamed59();
-    o.queryFileUri = 'foo';
-    o.queryList = buildQueryList();
-    o.scriptVariables = buildUnnamed60();
-  }
-  buildCounterPigJob--;
-  return o;
-}
-
-void checkPigJob(api.PigJob o) {
-  buildCounterPigJob++;
-  if (buildCounterPigJob < 3) {
-    unittest.expect(o.continueOnFailure!, unittest.isTrue);
-    checkUnnamed58(o.jarFileUris!);
-    checkLoggingConfig(o.loggingConfig!);
-    checkUnnamed59(o.properties!);
-    unittest.expect(
-      o.queryFileUri!,
-      unittest.equals('foo'),
-    );
-    checkQueryList(o.queryList!);
-    checkUnnamed60(o.scriptVariables!);
-  }
-  buildCounterPigJob--;
-}
-
-core.List<api.Binding> buildUnnamed61() => [
-      buildBinding(),
-      buildBinding(),
-    ];
-
-void checkUnnamed61(core.List<api.Binding> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkBinding(o[0]);
-  checkBinding(o[1]);
-}
-
-core.int buildCounterPolicy = 0;
-api.Policy buildPolicy() {
-  final o = api.Policy();
-  buildCounterPolicy++;
-  if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed61();
-    o.etag = 'foo';
-    o.version = 42;
-  }
-  buildCounterPolicy--;
-  return o;
-}
-
-void checkPolicy(api.Policy o) {
-  buildCounterPolicy++;
-  if (buildCounterPolicy < 3) {
-    checkUnnamed61(o.bindings!);
-    unittest.expect(
-      o.etag!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.version!,
-      unittest.equals(42),
-    );
-  }
-  buildCounterPolicy--;
-}
-
-core.List<core.String> buildUnnamed62() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed62(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
     unittest.equals('foo'),
   );
 }
@@ -3384,58 +3369,78 @@ void checkUnnamed63(core.Map<core.String, core.String> o) {
   );
 }
 
-core.int buildCounterPrestoJob = 0;
-api.PrestoJob buildPrestoJob() {
-  final o = api.PrestoJob();
-  buildCounterPrestoJob++;
-  if (buildCounterPrestoJob < 3) {
-    o.clientTags = buildUnnamed62();
+core.int buildCounterPigJob = 0;
+api.PigJob buildPigJob() {
+  final o = api.PigJob();
+  buildCounterPigJob++;
+  if (buildCounterPigJob < 3) {
     o.continueOnFailure = true;
+    o.jarFileUris = buildUnnamed61();
     o.loggingConfig = buildLoggingConfig();
-    o.outputFormat = 'foo';
-    o.properties = buildUnnamed63();
+    o.properties = buildUnnamed62();
     o.queryFileUri = 'foo';
     o.queryList = buildQueryList();
+    o.scriptVariables = buildUnnamed63();
   }
-  buildCounterPrestoJob--;
+  buildCounterPigJob--;
   return o;
 }
 
-void checkPrestoJob(api.PrestoJob o) {
-  buildCounterPrestoJob++;
-  if (buildCounterPrestoJob < 3) {
-    checkUnnamed62(o.clientTags!);
+void checkPigJob(api.PigJob o) {
+  buildCounterPigJob++;
+  if (buildCounterPigJob < 3) {
     unittest.expect(o.continueOnFailure!, unittest.isTrue);
+    checkUnnamed61(o.jarFileUris!);
     checkLoggingConfig(o.loggingConfig!);
-    unittest.expect(
-      o.outputFormat!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed63(o.properties!);
+    checkUnnamed62(o.properties!);
     unittest.expect(
       o.queryFileUri!,
       unittest.equals('foo'),
     );
     checkQueryList(o.queryList!);
+    checkUnnamed63(o.scriptVariables!);
   }
-  buildCounterPrestoJob--;
+  buildCounterPigJob--;
 }
 
-core.List<core.String> buildUnnamed64() => [
-      'foo',
-      'foo',
+core.List<api.Binding> buildUnnamed64() => [
+      buildBinding(),
+      buildBinding(),
     ];
 
-void checkUnnamed64(core.List<core.String> o) {
+void checkUnnamed64(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  checkBinding(o[0]);
+  checkBinding(o[1]);
+}
+
+core.int buildCounterPolicy = 0;
+api.Policy buildPolicy() {
+  final o = api.Policy();
+  buildCounterPolicy++;
+  if (buildCounterPolicy < 3) {
+    o.bindings = buildUnnamed64();
+    o.etag = 'foo';
+    o.version = 42;
+  }
+  buildCounterPolicy--;
+  return o;
+}
+
+void checkPolicy(api.Policy o) {
+  buildCounterPolicy++;
+  if (buildCounterPolicy < 3) {
+    checkUnnamed64(o.bindings!);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterPolicy--;
 }
 
 core.List<core.String> buildUnnamed65() => [
@@ -3455,21 +3460,58 @@ void checkUnnamed65(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed66() => [
-      'foo',
-      'foo',
-    ];
+core.Map<core.String, core.String> buildUnnamed66() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
-void checkUnnamed66(core.List<core.String> o) {
+void checkUnnamed66(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
-    o[0],
+    o['x']!,
     unittest.equals('foo'),
   );
   unittest.expect(
-    o[1],
+    o['y']!,
     unittest.equals('foo'),
   );
+}
+
+core.int buildCounterPrestoJob = 0;
+api.PrestoJob buildPrestoJob() {
+  final o = api.PrestoJob();
+  buildCounterPrestoJob++;
+  if (buildCounterPrestoJob < 3) {
+    o.clientTags = buildUnnamed65();
+    o.continueOnFailure = true;
+    o.loggingConfig = buildLoggingConfig();
+    o.outputFormat = 'foo';
+    o.properties = buildUnnamed66();
+    o.queryFileUri = 'foo';
+    o.queryList = buildQueryList();
+  }
+  buildCounterPrestoJob--;
+  return o;
+}
+
+void checkPrestoJob(api.PrestoJob o) {
+  buildCounterPrestoJob++;
+  if (buildCounterPrestoJob < 3) {
+    checkUnnamed65(o.clientTags!);
+    unittest.expect(o.continueOnFailure!, unittest.isTrue);
+    checkLoggingConfig(o.loggingConfig!);
+    unittest.expect(
+      o.outputFormat!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed66(o.properties!);
+    unittest.expect(
+      o.queryFileUri!,
+      unittest.equals('foo'),
+    );
+    checkQueryList(o.queryList!);
+  }
+  buildCounterPrestoJob--;
 }
 
 core.List<core.String> buildUnnamed67() => [
@@ -3504,38 +3546,6 @@ void checkUnnamed68(core.List<core.String> o) {
     o[1],
     unittest.equals('foo'),
   );
-}
-
-core.int buildCounterPySparkBatch = 0;
-api.PySparkBatch buildPySparkBatch() {
-  final o = api.PySparkBatch();
-  buildCounterPySparkBatch++;
-  if (buildCounterPySparkBatch < 3) {
-    o.archiveUris = buildUnnamed64();
-    o.args = buildUnnamed65();
-    o.fileUris = buildUnnamed66();
-    o.jarFileUris = buildUnnamed67();
-    o.mainPythonFileUri = 'foo';
-    o.pythonFileUris = buildUnnamed68();
-  }
-  buildCounterPySparkBatch--;
-  return o;
-}
-
-void checkPySparkBatch(api.PySparkBatch o) {
-  buildCounterPySparkBatch++;
-  if (buildCounterPySparkBatch < 3) {
-    checkUnnamed64(o.archiveUris!);
-    checkUnnamed65(o.args!);
-    checkUnnamed66(o.fileUris!);
-    checkUnnamed67(o.jarFileUris!);
-    unittest.expect(
-      o.mainPythonFileUri!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed68(o.pythonFileUris!);
-  }
-  buildCounterPySparkBatch--;
 }
 
 core.List<core.String> buildUnnamed69() => [
@@ -3589,6 +3599,38 @@ void checkUnnamed71(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterPySparkBatch = 0;
+api.PySparkBatch buildPySparkBatch() {
+  final o = api.PySparkBatch();
+  buildCounterPySparkBatch++;
+  if (buildCounterPySparkBatch < 3) {
+    o.archiveUris = buildUnnamed67();
+    o.args = buildUnnamed68();
+    o.fileUris = buildUnnamed69();
+    o.jarFileUris = buildUnnamed70();
+    o.mainPythonFileUri = 'foo';
+    o.pythonFileUris = buildUnnamed71();
+  }
+  buildCounterPySparkBatch--;
+  return o;
+}
+
+void checkPySparkBatch(api.PySparkBatch o) {
+  buildCounterPySparkBatch++;
+  if (buildCounterPySparkBatch < 3) {
+    checkUnnamed67(o.archiveUris!);
+    checkUnnamed68(o.args!);
+    checkUnnamed69(o.fileUris!);
+    checkUnnamed70(o.jarFileUris!);
+    unittest.expect(
+      o.mainPythonFileUri!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed71(o.pythonFileUris!);
+  }
+  buildCounterPySparkBatch--;
+}
+
 core.List<core.String> buildUnnamed72() => [
       'foo',
       'foo',
@@ -3606,19 +3648,19 @@ void checkUnnamed72(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed73() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
+core.List<core.String> buildUnnamed73() => [
+      'foo',
+      'foo',
+    ];
 
-void checkUnnamed73(core.Map<core.String, core.String> o) {
+void checkUnnamed73(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
-    o['x']!,
+    o[0],
     unittest.equals('foo'),
   );
   unittest.expect(
-    o['y']!,
+    o[1],
     unittest.equals('foo'),
   );
 }
@@ -3640,42 +3682,6 @@ void checkUnnamed74(core.List<core.String> o) {
   );
 }
 
-core.int buildCounterPySparkJob = 0;
-api.PySparkJob buildPySparkJob() {
-  final o = api.PySparkJob();
-  buildCounterPySparkJob++;
-  if (buildCounterPySparkJob < 3) {
-    o.archiveUris = buildUnnamed69();
-    o.args = buildUnnamed70();
-    o.fileUris = buildUnnamed71();
-    o.jarFileUris = buildUnnamed72();
-    o.loggingConfig = buildLoggingConfig();
-    o.mainPythonFileUri = 'foo';
-    o.properties = buildUnnamed73();
-    o.pythonFileUris = buildUnnamed74();
-  }
-  buildCounterPySparkJob--;
-  return o;
-}
-
-void checkPySparkJob(api.PySparkJob o) {
-  buildCounterPySparkJob++;
-  if (buildCounterPySparkJob < 3) {
-    checkUnnamed69(o.archiveUris!);
-    checkUnnamed70(o.args!);
-    checkUnnamed71(o.fileUris!);
-    checkUnnamed72(o.jarFileUris!);
-    checkLoggingConfig(o.loggingConfig!);
-    unittest.expect(
-      o.mainPythonFileUri!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed73(o.properties!);
-    checkUnnamed74(o.pythonFileUris!);
-  }
-  buildCounterPySparkJob--;
-}
-
 core.List<core.String> buildUnnamed75() => [
       'foo',
       'foo',
@@ -3693,31 +3699,29 @@ void checkUnnamed75(core.List<core.String> o) {
   );
 }
 
-core.int buildCounterQueryList = 0;
-api.QueryList buildQueryList() {
-  final o = api.QueryList();
-  buildCounterQueryList++;
-  if (buildCounterQueryList < 3) {
-    o.queries = buildUnnamed75();
-  }
-  buildCounterQueryList--;
-  return o;
+core.Map<core.String, core.String> buildUnnamed76() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed76(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
 }
 
-void checkQueryList(api.QueryList o) {
-  buildCounterQueryList++;
-  if (buildCounterQueryList < 3) {
-    checkUnnamed75(o.queries!);
-  }
-  buildCounterQueryList--;
-}
-
-core.List<core.String> buildUnnamed76() => [
+core.List<core.String> buildUnnamed77() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed76(core.List<core.String> o) {
+void checkUnnamed77(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3729,73 +3733,40 @@ void checkUnnamed76(core.List<core.String> o) {
   );
 }
 
-core.int buildCounterRegexValidation = 0;
-api.RegexValidation buildRegexValidation() {
-  final o = api.RegexValidation();
-  buildCounterRegexValidation++;
-  if (buildCounterRegexValidation < 3) {
-    o.regexes = buildUnnamed76();
+core.int buildCounterPySparkJob = 0;
+api.PySparkJob buildPySparkJob() {
+  final o = api.PySparkJob();
+  buildCounterPySparkJob++;
+  if (buildCounterPySparkJob < 3) {
+    o.archiveUris = buildUnnamed72();
+    o.args = buildUnnamed73();
+    o.fileUris = buildUnnamed74();
+    o.jarFileUris = buildUnnamed75();
+    o.loggingConfig = buildLoggingConfig();
+    o.mainPythonFileUri = 'foo';
+    o.properties = buildUnnamed76();
+    o.pythonFileUris = buildUnnamed77();
   }
-  buildCounterRegexValidation--;
+  buildCounterPySparkJob--;
   return o;
 }
 
-void checkRegexValidation(api.RegexValidation o) {
-  buildCounterRegexValidation++;
-  if (buildCounterRegexValidation < 3) {
-    checkUnnamed76(o.regexes!);
+void checkPySparkJob(api.PySparkJob o) {
+  buildCounterPySparkJob++;
+  if (buildCounterPySparkJob < 3) {
+    checkUnnamed72(o.archiveUris!);
+    checkUnnamed73(o.args!);
+    checkUnnamed74(o.fileUris!);
+    checkUnnamed75(o.jarFileUris!);
+    checkLoggingConfig(o.loggingConfig!);
+    unittest.expect(
+      o.mainPythonFileUri!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed76(o.properties!);
+    checkUnnamed77(o.pythonFileUris!);
   }
-  buildCounterRegexValidation--;
-}
-
-core.List<api.NodePool> buildUnnamed77() => [
-      buildNodePool(),
-      buildNodePool(),
-    ];
-
-void checkUnnamed77(core.List<api.NodePool> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkNodePool(o[0]);
-  checkNodePool(o[1]);
-}
-
-core.int buildCounterRepairClusterRequest = 0;
-api.RepairClusterRequest buildRepairClusterRequest() {
-  final o = api.RepairClusterRequest();
-  buildCounterRepairClusterRequest++;
-  if (buildCounterRepairClusterRequest < 3) {
-    o.clusterUuid = 'foo';
-    o.gracefulDecommissionTimeout = 'foo';
-    o.nodePools = buildUnnamed77();
-    o.parentOperationId = 'foo';
-    o.requestId = 'foo';
-  }
-  buildCounterRepairClusterRequest--;
-  return o;
-}
-
-void checkRepairClusterRequest(api.RepairClusterRequest o) {
-  buildCounterRepairClusterRequest++;
-  if (buildCounterRepairClusterRequest < 3) {
-    unittest.expect(
-      o.clusterUuid!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.gracefulDecommissionTimeout!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed77(o.nodePools!);
-    unittest.expect(
-      o.parentOperationId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.requestId!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterRepairClusterRequest--;
+  buildCounterPySparkJob--;
 }
 
 core.List<core.String> buildUnnamed78() => [
@@ -3815,6 +3786,128 @@ void checkUnnamed78(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterQueryList = 0;
+api.QueryList buildQueryList() {
+  final o = api.QueryList();
+  buildCounterQueryList++;
+  if (buildCounterQueryList < 3) {
+    o.queries = buildUnnamed78();
+  }
+  buildCounterQueryList--;
+  return o;
+}
+
+void checkQueryList(api.QueryList o) {
+  buildCounterQueryList++;
+  if (buildCounterQueryList < 3) {
+    checkUnnamed78(o.queries!);
+  }
+  buildCounterQueryList--;
+}
+
+core.List<core.String> buildUnnamed79() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed79(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterRegexValidation = 0;
+api.RegexValidation buildRegexValidation() {
+  final o = api.RegexValidation();
+  buildCounterRegexValidation++;
+  if (buildCounterRegexValidation < 3) {
+    o.regexes = buildUnnamed79();
+  }
+  buildCounterRegexValidation--;
+  return o;
+}
+
+void checkRegexValidation(api.RegexValidation o) {
+  buildCounterRegexValidation++;
+  if (buildCounterRegexValidation < 3) {
+    checkUnnamed79(o.regexes!);
+  }
+  buildCounterRegexValidation--;
+}
+
+core.List<api.NodePool> buildUnnamed80() => [
+      buildNodePool(),
+      buildNodePool(),
+    ];
+
+void checkUnnamed80(core.List<api.NodePool> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkNodePool(o[0]);
+  checkNodePool(o[1]);
+}
+
+core.int buildCounterRepairClusterRequest = 0;
+api.RepairClusterRequest buildRepairClusterRequest() {
+  final o = api.RepairClusterRequest();
+  buildCounterRepairClusterRequest++;
+  if (buildCounterRepairClusterRequest < 3) {
+    o.clusterUuid = 'foo';
+    o.gracefulDecommissionTimeout = 'foo';
+    o.nodePools = buildUnnamed80();
+    o.parentOperationId = 'foo';
+    o.requestId = 'foo';
+  }
+  buildCounterRepairClusterRequest--;
+  return o;
+}
+
+void checkRepairClusterRequest(api.RepairClusterRequest o) {
+  buildCounterRepairClusterRequest++;
+  if (buildCounterRepairClusterRequest < 3) {
+    unittest.expect(
+      o.clusterUuid!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gracefulDecommissionTimeout!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed80(o.nodePools!);
+    unittest.expect(
+      o.parentOperationId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requestId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRepairClusterRequest--;
+}
+
+core.List<core.String> buildUnnamed81() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed81(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterReservationAffinity = 0;
 api.ReservationAffinity buildReservationAffinity() {
   final o = api.ReservationAffinity();
@@ -3822,7 +3915,7 @@ api.ReservationAffinity buildReservationAffinity() {
   if (buildCounterReservationAffinity < 3) {
     o.consumeReservationType = 'foo';
     o.key = 'foo';
-    o.values = buildUnnamed78();
+    o.values = buildUnnamed81();
   }
   buildCounterReservationAffinity--;
   return o;
@@ -3839,7 +3932,7 @@ void checkReservationAffinity(api.ReservationAffinity o) {
       o.key!,
       unittest.equals('foo'),
     );
-    checkUnnamed78(o.values!);
+    checkUnnamed81(o.values!);
   }
   buildCounterReservationAffinity--;
 }
@@ -3876,12 +3969,12 @@ void checkResizeNodeGroupRequest(api.ResizeNodeGroupRequest o) {
   buildCounterResizeNodeGroupRequest--;
 }
 
-core.Map<core.String, core.String> buildUnnamed79() => {
+core.Map<core.String, core.String> buildUnnamed82() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed79(core.Map<core.String, core.String> o) {
+void checkUnnamed82(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -3899,7 +3992,7 @@ api.RuntimeConfig buildRuntimeConfig() {
   buildCounterRuntimeConfig++;
   if (buildCounterRuntimeConfig < 3) {
     o.containerImage = 'foo';
-    o.properties = buildUnnamed79();
+    o.properties = buildUnnamed82();
     o.version = 'foo';
   }
   buildCounterRuntimeConfig--;
@@ -3913,7 +4006,7 @@ void checkRuntimeConfig(api.RuntimeConfig o) {
       o.containerImage!,
       unittest.equals('foo'),
     );
-    checkUnnamed79(o.properties!);
+    checkUnnamed82(o.properties!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -3922,12 +4015,12 @@ void checkRuntimeConfig(api.RuntimeConfig o) {
   buildCounterRuntimeConfig--;
 }
 
-core.Map<core.String, core.String> buildUnnamed80() => {
+core.Map<core.String, core.String> buildUnnamed83() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed80(core.Map<core.String, core.String> o) {
+void checkUnnamed83(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -3947,7 +4040,7 @@ api.RuntimeInfo buildRuntimeInfo() {
     o.approximateUsage = buildUsageMetrics();
     o.currentUsage = buildUsageSnapshot();
     o.diagnosticOutputUri = 'foo';
-    o.endpoints = buildUnnamed80();
+    o.endpoints = buildUnnamed83();
     o.outputUri = 'foo';
   }
   buildCounterRuntimeInfo--;
@@ -3963,7 +4056,7 @@ void checkRuntimeInfo(api.RuntimeInfo o) {
       o.diagnosticOutputUri!,
       unittest.equals('foo'),
     );
-    checkUnnamed80(o.endpoints!);
+    checkUnnamed83(o.endpoints!);
     unittest.expect(
       o.outputUri!,
       unittest.equals('foo'),
@@ -4035,83 +4128,6 @@ void checkShieldedInstanceConfig(api.ShieldedInstanceConfig o) {
   buildCounterShieldedInstanceConfig--;
 }
 
-core.List<core.String> buildUnnamed81() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed81(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.Map<core.String, core.String> buildUnnamed82() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
-
-void checkUnnamed82(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterSoftwareConfig = 0;
-api.SoftwareConfig buildSoftwareConfig() {
-  final o = api.SoftwareConfig();
-  buildCounterSoftwareConfig++;
-  if (buildCounterSoftwareConfig < 3) {
-    o.imageVersion = 'foo';
-    o.optionalComponents = buildUnnamed81();
-    o.properties = buildUnnamed82();
-  }
-  buildCounterSoftwareConfig--;
-  return o;
-}
-
-void checkSoftwareConfig(api.SoftwareConfig o) {
-  buildCounterSoftwareConfig++;
-  if (buildCounterSoftwareConfig < 3) {
-    unittest.expect(
-      o.imageVersion!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed81(o.optionalComponents!);
-    checkUnnamed82(o.properties!);
-  }
-  buildCounterSoftwareConfig--;
-}
-
-core.List<core.String> buildUnnamed83() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed83(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.List<core.String> buildUnnamed84() => [
       'foo',
       'foo',
@@ -4129,21 +4145,47 @@ void checkUnnamed84(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed85() => [
-      'foo',
-      'foo',
-    ];
+core.Map<core.String, core.String> buildUnnamed85() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
-void checkUnnamed85(core.List<core.String> o) {
+void checkUnnamed85(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
-    o[0],
+    o['x']!,
     unittest.equals('foo'),
   );
   unittest.expect(
-    o[1],
+    o['y']!,
     unittest.equals('foo'),
   );
+}
+
+core.int buildCounterSoftwareConfig = 0;
+api.SoftwareConfig buildSoftwareConfig() {
+  final o = api.SoftwareConfig();
+  buildCounterSoftwareConfig++;
+  if (buildCounterSoftwareConfig < 3) {
+    o.imageVersion = 'foo';
+    o.optionalComponents = buildUnnamed84();
+    o.properties = buildUnnamed85();
+  }
+  buildCounterSoftwareConfig--;
+  return o;
+}
+
+void checkSoftwareConfig(api.SoftwareConfig o) {
+  buildCounterSoftwareConfig++;
+  if (buildCounterSoftwareConfig < 3) {
+    unittest.expect(
+      o.imageVersion!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed84(o.optionalComponents!);
+    checkUnnamed85(o.properties!);
+  }
+  buildCounterSoftwareConfig--;
 }
 
 core.List<core.String> buildUnnamed86() => [
@@ -4161,63 +4203,6 @@ void checkUnnamed86(core.List<core.String> o) {
     o[1],
     unittest.equals('foo'),
   );
-}
-
-core.int buildCounterSparkBatch = 0;
-api.SparkBatch buildSparkBatch() {
-  final o = api.SparkBatch();
-  buildCounterSparkBatch++;
-  if (buildCounterSparkBatch < 3) {
-    o.archiveUris = buildUnnamed83();
-    o.args = buildUnnamed84();
-    o.fileUris = buildUnnamed85();
-    o.jarFileUris = buildUnnamed86();
-    o.mainClass = 'foo';
-    o.mainJarFileUri = 'foo';
-  }
-  buildCounterSparkBatch--;
-  return o;
-}
-
-void checkSparkBatch(api.SparkBatch o) {
-  buildCounterSparkBatch++;
-  if (buildCounterSparkBatch < 3) {
-    checkUnnamed83(o.archiveUris!);
-    checkUnnamed84(o.args!);
-    checkUnnamed85(o.fileUris!);
-    checkUnnamed86(o.jarFileUris!);
-    unittest.expect(
-      o.mainClass!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.mainJarFileUri!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterSparkBatch--;
-}
-
-core.int buildCounterSparkHistoryServerConfig = 0;
-api.SparkHistoryServerConfig buildSparkHistoryServerConfig() {
-  final o = api.SparkHistoryServerConfig();
-  buildCounterSparkHistoryServerConfig++;
-  if (buildCounterSparkHistoryServerConfig < 3) {
-    o.dataprocCluster = 'foo';
-  }
-  buildCounterSparkHistoryServerConfig--;
-  return o;
-}
-
-void checkSparkHistoryServerConfig(api.SparkHistoryServerConfig o) {
-  buildCounterSparkHistoryServerConfig++;
-  if (buildCounterSparkHistoryServerConfig < 3) {
-    unittest.expect(
-      o.dataprocCluster!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterSparkHistoryServerConfig--;
 }
 
 core.List<core.String> buildUnnamed87() => [
@@ -4271,6 +4256,63 @@ void checkUnnamed89(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterSparkBatch = 0;
+api.SparkBatch buildSparkBatch() {
+  final o = api.SparkBatch();
+  buildCounterSparkBatch++;
+  if (buildCounterSparkBatch < 3) {
+    o.archiveUris = buildUnnamed86();
+    o.args = buildUnnamed87();
+    o.fileUris = buildUnnamed88();
+    o.jarFileUris = buildUnnamed89();
+    o.mainClass = 'foo';
+    o.mainJarFileUri = 'foo';
+  }
+  buildCounterSparkBatch--;
+  return o;
+}
+
+void checkSparkBatch(api.SparkBatch o) {
+  buildCounterSparkBatch++;
+  if (buildCounterSparkBatch < 3) {
+    checkUnnamed86(o.archiveUris!);
+    checkUnnamed87(o.args!);
+    checkUnnamed88(o.fileUris!);
+    checkUnnamed89(o.jarFileUris!);
+    unittest.expect(
+      o.mainClass!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.mainJarFileUri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSparkBatch--;
+}
+
+core.int buildCounterSparkHistoryServerConfig = 0;
+api.SparkHistoryServerConfig buildSparkHistoryServerConfig() {
+  final o = api.SparkHistoryServerConfig();
+  buildCounterSparkHistoryServerConfig++;
+  if (buildCounterSparkHistoryServerConfig < 3) {
+    o.dataprocCluster = 'foo';
+  }
+  buildCounterSparkHistoryServerConfig--;
+  return o;
+}
+
+void checkSparkHistoryServerConfig(api.SparkHistoryServerConfig o) {
+  buildCounterSparkHistoryServerConfig++;
+  if (buildCounterSparkHistoryServerConfig < 3) {
+    unittest.expect(
+      o.dataprocCluster!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSparkHistoryServerConfig--;
+}
+
 core.List<core.String> buildUnnamed90() => [
       'foo',
       'foo',
@@ -4288,60 +4330,21 @@ void checkUnnamed90(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed91() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
+core.List<core.String> buildUnnamed91() => [
+      'foo',
+      'foo',
+    ];
 
-void checkUnnamed91(core.Map<core.String, core.String> o) {
+void checkUnnamed91(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
-    o['x']!,
+    o[0],
     unittest.equals('foo'),
   );
   unittest.expect(
-    o['y']!,
+    o[1],
     unittest.equals('foo'),
   );
-}
-
-core.int buildCounterSparkJob = 0;
-api.SparkJob buildSparkJob() {
-  final o = api.SparkJob();
-  buildCounterSparkJob++;
-  if (buildCounterSparkJob < 3) {
-    o.archiveUris = buildUnnamed87();
-    o.args = buildUnnamed88();
-    o.fileUris = buildUnnamed89();
-    o.jarFileUris = buildUnnamed90();
-    o.loggingConfig = buildLoggingConfig();
-    o.mainClass = 'foo';
-    o.mainJarFileUri = 'foo';
-    o.properties = buildUnnamed91();
-  }
-  buildCounterSparkJob--;
-  return o;
-}
-
-void checkSparkJob(api.SparkJob o) {
-  buildCounterSparkJob++;
-  if (buildCounterSparkJob < 3) {
-    checkUnnamed87(o.archiveUris!);
-    checkUnnamed88(o.args!);
-    checkUnnamed89(o.fileUris!);
-    checkUnnamed90(o.jarFileUris!);
-    checkLoggingConfig(o.loggingConfig!);
-    unittest.expect(
-      o.mainClass!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.mainJarFileUri!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed91(o.properties!);
-  }
-  buildCounterSparkJob--;
 }
 
 core.List<core.String> buildUnnamed92() => [
@@ -4378,49 +4381,60 @@ void checkUnnamed93(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed94() => [
-      'foo',
-      'foo',
-    ];
+core.Map<core.String, core.String> buildUnnamed94() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
 
-void checkUnnamed94(core.List<core.String> o) {
+void checkUnnamed94(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
-    o[0],
+    o['x']!,
     unittest.equals('foo'),
   );
   unittest.expect(
-    o[1],
+    o['y']!,
     unittest.equals('foo'),
   );
 }
 
-core.int buildCounterSparkRBatch = 0;
-api.SparkRBatch buildSparkRBatch() {
-  final o = api.SparkRBatch();
-  buildCounterSparkRBatch++;
-  if (buildCounterSparkRBatch < 3) {
-    o.archiveUris = buildUnnamed92();
-    o.args = buildUnnamed93();
-    o.fileUris = buildUnnamed94();
-    o.mainRFileUri = 'foo';
+core.int buildCounterSparkJob = 0;
+api.SparkJob buildSparkJob() {
+  final o = api.SparkJob();
+  buildCounterSparkJob++;
+  if (buildCounterSparkJob < 3) {
+    o.archiveUris = buildUnnamed90();
+    o.args = buildUnnamed91();
+    o.fileUris = buildUnnamed92();
+    o.jarFileUris = buildUnnamed93();
+    o.loggingConfig = buildLoggingConfig();
+    o.mainClass = 'foo';
+    o.mainJarFileUri = 'foo';
+    o.properties = buildUnnamed94();
   }
-  buildCounterSparkRBatch--;
+  buildCounterSparkJob--;
   return o;
 }
 
-void checkSparkRBatch(api.SparkRBatch o) {
-  buildCounterSparkRBatch++;
-  if (buildCounterSparkRBatch < 3) {
-    checkUnnamed92(o.archiveUris!);
-    checkUnnamed93(o.args!);
-    checkUnnamed94(o.fileUris!);
+void checkSparkJob(api.SparkJob o) {
+  buildCounterSparkJob++;
+  if (buildCounterSparkJob < 3) {
+    checkUnnamed90(o.archiveUris!);
+    checkUnnamed91(o.args!);
+    checkUnnamed92(o.fileUris!);
+    checkUnnamed93(o.jarFileUris!);
+    checkLoggingConfig(o.loggingConfig!);
     unittest.expect(
-      o.mainRFileUri!,
+      o.mainClass!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.mainJarFileUri!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed94(o.properties!);
   }
-  buildCounterSparkRBatch--;
+  buildCounterSparkJob--;
 }
 
 core.List<core.String> buildUnnamed95() => [
@@ -4474,53 +4488,49 @@ void checkUnnamed97(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed98() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
-
-void checkUnnamed98(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterSparkRJob = 0;
-api.SparkRJob buildSparkRJob() {
-  final o = api.SparkRJob();
-  buildCounterSparkRJob++;
-  if (buildCounterSparkRJob < 3) {
+core.int buildCounterSparkRBatch = 0;
+api.SparkRBatch buildSparkRBatch() {
+  final o = api.SparkRBatch();
+  buildCounterSparkRBatch++;
+  if (buildCounterSparkRBatch < 3) {
     o.archiveUris = buildUnnamed95();
     o.args = buildUnnamed96();
     o.fileUris = buildUnnamed97();
-    o.loggingConfig = buildLoggingConfig();
     o.mainRFileUri = 'foo';
-    o.properties = buildUnnamed98();
   }
-  buildCounterSparkRJob--;
+  buildCounterSparkRBatch--;
   return o;
 }
 
-void checkSparkRJob(api.SparkRJob o) {
-  buildCounterSparkRJob++;
-  if (buildCounterSparkRJob < 3) {
+void checkSparkRBatch(api.SparkRBatch o) {
+  buildCounterSparkRBatch++;
+  if (buildCounterSparkRBatch < 3) {
     checkUnnamed95(o.archiveUris!);
     checkUnnamed96(o.args!);
     checkUnnamed97(o.fileUris!);
-    checkLoggingConfig(o.loggingConfig!);
     unittest.expect(
       o.mainRFileUri!,
       unittest.equals('foo'),
     );
-    checkUnnamed98(o.properties!);
   }
-  buildCounterSparkRJob--;
+  buildCounterSparkRBatch--;
+}
+
+core.List<core.String> buildUnnamed98() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed98(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed99() => [
@@ -4540,55 +4550,12 @@ void checkUnnamed99(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed100() => {
-      'x': 'foo',
-      'y': 'foo',
-    };
-
-void checkUnnamed100(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o['x']!,
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o['y']!,
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterSparkSqlBatch = 0;
-api.SparkSqlBatch buildSparkSqlBatch() {
-  final o = api.SparkSqlBatch();
-  buildCounterSparkSqlBatch++;
-  if (buildCounterSparkSqlBatch < 3) {
-    o.jarFileUris = buildUnnamed99();
-    o.queryFileUri = 'foo';
-    o.queryVariables = buildUnnamed100();
-  }
-  buildCounterSparkSqlBatch--;
-  return o;
-}
-
-void checkSparkSqlBatch(api.SparkSqlBatch o) {
-  buildCounterSparkSqlBatch++;
-  if (buildCounterSparkSqlBatch < 3) {
-    checkUnnamed99(o.jarFileUris!);
-    unittest.expect(
-      o.queryFileUri!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed100(o.queryVariables!);
-  }
-  buildCounterSparkSqlBatch--;
-}
-
-core.List<core.String> buildUnnamed101() => [
+core.List<core.String> buildUnnamed100() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed101(core.List<core.String> o) {
+void checkUnnamed100(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4600,12 +4567,12 @@ void checkUnnamed101(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed102() => {
+core.Map<core.String, core.String> buildUnnamed101() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed102(core.Map<core.String, core.String> o) {
+void checkUnnamed101(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -4613,6 +4580,55 @@ void checkUnnamed102(core.Map<core.String, core.String> o) {
   );
   unittest.expect(
     o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterSparkRJob = 0;
+api.SparkRJob buildSparkRJob() {
+  final o = api.SparkRJob();
+  buildCounterSparkRJob++;
+  if (buildCounterSparkRJob < 3) {
+    o.archiveUris = buildUnnamed98();
+    o.args = buildUnnamed99();
+    o.fileUris = buildUnnamed100();
+    o.loggingConfig = buildLoggingConfig();
+    o.mainRFileUri = 'foo';
+    o.properties = buildUnnamed101();
+  }
+  buildCounterSparkRJob--;
+  return o;
+}
+
+void checkSparkRJob(api.SparkRJob o) {
+  buildCounterSparkRJob++;
+  if (buildCounterSparkRJob < 3) {
+    checkUnnamed98(o.archiveUris!);
+    checkUnnamed99(o.args!);
+    checkUnnamed100(o.fileUris!);
+    checkLoggingConfig(o.loggingConfig!);
+    unittest.expect(
+      o.mainRFileUri!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed101(o.properties!);
+  }
+  buildCounterSparkRJob--;
+}
+
+core.List<core.String> buildUnnamed102() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed102(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
     unittest.equals('foo'),
   );
 }
@@ -4634,17 +4650,94 @@ void checkUnnamed103(core.Map<core.String, core.String> o) {
   );
 }
 
+core.int buildCounterSparkSqlBatch = 0;
+api.SparkSqlBatch buildSparkSqlBatch() {
+  final o = api.SparkSqlBatch();
+  buildCounterSparkSqlBatch++;
+  if (buildCounterSparkSqlBatch < 3) {
+    o.jarFileUris = buildUnnamed102();
+    o.queryFileUri = 'foo';
+    o.queryVariables = buildUnnamed103();
+  }
+  buildCounterSparkSqlBatch--;
+  return o;
+}
+
+void checkSparkSqlBatch(api.SparkSqlBatch o) {
+  buildCounterSparkSqlBatch++;
+  if (buildCounterSparkSqlBatch < 3) {
+    checkUnnamed102(o.jarFileUris!);
+    unittest.expect(
+      o.queryFileUri!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed103(o.queryVariables!);
+  }
+  buildCounterSparkSqlBatch--;
+}
+
+core.List<core.String> buildUnnamed104() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed104(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.Map<core.String, core.String> buildUnnamed105() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed105(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.Map<core.String, core.String> buildUnnamed106() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed106(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterSparkSqlJob = 0;
 api.SparkSqlJob buildSparkSqlJob() {
   final o = api.SparkSqlJob();
   buildCounterSparkSqlJob++;
   if (buildCounterSparkSqlJob < 3) {
-    o.jarFileUris = buildUnnamed101();
+    o.jarFileUris = buildUnnamed104();
     o.loggingConfig = buildLoggingConfig();
-    o.properties = buildUnnamed102();
+    o.properties = buildUnnamed105();
     o.queryFileUri = 'foo';
     o.queryList = buildQueryList();
-    o.scriptVariables = buildUnnamed103();
+    o.scriptVariables = buildUnnamed106();
   }
   buildCounterSparkSqlJob--;
   return o;
@@ -4653,15 +4746,15 @@ api.SparkSqlJob buildSparkSqlJob() {
 void checkSparkSqlJob(api.SparkSqlJob o) {
   buildCounterSparkSqlJob++;
   if (buildCounterSparkSqlJob < 3) {
-    checkUnnamed101(o.jarFileUris!);
+    checkUnnamed104(o.jarFileUris!);
     checkLoggingConfig(o.loggingConfig!);
-    checkUnnamed102(o.properties!);
+    checkUnnamed105(o.properties!);
     unittest.expect(
       o.queryFileUri!,
       unittest.equals('foo'),
     );
     checkQueryList(o.queryList!);
-    checkUnnamed103(o.scriptVariables!);
+    checkUnnamed106(o.scriptVariables!);
   }
   buildCounterSparkSqlJob--;
 }
@@ -4768,7 +4861,7 @@ void checkStateHistory(api.StateHistory o) {
   buildCounterStateHistory--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed104() => {
+core.Map<core.String, core.Object?> buildUnnamed107() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -4781,7 +4874,7 @@ core.Map<core.String, core.Object?> buildUnnamed104() => {
       },
     };
 
-void checkUnnamed104(core.Map<core.String, core.Object?> o) {
+void checkUnnamed107(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -4813,15 +4906,15 @@ void checkUnnamed104(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed105() => [
-      buildUnnamed104(),
-      buildUnnamed104(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed108() => [
+      buildUnnamed107(),
+      buildUnnamed107(),
     ];
 
-void checkUnnamed105(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed108(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed104(o[0]);
-  checkUnnamed104(o[1]);
+  checkUnnamed107(o[0]);
+  checkUnnamed107(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -4830,7 +4923,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed105();
+    o.details = buildUnnamed108();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -4844,7 +4937,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed105(o.details!);
+    checkUnnamed108(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -4904,126 +4997,6 @@ void checkSubmitJobRequest(api.SubmitJobRequest o) {
   buildCounterSubmitJobRequest--;
 }
 
-core.List<core.String> buildUnnamed106() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed106(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterTemplateParameter = 0;
-api.TemplateParameter buildTemplateParameter() {
-  final o = api.TemplateParameter();
-  buildCounterTemplateParameter++;
-  if (buildCounterTemplateParameter < 3) {
-    o.description = 'foo';
-    o.fields = buildUnnamed106();
-    o.name = 'foo';
-    o.validation = buildParameterValidation();
-  }
-  buildCounterTemplateParameter--;
-  return o;
-}
-
-void checkTemplateParameter(api.TemplateParameter o) {
-  buildCounterTemplateParameter++;
-  if (buildCounterTemplateParameter < 3) {
-    unittest.expect(
-      o.description!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed106(o.fields!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    checkParameterValidation(o.validation!);
-  }
-  buildCounterTemplateParameter--;
-}
-
-core.List<core.String> buildUnnamed107() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed107(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterTestIamPermissionsRequest = 0;
-api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
-  final o = api.TestIamPermissionsRequest();
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed107();
-  }
-  buildCounterTestIamPermissionsRequest--;
-  return o;
-}
-
-void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed107(o.permissions!);
-  }
-  buildCounterTestIamPermissionsRequest--;
-}
-
-core.List<core.String> buildUnnamed108() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed108(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterTestIamPermissionsResponse = 0;
-api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
-  final o = api.TestIamPermissionsResponse();
-  buildCounterTestIamPermissionsResponse++;
-  if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed108();
-  }
-  buildCounterTestIamPermissionsResponse--;
-  return o;
-}
-
-void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
-  buildCounterTestIamPermissionsResponse++;
-  if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed108(o.permissions!);
-  }
-  buildCounterTestIamPermissionsResponse--;
-}
-
 core.List<core.String> buildUnnamed109() => [
       'foo',
       'foo',
@@ -5041,12 +5014,132 @@ void checkUnnamed109(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed110() => {
+core.int buildCounterTemplateParameter = 0;
+api.TemplateParameter buildTemplateParameter() {
+  final o = api.TemplateParameter();
+  buildCounterTemplateParameter++;
+  if (buildCounterTemplateParameter < 3) {
+    o.description = 'foo';
+    o.fields = buildUnnamed109();
+    o.name = 'foo';
+    o.validation = buildParameterValidation();
+  }
+  buildCounterTemplateParameter--;
+  return o;
+}
+
+void checkTemplateParameter(api.TemplateParameter o) {
+  buildCounterTemplateParameter++;
+  if (buildCounterTemplateParameter < 3) {
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed109(o.fields!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkParameterValidation(o.validation!);
+  }
+  buildCounterTemplateParameter--;
+}
+
+core.List<core.String> buildUnnamed110() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed110(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterTestIamPermissionsRequest = 0;
+api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
+  final o = api.TestIamPermissionsRequest();
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    o.permissions = buildUnnamed110();
+  }
+  buildCounterTestIamPermissionsRequest--;
+  return o;
+}
+
+void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    checkUnnamed110(o.permissions!);
+  }
+  buildCounterTestIamPermissionsRequest--;
+}
+
+core.List<core.String> buildUnnamed111() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed111(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterTestIamPermissionsResponse = 0;
+api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
+  final o = api.TestIamPermissionsResponse();
+  buildCounterTestIamPermissionsResponse++;
+  if (buildCounterTestIamPermissionsResponse < 3) {
+    o.permissions = buildUnnamed111();
+  }
+  buildCounterTestIamPermissionsResponse--;
+  return o;
+}
+
+void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
+  buildCounterTestIamPermissionsResponse++;
+  if (buildCounterTestIamPermissionsResponse < 3) {
+    checkUnnamed111(o.permissions!);
+  }
+  buildCounterTestIamPermissionsResponse--;
+}
+
+core.List<core.String> buildUnnamed112() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed112(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.Map<core.String, core.String> buildUnnamed113() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed110(core.Map<core.String, core.String> o) {
+void checkUnnamed113(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -5063,11 +5156,11 @@ api.TrinoJob buildTrinoJob() {
   final o = api.TrinoJob();
   buildCounterTrinoJob++;
   if (buildCounterTrinoJob < 3) {
-    o.clientTags = buildUnnamed109();
+    o.clientTags = buildUnnamed112();
     o.continueOnFailure = true;
     o.loggingConfig = buildLoggingConfig();
     o.outputFormat = 'foo';
-    o.properties = buildUnnamed110();
+    o.properties = buildUnnamed113();
     o.queryFileUri = 'foo';
     o.queryList = buildQueryList();
   }
@@ -5078,14 +5171,14 @@ api.TrinoJob buildTrinoJob() {
 void checkTrinoJob(api.TrinoJob o) {
   buildCounterTrinoJob++;
   if (buildCounterTrinoJob < 3) {
-    checkUnnamed109(o.clientTags!);
+    checkUnnamed112(o.clientTags!);
     unittest.expect(o.continueOnFailure!, unittest.isTrue);
     checkLoggingConfig(o.loggingConfig!);
     unittest.expect(
       o.outputFormat!,
       unittest.equals('foo'),
     );
-    checkUnnamed110(o.properties!);
+    checkUnnamed113(o.properties!);
     unittest.expect(
       o.queryFileUri!,
       unittest.equals('foo'),
@@ -5128,7 +5221,9 @@ api.UsageSnapshot buildUsageSnapshot() {
   buildCounterUsageSnapshot++;
   if (buildCounterUsageSnapshot < 3) {
     o.milliDcu = 'foo';
+    o.milliDcuPremium = 'foo';
     o.shuffleStorageGb = 'foo';
+    o.shuffleStorageGbPremium = 'foo';
     o.snapshotTime = 'foo';
   }
   buildCounterUsageSnapshot--;
@@ -5143,7 +5238,15 @@ void checkUsageSnapshot(api.UsageSnapshot o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.milliDcuPremium!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.shuffleStorageGb!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.shuffleStorageGbPremium!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -5154,12 +5257,12 @@ void checkUsageSnapshot(api.UsageSnapshot o) {
   buildCounterUsageSnapshot--;
 }
 
-core.List<core.String> buildUnnamed111() => [
+core.List<core.String> buildUnnamed114() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed111(core.List<core.String> o) {
+void checkUnnamed114(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5176,7 +5279,7 @@ api.ValueValidation buildValueValidation() {
   final o = api.ValueValidation();
   buildCounterValueValidation++;
   if (buildCounterValueValidation < 3) {
-    o.values = buildUnnamed111();
+    o.values = buildUnnamed114();
   }
   buildCounterValueValidation--;
   return o;
@@ -5185,7 +5288,7 @@ api.ValueValidation buildValueValidation() {
 void checkValueValidation(api.ValueValidation o) {
   buildCounterValueValidation++;
   if (buildCounterValueValidation < 3) {
-    checkUnnamed111(o.values!);
+    checkUnnamed114(o.values!);
   }
   buildCounterValueValidation--;
 }
@@ -5216,23 +5319,23 @@ void checkVirtualClusterConfig(api.VirtualClusterConfig o) {
   buildCounterVirtualClusterConfig--;
 }
 
-core.List<api.OrderedJob> buildUnnamed112() => [
+core.List<api.OrderedJob> buildUnnamed115() => [
       buildOrderedJob(),
       buildOrderedJob(),
     ];
 
-void checkUnnamed112(core.List<api.OrderedJob> o) {
+void checkUnnamed115(core.List<api.OrderedJob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOrderedJob(o[0]);
   checkOrderedJob(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed113() => {
+core.Map<core.String, core.String> buildUnnamed116() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed113(core.Map<core.String, core.String> o) {
+void checkUnnamed116(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -5244,12 +5347,12 @@ void checkUnnamed113(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.TemplateParameter> buildUnnamed114() => [
+core.List<api.TemplateParameter> buildUnnamed117() => [
       buildTemplateParameter(),
       buildTemplateParameter(),
     ];
 
-void checkUnnamed114(core.List<api.TemplateParameter> o) {
+void checkUnnamed117(core.List<api.TemplateParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTemplateParameter(o[0]);
   checkTemplateParameter(o[1]);
@@ -5263,10 +5366,10 @@ api.WorkflowTemplate buildWorkflowTemplate() {
     o.createTime = 'foo';
     o.dagTimeout = 'foo';
     o.id = 'foo';
-    o.jobs = buildUnnamed112();
-    o.labels = buildUnnamed113();
+    o.jobs = buildUnnamed115();
+    o.labels = buildUnnamed116();
     o.name = 'foo';
-    o.parameters = buildUnnamed114();
+    o.parameters = buildUnnamed117();
     o.placement = buildWorkflowTemplatePlacement();
     o.updateTime = 'foo';
     o.version = 42;
@@ -5290,13 +5393,13 @@ void checkWorkflowTemplate(api.WorkflowTemplate o) {
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed112(o.jobs!);
-    checkUnnamed113(o.labels!);
+    checkUnnamed115(o.jobs!);
+    checkUnnamed116(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed114(o.parameters!);
+    checkUnnamed117(o.parameters!);
     checkWorkflowTemplatePlacement(o.placement!);
     unittest.expect(
       o.updateTime!,
@@ -5626,6 +5729,16 @@ void main() {
       final od =
           api.Expr.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkExpr(od);
+    });
+  });
+
+  unittest.group('obj-schema-FlinkJob', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFlinkJob();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.FlinkJob.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkFlinkJob(od);
     });
   });
 

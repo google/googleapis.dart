@@ -4722,9 +4722,10 @@ class AlertPolicy {
   /// To avoid confusion, don't use the same display name for multiple policies
   /// in the same project. The name is limited to 512 Unicode characters.The
   /// convention for the display_name of a PrometheusQueryLanguageCondition is
-  /// "/", where the and should be taken from the corresponding Prometheus
-  /// configuration file. This convention is not enforced. In any case the
-  /// display_name is not a unique key of the AlertPolicy.
+  /// "{rule group name}/{alert name}", where the {rule group name} and {alert
+  /// name} should be taken from the corresponding Prometheus configuration
+  /// file. This convention is not enforced. In any case the display_name is not
+  /// a unique key of the AlertPolicy.
   core.String? displayName;
 
   /// Documentation that is included with notifications and incidents related to
@@ -4775,9 +4776,10 @@ class AlertPolicy {
   /// Each key and value is limited to 63 Unicode characters or 128 bytes,
   /// whichever is smaller. Labels and values can contain only lowercase
   /// letters, numerals, underscores, and dashes. Keys must begin with a
-  /// letter.Note that Prometheus and are valid Prometheus label names
+  /// letter.Note that Prometheus {rule group name} and {alert name} are valid
+  /// Prometheus label names
   /// (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels).
-  /// This means that they cannot be stored as is in user labels, because
+  /// This means that they cannot be stored as-is in user labels, because
   /// Prometheus labels may contain upper-case letters.
   core.Map<core.String, core.String>? userLabels;
 
@@ -5189,6 +5191,42 @@ class CloudEndpoints {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (service != null) 'service': service!,
+      };
+}
+
+/// A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+class CloudFunctionV2Target {
+  /// The cloud_run_revision Monitored Resource associated with the GCFv2.
+  ///
+  /// The Synthetic Monitor execution results (metrics, logs, and spans) are
+  /// reported against this Monitored Resource. This field is output only.
+  ///
+  /// Output only.
+  MonitoredResource? cloudRunRevision;
+
+  /// Fully qualified GCFv2 resource name i.e.
+  /// projects/{project}/locations/{location}/functions/{function} Required.
+  ///
+  /// Required.
+  core.String? name;
+
+  CloudFunctionV2Target({
+    this.cloudRunRevision,
+    this.name,
+  });
+
+  CloudFunctionV2Target.fromJson(core.Map json_)
+      : this(
+          cloudRunRevision: json_.containsKey('cloudRunRevision')
+              ? MonitoredResource.fromJson(json_['cloudRunRevision']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudRunRevision != null) 'cloudRunRevision': cloudRunRevision!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -9944,6 +9982,28 @@ class Snooze {
 /// Design Guide (https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
 
+/// Describes a Synthetic Monitor to be invoked by Uptime.
+class SyntheticMonitorTarget {
+  /// Target a Synthetic Monitor GCFv2 instance.
+  CloudFunctionV2Target? cloudFunctionV2;
+
+  SyntheticMonitorTarget({
+    this.cloudFunctionV2,
+  });
+
+  SyntheticMonitorTarget.fromJson(core.Map json_)
+      : this(
+          cloudFunctionV2: json_.containsKey('cloudFunctionV2')
+              ? CloudFunctionV2Target.fromJson(json_['cloudFunctionV2']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudFunctionV2 != null) 'cloudFunctionV2': cloudFunctionV2!,
+      };
+}
+
 /// Information required for a TCP Uptime check request.
 class TcpCheck {
   /// Contains information needed to add pings to a TCP check.
@@ -10512,6 +10572,9 @@ class UptimeCheckConfig {
   /// checks running from all available regions.
   core.List<core.String>? selectedRegions;
 
+  /// Specifies a Synthetic Monitor to invoke.
+  SyntheticMonitorTarget? syntheticMonitor;
+
   /// Contains information needed to make a TCP check.
   TcpCheck? tcpCheck;
 
@@ -10541,6 +10604,7 @@ class UptimeCheckConfig {
     this.period,
     this.resourceGroup,
     this.selectedRegions,
+    this.syntheticMonitor,
     this.tcpCheck,
     this.timeout,
     this.userLabels,
@@ -10590,6 +10654,10 @@ class UptimeCheckConfig {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          syntheticMonitor: json_.containsKey('syntheticMonitor')
+              ? SyntheticMonitorTarget.fromJson(json_['syntheticMonitor']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           tcpCheck: json_.containsKey('tcpCheck')
               ? TcpCheck.fromJson(
                   json_['tcpCheck'] as core.Map<core.String, core.dynamic>)
@@ -10620,6 +10688,7 @@ class UptimeCheckConfig {
         if (period != null) 'period': period!,
         if (resourceGroup != null) 'resourceGroup': resourceGroup!,
         if (selectedRegions != null) 'selectedRegions': selectedRegions!,
+        if (syntheticMonitor != null) 'syntheticMonitor': syntheticMonitor!,
         if (tcpCheck != null) 'tcpCheck': tcpCheck!,
         if (timeout != null) 'timeout': timeout!,
         if (userLabels != null) 'userLabels': userLabels!,

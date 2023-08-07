@@ -1,10 +1,11 @@
-## 11.4.0-wip
+## 12.0.0
 
 - Deprecated APIs are now annotated with `@Deprecated`.
 - Require Dart 3.0
 
 ## 11.3.0
 
+- `aiplatform` - new!
 - `blockchainnodeengine` - new!
 - `cloudsupport` - new!
 - `doubleclickbidmanager` - Removed v1.1 (v2 still exists)

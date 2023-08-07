@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230710",
+    "revision": "20230727",
     "rootUrl": "https://cloudfunctions.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Functions API",
@@ -1020,6 +1020,10 @@
                     "description": "The original request that started the operation.",
                     "type": "object"
                 },
+                "sourceToken": {
+                    "description": "An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.",
+                    "type": "string"
+                },
                 "stages": {
                     "description": "Mechanism for reporting in-progress stages",
                     "items": {
@@ -1191,6 +1195,10 @@
                     "description": "The original request that started the operation.",
                     "type": "object"
                 },
+                "sourceToken": {
+                    "description": "An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.",
+                    "type": "string"
+                },
                 "stages": {
                     "description": "Mechanism for reporting in-progress stages",
                     "items": {
@@ -1361,6 +1369,10 @@
                     },
                     "description": "The original request that started the operation.",
                     "type": "object"
+                },
+                "sourceToken": {
+                    "description": "An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.",
+                    "type": "string"
                 },
                 "stages": {
                     "description": "Mechanism for reporting in-progress stages",

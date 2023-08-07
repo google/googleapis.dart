@@ -3658,6 +3658,13 @@ class CommentList {
 
 /// A restriction for accessing the content of the file.
 class ContentRestriction {
+  /// Whether the content restriction can only be modified or removed by a user
+  /// who owns the file.
+  ///
+  /// For files in shared drives, any user with `organizer` capabilities can
+  /// modify or remove this content restriction.
+  core.bool? ownerRestricted;
+
   /// Whether the content of the file is read-only.
   ///
   /// If a file is read-only, a new revision of the file may not be added,
@@ -3691,6 +3698,7 @@ class ContentRestriction {
   core.String? type;
 
   ContentRestriction({
+    this.ownerRestricted,
     this.readOnly,
     this.reason,
     this.restrictingUser,
@@ -3700,6 +3708,9 @@ class ContentRestriction {
 
   ContentRestriction.fromJson(core.Map json_)
       : this(
+          ownerRestricted: json_.containsKey('ownerRestricted')
+              ? json_['ownerRestricted'] as core.bool
+              : null,
           readOnly: json_.containsKey('readOnly')
               ? json_['readOnly'] as core.bool
               : null,
@@ -3717,6 +3728,7 @@ class ContentRestriction {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (ownerRestricted != null) 'ownerRestricted': ownerRestricted!,
         if (readOnly != null) 'readOnly': readOnly!,
         if (reason != null) 'reason': reason!,
         if (restrictingUser != null) 'restrictingUser': restrictingUser!,
@@ -4408,15 +4420,31 @@ class FileCapabilities {
   /// Output only.
   core.bool? canModifyContent;
 
-  /// Whether the current user can modify restrictions on content of this file.
+  /// Deprecated: Output only.
+  ///
+  /// Use one of `canModifyEditorContentRestriction`,
+  /// `canModifyOwnerContentRestriction` or `canRemoveContentRestriction`.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.bool? canModifyContentRestriction;
+
+  /// Whether the current user can add or modify content restrictions on the
+  /// file which are editor restricted.
   ///
   /// Output only.
-  core.bool? canModifyContentRestriction;
+  core.bool? canModifyEditorContentRestriction;
 
   /// Whether the current user can modify the labels on the file.
   ///
   /// Output only.
   core.bool? canModifyLabels;
+
+  /// Whether the current user can add or modify content restrictions which are
+  /// owner restricted.
+  ///
+  /// Output only.
+  core.bool? canModifyOwnerContentRestriction;
 
   /// Whether the current user can move children of this folder outside of the
   /// shared drive.
@@ -4540,6 +4568,12 @@ class FileCapabilities {
   /// Output only.
   core.bool? canRemoveChildren;
 
+  /// Whether there is a content restriction on the file that can be removed by
+  /// the current user.
+  ///
+  /// Output only.
+  core.bool? canRemoveContentRestriction;
+
   /// Whether the current user can remove a parent from the item without adding
   /// another parent in the same request.
   ///
@@ -4593,7 +4627,9 @@ class FileCapabilities {
     this.canListChildren,
     this.canModifyContent,
     this.canModifyContentRestriction,
+    this.canModifyEditorContentRestriction,
     this.canModifyLabels,
+    this.canModifyOwnerContentRestriction,
     this.canMoveChildrenOutOfDrive,
     this.canMoveChildrenOutOfTeamDrive,
     this.canMoveChildrenWithinDrive,
@@ -4609,6 +4645,7 @@ class FileCapabilities {
     this.canReadRevisions,
     this.canReadTeamDrive,
     this.canRemoveChildren,
+    this.canRemoveContentRestriction,
     this.canRemoveMyDriveParent,
     this.canRename,
     this.canShare,
@@ -4672,9 +4709,17 @@ class FileCapabilities {
               json_.containsKey('canModifyContentRestriction')
                   ? json_['canModifyContentRestriction'] as core.bool
                   : null,
+          canModifyEditorContentRestriction:
+              json_.containsKey('canModifyEditorContentRestriction')
+                  ? json_['canModifyEditorContentRestriction'] as core.bool
+                  : null,
           canModifyLabels: json_.containsKey('canModifyLabels')
               ? json_['canModifyLabels'] as core.bool
               : null,
+          canModifyOwnerContentRestriction:
+              json_.containsKey('canModifyOwnerContentRestriction')
+                  ? json_['canModifyOwnerContentRestriction'] as core.bool
+                  : null,
           canMoveChildrenOutOfDrive:
               json_.containsKey('canMoveChildrenOutOfDrive')
                   ? json_['canMoveChildrenOutOfDrive'] as core.bool
@@ -4727,6 +4772,10 @@ class FileCapabilities {
           canRemoveChildren: json_.containsKey('canRemoveChildren')
               ? json_['canRemoveChildren'] as core.bool
               : null,
+          canRemoveContentRestriction:
+              json_.containsKey('canRemoveContentRestriction')
+                  ? json_['canRemoveContentRestriction'] as core.bool
+                  : null,
           canRemoveMyDriveParent: json_.containsKey('canRemoveMyDriveParent')
               ? json_['canRemoveMyDriveParent'] as core.bool
               : null,
@@ -4772,7 +4821,12 @@ class FileCapabilities {
         if (canModifyContent != null) 'canModifyContent': canModifyContent!,
         if (canModifyContentRestriction != null)
           'canModifyContentRestriction': canModifyContentRestriction!,
+        if (canModifyEditorContentRestriction != null)
+          'canModifyEditorContentRestriction':
+              canModifyEditorContentRestriction!,
         if (canModifyLabels != null) 'canModifyLabels': canModifyLabels!,
+        if (canModifyOwnerContentRestriction != null)
+          'canModifyOwnerContentRestriction': canModifyOwnerContentRestriction!,
         if (canMoveChildrenOutOfDrive != null)
           'canMoveChildrenOutOfDrive': canMoveChildrenOutOfDrive!,
         if (canMoveChildrenOutOfTeamDrive != null)
@@ -4798,6 +4852,8 @@ class FileCapabilities {
         if (canReadRevisions != null) 'canReadRevisions': canReadRevisions!,
         if (canReadTeamDrive != null) 'canReadTeamDrive': canReadTeamDrive!,
         if (canRemoveChildren != null) 'canRemoveChildren': canRemoveChildren!,
+        if (canRemoveContentRestriction != null)
+          'canRemoveContentRestriction': canRemoveContentRestriction!,
         if (canRemoveMyDriveParent != null)
           'canRemoveMyDriveParent': canRemoveMyDriveParent!,
         if (canRename != null) 'canRename': canRename!,

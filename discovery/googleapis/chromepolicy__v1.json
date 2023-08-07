@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230716",
+    "revision": "20230806",
     "rootUrl": "https://chromepolicy.googleapis.com/",
     "servicePath": "",
     "title": "Chrome Policy API",
@@ -1059,7 +1059,7 @@
                     "description": "Schema definition using proto descriptor."
                 },
                 "fieldDescriptions": {
-                    "description": "Output only. Detailed description of each field that is part of the schema.",
+                    "description": "Output only. Detailed description of each field that is part of the schema. Fields are suggested to be displayed by the ordering in this list, not by field number.",
                     "items": {
                         "$ref": "GoogleChromePolicyVersionsV1PolicySchemaFieldDescription"
                     },
@@ -1190,7 +1190,7 @@
                     "type": "string"
                 },
                 "nestedFieldDescriptions": {
-                    "description": "Output only. Provides the description of the fields nested in this field, if the field is a message type that defines multiple fields.",
+                    "description": "Output only. Provides the description of the fields nested in this field, if the field is a message type that defines multiple fields. Fields are suggested to be displayed by the ordering in this list, not by field number.",
                     "items": {
                         "$ref": "GoogleChromePolicyVersionsV1PolicySchemaFieldDescription"
                     },

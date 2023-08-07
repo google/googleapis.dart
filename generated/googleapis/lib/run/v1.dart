@@ -3889,18 +3889,20 @@ class Container {
 class ContainerOverride {
   /// Arguments to the entrypoint.
   ///
-  /// Will replace existing args for override if present. Must be empty if
-  /// `clear_args` is set to true.
+  /// The specified arguments replace and override any existing entrypoint
+  /// arguments. Must be empty if `clear_args` is set to true.
   core.List<core.String>? args;
 
-  /// True if the intention is to clear out existing args list.
+  /// Set to True to clear all existing arguments.
   ///
   /// Optional.
   core.bool? clearArgs;
 
   /// List of environment variables to set in the container.
   ///
-  /// Will be merged with existing env for override.
+  /// All specified environment variables are merged with existing environment
+  /// variables. When the specified environment variables exist, these values
+  /// override any existing values.
   core.List<EnvVar>? env;
 
   /// The name of the container specified as a DNS_LABEL.
@@ -4157,12 +4159,10 @@ class DomainMappingStatus {
       };
 }
 
-/// Ephemeral storage which can be backed by real disks (HD, SSD), network
-/// storage or memory (i.e. tmpfs).
+/// In memory (tmpfs) ephemeral storage.
 ///
-/// For now only in memory (tmpfs) is supported. It is ephemeral in the sense
-/// that when the sandbox is taken down, the data is destroyed with it (it does
-/// not persist across sandbox runs).
+/// It is ephemeral in the sense that when the sandbox is taken down, the data
+/// is destroyed with it (it does not persist across sandbox runs).
 class EmptyDirVolumeSource {
   /// The medium on which the data is stored.
   ///
@@ -4175,10 +4175,10 @@ class EmptyDirVolumeSource {
   ///
   /// The size limit is also applicable for memory medium. The maximum usage on
   /// memory medium EmptyDir would be the minimum value between the SizeLimit
-  /// specified here and the sum of memory limits of all containers in a pod.
-  /// This field's values are of the 'Quantity' k8s type:
-  /// https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/.
-  /// The default is nil which means that the limit is undefined. More info:
+  /// specified here and the sum of memory limits of all containers. The default
+  /// is nil which means that the limit is undefined. More info:
+  /// https://cloud.google.com/run/docs/configuring/in-memory-volumes#configure-volume.
+  /// Info in Kubernetes:
   /// https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
   core.String? sizeLimit;
 
@@ -6789,8 +6789,8 @@ class RunJobRequest {
   /// Private preview feature.
   ///
   /// Currently only available by invitation. Overrides specification for a
-  /// given execution of a job. If provided, overrides will be applied to update
-  /// the execution or task spec.
+  /// given execution of a job. The specified values update the specification of
+  /// the created execution.
   ///
   /// Optional.
   Overrides? overrides;

@@ -6760,7 +6760,7 @@ class Saml {
 /// When you create a service account, you specify the project ID that owns the
 /// service account, as well as a name that must be unique within the project.
 /// IAM uses these values to create an email address that identifies the service
-/// //
+/// account. //
 class ServiceAccount {
   /// A user-specified, human-readable description of the service account.
   ///

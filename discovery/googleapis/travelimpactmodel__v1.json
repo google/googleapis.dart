@@ -16,7 +16,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230716",
+    "revision": "20230806",
     "rootUrl": "https://travelimpactmodel.googleapis.com/",
     "servicePath": "",
     "title": "Travel Impact Model API",

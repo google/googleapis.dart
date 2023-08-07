@@ -44,6 +44,24 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// An API for managing Drive Labels
 class DriveLabelsApi {
+  /// See, edit, create, and delete all Google Drive labels in your
+  /// organization, and see your organization's label-related admin policies
+  static const driveAdminLabelsScope =
+      'https://www.googleapis.com/auth/drive.admin.labels';
+
+  /// See all Google Drive labels and label-related admin policies in your
+  /// organization
+  static const driveAdminLabelsReadonlyScope =
+      'https://www.googleapis.com/auth/drive.admin.labels.readonly';
+
+  /// See, edit, create, and delete your Google Drive labels
+  static const driveLabelsScope =
+      'https://www.googleapis.com/auth/drive.labels';
+
+  /// See your Google Drive labels
+  static const driveLabelsReadonlyScope =
+      'https://www.googleapis.com/auth/drive.labels.readonly';
+
   final commons.ApiRequester _requester;
 
   LabelsResource get labels => LabelsResource(_requester);

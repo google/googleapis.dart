@@ -1807,9 +1807,9 @@ class ProjectsLocationsRepositoriesPackagesTagsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the parent package whose tags will be listed.
-  /// Example:
-  /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1
+  /// [parent] - The name of the parent package whose tags will be listed. For
+  /// example:
+  /// `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/packages/\[^/\]+$`.
   ///
@@ -3638,7 +3638,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -3746,23 +3746,23 @@ class Package {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Associates a list of `members`, or principals, with a `role`.
   ///
@@ -4122,6 +4122,11 @@ class Repository {
   /// Output only.
   core.bool? satisfiesPzs;
 
+  /// Config and state for sbom generation for resources within this Repository.
+  ///
+  /// Optional.
+  SbomConfig? sbomConfig;
+
   /// The size, in bytes, of all artifact storage in this repository.
   ///
   /// Repositories that are generally available or in public preview use this to
@@ -4152,6 +4157,7 @@ class Repository {
     this.name,
     this.remoteRepositoryConfig,
     this.satisfiesPzs,
+    this.sbomConfig,
     this.sizeBytes,
     this.updateTime,
     this.virtualRepositoryConfig,
@@ -4210,6 +4216,10 @@ class Repository {
           satisfiesPzs: json_.containsKey('satisfiesPzs')
               ? json_['satisfiesPzs'] as core.bool
               : null,
+          sbomConfig: json_.containsKey('sbomConfig')
+              ? SbomConfig.fromJson(
+                  json_['sbomConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           sizeBytes: json_.containsKey('sizeBytes')
               ? json_['sizeBytes'] as core.String
               : null,
@@ -4239,10 +4249,52 @@ class Repository {
         if (remoteRepositoryConfig != null)
           'remoteRepositoryConfig': remoteRepositoryConfig!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
+        if (sbomConfig != null) 'sbomConfig': sbomConfig!,
         if (sizeBytes != null) 'sizeBytes': sizeBytes!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (virtualRepositoryConfig != null)
           'virtualRepositoryConfig': virtualRepositoryConfig!,
+      };
+}
+
+/// Config for whether to generate SBOMs for resources in this repository, as
+/// well as output fields describing current state.
+class SbomConfig {
+  /// Config for whether this repository has sbom generation disabled.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ENABLEMENT_CONFIG_UNSPECIFIED" : Unspecified config was not set. This
+  /// will be interpreted as DISABLED.
+  /// - "INHERITED" : Inherited indicates the repository is allowed for SBOM
+  /// generation, however the actual state will be inherited from the API
+  /// enablement state.
+  /// - "DISABLED" : Disabled indicates the repository will not generate SBOMs.
+  core.String? enablementConfig;
+
+  /// The last time this repository config was set to INHERITED.
+  ///
+  /// Output only.
+  core.String? lastEnableTime;
+
+  SbomConfig({
+    this.enablementConfig,
+    this.lastEnableTime,
+  });
+
+  SbomConfig.fromJson(core.Map json_)
+      : this(
+          enablementConfig: json_.containsKey('enablementConfig')
+              ? json_['enablementConfig'] as core.String
+              : null,
+          lastEnableTime: json_.containsKey('lastEnableTime')
+              ? json_['lastEnableTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enablementConfig != null) 'enablementConfig': enablementConfig!,
+        if (lastEnableTime != null) 'lastEnableTime': lastEnableTime!,
       };
 }
 

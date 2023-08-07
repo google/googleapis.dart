@@ -5559,6 +5559,9 @@ class BareMetalCluster {
   /// Output only.
   core.String? updateTime;
 
+  /// The cluster upgrade policy.
+  BareMetalClusterUpgradePolicy? upgradePolicy;
+
   /// The result of the preflight check.
   ///
   /// Output only.
@@ -5594,6 +5597,7 @@ class BareMetalCluster {
     this.storage,
     this.uid,
     this.updateTime,
+    this.upgradePolicy,
     this.validationCheck,
   });
 
@@ -5701,6 +5705,10 @@ class BareMetalCluster {
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
+          upgradePolicy: json_.containsKey('upgradePolicy')
+              ? BareMetalClusterUpgradePolicy.fromJson(
+                  json_['upgradePolicy'] as core.Map<core.String, core.dynamic>)
+              : null,
           validationCheck: json_.containsKey('validationCheck')
               ? ValidationCheck.fromJson(json_['validationCheck']
                   as core.Map<core.String, core.dynamic>)
@@ -5739,12 +5747,38 @@ class BareMetalCluster {
         if (storage != null) 'storage': storage!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (upgradePolicy != null) 'upgradePolicy': upgradePolicy!,
         if (validationCheck != null) 'validationCheck': validationCheck!,
       };
 }
 
 /// Specifies the bare metal user cluster's observability infrastructure.
 typedef BareMetalClusterOperationsConfig = $ClusterOperationsConfig;
+
+/// BareMetalClusterUpgradePolicy defines the cluster upgrade policy.
+class BareMetalClusterUpgradePolicy {
+  /// Specifies which upgrade policy to use.
+  /// Possible string values are:
+  /// - "NODE_POOL_POLICY_UNSPECIFIED" : No upgrade policy selected.
+  /// - "SERIAL" : Upgrade worker node pools sequentially.
+  /// - "CONCURRENT" : Upgrade all worker node pools in parallel.
+  core.String? policy;
+
+  BareMetalClusterUpgradePolicy({
+    this.policy,
+  });
+
+  BareMetalClusterUpgradePolicy.fromJson(core.Map json_)
+      : this(
+          policy: json_.containsKey('policy')
+              ? json_['policy'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (policy != null) 'policy': policy!,
+      };
+}
 
 /// Specifies the control plane configuration.
 class BareMetalControlPlaneConfig {
@@ -6620,10 +6654,6 @@ class BareMetalOsEnvironmentConfig {
 /// worker node pools.
 class BareMetalParallelUpgradeConfig {
   /// The maximum number of nodes that can be upgraded at once.
-  ///
-  /// Defaults to 1.
-  ///
-  /// Required.
   core.int? concurrentNodes;
 
   /// The minimum number of nodes that should be healthy and available during an
@@ -8614,9 +8644,15 @@ class VmwareAdminControlPlaneNodeConfig {
   /// cluster.
   core.String? memory;
 
+  /// The number of control plane nodes for this VMware admin cluster.
+  ///
+  /// (default: 1 replica).
+  core.String? replicas;
+
   VmwareAdminControlPlaneNodeConfig({
     this.cpus,
     this.memory,
+    this.replicas,
   });
 
   VmwareAdminControlPlaneNodeConfig.fromJson(core.Map json_)
@@ -8625,17 +8661,44 @@ class VmwareAdminControlPlaneNodeConfig {
           memory: json_.containsKey('memory')
               ? json_['memory'] as core.String
               : null,
+          replicas: json_.containsKey('replicas')
+              ? json_['replicas'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cpus != null) 'cpus': cpus!,
         if (memory != null) 'memory': memory!,
+        if (replicas != null) 'replicas': replicas!,
       };
 }
 
 /// VmwareAdminF5BigIpConfig represents configuration parameters for an F5
 /// BIG-IP load balancer.
 typedef VmwareAdminF5BigIpConfig = $F5BigIpConfig;
+
+/// Specifies HA admin control plane config.
+class VmwareAdminHAControlPlaneConfig {
+  /// Static IP addresses for the admin control plane nodes.
+  VmwareIpBlock? controlPlaneIpBlock;
+
+  VmwareAdminHAControlPlaneConfig({
+    this.controlPlaneIpBlock,
+  });
+
+  VmwareAdminHAControlPlaneConfig.fromJson(core.Map json_)
+      : this(
+          controlPlaneIpBlock: json_.containsKey('controlPlaneIpBlock')
+              ? VmwareIpBlock.fromJson(json_['controlPlaneIpBlock']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (controlPlaneIpBlock != null)
+          'controlPlaneIpBlock': controlPlaneIpBlock!,
+      };
+}
 
 /// VmwareAdminLoadBalancerConfig contains load balancer configuration for
 /// VMware admin cluster.
@@ -8649,6 +8712,11 @@ class VmwareAdminLoadBalancerConfig {
   /// MetalLB load balancers.
   VmwareAdminMetalLbConfig? metalLbConfig;
 
+  /// Configuration for Seesaw typed load balancers.
+  ///
+  /// Output only.
+  VmwareAdminSeesawConfig? seesawConfig;
+
   /// The VIPs used by the load balancer.
   VmwareAdminVipConfig? vipConfig;
 
@@ -8656,6 +8724,7 @@ class VmwareAdminLoadBalancerConfig {
     this.f5Config,
     this.manualLbConfig,
     this.metalLbConfig,
+    this.seesawConfig,
     this.vipConfig,
   });
 
@@ -8673,6 +8742,10 @@ class VmwareAdminLoadBalancerConfig {
               ? VmwareAdminMetalLbConfig.fromJson(
                   json_['metalLbConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          seesawConfig: json_.containsKey('seesawConfig')
+              ? VmwareAdminSeesawConfig.fromJson(
+                  json_['seesawConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           vipConfig: json_.containsKey('vipConfig')
               ? VmwareAdminVipConfig.fromJson(
                   json_['vipConfig'] as core.Map<core.String, core.dynamic>)
@@ -8683,6 +8756,7 @@ class VmwareAdminLoadBalancerConfig {
         if (f5Config != null) 'f5Config': f5Config!,
         if (manualLbConfig != null) 'manualLbConfig': manualLbConfig!,
         if (metalLbConfig != null) 'metalLbConfig': metalLbConfig!,
+        if (seesawConfig != null) 'seesawConfig': seesawConfig!,
         if (vipConfig != null) 'vipConfig': vipConfig!,
       };
 }
@@ -8768,6 +8842,9 @@ class VmwareAdminNetworkConfig {
   /// Configuration settings for a DHCP IP configuration.
   VmwareDhcpIpConfig? dhcpIpConfig;
 
+  /// Configuration for HA admin cluster control plane.
+  VmwareAdminHAControlPlaneConfig? haControlPlaneConfig;
+
   /// Represents common network settings irrespective of the host's IP address.
   VmwareHostConfig? hostConfig;
 
@@ -8797,6 +8874,7 @@ class VmwareAdminNetworkConfig {
 
   VmwareAdminNetworkConfig({
     this.dhcpIpConfig,
+    this.haControlPlaneConfig,
     this.hostConfig,
     this.podAddressCidrBlocks,
     this.serviceAddressCidrBlocks,
@@ -8809,6 +8887,11 @@ class VmwareAdminNetworkConfig {
           dhcpIpConfig: json_.containsKey('dhcpIpConfig')
               ? VmwareDhcpIpConfig.fromJson(
                   json_['dhcpIpConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          haControlPlaneConfig: json_.containsKey('haControlPlaneConfig')
+              ? VmwareAdminHAControlPlaneConfig.fromJson(
+                  json_['haControlPlaneConfig']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           hostConfig: json_.containsKey('hostConfig')
               ? VmwareHostConfig.fromJson(
@@ -8836,6 +8919,8 @@ class VmwareAdminNetworkConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dhcpIpConfig != null) 'dhcpIpConfig': dhcpIpConfig!,
+        if (haControlPlaneConfig != null)
+          'haControlPlaneConfig': haControlPlaneConfig!,
         if (hostConfig != null) 'hostConfig': hostConfig!,
         if (podAddressCidrBlocks != null)
           'podAddressCidrBlocks': podAddressCidrBlocks!,
@@ -8843,6 +8928,83 @@ class VmwareAdminNetworkConfig {
           'serviceAddressCidrBlocks': serviceAddressCidrBlocks!,
         if (staticIpConfig != null) 'staticIpConfig': staticIpConfig!,
         if (vcenterNetwork != null) 'vcenterNetwork': vcenterNetwork!,
+      };
+}
+
+/// VmwareSeesawConfig represents configuration parameters for an already
+/// existing Seesaw load balancer.
+///
+/// IMPORTANT: Please note that the Anthos On-Prem API will not generate or
+/// update Seesaw configurations it can only bind a pre-existing configuration
+/// to a new user cluster. IMPORTANT: When attempting to create a user cluster
+/// with a pre-existing Seesaw load balancer you will need to follow some
+/// preparation steps before calling the 'CreateVmwareCluster' API method. First
+/// you will need to create the user cluster's namespace via kubectl. The
+/// namespace will need to use the following naming convention :
+/// -gke-onprem-mgmt or -gke-onprem-mgmt depending on whether you used the
+/// 'VmwareCluster.local_name' to disambiguate collisions; for more context see
+/// the documentation of 'VmwareCluster.local_name'. Once the namespace is
+/// created you will need to create a secret resource via kubectl. This secret
+/// will contain copies of your Seesaw credentials. The Secret must be called
+/// 'user-cluster-creds' and contain Seesaw's SSH and Cert credentials. The
+/// credentials must be keyed with the following names:
+/// 'seesaw-ssh-private-key', 'seesaw-ssh-public-key', 'seesaw-ssh-ca-key',
+/// 'seesaw-ssh-ca-cert'.
+class VmwareAdminSeesawConfig {
+  /// Enable two load balancer VMs to achieve a highly-available Seesaw load
+  /// balancer.
+  core.bool? enableHa;
+
+  /// In general the following format should be used for the Seesaw group name:
+  /// seesaw-for-\[cluster_name\].
+  core.String? group;
+
+  /// The IP Blocks to be used by the Seesaw load balancer
+  core.List<VmwareIpBlock>? ipBlocks;
+
+  /// MasterIP is the IP announced by the master of Seesaw group.
+  core.String? masterIp;
+
+  /// Names of the VMs created for this Seesaw group.
+  core.List<core.String>? vms;
+
+  VmwareAdminSeesawConfig({
+    this.enableHa,
+    this.group,
+    this.ipBlocks,
+    this.masterIp,
+    this.vms,
+  });
+
+  VmwareAdminSeesawConfig.fromJson(core.Map json_)
+      : this(
+          enableHa: json_.containsKey('enableHa')
+              ? json_['enableHa'] as core.bool
+              : null,
+          group:
+              json_.containsKey('group') ? json_['group'] as core.String : null,
+          ipBlocks: json_.containsKey('ipBlocks')
+              ? (json_['ipBlocks'] as core.List)
+                  .map((value) => VmwareIpBlock.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          masterIp: json_.containsKey('masterIp')
+              ? json_['masterIp'] as core.String
+              : null,
+          vms: json_.containsKey('vms')
+              ? (json_['vms'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableHa != null) 'enableHa': enableHa!,
+        if (group != null) 'group': group!,
+        if (ipBlocks != null) 'ipBlocks': ipBlocks!,
+        if (masterIp != null) 'masterIp': masterIp!,
+        if (vms != null) 'vms': vms!,
       };
 }
 
@@ -9388,8 +9550,6 @@ class VmwareControlPlaneNodeConfig {
   core.String? replicas;
 
   /// Vsphere-specific config.
-  ///
-  /// Output only.
   VmwareControlPlaneVsphereConfig? vsphereConfig;
 
   VmwareControlPlaneNodeConfig({
@@ -9947,8 +10107,6 @@ class VmwareNodeConfig {
   core.List<NodeTaint>? taints;
 
   /// Specifies the vSphere config for node pool.
-  ///
-  /// Output only.
   VmwareVsphereConfig? vsphereConfig;
 
   VmwareNodeConfig({
@@ -10490,11 +10648,15 @@ class VmwareVsphereConfig {
   /// Inherited from the user cluster.
   core.String? datastore;
 
+  /// Vsphere host groups to apply to all VMs in the node pool
+  core.List<core.String>? hostGroups;
+
   /// Tags to apply to VMs.
   core.List<VmwareVsphereTag>? tags;
 
   VmwareVsphereConfig({
     this.datastore,
+    this.hostGroups,
     this.tags,
   });
 
@@ -10502,6 +10664,11 @@ class VmwareVsphereConfig {
       : this(
           datastore: json_.containsKey('datastore')
               ? json_['datastore'] as core.String
+              : null,
+          hostGroups: json_.containsKey('hostGroups')
+              ? (json_['hostGroups'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
               : null,
           tags: json_.containsKey('tags')
               ? (json_['tags'] as core.List)
@@ -10513,6 +10680,7 @@ class VmwareVsphereConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (datastore != null) 'datastore': datastore!,
+        if (hostGroups != null) 'hostGroups': hostGroups!,
         if (tags != null) 'tags': tags!,
       };
 }

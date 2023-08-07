@@ -1640,6 +1640,7 @@ class GoogleCloudRunV2Condition {
   /// code.
   /// - "CANCELLED" : The execution was cancelled by users.
   /// - "CANCELLING" : The execution is in the process of being cancelled.
+  /// - "DELETED" : The execution was deleted.
   core.String? executionReason;
 
   /// Last time the condition transitioned from one status to another.
@@ -1795,7 +1796,7 @@ class GoogleCloudRunV2Container {
   /// is not provided.
   core.List<core.String>? command;
 
-  /// Container names which must start before this container.
+  /// Names of the containers that must start before this container.
   core.List<core.String>? dependsOn;
 
   /// List of environment variables to set in the container.
@@ -1961,12 +1962,10 @@ class GoogleCloudRunV2ContainerPort {
       };
 }
 
-/// Ephemeral storage which can be backed by real disks (HD, SSD), network
-/// storage or memory (i.e. tmpfs).
+/// In memory (tmpfs) ephemeral storage.
 ///
-/// For now only in memory (tmpfs) is supported. It is ephemeral in the sense
-/// that when the sandbox is taken down, the data is destroyed with it (it does
-/// not persist across sandbox runs).
+/// It is ephemeral in the sense that when the sandbox is taken down, the data
+/// is destroyed with it (it does not persist across sandbox runs).
 class GoogleCloudRunV2EmptyDirVolumeSource {
   /// The medium on which the data is stored.
   ///
@@ -1982,10 +1981,10 @@ class GoogleCloudRunV2EmptyDirVolumeSource {
   ///
   /// The size limit is also applicable for memory medium. The maximum usage on
   /// memory medium EmptyDir would be the minimum value between the SizeLimit
-  /// specified here and the sum of memory limits of all containers in a pod.
-  /// This field's values are of the 'Quantity' k8s type:
-  /// https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/.
-  /// The default is nil which means that the limit is undefined. More info:
+  /// specified here and the sum of memory limits of all containers. The default
+  /// is nil which means that the limit is undefined. More info:
+  /// https://cloud.google.com/run/docs/configuring/in-memory-volumes#configure-volume.
+  /// Info in Kubernetes:
   /// https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
   core.String? sizeLimit;
 

@@ -2386,7 +2386,8 @@ class Binding {
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
-/// Contains information of the customer's network configurations.
+/// Contains information of the customer's network configurations.Next available
+/// ID: 5
 class Consumer {
   /// The URI of the endpoint used to access the metastore service.
   ///
@@ -3413,7 +3414,8 @@ class MoveTableToDatabaseRequest {
       };
 }
 
-/// Network configuration for the Dataproc Metastore service.
+/// Network configuration for the Dataproc Metastore service.Next available ID:
+/// 4
 class NetworkConfig {
   /// The consumer-side network configuration for the Dataproc Metastore
   /// instance.

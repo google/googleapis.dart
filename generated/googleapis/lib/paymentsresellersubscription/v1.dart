@@ -2296,31 +2296,4 @@ class GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload {
 }
 
 /// Localized variant of a text in a particular language.
-class GoogleTypeLocalizedText {
-  /// The text's BCP-47 language code, such as "en-US" or "sr-Latn".
-  ///
-  /// For more information, see
-  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  core.String? languageCode;
-
-  /// Localized string in the language corresponding to \`language_code' below.
-  core.String? text;
-
-  GoogleTypeLocalizedText({
-    this.languageCode,
-    this.text,
-  });
-
-  GoogleTypeLocalizedText.fromJson(core.Map json_)
-      : this(
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (text != null) 'text': text!,
-      };
-}
+typedef GoogleTypeLocalizedText = $GoogleTypeLocalizedText;

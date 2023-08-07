@@ -2121,6 +2121,7 @@ class DataSourceParameter {
   /// - "BOOLEAN" : Boolean parameter.
   /// - "RECORD" : Deprecated. This field has no effect.
   /// - "PLUS_PAGE" : Page ID for a Google+ Page.
+  /// - "LIST" : List of strings parameter.
   core.String? type;
 
   /// Description of the requirements for this field, in case the user input
@@ -2258,6 +2259,27 @@ class EmailPreferences {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// Represents the encryption configuration for a transfer.
+class EncryptionConfiguration {
+  /// The name of the KMS key used for encrypting BigQuery data.
+  core.String? kmsKeyName;
+
+  EncryptionConfiguration({
+    this.kmsKeyName,
+  });
+
+  EncryptionConfiguration.fromJson(core.Map json_)
+      : this(
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+      };
+}
 
 /// A request to enroll a set of data sources so they are visible in the
 /// BigQuery UI's `Transfer` tab.
@@ -2593,12 +2615,18 @@ class ScheduleTransferRunsResponse {
 
 /// A request to start manual transfer runs.
 class StartManualTransferRunsRequest {
-  /// Specific run_time for a transfer run to be started.
+  /// A run_time timestamp for historical data files or reports that are
+  /// scheduled to be transferred by the scheduled transfer run.
   ///
-  /// The requested_run_time must not be in the future.
+  /// requested_run_time must be a past time and cannot include future time
+  /// values.
   core.String? requestedRunTime;
 
-  /// Time range for the transfer runs that should be started.
+  /// A time_range start and end timestamp for historical data files or reports
+  /// that are scheduled to be transferred by the scheduled transfer run.
+  ///
+  /// requested_time_range must be a past time and cannot include future time
+  /// values.
   TimeRange? requestedTimeRange;
 
   StartManualTransferRunsRequest({
@@ -2738,6 +2766,15 @@ class TransferConfig {
   /// email address of the user who owns this transfer config.
   EmailPreferences? emailPreferences;
 
+  /// The encryption configuration part.
+  ///
+  /// Currently, it is only used for the optional KMS key name. The BigQuery
+  /// service account of your project must be granted permissions to use the
+  /// key. Read methods will return the key name applied in effect. Write
+  /// methods will apply the key if it is present, or otherwise try to apply
+  /// project default keys if it is absent.
+  EncryptionConfiguration? encryptionConfiguration;
+
   /// The resource name of the transfer config.
   ///
   /// Transfer config names have the form
@@ -2825,6 +2862,7 @@ class TransferConfig {
     this.disabled,
     this.displayName,
     this.emailPreferences,
+    this.encryptionConfiguration,
     this.name,
     this.nextRunTime,
     this.notificationPubsubTopic,
@@ -2860,6 +2898,11 @@ class TransferConfig {
           emailPreferences: json_.containsKey('emailPreferences')
               ? EmailPreferences.fromJson(json_['emailPreferences']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          encryptionConfiguration: json_.containsKey('encryptionConfiguration')
+              ? EncryptionConfiguration.fromJson(
+                  json_['encryptionConfiguration']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           nextRunTime: json_.containsKey('nextRunTime')
@@ -2902,6 +2945,8 @@ class TransferConfig {
         if (disabled != null) 'disabled': disabled!,
         if (displayName != null) 'displayName': displayName!,
         if (emailPreferences != null) 'emailPreferences': emailPreferences!,
+        if (encryptionConfiguration != null)
+          'encryptionConfiguration': encryptionConfiguration!,
         if (name != null) 'name': name!,
         if (nextRunTime != null) 'nextRunTime': nextRunTime!,
         if (notificationPubsubTopic != null)

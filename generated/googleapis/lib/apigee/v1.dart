@@ -15174,6 +15174,17 @@ class GoogleCloudApigeeV1ApiProduct {
   /// applied on all graphQL requests matching the operation type.
   GoogleCloudApigeeV1GraphQLOperationGroup? graphqlOperationGroup;
 
+  /// Configuration used to group Apigee proxies with gRPC services and method
+  /// names.
+  ///
+  /// This grouping allows us to set quota for a particular proxy with the gRPC
+  /// service name and method. If a method name is not set, this implies quota
+  /// and authorization are applied to all gRPC methods implemented by that
+  /// proxy for that particular gRPC service.
+  ///
+  /// Optional.
+  GoogleCloudApigeeV1GrpcOperationGroup? grpcOperationGroup;
+
   /// Response only.
   ///
   /// Modified time of this environment as milliseconds since epoch.
@@ -15264,6 +15275,7 @@ class GoogleCloudApigeeV1ApiProduct {
     this.displayName,
     this.environments,
     this.graphqlOperationGroup,
+    this.grpcOperationGroup,
     this.lastModifiedAt,
     this.name,
     this.operationGroup,
@@ -15310,6 +15322,11 @@ class GoogleCloudApigeeV1ApiProduct {
                   json_['graphqlOperationGroup']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          grpcOperationGroup: json_.containsKey('grpcOperationGroup')
+              ? GoogleCloudApigeeV1GrpcOperationGroup.fromJson(
+                  json_['grpcOperationGroup']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           lastModifiedAt: json_.containsKey('lastModifiedAt')
               ? json_['lastModifiedAt'] as core.String
               : null,
@@ -15352,6 +15369,8 @@ class GoogleCloudApigeeV1ApiProduct {
         if (environments != null) 'environments': environments!,
         if (graphqlOperationGroup != null)
           'graphqlOperationGroup': graphqlOperationGroup!,
+        if (grpcOperationGroup != null)
+          'grpcOperationGroup': grpcOperationGroup!,
         if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
         if (name != null) 'name': name!,
         if (operationGroup != null) 'operationGroup': operationGroup!,
@@ -19552,6 +19571,7 @@ class GoogleCloudApigeeV1Environment {
   ///
   /// Optional.
   core.String? forwardProxyUri;
+  core.bool? hasAttachedFlowHooks;
 
   /// Last modification time of this environment as milliseconds since epoch.
   ///
@@ -19595,6 +19615,7 @@ class GoogleCloudApigeeV1Environment {
     this.description,
     this.displayName,
     this.forwardProxyUri,
+    this.hasAttachedFlowHooks,
     this.lastModifiedAt,
     this.name,
     this.nodeConfig,
@@ -19622,6 +19643,9 @@ class GoogleCloudApigeeV1Environment {
           forwardProxyUri: json_.containsKey('forwardProxyUri')
               ? json_['forwardProxyUri'] as core.String
               : null,
+          hasAttachedFlowHooks: json_.containsKey('hasAttachedFlowHooks')
+              ? json_['hasAttachedFlowHooks'] as core.bool
+              : null,
           lastModifiedAt: json_.containsKey('lastModifiedAt')
               ? json_['lastModifiedAt'] as core.String
               : null,
@@ -19645,6 +19669,8 @@ class GoogleCloudApigeeV1Environment {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (forwardProxyUri != null) 'forwardProxyUri': forwardProxyUri!,
+        if (hasAttachedFlowHooks != null)
+          'hasAttachedFlowHooks': hasAttachedFlowHooks!,
         if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
         if (name != null) 'name': name!,
         if (nodeConfig != null) 'nodeConfig': nodeConfig!,
@@ -20665,6 +20691,111 @@ class GoogleCloudApigeeV1GraphQLOperationGroup {
   core.Map<core.String, core.dynamic> toJson() => {
         if (operationConfigType != null)
           'operationConfigType': operationConfigType!,
+        if (operationConfigs != null) 'operationConfigs': operationConfigs!,
+      };
+}
+
+/// Binds the resources in a proxy or remote service with the gRPC operation and
+/// its associated quota enforcement.
+class GoogleCloudApigeeV1GrpcOperationConfig {
+  /// Name of the API proxy with which the gRPC operation and quota are
+  /// associated.
+  ///
+  /// Required.
+  core.String? apiSource;
+
+  /// Custom attributes associated with the operation.
+  core.List<GoogleCloudApigeeV1Attribute>? attributes;
+
+  /// List of unqualified gRPC method names for the proxy to which quota will be
+  /// applied.
+  ///
+  /// If this field is empty, the Quota will apply to all operations on the gRPC
+  /// service defined on the proxy. Example: Given a proxy that is configured to
+  /// serve com.petstore.PetService, the methods
+  /// com.petstore.PetService.ListPets and com.petstore.PetService.GetPet would
+  /// be specified here as simply \["ListPets", "GetPet"\].
+  core.List<core.String>? methods;
+
+  /// Quota parameters to be enforced for the methods and API source
+  /// combination.
+  ///
+  /// If none are specified, quota enforcement will not be done.
+  GoogleCloudApigeeV1Quota? quota;
+
+  /// gRPC Service name associated to be associated with the API proxy, on which
+  /// quota rules can be applied upon.
+  ///
+  /// Required.
+  core.String? service;
+
+  GoogleCloudApigeeV1GrpcOperationConfig({
+    this.apiSource,
+    this.attributes,
+    this.methods,
+    this.quota,
+    this.service,
+  });
+
+  GoogleCloudApigeeV1GrpcOperationConfig.fromJson(core.Map json_)
+      : this(
+          apiSource: json_.containsKey('apiSource')
+              ? json_['apiSource'] as core.String
+              : null,
+          attributes: json_.containsKey('attributes')
+              ? (json_['attributes'] as core.List)
+                  .map((value) => GoogleCloudApigeeV1Attribute.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          methods: json_.containsKey('methods')
+              ? (json_['methods'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          quota: json_.containsKey('quota')
+              ? GoogleCloudApigeeV1Quota.fromJson(
+                  json_['quota'] as core.Map<core.String, core.dynamic>)
+              : null,
+          service: json_.containsKey('service')
+              ? json_['service'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiSource != null) 'apiSource': apiSource!,
+        if (attributes != null) 'attributes': attributes!,
+        if (methods != null) 'methods': methods!,
+        if (quota != null) 'quota': quota!,
+        if (service != null) 'service': service!,
+      };
+}
+
+/// List of gRPC operation configuration details associated with Apigee API
+/// proxies.
+class GoogleCloudApigeeV1GrpcOperationGroup {
+  /// List of operation configurations for either Apigee API proxies that are
+  /// associated with this API product.
+  ///
+  /// Required.
+  core.List<GoogleCloudApigeeV1GrpcOperationConfig>? operationConfigs;
+
+  GoogleCloudApigeeV1GrpcOperationGroup({
+    this.operationConfigs,
+  });
+
+  GoogleCloudApigeeV1GrpcOperationGroup.fromJson(core.Map json_)
+      : this(
+          operationConfigs: json_.containsKey('operationConfigs')
+              ? (json_['operationConfigs'] as core.List)
+                  .map((value) =>
+                      GoogleCloudApigeeV1GrpcOperationConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
         if (operationConfigs != null) 'operationConfigs': operationConfigs!,
       };
 }
@@ -27015,9 +27146,13 @@ class GoogleCloudApigeeV1TargetServer {
   /// - "PROTOCOL_UNSPECIFIED" : UNSPECIFIED defaults to HTTP for backwards
   /// compatibility.
   /// - "HTTP" : The TargetServer uses HTTP.
+  /// - "HTTP2" : The TargetSever uses HTTP2.
+  /// - "GRPC_TARGET" : The TargetServer uses GRPC.
   /// - "GRPC" : GRPC TargetServer to be used in ExternalCallout Policy. Prefer
   /// to use EXTERNAL_CALLOUT instead. TODO(b/266125112) deprecate once EXTERNAL
   /// _CALLOUT generally available.
+  /// - "EXTERNAL_CALLOUT" : The TargetServer is to be used in the
+  /// ExternalCallout Policy
   core.String? protocol;
 
   /// Specifies TLS configuration info for this TargetServer.
@@ -27091,9 +27226,13 @@ class GoogleCloudApigeeV1TargetServerConfig {
   /// - "PROTOCOL_UNSPECIFIED" : UNSPECIFIED defaults to HTTP for backwards
   /// compatibility.
   /// - "HTTP" : The TargetServer uses HTTP.
+  /// - "HTTP2" : The TargetSever uses HTTP2.
+  /// - "GRPC_TARGET" : The TargetServer uses GRPC.
   /// - "GRPC" : GRPC TargetServer to be used in ExternalCallout Policy. Prefer
   /// to use EXTERNAL_CALLOUT instead. TODO(b/266125112) deprecate once EXTERNAL
   /// _CALLOUT generally available.
+  /// - "EXTERNAL_CALLOUT" : The TargetServer is to be used in the
+  /// ExternalCallout Policy
   core.String? protocol;
 
   /// TLS settings for the target server.

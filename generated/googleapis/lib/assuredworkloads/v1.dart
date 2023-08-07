@@ -972,6 +972,15 @@ class GoogleCloudAssuredworkloadsV1Violation {
   /// Output only. Immutable.
   core.String? nonCompliantOrgPolicy;
 
+  /// The org-policy-constraint that was incorrectly changed, which resulted in
+  /// this violation.
+  ///
+  /// Output only. Immutable.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? orgPolicyConstraint;
+
   /// Compliance violation remediation
   ///
   /// Output only.
@@ -1010,6 +1019,7 @@ class GoogleCloudAssuredworkloadsV1Violation {
     this.exceptionContexts,
     this.name,
     this.nonCompliantOrgPolicy,
+    this.orgPolicyConstraint,
     this.remediation,
     this.resolveTime,
     this.state,
@@ -1051,6 +1061,9 @@ class GoogleCloudAssuredworkloadsV1Violation {
           nonCompliantOrgPolicy: json_.containsKey('nonCompliantOrgPolicy')
               ? json_['nonCompliantOrgPolicy'] as core.String
               : null,
+          orgPolicyConstraint: json_.containsKey('orgPolicyConstraint')
+              ? json_['orgPolicyConstraint'] as core.String
+              : null,
           remediation: json_.containsKey('remediation')
               ? GoogleCloudAssuredworkloadsV1ViolationRemediation.fromJson(
                   json_['remediation'] as core.Map<core.String, core.dynamic>)
@@ -1079,6 +1092,8 @@ class GoogleCloudAssuredworkloadsV1Violation {
         if (name != null) 'name': name!,
         if (nonCompliantOrgPolicy != null)
           'nonCompliantOrgPolicy': nonCompliantOrgPolicy!,
+        if (orgPolicyConstraint != null)
+          'orgPolicyConstraint': orgPolicyConstraint!,
         if (remediation != null) 'remediation': remediation!,
         if (resolveTime != null) 'resolveTime': resolveTime!,
         if (state != null) 'state': state!,
@@ -1786,36 +1801,46 @@ class GoogleCloudAssuredworkloadsV1WorkloadKMSSettings {
 
 /// Permissions granted to the AW Partner SA account for the customer workload
 class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions {
+  /// Allow partner to view violation alerts.
+  ///
+  /// Optional.
+  core.bool? assuredWorkloadsMonitoring;
+
   /// Allow the partner to view inspectability logs and monitoring violations.
   core.bool? dataLogsViewer;
 
-  /// Allow partner to monitor folder and remediate violations
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.bool? remediateFolderViolations;
+  /// Allow partner to view access approval logs.
+  ///
+  /// Optional.
+  core.bool? serviceAccessApprover;
 
   GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions({
+    this.assuredWorkloadsMonitoring,
     this.dataLogsViewer,
-    this.remediateFolderViolations,
+    this.serviceAccessApprover,
   });
 
   GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions.fromJson(
       core.Map json_)
       : this(
+          assuredWorkloadsMonitoring:
+              json_.containsKey('assuredWorkloadsMonitoring')
+                  ? json_['assuredWorkloadsMonitoring'] as core.bool
+                  : null,
           dataLogsViewer: json_.containsKey('dataLogsViewer')
               ? json_['dataLogsViewer'] as core.bool
               : null,
-          remediateFolderViolations:
-              json_.containsKey('remediateFolderViolations')
-                  ? json_['remediateFolderViolations'] as core.bool
-                  : null,
+          serviceAccessApprover: json_.containsKey('serviceAccessApprover')
+              ? json_['serviceAccessApprover'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (assuredWorkloadsMonitoring != null)
+          'assuredWorkloadsMonitoring': assuredWorkloadsMonitoring!,
         if (dataLogsViewer != null) 'dataLogsViewer': dataLogsViewer!,
-        if (remediateFolderViolations != null)
-          'remediateFolderViolations': remediateFolderViolations!,
+        if (serviceAccessApprover != null)
+          'serviceAccessApprover': serviceAccessApprover!,
       };
 }
 

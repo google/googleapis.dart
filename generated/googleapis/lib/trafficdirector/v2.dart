@@ -712,6 +712,9 @@ class GoogleRE2 {
   /// increased or the regex can be simplified. If not specified, the default is
   /// 100. This field is deprecated; regexp validation should be performed on
   /// the management server instead of being done by each individual client.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? maxProgramSize;
 
   GoogleRE2({
@@ -897,6 +900,9 @@ class Node {
   ///
   /// This will be set by Envoy in management server RPCs. This field is
   /// deprecated in favor of the user_agent_name and user_agent_version values.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? buildVersion;
 
   /// Client feature support list.
@@ -1545,6 +1551,9 @@ class StringMatcher {
   /// *1234* * The regex ``\d{3}`` does not match the value *123.456* ..
   /// attention:: This field has been deprecated in favor of `safe_regex` as it
   /// is not safe for use with untrusted input in all cases.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? regex;
 
   /// The input string must match the regular expression specified here.

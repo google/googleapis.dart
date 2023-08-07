@@ -757,6 +757,7 @@ api.ConnectorInfraConfig buildConnectorInfraConfig() {
   final o = api.ConnectorInfraConfig();
   buildCounterConnectorInfraConfig++;
   if (buildCounterConnectorInfraConfig < 3) {
+    o.internalclientRatelimitThreshold = 'foo';
     o.ratelimitThreshold = 'foo';
   }
   buildCounterConnectorInfraConfig--;
@@ -766,6 +767,10 @@ api.ConnectorInfraConfig buildConnectorInfraConfig() {
 void checkConnectorInfraConfig(api.ConnectorInfraConfig o) {
   buildCounterConnectorInfraConfig++;
   if (buildCounterConnectorInfraConfig < 3) {
+    unittest.expect(
+      o.internalclientRatelimitThreshold!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.ratelimitThreshold!,
       unittest.equals('foo'),
@@ -909,6 +914,7 @@ api.ConnectorVersionInfraConfig buildConnectorVersionInfraConfig() {
   final o = api.ConnectorVersionInfraConfig();
   buildCounterConnectorVersionInfraConfig++;
   if (buildCounterConnectorVersionInfraConfig < 3) {
+    o.internalclientRatelimitThreshold = 'foo';
     o.ratelimitThreshold = 'foo';
   }
   buildCounterConnectorVersionInfraConfig--;
@@ -918,6 +924,10 @@ api.ConnectorVersionInfraConfig buildConnectorVersionInfraConfig() {
 void checkConnectorVersionInfraConfig(api.ConnectorVersionInfraConfig o) {
   buildCounterConnectorVersionInfraConfig++;
   if (buildCounterConnectorVersionInfraConfig < 3) {
+    unittest.expect(
+      o.internalclientRatelimitThreshold!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.ratelimitThreshold!,
       unittest.equals('foo'),

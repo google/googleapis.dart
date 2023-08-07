@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230717",
+    "revision": "20230807",
     "rootUrl": "https://adexchangebuyer.googleapis.com/",
     "servicePath": "",
     "title": "Ad Exchange Buyer API II",
@@ -5687,7 +5687,8 @@
                         "OPPO",
                         "SAMSUNG",
                         "VIVO",
-                        "XIAOMI"
+                        "XIAOMI",
+                        "LG_TV"
                     ],
                     "enumDescriptions": [
                         "A placeholder for an unknown app store.",
@@ -5702,7 +5703,8 @@
                         "OPPO App Market",
                         "Samsung Galaxy Store",
                         "VIVO App Store",
-                        "Xiaomi GetApps"
+                        "Xiaomi GetApps",
+                        "LG TV"
                     ],
                     "type": "string"
                 },

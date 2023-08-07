@@ -663,10 +663,16 @@ class VerifyChallengeResponseRequest {
 
 /// Result message for VerifiedAccess.VerifyChallengeResponse.
 class VerifyChallengeResponseResult {
+  /// Attested device ID (ADID).
+  core.String? attestedDeviceId;
+
   /// Unique customer id that this device belongs to, as defined by the Google
   /// Admin SDK at
   /// https://developers.google.com/admin-sdk/directory/v1/guides/manage-customers
   core.String? customerId;
+
+  /// Device enrollment id for ChromeOS devices.
+  core.String? deviceEnrollmentId;
 
   /// Device permanent id is returned in this field (for the machine response
   /// only).
@@ -728,7 +734,9 @@ class VerifyChallengeResponseResult {
   core.String? virtualProfileId;
 
   VerifyChallengeResponseResult({
+    this.attestedDeviceId,
     this.customerId,
+    this.deviceEnrollmentId,
     this.devicePermanentId,
     this.deviceSignal,
     this.deviceSignals,
@@ -742,8 +750,14 @@ class VerifyChallengeResponseResult {
 
   VerifyChallengeResponseResult.fromJson(core.Map json_)
       : this(
+          attestedDeviceId: json_.containsKey('attestedDeviceId')
+              ? json_['attestedDeviceId'] as core.String
+              : null,
           customerId: json_.containsKey('customerId')
               ? json_['customerId'] as core.String
+              : null,
+          deviceEnrollmentId: json_.containsKey('deviceEnrollmentId')
+              ? json_['deviceEnrollmentId'] as core.String
               : null,
           devicePermanentId: json_.containsKey('devicePermanentId')
               ? json_['devicePermanentId'] as core.String
@@ -777,7 +791,10 @@ class VerifyChallengeResponseResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (attestedDeviceId != null) 'attestedDeviceId': attestedDeviceId!,
         if (customerId != null) 'customerId': customerId!,
+        if (deviceEnrollmentId != null)
+          'deviceEnrollmentId': deviceEnrollmentId!,
         if (devicePermanentId != null) 'devicePermanentId': devicePermanentId!,
         if (deviceSignal != null) 'deviceSignal': deviceSignal!,
         if (deviceSignals != null) 'deviceSignals': deviceSignals!,

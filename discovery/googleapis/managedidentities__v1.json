@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230705",
+    "revision": "20230712",
     "rootUrl": "https://managedidentities.googleapis.com/",
     "servicePath": "",
     "title": "Managed Service for Microsoft Active Directory API",

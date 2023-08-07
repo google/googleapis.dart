@@ -4534,6 +4534,10 @@ class BuildApproval {
 
 /// Optional arguments to enable specific features of builds.
 class BuildOptions {
+  /// Option to include built-in and custom substitutions as env variables for
+  /// all build steps.
+  core.bool? automapSubstitutions;
+
   /// Option to specify how default logs buckets are setup.
   ///
   /// Optional.
@@ -4541,7 +4545,7 @@ class BuildOptions {
   /// - "DEFAULT_LOGS_BUCKET_BEHAVIOR_UNSPECIFIED" : Unspecified.
   /// - "REGIONAL_USER_OWNED_BUCKET" : Bucket is located in user-owned project
   /// in the same region as the build. The builder service account must have
-  /// access to create and write to GCS buckets in the build project.
+  /// access to create and write to Cloud Storage buckets in the build project.
   core.String? defaultLogsBucketBehavior;
 
   /// Requested disk size for the VM that runs the build.
@@ -4650,9 +4654,13 @@ class BuildOptions {
   core.List<Volume>? volumes;
 
   /// This field deprecated; please use `pool.name` instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? workerPool;
 
   BuildOptions({
+    this.automapSubstitutions,
     this.defaultLogsBucketBehavior,
     this.diskSizeGb,
     this.dynamicSubstitutions,
@@ -4671,6 +4679,9 @@ class BuildOptions {
 
   BuildOptions.fromJson(core.Map json_)
       : this(
+          automapSubstitutions: json_.containsKey('automapSubstitutions')
+              ? json_['automapSubstitutions'] as core.bool
+              : null,
           defaultLogsBucketBehavior:
               json_.containsKey('defaultLogsBucketBehavior')
                   ? json_['defaultLogsBucketBehavior'] as core.String
@@ -4727,6 +4738,8 @@ class BuildOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (automapSubstitutions != null)
+          'automapSubstitutions': automapSubstitutions!,
         if (defaultLogsBucketBehavior != null)
           'defaultLogsBucketBehavior': defaultLogsBucketBehavior!,
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
@@ -4772,6 +4785,12 @@ class BuildStep {
   /// define an entrypoint, the first element in args is used as the entrypoint,
   /// and the remainder will be used as arguments.
   core.List<core.String>? args;
+
+  /// Option to include built-in and custom substitutions as env variables for
+  /// this build step.
+  ///
+  /// This option will override the global option in BuildOption.
+  core.bool? automapSubstitutions;
 
   /// Working directory to use when running this step's container.
   ///
@@ -4890,6 +4909,7 @@ class BuildStep {
     this.allowExitCodes,
     this.allowFailure,
     this.args,
+    this.automapSubstitutions,
     this.dir,
     this.entrypoint,
     this.env,
@@ -4920,6 +4940,9 @@ class BuildStep {
               ? (json_['args'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
+              : null,
+          automapSubstitutions: json_.containsKey('automapSubstitutions')
+              ? json_['automapSubstitutions'] as core.bool
               : null,
           dir: json_.containsKey('dir') ? json_['dir'] as core.String : null,
           entrypoint: json_.containsKey('entrypoint')
@@ -4974,6 +4997,8 @@ class BuildStep {
         if (allowExitCodes != null) 'allowExitCodes': allowExitCodes!,
         if (allowFailure != null) 'allowFailure': allowFailure!,
         if (args != null) 'args': args!,
+        if (automapSubstitutions != null)
+          'automapSubstitutions': automapSubstitutions!,
         if (dir != null) 'dir': dir!,
         if (entrypoint != null) 'entrypoint': entrypoint!,
         if (env != null) 'env': env!,
@@ -5758,6 +5783,9 @@ class GitHubEnterpriseConfig {
 /// Format is: projects//secrets/.
 class GitHubEnterpriseSecrets {
   /// The resource name for the OAuth client ID secret in Secret Manager.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? oauthClientIdName;
 
   /// The resource name for the OAuth client ID secret version in Secret
@@ -5765,18 +5793,27 @@ class GitHubEnterpriseSecrets {
   core.String? oauthClientIdVersionName;
 
   /// The resource name for the OAuth secret in Secret Manager.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? oauthSecretName;
 
   /// The resource name for the OAuth secret secret version in Secret Manager.
   core.String? oauthSecretVersionName;
 
   /// The resource name for the private key secret.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? privateKeyName;
 
   /// The resource name for the private key secret version.
   core.String? privateKeyVersionName;
 
   /// The resource name for the webhook secret in Secret Manager.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? webhookSecretName;
 
   /// The resource name for the webhook secret secret version in Secret Manager.
@@ -5852,6 +5889,9 @@ class GitHubEventsConfig {
   core.String? enterpriseConfigResourceName;
 
   /// The installationID that emits the GitHub event.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? installationId;
 
   /// Name of the repository.
