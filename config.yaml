@@ -243,7 +243,7 @@ packages:
     - sts:v1
     - tagmanager:v1 # https://developers.google.com/tag-manager/
     - tagmanager:v2 # https://developers.google.com/tag-manager/
-    - tasks:v1 # https://developers.google.com/google-appqs/tasks/
+    - tasks:v1 # https://developers.google.com/google-apps/tasks/
     - testing:v1 # https://developers.google.com/cloud-test-lab/
     - texttospeech:v1 # https://cloud.google.com/text-to-speech/
     - tpu:v1 # https://cloud.google.com/tpu/
