@@ -1016,7 +1016,7 @@ class GoogleLongrunningOperation {
   /// Matches the `/v1/{project-name}/operations/{operation-id}` pattern.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard

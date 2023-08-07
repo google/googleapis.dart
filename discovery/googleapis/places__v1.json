@@ -17,7 +17,7 @@
     "basePath": "",
     "baseUrl": "https://places.googleapis.com/",
     "batchPath": "batch",
-    "canonicalName": "Places API (New)",
+    "canonicalName": "Places",
     "description": "",
     "discoveryVersion": "v1",
     "documentationLink": "https://mapsplatform.google.com/maps-products/#places-section",

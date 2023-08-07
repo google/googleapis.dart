@@ -1146,7 +1146,7 @@ void main() {
   unittest.group('resource-TextResource', () {
     unittest.test('method--search', () async {
       final mock = HttpServerMock();
-      final res = api.PlacesAPI__New_Api(mock).Text;
+      final res = api.PlacesApi(mock).Text;
       final arg_request = buildGoogleMapsPlacesV1SearchTextRequest();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1205,7 +1205,7 @@ void main() {
   unittest.group('resource-PlacesResource', () {
     unittest.test('method--searchText', () async {
       final mock = HttpServerMock();
-      final res = api.PlacesAPI__New_Api(mock).places;
+      final res = api.PlacesApi(mock).places;
       final arg_request = buildGoogleMapsPlacesV1SearchTextRequest();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

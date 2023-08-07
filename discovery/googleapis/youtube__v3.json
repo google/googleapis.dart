@@ -43,7 +43,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230806",
+    "revision": "20230807",
     "rootUrl": "https://youtube.googleapis.com/",
     "servicePath": "",
     "title": "YouTube Data API v3",
@@ -9852,17 +9852,6 @@
         "PlaylistStatus": {
             "id": "PlaylistStatus",
             "properties": {
-                "podcastStatus": {
-                    "enum": [
-                        "enabled",
-                        "disabled"
-                    ],
-                    "enumDescriptions": [
-                        "",
-                        ""
-                    ],
-                    "type": "string"
-                },
                 "privacyStatus": {
                     "description": "The playlist's privacy status.",
                     "enum": [
