@@ -2846,9 +2846,10 @@ class Authority {
   /// A JSON Web Token (JWT) issuer URI.
   ///
   /// `issuer` must start with `https://` and be a valid URL with length \<2000
-  /// characters. If set, then Google will allow valid OIDC tokens from this
-  /// issuer to authenticate within the workload_identity_pool. OIDC discovery
-  /// will be performed on this URI to validate tokens from the issuer. Clearing
+  /// characters, it must use `location` rather than `zone` for GKE clusters. If
+  /// set, then Google will allow valid OIDC tokens from this issuer to
+  /// authenticate within the workload_identity_pool. OIDC discovery will be
+  /// performed on this URI to validate tokens from the issuer. Clearing
   /// `issuer` disables Workload Identity. `issuer` cannot be directly modified;
   /// it must be cleared (and Workload Identity disabled) before using a new
   /// issuer (and re-enabling Workload Identity).
@@ -3089,7 +3090,37 @@ class CommonFeatureState {
 
 /// CommonFleetDefaultMemberConfigSpec contains default configuration
 /// information for memberships of a fleet
-typedef CommonFleetDefaultMemberConfigSpec = $Empty;
+class CommonFleetDefaultMemberConfigSpec {
+  /// Config Management-specific spec.
+  ConfigManagementMembershipSpec? configmanagement;
+
+  /// Policy Controller spec.
+  PolicyControllerMembershipSpec? policycontroller;
+
+  CommonFleetDefaultMemberConfigSpec({
+    this.configmanagement,
+    this.policycontroller,
+  });
+
+  CommonFleetDefaultMemberConfigSpec.fromJson(core.Map json_)
+      : this(
+          configmanagement: json_.containsKey('configmanagement')
+              ? ConfigManagementMembershipSpec.fromJson(
+                  json_['configmanagement']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          policycontroller: json_.containsKey('policycontroller')
+              ? PolicyControllerMembershipSpec.fromJson(
+                  json_['policycontroller']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (configmanagement != null) 'configmanagement': configmanagement!,
+        if (policycontroller != null) 'policycontroller': policycontroller!,
+      };
+}
 
 /// Configuration for Config Sync
 class ConfigManagementConfigSync {
@@ -4203,29 +4234,7 @@ class ConfigManagementPolicyControllerMigration {
 ///
 /// For example, to specify metrics should be exported to Cloud Monitoring and
 /// Prometheus, specify backends: \["cloudmonitoring", "prometheus"\]
-class ConfigManagementPolicyControllerMonitoring {
-  /// Specifies the list of backends Policy Controller will export to.
-  ///
-  /// An empty list would effectively disable metrics export.
-  core.List<core.String>? backends;
-
-  ConfigManagementPolicyControllerMonitoring({
-    this.backends,
-  });
-
-  ConfigManagementPolicyControllerMonitoring.fromJson(core.Map json_)
-      : this(
-          backends: json_.containsKey('backends')
-              ? (json_['backends'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (backends != null) 'backends': backends!,
-      };
-}
+typedef ConfigManagementPolicyControllerMonitoring = $Shared08;
 
 /// State for PolicyControllerState.
 class ConfigManagementPolicyControllerState {
@@ -4332,14 +4341,13 @@ class ConfigManagementSyncError {
 class ConfigManagementSyncState {
   /// Sync status code
   /// Possible string values are:
-  /// - "SYNC_CODE_UNSPECIFIED" : ACM cannot determine a sync code
-  /// - "SYNCED" : ACM successfully synced the git Repo with the cluster
-  /// - "PENDING" : ACM is in the progress of syncing a new change
-  /// - "ERROR" : Indicates an error configuring ACM, and user action is
+  /// - "SYNC_CODE_UNSPECIFIED" : Config Sync cannot determine a sync code
+  /// - "SYNCED" : Config Sync successfully synced the git Repo with the cluster
+  /// - "PENDING" : Config Sync is in the progress of syncing a new change
+  /// - "ERROR" : Indicates an error configuring Config Sync, and user action is
   /// required
-  /// - "NOT_CONFIGURED" : ACM has been installed (operator manifest deployed),
-  /// but not configured.
-  /// - "NOT_INSTALLED" : ACM has not been installed (no operator pod found)
+  /// - "NOT_CONFIGURED" : Config Sync has been installed but not configured
+  /// - "NOT_INSTALLED" : Config Sync has not been installed
   /// - "UNAUTHORIZED" : Error authorizing with the cluster
   /// - "UNREACHABLE" : Cluster could not be reached
   core.String? code;
@@ -6313,10 +6321,6 @@ class MembershipBinding {
   /// Output only.
   core.String? deleteTime;
 
-  /// Whether the membershipbinding is Fleet-wide; true means that this
-  /// Membership should be bound to all Namespaces in this entire Fleet.
-  core.bool? fleet;
-
   /// Labels for this MembershipBinding.
   ///
   /// Optional.
@@ -6352,7 +6356,6 @@ class MembershipBinding {
   MembershipBinding({
     this.createTime,
     this.deleteTime,
-    this.fleet,
     this.labels,
     this.name,
     this.scope,
@@ -6369,8 +6372,6 @@ class MembershipBinding {
           deleteTime: json_.containsKey('deleteTime')
               ? json_['deleteTime'] as core.String
               : null,
-          fleet:
-              json_.containsKey('fleet') ? json_['fleet'] as core.bool : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -6395,7 +6396,6 @@ class MembershipBinding {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
-        if (fleet != null) 'fleet': fleet!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (scope != null) 'scope': scope!,
@@ -6568,12 +6568,16 @@ class MembershipFeatureSpec {
   /// config (updated to USER implicitly) or setting to FLEET explicitly.
   Origin? origin;
 
+  /// Policy Controller spec.
+  PolicyControllerMembershipSpec? policycontroller;
+
   MembershipFeatureSpec({
     this.configmanagement,
     this.fleetobservability,
     this.identityservice,
     this.mesh,
     this.origin,
+    this.policycontroller,
   });
 
   MembershipFeatureSpec.fromJson(core.Map json_)
@@ -6600,6 +6604,11 @@ class MembershipFeatureSpec {
               ? Origin.fromJson(
                   json_['origin'] as core.Map<core.String, core.dynamic>)
               : null,
+          policycontroller: json_.containsKey('policycontroller')
+              ? PolicyControllerMembershipSpec.fromJson(
+                  json_['policycontroller']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6609,6 +6618,7 @@ class MembershipFeatureSpec {
         if (identityservice != null) 'identityservice': identityservice!,
         if (mesh != null) 'mesh': mesh!,
         if (origin != null) 'origin': origin!,
+        if (policycontroller != null) 'policycontroller': policycontroller!,
       };
 }
 
@@ -6627,6 +6637,9 @@ class MembershipFeatureState {
   /// Identity Service-specific state.
   IdentityServiceMembershipState? identityservice;
 
+  /// Policycontroller-specific state.
+  PolicyControllerMembershipState? policycontroller;
+
   /// Service Mesh-specific state.
   ServiceMeshMembershipState? servicemesh;
 
@@ -6638,6 +6651,7 @@ class MembershipFeatureState {
     this.configmanagement,
     this.fleetobservability,
     this.identityservice,
+    this.policycontroller,
     this.servicemesh,
     this.state,
   });
@@ -6662,6 +6676,11 @@ class MembershipFeatureState {
               ? IdentityServiceMembershipState.fromJson(json_['identityservice']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          policycontroller: json_.containsKey('policycontroller')
+              ? PolicyControllerMembershipState.fromJson(
+                  json_['policycontroller']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           servicemesh: json_.containsKey('servicemesh')
               ? ServiceMeshMembershipState.fromJson(
                   json_['servicemesh'] as core.Map<core.String, core.dynamic>)
@@ -6678,6 +6697,7 @@ class MembershipFeatureState {
         if (fleetobservability != null)
           'fleetobservability': fleetobservability!,
         if (identityservice != null) 'identityservice': identityservice!,
+        if (policycontroller != null) 'policycontroller': policycontroller!,
         if (servicemesh != null) 'servicemesh': servicemesh!,
         if (state != null) 'state': state!,
       };
@@ -6711,42 +6731,44 @@ class MembershipState {
       };
 }
 
-/// This field informs Fleet-based applications/services/UIs with the necessary
-/// information for where each underlying Cluster reports its metrics.
+/// MonitoringConfig informs Fleet-based applications/services/UIs how the
+/// metrics for the underlying cluster is reported to cloud monitoring services.
+///
+/// It can be set from empty to non-empty, but can't be mutated directly to
+/// prevent accidentally breaking the constinousty of metrics.
 class MonitoringConfig {
   /// Cluster name used to report metrics.
   ///
-  /// For Anthos on VMWare/Baremetal, it would be in format
-  /// `memberClusters/cluster_name`; And for Anthos on MultiCloud, it would be
-  /// in format `{azureClusters, awsClusters}/cluster_name`.
+  /// For Anthos on VMWare/Baremetal/MultiCloud clusters, it would be in format
+  /// {cluster_type}/{cluster_name}, e.g., "awsClusters/cluster_1".
   ///
-  /// Immutable.
+  /// Optional.
   core.String? cluster;
 
-  /// Cluster hash, this is a unique string generated by google code, which does
-  /// not contain any PII, which we can use to reference the cluster.
+  /// For GKE and Multicloud clusters, this is the UUID of the cluster resource.
   ///
-  /// This is expected to be created by the monitoring stack and persisted into
-  /// the Cluster object as well as to GKE-Hub.
+  /// For VMWare and Baremetal clusters, this is the kube-system UID.
   ///
-  /// Immutable.
+  /// Optional.
   core.String? clusterHash;
 
   /// Kubernetes system metrics, if available, are written to this prefix.
   ///
   /// This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for
   /// Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix
-  /// today but will migration to be under kubernetes.io/anthos
+  /// today but will migration to be under kubernetes.io/anthos.
+  ///
+  /// Optional.
   core.String? kubernetesMetricsPrefix;
 
   /// Location used to report Metrics
   ///
-  /// Immutable.
+  /// Optional.
   core.String? location;
 
   /// Project used to report Metrics
   ///
-  /// Immutable.
+  /// Optional.
   core.String? projectId;
 
   MonitoringConfig({
@@ -7091,7 +7113,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -7144,6 +7166,8 @@ class Origin {
   /// - "TYPE_UNSPECIFIED" : Type is unknown or not set.
   /// - "FLEET" : Per-Membership spec was inherited from the fleet-level
   /// default.
+  /// - "FLEET_OUT_OF_SYNC" : Per-Membership spec was inherited from the
+  /// fleet-level default but is now out of sync with the current default.
   /// - "USER" : Per-Membership spec was inherited from a user specification.
   core.String? type;
 
@@ -7175,23 +7199,23 @@ class Origin {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -7279,6 +7303,652 @@ class Policy {
         if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// BundleInstallSpec is the specification configuration for a single managed
+/// bundle.
+class PolicyControllerBundleInstallSpec {
+  /// The set of namespaces to be exempted from the bundle.
+  core.List<core.String>? exemptedNamespaces;
+
+  PolicyControllerBundleInstallSpec({
+    this.exemptedNamespaces,
+  });
+
+  PolicyControllerBundleInstallSpec.fromJson(core.Map json_)
+      : this(
+          exemptedNamespaces: json_.containsKey('exemptedNamespaces')
+              ? (json_['exemptedNamespaces'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (exemptedNamespaces != null)
+          'exemptedNamespaces': exemptedNamespaces!,
+      };
+}
+
+/// Configuration for Policy Controller
+class PolicyControllerHubConfig {
+  /// Sets the interval for Policy Controller Audit Scans (in seconds).
+  ///
+  /// When set to 0, this disables audit functionality altogether.
+  core.String? auditIntervalSeconds;
+
+  /// The maximum number of audit violations to be stored in a constraint.
+  ///
+  /// If not set, the internal default (currently 20) will be used.
+  core.String? constraintViolationLimit;
+
+  /// Map of deployment configs to deployments ("admission", "audit",
+  /// "mutation').
+  core.Map<core.String, PolicyControllerPolicyControllerDeploymentConfig>?
+      deploymentConfigs;
+
+  /// The set of namespaces that are excluded from Policy Controller checks.
+  ///
+  /// Namespaces do not need to currently exist on the cluster.
+  core.List<core.String>? exemptableNamespaces;
+
+  /// The install_spec represents the intended state specified by the latest
+  /// request that mutated install_spec in the feature spec, not the lifecycle
+  /// state of the feature observed by the Hub feature controller that is
+  /// reported in the feature state.
+  /// Possible string values are:
+  /// - "INSTALL_SPEC_UNSPECIFIED" : Spec is unknown.
+  /// - "INSTALL_SPEC_NOT_INSTALLED" : Request to uninstall Policy Controller.
+  /// - "INSTALL_SPEC_ENABLED" : Request to install and enable Policy
+  /// Controller.
+  /// - "INSTALL_SPEC_SUSPENDED" : Request to suspend Policy Controller i.e. its
+  /// webhooks. If Policy Controller is not installed, it will be installed but
+  /// suspended.
+  /// - "INSTALL_SPEC_DETACHED" : Request to stop all reconciliation actions by
+  /// PoCo Hub controller. This is a breakglass mechanism to stop PoCo Hub from
+  /// affecting cluster resources.
+  core.String? installSpec;
+
+  /// Logs all denies and dry run failures.
+  core.bool? logDeniesEnabled;
+
+  /// Monitoring specifies the configuration of monitoring.
+  PolicyControllerMonitoringConfig? monitoring;
+
+  /// Enables the ability to mutate resources using Policy Controller.
+  core.bool? mutationEnabled;
+
+  /// Specifies the desired policy content on the cluster
+  PolicyControllerPolicyContentSpec? policyContent;
+
+  /// Enables the ability to use Constraint Templates that reference to objects
+  /// other than the object currently being evaluated.
+  core.bool? referentialRulesEnabled;
+
+  PolicyControllerHubConfig({
+    this.auditIntervalSeconds,
+    this.constraintViolationLimit,
+    this.deploymentConfigs,
+    this.exemptableNamespaces,
+    this.installSpec,
+    this.logDeniesEnabled,
+    this.monitoring,
+    this.mutationEnabled,
+    this.policyContent,
+    this.referentialRulesEnabled,
+  });
+
+  PolicyControllerHubConfig.fromJson(core.Map json_)
+      : this(
+          auditIntervalSeconds: json_.containsKey('auditIntervalSeconds')
+              ? json_['auditIntervalSeconds'] as core.String
+              : null,
+          constraintViolationLimit:
+              json_.containsKey('constraintViolationLimit')
+                  ? json_['constraintViolationLimit'] as core.String
+                  : null,
+          deploymentConfigs: json_.containsKey('deploymentConfigs')
+              ? (json_['deploymentConfigs']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    PolicyControllerPolicyControllerDeploymentConfig.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          exemptableNamespaces: json_.containsKey('exemptableNamespaces')
+              ? (json_['exemptableNamespaces'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          installSpec: json_.containsKey('installSpec')
+              ? json_['installSpec'] as core.String
+              : null,
+          logDeniesEnabled: json_.containsKey('logDeniesEnabled')
+              ? json_['logDeniesEnabled'] as core.bool
+              : null,
+          monitoring: json_.containsKey('monitoring')
+              ? PolicyControllerMonitoringConfig.fromJson(
+                  json_['monitoring'] as core.Map<core.String, core.dynamic>)
+              : null,
+          mutationEnabled: json_.containsKey('mutationEnabled')
+              ? json_['mutationEnabled'] as core.bool
+              : null,
+          policyContent: json_.containsKey('policyContent')
+              ? PolicyControllerPolicyContentSpec.fromJson(
+                  json_['policyContent'] as core.Map<core.String, core.dynamic>)
+              : null,
+          referentialRulesEnabled: json_.containsKey('referentialRulesEnabled')
+              ? json_['referentialRulesEnabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (auditIntervalSeconds != null)
+          'auditIntervalSeconds': auditIntervalSeconds!,
+        if (constraintViolationLimit != null)
+          'constraintViolationLimit': constraintViolationLimit!,
+        if (deploymentConfigs != null) 'deploymentConfigs': deploymentConfigs!,
+        if (exemptableNamespaces != null)
+          'exemptableNamespaces': exemptableNamespaces!,
+        if (installSpec != null) 'installSpec': installSpec!,
+        if (logDeniesEnabled != null) 'logDeniesEnabled': logDeniesEnabled!,
+        if (monitoring != null) 'monitoring': monitoring!,
+        if (mutationEnabled != null) 'mutationEnabled': mutationEnabled!,
+        if (policyContent != null) 'policyContent': policyContent!,
+        if (referentialRulesEnabled != null)
+          'referentialRulesEnabled': referentialRulesEnabled!,
+      };
+}
+
+/// **Policy Controller**: Configuration for a single cluster.
+///
+/// Intended to parallel the PolicyController CR.
+class PolicyControllerMembershipSpec {
+  /// Policy Controller configuration for the cluster.
+  PolicyControllerHubConfig? policyControllerHubConfig;
+
+  /// Version of Policy Controller installed.
+  core.String? version;
+
+  PolicyControllerMembershipSpec({
+    this.policyControllerHubConfig,
+    this.version,
+  });
+
+  PolicyControllerMembershipSpec.fromJson(core.Map json_)
+      : this(
+          policyControllerHubConfig:
+              json_.containsKey('policyControllerHubConfig')
+                  ? PolicyControllerHubConfig.fromJson(
+                      json_['policyControllerHubConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (policyControllerHubConfig != null)
+          'policyControllerHubConfig': policyControllerHubConfig!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// **Policy Controller**: State for a single cluster.
+class PolicyControllerMembershipState {
+  /// Currently these include (also serving as map keys): 1.
+  ///
+  /// "admission" 2. "audit" 3. "mutation"
+  core.Map<core.String, PolicyControllerOnClusterState>? componentStates;
+
+  /// The overall content state observed by the Hub Feature controller.
+  PolicyControllerPolicyContentState? policyContentState;
+
+  /// The overall Policy Controller lifecycle state observed by the Hub Feature
+  /// controller.
+  /// Possible string values are:
+  /// - "LIFECYCLE_STATE_UNSPECIFIED" : The lifecycle state is unspecified.
+  /// - "NOT_INSTALLED" : The PC does not exist on the given cluster, and no k8s
+  /// resources of any type that are associated with the PC should exist there.
+  /// The cluster does not possess a membership with the PCH.
+  /// - "INSTALLING" : The PCH possesses a Membership, however the PC is not
+  /// fully installed on the cluster. In this state the hub can be expected to
+  /// be taking actions to install the PC on the cluster.
+  /// - "ACTIVE" : The PC is fully installed on the cluster and in an
+  /// operational mode. In this state PCH will be reconciling state with the PC,
+  /// and the PC will be performing it's operational tasks per that software.
+  /// Entering a READY state requires that the hub has confirmed the PC is
+  /// installed and its pods are operational with the version of the PC the PCH
+  /// expects.
+  /// - "UPDATING" : The PC is fully installed, but in the process of changing
+  /// the configuration (including changing the version of PC either up and
+  /// down, or modifying the manifests of PC) of the resources running on the
+  /// cluster. The PCH has a Membership, is aware of the version the cluster
+  /// should be running in, but has not confirmed for itself that the PC is
+  /// running with that version.
+  /// - "DECOMMISSIONING" : The PC may have resources on the cluster, but the
+  /// PCH wishes to remove the Membership. The Membership still exists.
+  /// - "CLUSTER_ERROR" : The PC is not operational, and the PCH is unable to
+  /// act to make it operational. Entering a CLUSTER_ERROR state happens
+  /// automatically when the PCH determines that a PC installed on the cluster
+  /// is non-operative or that the cluster does not meet requirements set for
+  /// the PCH to administer the cluster but has nevertheless been given an
+  /// instruction to do so (such as 'install').
+  /// - "HUB_ERROR" : In this state, the PC may still be operational, and only
+  /// the PCH is unable to act. The hub should not issue instructions to change
+  /// the PC state, or otherwise interfere with the on-cluster resources.
+  /// Entering a HUB_ERROR state happens automatically when the PCH determines
+  /// the hub is in an unhealthy state and it wishes to 'take hands off' to
+  /// avoid corrupting the PC or other data.
+  /// - "SUSPENDED" : Policy Controller (PC) is installed but suspended. This
+  /// means that the policies are not enforced, but violations are still
+  /// recorded (through audit).
+  /// - "DETACHED" : PoCo Hub is not taking any action to reconcile cluster
+  /// objects. Changes to those objects will not be overwritten by PoCo Hub.
+  core.String? state;
+
+  PolicyControllerMembershipState({
+    this.componentStates,
+    this.policyContentState,
+    this.state,
+  });
+
+  PolicyControllerMembershipState.fromJson(core.Map json_)
+      : this(
+          componentStates: json_.containsKey('componentStates')
+              ? (json_['componentStates']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    PolicyControllerOnClusterState.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          policyContentState: json_.containsKey('policyContentState')
+              ? PolicyControllerPolicyContentState.fromJson(
+                  json_['policyContentState']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (componentStates != null) 'componentStates': componentStates!,
+        if (policyContentState != null)
+          'policyContentState': policyContentState!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// MonitoringConfig specifies the backends Policy Controller should export
+/// metrics to.
+///
+/// For example, to specify metrics should be exported to Cloud Monitoring and
+/// Prometheus, specify backends: \["cloudmonitoring", "prometheus"\]
+typedef PolicyControllerMonitoringConfig = $Shared08;
+
+/// OnClusterState represents the state of a sub-component of Policy Controller.
+class PolicyControllerOnClusterState {
+  /// Surface potential errors or information logs.
+  core.String? details;
+
+  /// The lifecycle state of this component.
+  /// Possible string values are:
+  /// - "LIFECYCLE_STATE_UNSPECIFIED" : The lifecycle state is unspecified.
+  /// - "NOT_INSTALLED" : The PC does not exist on the given cluster, and no k8s
+  /// resources of any type that are associated with the PC should exist there.
+  /// The cluster does not possess a membership with the PCH.
+  /// - "INSTALLING" : The PCH possesses a Membership, however the PC is not
+  /// fully installed on the cluster. In this state the hub can be expected to
+  /// be taking actions to install the PC on the cluster.
+  /// - "ACTIVE" : The PC is fully installed on the cluster and in an
+  /// operational mode. In this state PCH will be reconciling state with the PC,
+  /// and the PC will be performing it's operational tasks per that software.
+  /// Entering a READY state requires that the hub has confirmed the PC is
+  /// installed and its pods are operational with the version of the PC the PCH
+  /// expects.
+  /// - "UPDATING" : The PC is fully installed, but in the process of changing
+  /// the configuration (including changing the version of PC either up and
+  /// down, or modifying the manifests of PC) of the resources running on the
+  /// cluster. The PCH has a Membership, is aware of the version the cluster
+  /// should be running in, but has not confirmed for itself that the PC is
+  /// running with that version.
+  /// - "DECOMMISSIONING" : The PC may have resources on the cluster, but the
+  /// PCH wishes to remove the Membership. The Membership still exists.
+  /// - "CLUSTER_ERROR" : The PC is not operational, and the PCH is unable to
+  /// act to make it operational. Entering a CLUSTER_ERROR state happens
+  /// automatically when the PCH determines that a PC installed on the cluster
+  /// is non-operative or that the cluster does not meet requirements set for
+  /// the PCH to administer the cluster but has nevertheless been given an
+  /// instruction to do so (such as 'install').
+  /// - "HUB_ERROR" : In this state, the PC may still be operational, and only
+  /// the PCH is unable to act. The hub should not issue instructions to change
+  /// the PC state, or otherwise interfere with the on-cluster resources.
+  /// Entering a HUB_ERROR state happens automatically when the PCH determines
+  /// the hub is in an unhealthy state and it wishes to 'take hands off' to
+  /// avoid corrupting the PC or other data.
+  /// - "SUSPENDED" : Policy Controller (PC) is installed but suspended. This
+  /// means that the policies are not enforced, but violations are still
+  /// recorded (through audit).
+  /// - "DETACHED" : PoCo Hub is not taking any action to reconcile cluster
+  /// objects. Changes to those objects will not be overwritten by PoCo Hub.
+  core.String? state;
+
+  PolicyControllerOnClusterState({
+    this.details,
+    this.state,
+  });
+
+  PolicyControllerOnClusterState.fromJson(core.Map json_)
+      : this(
+          details: json_.containsKey('details')
+              ? json_['details'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (details != null) 'details': details!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// PolicyContentSpec defines the user's desired content configuration on the
+/// cluster.
+class PolicyControllerPolicyContentSpec {
+  /// map of bundle name to BundleInstallSpec.
+  ///
+  /// The bundle name maps to the `bundleName` key in the
+  /// `policycontroller.gke.io/constraintData` annotation on a constraint.
+  core.Map<core.String, PolicyControllerBundleInstallSpec>? bundles;
+
+  /// Configures the installation of the Template Library.
+  PolicyControllerTemplateLibraryConfig? templateLibrary;
+
+  PolicyControllerPolicyContentSpec({
+    this.bundles,
+    this.templateLibrary,
+  });
+
+  PolicyControllerPolicyContentSpec.fromJson(core.Map json_)
+      : this(
+          bundles: json_.containsKey('bundles')
+              ? (json_['bundles'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    PolicyControllerBundleInstallSpec.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          templateLibrary: json_.containsKey('templateLibrary')
+              ? PolicyControllerTemplateLibraryConfig.fromJson(
+                  json_['templateLibrary']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bundles != null) 'bundles': bundles!,
+        if (templateLibrary != null) 'templateLibrary': templateLibrary!,
+      };
+}
+
+/// The state of the policy controller policy content
+class PolicyControllerPolicyContentState {
+  /// The state of the any bundles included in the chosen version of the
+  /// manifest
+  core.Map<core.String, PolicyControllerOnClusterState>? bundleStates;
+
+  /// The state of the referential data sync configuration.
+  ///
+  /// This could represent the state of either the syncSet object(s) or the
+  /// config object, depending on the version of PoCo configured by the user.
+  PolicyControllerOnClusterState? referentialSyncConfigState;
+
+  /// The state of the template library
+  PolicyControllerOnClusterState? templateLibraryState;
+
+  PolicyControllerPolicyContentState({
+    this.bundleStates,
+    this.referentialSyncConfigState,
+    this.templateLibraryState,
+  });
+
+  PolicyControllerPolicyContentState.fromJson(core.Map json_)
+      : this(
+          bundleStates: json_.containsKey('bundleStates')
+              ? (json_['bundleStates'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    PolicyControllerOnClusterState.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          referentialSyncConfigState:
+              json_.containsKey('referentialSyncConfigState')
+                  ? PolicyControllerOnClusterState.fromJson(
+                      json_['referentialSyncConfigState']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          templateLibraryState: json_.containsKey('templateLibraryState')
+              ? PolicyControllerOnClusterState.fromJson(
+                  json_['templateLibraryState']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bundleStates != null) 'bundleStates': bundleStates!,
+        if (referentialSyncConfigState != null)
+          'referentialSyncConfigState': referentialSyncConfigState!,
+        if (templateLibraryState != null)
+          'templateLibraryState': templateLibraryState!,
+      };
+}
+
+/// Deployment-specific configuration.
+class PolicyControllerPolicyControllerDeploymentConfig {
+  /// Container resource requirements.
+  PolicyControllerResourceRequirements? containerResources;
+
+  /// Pod affinity configuration.
+  /// Possible string values are:
+  /// - "AFFINITY_UNSPECIFIED" : No affinity configuration has been specified.
+  /// - "NO_AFFINITY" : Affinity configurations will be removed from the
+  /// deployment.
+  /// - "ANTI_AFFINITY" : Anti-affinity configuration will be applied to this
+  /// deployment. Default for admissions deployment.
+  core.String? podAffinity;
+
+  /// Pod anti-affinity enablement.
+  core.bool? podAntiAffinity;
+
+  /// Pod tolerations of node taints.
+  core.List<PolicyControllerToleration>? podTolerations;
+
+  /// Pod replica count.
+  core.String? replicaCount;
+
+  PolicyControllerPolicyControllerDeploymentConfig({
+    this.containerResources,
+    this.podAffinity,
+    this.podAntiAffinity,
+    this.podTolerations,
+    this.replicaCount,
+  });
+
+  PolicyControllerPolicyControllerDeploymentConfig.fromJson(core.Map json_)
+      : this(
+          containerResources: json_.containsKey('containerResources')
+              ? PolicyControllerResourceRequirements.fromJson(
+                  json_['containerResources']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          podAffinity: json_.containsKey('podAffinity')
+              ? json_['podAffinity'] as core.String
+              : null,
+          podAntiAffinity: json_.containsKey('podAntiAffinity')
+              ? json_['podAntiAffinity'] as core.bool
+              : null,
+          podTolerations: json_.containsKey('podTolerations')
+              ? (json_['podTolerations'] as core.List)
+                  .map((value) => PolicyControllerToleration.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          replicaCount: json_.containsKey('replicaCount')
+              ? json_['replicaCount'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (containerResources != null)
+          'containerResources': containerResources!,
+        if (podAffinity != null) 'podAffinity': podAffinity!,
+        if (podAntiAffinity != null) 'podAntiAffinity': podAntiAffinity!,
+        if (podTolerations != null) 'podTolerations': podTolerations!,
+        if (replicaCount != null) 'replicaCount': replicaCount!,
+      };
+}
+
+/// ResourceList contains container resource requirements.
+class PolicyControllerResourceList {
+  /// CPU requirement expressed in Kubernetes resource units.
+  core.String? cpu;
+
+  /// Memory requirement expressed in Kubernetes resource units.
+  core.String? memory;
+
+  PolicyControllerResourceList({
+    this.cpu,
+    this.memory,
+  });
+
+  PolicyControllerResourceList.fromJson(core.Map json_)
+      : this(
+          cpu: json_.containsKey('cpu') ? json_['cpu'] as core.String : null,
+          memory: json_.containsKey('memory')
+              ? json_['memory'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cpu != null) 'cpu': cpu!,
+        if (memory != null) 'memory': memory!,
+      };
+}
+
+/// ResourceRequirements describes the compute resource requirements.
+class PolicyControllerResourceRequirements {
+  /// Limits describes the maximum amount of compute resources allowed for use
+  /// by the running container.
+  PolicyControllerResourceList? limits;
+
+  /// Requests describes the amount of compute resources reserved for the
+  /// container by the kube-scheduler.
+  PolicyControllerResourceList? requests;
+
+  PolicyControllerResourceRequirements({
+    this.limits,
+    this.requests,
+  });
+
+  PolicyControllerResourceRequirements.fromJson(core.Map json_)
+      : this(
+          limits: json_.containsKey('limits')
+              ? PolicyControllerResourceList.fromJson(
+                  json_['limits'] as core.Map<core.String, core.dynamic>)
+              : null,
+          requests: json_.containsKey('requests')
+              ? PolicyControllerResourceList.fromJson(
+                  json_['requests'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (limits != null) 'limits': limits!,
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+/// The config specifying which default library templates to install.
+class PolicyControllerTemplateLibraryConfig {
+  /// Configures the manner in which the template library is installed on the
+  /// cluster.
+  /// Possible string values are:
+  /// - "INSTALLATION_UNSPECIFIED" : No installation strategy has been
+  /// specified.
+  /// - "NOT_INSTALLED" : Do not install the template library.
+  /// - "ALL" : Install the entire template library.
+  core.String? installation;
+
+  PolicyControllerTemplateLibraryConfig({
+    this.installation,
+  });
+
+  PolicyControllerTemplateLibraryConfig.fromJson(core.Map json_)
+      : this(
+          installation: json_.containsKey('installation')
+              ? json_['installation'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (installation != null) 'installation': installation!,
+      };
+}
+
+/// Toleration of a node taint.
+class PolicyControllerToleration {
+  /// Matches a taint effect.
+  core.String? effect;
+
+  /// Matches a taint key (not necessarily unique).
+  core.String? key;
+
+  /// Matches a taint operator.
+  core.String? operator;
+
+  /// Matches a taint value.
+  core.String? value;
+
+  PolicyControllerToleration({
+    this.effect,
+    this.key,
+    this.operator,
+    this.value,
+  });
+
+  PolicyControllerToleration.fromJson(core.Map json_)
+      : this(
+          effect: json_.containsKey('effect')
+              ? json_['effect'] as core.String
+              : null,
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          operator: json_.containsKey('operator')
+              ? json_['operator'] as core.String
+              : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (effect != null) 'effect': effect!,
+        if (key != null) 'key': key!,
+        if (operator != null) 'operator': operator!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -7542,9 +8212,6 @@ class Role {
 
 /// Scope represents a Scope in a Fleet.
 class Scope {
-  /// If true, all Memberships in the Fleet bind to this Scope.
-  core.bool? allMemberships;
-
   /// When the scope was created.
   ///
   /// Output only.
@@ -7595,7 +8262,6 @@ class Scope {
   core.String? updateTime;
 
   Scope({
-    this.allMemberships,
     this.createTime,
     this.deleteTime,
     this.labels,
@@ -7608,9 +8274,6 @@ class Scope {
 
   Scope.fromJson(core.Map json_)
       : this(
-          allMemberships: json_.containsKey('allMemberships')
-              ? json_['allMemberships'] as core.bool
-              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -7647,7 +8310,6 @@ class Scope {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allMemberships != null) 'allMemberships': allMemberships!,
         if (createTime != null) 'createTime': createTime!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (labels != null) 'labels': labels!,

@@ -1088,6 +1088,18 @@ class BuildConfig {
       };
 }
 
+/// Represents a whole or partial calendar date, such as a birthday.
+///
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: * A full date, with non-zero year, month,
+/// and day values. * A month and day, with a zero year (for example, an
+/// anniversary). * A year on its own, with a zero month and a zero day. * A
+/// year and month, with a zero day (for example, a credit card expiration
+/// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
+/// google.protobuf.Timestamp
+typedef Date = $Date;
+
 /// Filters events based on exact matches on the CloudEvents attributes.
 class EventFilter {
   /// The name of a CloudEvents attribute.
@@ -1721,7 +1733,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -1781,23 +1793,23 @@ class Operation {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -1962,6 +1974,12 @@ class RepoSource {
 /// Describes a runtime and any special information (e.g., deprecation status)
 /// related to it.
 class Runtime {
+  /// Decommission date for the runtime.
+  Date? decommissionDate;
+
+  /// Deprecation date for the runtime.
+  Date? deprecationDate;
+
   /// The user facing name, eg 'Go 1.13', 'Node.js 12', etc.
   core.String? displayName;
 
@@ -1990,6 +2008,8 @@ class Runtime {
   core.List<core.String>? warnings;
 
   Runtime({
+    this.decommissionDate,
+    this.deprecationDate,
     this.displayName,
     this.environment,
     this.name,
@@ -1999,6 +2019,14 @@ class Runtime {
 
   Runtime.fromJson(core.Map json_)
       : this(
+          decommissionDate: json_.containsKey('decommissionDate')
+              ? Date.fromJson(json_['decommissionDate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          deprecationDate: json_.containsKey('deprecationDate')
+              ? Date.fromJson(json_['deprecationDate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
@@ -2016,6 +2044,8 @@ class Runtime {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (decommissionDate != null) 'decommissionDate': decommissionDate!,
+        if (deprecationDate != null) 'deprecationDate': deprecationDate!,
         if (displayName != null) 'displayName': displayName!,
         if (environment != null) 'environment': environment!,
         if (name != null) 'name': name!,

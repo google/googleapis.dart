@@ -2826,28 +2826,7 @@ class CaPool {
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
-
-class CertChain {
-  /// The certificates that form the CA chain, from leaf to root order.
-  core.List<core.String>? certificates;
-
-  CertChain({
-    this.certificates,
-  });
-
-  CertChain.fromJson(core.Map json_)
-      : this(
-          certificates: json_.containsKey('certificates')
-              ? (json_['certificates'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (certificates != null) 'certificates': certificates!,
-      };
-}
+typedef CertChain = $CertChain;
 
 /// A Certificate corresponds to a signed X.509 certificate issued by a
 /// CertificateAuthority.
@@ -3731,6 +3710,18 @@ class CertificateTemplate {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
+  /// The maximum lifetime allowed for issued Certificates that use this
+  /// template.
+  ///
+  /// If the issuing CaPool's IssuancePolicy specifies a maximum_lifetime the
+  /// minimum of the two durations will be the maximum lifetime for issued
+  /// Certificates. Note that if the issuing CertificateAuthority expires before
+  /// a Certificate's requested maximum_lifetime, the effective lifetime will be
+  /// explicitly truncated to match it.
+  ///
+  /// Optional.
+  core.String? maximumLifetime;
+
   /// The resource name for this CertificateTemplate in the format `projects / *
   /// /locations / * /certificateTemplates / * `.
   ///
@@ -3772,6 +3763,7 @@ class CertificateTemplate {
     this.description,
     this.identityConstraints,
     this.labels,
+    this.maximumLifetime,
     this.name,
     this.passthroughExtensions,
     this.predefinedValues,
@@ -3799,6 +3791,9 @@ class CertificateTemplate {
                   ),
                 )
               : null,
+          maximumLifetime: json_.containsKey('maximumLifetime')
+              ? json_['maximumLifetime'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           passthroughExtensions: json_.containsKey('passthroughExtensions')
               ? CertificateExtensionConstraints.fromJson(
@@ -3820,6 +3815,7 @@ class CertificateTemplate {
         if (identityConstraints != null)
           'identityConstraints': identityConstraints!,
         if (labels != null) 'labels': labels!,
+        if (maximumLifetime != null) 'maximumLifetime': maximumLifetime!,
         if (name != null) 'name': name!,
         if (passthroughExtensions != null)
           'passthroughExtensions': passthroughExtensions!,
@@ -3924,7 +3920,7 @@ class EcKeyType {
 typedef Empty = $Empty;
 
 /// Request message for CertificateAuthorityService.EnableCertificateAuthority.
-typedef EnableCertificateAuthorityRequest = $Request02;
+typedef EnableCertificateAuthorityRequest = $Request03;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -4024,7 +4020,7 @@ class ExtendedKeyUsageOptions {
 }
 
 /// Request message for CertificateAuthorityService.FetchCaCerts.
-typedef FetchCaCertsRequest = $Request02;
+typedef FetchCaCertsRequest = $Request03;
 
 /// Response message for CertificateAuthorityService.FetchCaCerts.
 class FetchCaCertsResponse {
@@ -4930,7 +4926,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -4990,23 +4986,23 @@ class Operation {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -5626,7 +5622,7 @@ class SubjectConfig {
   /// Contains distinguished name fields such as the common name, location and
   /// organization.
   ///
-  /// Required.
+  /// Optional.
   Subject? subject;
 
   /// The subject alternative name fields.
@@ -5805,7 +5801,7 @@ typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// Request message for
 /// CertificateAuthorityService.UndeleteCertificateAuthority.
-typedef UndeleteCertificateAuthorityRequest = $Request02;
+typedef UndeleteCertificateAuthorityRequest = $Request03;
 
 /// An X509Extension specifies an X.509 extension, which may be used in
 /// different parts of X.509 objects like certificates, CSRs, and CRLs.

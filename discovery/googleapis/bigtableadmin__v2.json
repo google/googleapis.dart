@@ -49,7 +49,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230716",
+    "revision": "20231024",
     "rootUrl": "https://bigtableadmin.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Bigtable Admin API",
@@ -1131,7 +1131,7 @@
                                             ]
                                         },
                                         "getIamPolicy": {
-                                            "description": "Gets the access control policy for a Table resource. Returns an empty policy if the resource exists but does not have a policy set.",
+                                            "description": "Gets the access control policy for a Table or Backup resource. Returns an empty policy if the resource exists but does not have a policy set.",
                                             "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/clusters/{clustersId}/backups/{backupsId}:getIamPolicy",
                                             "httpMethod": "POST",
                                             "id": "bigtableadmin.projects.instances.clusters.backups.getIamPolicy",
@@ -1251,7 +1251,7 @@
                                             ]
                                         },
                                         "setIamPolicy": {
-                                            "description": "Sets the access control policy on a Table resource. Replaces any existing policy.",
+                                            "description": "Sets the access control policy on a Table or Backup resource. Replaces any existing policy.",
                                             "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/clusters/{clustersId}/backups/{backupsId}:setIamPolicy",
                                             "httpMethod": "POST",
                                             "id": "bigtableadmin.projects.instances.clusters.backups.setIamPolicy",
@@ -1283,7 +1283,7 @@
                                             ]
                                         },
                                         "testIamPermissions": {
-                                            "description": "Returns permissions that the caller has on the specified table resource.",
+                                            "description": "Returns permissions that the caller has on the specified Table or Backup resource.",
                                             "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/clusters/{clustersId}/backups/{backupsId}:testIamPermissions",
                                             "httpMethod": "POST",
                                             "id": "bigtableadmin.projects.instances.clusters.backups.testIamPermissions",
@@ -1588,7 +1588,7 @@
                                     ]
                                 },
                                 "getIamPolicy": {
-                                    "description": "Gets the access control policy for a Table resource. Returns an empty policy if the resource exists but does not have a policy set.",
+                                    "description": "Gets the access control policy for a Table or Backup resource. Returns an empty policy if the resource exists but does not have a policy set.",
                                     "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/tables/{tablesId}:getIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "bigtableadmin.projects.instances.tables.getIamPolicy",
@@ -1786,7 +1786,7 @@
                                     ]
                                 },
                                 "setIamPolicy": {
-                                    "description": "Sets the access control policy on a Table resource. Replaces any existing policy.",
+                                    "description": "Sets the access control policy on a Table or Backup resource. Replaces any existing policy.",
                                     "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/tables/{tablesId}:setIamPolicy",
                                     "httpMethod": "POST",
                                     "id": "bigtableadmin.projects.instances.tables.setIamPolicy",
@@ -1818,7 +1818,7 @@
                                     ]
                                 },
                                 "testIamPermissions": {
-                                    "description": "Returns permissions that the caller has on the specified table resource.",
+                                    "description": "Returns permissions that the caller has on the specified Table or Backup resource.",
                                     "flatPath": "v2/projects/{projectsId}/instances/{instancesId}/tables/{tablesId}:testIamPermissions",
                                     "httpMethod": "POST",
                                     "id": "bigtableadmin.projects.instances.tables.testIamPermissions",
@@ -1991,9 +1991,30 @@
                     "description": "The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.",
                     "type": "string"
                 },
+                "priority": {
+                    "deprecated": true,
+                    "description": "This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.",
+                    "enum": [
+                        "PRIORITY_UNSPECIFIED",
+                        "PRIORITY_LOW",
+                        "PRIORITY_MEDIUM",
+                        "PRIORITY_HIGH"
+                    ],
+                    "enumDescriptions": [
+                        "Default value. Mapped to PRIORITY_HIGH (the legacy behavior) on creation.",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
+                },
                 "singleClusterRouting": {
                     "$ref": "SingleClusterRouting",
                     "description": "Use a single-cluster routing policy."
+                },
+                "standardIsolation": {
+                    "$ref": "StandardIsolation",
+                    "description": "The standard options used for isolating this app profile's traffic from other use cases."
                 }
             },
             "type": "object"
@@ -2268,7 +2289,7 @@
                     "type": "string"
                 },
                 "serveNodes": {
-                    "description": "The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.",
+                    "description": "The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -3069,10 +3090,6 @@
             "description": "Request message for google.bigtable.admin.v2.BigtableTableAdmin.ModifyColumnFamilies",
             "id": "ModifyColumnFamiliesRequest",
             "properties": {
-                "ignoreWarnings": {
-                    "description": "If true, ignore safety checks when modifying the column families.",
-                    "type": "boolean"
-                },
                 "modifications": {
                     "description": "Required. Modifications to be atomically applied to the specified table's families. Entries are applied in order, meaning that earlier modifications can be masked by later ones (in the case of repeated updates to the same family, for example).",
                     "items": {
@@ -3126,7 +3143,7 @@
                         "description": "Properties of the object. Contains field @type with type URL.",
                         "type": "any"
                     },
-                    "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+                    "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
                     "type": "object"
                 }
             },
@@ -3223,7 +3240,7 @@
             "type": "object"
         },
         "Policy": {
-            "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
+            "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
             "id": "Policy",
             "properties": {
                 "auditConfigs": {
@@ -3363,6 +3380,29 @@
                 "key": {
                     "description": "Row key to use as an initial tablet boundary.",
                     "format": "byte",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "StandardIsolation": {
+            "description": "Standard options for isolating this app profile's traffic from other use cases.",
+            "id": "StandardIsolation",
+            "properties": {
+                "priority": {
+                    "description": "The priority of requests sent using this app profile.",
+                    "enum": [
+                        "PRIORITY_UNSPECIFIED",
+                        "PRIORITY_LOW",
+                        "PRIORITY_MEDIUM",
+                        "PRIORITY_HIGH"
+                    ],
+                    "enumDescriptions": [
+                        "Default value. Mapped to PRIORITY_HIGH (the legacy behavior) on creation.",
+                        "",
+                        "",
+                        ""
+                    ],
                     "type": "string"
                 }
             },

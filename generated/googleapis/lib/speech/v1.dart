@@ -865,11 +865,49 @@ class CreatePhraseSetRequest {
 /// CustomClass items can be substituted into placeholders that you set in
 /// PhraseSet phrases.
 class CustomClass {
+  /// Allows users to store small amounts of arbitrary data.
+  ///
+  /// Both the key and the value must be 63 characters or less each. At most 100
+  /// annotations. This field is not used.
+  ///
+  /// Output only.
+  core.Map<core.String, core.String>? annotations;
+
   /// If this custom class is a resource, the custom_class_id is the resource id
   /// of the CustomClass.
   ///
   /// Case sensitive.
   core.String? customClassId;
+
+  /// The time at which this resource was requested for deletion.
+  ///
+  /// This field is not used.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// User-settable, human-readable name for the CustomClass.
+  ///
+  /// Must be 63 characters or less. This field is not used.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields.
+  ///
+  /// This may be sent on update, undelete, and delete requests to ensure the
+  /// client has an up-to-date value before proceeding. This field is not used.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// The time at which this resource will be purged.
+  ///
+  /// This field is not used.
+  ///
+  /// Output only.
+  core.String? expireTime;
 
   /// A collection of class items.
   core.List<ClassItem>? items;
@@ -897,18 +935,71 @@ class CustomClass {
   /// The resource name of the custom class.
   core.String? name;
 
+  /// Whether or not this CustomClass is in the process of being updated.
+  ///
+  /// This field is not used.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
+  /// The CustomClass lifecycle state.
+  ///
+  /// This field is not used.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state. This is only used/useful for
+  /// distinguishing unset values.
+  /// - "ACTIVE" : The normal and active state.
+  /// - "DELETED" : This CustomClass has been deleted.
+  core.String? state;
+
+  /// System-assigned unique identifier for the CustomClass.
+  ///
+  /// This field is not used.
+  ///
+  /// Output only.
+  core.String? uid;
+
   CustomClass({
+    this.annotations,
     this.customClassId,
+    this.deleteTime,
+    this.displayName,
+    this.etag,
+    this.expireTime,
     this.items,
     this.kmsKeyName,
     this.kmsKeyVersionName,
     this.name,
+    this.reconciling,
+    this.state,
+    this.uid,
   });
 
   CustomClass.fromJson(core.Map json_)
       : this(
+          annotations: json_.containsKey('annotations')
+              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           customClassId: json_.containsKey('customClassId')
               ? json_['customClassId'] as core.String
+              : null,
+          deleteTime: json_.containsKey('deleteTime')
+              ? json_['deleteTime'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
               : null,
           items: json_.containsKey('items')
               ? (json_['items'] as core.List)
@@ -923,14 +1014,28 @@ class CustomClass {
               ? json_['kmsKeyVersionName'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          reconciling: json_.containsKey('reconciling')
+              ? json_['reconciling'] as core.bool
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
         if (customClassId != null) 'customClassId': customClassId!,
+        if (deleteTime != null) 'deleteTime': deleteTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
+        if (expireTime != null) 'expireTime': expireTime!,
         if (items != null) 'items': items!,
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
         if (name != null) 'name': name!,
+        if (reconciling != null) 'reconciling': reconciling!,
+        if (state != null) 'state': state!,
+        if (uid != null) 'uid': uid!,
       };
 }
 
@@ -1120,7 +1225,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -1230,6 +1335,14 @@ class Phrase {
 /// Provides "hints" to the speech recognizer to favor specific words and
 /// phrases in the results.
 class PhraseSet {
+  /// Allows users to store small amounts of arbitrary data.
+  ///
+  /// Both the key and the value must be 63 characters or less each. At most 100
+  /// annotations. This field is not used.
+  ///
+  /// Output only.
+  core.Map<core.String, core.String>? annotations;
+
   /// Hint Boost.
   ///
   /// Positive value will increase the probability that a specific phrase will
@@ -1242,6 +1355,36 @@ class PhraseSet {
   /// search approach to finding the optimal value for your use case as well as
   /// adding phrases both with and without boost to your requests.
   core.double? boost;
+
+  /// The time at which this resource was requested for deletion.
+  ///
+  /// This field is not used.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// User-settable, human-readable name for the PhraseSet.
+  ///
+  /// Must be 63 characters or less. This field is not used.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields.
+  ///
+  /// This may be sent on update, undelete, and delete requests to ensure the
+  /// client has an up-to-date value before proceeding. This field is not used.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// The time at which this resource will be purged.
+  ///
+  /// This field is not used.
+  ///
+  /// Output only.
+  core.String? expireTime;
 
   /// The
   /// [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys)
@@ -1269,18 +1412,71 @@ class PhraseSet {
   /// A list of word and phrases.
   core.List<Phrase>? phrases;
 
+  /// Whether or not this PhraseSet is in the process of being updated.
+  ///
+  /// This field is not used.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
+  /// The CustomClass lifecycle state.
+  ///
+  /// This field is not used.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state. This is only used/useful for
+  /// distinguishing unset values.
+  /// - "ACTIVE" : The normal and active state.
+  /// - "DELETED" : This CustomClass has been deleted.
+  core.String? state;
+
+  /// System-assigned unique identifier for the PhraseSet.
+  ///
+  /// This field is not used.
+  ///
+  /// Output only.
+  core.String? uid;
+
   PhraseSet({
+    this.annotations,
     this.boost,
+    this.deleteTime,
+    this.displayName,
+    this.etag,
+    this.expireTime,
     this.kmsKeyName,
     this.kmsKeyVersionName,
     this.name,
     this.phrases,
+    this.reconciling,
+    this.state,
+    this.uid,
   });
 
   PhraseSet.fromJson(core.Map json_)
       : this(
+          annotations: json_.containsKey('annotations')
+              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           boost: json_.containsKey('boost')
               ? (json_['boost'] as core.num).toDouble()
+              : null,
+          deleteTime: json_.containsKey('deleteTime')
+              ? json_['deleteTime'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
               : null,
           kmsKeyName: json_.containsKey('kmsKeyName')
               ? json_['kmsKeyName'] as core.String
@@ -1295,14 +1491,28 @@ class PhraseSet {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          reconciling: json_.containsKey('reconciling')
+              ? json_['reconciling'] as core.bool
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
         if (boost != null) 'boost': boost!,
+        if (deleteTime != null) 'deleteTime': deleteTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
+        if (expireTime != null) 'expireTime': expireTime!,
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
         if (name != null) 'name': name!,
         if (phrases != null) 'phrases': phrases!,
+        if (reconciling != null) 'reconciling': reconciling!,
+        if (state != null) 'state': state!,
+        if (uid != null) 'uid': uid!,
       };
 }
 

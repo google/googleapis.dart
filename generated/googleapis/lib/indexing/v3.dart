@@ -11,9 +11,9 @@
 // ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Indexing API - v3
+/// Web Search Indexing API - v3
 ///
-/// Notifies Google when your web pages change.
+/// Notifies Google Web Search when your web pages change.
 ///
 /// For more information, see
 /// <https://developers.google.com/search/apis/indexing-api/>
@@ -35,7 +35,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// Notifies Google when your web pages change.
+/// Notifies Google Web Search when your web pages change.
 class IndexingApi {
   /// Submit data to Google for indexing
   static const indexingScope = 'https://www.googleapis.com/auth/indexing';

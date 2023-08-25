@@ -1026,7 +1026,7 @@ class ConcatenateExpression {
       };
 }
 
-/// A contiguous set of days: startDate, startDate + 1, ..., endDate.
+/// A contiguous set of days: `startDate`, `startDate + 1`, ..., `endDate`.
 ///
 /// Requests are allowed up to 4 date ranges.
 class DateRange {
@@ -1092,13 +1092,20 @@ class Dimension {
   ///
   /// See the
   /// [API Dimensions](https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema#dimensions)
-  /// for the list of dimension names. If `dimensionExpression` is specified,
-  /// `name` can be any string that you would like within the allowed character
-  /// set. For example if a `dimensionExpression` concatenates `country` and
-  /// `city`, you could call that dimension `countryAndCity`. Dimension names
-  /// that you choose must match the regular expression `^[a-zA-Z0-9_]$`.
-  /// Dimensions are referenced by `name` in `dimensionFilter`, `orderBys`,
-  /// `dimensionExpression`, and `pivots`.
+  /// for the list of dimension names supported by core reporting methods such
+  /// as `runReport` and `batchRunReports`. See
+  /// [Realtime Dimensions](https://developers.google.com/analytics/devguides/reporting/data/v1/realtime-api-schema#dimensions)
+  /// for the list of dimension names supported by the `runRealtimeReport`
+  /// method. See
+  /// [Funnel Dimensions](https://developers.google.com/analytics/devguides/reporting/data/v1/exploration-api-schema#dimensions)
+  /// for the list of dimension names supported by the `runFunnelReport` method.
+  /// If `dimensionExpression` is specified, `name` can be any string that you
+  /// would like within the allowed character set. For example if a
+  /// `dimensionExpression` concatenates `country` and `city`, you could call
+  /// that dimension `countryAndCity`. Dimension names that you choose must
+  /// match the regular expression `^[a-zA-Z0-9_]$`. Dimensions are referenced
+  /// by `name` in `dimensionFilter`, `orderBys`, `dimensionExpression`, and
+  /// `pivots`.
   core.String? name;
 
   Dimension({
@@ -1476,7 +1483,8 @@ class FilterExpressionList {
 /// The result needs to be in a list of string values.
 typedef InListFilter = $InListFilter;
 
-/// The dimensions and metrics currently accepted in reporting methods.
+/// The dimensions, metrics and comparisons currently accepted in reporting
+/// methods.
 class Metadata {
   /// The dimension descriptions.
   core.List<DimensionMetadata>? dimensions;
@@ -1538,12 +1546,19 @@ class Metric {
   ///
   /// See the
   /// [API Metrics](https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema#metrics)
-  /// for the list of metric names. If `expression` is specified, `name` can be
-  /// any string that you would like within the allowed character set. For
-  /// example if `expression` is `screenPageViews/sessions`, you could call that
-  /// metric's name = `viewsPerSession`. Metric names that you choose must match
-  /// the regular expression `^[a-zA-Z0-9_]$`. Metrics are referenced by `name`
-  /// in `metricFilter`, `orderBys`, and metric `expression`.
+  /// for the list of metric names supported by core reporting methods such as
+  /// `runReport` and `batchRunReports`. See
+  /// [Realtime Metrics](https://developers.google.com/analytics/devguides/reporting/data/v1/realtime-api-schema#metrics)
+  /// for the list of metric names supported by the `runRealtimeReport` method.
+  /// See
+  /// [Funnel Metrics](https://developers.google.com/analytics/devguides/reporting/data/v1/exploration-api-schema#metrics)
+  /// for the list of metric names supported by the `runFunnelReport` method. If
+  /// `expression` is specified, `name` can be any string that you would like
+  /// within the allowed character set. For example if `expression` is
+  /// `screenPageViews/sessions`, you could call that metric's name =
+  /// `viewsPerSession`. Metric names that you choose must match the regular
+  /// expression `^[a-zA-Z0-9_]$`. Metrics are referenced by `name` in
+  /// `metricFilter`, `orderBys`, and metric `expression`.
   core.String? name;
 
   Metric({
@@ -1812,8 +1827,8 @@ class MetricValue {
       };
 }
 
-/// A contiguous set of minutes: startMinutesAgo, startMinutesAgo + 1, ...,
-/// endMinutesAgo.
+/// A contiguous set of minutes: `startMinutesAgo`, `startMinutesAgo + 1`, ...,
+/// `endMinutesAgo`.
 ///
 /// Requests are allowed up to 2 minute ranges.
 class MinuteRange {

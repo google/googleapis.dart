@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230721",
+    "revision": "20231013",
     "rootUrl": "https://accessapproval.googleapis.com/",
     "servicePath": "",
     "title": "Access Approval API",
@@ -973,6 +973,10 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "notificationPubsubTopic": {
+                    "description": "Optional. A pubsub topic to which notifications relating to approval requests should be sent.",
+                    "type": "string"
                 },
                 "preferNoBroadApprovalRequests": {
                     "description": "This preference is communicated to Google personnel when sending an approval request but can be overridden if necessary.",

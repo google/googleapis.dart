@@ -1025,6 +1025,11 @@ class Certification {
   /// Required.
   core.String? authority;
 
+  /// A unique code to identify the certification.
+  ///
+  /// Required.
+  core.String? code;
+
   /// A URL link to the certification.
   ///
   /// Optional.
@@ -1047,11 +1052,12 @@ class Certification {
 
   /// A custom value of the certification.
   ///
-  /// Required.
+  /// Optional.
   core.String? value;
 
   Certification({
     this.authority,
+    this.code,
     this.link,
     this.logo,
     this.name,
@@ -1064,6 +1070,7 @@ class Certification {
           authority: json_.containsKey('authority')
               ? json_['authority'] as core.String
               : null,
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
           link: json_.containsKey('link') ? json_['link'] as core.String : null,
           logo: json_.containsKey('logo') ? json_['logo'] as core.String : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
@@ -1076,6 +1083,7 @@ class Certification {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authority != null) 'authority': authority!,
+        if (code != null) 'code': code!,
         if (link != null) 'link': link!,
         if (logo != null) 'logo': logo!,
         if (name != null) 'name': name!,

@@ -671,6 +671,7 @@ api.PkixPublicKey buildPkixPublicKey() {
   final o = api.PkixPublicKey();
   buildCounterPkixPublicKey++;
   if (buildCounterPkixPublicKey < 3) {
+    o.keyId = 'foo';
     o.publicKeyPem = 'foo';
     o.signatureAlgorithm = 'foo';
   }
@@ -681,6 +682,10 @@ api.PkixPublicKey buildPkixPublicKey() {
 void checkPkixPublicKey(api.PkixPublicKey o) {
   buildCounterPkixPublicKey++;
   if (buildCounterPkixPublicKey < 3) {
+    unittest.expect(
+      o.keyId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.publicKeyPem!,
       unittest.equals('foo'),

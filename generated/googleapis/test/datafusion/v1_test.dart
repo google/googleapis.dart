@@ -424,6 +424,7 @@ api.Instance buildInstance() {
     o.networkConfig = buildNetworkConfig();
     o.options = buildUnnamed7();
     o.p4ServiceAccount = 'foo';
+    o.patchRevision = 'foo';
     o.privateInstance = true;
     o.satisfiesPzs = true;
     o.serviceAccount = 'foo';
@@ -434,6 +435,7 @@ api.Instance buildInstance() {
     o.type = 'foo';
     o.updateTime = 'foo';
     o.version = 'foo';
+    o.workforceIdentityServiceEndpoint = 'foo';
     o.zone = 'foo';
   }
   buildCounterInstance--;
@@ -487,6 +489,10 @@ void checkInstance(api.Instance o) {
       o.p4ServiceAccount!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.patchRevision!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.privateInstance!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
@@ -519,6 +525,10 @@ void checkInstance(api.Instance o) {
     );
     unittest.expect(
       o.version!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.workforceIdentityServiceEndpoint!,
       unittest.equals('foo'),
     );
     unittest.expect(

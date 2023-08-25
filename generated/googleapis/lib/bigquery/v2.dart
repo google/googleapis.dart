@@ -163,6 +163,10 @@ class DatasetsResource {
   ///
   /// [datasetId] - Dataset ID of the requested dataset
   ///
+  /// [datasetView] - Specifies the view that determines which dataset
+  /// information is returned. By default, metadata and ACL information are
+  /// returned. Allowed values: METADATA, ACL, FULL.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -176,9 +180,11 @@ class DatasetsResource {
   async.Future<Dataset> get(
     core.String projectId,
     core.String datasetId, {
+    core.String? datasetView,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (datasetView != null) 'datasetView': [datasetView],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2254,7 +2260,7 @@ class Argument {
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "ARGUMENT_KIND_UNSPECIFIED"
+  /// - "ARGUMENT_KIND_UNSPECIFIED" : Default value.
   /// - "FIXED_TYPE" : The argument is a variable with fully specified type,
   /// which can be a struct or an array, but not a table.
   /// - "ANY_TYPE" : The argument is any type, including struct or array, but
@@ -2264,13 +2270,23 @@ class Argument {
   /// Required unless argument_kind = ANY_TYPE.
   StandardSqlDataType? dataType;
 
+  /// Whether the argument is an aggregate function parameter.
+  ///
+  /// Must be Unset for routine types other than AGGREGATE_FUNCTION. For
+  /// AGGREGATE_FUNCTION, if set to false, it is equivalent to adding "NOT
+  /// AGGREGATE" clause in DDL; Otherwise, it is equivalent to omitting "NOT
+  /// AGGREGATE" clause in DDL.
+  ///
+  /// Optional.
+  core.bool? isAggregate;
+
   /// Specifies whether the argument is input or output.
   ///
   /// Can be set for procedures only.
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "MODE_UNSPECIFIED"
+  /// - "MODE_UNSPECIFIED" : Default value.
   /// - "IN" : The argument is input-only.
   /// - "OUT" : The argument is output-only.
   /// - "INOUT" : The argument is both an input and an output.
@@ -2286,6 +2302,7 @@ class Argument {
   Argument({
     this.argumentKind,
     this.dataType,
+    this.isAggregate,
     this.mode,
     this.name,
   });
@@ -2299,6 +2316,9 @@ class Argument {
               ? StandardSqlDataType.fromJson(
                   json_['dataType'] as core.Map<core.String, core.dynamic>)
               : null,
+          isAggregate: json_.containsKey('isAggregate')
+              ? json_['isAggregate'] as core.bool
+              : null,
           mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
@@ -2306,6 +2326,7 @@ class Argument {
   core.Map<core.String, core.dynamic> toJson() => {
         if (argumentKind != null) 'argumentKind': argumentKind!,
         if (dataType != null) 'dataType': dataType!,
+        if (isAggregate != null) 'isAggregate': isAggregate!,
         if (mode != null) 'mode': mode!,
         if (name != null) 'name': name!,
       };
@@ -2738,6 +2759,72 @@ class BiEngineStatistics {
         if (accelerationMode != null) 'accelerationMode': accelerationMode!,
         if (biEngineMode != null) 'biEngineMode': biEngineMode!,
         if (biEngineReasons != null) 'biEngineReasons': biEngineReasons!,
+      };
+}
+
+class BigLakeConfiguration {
+  /// Required and immutable.
+  ///
+  /// Credential reference for accessing external storage system. Normalized as
+  /// project_id.location_id.connection_id.
+  ///
+  /// Required.
+  core.String? connectionId;
+
+  /// Required and immutable.
+  ///
+  /// Open source file format that the table data is stored in. Currently only
+  /// PARQUET is supported.
+  ///
+  /// Required.
+  core.String? fileFormat;
+
+  /// Required and immutable.
+  ///
+  /// Fully qualified location prefix of the external folder where data is
+  /// stored. Normalized to standard format: "gs:////". Starts with "gs://"
+  /// rather than "/bigstore/". Ends with "/". Does not contain "*". See also
+  /// BigLakeStorageMetadata on how it is used.
+  ///
+  /// Required.
+  core.String? storageUri;
+
+  /// Required and immutable.
+  ///
+  /// Open source file format that the table data is stored in. Currently only
+  /// PARQUET is supported.
+  ///
+  /// Required.
+  core.String? tableFormat;
+
+  BigLakeConfiguration({
+    this.connectionId,
+    this.fileFormat,
+    this.storageUri,
+    this.tableFormat,
+  });
+
+  BigLakeConfiguration.fromJson(core.Map json_)
+      : this(
+          connectionId: json_.containsKey('connectionId')
+              ? json_['connectionId'] as core.String
+              : null,
+          fileFormat: json_.containsKey('fileFormat')
+              ? json_['fileFormat'] as core.String
+              : null,
+          storageUri: json_.containsKey('storageUri')
+              ? json_['storageUri'] as core.String
+              : null,
+          tableFormat: json_.containsKey('tableFormat')
+              ? json_['tableFormat'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectionId != null) 'connectionId': connectionId!,
+        if (fileFormat != null) 'fileFormat': fileFormat!,
+        if (storageUri != null) 'storageUri': storageUri!,
+        if (tableFormat != null) 'tableFormat': tableFormat!,
       };
 }
 
@@ -3813,8 +3900,8 @@ class CsvOptions {
           fieldDelimiter: json_.containsKey('fieldDelimiter')
               ? json_['fieldDelimiter'] as core.String
               : null,
-          nullMarker: json_.containsKey('null_marker')
-              ? json_['null_marker'] as core.String
+          nullMarker: json_.containsKey('nullMarker')
+              ? json_['nullMarker'] as core.String
               : null,
           preserveAsciiControlCharacters:
               json_.containsKey('preserveAsciiControlCharacters')
@@ -3833,7 +3920,7 @@ class CsvOptions {
           'allowQuotedNewlines': allowQuotedNewlines!,
         if (encoding != null) 'encoding': encoding!,
         if (fieldDelimiter != null) 'fieldDelimiter': fieldDelimiter!,
-        if (nullMarker != null) 'null_marker': nullMarker!,
+        if (nullMarker != null) 'nullMarker': nullMarker!,
         if (preserveAsciiControlCharacters != null)
           'preserveAsciiControlCharacters': preserveAsciiControlCharacters!,
         if (quote != null) 'quote': quote!,
@@ -4140,6 +4227,14 @@ class Dataset {
   /// \[Output-only\] A hash of the resource.
   core.String? etag;
 
+  /// Information about the external metadata storage where the dataset is
+  /// defined.
+  ///
+  /// Filled out when the dataset type is EXTERNAL.
+  ///
+  /// Optional.
+  ExternalDatasetReference? externalDatasetReference;
+
   /// A descriptive name for the dataset.
   ///
   /// Optional.
@@ -4214,6 +4309,7 @@ class Dataset {
     this.defaultTableExpirationMs,
     this.description,
     this.etag,
+    this.externalDatasetReference,
     this.friendlyName,
     this.id,
     this.isCaseInsensitive,
@@ -4267,6 +4363,12 @@ class Dataset {
               ? json_['description'] as core.String
               : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          externalDatasetReference:
+              json_.containsKey('externalDatasetReference')
+                  ? ExternalDatasetReference.fromJson(
+                      json_['externalDatasetReference']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           friendlyName: json_.containsKey('friendlyName')
               ? json_['friendlyName'] as core.String
               : null,
@@ -4324,6 +4426,8 @@ class Dataset {
           'defaultTableExpirationMs': defaultTableExpirationMs!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
+        if (externalDatasetReference != null)
+          'externalDatasetReference': externalDatasetReference!,
         if (friendlyName != null) 'friendlyName': friendlyName!,
         if (id != null) 'id': id!,
         if (isCaseInsensitive != null) 'isCaseInsensitive': isCaseInsensitive!,
@@ -5570,6 +5674,41 @@ class ExternalDataConfiguration {
       };
 }
 
+class ExternalDatasetReference {
+  /// The connection id that is used to access the external_source.
+  ///
+  /// Format:
+  /// projects/{project_id}/locations/{location_id}/connections/{connection_id}
+  ///
+  /// Required.
+  core.String? connection;
+
+  /// External source that backs this dataset.
+  ///
+  /// Required.
+  core.String? externalSource;
+
+  ExternalDatasetReference({
+    this.connection,
+    this.externalSource,
+  });
+
+  ExternalDatasetReference.fromJson(core.Map json_)
+      : this(
+          connection: json_.containsKey('connection')
+              ? json_['connection'] as core.String
+              : null,
+          externalSource: json_.containsKey('externalSource')
+              ? json_['externalSource'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connection != null) 'connection': connection!,
+        if (externalSource != null) 'externalSource': externalSource!,
+      };
+}
+
 /// Representative value of a single feature within the cluster.
 class FeatureValue {
   /// The categorical feature value.
@@ -6215,7 +6354,7 @@ class HparamTuningTrial {
 
   /// The status of the trial.
   /// Possible string values are:
-  /// - "TRIAL_STATUS_UNSPECIFIED"
+  /// - "TRIAL_STATUS_UNSPECIFIED" : Default value.
   /// - "NOT_STARTED" : Scheduled but not started.
   /// - "RUNNING" : Running state.
   /// - "SUCCEEDED" : The trial succeeded.
@@ -6323,13 +6462,13 @@ class IndexUnusedReason {
 
   IndexUnusedReason.fromJson(core.Map json_)
       : this(
-          baseTable: json_.containsKey('base_table')
+          baseTable: json_.containsKey('baseTable')
               ? TableReference.fromJson(
-                  json_['base_table'] as core.Map<core.String, core.dynamic>)
+                  json_['baseTable'] as core.Map<core.String, core.dynamic>)
               : null,
           code: json_.containsKey('code') ? json_['code'] as core.String : null,
-          indexName: json_.containsKey('index_name')
-              ? json_['index_name'] as core.String
+          indexName: json_.containsKey('indexName')
+              ? json_['indexName'] as core.String
               : null,
           message: json_.containsKey('message')
               ? json_['message'] as core.String
@@ -6337,9 +6476,9 @@ class IndexUnusedReason {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (baseTable != null) 'base_table': baseTable!,
+        if (baseTable != null) 'baseTable': baseTable!,
         if (code != null) 'code': code!,
-        if (indexName != null) 'index_name': indexName!,
+        if (indexName != null) 'indexName': indexName!,
         if (message != null) 'message': message!,
       };
 }
@@ -6532,6 +6671,15 @@ class Job {
   /// \[Output-only\] Opaque ID field of the job
   core.String? id;
 
+  /// \[Output-only\] If set, it provides the reason why a Job was created.
+  ///
+  /// If not set, it should be treated as the default: REQUESTED. This feature
+  /// is not yet available. Jobs will always be created.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? jobCreationReason;
+
   /// Reference describing the unique-per-user name of the job.
   ///
   /// Optional.
@@ -6560,6 +6708,7 @@ class Job {
     this.configuration,
     this.etag,
     this.id,
+    this.jobCreationReason,
     this.jobReference,
     this.kind,
     this.selfLink,
@@ -6576,6 +6725,9 @@ class Job {
               : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          jobCreationReason: json_.containsKey('jobCreationReason')
+              ? json_['jobCreationReason']
+              : null,
           jobReference: json_.containsKey('jobReference')
               ? JobReference.fromJson(
                   json_['jobReference'] as core.Map<core.String, core.dynamic>)
@@ -6601,6 +6753,7 @@ class Job {
         if (configuration != null) 'configuration': configuration!,
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
+        if (jobCreationReason != null) 'jobCreationReason': jobCreationReason!,
         if (jobReference != null) 'jobReference': jobReference!,
         if (kind != null) 'kind': kind!,
         if (selfLink != null) 'selfLink': selfLink!,
@@ -8353,7 +8506,7 @@ class JobStatistics2 {
 
   /// The DDL target dataset.
   ///
-  /// Present only for CREATE/ALTER/DROP SCHEMA queries.
+  /// Present only for CREATE/ALTER/DROP/UNDROP SCHEMA queries.
   ///
   /// Output only.
   DatasetReference? ddlTargetDataset;
@@ -8860,18 +9013,18 @@ class JobStatistics5 {
 
   JobStatistics5.fromJson(core.Map json_)
       : this(
-          copiedLogicalBytes: json_.containsKey('copied_logical_bytes')
-              ? json_['copied_logical_bytes'] as core.String
+          copiedLogicalBytes: json_.containsKey('copiedLogicalBytes')
+              ? json_['copiedLogicalBytes'] as core.String
               : null,
-          copiedRows: json_.containsKey('copied_rows')
-              ? json_['copied_rows'] as core.String
+          copiedRows: json_.containsKey('copiedRows')
+              ? json_['copiedRows'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (copiedLogicalBytes != null)
-          'copied_logical_bytes': copiedLogicalBytes!,
-        if (copiedRows != null) 'copied_rows': copiedRows!,
+          'copiedLogicalBytes': copiedLogicalBytes!,
+        if (copiedRows != null) 'copiedRows': copiedRows!,
       };
 }
 
@@ -8949,6 +9102,7 @@ class JsonOptions {
       };
 }
 
+/// Response format for a single page when listing BigQuery ML models.
 class ListModelsResponse {
   /// Models in the requested dataset.
   ///
@@ -8983,6 +9137,7 @@ class ListModelsResponse {
       };
 }
 
+/// Describes the format of a single result page when listing routines.
 class ListRoutinesResponse {
   /// A token to request the next page of results.
   core.String? nextPageToken;
@@ -9108,8 +9263,8 @@ class MaterializedViewDefinition {
   MaterializedViewDefinition.fromJson(core.Map json_)
       : this(
           allowNonIncrementalDefinition:
-              json_.containsKey('allow_non_incremental_definition')
-                  ? json_['allow_non_incremental_definition'] as core.bool
+              json_.containsKey('allowNonIncrementalDefinition')
+                  ? json_['allowNonIncrementalDefinition'] as core.bool
                   : null,
           enableRefresh: json_.containsKey('enableRefresh')
               ? json_['enableRefresh'] as core.bool
@@ -9129,7 +9284,7 @@ class MaterializedViewDefinition {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowNonIncrementalDefinition != null)
-          'allow_non_incremental_definition': allowNonIncrementalDefinition!,
+          'allowNonIncrementalDefinition': allowNonIncrementalDefinition!,
         if (enableRefresh != null) 'enableRefresh': enableRefresh!,
         if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime!,
         if (maxStaleness != null) 'maxStaleness': maxStaleness!,
@@ -9285,7 +9440,7 @@ class Model {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "MODEL_TYPE_UNSPECIFIED"
+  /// - "MODEL_TYPE_UNSPECIFIED" : Default value.
   /// - "LINEAR_REGRESSION" : Linear regression model.
   /// - "LOGISTIC_REGRESSION" : Logistic regression based classification model.
   /// - "KMEANS" : K-means clustering model.
@@ -9688,23 +9843,23 @@ class ParquetOptions {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -10135,6 +10290,15 @@ class QueryRequest {
   /// Optional.
   core.bool? dryRun;
 
+  /// If not set, jobs are always required.
+  ///
+  /// If set, the query request will follow the behavior described
+  /// JobCreationMode. This feature is not yet available. Jobs will always be
+  /// created.
+  ///
+  /// Optional.
+  core.String? jobCreationMode;
+
   /// The resource type of the request.
   core.String? kind;
 
@@ -10252,6 +10416,7 @@ class QueryRequest {
     this.createSession,
     this.defaultDataset,
     this.dryRun,
+    this.jobCreationMode,
     this.kind,
     this.labels,
     this.location,
@@ -10287,6 +10452,9 @@ class QueryRequest {
               : null,
           dryRun:
               json_.containsKey('dryRun') ? json_['dryRun'] as core.bool : null,
+          jobCreationMode: json_.containsKey('jobCreationMode')
+              ? json_['jobCreationMode'] as core.String
+              : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -10340,6 +10508,7 @@ class QueryRequest {
         if (createSession != null) 'createSession': createSession!,
         if (defaultDataset != null) 'defaultDataset': defaultDataset!,
         if (dryRun != null) 'dryRun': dryRun!,
+        if (jobCreationMode != null) 'jobCreationMode': jobCreationMode!,
         if (kind != null) 'kind': kind!,
         if (labels != null) 'labels': labels!,
         if (location != null) 'location': location!,
@@ -10379,6 +10548,20 @@ class QueryResponse {
   /// false, totalRows will not be available.
   core.bool? jobComplete;
 
+  /// Only relevant when a job_reference is present in the response.
+  ///
+  /// If job_reference is not present it will always be unset. When
+  /// job_reference is present, this field should be interpreted as follows: If
+  /// set, it will provide the reason of why a Job was created. If not set, it
+  /// should be treated as the default: REQUESTED. This feature is not yet
+  /// available. Jobs will always be created.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? jobCreationReason;
+
   /// Reference to the Job that was created to run the query.
   ///
   /// This field will be present even if the original request timed out, in
@@ -10397,6 +10580,12 @@ class QueryResponse {
 
   /// A token used for paging results.
   core.String? pageToken;
+
+  /// Query ID for the completed query.
+  ///
+  /// This ID will be auto-generated. This field is not yet available and it is
+  /// currently not guaranteed to be populated.
+  core.String? queryId;
 
   /// An object with as many results as can be contained within the maximum
   /// permitted reply size.
@@ -10429,10 +10618,12 @@ class QueryResponse {
     this.dmlStats,
     this.errors,
     this.jobComplete,
+    this.jobCreationReason,
     this.jobReference,
     this.kind,
     this.numDmlAffectedRows,
     this.pageToken,
+    this.queryId,
     this.rows,
     this.schema,
     this.sessionInfo,
@@ -10458,6 +10649,9 @@ class QueryResponse {
           jobComplete: json_.containsKey('jobComplete')
               ? json_['jobComplete'] as core.bool
               : null,
+          jobCreationReason: json_.containsKey('jobCreationReason')
+              ? json_['jobCreationReason']
+              : null,
           jobReference: json_.containsKey('jobReference')
               ? JobReference.fromJson(
                   json_['jobReference'] as core.Map<core.String, core.dynamic>)
@@ -10468,6 +10662,9 @@ class QueryResponse {
               : null,
           pageToken: json_.containsKey('pageToken')
               ? json_['pageToken'] as core.String
+              : null,
+          queryId: json_.containsKey('queryId')
+              ? json_['queryId'] as core.String
               : null,
           rows: json_.containsKey('rows')
               ? (json_['rows'] as core.List)
@@ -10496,11 +10693,13 @@ class QueryResponse {
         if (dmlStats != null) 'dmlStats': dmlStats!,
         if (errors != null) 'errors': errors!,
         if (jobComplete != null) 'jobComplete': jobComplete!,
+        if (jobCreationReason != null) 'jobCreationReason': jobCreationReason!,
         if (jobReference != null) 'jobReference': jobReference!,
         if (kind != null) 'kind': kind!,
         if (numDmlAffectedRows != null)
           'numDmlAffectedRows': numDmlAffectedRows!,
         if (pageToken != null) 'pageToken': pageToken!,
+        if (queryId != null) 'queryId': queryId!,
         if (rows != null) 'rows': rows!,
         if (schema != null) 'schema': schema!,
         if (sessionInfo != null) 'sessionInfo': sessionInfo!,
@@ -10849,6 +11048,11 @@ class RemoteModelInfo {
   /// Output only.
   core.String? maxBatchingRows;
 
+  /// The model version for LLM.
+  ///
+  /// Output only.
+  core.String? remoteModelVersion;
+
   /// The remote service type for remote model.
   ///
   /// Output only.
@@ -10868,6 +11072,7 @@ class RemoteModelInfo {
     this.connection,
     this.endpoint,
     this.maxBatchingRows,
+    this.remoteModelVersion,
     this.remoteServiceType,
   });
 
@@ -10882,6 +11087,9 @@ class RemoteModelInfo {
           maxBatchingRows: json_.containsKey('maxBatchingRows')
               ? json_['maxBatchingRows'] as core.String
               : null,
+          remoteModelVersion: json_.containsKey('remoteModelVersion')
+              ? json_['remoteModelVersion'] as core.String
+              : null,
           remoteServiceType: json_.containsKey('remoteServiceType')
               ? json_['remoteServiceType'] as core.String
               : null,
@@ -10891,6 +11099,8 @@ class RemoteModelInfo {
         if (connection != null) 'connection': connection!,
         if (endpoint != null) 'endpoint': endpoint!,
         if (maxBatchingRows != null) 'maxBatchingRows': maxBatchingRows!,
+        if (remoteModelVersion != null)
+          'remoteModelVersion': remoteModelVersion!,
         if (remoteServiceType != null) 'remoteServiceType': remoteServiceType!,
       };
 }
@@ -10904,6 +11114,19 @@ class Routine {
   ///
   /// Output only.
   core.String? creationTime;
+
+  /// If set to `DATA_MASKING`, the function is validated and made available as
+  /// a masking function.
+  ///
+  /// For more information, see
+  /// [Create custom masking routines](https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask).
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DATA_GOVERNANCE_TYPE_UNSPECIFIED" : The data governance type is
+  /// unspecified.
+  /// - "DATA_MASKING" : The data governance type is data masking.
+  core.String? dataGovernanceType;
 
   /// The body of the routine.
   ///
@@ -10954,7 +11177,7 @@ class Routine {
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "LANGUAGE_UNSPECIFIED"
+  /// - "LANGUAGE_UNSPECIFIED" : Default value.
   /// - "SQL" : SQL language.
   /// - "JAVASCRIPT" : JavaScript language.
   /// - "PYTHON" : Python language.
@@ -11009,12 +11232,27 @@ class Routine {
   ///
   /// Required.
   /// Possible string values are:
-  /// - "ROUTINE_TYPE_UNSPECIFIED"
+  /// - "ROUTINE_TYPE_UNSPECIFIED" : Default value.
   /// - "SCALAR_FUNCTION" : Non-built-in persistent scalar function.
   /// - "PROCEDURE" : Stored procedure.
   /// - "TABLE_VALUED_FUNCTION" : Non-built-in persistent TVF.
   /// - "AGGREGATE_FUNCTION" : Non-built-in persistent aggregate function.
   core.String? routineType;
+
+  /// The security mode of the routine, if defined.
+  ///
+  /// If not defined, the security mode is automatically determined from the
+  /// routine's configuration.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SECURITY_MODE_UNSPECIFIED" : The security mode of the routine is
+  /// unspecified.
+  /// - "DEFINER" : The routine is to be executed with the privileges of the
+  /// user who defines it.
+  /// - "INVOKER" : The routine is to be executed with the privileges of the
+  /// user who invokes it.
+  core.String? securityMode;
 
   /// Spark specific options.
   ///
@@ -11034,6 +11272,7 @@ class Routine {
   Routine({
     this.arguments,
     this.creationTime,
+    this.dataGovernanceType,
     this.definitionBody,
     this.description,
     this.determinismLevel,
@@ -11046,6 +11285,7 @@ class Routine {
     this.returnType,
     this.routineReference,
     this.routineType,
+    this.securityMode,
     this.sparkOptions,
     this.strictMode,
   });
@@ -11060,6 +11300,9 @@ class Routine {
               : null,
           creationTime: json_.containsKey('creationTime')
               ? json_['creationTime'] as core.String
+              : null,
+          dataGovernanceType: json_.containsKey('dataGovernanceType')
+              ? json_['dataGovernanceType'] as core.String
               : null,
           definitionBody: json_.containsKey('definitionBody')
               ? json_['definitionBody'] as core.String
@@ -11101,6 +11344,9 @@ class Routine {
           routineType: json_.containsKey('routineType')
               ? json_['routineType'] as core.String
               : null,
+          securityMode: json_.containsKey('securityMode')
+              ? json_['securityMode'] as core.String
+              : null,
           sparkOptions: json_.containsKey('sparkOptions')
               ? SparkOptions.fromJson(
                   json_['sparkOptions'] as core.Map<core.String, core.dynamic>)
@@ -11113,6 +11359,8 @@ class Routine {
   core.Map<core.String, core.dynamic> toJson() => {
         if (arguments != null) 'arguments': arguments!,
         if (creationTime != null) 'creationTime': creationTime!,
+        if (dataGovernanceType != null)
+          'dataGovernanceType': dataGovernanceType!,
         if (definitionBody != null) 'definitionBody': definitionBody!,
         if (description != null) 'description': description!,
         if (determinismLevel != null) 'determinismLevel': determinismLevel!,
@@ -11126,6 +11374,7 @@ class Routine {
         if (returnType != null) 'returnType': returnType!,
         if (routineReference != null) 'routineReference': routineReference!,
         if (routineType != null) 'routineType': routineType!,
+        if (securityMode != null) 'securityMode': securityMode!,
         if (sparkOptions != null) 'sparkOptions': sparkOptions!,
         if (strictMode != null) 'strictMode': strictMode!,
       };
@@ -11459,20 +11708,20 @@ class SearchStatistics {
   /// index was not used in all or part of the search query.
   ///
   /// If index_usage_mode is FULLLY_USED, this field is not populated.
-  core.List<IndexUnusedReason>? indexUnusedReason;
+  core.List<IndexUnusedReason>? indexUnusedReasons;
 
   /// Specifies index usage mode for the query.
   core.String? indexUsageMode;
 
   SearchStatistics({
-    this.indexUnusedReason,
+    this.indexUnusedReasons,
     this.indexUsageMode,
   });
 
   SearchStatistics.fromJson(core.Map json_)
       : this(
-          indexUnusedReason: json_.containsKey('indexUnusedReason')
-              ? (json_['indexUnusedReason'] as core.List)
+          indexUnusedReasons: json_.containsKey('indexUnusedReasons')
+              ? (json_['indexUnusedReasons'] as core.List)
                   .map((value) => IndexUnusedReason.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -11483,7 +11732,8 @@ class SearchStatistics {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (indexUnusedReason != null) 'indexUnusedReason': indexUnusedReason!,
+        if (indexUnusedReasons != null)
+          'indexUnusedReasons': indexUnusedReasons!,
         if (indexUsageMode != null) 'indexUsageMode': indexUsageMode!,
       };
 }
@@ -11596,17 +11846,17 @@ class SparkLoggingInfo {
 
   SparkLoggingInfo.fromJson(core.Map json_)
       : this(
-          projectId: json_.containsKey('project_id')
-              ? json_['project_id'] as core.String
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
               : null,
-          resourceType: json_.containsKey('resource_type')
-              ? json_['resource_type'] as core.String
+          resourceType: json_.containsKey('resourceType')
+              ? json_['resourceType'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (projectId != null) 'project_id': projectId!,
-        if (resourceType != null) 'resource_type': resourceType!,
+        if (projectId != null) 'projectId': projectId!,
+        if (resourceType != null) 'resourceType': resourceType!,
       };
 }
 
@@ -11778,23 +12028,23 @@ class SparkStatistics {
                   ),
                 )
               : null,
-          loggingInfo: json_.containsKey('logging_info')
+          loggingInfo: json_.containsKey('loggingInfo')
               ? SparkLoggingInfo.fromJson(
-                  json_['logging_info'] as core.Map<core.String, core.dynamic>)
+                  json_['loggingInfo'] as core.Map<core.String, core.dynamic>)
               : null,
-          sparkJobId: json_.containsKey('spark_job_id')
-              ? json_['spark_job_id'] as core.String
+          sparkJobId: json_.containsKey('sparkJobId')
+              ? json_['sparkJobId'] as core.String
               : null,
-          sparkJobLocation: json_.containsKey('spark_job_location')
-              ? json_['spark_job_location'] as core.String
+          sparkJobLocation: json_.containsKey('sparkJobLocation')
+              ? json_['sparkJobLocation'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endpoints != null) 'endpoints': endpoints!,
-        if (loggingInfo != null) 'logging_info': loggingInfo!,
-        if (sparkJobId != null) 'spark_job_id': sparkJobId!,
-        if (sparkJobLocation != null) 'spark_job_location': sparkJobLocation!,
+        if (loggingInfo != null) 'loggingInfo': loggingInfo!,
+        if (sparkJobId != null) 'sparkJobId': sparkJobId!,
+        if (sparkJobLocation != null) 'sparkJobLocation': sparkJobLocation!,
       };
 }
 
@@ -11808,6 +12058,9 @@ class SparkStatistics {
 class StandardSqlDataType {
   /// The type of the array's elements, if type_kind = "ARRAY".
   StandardSqlDataType? arrayElementType;
+
+  /// The type of the range's elements, if type_kind = "RANGE".
+  StandardSqlDataType? rangeElementType;
 
   /// The fields of this struct, in order, if type_kind = "STRUCT".
   StandardSqlStructType? structType;
@@ -11839,10 +12092,13 @@ class StandardSqlDataType {
   /// - "ARRAY" : Encoded as a list with types matching Type.array_type.
   /// - "STRUCT" : Encoded as a list with fields of type Type.struct_type\[i\].
   /// List is used because a JSON object cannot have duplicate field names.
+  /// - "RANGE" : Encoded as a pair with types matching range_element_type.
+  /// Pairs must begin with "\[", end with ")", and be separated by ", ".
   core.String? typeKind;
 
   StandardSqlDataType({
     this.arrayElementType,
+    this.rangeElementType,
     this.structType,
     this.typeKind,
   });
@@ -11851,6 +12107,10 @@ class StandardSqlDataType {
       : this(
           arrayElementType: json_.containsKey('arrayElementType')
               ? StandardSqlDataType.fromJson(json_['arrayElementType']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          rangeElementType: json_.containsKey('rangeElementType')
+              ? StandardSqlDataType.fromJson(json_['rangeElementType']
                   as core.Map<core.String, core.dynamic>)
               : null,
           structType: json_.containsKey('structType')
@@ -11864,6 +12124,7 @@ class StandardSqlDataType {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (arrayElementType != null) 'arrayElementType': arrayElementType!,
+        if (rangeElementType != null) 'rangeElementType': rangeElementType!,
         if (structType != null) 'structType': structType!,
         if (typeKind != null) 'typeKind': typeKind!,
       };
@@ -11907,7 +12168,9 @@ class StandardSqlField {
       };
 }
 
+/// The representation of a SQL STRUCT type.
 class StandardSqlStructType {
+  /// Fields within the struct.
   core.List<StandardSqlField>? fields;
 
   StandardSqlStructType({
@@ -12017,6 +12280,11 @@ class StringHparamSearchSpace {
 }
 
 class Table {
+  /// Specifies the configuration of a BigLake managed table.
+  ///
+  /// Optional.
+  BigLakeConfiguration? biglakeConfiguration;
+
   /// \[Output-only\] Clone definition.
   CloneDefinition? cloneDefinition;
 
@@ -12194,6 +12462,18 @@ class Table {
   /// Optional.
   core.bool? requirePartitionFilter;
 
+  /// The tags associated with this table.
+  ///
+  /// Tag keys are globally unique. See additional information on
+  /// [tags](https://cloud.google.com/iam/docs/tags-access-control#definitions).
+  /// An object containing a list of "key": value pairs. The key is the
+  /// namespaced friendly name of the tag key, e.g. "12345/environment" where
+  /// 12345 is parent id. The value is the friendly short name of the tag value,
+  /// e.g. "production".
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? resourceTags;
+
   /// Describes the schema of this table.
   ///
   /// Optional.
@@ -12243,6 +12523,7 @@ class Table {
   ViewDefinition? view;
 
   Table({
+    this.biglakeConfiguration,
     this.cloneDefinition,
     this.clustering,
     this.creationTime,
@@ -12276,6 +12557,7 @@ class Table {
     this.numTotalPhysicalBytes,
     this.rangePartitioning,
     this.requirePartitionFilter,
+    this.resourceTags,
     this.schema,
     this.selfLink,
     this.snapshotDefinition,
@@ -12289,6 +12571,10 @@ class Table {
 
   Table.fromJson(core.Map json_)
       : this(
+          biglakeConfiguration: json_.containsKey('biglakeConfiguration')
+              ? BigLakeConfiguration.fromJson(json_['biglakeConfiguration']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           cloneDefinition: json_.containsKey('cloneDefinition')
               ? CloneDefinition.fromJson(json_['cloneDefinition']
                   as core.Map<core.String, core.dynamic>)
@@ -12399,6 +12685,15 @@ class Table {
           requirePartitionFilter: json_.containsKey('requirePartitionFilter')
               ? json_['requirePartitionFilter'] as core.bool
               : null,
+          resourceTags: json_.containsKey('resourceTags')
+              ? (json_['resourceTags'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           schema: json_.containsKey('schema')
               ? TableSchema.fromJson(
                   json_['schema'] as core.Map<core.String, core.dynamic>)
@@ -12434,6 +12729,8 @@ class Table {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (biglakeConfiguration != null)
+          'biglakeConfiguration': biglakeConfiguration!,
         if (cloneDefinition != null) 'cloneDefinition': cloneDefinition!,
         if (clustering != null) 'clustering': clustering!,
         if (creationTime != null) 'creationTime': creationTime!,
@@ -12478,6 +12775,7 @@ class Table {
         if (rangePartitioning != null) 'rangePartitioning': rangePartitioning!,
         if (requirePartitionFilter != null)
           'requirePartitionFilter': requirePartitionFilter!,
+        if (resourceTags != null) 'resourceTags': resourceTags!,
         if (schema != null) 'schema': schema!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (snapshotDefinition != null)
@@ -12937,6 +13235,30 @@ class TableFieldSchemaPolicyTags {
       };
 }
 
+/// The subtype of the RANGE, if the type of this field is RANGE.
+///
+/// If the type is RANGE, this field is required. Possible values for the field
+/// element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
+///
+/// Optional.
+class TableFieldSchemaRangeElementType {
+  /// The field element type of a RANGE
+  core.String? type;
+
+  TableFieldSchemaRangeElementType({
+    this.type,
+  });
+
+  TableFieldSchemaRangeElementType.fromJson(core.Map json_)
+      : this(
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (type != null) 'type': type!,
+      };
+}
+
 class TableFieldSchema {
   /// The categories attached to this field, used for field-level access
   /// control.
@@ -13027,6 +13349,14 @@ class TableFieldSchema {
   /// Optional.
   core.String? precision;
 
+  /// The subtype of the RANGE, if the type of this field is RANGE.
+  ///
+  /// If the type is RANGE, this field is required. Possible values for the
+  /// field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
+  ///
+  /// Optional.
+  TableFieldSchemaRangeElementType? rangeElementType;
+
   /// Rounding Mode specification of the field.
   ///
   /// It only can be set on NUMERIC or BIGNUMERIC type fields.
@@ -13061,6 +13391,7 @@ class TableFieldSchema {
     this.name,
     this.policyTags,
     this.precision,
+    this.rangeElementType,
     this.roundingMode,
     this.scale,
     this.type,
@@ -13099,6 +13430,11 @@ class TableFieldSchema {
           precision: json_.containsKey('precision')
               ? json_['precision'] as core.String
               : null,
+          rangeElementType: json_.containsKey('rangeElementType')
+              ? TableFieldSchemaRangeElementType.fromJson(
+                  json_['rangeElementType']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           roundingMode: json_.containsKey('roundingMode')
               ? json_['roundingMode'] as core.String
               : null,
@@ -13119,6 +13455,7 @@ class TableFieldSchema {
         if (name != null) 'name': name!,
         if (policyTags != null) 'policyTags': policyTags!,
         if (precision != null) 'precision': precision!,
+        if (rangeElementType != null) 'rangeElementType': rangeElementType!,
         if (roundingMode != null) 'roundingMode': roundingMode!,
         if (scale != null) 'scale': scale!,
         if (type != null) 'type': type!,
@@ -13517,6 +13854,14 @@ class TrainingOptions {
   /// Only available for linear and logistic regression models.
   core.bool? calculatePValues;
 
+  /// Categorical feature encoding method.
+  /// Possible string values are:
+  /// - "ENCODING_METHOD_UNSPECIFIED" : Unspecified encoding method.
+  /// - "ONE_HOT_ENCODING" : Applies one-hot encoding.
+  /// - "LABEL_ENCODING" : Applies label encoding.
+  /// - "DUMMY_ENCODING" : Applies dummy encoding.
+  core.String? categoryEncodingMethod;
+
   /// If true, clean spikes and dips in the input time series.
   core.bool? cleanSpikesAndDips;
 
@@ -13552,7 +13897,7 @@ class TrainingOptions {
 
   /// The data frequency of a time series.
   /// Possible string values are:
-  /// - "DATA_FREQUENCY_UNSPECIFIED"
+  /// - "DATA_FREQUENCY_UNSPECIFIED" : Default value.
   /// - "AUTO_FREQUENCY" : Automatically inferred from timestamps.
   /// - "YEARLY" : Yearly data.
   /// - "QUARTERLY" : Quarterly data.
@@ -13583,7 +13928,7 @@ class TrainingOptions {
 
   /// The data split type for training and evaluation, e.g. RANDOM.
   /// Possible string values are:
-  /// - "DATA_SPLIT_METHOD_UNSPECIFIED"
+  /// - "DATA_SPLIT_METHOD_UNSPECIFIED" : Default value.
   /// - "RANDOM" : Splits data randomly.
   /// - "CUSTOM" : Splits data with the user provided tags.
   /// - "SEQUENTIAL" : Splits data sequentially.
@@ -13597,7 +13942,7 @@ class TrainingOptions {
 
   /// Distance type for clustering models.
   /// Possible string values are:
-  /// - "DISTANCE_TYPE_UNSPECIFIED"
+  /// - "DISTANCE_TYPE_UNSPECIFIED" : Default value.
   /// - "EUCLIDEAN" : Eculidean distance.
   /// - "COSINE" : Cosine distance.
   core.String? distanceType;
@@ -13617,7 +13962,7 @@ class TrainingOptions {
   /// Feedback type that specifies which algorithm to run for matrix
   /// factorization.
   /// Possible string values are:
-  /// - "FEEDBACK_TYPE_UNSPECIFIED"
+  /// - "FEEDBACK_TYPE_UNSPECIFIED" : Default value.
   /// - "IMPLICIT" : Use weighted-als for implicit feedback problems.
   /// - "EXPLICIT" : Use nonweighted-als for explicit feedback problems.
   core.String? feedbackType;
@@ -13705,6 +14050,9 @@ class TrainingOptions {
   /// - "ZA" : South Africa
   core.String? holidayRegion;
 
+  /// A list of geographical regions that are used for time series modeling.
+  core.List<core.String>? holidayRegions;
+
   /// The number of periods ahead that need to be forecasted.
   core.String? horizon;
 
@@ -13768,14 +14116,14 @@ class TrainingOptions {
 
   /// The strategy to determine learn rate for the current iteration.
   /// Possible string values are:
-  /// - "LEARN_RATE_STRATEGY_UNSPECIFIED"
+  /// - "LEARN_RATE_STRATEGY_UNSPECIFIED" : Default value.
   /// - "LINE_SEARCH" : Use line search to determine learning rate.
   /// - "CONSTANT" : Use a constant learning rate.
   core.String? learnRateStrategy;
 
   /// Type of loss function used during training run.
   /// Possible string values are:
-  /// - "LOSS_TYPE_UNSPECIFIED"
+  /// - "LOSS_TYPE_UNSPECIFIED" : Default value.
   /// - "MEAN_SQUARED_LOSS" : Mean squared loss, used for linear regression.
   /// - "MEAN_LOG_LOSS" : Mean log loss, used for logistic regression.
   core.String? lossType;
@@ -13788,10 +14136,11 @@ class TrainingOptions {
   /// Maximum number of trials to run in parallel.
   core.String? maxParallelTrials;
 
-  /// Get truncated length by last n points in time series.
+  /// The maximum number of time points in a time series that can be used in
+  /// modeling the trend component of the time series.
   ///
-  /// Use separately from time_series_length_fraction and
-  /// min_time_series_length.
+  /// Don't use this option with the `timeSeriesLengthFraction` or
+  /// `minTimeSeriesLength` options.
   core.String? maxTimeSeriesLength;
 
   /// Maximum depth of a tree for boosted tree models.
@@ -13806,9 +14155,16 @@ class TrainingOptions {
   /// Minimum split loss for boosted tree models.
   core.double? minSplitLoss;
 
-  /// Set fast trend ARIMA_PLUS model minimum training length.
+  /// The minimum number of time points in a time series that are used in
+  /// modeling the trend component of the time series.
   ///
-  /// Use in pair with time_series_length_fraction.
+  /// If you use this option you must also set the `timeSeriesLengthFraction`
+  /// option. This training option ensures that enough time points are available
+  /// when you use `timeSeriesLengthFraction` in trend modeling. This is
+  /// particularly important when forecasting multiple time series in a single
+  /// query using `timeSeriesIdColumn`. If the total number of time points is
+  /// less than the `minTimeSeriesLength` value, then the query uses all
+  /// available time points.
   core.String? minTimeSeriesLength;
 
   /// Minimum sum of instance weight needed in a child for boosted tree models.
@@ -13816,7 +14172,7 @@ class TrainingOptions {
 
   /// The model registry.
   /// Possible string values are:
-  /// - "MODEL_REGISTRY_UNSPECIFIED"
+  /// - "MODEL_REGISTRY_UNSPECIFIED" : Default value.
   /// - "VERTEX_AI" : Vertex AI.
   core.String? modelRegistry;
 
@@ -13850,7 +14206,7 @@ class TrainingOptions {
 
   /// Optimization strategy for training linear regression models.
   /// Possible string values are:
-  /// - "OPTIMIZATION_STRATEGY_UNSPECIFIED"
+  /// - "OPTIMIZATION_STRATEGY_UNSPECIFIED" : Default value.
   /// - "BATCH_GRADIENT_DESCENT" : Uses an iterative batch gradient descent
   /// algorithm.
   /// - "NORMAL_EQUATION" : Uses a normal equation to solve linear regression
@@ -13866,7 +14222,7 @@ class TrainingOptions {
 
   /// The solver for PCA.
   /// Possible string values are:
-  /// - "UNSPECIFIED"
+  /// - "UNSPECIFIED" : Default value.
   /// - "FULL" : Full eigen-decoposition.
   /// - "RANDOMIZED" : Randomized SVD.
   /// - "AUTO" : Auto.
@@ -13903,7 +14259,13 @@ class TrainingOptions {
   /// The time series id columns that were used during ARIMA model training.
   core.List<core.String>? timeSeriesIdColumns;
 
-  /// Get truncated length by fraction in time series.
+  /// The fraction of the interpolated length of the time series that's used to
+  /// model the time series trend component.
+  ///
+  /// All of the time points of the time series are used to model the non-trend
+  /// component. This training option accelerates modeling training without
+  /// sacrificing much forecasting accuracy. You can use this option with
+  /// `minTimeSeriesLength` but not with `maxTimeSeriesLength`.
   core.double? timeSeriesLengthFraction;
 
   /// Column to be designated as time series timestamp for ARIMA model.
@@ -13919,7 +14281,13 @@ class TrainingOptions {
   /// - "HIST" : Fast histogram optimized approximate greedy algorithm.
   core.String? treeMethod;
 
-  /// The smoothing window size for the trend component of the time series.
+  /// Smoothing window size for the trend component.
+  ///
+  /// When a positive value is specified, a center moving average smoothing is
+  /// applied on the history trend. When the smoothing window is out of the
+  /// boundary at the beginning or the end of the trend, the first element or
+  /// the last element is padded to fill the smoothing window before the average
+  /// is applied.
   core.String? trendSmoothingWindowSize;
 
   /// User column specified for matrix factorization models.
@@ -13952,6 +14320,7 @@ class TrainingOptions {
     this.boosterType,
     this.budgetHours,
     this.calculatePValues,
+    this.categoryEncodingMethod,
     this.cleanSpikesAndDips,
     this.colorSpace,
     this.colsampleBylevel,
@@ -13971,6 +14340,7 @@ class TrainingOptions {
     this.fitIntercept,
     this.hiddenUnits,
     this.holidayRegion,
+    this.holidayRegions,
     this.horizon,
     this.hparamTuningObjectives,
     this.includeDrift,
@@ -14063,6 +14433,9 @@ class TrainingOptions {
           calculatePValues: json_.containsKey('calculatePValues')
               ? json_['calculatePValues'] as core.bool
               : null,
+          categoryEncodingMethod: json_.containsKey('categoryEncodingMethod')
+              ? json_['categoryEncodingMethod'] as core.String
+              : null,
           cleanSpikesAndDips: json_.containsKey('cleanSpikesAndDips')
               ? json_['cleanSpikesAndDips'] as core.bool
               : null,
@@ -14121,6 +14494,11 @@ class TrainingOptions {
               : null,
           holidayRegion: json_.containsKey('holidayRegion')
               ? json_['holidayRegion'] as core.String
+              : null,
+          holidayRegions: json_.containsKey('holidayRegions')
+              ? (json_['holidayRegions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
               : null,
           horizon: json_.containsKey('horizon')
               ? json_['horizon'] as core.String
@@ -14323,6 +14701,8 @@ class TrainingOptions {
         if (boosterType != null) 'boosterType': boosterType!,
         if (budgetHours != null) 'budgetHours': budgetHours!,
         if (calculatePValues != null) 'calculatePValues': calculatePValues!,
+        if (categoryEncodingMethod != null)
+          'categoryEncodingMethod': categoryEncodingMethod!,
         if (cleanSpikesAndDips != null)
           'cleanSpikesAndDips': cleanSpikesAndDips!,
         if (colorSpace != null) 'colorSpace': colorSpace!,
@@ -14346,6 +14726,7 @@ class TrainingOptions {
         if (fitIntercept != null) 'fitIntercept': fitIntercept!,
         if (hiddenUnits != null) 'hiddenUnits': hiddenUnits!,
         if (holidayRegion != null) 'holidayRegion': holidayRegion!,
+        if (holidayRegions != null) 'holidayRegions': holidayRegions!,
         if (horizon != null) 'horizon': horizon!,
         if (hparamTuningObjectives != null)
           'hparamTuningObjectives': hparamTuningObjectives!,

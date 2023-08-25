@@ -224,6 +224,14 @@ class BillingAccountsBudgetsResource {
   /// prior `ListBudgets` call, and that the system should return the next page
   /// of data.
   ///
+  /// [scope] - Optional. Set the scope of the budgets to be returned, in the
+  /// format of the resource name. The scope of a budget is the cost that it
+  /// tracks, such as costs for a single project, or the costs for all projects
+  /// in a folder. Only project scope (in the format of "projects/project-id" or
+  /// "projects/123") is supported in this field. When this field is set to a
+  /// project's resource name, the budgets returned are tracking the costs for
+  /// that project.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -238,11 +246,13 @@ class BillingAccountsBudgetsResource {
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
+    core.String? scope,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (scope != null) 'scope': [scope],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -359,6 +369,18 @@ class GoogleCloudBillingBudgetsV1Budget {
   /// Optional.
   GoogleCloudBillingBudgetsV1NotificationsRule? notificationsRule;
 
+  ///
+  /// Possible string values are:
+  /// - "OWNERSHIP_SCOPE_UNSPECIFIED" : Unspecified ownership scope, same as
+  /// ALL_USERS.
+  /// - "ALL_USERS" : Both billing account-level users and project-level users
+  /// have full access to the budget, if the users have the required IAM
+  /// permissions.
+  /// - "BILLING_ACCOUNT" : Only billing account-level users have full access to
+  /// the budget. Project-level users have read-only access, even if they have
+  /// the required IAM permissions.
+  core.String? ownershipScope;
+
   /// Rules that trigger alerts (notifications of thresholds being crossed) when
   /// spend exceeds the specified percentages of the budget.
   ///
@@ -375,6 +397,7 @@ class GoogleCloudBillingBudgetsV1Budget {
     this.etag,
     this.name,
     this.notificationsRule,
+    this.ownershipScope,
     this.thresholdRules,
   });
 
@@ -398,6 +421,9 @@ class GoogleCloudBillingBudgetsV1Budget {
                   json_['notificationsRule']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          ownershipScope: json_.containsKey('ownershipScope')
+              ? json_['ownershipScope'] as core.String
+              : null,
           thresholdRules: json_.containsKey('thresholdRules')
               ? (json_['thresholdRules'] as core.List)
                   .map((value) =>
@@ -414,6 +440,7 @@ class GoogleCloudBillingBudgetsV1Budget {
         if (etag != null) 'etag': etag!,
         if (name != null) 'name': name!,
         if (notificationsRule != null) 'notificationsRule': notificationsRule!,
+        if (ownershipScope != null) 'ownershipScope': ownershipScope!,
         if (thresholdRules != null) 'thresholdRules': thresholdRules!,
       };
 }
@@ -733,6 +760,16 @@ class GoogleCloudBillingBudgetsV1NotificationsRule {
   /// Optional.
   core.bool? disableDefaultIamRecipients;
 
+  /// When set to true, and when the budget has a single project configured,
+  /// notifications will be sent to project level recipients of that project.
+  ///
+  /// This field will be ignored if the budget has multiple or no project
+  /// configured. Currently, project level recipients are the users with `Owner`
+  /// role on a cloud project.
+  ///
+  /// Optional.
+  core.bool? enableProjectLevelRecipients;
+
   /// Email targets to send notifications to when a threshold is exceeded.
   ///
   /// This is in addition to the `DefaultIamRecipients` who receive alert emails
@@ -789,6 +826,7 @@ class GoogleCloudBillingBudgetsV1NotificationsRule {
 
   GoogleCloudBillingBudgetsV1NotificationsRule({
     this.disableDefaultIamRecipients,
+    this.enableProjectLevelRecipients,
     this.monitoringNotificationChannels,
     this.pubsubTopic,
     this.schemaVersion,
@@ -799,6 +837,10 @@ class GoogleCloudBillingBudgetsV1NotificationsRule {
           disableDefaultIamRecipients:
               json_.containsKey('disableDefaultIamRecipients')
                   ? json_['disableDefaultIamRecipients'] as core.bool
+                  : null,
+          enableProjectLevelRecipients:
+              json_.containsKey('enableProjectLevelRecipients')
+                  ? json_['enableProjectLevelRecipients'] as core.bool
                   : null,
           monitoringNotificationChannels:
               json_.containsKey('monitoringNotificationChannels')
@@ -817,6 +859,8 @@ class GoogleCloudBillingBudgetsV1NotificationsRule {
   core.Map<core.String, core.dynamic> toJson() => {
         if (disableDefaultIamRecipients != null)
           'disableDefaultIamRecipients': disableDefaultIamRecipients!,
+        if (enableProjectLevelRecipients != null)
+          'enableProjectLevelRecipients': enableProjectLevelRecipients!,
         if (monitoringNotificationChannels != null)
           'monitoringNotificationChannels': monitoringNotificationChannels!,
         if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,

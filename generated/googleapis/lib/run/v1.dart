@@ -4250,8 +4250,6 @@ class EnvFromSource {
 class EnvVar {
   /// Name of the environment variable.
   ///
-  /// Must be a C_IDENTIFIER.
-  ///
   /// Required.
   core.String? name;
 
@@ -5705,8 +5703,8 @@ class LocalObjectReference {
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
-/// k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all
-/// persisted resources must have, which includes all objects users must create.
+/// google.cloud.run.meta.v1.ObjectMeta is metadata that all persisted resources
+/// must have, which includes all objects users must create.
 class ObjectMeta {
   /// Unstructured key value map stored with a resource that may be set by
   /// external tools to store and retrieve arbitrary metadata.
@@ -5725,12 +5723,14 @@ class ObjectMeta {
   /// `run.googleapis.com/cpu-throttling`: Revision. *
   /// `run.googleapis.com/custom-audiences`: Service. *
   /// `run.googleapis.com/description`: Service. *
+  /// `run.googleapis.com/disable-default-url`: Service. *
   /// `run.googleapis.com/encryption-key-shutdown-hours`: Revision *
   /// `run.googleapis.com/encryption-key`: Revision, Execution. *
   /// `run.googleapis.com/execution-environment`: Revision, Execution. *
   /// `run.googleapis.com/gc-traffic-tags`: Service. *
   /// `run.googleapis.com/ingress`: Service. *
   /// `run.googleapis.com/launch-stage`: Service, Job. *
+  /// `run.googleapis.com/minScale`: Service (ALPHA) *
   /// `run.googleapis.com/network-interfaces`: Revision, Execution. *
   /// `run.googleapis.com/post-key-revocation-action-type`: Revision. *
   /// `run.googleapis.com/secrets`: Revision, Execution. *
@@ -6024,23 +6024,23 @@ class OwnerReference {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -6506,6 +6506,14 @@ class RevisionStatus {
   /// Revision may receive traffic.
   core.List<GoogleCloudRunV1Condition>? conditions;
 
+  /// The desired number of instances running this revision.
+  ///
+  /// For Cloud Run, this only includes instances provisioned using the minScale
+  /// annotation. It does not include instances created by autoscaling.
+  ///
+  /// Output only.
+  core.int? desiredReplicas;
+
   /// ImageDigest holds the resolved digest for the image specified within
   /// .Spec.Container.Image.
   ///
@@ -6533,6 +6541,7 @@ class RevisionStatus {
 
   RevisionStatus({
     this.conditions,
+    this.desiredReplicas,
     this.imageDigest,
     this.logUrl,
     this.observedGeneration,
@@ -6546,6 +6555,9 @@ class RevisionStatus {
                   .map((value) => GoogleCloudRunV1Condition.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          desiredReplicas: json_.containsKey('desiredReplicas')
+              ? json_['desiredReplicas'] as core.int
               : null,
           imageDigest: json_.containsKey('imageDigest')
               ? json_['imageDigest'] as core.String
@@ -6563,6 +6575,7 @@ class RevisionStatus {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (conditions != null) 'conditions': conditions!,
+        if (desiredReplicas != null) 'desiredReplicas': desiredReplicas!,
         if (imageDigest != null) 'imageDigest': imageDigest!,
         if (logUrl != null) 'logUrl': logUrl!,
         if (observedGeneration != null)
@@ -6739,7 +6752,7 @@ class RouteStatus {
   /// targets.
   ///
   /// It generally has the form:
-  /// https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
+  /// `https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app`
   core.String? url;
 
   RouteStatus({
@@ -6786,11 +6799,9 @@ class RouteStatus {
 
 /// Request message for creating a new execution of a job.
 class RunJobRequest {
-  /// Private preview feature.
-  ///
-  /// Currently only available by invitation. Overrides specification for a
-  /// given execution of a job. The specified values update the specification of
-  /// the created execution.
+  /// Overrides existing job configuration for one specific new job execution
+  /// only, using the specified values to update the job configuration for the
+  /// new execution.
   ///
   /// Optional.
   Overrides? overrides;
@@ -7062,12 +7073,14 @@ class Service {
   /// `run.googleapis.com/binary-authorization-breakglass` *
   /// `run.googleapis.com/binary-authorization` *
   /// `run.googleapis.com/client-name` * `run.googleapis.com/custom-audiences` *
-  /// `run.googleapis.com/description` * `run.googleapis.com/gc-traffic-tags` *
-  /// `run.googleapis.com/ingress` * `run.googleapis.com/ingress` sets the
-  /// ingress settings for the Service. See \[the ingress settings
-  /// documentation\](/run/docs/securing/ingress) for details on configuring
-  /// ingress settings. * `run.googleapis.com/ingress-status` is output-only and
-  /// contains the currently active ingress settings for the Service.
+  /// `run.googleapis.com/description` *
+  /// `run.googleapis.com/disable-default-url` *
+  /// `run.googleapis.com/gc-traffic-tags` * `run.googleapis.com/ingress` *
+  /// `run.googleapis.com/ingress` sets the ingress settings for the Service.
+  /// See \[the ingress settings documentation\](/run/docs/securing/ingress) for
+  /// details on configuring ingress settings. *
+  /// `run.googleapis.com/ingress-status` is output-only and contains the
+  /// currently active ingress settings for the Service.
   /// `run.googleapis.com/ingress-status` may differ from
   /// `run.googleapis.com/ingress` while the system is processing a change to
   /// `run.googleapis.com/ingress` or if the system failed to process a change
@@ -7181,9 +7194,8 @@ class ServiceStatus {
   /// its `Ready` condition become `True`.
   core.String? latestReadyRevisionName;
 
-  /// Returns the generation last fully processed by the system.
+  /// Returns the generation last seen by the system.
   ///
-  /// This will only match metadata.generation when reconciliation is complete.
   /// Clients polling for completed reconciliation should poll until
   /// observedGeneration = metadata.generation and the Ready condition's status
   /// is True or False.
@@ -7199,7 +7211,7 @@ class ServiceStatus {
   /// URL that will distribute traffic over the provided traffic targets.
   ///
   /// It generally has the form
-  /// https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
+  /// `https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app`
   core.String? url;
 
   ServiceStatus({

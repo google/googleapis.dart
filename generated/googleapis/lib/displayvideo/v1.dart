@@ -484,11 +484,6 @@ class AdvertisersResource {
   /// requests\](/display-video/api/guides/how-tos/filters) guide for more
   /// information.
   ///
-  /// [internalDebuggingConfig] - The config used in internal debugging and
-  /// manual testing. Use comma to separate multiple values. Examples: To allow
-  /// entity search to go through tangle `searchUsingTangle` To get only the
-  /// advertiser Ids use `idOnly`
-  ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `displayName` (default) * `entityStatus` * `updateTime` The default
   /// sorting order is ascending. To specify descending order for a field, a
@@ -519,7 +514,6 @@ class AdvertisersResource {
   /// this method will complete with the same error.
   async.Future<ListAdvertisersResponse> list({
     core.String? filter,
-    core.String? internalDebuggingConfig,
     core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
@@ -528,8 +522,6 @@ class AdvertisersResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
-      if (internalDebuggingConfig != null)
-        'internalDebuggingConfig': [internalDebuggingConfig],
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3172,9 +3164,8 @@ class AdvertisersLineItemsResource {
   /// create the assigned targeting options provided in
   /// BulkEditLineItemAssignedTargetingOptionsRequest.create_requests. Requests
   /// to this endpoint cannot be made concurrently with the following requests
-  /// updating the same line item: * UpdateLineItem *
-  /// CreateLineItemAssignedTargetingOption *
-  /// DeleteLineItemAssignedTargetingOption
+  /// updating the same line item: * lineItems.patch *
+  /// assignedTargetingOptions.create * assignedTargetingOptions.delete
   ///
   /// [request] - The metadata request object.
   ///
@@ -3586,8 +3577,7 @@ class AdvertisersLineItemsResource {
   /// Returns the updated line item if successful. Requests to this endpoint
   /// cannot be made concurrently with the following requests updating the same
   /// line item: * BulkEditAssignedTargetingOptions * BulkUpdateLineItems *
-  /// CreateLineItemAssignedTargetingOption *
-  /// DeleteLineItemAssignedTargetingOption
+  /// assignedTargetingOptions.create * assignedTargetingOptions.delete
   ///
   /// [request] - The metadata request object.
   ///
@@ -3664,8 +3654,9 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   ///
   /// Returns the assigned targeting option if successful. Requests to this
   /// endpoint cannot be made concurrently with the following requests updating
-  /// the same line item: * BulkEditAssignedTargetingOptions * BulkUpdate *
-  /// UpdateLineItem * DeleteLineItemAssignedTargetingOption
+  /// the same line item: * lineItems.bulkEditAssignedTargetingOptions *
+  /// lineItems.bulkUpdate * lineItems.patch *
+  /// DeleteLineItemAssignedTargetingOption
   ///
   /// [request] - The metadata request object.
   ///
@@ -3848,8 +3839,9 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// Deletes an assigned targeting option from a line item.
   ///
   /// Requests to this endpoint cannot be made concurrently with the following
-  /// requests updating the same line item: * BulkEditAssignedTargetingOptions *
-  /// BulkUpdate * UpdateLineItem * CreateLineItemAssignedTargetingOption
+  /// requests updating the same line item: *
+  /// lineItems.bulkEditAssignedTargetingOptions * lineItems.bulkUpdate *
+  /// lineItems.patch * CreateLineItemAssignedTargetingOption
   ///
   /// Request parameters:
   ///
@@ -4671,9 +4663,8 @@ class AdvertisersLocationListsAssignedLocationsResource {
   /// list.
   ///
   /// The operation will delete the assigned locations provided in
-  /// BulkEditAssignedLocationsRequest.deleted_assigned_locations and then
-  /// create the assigned locations provided in
-  /// BulkEditAssignedLocationsRequest.created_assigned_locations.
+  /// deletedAssignedLocations and then create the assigned locations provided
+  /// in createdAssignedLocations.
   ///
   /// [request] - The metadata request object.
   ///
@@ -8629,9 +8620,6 @@ class InventorySourcesResource {
   /// [inventorySourceId] - Required. The ID of the inventory source to fetch.
   /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [advertiserId] - Optional. The advertiser_id is optional, when it is
-  /// provided, the advertiser access is used.
-  ///
   /// [partnerId] - Required. The ID of the DV360 partner to which the fetched
   /// inventory source is permissioned.
   ///
@@ -8647,12 +8635,10 @@ class InventorySourcesResource {
   /// this method will complete with the same error.
   async.Future<InventorySource> get(
     core.String inventorySourceId, {
-    core.String? advertiserId,
     core.String? partnerId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (advertiserId != null) 'advertiserId': [advertiserId],
       if (partnerId != null) 'partnerId': [partnerId],
       if ($fields != null) 'fields': [$fields],
     };
@@ -11491,7 +11477,8 @@ class AgeRangeAssignedTargetingOptionDetails {
   /// age range represented in this field can be 1) targeted solely, or, 2) part
   /// of a larger continuous age range. The reach of a continuous age range
   /// targeting can be expanded by also targeting an audience of an unknown age.
-  /// Output only in v1. Required in v2.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "AGE_RANGE_UNSPECIFIED" : Default value when age range is not specified
   /// in this version. This enum is a placeholder for default value and does not
@@ -11697,9 +11684,6 @@ class AssetAssociation {
 typedef AssignedInventorySource = $AssignedInventorySource;
 
 /// An assignment between a location list and a relevant targeting option.
-///
-/// Currently, geo region targeting options are the only supported option for
-/// assignment.
 typedef AssignedLocation = $AssignedLocation;
 
 /// A single assigned targeting option, which defines the state of a targeting
@@ -12646,7 +12630,7 @@ class AudienceGroupAssignedTargetingOptionDetails {
 class AudioContentTypeAssignedTargetingOptionDetails {
   /// The audio content type.
   ///
-  /// Output only in v1. Required in v2.
+  /// Required.
   /// Possible string values are:
   /// - "AUDIO_CONTENT_TYPE_UNSPECIFIED" : Audio content type is not specified
   /// in this version. This enum is a place holder for a default value and does
@@ -13030,11 +13014,11 @@ class BulkEditAssignedInventorySourcesResponse {
 /// Request message for AssignedLocationService.BulkEditAssignedLocations.
 class BulkEditAssignedLocationsRequest {
   /// The assigned locations to create in bulk, specified as a list of
-  /// AssignedLocations.
+  /// AssignedLocation resources.
   core.List<AssignedLocation>? createdAssignedLocations;
 
   /// The IDs of the assigned locations to delete in bulk, specified as a list
-  /// of assigned_location_ids.
+  /// of assignedLocationId values.
   core.List<core.String>? deletedAssignedLocations;
 
   BulkEditAssignedLocationsRequest({
@@ -13067,7 +13051,6 @@ class BulkEditAssignedLocationsRequest {
       };
 }
 
-/// Response message for AssignedLocationService.BulkEditAssignedLocations.
 class BulkEditAssignedLocationsResponse {
   /// The list of assigned locations that have been successfully created.
   ///
@@ -13481,7 +13464,6 @@ class BulkListAdvertiserAssignedTargetingOptionsResponse {
       };
 }
 
-/// Response message for BulkListCampaignAssignedTargetingOptions.
 class BulkListCampaignAssignedTargetingOptionsResponse {
   /// The list of assigned targeting options.
   ///
@@ -13522,7 +13504,6 @@ class BulkListCampaignAssignedTargetingOptionsResponse {
       };
 }
 
-/// Response message for BulkListInsertionOrderAssignedTargetingOptions.
 class BulkListInsertionOrderAssignedTargetingOptionsResponse {
   /// The list of assigned targeting options.
   ///
@@ -14170,7 +14151,7 @@ class ContentInstreamPositionAssignedTargetingOptionDetails {
 
   /// The content instream position for video or audio ads.
   ///
-  /// Output only in v1. Required in v2.
+  /// Required.
   /// Possible string values are:
   /// - "CONTENT_INSTREAM_POSITION_UNSPECIFIED" : Content instream position is
   /// not specified in this version. This enum is a place holder for a default
@@ -14252,7 +14233,7 @@ class ContentOutstreamPositionAssignedTargetingOptionDetails {
 
   /// The content outstream position.
   ///
-  /// Output only in v1. Required in v2.
+  /// Required.
   /// Possible string values are:
   /// - "CONTENT_OUTSTREAM_POSITION_UNSPECIFIED" : Content outstream position is
   /// not specified in this version. This enum is a place holder for a default
@@ -14582,6 +14563,10 @@ class CreateSdfDownloadTaskRequest {
   /// - "SDF_VERSION_5_4" : SDF version 5.4
   /// - "SDF_VERSION_5_5" : SDF version 5.5
   /// - "SDF_VERSION_6" : SDF version 6
+  /// - "SDF_VERSION_7" : SDF version 7 Read the \[v7 migration
+  /// guide\](/display-video/api/structured-data-file/v7-migration-guide) before
+  /// migrating to this version. Currently in beta. Only available for use by a
+  /// subset of users.
   core.String? version;
 
   CreateSdfDownloadTaskRequest({
@@ -15721,7 +15706,7 @@ class CustomBiddingScript {
 
   /// Error details of a rejected custom bidding script.
   ///
-  /// This field will only be populated when Script.state is REJECTED.
+  /// This field will only be populated when state is REJECTED.
   ///
   /// Output only.
   core.List<ScriptError>? errors;
@@ -16054,15 +16039,15 @@ typedef DeviceMakeModelTargetingOptionDetails
 class DeviceTypeAssignedTargetingOptionDetails {
   /// The display name of the device type.
   ///
-  /// Output only in v1. Required in v2.
+  /// Required.
   /// Possible string values are:
   /// - "DEVICE_TYPE_UNSPECIFIED" : Default value when device type is not
   /// specified in this version. This enum is a placeholder for default value
   /// and does not represent a real device type option.
-  /// - "DEVICE_TYPE_COMPUTER" : The device type is computer.
-  /// - "DEVICE_TYPE_CONNECTED_TV" : The device type is connected TV.
-  /// - "DEVICE_TYPE_SMART_PHONE" : The device type is smart phone..
-  /// - "DEVICE_TYPE_TABLET" : The device type is tablet.
+  /// - "DEVICE_TYPE_COMPUTER" : Computer.
+  /// - "DEVICE_TYPE_CONNECTED_TV" : Connected TV.
+  /// - "DEVICE_TYPE_SMART_PHONE" : Smart phone.
+  /// - "DEVICE_TYPE_TABLET" : Tablet.
   core.String? deviceType;
 
   /// ID of the device type.
@@ -16417,7 +16402,7 @@ typedef Empty = $Empty;
 class EnvironmentAssignedTargetingOptionDetails {
   /// The serving environment.
   ///
-  /// Output only in v1. Required in v2.
+  /// Required.
   /// Possible string values are:
   /// - "ENVIRONMENT_UNSPECIFIED" : Default value when environment is not
   /// specified in this version. This enum is a placeholder for default value
@@ -17051,7 +17036,7 @@ class FrequencyCap {
 class GenderAssignedTargetingOptionDetails {
   /// The gender of the audience.
   ///
-  /// Output only in v1. Required in v2.
+  /// Required.
   /// Possible string values are:
   /// - "GENDER_UNSPECIFIED" : Default value when gender is not specified in
   /// this version. This enum is a place holder for default value and does not
@@ -17134,6 +17119,12 @@ class GenerateDefaultLineItemRequest {
   /// - "LINE_ITEM_TYPE_VIDEO_OVER_THE_TOP" : Over-the-top ads present in OTT
   /// insertion orders. This type is only applicable to line items with an
   /// insertion order of insertion_order_type `OVER_THE_TOP`.
+  /// - "LINE_ITEM_TYPE_DISPLAY_OUT_OF_HOME" : Display ads served on
+  /// digital-out-of-home inventory. Line items of this type and their targeting
+  /// cannot be created or updated using the API.
+  /// - "LINE_ITEM_TYPE_VIDEO_OUT_OF_HOME" : Video ads served on
+  /// digital-out-of-home inventory. Line items of this type and their targeting
+  /// cannot be created or updated using the API.
   core.String? lineItemType;
 
   /// The mobile app promoted by the line item.
@@ -17501,7 +17492,7 @@ typedef GuaranteedOrderStatus = $GuaranteedOrderStatus;
 class HouseholdIncomeAssignedTargetingOptionDetails {
   /// The household income of the audience.
   ///
-  /// Output only in v1. Required in v2.
+  /// Required.
   /// Possible string values are:
   /// - "HOUSEHOLD_INCOME_UNSPECIFIED" : Default value when household income is
   /// not specified in this version. This enum is a placeholder for default
@@ -17811,14 +17802,13 @@ class InsertionOrderBudget {
   /// automation option is not specified or is unknown in this version.
   /// - "INSERTION_ORDER_AUTOMATION_TYPE_BUDGET" : Automatic budget allocation.
   /// Allow the system to automatically shift budget to owning line items to
-  /// optimize performance defined by performance_goal. No automation on bid
-  /// settings.
+  /// optimize performance defined by kpi. No automation on bid settings.
   /// - "INSERTION_ORDER_AUTOMATION_TYPE_NONE" : No automation of bid or budget
   /// on insertion order level. Bid and budget must be manually configured at
   /// the line item level.
   /// - "INSERTION_ORDER_AUTOMATION_TYPE_BID_BUDGET" : Allow the system to
   /// automatically adjust bids and shift budget to owning line items to
-  /// optimize performance defined by performance_goal.
+  /// optimize performance defined by kpi.
   core.String? automationType;
 
   /// The list of budget segments.
@@ -18756,6 +18746,12 @@ class LineItem {
   /// - "LINE_ITEM_TYPE_VIDEO_OVER_THE_TOP" : Over-the-top ads present in OTT
   /// insertion orders. This type is only applicable to line items with an
   /// insertion order of insertion_order_type `OVER_THE_TOP`.
+  /// - "LINE_ITEM_TYPE_DISPLAY_OUT_OF_HOME" : Display ads served on
+  /// digital-out-of-home inventory. Line items of this type and their targeting
+  /// cannot be created or updated using the API.
+  /// - "LINE_ITEM_TYPE_VIDEO_OUT_OF_HOME" : Video ads served on
+  /// digital-out-of-home inventory. Line items of this type and their targeting
+  /// cannot be created or updated using the API.
   core.String? lineItemType;
 
   /// The mobile app promoted by the line item.
@@ -19620,7 +19616,6 @@ class ListGuaranteedOrdersResponse {
       };
 }
 
-/// Response message for ListInsertionOrderAssignedTargetingOptions.
 class ListInsertionOrderAssignedTargetingOptionsResponse {
   /// The list of assigned targeting options.
   ///
@@ -20262,7 +20257,7 @@ typedef Money = $Money;
 class NativeContentPositionAssignedTargetingOptionDetails {
   /// The content position.
   ///
-  /// Output only in v1. Required in v2.
+  /// Required.
   /// Possible string values are:
   /// - "NATIVE_CONTENT_POSITION_UNSPECIFIED" : Native content position is not
   /// specified in this version. This enum is a place holder for a default value
@@ -20440,7 +20435,7 @@ class ObaIcon {
 class OmidAssignedTargetingOptionDetails {
   /// The type of Open Measurement enabled inventory.
   ///
-  /// Output only in v1. Required in v2.
+  /// Required.
   /// Possible string values are:
   /// - "OMID_UNSPECIFIED" : Default value when omid targeting is not specified
   /// in this version.
@@ -20598,7 +20593,7 @@ typedef ParentEntityFilter = $ParentEntityFilter;
 class ParentalStatusAssignedTargetingOptionDetails {
   /// The parental status of the audience.
   ///
-  /// Output only in v1. Required in v2.
+  /// Required.
   /// Possible string values are:
   /// - "PARENTAL_STATUS_UNSPECIFIED" : Default value when parental status is
   /// not specified in this version. This enum is a place holder for default
@@ -20818,7 +20813,7 @@ typedef PartnerGeneralConfig = $PartnerGeneralConfig;
 /// Settings that control how partner revenue is calculated.
 typedef PartnerRevenueModel = $PartnerRevenueModel;
 
-/// Settings that control the performance goal of a campaign or insertion order.
+/// Settings that control the performance goal of a campaign.
 typedef PerformanceGoal = $PerformanceGoal;
 
 /// A strategy that automatically adjusts the bid to meet or beat a specified
@@ -22312,7 +22307,7 @@ class VideoPlayerSizeAssignedTargetingOptionDetails {
 
   /// The video player size.
   ///
-  /// Output only in v1. Required in v2.
+  /// Required.
   /// Possible string values are:
   /// - "VIDEO_PLAYER_SIZE_UNSPECIFIED" : Video player size is not specified in
   /// this version. This enum is a place holder for a default value and does not
@@ -22370,7 +22365,7 @@ class ViewabilityAssignedTargetingOptionDetails {
 
   /// The predicted viewability percentage.
   ///
-  /// Output only in v1. Required in v2.
+  /// Required.
   /// Possible string values are:
   /// - "VIEWABILITY_UNSPECIFIED" : Default value when viewability is not
   /// specified in this version. This enum is a placeholder for default value

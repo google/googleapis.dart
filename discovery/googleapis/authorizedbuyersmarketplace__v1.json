@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230807",
+    "revision": "20231101",
     "rootUrl": "https://authorizedbuyersmarketplace.googleapis.com/",
     "servicePath": "",
     "title": "Authorized Buyers Marketplace API",
@@ -2044,7 +2044,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "The resource name of the finalized deal. Format: `buyers/{accountId}/finalizeddeals/{finalizedDealId}`",
+                    "description": "The resource name of the finalized deal. Format: `buyers/{accountId}/finalizedDeals/{finalizedDealId}`",
                     "type": "string"
                 },
                 "readyToServe": {

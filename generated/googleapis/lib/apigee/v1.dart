@@ -57,6 +57,7 @@
 ///   - [OrganizationsEnvgroupsResource]
 ///     - [OrganizationsEnvgroupsAttachmentsResource]
 ///   - [OrganizationsEnvironmentsResource]
+///     - [OrganizationsEnvironmentsAddonsConfigResource]
 ///     - [OrganizationsEnvironmentsAnalyticsResource]
 ///       - [OrganizationsEnvironmentsAnalyticsAdminResource]
 ///       - [OrganizationsEnvironmentsAnalyticsExportsResource]
@@ -78,6 +79,7 @@
 ///     - [OrganizationsEnvironmentsQueriesResource]
 ///     - [OrganizationsEnvironmentsReferencesResource]
 ///     - [OrganizationsEnvironmentsResourcefilesResource]
+///     - [OrganizationsEnvironmentsSecurityActionsResource]
 ///     - [OrganizationsEnvironmentsSecurityIncidentsResource]
 ///     - [OrganizationsEnvironmentsSecurityReportsResource]
 ///     - [OrganizationsEnvironmentsSecurityStatsResource]
@@ -2603,12 +2605,7 @@ class OrganizationsAppgroupsResource {
   ///
   /// Once created, user can register apps under the AppGroup to obtain secret
   /// key and password. At creation time, the AppGroup's state is set as
-  /// `active`. The attribute `Attribute` with key `attribute_name` as
-  /// `__apigee_reserved__developer_details` can be used to store developers and
-  /// their roles. The JSON format expected is: \[ { "developer_id":"",
-  /// "roles":\[ "" \] } \] and is dealt in base64encoded format. Etag will be
-  /// available in attribute `Attribute` with key `attribute_name` as
-  /// `__apigee_reserved__developer_details_etag` for that AppGroup.
+  /// `active`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2745,8 +2742,9 @@ class OrganizationsAppgroupsResource {
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [filter] - The filter expression to be used to get the list of AppGroups,
-  /// where filtering can be done on name, correlationID or channelID of the app
-  /// group. Example: filter = "name = foobar"
+  /// where filtering can be done on status, channelId or channelUri of the app
+  /// group. Examples: filter=status=active", filter=channelId=,
+  /// filter=channelUri=
   ///
   /// [pageSize] - Count of AppGroups a single page can have in the response. If
   /// unspecified, at most 1000 AppGroups will be returned. The maximum value is
@@ -2789,19 +2787,12 @@ class OrganizationsAppgroupsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an appGroup.
+  /// Updates an AppGroup.
   ///
-  /// This API replaces the existing appGroup details with those specified in
+  /// This API replaces the existing AppGroup details with those specified in
   /// the request. Include or exclude any existing details that you want to
   /// retain or delete, respectively. Note that the state of the AppGroup should
-  /// be updated using `action`, and not via AppGroup. The custom attribute
-  /// limit is 1000, and is how `__apigee_reserved__developer_details` can be
-  /// updated. **Note**: OAuth access tokens and Key Management Service (KMS)
-  /// entities (apps, developers, and API products) are cached for 180 seconds
-  /// (current default). Any custom attributes associated with these entities
-  /// are cached for at least 180 seconds after the entity is accessed at
-  /// runtime. Therefore, an `ExpiresIn` element on the OAuthV2 policy won't be
-  /// able to expire an access token in less than 180 seconds.
+  /// be updated using `action`, and not via AppGroup.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2811,7 +2802,7 @@ class OrganizationsAppgroupsResource {
   /// your request: `organizations/{org}/appgroups/{app_group_name}`
   /// Value must have pattern `^organizations/\[^/\]+/appgroups/\[^/\]+$`.
   ///
-  /// [action] - Activate or de-activate the appGroup by setting the action as
+  /// [action] - Activate or de-activate the AppGroup by setting the action as
   /// `active` or `inactive`. The `Content-Type` header must be set to
   /// `application/octet-stream`, with empty body.
   ///
@@ -3465,7 +3456,7 @@ class OrganizationsAppsResource {
   ///
   /// [filter] - Optional. The filter expression to be used to get the list of
   /// apps, where filtering can be done on developerEmail, apiProduct,
-  /// consumerKey, status, appId, appName and appType. Examples:
+  /// consumerKey, status, appId, appName, appType and appGroup. Examples:
   /// "developerEmail=foo@bar.com", "appType=AppGroup", or "appType=Developer"
   /// "filter" is supported from ver 1.10.0 and above.
   ///
@@ -6441,6 +6432,8 @@ class OrganizationsEnvgroupsAttachmentsResource {
 class OrganizationsEnvironmentsResource {
   final commons.ApiRequester _requester;
 
+  OrganizationsEnvironmentsAddonsConfigResource get addonsConfig =>
+      OrganizationsEnvironmentsAddonsConfigResource(_requester);
   OrganizationsEnvironmentsAnalyticsResource get analytics =>
       OrganizationsEnvironmentsAnalyticsResource(_requester);
   OrganizationsEnvironmentsApisResource get apis =>
@@ -6465,6 +6458,8 @@ class OrganizationsEnvironmentsResource {
       OrganizationsEnvironmentsReferencesResource(_requester);
   OrganizationsEnvironmentsResourcefilesResource get resourcefiles =>
       OrganizationsEnvironmentsResourcefilesResource(_requester);
+  OrganizationsEnvironmentsSecurityActionsResource get securityActions =>
+      OrganizationsEnvironmentsSecurityActionsResource(_requester);
   OrganizationsEnvironmentsSecurityIncidentsResource get securityIncidents =>
       OrganizationsEnvironmentsSecurityIncidentsResource(_requester);
   OrganizationsEnvironmentsSecurityReportsResource get securityReports =>
@@ -6606,6 +6601,44 @@ class OrganizationsEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApigeeV1Environment.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the add-ons config of an environment.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the add-ons config. Must be in the format of
+  /// `/organizations/{org}/environments/{env}/addonsConfig`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/addonsConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1AddonsConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1AddonsConfig> getAddonsConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1AddonsConfig.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -6785,6 +6818,46 @@ class OrganizationsEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// GetSecurityActionConfig returns the current SecurityActions configuration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the SecurityActionsConfig to retrieve. This
+  /// will always be:
+  /// `organizations/{org}/environments/{env}/security_actions_config`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/securityActionsConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1SecurityActionsConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1SecurityActionsConfig>
+      getSecurityActionsConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1SecurityActionsConfig.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -7210,6 +7283,59 @@ class OrganizationsEnvironmentsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// UpdateSecurityActionConfig updates the current SecurityActions
+  /// configuration.
+  ///
+  /// This method is used to enable/disable the feature at the environment
+  /// level.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - This is a singleton resource, the name will always be set by
+  /// SecurityActions and any user input will be ignored. The name is always:
+  /// `organizations/{org}/environments/{env}/security_actions_config`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/securityActionsConfig$`.
+  ///
+  /// [updateMask] - The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1SecurityActionsConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1SecurityActionsConfig>
+      updateSecurityActionsConfig(
+    GoogleCloudApigeeV1SecurityActionsConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1SecurityActionsConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates the trace configurations in an environment.
   ///
   /// Note that the repeated fields have replace semantics when included in the
@@ -7259,6 +7385,56 @@ class OrganizationsEnvironmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApigeeV1TraceConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsEnvironmentsAddonsConfigResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsEnvironmentsAddonsConfigResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Updates an add-on enablement status of an environment.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the add-ons config. Must be in the format of
+  /// `/organizations/{org}/environments/{env}/addonsConfig`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/addonsConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> setAddonEnablement(
+    GoogleCloudApigeeV1SetAddonEnablementRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':setAddonEnablement';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -7575,10 +7751,9 @@ class OrganizationsEnvironmentsApisRevisionsResource {
   /// the new deployment will be capturing traffic from another environment
   /// under a shared environment group or if traffic will be rerouted to a
   /// different environment due to a base path removal. The
-  /// \[generateDeployChangeReport API\](generateDeployChangeReport) may be used
-  /// to examine routing changes before issuing the deployment request, and its
-  /// response will indicate if a sequenced rollout is recommended for the
-  /// deployment.
+  /// generateDeployChangeReport API may be used to examine routing changes
+  /// before issuing the deployment request, and its response will indicate if a
+  /// sequenced rollout is recommended for the deployment.
   ///
   /// [serviceAccount] - Google Cloud IAM service account. The service account
   /// represents the identity of the deployed proxy, and determines what
@@ -7683,10 +7858,10 @@ class OrganizationsEnvironmentsApisRevisionsResource {
   /// deployment from the runtime. This is likely to be a rare use case; it is
   /// only needed when the intended effect of undeploying this proxy is to cause
   /// the traffic it currently handles to be rerouted to some other existing
-  /// proxy in the environment group. The \[GenerateUndeployChangeReport
-  /// API\](GenerateUndeployChangeReport) may be used to examine routing changes
-  /// before issuing the undeployment request, and its response will indicate if
-  /// a sequenced rollout is recommended for the undeployment.
+  /// proxy in the environment group. The GenerateUndeployChangeReport API may
+  /// be used to examine routing changes before issuing the undeployment
+  /// request, and its response will indicate if a sequenced rollout is
+  /// recommended for the undeployment.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10257,6 +10432,256 @@ class OrganizationsEnvironmentsResourcefilesResource {
   }
 }
 
+class OrganizationsEnvironmentsSecurityActionsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsEnvironmentsSecurityActionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// CreateSecurityAction creates a SecurityAction.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The organization and environment that this
+  /// SecurityAction applies to. Format: organizations/{org}/environments/{env}
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [securityActionId] - Required. The ID to use for the SecurityAction, which
+  /// will become the final component of the action's resource name. This value
+  /// should be 0-61 characters, and valid format is
+  /// (^\[a-z\](\[a-z0-9-\]{​0,61}\[a-z0-9\])?$).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1SecurityAction].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1SecurityAction> create(
+    GoogleCloudApigeeV1SecurityAction request,
+    core.String parent, {
+    core.String? securityActionId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (securityActionId != null) 'securityActionId': [securityActionId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/securityActions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1SecurityAction.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Disable a SecurityAction.
+  ///
+  /// The `state` of the SecurityAction after disabling is `DISABLED`.
+  /// `DisableSecurityAction` can be called on SecurityActions in the state
+  /// `ENABLED`; SecurityActions in a different state (including `DISABLED`)
+  /// return an error.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the SecurityAction to disable. Format:
+  /// organizations/{org}/environments/{env}/securityActions/{security_action}
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/securityActions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1SecurityAction].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1SecurityAction> disable(
+    GoogleCloudApigeeV1DisableSecurityActionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':disable';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1SecurityAction.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Enable a SecurityAction.
+  ///
+  /// The \`state\` of the SecurityAction after enabling is \`ENABLED\`.
+  /// \`EnableSecurityAction\` can be called on SecurityActions in the state
+  /// \`DISABLED\`; SecurityActions in a different state (including \`ENABLED)
+  /// return an error.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the SecurityAction to enable. Format:
+  /// organizations/{org}/environments/{env}/securityActions/{security_action}
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/securityActions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1SecurityAction].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1SecurityAction> enable(
+    GoogleCloudApigeeV1EnableSecurityActionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':enable';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1SecurityAction.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a SecurityAction by name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The fully qualified name of the SecurityAction to
+  /// retrieve. Format:
+  /// organizations/{org}/environments/{env}/securityActions/{security_action}
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/securityActions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1SecurityAction].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1SecurityAction> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1SecurityAction.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of SecurityActions.
+  ///
+  /// This returns both enabled and disabled actions.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of
+  /// SecurityActions. Format: organizations/{org}/environments/{env}
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [filter] - The filter expression to filter List results.
+  /// https://google.aip.dev/160. Allows for filtering over: state and
+  /// api_proxies. E.g.: state = ACTIVE AND apiProxies:foo. Filtering by action
+  /// is not supported https://github.com/aip-dev/google.aip.dev/issues/624
+  ///
+  /// [pageSize] - The maximum number of SecurityActions to return. If
+  /// unspecified, at most 50 SecurityActions will be returned. The maximum
+  /// value is 1000; values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListSecurityActions`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `ListSecurityActions` must match the call
+  /// that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ListSecurityActionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ListSecurityActionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/securityActions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1ListSecurityActionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class OrganizationsEnvironmentsSecurityIncidentsResource {
   final commons.ApiRequester _requester;
 
@@ -10320,11 +10745,11 @@ class OrganizationsEnvironmentsSecurityIncidentsResource {
   /// incidents, where filtering can be done on API Proxies. Example: filter =
   /// "api_proxy = /", "first_detected_time \>", "last_detected_time \<"
   ///
-  /// [pageSize] - The maximum number of incidents to return. The service may
-  /// return fewer than this value. If unspecified, at most 50 incidents will be
-  /// returned.
+  /// [pageSize] - Optional. The maximum number of incidents to return. The
+  /// service may return fewer than this value. If unspecified, at most 50
+  /// incidents will be returned.
   ///
-  /// [pageToken] - A page token, received from a previous
+  /// [pageToken] - Optional. A page token, received from a previous
   /// `ListSecurityIncident` call. Provide this to retrieve the subsequent page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -13624,6 +14049,92 @@ class OrganizationsSecurityProfilesResource {
   OrganizationsSecurityProfilesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// CreateSecurityProfile create a new custom security profile.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of organization. Format: organizations/{org}
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [securityProfileId] - Required. The ID to use for the SecurityProfile,
+  /// which will become the final component of the action's resource name. This
+  /// value should be 1-63 characters and validated by
+  /// "(^\[a-z\](\[a-z0-9-\]{0,61}\[a-z0-9\])?$)".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1SecurityProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1SecurityProfile> create(
+    GoogleCloudApigeeV1SecurityProfile request,
+    core.String parent, {
+    core.String? securityProfileId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (securityProfileId != null) 'securityProfileId': [securityProfileId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/securityProfiles';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1SecurityProfile.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// DeleteSecurityProfile delete a profile with all its revisions.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of profile. Format:
+  /// organizations/{org}/securityProfiles/{profile}
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/securityProfiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// GetSecurityProfile gets the specified security profile.
   ///
   /// Returns NOT_FOUND if security profile is not present for the specified
@@ -13767,6 +14278,53 @@ class OrganizationsSecurityProfilesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// UpdateSecurityProfile update the metadata of security profile.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. Name of the security profile resource. Format:
+  /// organizations/{org}/securityProfiles/{profile}
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/securityProfiles/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1SecurityProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1SecurityProfile> patch(
+    GoogleCloudApigeeV1SecurityProfile request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1SecurityProfile.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -14368,7 +14926,7 @@ class OrganizationsSitesApicategoriesResource {
   OrganizationsSitesApicategoriesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new category on the portal.
+  /// Creates a new API category.
   ///
   /// [request] - The metadata request object.
   ///
@@ -14410,7 +14968,7 @@ class OrganizationsSitesApicategoriesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a category from the portal.
+  /// Deletes an API category.
   ///
   /// Request parameters:
   ///
@@ -14449,7 +15007,7 @@ class OrganizationsSitesApicategoriesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a category on the portal.
+  /// Gets an API category.
   ///
   /// Request parameters:
   ///
@@ -14488,7 +15046,7 @@ class OrganizationsSitesApicategoriesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists the categories on the portal.
+  /// Returns the API categories associated with a portal.
   ///
   /// Request parameters:
   ///
@@ -14525,7 +15083,7 @@ class OrganizationsSitesApicategoriesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates a category on the portal.
+  /// Updates an API category.
   ///
   /// [request] - The metadata request object.
   ///
@@ -14801,6 +15359,9 @@ class GoogleCloudApigeeV1AddonsConfig {
   /// Configuration for the Advanced API Ops add-on.
   GoogleCloudApigeeV1AdvancedApiOpsConfig? advancedApiOpsConfig;
 
+  /// Configuration for the Analytics add-on.
+  GoogleCloudApigeeV1AnalyticsConfig? analyticsConfig;
+
   /// Configuration for the API Security add-on.
   GoogleCloudApigeeV1ApiSecurityConfig? apiSecurityConfig;
 
@@ -14815,6 +15376,7 @@ class GoogleCloudApigeeV1AddonsConfig {
 
   GoogleCloudApigeeV1AddonsConfig({
     this.advancedApiOpsConfig,
+    this.analyticsConfig,
     this.apiSecurityConfig,
     this.connectorsPlatformConfig,
     this.integrationConfig,
@@ -14826,6 +15388,11 @@ class GoogleCloudApigeeV1AddonsConfig {
           advancedApiOpsConfig: json_.containsKey('advancedApiOpsConfig')
               ? GoogleCloudApigeeV1AdvancedApiOpsConfig.fromJson(
                   json_['advancedApiOpsConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          analyticsConfig: json_.containsKey('analyticsConfig')
+              ? GoogleCloudApigeeV1AnalyticsConfig.fromJson(
+                  json_['analyticsConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
           apiSecurityConfig: json_.containsKey('apiSecurityConfig')
@@ -14854,6 +15421,7 @@ class GoogleCloudApigeeV1AddonsConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (advancedApiOpsConfig != null)
           'advancedApiOpsConfig': advancedApiOpsConfig!,
+        if (analyticsConfig != null) 'analyticsConfig': analyticsConfig!,
         if (apiSecurityConfig != null) 'apiSecurityConfig': apiSecurityConfig!,
         if (connectorsPlatformConfig != null)
           'connectorsPlatformConfig': connectorsPlatformConfig!,
@@ -14993,18 +15561,76 @@ class GoogleCloudApigeeV1AliasRevisionConfig {
       };
 }
 
-/// the Api category resource wrapped with response status, error_code etc.
+/// Configuration for the Analytics add-on.
+class GoogleCloudApigeeV1AnalyticsConfig {
+  /// Whether the Analytics add-on is enabled.
+  core.bool? enabled;
+
+  /// Time at which the Analytics add-on expires in milliseconds since epoch.
+  ///
+  /// If unspecified, the add-on will never expire.
+  ///
+  /// Output only.
+  core.String? expireTimeMillis;
+
+  /// The state of the Analytics add-on.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ADDON_STATE_UNSPECIFIED" : Default value.
+  /// - "ENABLING" : Add-on is in progress of enabling.
+  /// - "ENABLED" : Add-on is fully enabled and ready to use.
+  /// - "DISABLING" : Add-on is in progress of disabling.
+  /// - "DISABLED" : Add-on is fully disabled.
+  core.String? state;
+
+  /// The latest update time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudApigeeV1AnalyticsConfig({
+    this.enabled,
+    this.expireTimeMillis,
+    this.state,
+    this.updateTime,
+  });
+
+  GoogleCloudApigeeV1AnalyticsConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+          expireTimeMillis: json_.containsKey('expireTimeMillis')
+              ? json_['expireTimeMillis'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (expireTimeMillis != null) 'expireTimeMillis': expireTimeMillis!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// The API category resource wrapped with response status, error_code, etc.
 class GoogleCloudApigeeV1ApiCategory {
-  /// Details of category.
+  /// Details of the category.
   GoogleCloudApigeeV1ApiCategoryData? data;
 
-  /// ID that can be used to find errors in the log files.
+  /// Unique error code for the request, if any.
   core.String? errorCode;
 
   /// Description of the operation.
   core.String? message;
 
-  /// ID that can be used to find request details in the log files.
+  /// Unique ID of the request.
   core.String? requestId;
 
   /// Status of the operation.
@@ -15047,11 +15673,12 @@ class GoogleCloudApigeeV1ApiCategory {
       };
 }
 
-/// the Api category resource.
+/// `ApiCategoryData` represents an API category.
+///
+/// Catalog items can be tagged with API categories; users viewing the API
+/// catalog in the portal will have the option to browse the catalog by
+/// category.
 class GoogleCloudApigeeV1ApiCategoryData {
-  /// GCP name of api category resource.
-  core.String? gcpResource;
-
   /// ID of the category (a UUID).
   core.String? id;
 
@@ -15065,7 +15692,6 @@ class GoogleCloudApigeeV1ApiCategoryData {
   core.String? updateTime;
 
   GoogleCloudApigeeV1ApiCategoryData({
-    this.gcpResource,
     this.id,
     this.name,
     this.siteId,
@@ -15074,9 +15700,6 @@ class GoogleCloudApigeeV1ApiCategoryData {
 
   GoogleCloudApigeeV1ApiCategoryData.fromJson(core.Map json_)
       : this(
-          gcpResource: json_.containsKey('gcpResource')
-              ? json_['gcpResource'] as core.String
-              : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           siteId: json_.containsKey('siteId')
@@ -15088,7 +15711,6 @@ class GoogleCloudApigeeV1ApiCategoryData {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcpResource != null) 'gcpResource': gcpResource!,
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
         if (siteId != null) 'siteId': siteId!,
@@ -15552,6 +16174,12 @@ class GoogleCloudApigeeV1ApiProxyRevision {
   /// Metadata describing the API proxy revision as a key-value map.
   core.Map<core.String, core.String>? entityMetaDataAsProperties;
 
+  /// This field will be marked as true if revision contains any policies marked
+  /// as extensible.
+  ///
+  /// Output only.
+  core.bool? hasExtensiblePolicy;
+
   /// List of IntegrationEndpoints in the '/integration-endpoints' directory of
   /// the API proxy.
   ///
@@ -15632,6 +16260,7 @@ class GoogleCloudApigeeV1ApiProxyRevision {
     this.description,
     this.displayName,
     this.entityMetaDataAsProperties,
+    this.hasExtensiblePolicy,
     this.integrationEndpoints,
     this.lastModifiedAt,
     this.name,
@@ -15688,6 +16317,9 @@ class GoogleCloudApigeeV1ApiProxyRevision {
                       ),
                     )
                   : null,
+          hasExtensiblePolicy: json_.containsKey('hasExtensiblePolicy')
+              ? json_['hasExtensiblePolicy'] as core.bool
+              : null,
           integrationEndpoints: json_.containsKey('integrationEndpoints')
               ? (json_['integrationEndpoints'] as core.List)
                   .map((value) => value as core.String)
@@ -15764,6 +16396,8 @@ class GoogleCloudApigeeV1ApiProxyRevision {
         if (displayName != null) 'displayName': displayName!,
         if (entityMetaDataAsProperties != null)
           'entityMetaDataAsProperties': entityMetaDataAsProperties!,
+        if (hasExtensiblePolicy != null)
+          'hasExtensiblePolicy': hasExtensiblePolicy!,
         if (integrationEndpoints != null)
           'integrationEndpoints': integrationEndpoints!,
         if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
@@ -18171,16 +18805,16 @@ class GoogleCloudApigeeV1DeleteCustomReportResponse {
 
 /// Response for certain delete operations.
 class GoogleCloudApigeeV1DeleteResponse {
-  /// ID that can be used to find errors in the log files.
+  /// Unique error code for the request, if any.
   core.String? errorCode;
 
-  /// GCP name of deleted resource.
+  /// Google Cloud name of deleted resource.
   core.String? gcpResource;
 
   /// Description of the operation.
   core.String? message;
 
-  /// ID that can be used to find request details in the log files.
+  /// Unique ID of the request.
   core.String? requestId;
 
   /// Status of the operation.
@@ -18250,6 +18884,22 @@ class GoogleCloudApigeeV1Deployment {
   /// report instance level status rather than pod status.
   core.List<GoogleCloudApigeeV1PodStatus>? pods;
 
+  /// The type of the deployment (standard or extensible) Deployed proxy
+  /// revision will be marked as extensible in following 2 cases.
+  ///
+  /// 1. The deployed proxy revision uses extensible policies. 2. If a
+  /// environment supports flowhooks and flow hook is configured.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PROXY_DEPLOYMENT_TYPE_UNSPECIFIED" : Default value till public preview.
+  /// After public preview this value should not be returned.
+  /// - "STANDARD" : Deployment will be of type Standard if only Standard
+  /// proxies are used
+  /// - "EXTENSIBLE" : Proxy will be of type Extensible if deployments uses one
+  /// or more Extensible proxies
+  core.String? proxyDeploymentType;
+
   /// API proxy revision.
   core.String? revision;
 
@@ -18286,6 +18936,7 @@ class GoogleCloudApigeeV1Deployment {
     this.errors,
     this.instances,
     this.pods,
+    this.proxyDeploymentType,
     this.revision,
     this.routeConflicts,
     this.serviceAccount,
@@ -18322,6 +18973,9 @@ class GoogleCloudApigeeV1Deployment {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          proxyDeploymentType: json_.containsKey('proxyDeploymentType')
+              ? json_['proxyDeploymentType'] as core.String
+              : null,
           revision: json_.containsKey('revision')
               ? json_['revision'] as core.String
               : null,
@@ -18347,6 +19001,8 @@ class GoogleCloudApigeeV1Deployment {
         if (errors != null) 'errors': errors!,
         if (instances != null) 'instances': instances!,
         if (pods != null) 'pods': pods!,
+        if (proxyDeploymentType != null)
+          'proxyDeploymentType': proxyDeploymentType!,
         if (revision != null) 'revision': revision!,
         if (routeConflicts != null) 'routeConflicts': routeConflicts!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
@@ -19341,6 +19997,12 @@ class GoogleCloudApigeeV1DimensionMetric {
       };
 }
 
+/// Message to disable an enabled SecurityAction.
+typedef GoogleCloudApigeeV1DisableSecurityActionRequest = $Empty;
+
+/// Message to enable a disabled SecurityAction.
+typedef GoogleCloudApigeeV1EnableSecurityActionRequest = $Empty;
+
 /// Apigee endpoint attachment.
 ///
 /// For more information, see
@@ -19608,6 +20270,22 @@ class GoogleCloudApigeeV1Environment {
   /// - "UPDATING" : The resource is being updated.
   core.String? state;
 
+  /// EnvironmentType selected for the environment.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ENVIRONMENT_TYPE_UNSPECIFIED" : Environment type not specified.
+  /// - "BASE" : Base environment has limited capacity and capabilities and are
+  /// usually used when you are getting started with Apigee or while
+  /// experimenting. Refer to Apigee's public documentation for more details.
+  /// - "INTERMEDIATE" : This is the default type and it supports API management
+  /// features and higher capacity than Base environment. Refer to Apigee's
+  /// public documentation for more details.
+  /// - "COMPREHENSIVE" : Comprehensive environment supports advanced
+  /// capabilites and even higher capacity than Intermediate environment. Refer
+  /// to Apigee's public documentation for more details.
+  core.String? type;
+
   GoogleCloudApigeeV1Environment({
     this.apiProxyType,
     this.createdAt,
@@ -19621,6 +20299,7 @@ class GoogleCloudApigeeV1Environment {
     this.nodeConfig,
     this.properties,
     this.state,
+    this.type,
   });
 
   GoogleCloudApigeeV1Environment.fromJson(core.Map json_)
@@ -19660,6 +20339,7 @@ class GoogleCloudApigeeV1Environment {
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19676,10 +20356,14 @@ class GoogleCloudApigeeV1Environment {
         if (nodeConfig != null) 'nodeConfig': nodeConfig!,
         if (properties != null) 'properties': properties!,
         if (state != null) 'state': state!,
+        if (type != null) 'type': type!,
       };
 }
 
 class GoogleCloudApigeeV1EnvironmentConfig {
+  /// The latest runtime configurations for add-ons.
+  GoogleCloudApigeeV1RuntimeAddonsConfig? addonsConfig;
+
   /// The location for the config blob of API Runtime Control, aka Envoy
   /// Adapter, for op-based authentication as a URI, e.g. a Cloud Storage URI.
   ///
@@ -19771,6 +20455,7 @@ class GoogleCloudApigeeV1EnvironmentConfig {
   core.String? uid;
 
   GoogleCloudApigeeV1EnvironmentConfig({
+    this.addonsConfig,
     this.arcConfigLocation,
     this.createTime,
     this.dataCollectors,
@@ -19797,6 +20482,10 @@ class GoogleCloudApigeeV1EnvironmentConfig {
 
   GoogleCloudApigeeV1EnvironmentConfig.fromJson(core.Map json_)
       : this(
+          addonsConfig: json_.containsKey('addonsConfig')
+              ? GoogleCloudApigeeV1RuntimeAddonsConfig.fromJson(
+                  json_['addonsConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           arcConfigLocation: json_.containsKey('arcConfigLocation')
               ? json_['arcConfigLocation'] as core.String
               : null,
@@ -19897,6 +20586,7 @@ class GoogleCloudApigeeV1EnvironmentConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (addonsConfig != null) 'addonsConfig': addonsConfig!,
         if (arcConfigLocation != null) 'arcConfigLocation': arcConfigLocation!,
         if (createTime != null) 'createTime': createTime!,
         if (dataCollectors != null) 'dataCollectors': dataCollectors!,
@@ -21420,18 +22110,18 @@ class GoogleCloudApigeeV1KeystoreConfig {
       };
 }
 
-/// the response for ListApiCategoriesRequest.
+/// The response for `ListApiCategoriesRequest`.
 class GoogleCloudApigeeV1ListApiCategoriesResponse {
-  /// Details of categories.
+  /// Details of the categories.
   core.List<GoogleCloudApigeeV1ApiCategoryData>? data;
 
-  /// ID that can be used to find errors in the log files.
+  /// Unique error code for the request, if any.
   core.String? errorCode;
 
   /// Description of the operation.
   core.String? message;
 
-  /// ID that can be used to find request details in the log files.
+  /// Unique ID of the request.
   core.String? requestId;
 
   /// Status of the operation.
@@ -22302,6 +22992,41 @@ class GoogleCloudApigeeV1ListRatePlansResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextStartKey != null) 'nextStartKey': nextStartKey!,
         if (ratePlans != null) 'ratePlans': ratePlans!,
+      };
+}
+
+/// Contains a list of SecurityActions in response to a
+/// ListSecurityActionRequest.
+class GoogleCloudApigeeV1ListSecurityActionsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The SecurityActions for the specified environment.
+  core.List<GoogleCloudApigeeV1SecurityAction>? securityActions;
+
+  GoogleCloudApigeeV1ListSecurityActionsResponse({
+    this.nextPageToken,
+    this.securityActions,
+  });
+
+  GoogleCloudApigeeV1ListSecurityActionsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          securityActions: json_.containsKey('securityActions')
+              ? (json_['securityActions'] as core.List)
+                  .map((value) => GoogleCloudApigeeV1SecurityAction.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (securityActions != null) 'securityActions': securityActions!,
       };
 }
 
@@ -23208,6 +23933,18 @@ class GoogleCloudApigeeV1Organization {
   /// - "UPDATING" : The resource is being updated.
   core.String? state;
 
+  /// Subscription plan that the customer has purchased.
+  ///
+  /// Output only.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SUBSCRIPTION_PLAN_UNSPECIFIED" : Subscription plan not specified.
+  /// - "SUBSCRIPTION_2021" : Traditional subscription plan.
+  /// - "SUBSCRIPTION_2024" : New subscription plan that provides standard proxy
+  /// and scaled proxy implementation.
+  core.String? subscriptionPlan;
+
   /// DEPRECATED: This will eventually be replaced by BillingType.
   ///
   /// Subscription type of the Apigee organization. Valid values include trial
@@ -23262,6 +23999,7 @@ class GoogleCloudApigeeV1Organization {
     this.runtimeDatabaseEncryptionKeyName,
     this.runtimeType_,
     this.state,
+    this.subscriptionPlan,
     this.subscriptionType,
     this.type,
   });
@@ -23349,6 +24087,9 @@ class GoogleCloudApigeeV1Organization {
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          subscriptionPlan: json_.containsKey('subscriptionPlan')
+              ? json_['subscriptionPlan'] as core.String
+              : null,
           subscriptionType: json_.containsKey('subscriptionType')
               ? json_['subscriptionType'] as core.String
               : null,
@@ -23385,6 +24126,7 @@ class GoogleCloudApigeeV1Organization {
           'runtimeDatabaseEncryptionKeyName': runtimeDatabaseEncryptionKeyName!,
         if (runtimeType_ != null) 'runtimeType': runtimeType_!,
         if (state != null) 'state': state!,
+        if (subscriptionPlan != null) 'subscriptionPlan': subscriptionPlan!,
         if (subscriptionType != null) 'subscriptionType': subscriptionType!,
         if (type != null) 'type': type!,
       };
@@ -23576,6 +24318,125 @@ class GoogleCloudApigeeV1Point {
         if (results != null) 'results': results!,
       };
 }
+
+/// ProfileConfig defines a set of categories and policies which will be used to
+/// compute security score.
+class GoogleCloudApigeeV1ProfileConfig {
+  /// List of categories of profile config.
+  core.List<GoogleCloudApigeeV1ProfileConfigCategory>? categories;
+
+  GoogleCloudApigeeV1ProfileConfig({
+    this.categories,
+  });
+
+  GoogleCloudApigeeV1ProfileConfig.fromJson(core.Map json_)
+      : this(
+          categories: json_.containsKey('categories')
+              ? (json_['categories'] as core.List)
+                  .map((value) =>
+                      GoogleCloudApigeeV1ProfileConfigCategory.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (categories != null) 'categories': categories!,
+      };
+}
+
+/// Checks for abuse, which includes any requests sent to the API for purposes
+/// other than what it is intended for, such as high volumes of requests, data
+/// scraping, and abuse related to authorization.
+typedef GoogleCloudApigeeV1ProfileConfigAbuse = $Empty;
+
+/// By default, following policies will be included: - JWS - JWT - OAuth -
+/// BasicAuth - APIKey
+typedef GoogleCloudApigeeV1ProfileConfigAuthorization = $Empty;
+
+/// Checks to see if you have CORS policy in place.
+typedef GoogleCloudApigeeV1ProfileConfigCORS = $Empty;
+
+/// Advanced API Security provides security profile that scores the following
+/// categories.
+class GoogleCloudApigeeV1ProfileConfigCategory {
+  /// Checks for abuse, which includes any requests sent to the API for purposes
+  /// other than what it is intended for, such as high volumes of requests, data
+  /// scraping, and abuse related to authorization.
+  GoogleCloudApigeeV1ProfileConfigAbuse? abuse;
+
+  /// Checks to see if you have an authorization policy in place.
+  GoogleCloudApigeeV1ProfileConfigAuthorization? authorization;
+
+  /// Checks to see if you have CORS policy in place.
+  GoogleCloudApigeeV1ProfileConfigCORS? cors;
+
+  /// Checks to see if you have a mediation policy in place.
+  GoogleCloudApigeeV1ProfileConfigMediation? mediation;
+
+  /// Checks to see if you have configured mTLS for the target server.
+  GoogleCloudApigeeV1ProfileConfigMTLS? mtls;
+
+  /// Checks to see if you have a threat protection policy in place.
+  GoogleCloudApigeeV1ProfileConfigThreat? threat;
+
+  GoogleCloudApigeeV1ProfileConfigCategory({
+    this.abuse,
+    this.authorization,
+    this.cors,
+    this.mediation,
+    this.mtls,
+    this.threat,
+  });
+
+  GoogleCloudApigeeV1ProfileConfigCategory.fromJson(core.Map json_)
+      : this(
+          abuse: json_.containsKey('abuse')
+              ? GoogleCloudApigeeV1ProfileConfigAbuse.fromJson(
+                  json_['abuse'] as core.Map<core.String, core.dynamic>)
+              : null,
+          authorization: json_.containsKey('authorization')
+              ? GoogleCloudApigeeV1ProfileConfigAuthorization.fromJson(
+                  json_['authorization'] as core.Map<core.String, core.dynamic>)
+              : null,
+          cors: json_.containsKey('cors')
+              ? GoogleCloudApigeeV1ProfileConfigCORS.fromJson(
+                  json_['cors'] as core.Map<core.String, core.dynamic>)
+              : null,
+          mediation: json_.containsKey('mediation')
+              ? GoogleCloudApigeeV1ProfileConfigMediation.fromJson(
+                  json_['mediation'] as core.Map<core.String, core.dynamic>)
+              : null,
+          mtls: json_.containsKey('mtls')
+              ? GoogleCloudApigeeV1ProfileConfigMTLS.fromJson(
+                  json_['mtls'] as core.Map<core.String, core.dynamic>)
+              : null,
+          threat: json_.containsKey('threat')
+              ? GoogleCloudApigeeV1ProfileConfigThreat.fromJson(
+                  json_['threat'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (abuse != null) 'abuse': abuse!,
+        if (authorization != null) 'authorization': authorization!,
+        if (cors != null) 'cors': cors!,
+        if (mediation != null) 'mediation': mediation!,
+        if (mtls != null) 'mtls': mtls!,
+        if (threat != null) 'threat': threat!,
+      };
+}
+
+/// Checks to see if you have configured mTLS for the target server.
+typedef GoogleCloudApigeeV1ProfileConfigMTLS = $Empty;
+
+/// By default, following policies will be included: - OASValidation -
+/// SOAPMessageValidation
+typedef GoogleCloudApigeeV1ProfileConfigMediation = $Empty;
+
+/// By default, following policies will be included: - XMLThreatProtection -
+/// JSONThreatProtection
+typedef GoogleCloudApigeeV1ProfileConfigThreat = $Empty;
 
 /// Message for compatibility with legacy Edge specification for Java Properties
 /// object in JSON.
@@ -25228,6 +26089,115 @@ class GoogleCloudApigeeV1RoutingRule {
       };
 }
 
+/// RuntimeAddonsConfig defines the runtime configurations for add-ons in an
+/// environment.
+class GoogleCloudApigeeV1RuntimeAddonsConfig {
+  /// Runtime configuration for Analytics add-on.
+  GoogleCloudApigeeV1RuntimeAnalyticsConfig? analyticsConfig;
+
+  /// Runtime configuration for API Security add-on.
+  GoogleCloudApigeeV1RuntimeApiSecurityConfig? apiSecurityConfig;
+
+  /// Name of the addons config in the format:
+  /// `organizations/{org}/environments/{env}/addonsConfig`
+  core.String? name;
+
+  /// Revision number used by the runtime to detect config changes.
+  core.String? revisionId;
+
+  /// UID is to detect if config is recreated after deletion.
+  ///
+  /// The add-on config will only be deleted when the environment itself gets
+  /// deleted, thus it will always be the same as the UID of EnvironmentConfig.
+  core.String? uid;
+
+  GoogleCloudApigeeV1RuntimeAddonsConfig({
+    this.analyticsConfig,
+    this.apiSecurityConfig,
+    this.name,
+    this.revisionId,
+    this.uid,
+  });
+
+  GoogleCloudApigeeV1RuntimeAddonsConfig.fromJson(core.Map json_)
+      : this(
+          analyticsConfig: json_.containsKey('analyticsConfig')
+              ? GoogleCloudApigeeV1RuntimeAnalyticsConfig.fromJson(
+                  json_['analyticsConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          apiSecurityConfig: json_.containsKey('apiSecurityConfig')
+              ? GoogleCloudApigeeV1RuntimeApiSecurityConfig.fromJson(
+                  json_['apiSecurityConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          revisionId: json_.containsKey('revisionId')
+              ? json_['revisionId'] as core.String
+              : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (analyticsConfig != null) 'analyticsConfig': analyticsConfig!,
+        if (apiSecurityConfig != null) 'apiSecurityConfig': apiSecurityConfig!,
+        if (name != null) 'name': name!,
+        if (revisionId != null) 'revisionId': revisionId!,
+        if (uid != null) 'uid': uid!,
+      };
+}
+
+/// Runtime configuration for the Analytics add-on.
+class GoogleCloudApigeeV1RuntimeAnalyticsConfig {
+  /// If Runtime should send billing data to AX or not.
+  core.bool? billingPipelineEnabled;
+
+  /// If the Analytics is enabled or not.
+  core.bool? enabled;
+
+  GoogleCloudApigeeV1RuntimeAnalyticsConfig({
+    this.billingPipelineEnabled,
+    this.enabled,
+  });
+
+  GoogleCloudApigeeV1RuntimeAnalyticsConfig.fromJson(core.Map json_)
+      : this(
+          billingPipelineEnabled: json_.containsKey('billingPipelineEnabled')
+              ? json_['billingPipelineEnabled'] as core.bool
+              : null,
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (billingPipelineEnabled != null)
+          'billingPipelineEnabled': billingPipelineEnabled!,
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
+/// Runtime configuration for the API Security add-on.
+class GoogleCloudApigeeV1RuntimeApiSecurityConfig {
+  /// If the API Security is enabled or not.
+  core.bool? enabled;
+
+  GoogleCloudApigeeV1RuntimeApiSecurityConfig({
+    this.enabled,
+  });
+
+  GoogleCloudApigeeV1RuntimeApiSecurityConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
 /// Runtime configuration for the organization.
 ///
 /// Response for GetRuntimeConfig.
@@ -25777,6 +26747,320 @@ class GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext {
       };
 }
 
+/// A SecurityAction is rule that can be enforced at an environment level.
+///
+/// The result is one of: - A denied API call - An explicitly allowed API call -
+/// A flagged API call (HTTP headers added before the target receives it) At
+/// least one condition is required to create a SecurityAction.
+class GoogleCloudApigeeV1SecurityAction {
+  /// Allow a request through if it matches this SecurityAction.
+  GoogleCloudApigeeV1SecurityActionAllow? allow;
+
+  /// A valid SecurityAction must contain at least one condition.
+  ///
+  /// Required.
+  GoogleCloudApigeeV1SecurityActionConditionConfig? conditionConfig;
+
+  /// The create time for this SecurityAction.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Deny a request through if it matches this SecurityAction.
+  GoogleCloudApigeeV1SecurityActionDeny? deny;
+
+  /// An optional user provided description of the SecurityAction.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The expiration for this SecurityAction.
+  core.String? expireTime;
+
+  /// Flag a request through if it matches this SecurityAction.
+  GoogleCloudApigeeV1SecurityActionFlag? flag;
+
+  /// This field is ignored during creation as per AIP-133.
+  ///
+  /// Please set the `security_action_id` field in the
+  /// CreateSecurityActionRequest when creating a new SecurityAction. Format:
+  /// organizations/{org}/environments/{env}/securityActions/{security_action}
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// Only an ENABLED SecurityAction is enforced.
+  ///
+  /// An ENABLED SecurityAction past its expiration time will not be enforced.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The default value. This only exists for forward
+  /// compatibility. A create request with this value will be rejected.
+  /// - "ENABLED" : An ENABLED SecurityAction is actively enforced if the
+  /// `expiration_time` is in the future.
+  /// - "DISABLED" : A disabled SecurityAction is never enforced.
+  core.String? state;
+
+  /// Input only.
+  ///
+  /// The TTL for this SecurityAction.
+  core.String? ttl;
+
+  /// The update time for this SecurityAction.
+  ///
+  /// This reflects when this SecurityAction changed states.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudApigeeV1SecurityAction({
+    this.allow,
+    this.conditionConfig,
+    this.createTime,
+    this.deny,
+    this.description,
+    this.expireTime,
+    this.flag,
+    this.name,
+    this.state,
+    this.ttl,
+    this.updateTime,
+  });
+
+  GoogleCloudApigeeV1SecurityAction.fromJson(core.Map json_)
+      : this(
+          allow: json_.containsKey('allow')
+              ? GoogleCloudApigeeV1SecurityActionAllow.fromJson(
+                  json_['allow'] as core.Map<core.String, core.dynamic>)
+              : null,
+          conditionConfig: json_.containsKey('conditionConfig')
+              ? GoogleCloudApigeeV1SecurityActionConditionConfig.fromJson(
+                  json_['conditionConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          deny: json_.containsKey('deny')
+              ? GoogleCloudApigeeV1SecurityActionDeny.fromJson(
+                  json_['deny'] as core.Map<core.String, core.dynamic>)
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
+          flag: json_.containsKey('flag')
+              ? GoogleCloudApigeeV1SecurityActionFlag.fromJson(
+                  json_['flag'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          ttl: json_.containsKey('ttl') ? json_['ttl'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allow != null) 'allow': allow!,
+        if (conditionConfig != null) 'conditionConfig': conditionConfig!,
+        if (createTime != null) 'createTime': createTime!,
+        if (deny != null) 'deny': deny!,
+        if (description != null) 'description': description!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (flag != null) 'flag': flag!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (ttl != null) 'ttl': ttl!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Message that should be set in case of an Allow Action.
+///
+/// This does not have any fields.
+typedef GoogleCloudApigeeV1SecurityActionAllow = $Empty;
+
+/// The following are a list of conditions.
+///
+/// A valid SecurityAction must contain at least one condition. Within a
+/// condition, each element is ORed. Across conditions elements are ANDed. For
+/// example if a SecurityAction has the following: api_keys: \["key1", "key2"\]
+/// and developers: \["dev1", "dev2"\] then this is interpreted as: enforce the
+/// action if the incoming request has ((api_key = "key1" OR api_key="key") AND
+/// (developer="dev1" OR developer="dev2"))
+class GoogleCloudApigeeV1SecurityActionConditionConfig {
+  /// A list of Bot Reasons.
+  ///
+  /// Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth
+  /// Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection and Advanced
+  /// API Scraper.
+  ///
+  /// Optional.
+  core.List<core.String>? botReasons;
+
+  /// A list of IP addresses.
+  ///
+  /// This could be either IPv4 or IPv6. Limited to 100 per action.
+  ///
+  /// Optional.
+  core.List<core.String>? ipAddressRanges;
+
+  GoogleCloudApigeeV1SecurityActionConditionConfig({
+    this.botReasons,
+    this.ipAddressRanges,
+  });
+
+  GoogleCloudApigeeV1SecurityActionConditionConfig.fromJson(core.Map json_)
+      : this(
+          botReasons: json_.containsKey('botReasons')
+              ? (json_['botReasons'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          ipAddressRanges: json_.containsKey('ipAddressRanges')
+              ? (json_['ipAddressRanges'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (botReasons != null) 'botReasons': botReasons!,
+        if (ipAddressRanges != null) 'ipAddressRanges': ipAddressRanges!,
+      };
+}
+
+/// Message that should be set in case of a Deny Action.
+class GoogleCloudApigeeV1SecurityActionDeny {
+  /// The HTTP response code if the Action = DENY.
+  ///
+  /// Optional.
+  core.int? responseCode;
+
+  GoogleCloudApigeeV1SecurityActionDeny({
+    this.responseCode,
+  });
+
+  GoogleCloudApigeeV1SecurityActionDeny.fromJson(core.Map json_)
+      : this(
+          responseCode: json_.containsKey('responseCode')
+              ? json_['responseCode'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (responseCode != null) 'responseCode': responseCode!,
+      };
+}
+
+/// The message that should be set in the case of a Flag action.
+class GoogleCloudApigeeV1SecurityActionFlag {
+  /// A list of HTTP headers to be sent to the target in case of a FLAG
+  /// SecurityAction.
+  ///
+  /// Limit 5 headers per SecurityAction. At least one is mandatory.
+  ///
+  /// Optional.
+  core.List<GoogleCloudApigeeV1SecurityActionHttpHeader>? headers;
+
+  GoogleCloudApigeeV1SecurityActionFlag({
+    this.headers,
+  });
+
+  GoogleCloudApigeeV1SecurityActionFlag.fromJson(core.Map json_)
+      : this(
+          headers: json_.containsKey('headers')
+              ? (json_['headers'] as core.List)
+                  .map((value) =>
+                      GoogleCloudApigeeV1SecurityActionHttpHeader.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (headers != null) 'headers': headers!,
+      };
+}
+
+/// An HTTP header.
+class GoogleCloudApigeeV1SecurityActionHttpHeader {
+  /// The header name to be sent to the target.
+  core.String? name;
+
+  /// The header value to be sent to the target.
+  core.String? value;
+
+  GoogleCloudApigeeV1SecurityActionHttpHeader({
+    this.name,
+    this.value,
+  });
+
+  GoogleCloudApigeeV1SecurityActionHttpHeader.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// SecurityActionsConfig reflects the current state of the SecurityActions
+/// feature.
+///
+/// This is a singleton resource: https://google.aip.dev/156
+class GoogleCloudApigeeV1SecurityActionsConfig {
+  /// The flag that controls whether this feature is enabled.
+  ///
+  /// This is `unset` by default. When this flag is `false`, even if individual
+  /// rules are enabled, no SecurityActions will be enforced.
+  core.bool? enabled;
+
+  /// This is a singleton resource, the name will always be set by
+  /// SecurityActions and any user input will be ignored.
+  ///
+  /// The name is always:
+  /// `organizations/{org}/environments/{env}/security_actions_config`
+  core.String? name;
+
+  /// The update time for configuration.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudApigeeV1SecurityActionsConfig({
+    this.enabled,
+    this.name,
+    this.updateTime,
+  });
+
+  GoogleCloudApigeeV1SecurityActionsConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// Represents an SecurityIncident resource.
 class GoogleCloudApigeeV1SecurityIncident {
   /// Detection types which are part of the incident.
@@ -25788,6 +27072,8 @@ class GoogleCloudApigeeV1SecurityIncident {
   core.List<core.String>? detectionTypes;
 
   /// Display name of the security incident.
+  ///
+  /// Optional.
   core.String? displayName;
 
   /// The time when events associated with the incident were first detected.
@@ -25897,6 +27183,11 @@ class GoogleCloudApigeeV1SecurityProfile {
   /// Immutable.
   core.String? name;
 
+  /// Customized profile configuration that computes the security score.
+  ///
+  /// Required.
+  GoogleCloudApigeeV1ProfileConfig? profileConfig;
+
   /// The time when revision was created.
   ///
   /// Output only.
@@ -25930,6 +27221,7 @@ class GoogleCloudApigeeV1SecurityProfile {
     this.maxScore,
     this.minScore,
     this.name,
+    this.profileConfig,
     this.revisionCreateTime,
     this.revisionId,
     this.revisionPublishTime,
@@ -25959,6 +27251,10 @@ class GoogleCloudApigeeV1SecurityProfile {
               ? json_['minScore'] as core.int
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          profileConfig: json_.containsKey('profileConfig')
+              ? GoogleCloudApigeeV1ProfileConfig.fromJson(
+                  json_['profileConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           revisionCreateTime: json_.containsKey('revisionCreateTime')
               ? json_['revisionCreateTime'] as core.String
               : null,
@@ -25987,6 +27283,7 @@ class GoogleCloudApigeeV1SecurityProfile {
         if (maxScore != null) 'maxScore': maxScore!,
         if (minScore != null) 'minScore': minScore!,
         if (name != null) 'name': name!,
+        if (profileConfig != null) 'profileConfig': profileConfig!,
         if (revisionCreateTime != null)
           'revisionCreateTime': revisionCreateTime!,
         if (revisionId != null) 'revisionId': revisionId!,
@@ -26041,9 +27338,7 @@ class GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation {
   /// Output only.
   core.String? attachTime;
 
-  /// Name of the profile-environment association resource.
-  ///
-  /// Format: organizations/{org}/securityProfiles/{profile}/environments/{env}
+  /// Name of the environment that the profile is attached to.
   ///
   /// Immutable.
   core.String? name;
@@ -26649,6 +27944,36 @@ class GoogleCloudApigeeV1Session {
   core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (timestampMs != null) 'timestampMs': timestampMs!,
+      };
+}
+
+/// Request for SetAddonEnablement.
+class GoogleCloudApigeeV1SetAddonEnablementRequest {
+  /// If the Analytics should be enabled in the environment.
+  core.bool? analyticsEnabled;
+
+  /// If the API Security should be enabled in the environment.
+  core.bool? apiSecurityEnabled;
+
+  GoogleCloudApigeeV1SetAddonEnablementRequest({
+    this.analyticsEnabled,
+    this.apiSecurityEnabled,
+  });
+
+  GoogleCloudApigeeV1SetAddonEnablementRequest.fromJson(core.Map json_)
+      : this(
+          analyticsEnabled: json_.containsKey('analyticsEnabled')
+              ? json_['analyticsEnabled'] as core.bool
+              : null,
+          apiSecurityEnabled: json_.containsKey('apiSecurityEnabled')
+              ? json_['apiSecurityEnabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (analyticsEnabled != null) 'analyticsEnabled': analyticsEnabled!,
+        if (apiSecurityEnabled != null)
+          'apiSecurityEnabled': apiSecurityEnabled!,
       };
 }
 
@@ -27983,23 +29308,23 @@ class GoogleIamV1Binding {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class GoogleIamV1Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<GoogleIamV1AuditConfig>? auditConfigs;
@@ -28195,7 +29520,7 @@ class GoogleLongrunningOperation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard

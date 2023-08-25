@@ -5151,6 +5151,7 @@ api.VulnerabilityOccurrence buildVulnerabilityOccurrence() {
     o.cvssVersion = 'foo';
     o.cvssv3 = buildCVSS();
     o.effectiveSeverity = 'foo';
+    o.extraDetails = 'foo';
     o.fixAvailable = true;
     o.longDescription = 'foo';
     o.packageIssue = buildUnnamed80();
@@ -5179,6 +5180,10 @@ void checkVulnerabilityOccurrence(api.VulnerabilityOccurrence o) {
     checkCVSS(o.cvssv3!);
     unittest.expect(
       o.effectiveSeverity!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.extraDetails!,
       unittest.equals('foo'),
     );
     unittest.expect(o.fixAvailable!, unittest.isTrue);

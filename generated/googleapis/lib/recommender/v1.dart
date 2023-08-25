@@ -680,7 +680,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the recommendation.
+  /// [name] - Required. Name of the recommendation.
   /// Value must have pattern
   /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
   ///
@@ -1214,7 +1214,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the recommendation.
+  /// [name] - Required. Name of the recommendation.
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
   ///
@@ -1953,7 +1953,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the recommendation.
+  /// [name] - Required. Name of the recommendation.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
   ///
@@ -2689,7 +2689,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the recommendation.
+  /// [name] - Required. Name of the recommendation.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
   ///
@@ -3387,7 +3387,7 @@ class GoogleCloudRecommenderV1MarkInsightAcceptedRequest {
 }
 
 /// Request for the `MarkRecommendationClaimed` Method.
-typedef GoogleCloudRecommenderV1MarkRecommendationClaimedRequest = $Request03;
+typedef GoogleCloudRecommenderV1MarkRecommendationClaimedRequest = $Request04;
 
 /// Request for the `MarkRecommendationDismissed` Method.
 class GoogleCloudRecommenderV1MarkRecommendationDismissedRequest {
@@ -3412,10 +3412,10 @@ class GoogleCloudRecommenderV1MarkRecommendationDismissedRequest {
 }
 
 /// Request for the `MarkRecommendationFailed` Method.
-typedef GoogleCloudRecommenderV1MarkRecommendationFailedRequest = $Request03;
+typedef GoogleCloudRecommenderV1MarkRecommendationFailedRequest = $Request04;
 
 /// Request for the `MarkRecommendationSucceeded` Method.
-typedef GoogleCloudRecommenderV1MarkRecommendationSucceededRequest = $Request03;
+typedef GoogleCloudRecommenderV1MarkRecommendationSucceededRequest = $Request04;
 
 /// Contains an operation for a resource loosely based on the JSON-PATCH format
 /// with support for: * Custom filters for describing partial array patch.

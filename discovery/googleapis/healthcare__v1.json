@@ -2,6 +2,9 @@
     "auth": {
         "oauth2": {
             "scopes": {
+                "https://www.googleapis.com/auth/cloud-healthcare": {
+                    "description": "Read, write and manage healthcare data"
+                },
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account."
                 }
@@ -25,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230720",
+    "revision": "20231031",
     "rootUrl": "https://healthcare.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Healthcare API",
@@ -135,6 +138,7 @@
                                 "$ref": "Location"
                             },
                             "scopes": [
+                                "https://www.googleapis.com/auth/cloud-healthcare",
                                 "https://www.googleapis.com/auth/cloud-platform"
                             ]
                         },
@@ -176,6 +180,7 @@
                                 "$ref": "ListLocationsResponse"
                             },
                             "scopes": [
+                                "https://www.googleapis.com/auth/cloud-healthcare",
                                 "https://www.googleapis.com/auth/cloud-platform"
                             ]
                         }
@@ -213,6 +218,7 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -241,6 +247,7 @@
                                         "$ref": "Operation"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -266,6 +273,7 @@
                                         "$ref": "Empty"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -291,6 +299,7 @@
                                         "$ref": "Dataset"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -322,6 +331,7 @@
                                         "$ref": "Policy"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -358,6 +368,7 @@
                                         "$ref": "ListDatasetsResponse"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -392,6 +403,7 @@
                                         "$ref": "Dataset"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -420,6 +432,7 @@
                                         "$ref": "Policy"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
@@ -448,6 +461,7 @@
                                         "$ref": "TestIamPermissionsResponse"
                                     },
                                     "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 }
@@ -480,6 +494,7 @@
                                                 "$ref": "CheckDataAccessResponse"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -513,6 +528,7 @@
                                                 "$ref": "ConsentStore"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -538,6 +554,7 @@
                                                 "$ref": "Empty"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -566,6 +583,7 @@
                                                 "$ref": "EvaluateUserConsentsResponse"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -591,6 +609,7 @@
                                                 "$ref": "ConsentStore"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -622,6 +641,7 @@
                                                 "$ref": "Policy"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -663,6 +683,7 @@
                                                 "$ref": "ListConsentStoresResponse"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -697,6 +718,7 @@
                                                 "$ref": "ConsentStore"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -725,6 +747,7 @@
                                                 "$ref": "Operation"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -753,6 +776,7 @@
                                                 "$ref": "Policy"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -781,6 +805,7 @@
                                                 "$ref": "TestIamPermissionsResponse"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         }
@@ -818,6 +843,7 @@
                                                         "$ref": "AttributeDefinition"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -843,6 +869,7 @@
                                                         "$ref": "Empty"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -868,6 +895,7 @@
                                                         "$ref": "AttributeDefinition"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -909,6 +937,7 @@
                                                         "$ref": "ListAttributeDefinitionsResponse"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -943,6 +972,7 @@
                                                         "$ref": "AttributeDefinition"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 }
@@ -975,6 +1005,7 @@
                                                         "$ref": "ConsentArtifact"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -1000,6 +1031,7 @@
                                                         "$ref": "Empty"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -1025,6 +1057,7 @@
                                                         "$ref": "ConsentArtifact"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -1066,6 +1099,7 @@
                                                         "$ref": "ListConsentArtifactsResponse"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 }
@@ -1098,6 +1132,7 @@
                                                         "$ref": "Consent"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -1126,6 +1161,7 @@
                                                         "$ref": "Consent"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -1151,6 +1187,7 @@
                                                         "$ref": "Empty"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -1176,6 +1213,7 @@
                                                         "$ref": "Empty"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -1201,6 +1239,7 @@
                                                         "$ref": "Consent"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -1242,6 +1281,7 @@
                                                         "$ref": "ListConsentsResponse"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -1283,6 +1323,7 @@
                                                         "$ref": "ListConsentRevisionsResponse"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -1317,6 +1358,7 @@
                                                         "$ref": "Consent"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -1345,6 +1387,7 @@
                                                         "$ref": "Consent"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -1373,6 +1416,7 @@
                                                         "$ref": "Consent"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 }
@@ -1405,6 +1449,7 @@
                                                         "$ref": "ArchiveUserDataMappingResponse"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -1433,6 +1478,7 @@
                                                         "$ref": "UserDataMapping"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -1458,6 +1504,7 @@
                                                         "$ref": "Empty"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -1483,6 +1530,7 @@
                                                         "$ref": "UserDataMapping"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -1524,6 +1572,7 @@
                                                         "$ref": "ListUserDataMappingsResponse"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -1558,6 +1607,7 @@
                                                         "$ref": "UserDataMapping"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 }
@@ -1597,6 +1647,7 @@
                                                 "$ref": "DicomStore"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -1625,6 +1676,7 @@
                                                 "$ref": "Operation"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -1650,6 +1702,7 @@
                                                 "$ref": "Empty"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -1678,6 +1731,7 @@
                                                 "$ref": "Operation"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -1703,6 +1757,33 @@
                                                 "$ref": "DicomStore"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
+                                        "getDICOMStoreMetrics": {
+                                            "description": "Gets metrics associated with the DICOM store.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}:getDICOMStoreMetrics",
+                                            "httpMethod": "GET",
+                                            "id": "healthcare.projects.locations.datasets.dicomStores.getDICOMStoreMetrics",
+                                            "parameterOrder": [
+                                                "name"
+                                            ],
+                                            "parameters": {
+                                                "name": {
+                                                    "description": "The resource name of the DICOM store to get metrics for.",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+name}:getDICOMStoreMetrics",
+                                            "response": {
+                                                "$ref": "DicomStoreMetrics"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -1734,6 +1815,7 @@
                                                 "$ref": "Policy"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -1762,6 +1844,7 @@
                                                 "$ref": "Operation"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -1803,6 +1886,7 @@
                                                 "$ref": "ListDicomStoresResponse"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -1837,6 +1921,7 @@
                                                 "$ref": "DicomStore"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -1870,6 +1955,7 @@
                                                 "$ref": "HttpBody"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -1903,6 +1989,7 @@
                                                 "$ref": "HttpBody"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -1936,6 +2023,7 @@
                                                 "$ref": "HttpBody"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -1964,6 +2052,7 @@
                                                 "$ref": "Policy"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -2000,6 +2089,7 @@
                                                 "$ref": "HttpBody"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -2028,11 +2118,78 @@
                                                 "$ref": "TestIamPermissionsResponse"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         }
                                     },
                                     "resources": {
+                                        "dicomWeb": {
+                                            "resources": {
+                                                "studies": {
+                                                    "methods": {
+                                                        "getStudyMetrics": {
+                                                            "description": "GetStudyMetrics returns metrics for a study.",
+                                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies/{studiesId}:getStudyMetrics",
+                                                            "httpMethod": "GET",
+                                                            "id": "healthcare.projects.locations.datasets.dicomStores.dicomWeb.studies.getStudyMetrics",
+                                                            "parameterOrder": [
+                                                                "study"
+                                                            ],
+                                                            "parameters": {
+                                                                "study": {
+                                                                    "description": "The study resource path. For example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}`.",
+                                                                    "location": "path",
+                                                                    "pattern": "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+/dicomWeb/studies/[^/]+$",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "path": "v1/{+study}:getStudyMetrics",
+                                                            "response": {
+                                                                "$ref": "StudyMetrics"
+                                                            },
+                                                            "scopes": [
+                                                                "https://www.googleapis.com/auth/cloud-healthcare",
+                                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                            ]
+                                                        }
+                                                    },
+                                                    "resources": {
+                                                        "series": {
+                                                            "methods": {
+                                                                "getSeriesMetrics": {
+                                                                    "description": "GetSeriesMetrics returns metrics for a series.",
+                                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies/{studiesId}/series/{seriesId}:getSeriesMetrics",
+                                                                    "httpMethod": "GET",
+                                                                    "id": "healthcare.projects.locations.datasets.dicomStores.dicomWeb.studies.series.getSeriesMetrics",
+                                                                    "parameterOrder": [
+                                                                        "series"
+                                                                    ],
+                                                                    "parameters": {
+                                                                        "series": {
+                                                                            "description": "The series resource path. For example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}/series/{series_uid}`.",
+                                                                            "location": "path",
+                                                                            "pattern": "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/dicomStores/[^/]+/dicomWeb/studies/[^/]+/series/[^/]+$",
+                                                                            "required": true,
+                                                                            "type": "string"
+                                                                        }
+                                                                    },
+                                                                    "path": "v1/{+series}:getSeriesMetrics",
+                                                                    "response": {
+                                                                        "$ref": "SeriesMetrics"
+                                                                    },
+                                                                    "scopes": [
+                                                                        "https://www.googleapis.com/auth/cloud-healthcare",
+                                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                                    ]
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
                                         "studies": {
                                             "methods": {
                                                 "delete": {
@@ -2064,6 +2221,7 @@
                                                         "$ref": "Operation"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -2097,6 +2255,7 @@
                                                         "$ref": "HttpBody"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -2130,6 +2289,7 @@
                                                         "$ref": "HttpBody"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -2163,6 +2323,7 @@
                                                         "$ref": "HttpBody"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -2196,6 +2357,7 @@
                                                         "$ref": "HttpBody"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -2232,6 +2394,7 @@
                                                         "$ref": "HttpBody"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 }
@@ -2269,6 +2432,7 @@
                                                                 "$ref": "Operation"
                                                             },
                                                             "scopes": [
+                                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                                 "https://www.googleapis.com/auth/cloud-platform"
                                                             ]
                                                         },
@@ -2302,6 +2466,7 @@
                                                                 "$ref": "HttpBody"
                                                             },
                                                             "scopes": [
+                                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                                 "https://www.googleapis.com/auth/cloud-platform"
                                                             ]
                                                         },
@@ -2335,6 +2500,7 @@
                                                                 "$ref": "HttpBody"
                                                             },
                                                             "scopes": [
+                                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                                 "https://www.googleapis.com/auth/cloud-platform"
                                                             ]
                                                         },
@@ -2368,6 +2534,7 @@
                                                                 "$ref": "HttpBody"
                                                             },
                                                             "scopes": [
+                                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                                 "https://www.googleapis.com/auth/cloud-platform"
                                                             ]
                                                         }
@@ -2405,6 +2572,7 @@
                                                                         "$ref": "Empty"
                                                                     },
                                                                     "scopes": [
+                                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                                     ]
                                                                 },
@@ -2438,6 +2606,7 @@
                                                                         "$ref": "HttpBody"
                                                                     },
                                                                     "scopes": [
+                                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                                     ]
                                                                 },
@@ -2471,6 +2640,7 @@
                                                                         "$ref": "HttpBody"
                                                                     },
                                                                     "scopes": [
+                                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                                     ]
                                                                 },
@@ -2504,6 +2674,7 @@
                                                                         "$ref": "HttpBody"
                                                                     },
                                                                     "scopes": [
+                                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                                     ]
                                                                 }
@@ -2541,6 +2712,7 @@
                                                                                 "$ref": "HttpBody"
                                                                             },
                                                                             "scopes": [
+                                                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                                                 "https://www.googleapis.com/auth/cloud-platform"
                                                                             ]
                                                                         },
@@ -2574,6 +2746,7 @@
                                                                                 "$ref": "HttpBody"
                                                                             },
                                                                             "scopes": [
+                                                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                                                 "https://www.googleapis.com/auth/cloud-platform"
                                                                             ]
                                                                         }
@@ -2619,6 +2792,7 @@
                                                 "$ref": "FhirStore"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -2647,6 +2821,7 @@
                                                 "$ref": "Operation"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -2672,6 +2847,7 @@
                                                 "$ref": "Empty"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -2700,6 +2876,7 @@
                                                 "$ref": "Operation"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -2725,6 +2902,7 @@
                                                 "$ref": "FhirStore"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -2750,6 +2928,7 @@
                                                 "$ref": "FhirStoreMetrics"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -2781,6 +2960,7 @@
                                                 "$ref": "Policy"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -2809,6 +2989,7 @@
                                                 "$ref": "Operation"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -2850,6 +3031,7 @@
                                                 "$ref": "ListFhirStoresResponse"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -2884,6 +3066,7 @@
                                                 "$ref": "FhirStore"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -2912,6 +3095,7 @@
                                                 "$ref": "Policy"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -2940,6 +3124,7 @@
                                                 "$ref": "TestIamPermissionsResponse"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         }
@@ -3000,6 +3185,7 @@
                                                         "$ref": "HttpBody"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -3025,6 +3211,7 @@
                                                         "$ref": "Empty"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -3066,6 +3253,7 @@
                                                         "$ref": "HttpBody"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -3091,11 +3279,120 @@
                                                         "$ref": "HttpBody"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
+                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                    ]
+                                                },
+                                                "conditionalDelete": {
+                                                    "description": "Deletes a FHIR resource that match an identifier search query. Implements the FHIR standard conditional delete interaction, limited to searching by resource identifier. If multiple resources match, 412 Precondition Failed error will be returned. Search term for identifier should be in the pattern `identifier=system|value` or `identifier=value` - similar to the `search` method on resources with a specific identifier. Note: Unless resource versioning is disabled by setting the disable_resource_versioning flag on the FHIR store, the deleted resource is moved to a history repository that can still be retrieved through vread and related methods, unless they are removed by the purge method. For samples that show how to call `conditionalDelete`, see [Conditionally deleting a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#conditionally_deleting_a_fhir_resource).",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/{fhirId}",
+                                                    "httpMethod": "DELETE",
+                                                    "id": "healthcare.projects.locations.datasets.fhirStores.fhir.conditionalDelete",
+                                                    "parameterOrder": [
+                                                        "parent",
+                                                        "type"
+                                                    ],
+                                                    "parameters": {
+                                                        "parent": {
+                                                            "description": "The name of the FHIR store this resource belongs to.",
+                                                            "location": "path",
+                                                            "pattern": "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        },
+                                                        "type": {
+                                                            "description": "The FHIR resource type to delete, such as Patient or Observation. For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html), [STU3](https://hl7.org/implement/standards/fhir/STU3/resourcelist.html), [R4](https://hl7.org/implement/standards/fhir/R4/resourcelist.html)).",
+                                                            "location": "path",
+                                                            "pattern": "^[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "v1/{+parent}/fhir/{+type}",
+                                                    "response": {
+                                                        "$ref": "Empty"
+                                                    },
+                                                    "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
+                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                    ]
+                                                },
+                                                "conditionalPatch": {
+                                                    "description": "If a resource is found with the identifier specified in the query parameters, updates part of that resource by applying the operations specified in a [JSON Patch](http://jsonpatch.com/) document. Implements the FHIR standard conditional patch interaction, limited to searching by resource identifier. DSTU2 doesn't define a conditional patch method, but the server supports it in the same way it supports STU3. Search term for identifier should be in the pattern `identifier=system|value` or `identifier=value` - similar to the `search` method on resources with a specific identifier. If the search criteria identify more than one match, the request returns a `412 Precondition Failed` error. The request body must contain a JSON Patch document, and the request headers must contain `Content-Type: application/json-patch+json`. On success, the response body contains a JSON-encoded representation of the updated resource, including the server-assigned version ID. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. For samples that show how to call `conditionalPatch`, see [Conditionally patching a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#conditionally_patching_a_fhir_resource).",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/{fhirId}",
+                                                    "httpMethod": "PATCH",
+                                                    "id": "healthcare.projects.locations.datasets.fhirStores.fhir.conditionalPatch",
+                                                    "parameterOrder": [
+                                                        "parent",
+                                                        "type"
+                                                    ],
+                                                    "parameters": {
+                                                        "parent": {
+                                                            "description": "The name of the FHIR store this resource belongs to.",
+                                                            "location": "path",
+                                                            "pattern": "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        },
+                                                        "type": {
+                                                            "description": "The FHIR resource type to update, such as Patient or Observation. For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html), [STU3](https://hl7.org/implement/standards/fhir/STU3/resourcelist.html), [R4](https://hl7.org/implement/standards/fhir/R4/resourcelist.html)).",
+                                                            "location": "path",
+                                                            "pattern": "^[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "v1/{+parent}/fhir/{+type}",
+                                                    "request": {
+                                                        "$ref": "HttpBody"
+                                                    },
+                                                    "response": {
+                                                        "$ref": "HttpBody"
+                                                    },
+                                                    "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
+                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                    ]
+                                                },
+                                                "conditionalUpdate": {
+                                                    "description": "If a resource is found with the identifier specified in the query parameters, updates the entire contents of that resource. Implements the FHIR standard conditional update interaction, limited to searching by resource identifier. Search term for identifier should be in the pattern `identifier=system|value` or `identifier=value` - similar to the `search` method on resources with a specific identifier. If the search criteria identify more than one match, the request returns a `412 Precondition Failed` error. If the search criteria identify zero matches, and the supplied resource body contains an `id`, and the FHIR store has enable_update_create set, creates the resource with the client-specified ID. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud Audit Logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources. If the search criteria identify zero matches, and the supplied resource body does not contain an `id`, the resource is created with a server-assigned ID as per the create method. The request body must contain a JSON-encoded FHIR resource, and the request headers must contain `Content-Type: application/fhir+json`. On success, the response body contains a JSON-encoded representation of the updated resource, including the server-assigned version ID. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. For samples that show how to call `conditionalUpdate`, see [Conditionally updating a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#conditionally_updating_a_fhir_resource).",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/{fhirId}",
+                                                    "httpMethod": "PUT",
+                                                    "id": "healthcare.projects.locations.datasets.fhirStores.fhir.conditionalUpdate",
+                                                    "parameterOrder": [
+                                                        "parent",
+                                                        "type"
+                                                    ],
+                                                    "parameters": {
+                                                        "parent": {
+                                                            "description": "The name of the FHIR store this resource belongs to.",
+                                                            "location": "path",
+                                                            "pattern": "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        },
+                                                        "type": {
+                                                            "description": "The FHIR resource type to update, such as Patient or Observation. For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html), [STU3](https://hl7.org/implement/standards/fhir/STU3/resourcelist.html), [R4](https://hl7.org/implement/standards/fhir/R4/resourcelist.html)). Must match the resource type in the provided content.",
+                                                            "location": "path",
+                                                            "pattern": "^[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "v1/{+parent}/fhir/{+type}",
+                                                    "request": {
+                                                        "$ref": "HttpBody"
+                                                    },
+                                                    "response": {
+                                                        "$ref": "HttpBody"
+                                                    },
+                                                    "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
                                                 "create": {
-                                                    "description": "Creates a FHIR resource. Implements the FHIR standard create interaction ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#create), [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#create), [R4](http://hl7.org/implement/standards/fhir/R4/http.html#create)), which creates a new resource with a server-assigned resource ID. The request body must contain a JSON-encoded FHIR resource, and the request headers must contain `Content-Type: application/fhir+json`. On success, the response body contains a JSON-encoded representation of the resource as it was created on the server, including the server-assigned resource ID and version ID. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. For samples that show how to call `create`, see [Creating a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#creating_a_fhir_resource).",
+                                                    "description": "Creates a FHIR resource. Implements the FHIR standard create interaction ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#create), [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#create), [R4](http://hl7.org/implement/standards/fhir/R4/http.html#create)), which creates a new resource with a server-assigned resource ID. Also supports the FHIR standard conditional create interaction ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/http.html#ccreate), [STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#ccreate), [R4](https://hl7.org/implement/standards/fhir/R4/http.html#ccreate)), specified by supplying an `If-None-Exist` header containing a FHIR search query, limited to searching by resource identifier. If no resources match this search query, the server processes the create operation as normal. When using conditional create, the search term for identifier should be in the pattern `identifier=system|value` or `identifier=value` - similar to the `search` method on resources with a specific identifier. The request body must contain a JSON-encoded FHIR resource, and the request headers must contain `Content-Type: application/fhir+json`. On success, the response body contains a JSON-encoded representation of the resource as it was created on the server, including the server-assigned resource ID and version ID. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. For samples that show how to call `create`, see [Creating a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#creating_a_fhir_resource).",
                                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/{fhirId}",
                                                     "httpMethod": "POST",
                                                     "id": "healthcare.projects.locations.datasets.fhirStores.fhir.create",
@@ -3127,6 +3424,7 @@
                                                         "$ref": "HttpBody"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -3152,6 +3450,7 @@
                                                         "$ref": "HttpBody"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -3180,6 +3479,7 @@
                                                         "$ref": "HttpBody"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -3226,6 +3526,7 @@
                                                         "$ref": "HttpBody"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -3254,6 +3555,7 @@
                                                         "$ref": "HttpBody"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -3279,11 +3581,12 @@
                                                         "$ref": "HttpBody"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
                                                 "search": {
-                                                    "description": "Searches for resources in the given FHIR store according to criteria specified as query parameters. Implements the FHIR standard search interaction ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#search), [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#search), [R4](http://hl7.org/implement/standards/fhir/R4/http.html#search)) using the search semantics described in the FHIR Search specification ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/search.html), [STU3](http://hl7.org/implement/standards/fhir/STU3/search.html), [R4](http://hl7.org/implement/standards/fhir/R4/search.html)). Supports four methods of search defined by the specification: * `GET [base]?[parameters]` to search across all resources. * `GET [base]/[type]?[parameters]` to search resources of a specified type. * `POST [base]/_search?[parameters]` as an alternate form having the same semantics as the `GET` method across all resources. * `POST [base]/[type]/_search?[parameters]` as an alternate form having the same semantics as the `GET` method for the specified type. The `GET` and `POST` methods do not support compartment searches. The `POST` method does not support `application/x-www-form-urlencoded` search parameters. On success, the response body contains a JSON-encoded representation of a `Bundle` resource of type `searchset`, containing the results of the search. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. The server's capability statement, retrieved through capabilities, indicates what search parameters are supported on each FHIR resource. A list of all search parameters defined by the specification can be found in the FHIR Search Parameter Registry ([STU3](http://hl7.org/implement/standards/fhir/STU3/searchparameter-registry.html), [R4](http://hl7.org/implement/standards/fhir/R4/searchparameter-registry.html)). FHIR search parameters for DSTU2 can be found on each resource's definition page. Supported search modifiers: `:missing`, `:exact`, `:contains`, `:text`, `:in`, `:not-in`, `:above`, `:below`, `:[type]`, `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4). Supported search result parameters: `_sort`, `_count`, `_include`, `_revinclude`, `_summary=text`, `_summary=data`, and `_elements`. The maximum number of search results returned defaults to 100, which can be overridden by the `_count` parameter up to a maximum limit of 1000. The server might return fewer resources than requested to prevent excessively large responses. If there are additional results, the returned `Bundle` contains a link of `relation` \"next\", which has a `_page_token` parameter for an opaque pagination token that can be used to retrieve the next page. Resources with a total size larger than 5MB or a field count larger than 50,000 might not be fully searchable as the server might trim its generated search index in those cases. Note: FHIR resources are indexed asynchronously, so there might be a slight delay between the time a resource is created or changes and when the change is reflected in search results. For samples and detailed information, see [Searching for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).",
+                                                    "description": "Searches for resources in the given FHIR store according to criteria specified as query parameters. Implements the FHIR standard search interaction ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#search), [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#search), [R4](http://hl7.org/implement/standards/fhir/R4/http.html#search)) using the search semantics described in the FHIR Search specification ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/search.html), [STU3](http://hl7.org/implement/standards/fhir/STU3/search.html), [R4](http://hl7.org/implement/standards/fhir/R4/search.html)). Supports four methods of search defined by the specification: * `GET [base]?[parameters]` to search across all resources. * `GET [base]/[type]?[parameters]` to search resources of a specified type. * `POST [base]/_search?[parameters]` as an alternate form having the same semantics as the `GET` method across all resources. * `POST [base]/[type]/_search?[parameters]` as an alternate form having the same semantics as the `GET` method for the specified type. The `GET` and `POST` methods do not support compartment searches. The `POST` method does not support `application/x-www-form-urlencoded` search parameters. On success, the response body contains a JSON-encoded representation of a `Bundle` resource of type `searchset`, containing the results of the search. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. The server's capability statement, retrieved through capabilities, indicates what search parameters are supported on each FHIR resource. A list of all search parameters defined by the specification can be found in the FHIR Search Parameter Registry ([STU3](http://hl7.org/implement/standards/fhir/STU3/searchparameter-registry.html), [R4](http://hl7.org/implement/standards/fhir/R4/searchparameter-registry.html)). FHIR search parameters for DSTU2 can be found on each resource's definition page. Supported search modifiers: `:missing`, `:exact`, `:contains`, `:text`, `:in`, `:not-in`, `:above`, `:below`, `:[type]`, `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4). Supported search result parameters: `_sort`, `_count`, `_include`, `_revinclude`, `_summary=text`, `_summary=data`, and `_elements`. The maximum number of search results returned defaults to 100, which can be overridden by the `_count` parameter up to a maximum limit of 1000. The server might return fewer resources than requested to prevent excessively large responses. If there are additional results, the returned `Bundle` contains a link of `relation` \"next\", which has a `_page_token` parameter for an opaque pagination token that can be used to retrieve the next page. Resources with a total size larger than 5MB or a field count larger than 50,000 might not be fully searchable as the server might trim its generated search index in those cases. Note: FHIR resources are indexed asynchronously, so there might be a slight delay between the time a resource is created or changed, and the time when the change reflects in search results. The only exception is resource identifier data, which is indexed synchronously as a special index. As a result, searching using resource identifier is not subject to indexing delay. To use the special synchronous index, the search term for identifier should be in the pattern `identifier=[system]|[value]` or `identifier=[value]`, and any of the following search result parameters can be used: * `_count` * `_include` * `_revinclude` * `_summary` * `_elements` If your query contains any other search parameters, the standard asynchronous index will be used instead. Note that searching against the special index is optimized for resolving a small number of matches. The search isn't optimized if your identifier search criteria matches a large number (i.e. more than 2,000) of resources. For a search query that will match a large number of resources, you can avoiding using the special synchronous index by including an additional `_sort` parameter in your query. Use `_sort=-_lastUpdated` if you want to keep the default sorting order. Note: The special synchronous identifier index are currently disabled for DocumentReference and DocumentManifest searches. For samples and detailed information, see [Searching for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).",
                                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/_search",
                                                     "httpMethod": "POST",
                                                     "id": "healthcare.projects.locations.datasets.fhirStores.fhir.search",
@@ -3307,11 +3610,12 @@
                                                         "$ref": "HttpBody"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
                                                 "search-type": {
-                                                    "description": "Searches for resources in the given FHIR store according to criteria specified as query parameters. Implements the FHIR standard search interaction ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#search), [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#search), [R4](http://hl7.org/implement/standards/fhir/R4/http.html#search)) using the search semantics described in the FHIR Search specification ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/search.html), [STU3](http://hl7.org/implement/standards/fhir/STU3/search.html), [R4](http://hl7.org/implement/standards/fhir/R4/search.html)). Supports four methods of search defined by the specification: * `GET [base]?[parameters]` to search across all resources. * `GET [base]/[type]?[parameters]` to search resources of a specified type. * `POST [base]/_search?[parameters]` as an alternate form having the same semantics as the `GET` method across all resources. * `POST [base]/[type]/_search?[parameters]` as an alternate form having the same semantics as the `GET` method for the specified type. The `GET` and `POST` methods do not support compartment searches. The `POST` method does not support `application/x-www-form-urlencoded` search parameters. On success, the response body contains a JSON-encoded representation of a `Bundle` resource of type `searchset`, containing the results of the search. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. The server's capability statement, retrieved through capabilities, indicates what search parameters are supported on each FHIR resource. A list of all search parameters defined by the specification can be found in the FHIR Search Parameter Registry ([STU3](http://hl7.org/implement/standards/fhir/STU3/searchparameter-registry.html), [R4](http://hl7.org/implement/standards/fhir/R4/searchparameter-registry.html)). FHIR search parameters for DSTU2 can be found on each resource's definition page. Supported search modifiers: `:missing`, `:exact`, `:contains`, `:text`, `:in`, `:not-in`, `:above`, `:below`, `:[type]`, `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4). Supported search result parameters: `_sort`, `_count`, `_include`, `_revinclude`, `_summary=text`, `_summary=data`, and `_elements`. The maximum number of search results returned defaults to 100, which can be overridden by the `_count` parameter up to a maximum limit of 1000. The server might return fewer resources than requested to prevent excessively large responses. If there are additional results, the returned `Bundle` contains a link of `relation` \"next\", which has a `_page_token` parameter for an opaque pagination token that can be used to retrieve the next page. Resources with a total size larger than 5MB or a field count larger than 50,000 might not be fully searchable as the server might trim its generated search index in those cases. Note: FHIR resources are indexed asynchronously, so there might be a slight delay between the time a resource is created or changes and when the change is reflected in search results. For samples and detailed information, see [Searching for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).",
+                                                    "description": "Searches for resources in the given FHIR store according to criteria specified as query parameters. Implements the FHIR standard search interaction ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#search), [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#search), [R4](http://hl7.org/implement/standards/fhir/R4/http.html#search)) using the search semantics described in the FHIR Search specification ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/search.html), [STU3](http://hl7.org/implement/standards/fhir/STU3/search.html), [R4](http://hl7.org/implement/standards/fhir/R4/search.html)). Supports four methods of search defined by the specification: * `GET [base]?[parameters]` to search across all resources. * `GET [base]/[type]?[parameters]` to search resources of a specified type. * `POST [base]/_search?[parameters]` as an alternate form having the same semantics as the `GET` method across all resources. * `POST [base]/[type]/_search?[parameters]` as an alternate form having the same semantics as the `GET` method for the specified type. The `GET` and `POST` methods do not support compartment searches. The `POST` method does not support `application/x-www-form-urlencoded` search parameters. On success, the response body contains a JSON-encoded representation of a `Bundle` resource of type `searchset`, containing the results of the search. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. The server's capability statement, retrieved through capabilities, indicates what search parameters are supported on each FHIR resource. A list of all search parameters defined by the specification can be found in the FHIR Search Parameter Registry ([STU3](http://hl7.org/implement/standards/fhir/STU3/searchparameter-registry.html), [R4](http://hl7.org/implement/standards/fhir/R4/searchparameter-registry.html)). FHIR search parameters for DSTU2 can be found on each resource's definition page. Supported search modifiers: `:missing`, `:exact`, `:contains`, `:text`, `:in`, `:not-in`, `:above`, `:below`, `:[type]`, `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4). Supported search result parameters: `_sort`, `_count`, `_include`, `_revinclude`, `_summary=text`, `_summary=data`, and `_elements`. The maximum number of search results returned defaults to 100, which can be overridden by the `_count` parameter up to a maximum limit of 1000. The server might return fewer resources than requested to prevent excessively large responses. If there are additional results, the returned `Bundle` contains a link of `relation` \"next\", which has a `_page_token` parameter for an opaque pagination token that can be used to retrieve the next page. Resources with a total size larger than 5MB or a field count larger than 50,000 might not be fully searchable as the server might trim its generated search index in those cases. Note: FHIR resources are indexed asynchronously, so there might be a slight delay between the time a resource is created or changed, and the time when the change reflects in search results. The only exception is resource identifier data, which is indexed synchronously as a special index. As a result, searching using resource identifier is not subject to indexing delay. To use the special synchronous index, the search term for identifier should be in the pattern `identifier=[system]|[value]` or `identifier=[value]`, and any of the following search result parameters can be used: * `_count` * `_include` * `_revinclude` * `_summary` * `_elements` If your query contains any other search parameters, the standard asynchronous index will be used instead. Note that searching against the special index is optimized for resolving a small number of matches. The search isn't optimized if your identifier search criteria matches a large number (i.e. more than 2,000) of resources. For a search query that will match a large number of resources, you can avoiding using the special synchronous index by including an additional `_sort` parameter in your query. Use `_sort=-_lastUpdated` if you want to keep the default sorting order. Note: The special synchronous identifier index are currently disabled for DocumentReference and DocumentManifest searches. For samples and detailed information, see [Searching for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).",
                                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/{resourceType}/_search",
                                                     "httpMethod": "POST",
                                                     "id": "healthcare.projects.locations.datasets.fhirStores.fhir.search-type",
@@ -3342,6 +3646,7 @@
                                                         "$ref": "HttpBody"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -3370,6 +3675,7 @@
                                                         "$ref": "HttpBody"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -3395,6 +3701,7 @@
                                                         "$ref": "HttpBody"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 }
@@ -3434,6 +3741,7 @@
                                                 "$ref": "Hl7V2Store"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -3459,6 +3767,7 @@
                                                 "$ref": "Empty"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -3487,6 +3796,7 @@
                                                 "$ref": "Operation"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -3512,6 +3822,33 @@
                                                 "$ref": "Hl7V2Store"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
+                                        "getHL7v2StoreMetrics": {
+                                            "description": "Gets metrics asssociated with the HL7v2 store.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/hl7V2Stores/{hl7V2StoresId}:getHL7v2StoreMetrics",
+                                            "httpMethod": "GET",
+                                            "id": "healthcare.projects.locations.datasets.hl7V2Stores.getHL7v2StoreMetrics",
+                                            "parameterOrder": [
+                                                "name"
+                                            ],
+                                            "parameters": {
+                                                "name": {
+                                                    "description": "The resource name of the HL7v2 store to get metrics for, in the format `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+name}:getHL7v2StoreMetrics",
+                                            "response": {
+                                                "$ref": "Hl7V2StoreMetrics"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -3543,6 +3880,7 @@
                                                 "$ref": "Policy"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -3571,6 +3909,7 @@
                                                 "$ref": "Operation"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -3612,6 +3951,7 @@
                                                 "$ref": "ListHl7V2StoresResponse"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -3646,6 +3986,7 @@
                                                 "$ref": "Hl7V2Store"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -3674,6 +4015,7 @@
                                                 "$ref": "Policy"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -3702,6 +4044,7 @@
                                                 "$ref": "TestIamPermissionsResponse"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         }
@@ -3734,6 +4077,7 @@
                                                         "$ref": "Message"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -3759,6 +4103,7 @@
                                                         "$ref": "Empty"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -3805,6 +4150,7 @@
                                                         "$ref": "Message"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -3833,6 +4179,7 @@
                                                         "$ref": "IngestMessageResponse"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -3900,6 +4247,7 @@
                                                         "$ref": "ListMessagesResponse"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
@@ -3934,6 +4282,7 @@
                                                         "$ref": "Message"
                                                     },
                                                     "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-healthcare",
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 }
@@ -3968,6 +4317,7 @@
                                                 "$ref": "Empty"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -3993,6 +4343,7 @@
                                                 "$ref": "Operation"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
@@ -4034,6 +4385,7 @@
                                                 "$ref": "ListOperationsResponse"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         }
@@ -4070,6 +4422,7 @@
                                                 "$ref": "AnalyzeEntitiesResponse"
                                             },
                                             "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-healthcare",
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         }
@@ -4673,7 +5026,7 @@
                     "description": "Configures de-identification of text wherever it is found in the source_dataset."
                 },
                 "useRegionalDataProcessing": {
-                    "description": "Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.",
+                    "description": "Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.",
                     "type": "boolean"
                 }
             },
@@ -4827,6 +5180,42 @@
                         "$ref": "GoogleCloudHealthcareV1DicomStreamConfig"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "DicomStoreMetrics": {
+            "description": "DicomStoreMetrics contains metrics describing a DICOM store.",
+            "id": "DicomStoreMetrics",
+            "properties": {
+                "blobStorageSizeBytes": {
+                    "description": "Total blob storage bytes for all instances in the store.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "instanceCount": {
+                    "description": "Number of instances in the store.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.",
+                    "type": "string"
+                },
+                "seriesCount": {
+                    "description": "Number of series in the store.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "structuredStorageSizeBytes": {
+                    "description": "Total structured storage bytes for all instances in the store.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "studyCount": {
+                    "description": "Number of studies in the store.",
+                    "format": "int64",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -5022,7 +5411,7 @@
                     "type": "string"
                 },
                 "filter": {
-                    "description": "Restricts messages exported to those matching a filter, only applicable to PubsubDestination and GcsDestination. The following syntax is available: * A string field value can be written as text inside quotation marks, for example `\"query text\"`. The only valid relational operation for text fields is equality (`=`), where text is searched within the field, rather than having the field be equal to the text. For example, `\"Comment = great\"` returns messages with `great` in the comment field. * A number field value can be written as an integer, a decimal, or an exponential. The valid relational operators for number fields are the equality operator (`=`), along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * A date field value must be written in the `yyyy-mm-dd` format. Fields with date and time use the RFC3339 time format. Leading zeros are required for one-digit months and days. The valid relational operators for date fields are the equality operator (`=`) , along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * Multiple field query expressions can be combined in one query by adding `AND` or `OR` operators between the expressions. If a boolean operator appears within a quoted string, it is not treated as special, and is just another part of the character string to be matched. You can prepend the `NOT` operator to an expression to negate it. The following fields and functions are available for filtering: * `message_type`, from the MSH-9.1 field. For example, `NOT message_type = \"ADT\"`. * `send_date` or `sendDate`, the `yyyy-mm-dd` date the message was sent in the dataset's time_zone, from the MSH-7 segment. For example, `send_date < \"2017-01-02\"`. * `send_time`, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, `send_time < \"2017-01-02T00:00:00-05:00\"`. * `create_time`, the timestamp when the message was created in the HL7v2 store. Use the RFC3339 time format for comparisons. For example, `create_time < \"2017-01-02T00:00:00-05:00\"`. * `send_facility`, the care center that the message came from, from the MSH-4 segment. For example, `send_facility = \"ABC\"`. Note: The filter will be applied to every message in the HL7v2 store whose `send_time` lies in the range defined by the `start_time` and the `end_time`. Even if the filter only matches a small set of messages, the export operation can still take a long time to finish when a lot of messages are between the specified `start_time` and `end_time` range.",
+                    "description": "Restricts messages exported to those matching a filter, only applicable to PubsubDestination. The following syntax is available: * A string field value can be written as text inside quotation marks, for example `\"query text\"`. The only valid relational operation for text fields is equality (`=`), where text is searched within the field, rather than having the field be equal to the text. For example, `\"Comment = great\"` returns messages with `great` in the comment field. * A number field value can be written as an integer, a decimal, or an exponential. The valid relational operators for number fields are the equality operator (`=`), along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * A date field value must be written in the `yyyy-mm-dd` format. Fields with date and time use the RFC3339 time format. Leading zeros are required for one-digit months and days. The valid relational operators for date fields are the equality operator (`=`) , along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * Multiple field query expressions can be combined in one query by adding `AND` or `OR` operators between the expressions. If a boolean operator appears within a quoted string, it is not treated as special, and is just another part of the character string to be matched. You can prepend the `NOT` operator to an expression to negate it. The following fields and functions are available for filtering: * `message_type`, from the MSH-9.1 field. For example, `NOT message_type = \"ADT\"`. * `send_date` or `sendDate`, the `yyyy-mm-dd` date the message was sent in the dataset's time_zone, from the MSH-7 segment. For example, `send_date < \"2017-01-02\"`. * `send_time`, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, `send_time < \"2017-01-02T00:00:00-05:00\"`. * `create_time`, the timestamp when the message was created in the HL7v2 store. Use the RFC3339 time format for comparisons. For example, `create_time < \"2017-01-02T00:00:00-05:00\"`. * `send_facility`, the care center that the message came from, from the MSH-4 segment. For example, `send_facility = \"ABC\"`. Note: The filter will be applied to every message in the HL7v2 store whose `send_time` lies in the range defined by the `start_time` and the `end_time`. Even if the filter only matches a small set of messages, the export operation can still take a long time to finish when a lot of messages are between the specified `start_time` and `end_time` range.",
                     "type": "string"
                 },
                 "gcsDestination": {
@@ -5671,6 +6060,45 @@
             },
             "type": "object"
         },
+        "Hl7V2StoreMetric": {
+            "description": "Count of messages and total storage size by type for a given HL7 store.",
+            "id": "Hl7V2StoreMetric",
+            "properties": {
+                "count": {
+                    "description": "The total count of HL7v2 messages in the store for the given message type.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "messageType": {
+                    "description": "The Hl7v2 message type this metric applies to, such as `ADT` or `ORU`.",
+                    "type": "string"
+                },
+                "structuredStorageSizeBytes": {
+                    "description": "The total amount of structured storage used by HL7v2 messages of this message type in the store.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Hl7V2StoreMetrics": {
+            "description": "List of metrics for a given HL7v2 store.",
+            "id": "Hl7V2StoreMetrics",
+            "properties": {
+                "metrics": {
+                    "description": "List of HL7v2 store metrics by message type.",
+                    "items": {
+                        "$ref": "Hl7V2StoreMetric"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "description": "The resource name of the HL7v2 store to get metrics for, in the format `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "HttpBody": {
             "description": "Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged.",
             "id": "HttpBody",
@@ -6258,7 +6686,7 @@
                         "description": "Properties of the object. Contains field @type with type URL.",
                         "type": "any"
                     },
-                    "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+                    "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
                     "type": "object"
                 }
             },
@@ -6361,7 +6789,7 @@
             "type": "object"
         },
         "Policy": {
-            "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
+            "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
             "id": "Policy",
             "properties": {
                 "auditConfigs": {
@@ -6719,6 +7147,32 @@
             },
             "type": "object"
         },
+        "SeriesMetrics": {
+            "description": "SeriesMetrics contains metrics describing a DICOM series.",
+            "id": "SeriesMetrics",
+            "properties": {
+                "blobStorageSizeBytes": {
+                    "description": "Total blob storage bytes for all instances in the series.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "instanceCount": {
+                    "description": "Number of instances in the series.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "series": {
+                    "description": "The series resource path. For example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}/series/{series_uid}`.",
+                    "type": "string"
+                },
+                "structuredStorageSizeBytes": {
+                    "description": "Total structured storage bytes for all instances in the series.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "SetIamPolicyRequest": {
             "description": "Request message for `SetIamPolicy` method.",
             "id": "SetIamPolicyRequest",
@@ -6807,6 +7261,37 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "StudyMetrics": {
+            "description": "StudyMetrics contains metrics describing a DICOM study.",
+            "id": "StudyMetrics",
+            "properties": {
+                "blobStorageSizeBytes": {
+                    "description": "Total blob storage bytes for all instances in the study.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "instanceCount": {
+                    "description": "Number of instances in the study.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "seriesCount": {
+                    "description": "Number of series in the study.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "structuredStorageSizeBytes": {
+                    "description": "Total structured storage bytes for all instances in the study.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "study": {
+                    "description": "The study resource path. For example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}`.",
+                    "type": "string"
                 }
             },
             "type": "object"

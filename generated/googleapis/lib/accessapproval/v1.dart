@@ -1439,6 +1439,12 @@ class AccessApprovalSettings {
   /// addresses are allowed.
   core.List<core.String>? notificationEmails;
 
+  /// A pubsub topic to which notifications relating to approval requests should
+  /// be sent.
+  ///
+  /// Optional.
+  core.String? notificationPubsubTopic;
+
   /// This preference is communicated to Google personnel when sending an
   /// approval request but can be overridden if necessary.
   core.bool? preferNoBroadApprovalRequests;
@@ -1457,6 +1463,7 @@ class AccessApprovalSettings {
     this.invalidKeyVersion,
     this.name,
     this.notificationEmails,
+    this.notificationPubsubTopic,
     this.preferNoBroadApprovalRequests,
     this.preferredRequestExpirationDays,
   });
@@ -1488,6 +1495,9 @@ class AccessApprovalSettings {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          notificationPubsubTopic: json_.containsKey('notificationPubsubTopic')
+              ? json_['notificationPubsubTopic'] as core.String
+              : null,
           preferNoBroadApprovalRequests:
               json_.containsKey('preferNoBroadApprovalRequests')
                   ? json_['preferNoBroadApprovalRequests'] as core.bool
@@ -1508,6 +1518,8 @@ class AccessApprovalSettings {
         if (name != null) 'name': name!,
         if (notificationEmails != null)
           'notificationEmails': notificationEmails!,
+        if (notificationPubsubTopic != null)
+          'notificationPubsubTopic': notificationPubsubTopic!,
         if (preferNoBroadApprovalRequests != null)
           'preferNoBroadApprovalRequests': preferNoBroadApprovalRequests!,
         if (preferredRequestExpirationDays != null)

@@ -28,6 +28,9 @@
 ///         - [ProjectsLocationsDatasetsConsentStoresConsentsResource]
 ///         - [ProjectsLocationsDatasetsConsentStoresUserDataMappingsResource]
 ///       - [ProjectsLocationsDatasetsDicomStoresResource]
+///         - [ProjectsLocationsDatasetsDicomStoresDicomWebResource]
+///           - [ProjectsLocationsDatasetsDicomStoresDicomWebStudiesResource]
+/// - [ProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesResource]
 ///         - [ProjectsLocationsDatasetsDicomStoresStudiesResource]
 ///           - [ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource]
 /// - [ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource]
@@ -56,6 +59,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// Manage, store, and access healthcare data in Google Cloud Platform.
 class CloudHealthcareApi {
+  /// Read, write and manage healthcare data
+  static const cloudHealthcareScope =
+      'https://www.googleapis.com/auth/cloud-healthcare';
+
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
   static const cloudPlatformScope =
@@ -2493,6 +2500,8 @@ class ProjectsLocationsDatasetsConsentStoresUserDataMappingsResource {
 class ProjectsLocationsDatasetsDicomStoresResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsDatasetsDicomStoresDicomWebResource get dicomWeb =>
+      ProjectsLocationsDatasetsDicomStoresDicomWebResource(_requester);
   ProjectsLocationsDatasetsDicomStoresStudiesResource get studies =>
       ProjectsLocationsDatasetsDicomStoresStudiesResource(_requester);
 
@@ -2717,6 +2726,43 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       queryParams: queryParams_,
     );
     return DicomStore.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets metrics associated with the DICOM store.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the DICOM store to get metrics for.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DicomStoreMetrics].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DicomStoreMetrics> getDICOMStoreMetrics(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':getDICOMStoreMetrics';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DicomStoreMetrics.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -3265,6 +3311,114 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsDatasetsDicomStoresDicomWebResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDatasetsDicomStoresDicomWebStudiesResource get studies =>
+      ProjectsLocationsDatasetsDicomStoresDicomWebStudiesResource(_requester);
+
+  ProjectsLocationsDatasetsDicomStoresDicomWebResource(
+      commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsDatasetsDicomStoresDicomWebStudiesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesResource
+      get series =>
+          ProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesResource(
+              _requester);
+
+  ProjectsLocationsDatasetsDicomStoresDicomWebStudiesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// GetStudyMetrics returns metrics for a study.
+  ///
+  /// Request parameters:
+  ///
+  /// [study] - The study resource path. For example,
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+/dicomWeb/studies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [StudyMetrics].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<StudyMetrics> getStudyMetrics(
+    core.String study, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$study') + ':getStudyMetrics';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return StudyMetrics.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// GetSeriesMetrics returns metrics for a series.
+  ///
+  /// Request parameters:
+  ///
+  /// [series] - The series resource path. For example,
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}/series/{series_uid}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/dicomStores/\[^/\]+/dicomWeb/studies/\[^/\]+/series/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SeriesMetrics].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SeriesMetrics> getSeriesMetrics(
+    core.String series, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$series') + ':getSeriesMetrics';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SeriesMetrics.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -5119,13 +5273,233 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deletes a FHIR resource that match an identifier search query.
+  ///
+  /// Implements the FHIR standard conditional delete interaction, limited to
+  /// searching by resource identifier. If multiple resources match, 412
+  /// Precondition Failed error will be returned. Search term for identifier
+  /// should be in the pattern `identifier=system|value` or `identifier=value` -
+  /// similar to the `search` method on resources with a specific identifier.
+  /// Note: Unless resource versioning is disabled by setting the
+  /// disable_resource_versioning flag on the FHIR store, the deleted resource
+  /// is moved to a history repository that can still be retrieved through vread
+  /// and related methods, unless they are removed by the purge method. For
+  /// samples that show how to call `conditionalDelete`, see
+  /// [Conditionally deleting a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#conditionally_deleting_a_fhir_resource).
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The name of the FHIR store this resource belongs to.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
+  ///
+  /// [type] - The FHIR resource type to delete, such as Patient or Observation.
+  /// For a complete list, see the FHIR Resource Index
+  /// ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
+  /// [STU3](https://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
+  /// [R4](https://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> conditionalDelete(
+    core.String parent,
+    core.String type, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/fhir/' +
+        core.Uri.encodeFull('$type');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// If a resource is found with the identifier specified in the query
+  /// parameters, updates part of that resource by applying the operations
+  /// specified in a [JSON Patch](http://jsonpatch.com/) document.
+  ///
+  /// Implements the FHIR standard conditional patch interaction, limited to
+  /// searching by resource identifier. DSTU2 doesn't define a conditional patch
+  /// method, but the server supports it in the same way it supports STU3.
+  /// Search term for identifier should be in the pattern
+  /// `identifier=system|value` or `identifier=value` - similar to the `search`
+  /// method on resources with a specific identifier. If the search criteria
+  /// identify more than one match, the request returns a `412 Precondition
+  /// Failed` error. The request body must contain a JSON Patch document, and
+  /// the request headers must contain `Content-Type:
+  /// application/json-patch+json`. On success, the response body contains a
+  /// JSON-encoded representation of the updated resource, including the
+  /// server-assigned version ID. Errors generated by the FHIR store contain a
+  /// JSON-encoded `OperationOutcome` resource describing the reason for the
+  /// error. If the request cannot be mapped to a valid API method on a FHIR
+  /// store, a generic GCP error might be returned instead. For samples that
+  /// show how to call `conditionalPatch`, see
+  /// [Conditionally patching a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#conditionally_patching_a_fhir_resource).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The name of the FHIR store this resource belongs to.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
+  ///
+  /// [type] - The FHIR resource type to update, such as Patient or Observation.
+  /// For a complete list, see the FHIR Resource Index
+  /// ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
+  /// [STU3](https://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
+  /// [R4](https://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> conditionalPatch(
+    HttpBody request,
+    core.String parent,
+    core.String type, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/fhir/' +
+        core.Uri.encodeFull('$type');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// If a resource is found with the identifier specified in the query
+  /// parameters, updates the entire contents of that resource.
+  ///
+  /// Implements the FHIR standard conditional update interaction, limited to
+  /// searching by resource identifier. Search term for identifier should be in
+  /// the pattern `identifier=system|value` or `identifier=value` - similar to
+  /// the `search` method on resources with a specific identifier. If the search
+  /// criteria identify more than one match, the request returns a `412
+  /// Precondition Failed` error. If the search criteria identify zero matches,
+  /// and the supplied resource body contains an `id`, and the FHIR store has
+  /// enable_update_create set, creates the resource with the client-specified
+  /// ID. It is strongly advised not to include or encode any sensitive data
+  /// such as patient identifiers in client-specified resource IDs. Those IDs
+  /// are part of the FHIR resource path recorded in Cloud Audit Logs and
+  /// Pub/Sub notifications. Those IDs can also be contained in reference fields
+  /// within other resources. If the search criteria identify zero matches, and
+  /// the supplied resource body does not contain an `id`, the resource is
+  /// created with a server-assigned ID as per the create method. The request
+  /// body must contain a JSON-encoded FHIR resource, and the request headers
+  /// must contain `Content-Type: application/fhir+json`. On success, the
+  /// response body contains a JSON-encoded representation of the updated
+  /// resource, including the server-assigned version ID. Errors generated by
+  /// the FHIR store contain a JSON-encoded `OperationOutcome` resource
+  /// describing the reason for the error. If the request cannot be mapped to a
+  /// valid API method on a FHIR store, a generic GCP error might be returned
+  /// instead. For samples that show how to call `conditionalUpdate`, see
+  /// [Conditionally updating a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#conditionally_updating_a_fhir_resource).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The name of the FHIR store this resource belongs to.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
+  ///
+  /// [type] - The FHIR resource type to update, such as Patient or Observation.
+  /// For a complete list, see the FHIR Resource Index
+  /// ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
+  /// [STU3](https://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
+  /// [R4](https://hl7.org/implement/standards/fhir/R4/resourcelist.html)). Must
+  /// match the resource type in the provided content.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> conditionalUpdate(
+    HttpBody request,
+    core.String parent,
+    core.String type, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/fhir/' +
+        core.Uri.encodeFull('$type');
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a FHIR resource.
   ///
   /// Implements the FHIR standard create interaction
   /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#create),
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#create),
   /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#create)), which
-  /// creates a new resource with a server-assigned resource ID. The request
+  /// creates a new resource with a server-assigned resource ID. Also supports
+  /// the FHIR standard conditional create interaction
+  /// ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/http.html#ccreate),
+  /// [STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#ccreate),
+  /// [R4](https://hl7.org/implement/standards/fhir/R4/http.html#ccreate)),
+  /// specified by supplying an `If-None-Exist` header containing a FHIR search
+  /// query, limited to searching by resource identifier. If no resources match
+  /// this search query, the server processes the create operation as normal.
+  /// When using conditional create, the search term for identifier should be in
+  /// the pattern `identifier=system|value` or `identifier=value` - similar to
+  /// the `search` method on resources with a specific identifier. The request
   /// body must contain a JSON-encoded FHIR resource, and the request headers
   /// must contain `Content-Type: application/fhir+json`. On success, the
   /// response body contains a JSON-encoded representation of the resource as it
@@ -5550,8 +5924,24 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// might not be fully searchable as the server might trim its generated
   /// search index in those cases. Note: FHIR resources are indexed
   /// asynchronously, so there might be a slight delay between the time a
-  /// resource is created or changes and when the change is reflected in search
-  /// results. For samples and detailed information, see
+  /// resource is created or changed, and the time when the change reflects in
+  /// search results. The only exception is resource identifier data, which is
+  /// indexed synchronously as a special index. As a result, searching using
+  /// resource identifier is not subject to indexing delay. To use the special
+  /// synchronous index, the search term for identifier should be in the pattern
+  /// `identifier=[system]|[value]` or `identifier=[value]`, and any of the
+  /// following search result parameters can be used: * `_count` * `_include` *
+  /// `_revinclude` * `_summary` * `_elements` If your query contains any other
+  /// search parameters, the standard asynchronous index will be used instead.
+  /// Note that searching against the special index is optimized for resolving a
+  /// small number of matches. The search isn't optimized if your identifier
+  /// search criteria matches a large number (i.e. more than 2,000) of
+  /// resources. For a search query that will match a large number of resources,
+  /// you can avoiding using the special synchronous index by including an
+  /// additional `_sort` parameter in your query. Use `_sort=-_lastUpdated` if
+  /// you want to keep the default sorting order. Note: The special synchronous
+  /// identifier index are currently disabled for DocumentReference and
+  /// DocumentManifest searches. For samples and detailed information, see
   /// [Searching for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search)
   /// and
   /// [Advanced FHIR search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
@@ -5642,8 +6032,24 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// might not be fully searchable as the server might trim its generated
   /// search index in those cases. Note: FHIR resources are indexed
   /// asynchronously, so there might be a slight delay between the time a
-  /// resource is created or changes and when the change is reflected in search
-  /// results. For samples and detailed information, see
+  /// resource is created or changed, and the time when the change reflects in
+  /// search results. The only exception is resource identifier data, which is
+  /// indexed synchronously as a special index. As a result, searching using
+  /// resource identifier is not subject to indexing delay. To use the special
+  /// synchronous index, the search term for identifier should be in the pattern
+  /// `identifier=[system]|[value]` or `identifier=[value]`, and any of the
+  /// following search result parameters can be used: * `_count` * `_include` *
+  /// `_revinclude` * `_summary` * `_elements` If your query contains any other
+  /// search parameters, the standard asynchronous index will be used instead.
+  /// Note that searching against the special index is optimized for resolving a
+  /// small number of matches. The search isn't optimized if your identifier
+  /// search criteria matches a large number (i.e. more than 2,000) of
+  /// resources. For a search query that will match a large number of resources,
+  /// you can avoiding using the special synchronous index by including an
+  /// additional `_sort` parameter in your query. Use `_sort=-_lastUpdated` if
+  /// you want to keep the default sorting order. Note: The special synchronous
+  /// identifier index are currently disabled for DocumentReference and
+  /// DocumentManifest searches. For samples and detailed information, see
   /// [Searching for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search)
   /// and
   /// [Advanced FHIR search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
@@ -5988,6 +6394,45 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       queryParams: queryParams_,
     );
     return Hl7V2Store.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets metrics asssociated with the HL7v2 store.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the HL7v2 store to get metrics for, in the
+  /// format
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Hl7V2StoreMetrics].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Hl7V2StoreMetrics> getHL7v2StoreMetrics(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':getHL7v2StoreMetrics';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Hl7V2StoreMetrics.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -8098,8 +8543,8 @@ class DeidentifyConfig {
   ///
   /// Using this option results in a significant reduction of throughput, and is
   /// not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes.
-  /// `LOCATION` must be excluded within `TextConfig`, and must also be excluded
-  /// within `ImageConfig` if image redaction is required.
+  /// `LOCATION` must be excluded within TextConfig, and must also be excluded
+  /// within ImageConfig if image redaction is required.
   core.bool? useRegionalDataProcessing;
 
   DeidentifyConfig({
@@ -8510,6 +8955,69 @@ class DicomStore {
         if (notificationConfig != null)
           'notificationConfig': notificationConfig!,
         if (streamConfigs != null) 'streamConfigs': streamConfigs!,
+      };
+}
+
+/// DicomStoreMetrics contains metrics describing a DICOM store.
+class DicomStoreMetrics {
+  /// Total blob storage bytes for all instances in the store.
+  core.String? blobStorageSizeBytes;
+
+  /// Number of instances in the store.
+  core.String? instanceCount;
+
+  /// Resource name of the DICOM store, of the form
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
+  core.String? name;
+
+  /// Number of series in the store.
+  core.String? seriesCount;
+
+  /// Total structured storage bytes for all instances in the store.
+  core.String? structuredStorageSizeBytes;
+
+  /// Number of studies in the store.
+  core.String? studyCount;
+
+  DicomStoreMetrics({
+    this.blobStorageSizeBytes,
+    this.instanceCount,
+    this.name,
+    this.seriesCount,
+    this.structuredStorageSizeBytes,
+    this.studyCount,
+  });
+
+  DicomStoreMetrics.fromJson(core.Map json_)
+      : this(
+          blobStorageSizeBytes: json_.containsKey('blobStorageSizeBytes')
+              ? json_['blobStorageSizeBytes'] as core.String
+              : null,
+          instanceCount: json_.containsKey('instanceCount')
+              ? json_['instanceCount'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          seriesCount: json_.containsKey('seriesCount')
+              ? json_['seriesCount'] as core.String
+              : null,
+          structuredStorageSizeBytes:
+              json_.containsKey('structuredStorageSizeBytes')
+                  ? json_['structuredStorageSizeBytes'] as core.String
+                  : null,
+          studyCount: json_.containsKey('studyCount')
+              ? json_['studyCount'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (blobStorageSizeBytes != null)
+          'blobStorageSizeBytes': blobStorageSizeBytes!,
+        if (instanceCount != null) 'instanceCount': instanceCount!,
+        if (name != null) 'name': name!,
+        if (seriesCount != null) 'seriesCount': seriesCount!,
+        if (structuredStorageSizeBytes != null)
+          'structuredStorageSizeBytes': structuredStorageSizeBytes!,
+        if (studyCount != null) 'studyCount': studyCount!,
       };
 }
 
@@ -8936,7 +9444,7 @@ class ExportMessagesRequest {
   core.String? endTime;
 
   /// Restricts messages exported to those matching a filter, only applicable to
-  /// PubsubDestination and GcsDestination.
+  /// PubsubDestination.
   ///
   /// The following syntax is available: * A string field value can be written
   /// as text inside quotation marks, for example `"query text"`. The only valid
@@ -10383,6 +10891,76 @@ class Hl7V2Store {
       };
 }
 
+/// Count of messages and total storage size by type for a given HL7 store.
+class Hl7V2StoreMetric {
+  /// The total count of HL7v2 messages in the store for the given message type.
+  core.String? count;
+
+  /// The Hl7v2 message type this metric applies to, such as `ADT` or `ORU`.
+  core.String? messageType;
+
+  /// The total amount of structured storage used by HL7v2 messages of this
+  /// message type in the store.
+  core.String? structuredStorageSizeBytes;
+
+  Hl7V2StoreMetric({
+    this.count,
+    this.messageType,
+    this.structuredStorageSizeBytes,
+  });
+
+  Hl7V2StoreMetric.fromJson(core.Map json_)
+      : this(
+          count:
+              json_.containsKey('count') ? json_['count'] as core.String : null,
+          messageType: json_.containsKey('messageType')
+              ? json_['messageType'] as core.String
+              : null,
+          structuredStorageSizeBytes:
+              json_.containsKey('structuredStorageSizeBytes')
+                  ? json_['structuredStorageSizeBytes'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (count != null) 'count': count!,
+        if (messageType != null) 'messageType': messageType!,
+        if (structuredStorageSizeBytes != null)
+          'structuredStorageSizeBytes': structuredStorageSizeBytes!,
+      };
+}
+
+/// List of metrics for a given HL7v2 store.
+class Hl7V2StoreMetrics {
+  /// List of HL7v2 store metrics by message type.
+  core.List<Hl7V2StoreMetric>? metrics;
+
+  /// The resource name of the HL7v2 store to get metrics for, in the format
+  /// `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+  core.String? name;
+
+  Hl7V2StoreMetrics({
+    this.metrics,
+    this.name,
+  });
+
+  Hl7V2StoreMetrics.fromJson(core.Map json_)
+      : this(
+          metrics: json_.containsKey('metrics')
+              ? (json_['metrics'] as core.List)
+                  .map((value) => Hl7V2StoreMetric.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metrics != null) 'metrics': metrics!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// Message that represents an arbitrary HTTP body.
 ///
 /// It should only be used for payload formats that can't be represented as
@@ -11457,7 +12035,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -11647,23 +12225,23 @@ class PatientId {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -12369,6 +12947,57 @@ class Segment {
       };
 }
 
+/// SeriesMetrics contains metrics describing a DICOM series.
+class SeriesMetrics {
+  /// Total blob storage bytes for all instances in the series.
+  core.String? blobStorageSizeBytes;
+
+  /// Number of instances in the series.
+  core.String? instanceCount;
+
+  /// The series resource path.
+  ///
+  /// For example,
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}/series/{series_uid}`.
+  core.String? series;
+
+  /// Total structured storage bytes for all instances in the series.
+  core.String? structuredStorageSizeBytes;
+
+  SeriesMetrics({
+    this.blobStorageSizeBytes,
+    this.instanceCount,
+    this.series,
+    this.structuredStorageSizeBytes,
+  });
+
+  SeriesMetrics.fromJson(core.Map json_)
+      : this(
+          blobStorageSizeBytes: json_.containsKey('blobStorageSizeBytes')
+              ? json_['blobStorageSizeBytes'] as core.String
+              : null,
+          instanceCount: json_.containsKey('instanceCount')
+              ? json_['instanceCount'] as core.String
+              : null,
+          series: json_.containsKey('series')
+              ? json_['series'] as core.String
+              : null,
+          structuredStorageSizeBytes:
+              json_.containsKey('structuredStorageSizeBytes')
+                  ? json_['structuredStorageSizeBytes'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (blobStorageSizeBytes != null)
+          'blobStorageSizeBytes': blobStorageSizeBytes!,
+        if (instanceCount != null) 'instanceCount': instanceCount!,
+        if (series != null) 'series': series!,
+        if (structuredStorageSizeBytes != null)
+          'structuredStorageSizeBytes': structuredStorageSizeBytes!,
+      };
+}
+
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`.
@@ -12569,6 +13198,64 @@ class StreamConfig {
         if (deidentifiedStoreDestination != null)
           'deidentifiedStoreDestination': deidentifiedStoreDestination!,
         if (resourceTypes != null) 'resourceTypes': resourceTypes!,
+      };
+}
+
+/// StudyMetrics contains metrics describing a DICOM study.
+class StudyMetrics {
+  /// Total blob storage bytes for all instances in the study.
+  core.String? blobStorageSizeBytes;
+
+  /// Number of instances in the study.
+  core.String? instanceCount;
+
+  /// Number of series in the study.
+  core.String? seriesCount;
+
+  /// Total structured storage bytes for all instances in the study.
+  core.String? structuredStorageSizeBytes;
+
+  /// The study resource path.
+  ///
+  /// For example,
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}`.
+  core.String? study;
+
+  StudyMetrics({
+    this.blobStorageSizeBytes,
+    this.instanceCount,
+    this.seriesCount,
+    this.structuredStorageSizeBytes,
+    this.study,
+  });
+
+  StudyMetrics.fromJson(core.Map json_)
+      : this(
+          blobStorageSizeBytes: json_.containsKey('blobStorageSizeBytes')
+              ? json_['blobStorageSizeBytes'] as core.String
+              : null,
+          instanceCount: json_.containsKey('instanceCount')
+              ? json_['instanceCount'] as core.String
+              : null,
+          seriesCount: json_.containsKey('seriesCount')
+              ? json_['seriesCount'] as core.String
+              : null,
+          structuredStorageSizeBytes:
+              json_.containsKey('structuredStorageSizeBytes')
+                  ? json_['structuredStorageSizeBytes'] as core.String
+                  : null,
+          study:
+              json_.containsKey('study') ? json_['study'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (blobStorageSizeBytes != null)
+          'blobStorageSizeBytes': blobStorageSizeBytes!,
+        if (instanceCount != null) 'instanceCount': instanceCount!,
+        if (seriesCount != null) 'seriesCount': seriesCount!,
+        if (structuredStorageSizeBytes != null)
+          'structuredStorageSizeBytes': structuredStorageSizeBytes!,
+        if (study != null) 'study': study!,
       };
 }
 

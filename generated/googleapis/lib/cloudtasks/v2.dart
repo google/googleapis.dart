@@ -111,6 +111,46 @@ class ProjectsLocationsResource {
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets the CMEK config.
+  ///
+  /// Gets the Customer Managed Encryption Key configured with the Cloud Tasks
+  /// lcoation. By default there is no kms_key configured.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The config. For example:
+  /// projects/PROJECT_ID/locations/LOCATION_ID/CmekConfig\`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/cmekConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CmekConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CmekConfig> getCmekConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CmekConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists information about the supported locations for this service.
   ///
   /// Request parameters:
@@ -160,6 +200,58 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates or Updates a CMEK config.
+  ///
+  /// Updates the Customer Managed Encryption Key assotiated with the Cloud
+  /// Tasks location (Creates if the key does not already exist). All new tasks
+  /// created in the location will be encrypted at-rest with the KMS-key
+  /// provided in the config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The config resource name which includes the project
+  /// and location and must end in 'cmekConfig', in the format
+  /// projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig\`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/cmekConfig$`.
+  ///
+  /// [updateMask] - List of fields to be updated in this request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CmekConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CmekConfig> updateCmekConfig(
+    CmekConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CmekConfig.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -227,10 +319,17 @@ class ProjectsLocationsQueuesResource {
   /// Deletes a queue.
   ///
   /// This command will delete the queue even if it has tasks in it. Note: If
-  /// you delete a queue, a queue with the same name can't be created for 7
-  /// days. WARNING: Using this method may have unintended side effects if you
-  /// are using an App Engine `queue.yaml` or `queue.xml` file to manage your
-  /// queues. Read
+  /// you delete a queue, you may be prevented from creating a new queue with
+  /// the same name as the deleted queue for a tombstone window of up to 3 days.
+  /// During this window, the CreateQueue operation may appear to recreate the
+  /// queue, but this can be misleading. If you attempt to create a queue with
+  /// the same name as one that is in the tombstone window, run GetQueue to
+  /// confirm that the queue creation was successful. If GetQueue returns 200
+  /// response code, your queue was successfully created with the name of the
+  /// previously deleted queue. Otherwise, your queue did not successfully
+  /// recreate. WARNING: Using this method may have unintended side effects if
+  /// you are using an App Engine `queue.yaml` or `queue.xml` file to manage
+  /// your queues. Read
   /// [Overview of Queue Management and queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml)
   /// before using this method.
   ///
@@ -1398,6 +1497,42 @@ class Binding {
       };
 }
 
+/// Describes the customer-managed encryption key (CMEK) configuration
+/// associated with a project and location.
+class CmekConfig {
+  /// Resource name of the Cloud KMS key, of the form
+  /// `projects/PROJECT_ID/locations/LOCATION_ID/keyRings/KEY_RING_ID/cryptoKeys/KEY_ID`,
+  /// that will be used to encrypt the Queues & Tasks in the region.
+  ///
+  /// Setting this as blank will turn off CMEK encryption.
+  core.String? kmsKey;
+
+  /// The config resource name which includes the project and location and must
+  /// end in 'cmekConfig', in the format
+  /// projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig\`
+  ///
+  /// Output only.
+  core.String? name;
+
+  CmekConfig({
+    this.kmsKey,
+    this.name,
+  });
+
+  CmekConfig.fromJson(core.Map json_)
+      : this(
+          kmsKey: json_.containsKey('kmsKey')
+              ? json_['kmsKey'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kmsKey != null) 'kmsKey': kmsKey!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// Request message for CreateTask.
 class CreateTaskRequest {
   /// The response_view specifies which subset of the Task will be returned.
@@ -1868,23 +2003,23 @@ typedef PauseQueueRequest = $Empty;
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Associates a list of `members`, or principals, with a `role`.
   ///
@@ -2219,8 +2354,12 @@ class RetryConfig {
   /// task should be retried.
   ///
   /// If unspecified when the queue is created, Cloud Tasks will pick the
-  /// default. `max_backoff` will be truncated to the nearest second. This field
-  /// has the same meaning as
+  /// default. The value must be given as a string that indicates the length of
+  /// time (in seconds) followed by `s` (for "seconds"). For more information on
+  /// the format, see the documentation for
+  /// [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration).
+  /// `max_backoff` will be truncated to the nearest second. This field has the
+  /// same meaning as
   /// [max_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
   core.String? maxBackoff;
 
@@ -2246,6 +2385,10 @@ class RetryConfig {
   /// attempted max_attempts times, no further attempts will be made and the
   /// task will be deleted. If zero, then the task age is unlimited. If
   /// unspecified when the queue is created, Cloud Tasks will pick the default.
+  /// The value must be given as a string that indicates the length of time (in
+  /// seconds) followed by `s` (for "seconds"). For the maximum possible value
+  /// or the format, see the documentation for
+  /// [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration).
   /// `max_retry_duration` will be truncated to the nearest second. This field
   /// has the same meaning as
   /// [task_age_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
@@ -2256,8 +2399,12 @@ class RetryConfig {
   /// task should be retried.
   ///
   /// If unspecified when the queue is created, Cloud Tasks will pick the
-  /// default. `min_backoff` will be truncated to the nearest second. This field
-  /// has the same meaning as
+  /// default. The value must be given as a string that indicates the length of
+  /// time (in seconds) followed by `s` (for "seconds"). For more information on
+  /// the format, see the documentation for
+  /// [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration).
+  /// `min_backoff` will be truncated to the nearest second. This field has the
+  /// same meaning as
   /// [min_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
   core.String? minBackoff;
 
@@ -2441,6 +2588,10 @@ class Task {
   /// a few seconds more than the app handler's timeout. For more information
   /// see
   /// [Timeouts](https://cloud.google.com/tasks/docs/creating-appengine-handlers#timeouts).
+  /// The value must be given as a string that indicates the length of time (in
+  /// seconds) followed by `s` (for "seconds"). For more information on the
+  /// format, see the documentation for
+  /// [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration).
   /// `dispatch_deadline` will be truncated to the nearest millisecond. The
   /// deadline is an approximate deadline.
   core.String? dispatchDeadline;

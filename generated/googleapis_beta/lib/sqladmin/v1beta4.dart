@@ -915,7 +915,8 @@ class InstancesResource {
   /// [project] - Project ID of the project that contains the instance to be
   /// exported.
   ///
-  /// [instance] - Cloud SQL instance ID. This does not include the project ID.
+  /// [instance] - The Cloud SQL instance ID. This doesn't include the project
+  /// ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1301,6 +1302,11 @@ class InstancesResource {
   ///
   /// [instance] - Cloud SQL read replica instance name.
   ///
+  /// [failover_1] - Set to true if the promote operation should attempt to
+  /// re-add the original primary as a replica when it comes back online.
+  /// Otherwise, if this value is false or not set, the original primary will be
+  /// a standalone instance.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1314,9 +1320,11 @@ class InstancesResource {
   async.Future<Operation> promoteReplica(
     core.String project,
     core.String instance, {
+    core.bool? failover_1,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (failover_1 != null) 'failover': ['${failover_1}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1632,6 +1640,53 @@ class InstancesResource {
         '/instances/' +
         commons.escapeVariable('$instance') +
         '/stopReplica';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Switches over from the primary instance to a replica instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - ID of the project that contains the replica.
+  ///
+  /// [instance] - Cloud SQL read replica instance name.
+  ///
+  /// [dbTimeout] - Optional. (MySQL only) Cloud SQL instance operations
+  /// timeout, which is a sum of all database operations. Default value is 10
+  /// minutes and can be modified to a maximum value of 24 hours.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> switchover(
+    core.String project,
+    core.String instance, {
+    core.String? dbTimeout,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (dbTimeout != null) 'dbTimeout': [dbTimeout],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'sql/v1beta4/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/switchover';
 
     final response_ = await _requester.request(
       url_,
@@ -3939,6 +3994,14 @@ class DatabaseInstance {
   /// proactive database wellness job
   SqlOutOfDiskReport? outOfDiskReport;
 
+  /// DEPRECATED: please use write_endpoint instead.
+  ///
+  /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? primaryDnsName;
+
   /// The project ID of the project containing the Cloud SQL instance.
   ///
   /// The Google apps domain is prefixed if applicable.
@@ -4016,6 +4079,11 @@ class DatabaseInstance {
   /// If the instance state is SUSPENDED, the reason for the suspension.
   core.List<core.String>? suspensionReason;
 
+  /// The dns name of the primary instance in a replication group.
+  ///
+  /// Output only.
+  core.String? writeEndpoint;
+
   DatabaseInstance({
     this.availableMaintenanceVersions,
     this.backendType,
@@ -4040,6 +4108,7 @@ class DatabaseInstance {
     this.name,
     this.onPremisesConfiguration,
     this.outOfDiskReport,
+    this.primaryDnsName,
     this.project,
     this.pscServiceAttachmentLink,
     this.region,
@@ -4055,6 +4124,7 @@ class DatabaseInstance {
     this.settings,
     this.state,
     this.suspensionReason,
+    this.writeEndpoint,
   });
 
   DatabaseInstance.fromJson(core.Map json_)
@@ -4138,6 +4208,9 @@ class DatabaseInstance {
               ? SqlOutOfDiskReport.fromJson(json_['outOfDiskReport']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          primaryDnsName: json_.containsKey('primaryDnsName')
+              ? json_['primaryDnsName'] as core.String
+              : null,
           project: json_.containsKey('project')
               ? json_['project'] as core.String
               : null,
@@ -4192,6 +4265,9 @@ class DatabaseInstance {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          writeEndpoint: json_.containsKey('writeEndpoint')
+              ? json_['writeEndpoint'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4225,6 +4301,7 @@ class DatabaseInstance {
         if (onPremisesConfiguration != null)
           'onPremisesConfiguration': onPremisesConfiguration!,
         if (outOfDiskReport != null) 'outOfDiskReport': outOfDiskReport!,
+        if (primaryDnsName != null) 'primaryDnsName': primaryDnsName!,
         if (project != null) 'project': project!,
         if (pscServiceAttachmentLink != null)
           'pscServiceAttachmentLink': pscServiceAttachmentLink!,
@@ -4244,6 +4321,7 @@ class DatabaseInstance {
         if (settings != null) 'settings': settings!,
         if (state != null) 'state': state!,
         if (suspensionReason != null) 'suspensionReason': suspensionReason!,
+        if (writeEndpoint != null) 'writeEndpoint': writeEndpoint!,
       };
 }
 
@@ -5177,14 +5255,19 @@ class ImportContextBakImportOptions {
   /// Applies only to Cloud SQL for SQL Server.
   core.bool? recoveryOnly;
 
-  /// StopAt keyword for transaction log import, Applies to Cloud SQL for SQL
-  /// Server only
+  /// The timestamp when the import should stop.
+  ///
+  /// This timestamp is in the [RFC 3339](https://tools.ietf.org/html/rfc3339)
+  /// format (for example, `2023-10-01T16:19:00.094`). This field is equivalent
+  /// to the STOPAT keyword and applies to Cloud SQL for SQL Server only.
   ///
   /// Optional.
   core.String? stopAt;
 
-  /// StopAtMark keyword for transaction log import, Applies to Cloud SQL for
-  /// SQL Server only
+  /// The marked transaction where the import should stop.
+  ///
+  /// This field is equivalent to the STOPATMARK keyword and applies to Cloud
+  /// SQL for SQL Server only.
   ///
   /// Optional.
   core.String? stopAtMark;
@@ -5837,8 +5920,45 @@ class IpConfiguration {
   /// PSC settings for this instance.
   PscConfig? pscConfig;
 
-  /// Whether SSL connections over IP are enforced or not.
+  /// Whether SSL/TLS connections over IP are enforced.
+  ///
+  /// If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections.
+  /// For SSL/TLS connections, the client certificate won't be verified. If set
+  /// to true, then only allow connections encrypted with SSL/TLS and with valid
+  /// client certificates. If you want to enforce SSL/TLS without enforcing the
+  /// requirement for valid client certificates, then use the `ssl_mode` flag
+  /// instead of the legacy `require_ssl` flag.
   core.bool? requireSsl;
+
+  /// Specify how SSL/TLS is enforced in database connections.
+  ///
+  /// This flag is supported only for PostgreSQL. Use the legacy `require_ssl`
+  /// flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL,
+  /// use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid
+  /// the conflict between those flags in PostgreSQL, only the following value
+  /// pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and
+  /// `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` *
+  /// `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note
+  /// that the value of `ssl_mode` gets priority over the value of the legacy
+  /// `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY,
+  /// require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL
+  /// connection", while the `require_ssl=false` means "both non-SSL and SSL
+  /// connections are allowed". The database respects `ssl_mode` in this case
+  /// and only accepts SSL connections.
+  /// Possible string values are:
+  /// - "SSL_MODE_UNSPECIFIED" : The SSL mode is unknown.
+  /// - "ALLOW_UNENCRYPTED_AND_ENCRYPTED" : Allow non-SSL/non-TLS and SSL/TLS
+  /// connections. For SSL/TLS connections, the client certificate won't be
+  /// verified. When this value is used, the legacy `require_ssl` flag must be
+  /// false or cleared to avoid the conflict between values of two flags.
+  /// - "ENCRYPTED_ONLY" : Only allow connections encrypted with SSL/TLS. When
+  /// this value is used, the legacy `require_ssl` flag must be false or cleared
+  /// to avoid the conflict between values of two flags.
+  /// - "TRUSTED_CLIENT_CERTIFICATE_REQUIRED" : Only allow connections encrypted
+  /// with SSL/TLS and with valid client certificates. When this value is used,
+  /// the legacy `require_ssl` flag must be true or cleared to avoid the
+  /// conflict between values of two flags.
+  core.String? sslMode;
 
   IpConfiguration({
     this.allocatedIpRange,
@@ -5848,6 +5968,7 @@ class IpConfiguration {
     this.privateNetwork,
     this.pscConfig,
     this.requireSsl,
+    this.sslMode,
   });
 
   IpConfiguration.fromJson(core.Map json_)
@@ -5878,6 +5999,9 @@ class IpConfiguration {
           requireSsl: json_.containsKey('requireSsl')
               ? json_['requireSsl'] as core.bool
               : null,
+          sslMode: json_.containsKey('sslMode')
+              ? json_['sslMode'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5891,10 +6015,11 @@ class IpConfiguration {
         if (privateNetwork != null) 'privateNetwork': privateNetwork!,
         if (pscConfig != null) 'pscConfig': pscConfig!,
         if (requireSsl != null) 'requireSsl': requireSsl!,
+        if (sslMode != null) 'sslMode': sslMode!,
       };
 }
 
-/// Database instance IP Mapping.
+/// Database instance IP mapping
 class IpMapping {
   /// The IP address assigned.
   core.String? ipAddress;
@@ -5970,6 +6095,8 @@ class LocationPreference {
 
   /// The preferred Compute Engine zone for the secondary/failover (for example:
   /// us-central1-a, us-central1-b, etc.).
+  ///
+  /// To disable this field, set it to 'no_secondary_zone'.
   core.String? secondaryZone;
 
   /// The preferred Compute Engine zone (for example: us-central1-a,
@@ -6718,12 +6845,14 @@ class PerformDiskShrinkContext {
 
 /// PSC settings for a Cloud SQL instance.
 class PscConfig {
-  /// List of consumer projects that are allow-listed for PSC connections to
+  /// The list of consumer projects that are allow-listed for PSC connections to
   /// this instance.
   ///
   /// This instance can be connected to with PSC from any network in these
   /// projects. Each consumer project in this list may be represented by a
   /// project number (numeric) or by a project id (alphanumeric).
+  ///
+  /// Optional.
   core.List<core.String>? allowedConsumerProjects;
 
   /// Whether PSC connectivity is enabled for this instance.
@@ -6755,6 +6884,14 @@ class PscConfig {
 
 /// Read-replica configuration for connecting to the primary instance.
 class ReplicaConfiguration {
+  /// Specifies if a SQL Server replica is a cascadable replica.
+  ///
+  /// A cascadable replica is a SQL Server cross region replica that supports
+  /// replica(s) under it.
+  ///
+  /// Optional.
+  core.bool? cascadableReplica;
+
   /// Specifies if the replica is the failover target.
   ///
   /// If the field is set to `true` the replica will be designated as a failover
@@ -6778,6 +6915,7 @@ class ReplicaConfiguration {
   MySqlReplicaConfiguration? mysqlReplicaConfiguration;
 
   ReplicaConfiguration({
+    this.cascadableReplica,
     this.failoverTarget,
     this.kind,
     this.mysqlReplicaConfiguration,
@@ -6785,6 +6923,9 @@ class ReplicaConfiguration {
 
   ReplicaConfiguration.fromJson(core.Map json_)
       : this(
+          cascadableReplica: json_.containsKey('cascadableReplica')
+              ? json_['cascadableReplica'] as core.bool
+              : null,
           failoverTarget: json_.containsKey('failoverTarget')
               ? json_['failoverTarget'] as core.bool
               : null,
@@ -6798,6 +6939,7 @@ class ReplicaConfiguration {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cascadableReplica != null) 'cascadableReplica': cascadableReplica!,
         if (failoverTarget != null) 'failoverTarget': failoverTarget!,
         if (kind != null) 'kind': kind!,
         if (mysqlReplicaConfiguration != null)
@@ -8367,6 +8509,9 @@ class User {
   /// - "BUILT_IN" : The database's built-in user type.
   /// - "CLOUD_IAM_USER" : Cloud IAM user.
   /// - "CLOUD_IAM_SERVICE_ACCOUNT" : Cloud IAM service account.
+  /// - "CLOUD_IAM_GROUP" : Cloud IAM Group non-login user.
+  /// - "CLOUD_IAM_GROUP_USER" : Cloud IAM Group login user.
+  /// - "CLOUD_IAM_GROUP_SERVICE_ACCOUNT" : Cloud IAM Group service account.
   core.String? type;
 
   User({

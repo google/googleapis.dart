@@ -554,13 +554,57 @@ class ProjectsLocationsJobsExecutionsResource {
   ProjectsLocationsJobsExecutionsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Cancels an Execution.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Execution to cancel. Format:
+  /// `projects/{project}/locations/{location}/jobs/{job}/executions/{execution}`,
+  /// where `{project}` can be project id or number.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+/executions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> cancel(
+    GoogleCloudRunV2CancelExecutionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Deletes an Execution.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the Execution to delete. Format:
-  /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution},
-  /// where {project} can be project id or number.
+  /// `projects/{project}/locations/{location}/jobs/{job}/executions/{execution}`,
+  /// where `{project}` can be project id or number.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+/executions/\[^/\]+$`.
   ///
@@ -608,8 +652,8 @@ class ProjectsLocationsJobsExecutionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The full name of the Execution. Format:
-  /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution},
-  /// where {project} can be project id or number.
+  /// `projects/{project}/locations/{location}/jobs/{job}/executions/{execution}`,
+  /// where `{project}` can be project id or number.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+/executions/\[^/\]+$`.
   ///
@@ -648,8 +692,8 @@ class ProjectsLocationsJobsExecutionsResource {
   ///
   /// [parent] - Required. The Execution from which the Executions should be
   /// listed. To list all Executions across Jobs, use "-" instead of Job name.
-  /// Format: projects/{project}/locations/{location}/jobs/{job}, where
-  /// {project} can be project id or number.
+  /// Format: `projects/{project}/locations/{location}/jobs/{job}`, where
+  /// `{project}` can be project id or number.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
   ///
@@ -1596,6 +1640,36 @@ class GoogleCloudRunV2BinaryAuthorization {
       };
 }
 
+/// Request message for deleting an Execution.
+class GoogleCloudRunV2CancelExecutionRequest {
+  /// A system-generated fingerprint for this version of the resource.
+  ///
+  /// This may be used to detect modification conflict during updates.
+  core.String? etag;
+
+  /// Indicates that the request should be validated without actually cancelling
+  /// any resources.
+  core.bool? validateOnly;
+
+  GoogleCloudRunV2CancelExecutionRequest({
+    this.etag,
+    this.validateOnly,
+  });
+
+  GoogleCloudRunV2CancelExecutionRequest.fromJson(core.Map json_)
+      : this(
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          validateOnly: json_.containsKey('validateOnly')
+              ? json_['validateOnly'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
+      };
+}
+
 /// Represents a set of Cloud SQL instances.
 ///
 /// Each one will be available under /cloudsql/\[instance\]. Visit
@@ -1931,6 +2005,62 @@ class GoogleCloudRunV2Container {
       };
 }
 
+/// Per-container override specification.
+class GoogleCloudRunV2ContainerOverride {
+  /// Arguments to the entrypoint.
+  ///
+  /// Will replace existing args for override.
+  ///
+  /// Optional.
+  core.List<core.String>? args;
+
+  /// True if the intention is to clear out existing args list.
+  ///
+  /// Optional.
+  core.bool? clearArgs;
+
+  /// List of environment variables to set in the container.
+  ///
+  /// Will be merged with existing env for override.
+  core.List<GoogleCloudRunV2EnvVar>? env;
+
+  /// The name of the container specified as a DNS_LABEL.
+  core.String? name;
+
+  GoogleCloudRunV2ContainerOverride({
+    this.args,
+    this.clearArgs,
+    this.env,
+    this.name,
+  });
+
+  GoogleCloudRunV2ContainerOverride.fromJson(core.Map json_)
+      : this(
+          args: json_.containsKey('args')
+              ? (json_['args'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          clearArgs: json_.containsKey('clearArgs')
+              ? json_['clearArgs'] as core.bool
+              : null,
+          env: json_.containsKey('env')
+              ? (json_['env'] as core.List)
+                  .map((value) => GoogleCloudRunV2EnvVar.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (args != null) 'args': args!,
+        if (clearArgs != null) 'clearArgs': clearArgs!,
+        if (env != null) 'env': env!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// ContainerPort represents a network port in a single container.
 class GoogleCloudRunV2ContainerPort {
   /// Port number the container listens on.
@@ -2013,7 +2143,7 @@ class GoogleCloudRunV2EmptyDirVolumeSource {
 class GoogleCloudRunV2EnvVar {
   /// Name of the environment variable.
   ///
-  /// Must be a C_IDENTIFIER, and must not exceed 32768 characters.
+  /// Must not exceed 32768 characters.
   ///
   /// Required.
   core.String? name;
@@ -2602,7 +2732,7 @@ class GoogleCloudRunV2GRPCAction {
   core.int? port;
 
   /// Service is the name of the service to place in the gRPC HealthCheckRequest
-  /// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+  /// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ).
   ///
   /// If this is not specified, the default behavior is defined by gRPC.
   core.String? service;
@@ -3194,6 +3324,104 @@ class GoogleCloudRunV2ListTasksResponse {
       };
 }
 
+/// Direct VPC egress settings.
+class GoogleCloudRunV2NetworkInterface {
+  /// The VPC network that the Cloud Run resource will be able to send traffic
+  /// to.
+  ///
+  /// At least one of network or subnetwork must be specified. If both network
+  /// and subnetwork are specified, the given VPC subnetwork must belong to the
+  /// given VPC network. If network is not specified, it will be looked up from
+  /// the subnetwork.
+  core.String? network;
+
+  /// The VPC subnetwork that the Cloud Run resource will get IPs from.
+  ///
+  /// At least one of network or subnetwork must be specified. If both network
+  /// and subnetwork are specified, the given VPC subnetwork must belong to the
+  /// given VPC network. If subnetwork is not specified, the subnetwork with the
+  /// same name with the network will be used.
+  core.String? subnetwork;
+
+  /// Network tags applied to this Cloud Run resource.
+  core.List<core.String>? tags;
+
+  GoogleCloudRunV2NetworkInterface({
+    this.network,
+    this.subnetwork,
+    this.tags,
+  });
+
+  GoogleCloudRunV2NetworkInterface.fromJson(core.Map json_)
+      : this(
+          network: json_.containsKey('network')
+              ? json_['network'] as core.String
+              : null,
+          subnetwork: json_.containsKey('subnetwork')
+              ? json_['subnetwork'] as core.String
+              : null,
+          tags: json_.containsKey('tags')
+              ? (json_['tags'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (network != null) 'network': network!,
+        if (subnetwork != null) 'subnetwork': subnetwork!,
+        if (tags != null) 'tags': tags!,
+      };
+}
+
+/// RunJob Overrides that contains Execution fields to be overridden.
+class GoogleCloudRunV2Overrides {
+  /// Per container override specification.
+  core.List<GoogleCloudRunV2ContainerOverride>? containerOverrides;
+
+  /// The desired number of tasks the execution should run.
+  ///
+  /// Will replace existing task_count value.
+  ///
+  /// Optional.
+  core.int? taskCount;
+
+  /// Duration in seconds the task may be active before the system will actively
+  /// try to mark it failed and kill associated containers.
+  ///
+  /// Will replace existing timeout_seconds value.
+  core.String? timeout;
+
+  GoogleCloudRunV2Overrides({
+    this.containerOverrides,
+    this.taskCount,
+    this.timeout,
+  });
+
+  GoogleCloudRunV2Overrides.fromJson(core.Map json_)
+      : this(
+          containerOverrides: json_.containsKey('containerOverrides')
+              ? (json_['containerOverrides'] as core.List)
+                  .map((value) => GoogleCloudRunV2ContainerOverride.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          taskCount: json_.containsKey('taskCount')
+              ? json_['taskCount'] as core.int
+              : null,
+          timeout: json_.containsKey('timeout')
+              ? json_['timeout'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (containerOverrides != null)
+          'containerOverrides': containerOverrides!,
+        if (taskCount != null) 'taskCount': taskCount!,
+        if (timeout != null) 'timeout': timeout!,
+      };
+}
+
 /// Probe describes a health check to be performed against a container to
 /// determine whether it is alive or ready to receive traffic.
 class GoogleCloudRunV2Probe {
@@ -3514,6 +3742,11 @@ class GoogleCloudRunV2Revision {
   /// Scaling settings for this revision.
   GoogleCloudRunV2RevisionScaling? scaling;
 
+  /// The current effective scaling settings for the revision.
+  ///
+  /// Output only.
+  GoogleCloudRunV2RevisionScalingStatus? scalingStatus;
+
   /// The name of the parent service.
   ///
   /// Output only.
@@ -3576,6 +3809,7 @@ class GoogleCloudRunV2Revision {
     this.reconciling,
     this.satisfiesPzs,
     this.scaling,
+    this.scalingStatus,
     this.service,
     this.serviceAccount,
     this.sessionAffinity,
@@ -3668,6 +3902,10 @@ class GoogleCloudRunV2Revision {
               ? GoogleCloudRunV2RevisionScaling.fromJson(
                   json_['scaling'] as core.Map<core.String, core.dynamic>)
               : null,
+          scalingStatus: json_.containsKey('scalingStatus')
+              ? GoogleCloudRunV2RevisionScalingStatus.fromJson(
+                  json_['scalingStatus'] as core.Map<core.String, core.dynamic>)
+              : null,
           service: json_.containsKey('service')
               ? json_['service'] as core.String
               : null,
@@ -3723,6 +3961,7 @@ class GoogleCloudRunV2Revision {
         if (reconciling != null) 'reconciling': reconciling!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (scaling != null) 'scaling': scaling!,
+        if (scalingStatus != null) 'scalingStatus': scalingStatus!,
         if (service != null) 'service': service!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (sessionAffinity != null) 'sessionAffinity': sessionAffinity!,
@@ -3760,6 +3999,28 @@ class GoogleCloudRunV2RevisionScaling {
   core.Map<core.String, core.dynamic> toJson() => {
         if (maxInstanceCount != null) 'maxInstanceCount': maxInstanceCount!,
         if (minInstanceCount != null) 'minInstanceCount': minInstanceCount!,
+      };
+}
+
+/// Effective settings for the current revision
+class GoogleCloudRunV2RevisionScalingStatus {
+  /// The current number of min instances provisioned for this revision.
+  core.int? desiredMinInstanceCount;
+
+  GoogleCloudRunV2RevisionScalingStatus({
+    this.desiredMinInstanceCount,
+  });
+
+  GoogleCloudRunV2RevisionScalingStatus.fromJson(core.Map json_)
+      : this(
+          desiredMinInstanceCount: json_.containsKey('desiredMinInstanceCount')
+              ? json_['desiredMinInstanceCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (desiredMinInstanceCount != null)
+          'desiredMinInstanceCount': desiredMinInstanceCount!,
       };
 }
 
@@ -3951,18 +4212,29 @@ class GoogleCloudRunV2RunJobRequest {
   /// May be used to detect modification conflict during updates.
   core.String? etag;
 
+  /// Overrides specification for a given execution of a job.
+  ///
+  /// If provided, overrides will be applied to update the execution or task
+  /// spec.
+  GoogleCloudRunV2Overrides? overrides;
+
   /// Indicates that the request should be validated without actually deleting
   /// any resources.
   core.bool? validateOnly;
 
   GoogleCloudRunV2RunJobRequest({
     this.etag,
+    this.overrides,
     this.validateOnly,
   });
 
   GoogleCloudRunV2RunJobRequest.fromJson(core.Map json_)
       : this(
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          overrides: json_.containsKey('overrides')
+              ? GoogleCloudRunV2Overrides.fromJson(
+                  json_['overrides'] as core.Map<core.String, core.dynamic>)
+              : null,
           validateOnly: json_.containsKey('validateOnly')
               ? json_['validateOnly'] as core.bool
               : null,
@@ -3970,6 +4242,7 @@ class GoogleCloudRunV2RunJobRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
+        if (overrides != null) 'overrides': overrides!,
         if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
@@ -4301,6 +4574,11 @@ class GoogleCloudRunV2Service {
   /// Output only.
   core.bool? satisfiesPzs;
 
+  /// Specifies service-level scaling settings
+  ///
+  /// Optional.
+  GoogleCloudRunV2ServiceScaling? scaling;
+
   /// The template used to create revisions for this Service.
   ///
   /// Required.
@@ -4372,6 +4650,7 @@ class GoogleCloudRunV2Service {
     this.observedGeneration,
     this.reconciling,
     this.satisfiesPzs,
+    this.scaling,
     this.template,
     this.terminalCondition,
     this.traffic,
@@ -4466,6 +4745,10 @@ class GoogleCloudRunV2Service {
           satisfiesPzs: json_.containsKey('satisfiesPzs')
               ? json_['satisfiesPzs'] as core.bool
               : null,
+          scaling: json_.containsKey('scaling')
+              ? GoogleCloudRunV2ServiceScaling.fromJson(
+                  json_['scaling'] as core.Map<core.String, core.dynamic>)
+              : null,
           template: json_.containsKey('template')
               ? GoogleCloudRunV2RevisionTemplate.fromJson(
                   json_['template'] as core.Map<core.String, core.dynamic>)
@@ -4521,6 +4804,7 @@ class GoogleCloudRunV2Service {
           'observedGeneration': observedGeneration!,
         if (reconciling != null) 'reconciling': reconciling!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
+        if (scaling != null) 'scaling': scaling!,
         if (template != null) 'template': template!,
         if (terminalCondition != null) 'terminalCondition': terminalCondition!,
         if (traffic != null) 'traffic': traffic!,
@@ -4528,6 +4812,31 @@ class GoogleCloudRunV2Service {
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Scaling settings that apply to the service as a whole rather than the
+/// individual revision.
+class GoogleCloudRunV2ServiceScaling {
+  /// total min instances for the service.
+  ///
+  /// This number of instances will be divide among all revisions with specified
+  /// traffic based on the percent of traffic they are receiving. (ALPHA)
+  core.int? minInstanceCount;
+
+  GoogleCloudRunV2ServiceScaling({
+    this.minInstanceCount,
+  });
+
+  GoogleCloudRunV2ServiceScaling.fromJson(core.Map json_)
+      : this(
+          minInstanceCount: json_.containsKey('minInstanceCount')
+              ? json_['minInstanceCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (minInstanceCount != null) 'minInstanceCount': minInstanceCount!,
       };
 }
 
@@ -4582,7 +4891,7 @@ class GoogleCloudRunV2Task {
   /// task.
   core.List<GoogleCloudRunV2Container>? containers;
 
-  /// Represents time when the task was created by the job controller.
+  /// Represents time when the task was created by the system.
   ///
   /// It is not guaranteed to be set in happens-before order across separate
   /// operations.
@@ -4707,6 +5016,14 @@ class GoogleCloudRunV2Task {
   /// Output only.
   core.bool? satisfiesPzs;
 
+  /// Represents time when the task was scheduled to run by the system.
+  ///
+  /// It is not guaranteed to be set in happens-before order across separate
+  /// operations.
+  ///
+  /// Output only.
+  core.String? scheduledTime;
+
   /// Email address of the IAM service account associated with the Task of a
   /// Job.
   ///
@@ -4778,6 +5095,7 @@ class GoogleCloudRunV2Task {
     this.reconciling,
     this.retried,
     this.satisfiesPzs,
+    this.scheduledTime,
     this.serviceAccount,
     this.startTime,
     this.timeout,
@@ -4869,6 +5187,9 @@ class GoogleCloudRunV2Task {
           satisfiesPzs: json_.containsKey('satisfiesPzs')
               ? json_['satisfiesPzs'] as core.bool
               : null,
+          scheduledTime: json_.containsKey('scheduledTime')
+              ? json_['scheduledTime'] as core.String
+              : null,
           serviceAccount: json_.containsKey('serviceAccount')
               ? json_['serviceAccount'] as core.String
               : null,
@@ -4920,6 +5241,7 @@ class GoogleCloudRunV2Task {
         if (reconciling != null) 'reconciling': reconciling!,
         if (retried != null) 'retried': retried!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
+        if (scheduledTime != null) 'scheduledTime': scheduledTime!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (startTime != null) 'startTime': startTime!,
         if (timeout != null) 'timeout': timeout!,
@@ -5328,15 +5650,15 @@ class GoogleCloudRunV2VolumeMount {
 
 /// VPC Access settings.
 ///
-/// For more information on creating a VPC Connector, visit
-/// https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For
-/// information on how to configure Cloud Run with an existing VPC Connector,
-/// visit https://cloud.google.com/run/docs/configuring/connecting-vpc
+/// For more information on sending traffic to a VPC network, visit
+/// https://cloud.google.com/run/docs/configuring/connecting-vpc.
 class GoogleCloudRunV2VpcAccess {
   /// VPC Access connector name.
   ///
   /// Format: projects/{project}/locations/{location}/connectors/{connector},
-  /// where {project} can be project id or number.
+  /// where {project} can be project id or number. For more information on
+  /// sending traffic to a VPC network via a connector, visit
+  /// https://cloud.google.com/run/docs/configuring/vpc-connectors.
   core.String? connector;
 
   /// Traffic VPC egress settings.
@@ -5350,9 +5672,15 @@ class GoogleCloudRunV2VpcAccess {
   /// VPC connector.
   core.String? egress;
 
+  /// Direct VPC egress settings.
+  ///
+  /// Currently only single network interface is supported.
+  core.List<GoogleCloudRunV2NetworkInterface>? networkInterfaces;
+
   GoogleCloudRunV2VpcAccess({
     this.connector,
     this.egress,
+    this.networkInterfaces,
   });
 
   GoogleCloudRunV2VpcAccess.fromJson(core.Map json_)
@@ -5363,11 +5691,18 @@ class GoogleCloudRunV2VpcAccess {
           egress: json_.containsKey('egress')
               ? json_['egress'] as core.String
               : null,
+          networkInterfaces: json_.containsKey('networkInterfaces')
+              ? (json_['networkInterfaces'] as core.List)
+                  .map((value) => GoogleCloudRunV2NetworkInterface.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (connector != null) 'connector': connector!,
         if (egress != null) 'egress': egress!,
+        if (networkInterfaces != null) 'networkInterfaces': networkInterfaces!,
       };
 }
 
@@ -5527,23 +5862,23 @@ class GoogleIamV1Binding {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class GoogleIamV1Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<GoogleIamV1AuditConfig>? auditConfigs;
@@ -5739,7 +6074,7 @@ class GoogleLongrunningOperation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard

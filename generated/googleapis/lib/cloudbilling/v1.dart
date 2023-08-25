@@ -22,6 +22,9 @@
 ///
 /// - [BillingAccountsResource]
 ///   - [BillingAccountsProjectsResource]
+///   - [BillingAccountsSubAccountsResource]
+/// - [OrganizationsResource]
+///   - [OrganizationsBillingAccountsResource]
 /// - [ProjectsResource]
 /// - [ServicesResource]
 ///   - [ServicesSkusResource]
@@ -60,6 +63,7 @@ class CloudbillingApi {
 
   BillingAccountsResource get billingAccounts =>
       BillingAccountsResource(_requester);
+  OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
   ServicesResource get services => ServicesResource(_requester);
 
@@ -75,6 +79,8 @@ class BillingAccountsResource {
 
   BillingAccountsProjectsResource get projects =>
       BillingAccountsProjectsResource(_requester);
+  BillingAccountsSubAccountsResource get subAccounts =>
+      BillingAccountsSubAccountsResource(_requester);
 
   BillingAccountsResource(commons.ApiRequester client) : _requester = client;
 
@@ -90,11 +96,16 @@ class BillingAccountsResource {
   /// typically given to billing account
   /// [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
   /// This method will return an error if the parent account has not been
-  /// provisioned as a reseller account.
+  /// provisioned for subaccounts.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
+  ///
+  /// [parent] - Optional. The parent to create a billing account from. Format:
+  /// - organizations/{organization_id} eg organizations/12345678 -
+  /// billingAccounts/{billing_account_id} eg
+  /// `billingAccounts/012345-567890-ABCDEF`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -108,10 +119,12 @@ class BillingAccountsResource {
   /// this method will complete with the same error.
   async.Future<BillingAccount> create(
     BillingAccount request, {
+    core.String? parent,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (parent != null) 'parent': [parent],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -230,10 +243,10 @@ class BillingAccountsResource {
   ///
   /// Request parameters:
   ///
-  /// [filter] - Options for how to filter the returned billing accounts.
-  /// Currently this only supports filtering for
+  /// [filter] - Options for how to filter the returned billing accounts. This
+  /// only supports filtering for
   /// [subaccounts](https://cloud.google.com/billing/docs/concepts) under a
-  /// single provided reseller billing account. (e.g.
+  /// single provided parent billing account. (e.g.
   /// "master_billing_account=billingAccounts/012345-678901-ABCDEF"). Boolean
   /// algebra and other fields are not currently supported.
   ///
@@ -244,6 +257,11 @@ class BillingAccountsResource {
   /// be a `next_page_token` value returned from a previous
   /// `ListBillingAccounts` call. If unspecified, the first page of results is
   /// returned.
+  ///
+  /// [parent] - Optional. The parent resource to list billing accounts from.
+  /// Format: - organizations/{organization_id} eg organizations/12345678 -
+  /// billingAccounts/{billing_account_id} eg
+  /// `billingAccounts/012345-567890-ABCDEF`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -259,12 +277,14 @@ class BillingAccountsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.String? parent,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (parent != null) 'parent': [parent],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -276,6 +296,50 @@ class BillingAccountsResource {
       queryParams: queryParams_,
     );
     return ListBillingAccountsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Changes which parent organization a billing account belongs to.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the billing account to move. Must
+  /// be of the form `billingAccounts/{billing_account_id}`. The specified
+  /// billing account cannot be a subaccount, since a subaccount always belongs
+  /// to the same organization as its parent account.
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BillingAccount].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BillingAccount> move(
+    MoveBillingAccountRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':move';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BillingAccount.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -487,6 +551,314 @@ class BillingAccountsProjectsResource {
       queryParams: queryParams_,
     );
     return ListProjectBillingInfoResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class BillingAccountsSubAccountsResource {
+  final commons.ApiRequester _requester;
+
+  BillingAccountsSubAccountsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// This method creates
+  /// [billing subaccounts](https://cloud.google.com/billing/docs/concepts#subaccounts).
+  ///
+  /// Google Cloud resellers should use the Channel Services APIs,
+  /// [accounts.customers.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers/create)
+  /// and
+  /// [accounts.customers.entitlements.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers.entitlements/create).
+  /// When creating a subaccount, the current authenticated user must have the
+  /// `billing.accounts.update` IAM permission on the parent account, which is
+  /// typically given to billing account
+  /// [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
+  /// This method will return an error if the parent account has not been
+  /// provisioned for subaccounts.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Optional. The parent to create a billing account from. Format:
+  /// - organizations/{organization_id} eg organizations/12345678 -
+  /// billingAccounts/{billing_account_id} eg
+  /// `billingAccounts/012345-567890-ABCDEF`
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BillingAccount].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BillingAccount> create(
+    BillingAccount request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/subAccounts';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BillingAccount.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the billing accounts that the current authenticated user has
+  /// permission to
+  /// [view](https://cloud.google.com/billing/docs/how-to/billing-access).
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Optional. The parent resource to list billing accounts from.
+  /// Format: - organizations/{organization_id} eg organizations/12345678 -
+  /// billingAccounts/{billing_account_id} eg
+  /// `billingAccounts/012345-567890-ABCDEF`
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
+  ///
+  /// [filter] - Options for how to filter the returned billing accounts. This
+  /// only supports filtering for
+  /// [subaccounts](https://cloud.google.com/billing/docs/concepts) under a
+  /// single provided parent billing account. (e.g.
+  /// "master_billing_account=billingAccounts/012345-678901-ABCDEF"). Boolean
+  /// algebra and other fields are not currently supported.
+  ///
+  /// [pageSize] - Requested page size. The maximum page size is 100; this is
+  /// also the default.
+  ///
+  /// [pageToken] - A token identifying a page of results to return. This should
+  /// be a `next_page_token` value returned from a previous
+  /// `ListBillingAccounts` call. If unspecified, the first page of results is
+  /// returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBillingAccountsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBillingAccountsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/subAccounts';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListBillingAccountsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsBillingAccountsResource get billingAccounts =>
+      OrganizationsBillingAccountsResource(_requester);
+
+  OrganizationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class OrganizationsBillingAccountsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsBillingAccountsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// This method creates
+  /// [billing subaccounts](https://cloud.google.com/billing/docs/concepts#subaccounts).
+  ///
+  /// Google Cloud resellers should use the Channel Services APIs,
+  /// [accounts.customers.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers/create)
+  /// and
+  /// [accounts.customers.entitlements.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers.entitlements/create).
+  /// When creating a subaccount, the current authenticated user must have the
+  /// `billing.accounts.update` IAM permission on the parent account, which is
+  /// typically given to billing account
+  /// [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
+  /// This method will return an error if the parent account has not been
+  /// provisioned for subaccounts.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Optional. The parent to create a billing account from. Format:
+  /// - organizations/{organization_id} eg organizations/12345678 -
+  /// billingAccounts/{billing_account_id} eg
+  /// `billingAccounts/012345-567890-ABCDEF`
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BillingAccount].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BillingAccount> create(
+    BillingAccount request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/billingAccounts';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BillingAccount.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the billing accounts that the current authenticated user has
+  /// permission to
+  /// [view](https://cloud.google.com/billing/docs/how-to/billing-access).
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Optional. The parent resource to list billing accounts from.
+  /// Format: - organizations/{organization_id} eg organizations/12345678 -
+  /// billingAccounts/{billing_account_id} eg
+  /// `billingAccounts/012345-567890-ABCDEF`
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [filter] - Options for how to filter the returned billing accounts. This
+  /// only supports filtering for
+  /// [subaccounts](https://cloud.google.com/billing/docs/concepts) under a
+  /// single provided parent billing account. (e.g.
+  /// "master_billing_account=billingAccounts/012345-678901-ABCDEF"). Boolean
+  /// algebra and other fields are not currently supported.
+  ///
+  /// [pageSize] - Requested page size. The maximum page size is 100; this is
+  /// also the default.
+  ///
+  /// [pageToken] - A token identifying a page of results to return. This should
+  /// be a `next_page_token` value returned from a previous
+  /// `ListBillingAccounts` call. If unspecified, the first page of results is
+  /// returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBillingAccountsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBillingAccountsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/billingAccounts';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListBillingAccountsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Changes which parent organization a billing account belongs to.
+  ///
+  /// Request parameters:
+  ///
+  /// [destinationParent] - Required. The resource name of the Organization to
+  /// reparent the billing account under. Must be of the form
+  /// `organizations/{organization_id}`.
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [name] - Required. The resource name of the billing account to move. Must
+  /// be of the form `billingAccounts/{billing_account_id}`. The specified
+  /// billing account cannot be a subaccount, since a subaccount always belongs
+  /// to the same organization as its parent account.
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BillingAccount].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BillingAccount> move(
+    core.String destinationParent,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$destinationParent') +
+        '/' +
+        core.Uri.encodeFull('$name') +
+        ':move';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return BillingAccount.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1250,6 +1622,32 @@ class ListSkusResponse {
 
 /// Represents an amount of money with its currency type.
 typedef Money = $Money;
+
+/// Request message for `MoveBillingAccount` RPC.
+class MoveBillingAccountRequest {
+  /// The resource name of the Organization to reparent the billing account
+  /// under.
+  ///
+  /// Must be of the form `organizations/{organization_id}`.
+  ///
+  /// Required.
+  core.String? destinationParent;
+
+  MoveBillingAccountRequest({
+    this.destinationParent,
+  });
+
+  MoveBillingAccountRequest.fromJson(core.Map json_)
+      : this(
+          destinationParent: json_.containsKey('destinationParent')
+              ? json_['destinationParent'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (destinationParent != null) 'destinationParent': destinationParent!,
+      };
+}
 
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.

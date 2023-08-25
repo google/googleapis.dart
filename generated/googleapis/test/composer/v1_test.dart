@@ -85,6 +85,7 @@ api.DatabaseConfig buildDatabaseConfig() {
   buildCounterDatabaseConfig++;
   if (buildCounterDatabaseConfig < 3) {
     o.machineType = 'foo';
+    o.zone = 'foo';
   }
   buildCounterDatabaseConfig--;
   return o;
@@ -95,6 +96,10 @@ void checkDatabaseConfig(api.DatabaseConfig o) {
   if (buildCounterDatabaseConfig < 3) {
     unittest.expect(
       o.machineType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.zone!,
       unittest.equals('foo'),
     );
   }
@@ -211,7 +216,9 @@ api.Environment buildEnvironment() {
     o.createTime = 'foo';
     o.labels = buildUnnamed0();
     o.name = 'foo';
+    o.satisfiesPzs = true;
     o.state = 'foo';
+    o.storageConfig = buildStorageConfig();
     o.updateTime = 'foo';
     o.uuid = 'foo';
   }
@@ -232,10 +239,12 @@ void checkEnvironment(api.Environment o) {
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
     );
+    checkStorageConfig(o.storageConfig!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -1520,6 +1529,60 @@ void checkStopAirflowCommandResponse(api.StopAirflowCommandResponse o) {
   buildCounterStopAirflowCommandResponse--;
 }
 
+core.int buildCounterStorageConfig = 0;
+api.StorageConfig buildStorageConfig() {
+  final o = api.StorageConfig();
+  buildCounterStorageConfig++;
+  if (buildCounterStorageConfig < 3) {
+    o.bucket = 'foo';
+  }
+  buildCounterStorageConfig--;
+  return o;
+}
+
+void checkStorageConfig(api.StorageConfig o) {
+  buildCounterStorageConfig++;
+  if (buildCounterStorageConfig < 3) {
+    unittest.expect(
+      o.bucket!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterStorageConfig--;
+}
+
+core.int buildCounterTriggererResource = 0;
+api.TriggererResource buildTriggererResource() {
+  final o = api.TriggererResource();
+  buildCounterTriggererResource++;
+  if (buildCounterTriggererResource < 3) {
+    o.count = 42;
+    o.cpu = 42.0;
+    o.memoryGb = 42.0;
+  }
+  buildCounterTriggererResource--;
+  return o;
+}
+
+void checkTriggererResource(api.TriggererResource o) {
+  buildCounterTriggererResource++;
+  if (buildCounterTriggererResource < 3) {
+    unittest.expect(
+      o.count!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.cpu!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.memoryGb!,
+      unittest.equals(42.0),
+    );
+  }
+  buildCounterTriggererResource--;
+}
+
 core.int buildCounterWebServerConfig = 0;
 api.WebServerConfig buildWebServerConfig() {
   final o = api.WebServerConfig();
@@ -1652,6 +1715,7 @@ api.WorkloadsConfig buildWorkloadsConfig() {
   buildCounterWorkloadsConfig++;
   if (buildCounterWorkloadsConfig < 3) {
     o.scheduler = buildSchedulerResource();
+    o.triggerer = buildTriggererResource();
     o.webServer = buildWebServerResource();
     o.worker = buildWorkerResource();
   }
@@ -1663,6 +1727,7 @@ void checkWorkloadsConfig(api.WorkloadsConfig o) {
   buildCounterWorkloadsConfig++;
   if (buildCounterWorkloadsConfig < 3) {
     checkSchedulerResource(o.scheduler!);
+    checkTriggererResource(o.triggerer!);
     checkWebServerResource(o.webServer!);
     checkWorkerResource(o.worker!);
   }
@@ -2037,6 +2102,26 @@ void main() {
       final od = api.StopAirflowCommandResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkStopAirflowCommandResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-StorageConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStorageConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StorageConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkStorageConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-TriggererResource', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTriggererResource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TriggererResource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTriggererResource(od);
     });
   });
 

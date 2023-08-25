@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230731",
+    "revision": "20231023",
     "rootUrl": "https://assuredworkloads.googleapis.com/",
     "servicePath": "",
     "title": "Assured Workloads API",
@@ -185,6 +185,53 @@
                         },
                         "workloads": {
                             "methods": {
+                                "analyzeWorkloadMove": {
+                                    "description": "Analyzes a hypothetical move of a source resource to a target workload to surface compliance risks. The analysis is best effort and is not guaranteed to be exhaustive.",
+                                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/workloads/{workloadsId}:analyzeWorkloadMove",
+                                    "httpMethod": "GET",
+                                    "id": "assuredworkloads.organizations.locations.workloads.analyzeWorkloadMove",
+                                    "parameterOrder": [
+                                        "target"
+                                    ],
+                                    "parameters": {
+                                        "assetTypes": {
+                                            "description": "Optional. List of asset types to be analyzed, including and under the source resource. If empty, all assets are analyzed. The complete list of asset types is available [here](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).",
+                                            "location": "query",
+                                            "repeated": true,
+                                            "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "description": "Optional. Page size. If a value is not specified, the default value of 10 is used.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "description": "Optional. The page token from the previous response. It needs to be passed in the second and following requests.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "project": {
+                                            "description": "The source type is a project. Specify the project's relative resource name, formatted as either a project number or a project ID: \"projects/{PROJECT_NUMBER}\" or \"projects/{PROJECT_ID}\" For example: \"projects/951040570662\" when specifying a project number, or \"projects/my-project-123\" when specifying a project ID.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "target": {
+                                            "description": "Required. The resource ID of the folder-based destination workload. This workload is where the source resource will hypothetically be moved to. Specify the workload's relative resource name, formatted as: \"organizations/{ORGANIZATION_ID}/locations/{LOCATION_ID}/workloads/{WORKLOAD_ID}\" For example: \"organizations/123/locations/us-east1/workloads/assured-workload-2\"",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/locations/[^/]+/workloads/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+target}:analyzeWorkloadMove",
+                                    "response": {
+                                        "$ref": "GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
                                 "create": {
                                     "description": "Creates Assured Workload.",
                                     "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/workloads",
@@ -546,6 +593,46 @@
             "properties": {},
             "type": "object"
         },
+        "GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse": {
+            "description": "Response containing the analysis results for the hypothetical resource move.",
+            "id": "GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse",
+            "properties": {
+                "assetMoveAnalyses": {
+                    "description": "List of analysis results for each asset in scope.",
+                    "items": {
+                        "$ref": "GoogleCloudAssuredworkloadsV1AssetMoveAnalysis"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "The next page token. Is empty if the last page is reached.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudAssuredworkloadsV1AssetMoveAnalysis": {
+            "description": "Represents move analysis results for an asset.",
+            "id": "GoogleCloudAssuredworkloadsV1AssetMoveAnalysis",
+            "properties": {
+                "analysisGroups": {
+                    "description": "List of eligible analyses performed for the asset.",
+                    "items": {
+                        "$ref": "GoogleCloudAssuredworkloadsV1MoveAnalysisGroup"
+                    },
+                    "type": "array"
+                },
+                "asset": {
+                    "description": "The full resource name of the asset being analyzed. Example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1",
+                    "type": "string"
+                },
+                "assetType": {
+                    "description": "Type of the asset being analyzed. Possible values will be among the ones listed [here](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata": {
             "description": "Operation metadata to give request details of CreateWorkload.",
             "id": "GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata",
@@ -569,7 +656,9 @@
                         "ISR_REGIONS",
                         "ISR_REGIONS_AND_SUPPORT",
                         "CA_PROTECTED_B",
-                        "IL5"
+                        "IL5",
+                        "IL2",
+                        "JP_REGIONS_AND_SUPPORT"
                     ],
                     "enumDescriptions": [
                         "Unknown compliance regime.",
@@ -588,7 +677,9 @@
                         "Assured Workloads for Israel",
                         "Assured Workloads for Israel Regions",
                         "Assured Workloads for Canada Protected B regime",
-                        "Information protection as per DoD IL5 requirements."
+                        "Information protection as per DoD IL5 requirements.",
+                        "Information protection as per DoD IL2 requirements.",
+                        "Assured Workloads for Japan Regions"
                     ],
                     "type": "string"
                 },
@@ -644,6 +735,57 @@
             },
             "type": "object"
         },
+        "GoogleCloudAssuredworkloadsV1MoveAnalysisGroup": {
+            "description": "Represents a logical group of checks performed for an asset. If successful, the group contains the analysis result, otherwise it contains an error with the failure reason.",
+            "id": "GoogleCloudAssuredworkloadsV1MoveAnalysisGroup",
+            "properties": {
+                "analysisResult": {
+                    "$ref": "GoogleCloudAssuredworkloadsV1MoveAnalysisResult",
+                    "description": "Result of a successful analysis."
+                },
+                "displayName": {
+                    "description": "Name of the analysis group.",
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "GoogleRpcStatus",
+                    "description": "Error details for a failed analysis."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudAssuredworkloadsV1MoveAnalysisResult": {
+            "description": "Represents the successful move analysis results for a group.",
+            "id": "GoogleCloudAssuredworkloadsV1MoveAnalysisResult",
+            "properties": {
+                "blockers": {
+                    "description": "List of blockers. If not resolved, these will result in compliance violations in the target.",
+                    "items": {
+                        "$ref": "GoogleCloudAssuredworkloadsV1MoveImpact"
+                    },
+                    "type": "array"
+                },
+                "warnings": {
+                    "description": "List of warnings. These are risks that may or may not result in compliance violations.",
+                    "items": {
+                        "$ref": "GoogleCloudAssuredworkloadsV1MoveImpact"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudAssuredworkloadsV1MoveImpact": {
+            "description": "Represents the impact of moving the asset to the target.",
+            "id": "GoogleCloudAssuredworkloadsV1MoveImpact",
+            "properties": {
+                "detail": {
+                    "description": "Explanation of the impact.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest": {
             "description": "Request for updating permission settings for a partner workload.",
             "id": "GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest",
@@ -694,7 +836,7 @@
             "type": "object"
         },
         "GoogleCloudAssuredworkloadsV1Violation": {
-            "description": "Workload monitoring Violation. Next Id: 27",
+            "description": "Workload monitoring Violation. Next Id: 28",
             "id": "GoogleCloudAssuredworkloadsV1Violation",
             "properties": {
                 "acknowledged": {
@@ -835,16 +977,14 @@
                         "REMEDIATION_BOOLEAN_ORG_POLICY_VIOLATION",
                         "REMEDIATION_LIST_ALLOWED_VALUES_ORG_POLICY_VIOLATION",
                         "REMEDIATION_LIST_DENIED_VALUES_ORG_POLICY_VIOLATION",
-                        "REMEDIATION_RESTRICT_CMEK_CRYPTO_KEY_PROJECTS_ORG_POLICY_VIOLATION",
-                        "REMEDIATION_RESOURCE_VIOLATION"
+                        "REMEDIATION_RESTRICT_CMEK_CRYPTO_KEY_PROJECTS_ORG_POLICY_VIOLATION"
                     ],
                     "enumDescriptions": [
                         "Unspecified remediation type",
                         "Remediation type for boolean org policy",
                         "Remediation type for list org policy which have allowed values in the monitoring rule",
                         "Remediation type for list org policy which have denied values in the monitoring rule",
-                        "Remediation type for gcp.restrictCmekCryptoKeyProjects",
-                        "Remediation type for resource violation."
+                        "Remediation type for gcp.restrictCmekCryptoKeyProjects"
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -950,7 +1090,9 @@
                         "ISR_REGIONS",
                         "ISR_REGIONS_AND_SUPPORT",
                         "CA_PROTECTED_B",
-                        "IL5"
+                        "IL5",
+                        "IL2",
+                        "JP_REGIONS_AND_SUPPORT"
                     ],
                     "enumDescriptions": [
                         "Unknown compliance regime.",
@@ -969,7 +1111,9 @@
                         "Assured Workloads for Israel",
                         "Assured Workloads for Israel Regions",
                         "Assured Workloads for Canada Protected B regime",
-                        "Information protection as per DoD IL5 requirements."
+                        "Information protection as per DoD IL5 requirements.",
+                        "Information protection as per DoD IL2 requirements.",
+                        "Assured Workloads for Japan Regions"
                     ],
                     "type": "string"
                 },
@@ -979,7 +1123,7 @@
                     "readOnly": true
                 },
                 "compliantButDisallowedServices": {
-                    "description": "Output only. Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment.\"",
+                    "description": "Output only. Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment.",
                     "items": {
                         "type": "string"
                     },
@@ -998,7 +1142,8 @@
                 },
                 "ekmProvisioningResponse": {
                     "$ref": "GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse",
-                    "description": "Optional. Represents the Ekm Provisioning State of the given workload."
+                    "description": "Output only. Represents the Ekm Provisioning State of the given workload.",
+                    "readOnly": true
                 },
                 "enableSovereignControls": {
                     "description": "Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.",
@@ -1065,6 +1210,11 @@
                     "description": "Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}",
                     "type": "string"
                 },
+                "resourceMonitoringEnabled": {
+                    "description": "Output only. Indicates whether resource monitoring is enabled for workload or not. It is true when Resource feed is subscribed to AWM topic and AWM Service Agent Role is binded to AW Service Account for resource Assured workload.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
                 "resourceSettings": {
                     "description": "Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.",
                     "items": {
@@ -1128,7 +1278,7 @@
                         "Error but domain is unspecified.",
                         "Internal logic breaks within provisioning code.",
                         "Error occurred with the customer not granting permission/creating resource.",
-                        "Error occurred within the partner’s provisioning cluster.",
+                        "Error occurred within the partner's provisioning cluster.",
                         "Resource wasn't provisioned in the required 7 day time period"
                     ],
                     "type": "string"
@@ -1371,7 +1521,7 @@
                         "description": "Properties of the object. Contains field @type with type URL.",
                         "type": "any"
                     },
-                    "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+                    "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
                     "type": "object"
                 }
             },

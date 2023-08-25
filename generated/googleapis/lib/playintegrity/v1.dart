@@ -108,29 +108,23 @@ class V1Resource {
   }
 }
 
-/// Contains a signal helping apps differentiating between likely genuine users
-/// and likely non-genuine traffic (such as accounts being used for fraud,
-/// accounts used by automated traffic, or accounts used in device farms) based
-/// on the presence and volume of Play store activity.
+/// (Restricted Access) Contains a signal helping apps differentiating between
+/// likely genuine and likely non-genuine user traffic.
 class AccountActivity {
   /// Indicates the activity level of the account.
   ///
   /// Required.
   /// Possible string values are:
   /// - "ACTIVITY_LEVEL_UNSPECIFIED" : Activity level has not been set.
-  /// - "UNEVALUATED" : Account activity level is not evaluated because one of
-  /// the prerequisite conditions is not met (e.g., device is not trusted, the
-  /// user does not have Play app license)
-  /// - "UNUSUAL" : Google Play store activity is unusual for at least one of
-  /// the user accounts on the device. Google Play recommends checking that this
-  /// is a real user.
-  /// - "UNKNOWN" : Google Play does not have sufficient activity for the user
-  /// account on the device. The account may be new, or it may lack activity on
-  /// Google Play.
-  /// - "TYPICAL_BASIC" : Google Play store activity is typical for the user
-  /// account or accounts on the device.
-  /// - "TYPICAL_STRONG" : Google Play store activity is typical for the user
-  /// account or accounts on the device, with harder to replicate signals.
+  /// - "UNEVALUATED" : Account activity level is not evaluated.
+  /// - "UNUSUAL" : Unusual activity for at least one of the user accounts on
+  /// the device.
+  /// - "UNKNOWN" : Insufficient activity to verify the user account on the
+  /// device.
+  /// - "TYPICAL_BASIC" : Typical activity for the user account or accounts on
+  /// the device.
+  /// - "TYPICAL_STRONG" : Typical for the user account or accounts on the
+  /// device, with harder to replicate signals.
   core.String? activityLevel;
 
   AccountActivity({
@@ -152,7 +146,8 @@ class AccountActivity {
 /// Contains the account information such as the licensing status for the user
 /// in the scope.
 class AccountDetails {
-  /// Details about the account activity for the user in the scope.
+  /// (Restricted Access) Details about the account activity for the user in the
+  /// scope.
   AccountActivity? accountActivity;
 
   /// Details about the licensing status of the user for the app in the scope.
@@ -307,7 +302,7 @@ class DecodeIntegrityTokenResponse {
 
 /// Contains the device attestation information.
 class DeviceIntegrity {
-  /// Details about the integrity of the device the app is running on
+  /// Details about the integrity of the device the app is running on.
   core.List<core.String>? deviceRecognitionVerdict;
 
   DeviceIntegrity({
@@ -334,24 +329,27 @@ class DeviceIntegrity {
 /// additional context to the integrity verdicts.
 class GuidanceDetails {
   /// This shows when there is an issue with at least one of the integrity
-  /// verdicts, and provides user remediation guidance.
-  core.List<core.String>? userRemediation;
+  /// verdicts, which can be remedied by the user and provides additional
+  /// details.
+  core.List<UserRemediationDetails>? userRemediationDetails;
 
   GuidanceDetails({
-    this.userRemediation,
+    this.userRemediationDetails,
   });
 
   GuidanceDetails.fromJson(core.Map json_)
       : this(
-          userRemediation: json_.containsKey('userRemediation')
-              ? (json_['userRemediation'] as core.List)
-                  .map((value) => value as core.String)
+          userRemediationDetails: json_.containsKey('userRemediationDetails')
+              ? (json_['userRemediationDetails'] as core.List)
+                  .map((value) => UserRemediationDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (userRemediation != null) 'userRemediation': userRemediation!,
+        if (userRemediationDetails != null)
+          'userRemediationDetails': userRemediationDetails!,
       };
 }
 
@@ -505,5 +503,38 @@ class TokenPayloadExternal {
         if (guidanceDetails != null) 'guidanceDetails': guidanceDetails!,
         if (requestDetails != null) 'requestDetails': requestDetails!,
         if (testingDetails != null) 'testingDetails': testingDetails!,
+      };
+}
+
+/// Contains details of remediation guidance that the user can perform.
+class UserRemediationDetails {
+  /// Description of the user remediation action.
+  /// Possible string values are:
+  /// - "UNKNOWN_USER_REMEDIATION" : User remediation is unknown.
+  /// - "RESTORE_FACTORY_ROM" : The user has installed a custom ROM, and should
+  /// restore the device to a clean factory ROM.
+  /// - "LOCK_BOOTLOADER" : The device bootloader has been unlocked, the user
+  /// should lock the bootloader.
+  /// - "GET_UNMODIFIED_APP" : The app is unrecognized. The user should get an
+  /// unmodified version of the app.
+  /// - "SIGN_INTO_GOOGLE_ACCOUNT" : The user has not signed into their Google
+  /// account.
+  /// - "INSTALL_APP_FROM_PLAY" : The user has no license. They should install
+  /// or purchase the app on the Google Play Store to add it to their library.
+  core.String? remediation;
+
+  UserRemediationDetails({
+    this.remediation,
+  });
+
+  UserRemediationDetails.fromJson(core.Map json_)
+      : this(
+          remediation: json_.containsKey('remediation')
+              ? json_['remediation'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (remediation != null) 'remediation': remediation!,
       };
 }

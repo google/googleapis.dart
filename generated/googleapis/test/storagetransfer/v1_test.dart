@@ -132,6 +132,7 @@ api.AwsS3Data buildAwsS3Data() {
   if (buildCounterAwsS3Data < 3) {
     o.awsAccessKey = buildAwsAccessKey();
     o.bucketName = 'foo';
+    o.cloudfrontDomain = 'foo';
     o.credentialsSecret = 'foo';
     o.path = 'foo';
     o.roleArn = 'foo';
@@ -146,6 +147,10 @@ void checkAwsS3Data(api.AwsS3Data o) {
     checkAwsAccessKey(o.awsAccessKey!);
     unittest.expect(
       o.bucketName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.cloudfrontDomain!,
       unittest.equals('foo'),
     );
     unittest.expect(

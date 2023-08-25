@@ -1276,21 +1276,25 @@ class BuyersResource {
     return Buyer.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets remarketing tag for a buyer.
+  /// This will be removed in October 2023.
   ///
-  /// A remarketing tag is a piece of JavaScript code that can be placed on a
-  /// web page. When a user visits a page containing a remarketing tag, Google
-  /// adds the user to a user list.
+  /// For more information, see the release notes:
+  /// https://developers.google.com/authorized-buyers/apis/relnotes#real-time-bidding-api
+  /// Gets remarketing tag for a buyer. A remarketing tag is a piece of
+  /// JavaScript code that can be placed on a web page. When a user visits a
+  /// page containing a remarketing tag, Google adds the user to a user list.
+  ///
+  /// Deprecated.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. To fetch remarketing tag for an account, name must
-  /// follow the pattern `buyers/{accountId}` where `{accountId}` represents ID
-  /// of a buyer that owns the remarketing tag. For a bidder accessing
-  /// remarketing tag on behalf of a child seat buyer, `{accountId}` should
-  /// represent the ID of the child seat buyer. To fetch remarketing tag for a
-  /// specific user list, name must follow the pattern
-  /// `buyers/{accountId}/userLists/{userListId}`. See UserList.name.
+  /// [name] - Required. To fetch the remarketing tag for an account, the name
+  /// must follow the pattern `buyers/{accountId}`, where `{accountId}`
+  /// represents the ID of the buyer that owns the remarketing tag. For a bidder
+  /// accessing the remarketing tag on behalf of a child seat buyer,
+  /// `{accountId}` should represent the ID of the child seat buyer. To fetch
+  /// the remarketing tag for a specific user list, the name must follow the
+  /// pattern `buyers/{accountId}/userLists/{userListId}`. See UserList.name.
   /// Value must have pattern `^buyers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1613,7 +1617,7 @@ class BuyersUserListsResource {
 
   BuyersUserListsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Change the status of a user list to CLOSED.
+  /// Changes the status of a user list to CLOSED.
   ///
   /// This prevents new users from being added to the user list.
   ///
@@ -1655,18 +1659,18 @@ class BuyersUserListsResource {
     return UserList.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Create a new user list.
+  /// Creates a new user list.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent buyer of the user list to be
-  /// retrieved that must follow the pattern `buyers/{buyerAccountId}`, where
-  /// `{buyerAccountId}` represents the account ID of the buyer who owns user
-  /// lists. For a bidder accessing user lists on behalf of a child seat buyer ,
-  /// `{buyerAccountId}` should represent the account ID of the child seat
-  /// buyer.
+  /// retrieved, which must follow the pattern `buyers/{buyerAccountId}`, where
+  /// `{buyerAccountId}` represents the account ID of the buyer who owns the
+  /// user list. For a bidder accessing user lists on behalf of a child seat
+  /// buyer, `{buyerAccountId}` should represent the account ID of the child
+  /// seat buyer.
   /// Value must have pattern `^buyers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1736,21 +1740,25 @@ class BuyersUserListsResource {
     return UserList.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets remarketing tag for a buyer.
+  /// This will be removed in October 2023.
   ///
-  /// A remarketing tag is a piece of JavaScript code that can be placed on a
-  /// web page. When a user visits a page containing a remarketing tag, Google
-  /// adds the user to a user list.
+  /// For more information, see the release notes:
+  /// https://developers.google.com/authorized-buyers/apis/relnotes#real-time-bidding-api
+  /// Gets remarketing tag for a buyer. A remarketing tag is a piece of
+  /// JavaScript code that can be placed on a web page. When a user visits a
+  /// page containing a remarketing tag, Google adds the user to a user list.
+  ///
+  /// Deprecated.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. To fetch remarketing tag for an account, name must
-  /// follow the pattern `buyers/{accountId}` where `{accountId}` represents ID
-  /// of a buyer that owns the remarketing tag. For a bidder accessing
-  /// remarketing tag on behalf of a child seat buyer, `{accountId}` should
-  /// represent the ID of the child seat buyer. To fetch remarketing tag for a
-  /// specific user list, name must follow the pattern
-  /// `buyers/{accountId}/userLists/{userListId}`. See UserList.name.
+  /// [name] - Required. To fetch the remarketing tag for an account, the name
+  /// must follow the pattern `buyers/{accountId}`, where `{accountId}`
+  /// represents the ID of the buyer that owns the remarketing tag. For a bidder
+  /// accessing the remarketing tag on behalf of a child seat buyer,
+  /// `{accountId}` should represent the ID of the child seat buyer. To fetch
+  /// the remarketing tag for a specific user list, the name must follow the
+  /// pattern `buyers/{accountId}/userLists/{userListId}`. See UserList.name.
   /// Value must have pattern `^buyers/\[^/\]+/userLists/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1796,8 +1804,8 @@ class BuyersUserListsResource {
   ///
   /// [pageSize] - The number of results to return per page.
   ///
-  /// [pageToken] - Continuation page token (as received from a previous
-  /// response).
+  /// [pageToken] - Continuation page token as received from a previous
+  /// response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1832,7 +1840,7 @@ class BuyersUserListsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Change the status of a user list to OPEN.
+  /// Changes the status of a user list to OPEN.
   ///
   /// This allows new users to be added to the user list.
   ///
@@ -1874,7 +1882,7 @@ class BuyersUserListsResource {
     return UserList.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Update the given user list.
+  /// Updates the given user list.
   ///
   /// Only user lists with URLRestrictions can be updated.
   ///
@@ -3444,14 +3452,20 @@ class Endpoint {
       };
 }
 
+/// This will be removed in October 2023.
+///
+/// For more information, see the release notes:
+/// https://developers.google.com/authorized-buyers/apis/relnotes#real-time-bidding-api
 /// Response for a request to get remarketing tag.
+///
+/// Deprecated.
 class GetRemarketingTagResponse {
-  /// A HTML tag that can be placed on the advertiser's page to add users to a
+  /// An HTML tag that can be placed on the advertiser's page to add users to a
   /// user list.
   ///
-  /// For more information and code samples on using snippet on your website
-  /// refer to \[Tag your site for remarketing\](
-  /// https://support.google.com/google-ads/answer/2476688).
+  /// For more information and code samples on using snippets on your website,
+  /// refer to
+  /// [Tag your site for remarketing](https://support.google.com/google-ads/answer/2476688).
   core.String? snippet;
 
   GetRemarketingTagResponse({
@@ -3821,8 +3835,8 @@ class ListUserListsResponse {
   /// request.
   ///
   /// Due to a currently known issue, it is recommended that the caller keep
-  /// invoking the list method till the time a next page token is not returned
-  /// (even if the result set is empty).
+  /// invoking the list method until the time a next page token is not returned,
+  /// even if the result set is empty.
   core.String? nextPageToken;
 
   /// List of user lists from the search.
@@ -4844,8 +4858,14 @@ class UrlDownloadSize {
       };
 }
 
+/// This will be removed in October 2023.
+///
+/// For more information, see the release notes:
+/// https://developers.google.com/authorized-buyers/apis/relnotes#real-time-bidding-api
 /// Represents the URL restriction (for the URL captured by the pixel callback)
 /// for a user list.
+///
+/// Deprecated.
 class UrlRestriction {
   /// End date (if specified) of the URL restriction.
   ///
@@ -4961,9 +4981,13 @@ class UserList {
   /// - "CLOSED" : New users cannot be added to the user list.
   core.String? status;
 
+  /// This will be removed in October 2023.
+  ///
+  /// For more information, see the release notes:
+  /// https://developers.google.com/authorized-buyers/apis/relnotes#real-time-bidding-api
   /// The URL restriction for the user list.
   ///
-  /// Required.
+  /// Required. Deprecated.
   UrlRestriction? urlRestriction;
 
   UserList({

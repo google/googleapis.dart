@@ -1074,6 +1074,22 @@ void checkGoogleFirestoreAdminV1Field(api.GoogleFirestoreAdminV1Field o) {
   buildCounterGoogleFirestoreAdminV1Field--;
 }
 
+core.int buildCounterGoogleFirestoreAdminV1FlatIndex = 0;
+api.GoogleFirestoreAdminV1FlatIndex buildGoogleFirestoreAdminV1FlatIndex() {
+  final o = api.GoogleFirestoreAdminV1FlatIndex();
+  buildCounterGoogleFirestoreAdminV1FlatIndex++;
+  if (buildCounterGoogleFirestoreAdminV1FlatIndex < 3) {}
+  buildCounterGoogleFirestoreAdminV1FlatIndex--;
+  return o;
+}
+
+void checkGoogleFirestoreAdminV1FlatIndex(
+    api.GoogleFirestoreAdminV1FlatIndex o) {
+  buildCounterGoogleFirestoreAdminV1FlatIndex++;
+  if (buildCounterGoogleFirestoreAdminV1FlatIndex < 3) {}
+  buildCounterGoogleFirestoreAdminV1FlatIndex--;
+}
+
 core.List<core.String> buildUnnamed16() => [
       'foo',
       'foo',
@@ -1234,6 +1250,7 @@ api.GoogleFirestoreAdminV1IndexField buildGoogleFirestoreAdminV1IndexField() {
     o.arrayConfig = 'foo';
     o.fieldPath = 'foo';
     o.order = 'foo';
+    o.vectorConfig = buildGoogleFirestoreAdminV1VectorConfig();
   }
   buildCounterGoogleFirestoreAdminV1IndexField--;
   return o;
@@ -1255,6 +1272,7 @@ void checkGoogleFirestoreAdminV1IndexField(
       o.order!,
       unittest.equals('foo'),
     );
+    checkGoogleFirestoreAdminV1VectorConfig(o.vectorConfig!);
   }
   buildCounterGoogleFirestoreAdminV1IndexField--;
 }
@@ -1530,6 +1548,32 @@ void checkGoogleFirestoreAdminV1TtlConfig(
     );
   }
   buildCounterGoogleFirestoreAdminV1TtlConfig--;
+}
+
+core.int buildCounterGoogleFirestoreAdminV1VectorConfig = 0;
+api.GoogleFirestoreAdminV1VectorConfig
+    buildGoogleFirestoreAdminV1VectorConfig() {
+  final o = api.GoogleFirestoreAdminV1VectorConfig();
+  buildCounterGoogleFirestoreAdminV1VectorConfig++;
+  if (buildCounterGoogleFirestoreAdminV1VectorConfig < 3) {
+    o.dimension = 42;
+    o.flat = buildGoogleFirestoreAdminV1FlatIndex();
+  }
+  buildCounterGoogleFirestoreAdminV1VectorConfig--;
+  return o;
+}
+
+void checkGoogleFirestoreAdminV1VectorConfig(
+    api.GoogleFirestoreAdminV1VectorConfig o) {
+  buildCounterGoogleFirestoreAdminV1VectorConfig++;
+  if (buildCounterGoogleFirestoreAdminV1VectorConfig < 3) {
+    unittest.expect(
+      o.dimension!,
+      unittest.equals(42),
+    );
+    checkGoogleFirestoreAdminV1FlatIndex(o.flat!);
+  }
+  buildCounterGoogleFirestoreAdminV1VectorConfig--;
 }
 
 core.int buildCounterGoogleFirestoreAdminV1WeeklyRecurrence = 0;
@@ -3299,6 +3343,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleFirestoreAdminV1FlatIndex', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleFirestoreAdminV1FlatIndex();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleFirestoreAdminV1FlatIndex.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleFirestoreAdminV1FlatIndex(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleFirestoreAdminV1ImportDocumentsRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleFirestoreAdminV1ImportDocumentsRequest();
@@ -3417,6 +3471,16 @@ void main() {
       final od = api.GoogleFirestoreAdminV1TtlConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleFirestoreAdminV1TtlConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleFirestoreAdminV1VectorConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleFirestoreAdminV1VectorConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleFirestoreAdminV1VectorConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleFirestoreAdminV1VectorConfig(od);
     });
   });
 

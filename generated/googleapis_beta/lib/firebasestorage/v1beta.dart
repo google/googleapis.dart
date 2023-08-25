@@ -250,6 +250,8 @@ typedef AddFirebaseRequest = $Empty;
 /// A storage bucket and its relation to a parent Firebase project.
 class Bucket {
   /// Resource name of the bucket.
+  ///
+  /// Output only.
   core.String? name;
 
   Bucket({

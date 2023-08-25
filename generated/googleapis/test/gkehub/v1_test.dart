@@ -303,7 +303,10 @@ api.CommonFleetDefaultMemberConfigSpec
     buildCommonFleetDefaultMemberConfigSpec() {
   final o = api.CommonFleetDefaultMemberConfigSpec();
   buildCounterCommonFleetDefaultMemberConfigSpec++;
-  if (buildCounterCommonFleetDefaultMemberConfigSpec < 3) {}
+  if (buildCounterCommonFleetDefaultMemberConfigSpec < 3) {
+    o.configmanagement = buildConfigManagementMembershipSpec();
+    o.policycontroller = buildPolicyControllerMembershipSpec();
+  }
   buildCounterCommonFleetDefaultMemberConfigSpec--;
   return o;
 }
@@ -311,7 +314,10 @@ api.CommonFleetDefaultMemberConfigSpec
 void checkCommonFleetDefaultMemberConfigSpec(
     api.CommonFleetDefaultMemberConfigSpec o) {
   buildCounterCommonFleetDefaultMemberConfigSpec++;
-  if (buildCounterCommonFleetDefaultMemberConfigSpec < 3) {}
+  if (buildCounterCommonFleetDefaultMemberConfigSpec < 3) {
+    checkConfigManagementMembershipSpec(o.configmanagement!);
+    checkPolicyControllerMembershipSpec(o.policycontroller!);
+  }
   buildCounterCommonFleetDefaultMemberConfigSpec--;
 }
 
@@ -2836,7 +2842,6 @@ api.MembershipBinding buildMembershipBinding() {
   if (buildCounterMembershipBinding < 3) {
     o.createTime = 'foo';
     o.deleteTime = 'foo';
-    o.fleet = true;
     o.labels = buildUnnamed35();
     o.name = 'foo';
     o.scope = 'foo';
@@ -2859,7 +2864,6 @@ void checkMembershipBinding(api.MembershipBinding o) {
       o.deleteTime!,
       unittest.equals('foo'),
     );
-    unittest.expect(o.fleet!, unittest.isTrue);
     checkUnnamed35(o.labels!);
     unittest.expect(
       o.name!,
@@ -2948,6 +2952,7 @@ api.MembershipFeatureSpec buildMembershipFeatureSpec() {
     o.identityservice = buildIdentityServiceMembershipSpec();
     o.mesh = buildServiceMeshMembershipSpec();
     o.origin = buildOrigin();
+    o.policycontroller = buildPolicyControllerMembershipSpec();
   }
   buildCounterMembershipFeatureSpec--;
   return o;
@@ -2961,6 +2966,7 @@ void checkMembershipFeatureSpec(api.MembershipFeatureSpec o) {
     checkIdentityServiceMembershipSpec(o.identityservice!);
     checkServiceMeshMembershipSpec(o.mesh!);
     checkOrigin(o.origin!);
+    checkPolicyControllerMembershipSpec(o.policycontroller!);
   }
   buildCounterMembershipFeatureSpec--;
 }
@@ -2974,6 +2980,7 @@ api.MembershipFeatureState buildMembershipFeatureState() {
     o.configmanagement = buildConfigManagementMembershipState();
     o.fleetobservability = buildFleetObservabilityMembershipState();
     o.identityservice = buildIdentityServiceMembershipState();
+    o.policycontroller = buildPolicyControllerMembershipState();
     o.servicemesh = buildServiceMeshMembershipState();
     o.state = buildFeatureState();
   }
@@ -2988,6 +2995,7 @@ void checkMembershipFeatureState(api.MembershipFeatureState o) {
     checkConfigManagementMembershipState(o.configmanagement!);
     checkFleetObservabilityMembershipState(o.fleetobservability!);
     checkIdentityServiceMembershipState(o.identityservice!);
+    checkPolicyControllerMembershipState(o.policycontroller!);
     checkServiceMeshMembershipState(o.servicemesh!);
     checkFeatureState(o.state!);
   }
@@ -3439,12 +3447,482 @@ void checkPolicy(api.Policy o) {
   buildCounterPolicy--;
 }
 
-core.Map<core.String, core.String> buildUnnamed42() => {
+core.List<core.String> buildUnnamed42() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed42(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterPolicyControllerBundleInstallSpec = 0;
+api.PolicyControllerBundleInstallSpec buildPolicyControllerBundleInstallSpec() {
+  final o = api.PolicyControllerBundleInstallSpec();
+  buildCounterPolicyControllerBundleInstallSpec++;
+  if (buildCounterPolicyControllerBundleInstallSpec < 3) {
+    o.exemptedNamespaces = buildUnnamed42();
+  }
+  buildCounterPolicyControllerBundleInstallSpec--;
+  return o;
+}
+
+void checkPolicyControllerBundleInstallSpec(
+    api.PolicyControllerBundleInstallSpec o) {
+  buildCounterPolicyControllerBundleInstallSpec++;
+  if (buildCounterPolicyControllerBundleInstallSpec < 3) {
+    checkUnnamed42(o.exemptedNamespaces!);
+  }
+  buildCounterPolicyControllerBundleInstallSpec--;
+}
+
+core.Map<core.String, api.PolicyControllerPolicyControllerDeploymentConfig>
+    buildUnnamed43() => {
+          'x': buildPolicyControllerPolicyControllerDeploymentConfig(),
+          'y': buildPolicyControllerPolicyControllerDeploymentConfig(),
+        };
+
+void checkUnnamed43(
+    core.Map<core.String, api.PolicyControllerPolicyControllerDeploymentConfig>
+        o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPolicyControllerPolicyControllerDeploymentConfig(o['x']!);
+  checkPolicyControllerPolicyControllerDeploymentConfig(o['y']!);
+}
+
+core.List<core.String> buildUnnamed44() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed44(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterPolicyControllerHubConfig = 0;
+api.PolicyControllerHubConfig buildPolicyControllerHubConfig() {
+  final o = api.PolicyControllerHubConfig();
+  buildCounterPolicyControllerHubConfig++;
+  if (buildCounterPolicyControllerHubConfig < 3) {
+    o.auditIntervalSeconds = 'foo';
+    o.constraintViolationLimit = 'foo';
+    o.deploymentConfigs = buildUnnamed43();
+    o.exemptableNamespaces = buildUnnamed44();
+    o.installSpec = 'foo';
+    o.logDeniesEnabled = true;
+    o.monitoring = buildPolicyControllerMonitoringConfig();
+    o.mutationEnabled = true;
+    o.policyContent = buildPolicyControllerPolicyContentSpec();
+    o.referentialRulesEnabled = true;
+  }
+  buildCounterPolicyControllerHubConfig--;
+  return o;
+}
+
+void checkPolicyControllerHubConfig(api.PolicyControllerHubConfig o) {
+  buildCounterPolicyControllerHubConfig++;
+  if (buildCounterPolicyControllerHubConfig < 3) {
+    unittest.expect(
+      o.auditIntervalSeconds!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.constraintViolationLimit!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed43(o.deploymentConfigs!);
+    checkUnnamed44(o.exemptableNamespaces!);
+    unittest.expect(
+      o.installSpec!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.logDeniesEnabled!, unittest.isTrue);
+    checkPolicyControllerMonitoringConfig(o.monitoring!);
+    unittest.expect(o.mutationEnabled!, unittest.isTrue);
+    checkPolicyControllerPolicyContentSpec(o.policyContent!);
+    unittest.expect(o.referentialRulesEnabled!, unittest.isTrue);
+  }
+  buildCounterPolicyControllerHubConfig--;
+}
+
+core.int buildCounterPolicyControllerMembershipSpec = 0;
+api.PolicyControllerMembershipSpec buildPolicyControllerMembershipSpec() {
+  final o = api.PolicyControllerMembershipSpec();
+  buildCounterPolicyControllerMembershipSpec++;
+  if (buildCounterPolicyControllerMembershipSpec < 3) {
+    o.policyControllerHubConfig = buildPolicyControllerHubConfig();
+    o.version = 'foo';
+  }
+  buildCounterPolicyControllerMembershipSpec--;
+  return o;
+}
+
+void checkPolicyControllerMembershipSpec(api.PolicyControllerMembershipSpec o) {
+  buildCounterPolicyControllerMembershipSpec++;
+  if (buildCounterPolicyControllerMembershipSpec < 3) {
+    checkPolicyControllerHubConfig(o.policyControllerHubConfig!);
+    unittest.expect(
+      o.version!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPolicyControllerMembershipSpec--;
+}
+
+core.Map<core.String, api.PolicyControllerOnClusterState> buildUnnamed45() => {
+      'x': buildPolicyControllerOnClusterState(),
+      'y': buildPolicyControllerOnClusterState(),
+    };
+
+void checkUnnamed45(
+    core.Map<core.String, api.PolicyControllerOnClusterState> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPolicyControllerOnClusterState(o['x']!);
+  checkPolicyControllerOnClusterState(o['y']!);
+}
+
+core.int buildCounterPolicyControllerMembershipState = 0;
+api.PolicyControllerMembershipState buildPolicyControllerMembershipState() {
+  final o = api.PolicyControllerMembershipState();
+  buildCounterPolicyControllerMembershipState++;
+  if (buildCounterPolicyControllerMembershipState < 3) {
+    o.componentStates = buildUnnamed45();
+    o.policyContentState = buildPolicyControllerPolicyContentState();
+    o.state = 'foo';
+  }
+  buildCounterPolicyControllerMembershipState--;
+  return o;
+}
+
+void checkPolicyControllerMembershipState(
+    api.PolicyControllerMembershipState o) {
+  buildCounterPolicyControllerMembershipState++;
+  if (buildCounterPolicyControllerMembershipState < 3) {
+    checkUnnamed45(o.componentStates!);
+    checkPolicyControllerPolicyContentState(o.policyContentState!);
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPolicyControllerMembershipState--;
+}
+
+core.List<core.String> buildUnnamed46() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed46(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterPolicyControllerMonitoringConfig = 0;
+api.PolicyControllerMonitoringConfig buildPolicyControllerMonitoringConfig() {
+  final o = api.PolicyControllerMonitoringConfig();
+  buildCounterPolicyControllerMonitoringConfig++;
+  if (buildCounterPolicyControllerMonitoringConfig < 3) {
+    o.backends = buildUnnamed46();
+  }
+  buildCounterPolicyControllerMonitoringConfig--;
+  return o;
+}
+
+void checkPolicyControllerMonitoringConfig(
+    api.PolicyControllerMonitoringConfig o) {
+  buildCounterPolicyControllerMonitoringConfig++;
+  if (buildCounterPolicyControllerMonitoringConfig < 3) {
+    checkUnnamed46(o.backends!);
+  }
+  buildCounterPolicyControllerMonitoringConfig--;
+}
+
+core.int buildCounterPolicyControllerOnClusterState = 0;
+api.PolicyControllerOnClusterState buildPolicyControllerOnClusterState() {
+  final o = api.PolicyControllerOnClusterState();
+  buildCounterPolicyControllerOnClusterState++;
+  if (buildCounterPolicyControllerOnClusterState < 3) {
+    o.details = 'foo';
+    o.state = 'foo';
+  }
+  buildCounterPolicyControllerOnClusterState--;
+  return o;
+}
+
+void checkPolicyControllerOnClusterState(api.PolicyControllerOnClusterState o) {
+  buildCounterPolicyControllerOnClusterState++;
+  if (buildCounterPolicyControllerOnClusterState < 3) {
+    unittest.expect(
+      o.details!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPolicyControllerOnClusterState--;
+}
+
+core.Map<core.String, api.PolicyControllerBundleInstallSpec> buildUnnamed47() =>
+    {
+      'x': buildPolicyControllerBundleInstallSpec(),
+      'y': buildPolicyControllerBundleInstallSpec(),
+    };
+
+void checkUnnamed47(
+    core.Map<core.String, api.PolicyControllerBundleInstallSpec> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPolicyControllerBundleInstallSpec(o['x']!);
+  checkPolicyControllerBundleInstallSpec(o['y']!);
+}
+
+core.int buildCounterPolicyControllerPolicyContentSpec = 0;
+api.PolicyControllerPolicyContentSpec buildPolicyControllerPolicyContentSpec() {
+  final o = api.PolicyControllerPolicyContentSpec();
+  buildCounterPolicyControllerPolicyContentSpec++;
+  if (buildCounterPolicyControllerPolicyContentSpec < 3) {
+    o.bundles = buildUnnamed47();
+    o.templateLibrary = buildPolicyControllerTemplateLibraryConfig();
+  }
+  buildCounterPolicyControllerPolicyContentSpec--;
+  return o;
+}
+
+void checkPolicyControllerPolicyContentSpec(
+    api.PolicyControllerPolicyContentSpec o) {
+  buildCounterPolicyControllerPolicyContentSpec++;
+  if (buildCounterPolicyControllerPolicyContentSpec < 3) {
+    checkUnnamed47(o.bundles!);
+    checkPolicyControllerTemplateLibraryConfig(o.templateLibrary!);
+  }
+  buildCounterPolicyControllerPolicyContentSpec--;
+}
+
+core.Map<core.String, api.PolicyControllerOnClusterState> buildUnnamed48() => {
+      'x': buildPolicyControllerOnClusterState(),
+      'y': buildPolicyControllerOnClusterState(),
+    };
+
+void checkUnnamed48(
+    core.Map<core.String, api.PolicyControllerOnClusterState> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPolicyControllerOnClusterState(o['x']!);
+  checkPolicyControllerOnClusterState(o['y']!);
+}
+
+core.int buildCounterPolicyControllerPolicyContentState = 0;
+api.PolicyControllerPolicyContentState
+    buildPolicyControllerPolicyContentState() {
+  final o = api.PolicyControllerPolicyContentState();
+  buildCounterPolicyControllerPolicyContentState++;
+  if (buildCounterPolicyControllerPolicyContentState < 3) {
+    o.bundleStates = buildUnnamed48();
+    o.referentialSyncConfigState = buildPolicyControllerOnClusterState();
+    o.templateLibraryState = buildPolicyControllerOnClusterState();
+  }
+  buildCounterPolicyControllerPolicyContentState--;
+  return o;
+}
+
+void checkPolicyControllerPolicyContentState(
+    api.PolicyControllerPolicyContentState o) {
+  buildCounterPolicyControllerPolicyContentState++;
+  if (buildCounterPolicyControllerPolicyContentState < 3) {
+    checkUnnamed48(o.bundleStates!);
+    checkPolicyControllerOnClusterState(o.referentialSyncConfigState!);
+    checkPolicyControllerOnClusterState(o.templateLibraryState!);
+  }
+  buildCounterPolicyControllerPolicyContentState--;
+}
+
+core.List<api.PolicyControllerToleration> buildUnnamed49() => [
+      buildPolicyControllerToleration(),
+      buildPolicyControllerToleration(),
+    ];
+
+void checkUnnamed49(core.List<api.PolicyControllerToleration> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPolicyControllerToleration(o[0]);
+  checkPolicyControllerToleration(o[1]);
+}
+
+core.int buildCounterPolicyControllerPolicyControllerDeploymentConfig = 0;
+api.PolicyControllerPolicyControllerDeploymentConfig
+    buildPolicyControllerPolicyControllerDeploymentConfig() {
+  final o = api.PolicyControllerPolicyControllerDeploymentConfig();
+  buildCounterPolicyControllerPolicyControllerDeploymentConfig++;
+  if (buildCounterPolicyControllerPolicyControllerDeploymentConfig < 3) {
+    o.containerResources = buildPolicyControllerResourceRequirements();
+    o.podAffinity = 'foo';
+    o.podAntiAffinity = true;
+    o.podTolerations = buildUnnamed49();
+    o.replicaCount = 'foo';
+  }
+  buildCounterPolicyControllerPolicyControllerDeploymentConfig--;
+  return o;
+}
+
+void checkPolicyControllerPolicyControllerDeploymentConfig(
+    api.PolicyControllerPolicyControllerDeploymentConfig o) {
+  buildCounterPolicyControllerPolicyControllerDeploymentConfig++;
+  if (buildCounterPolicyControllerPolicyControllerDeploymentConfig < 3) {
+    checkPolicyControllerResourceRequirements(o.containerResources!);
+    unittest.expect(
+      o.podAffinity!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.podAntiAffinity!, unittest.isTrue);
+    checkUnnamed49(o.podTolerations!);
+    unittest.expect(
+      o.replicaCount!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPolicyControllerPolicyControllerDeploymentConfig--;
+}
+
+core.int buildCounterPolicyControllerResourceList = 0;
+api.PolicyControllerResourceList buildPolicyControllerResourceList() {
+  final o = api.PolicyControllerResourceList();
+  buildCounterPolicyControllerResourceList++;
+  if (buildCounterPolicyControllerResourceList < 3) {
+    o.cpu = 'foo';
+    o.memory = 'foo';
+  }
+  buildCounterPolicyControllerResourceList--;
+  return o;
+}
+
+void checkPolicyControllerResourceList(api.PolicyControllerResourceList o) {
+  buildCounterPolicyControllerResourceList++;
+  if (buildCounterPolicyControllerResourceList < 3) {
+    unittest.expect(
+      o.cpu!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.memory!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPolicyControllerResourceList--;
+}
+
+core.int buildCounterPolicyControllerResourceRequirements = 0;
+api.PolicyControllerResourceRequirements
+    buildPolicyControllerResourceRequirements() {
+  final o = api.PolicyControllerResourceRequirements();
+  buildCounterPolicyControllerResourceRequirements++;
+  if (buildCounterPolicyControllerResourceRequirements < 3) {
+    o.limits = buildPolicyControllerResourceList();
+    o.requests = buildPolicyControllerResourceList();
+  }
+  buildCounterPolicyControllerResourceRequirements--;
+  return o;
+}
+
+void checkPolicyControllerResourceRequirements(
+    api.PolicyControllerResourceRequirements o) {
+  buildCounterPolicyControllerResourceRequirements++;
+  if (buildCounterPolicyControllerResourceRequirements < 3) {
+    checkPolicyControllerResourceList(o.limits!);
+    checkPolicyControllerResourceList(o.requests!);
+  }
+  buildCounterPolicyControllerResourceRequirements--;
+}
+
+core.int buildCounterPolicyControllerTemplateLibraryConfig = 0;
+api.PolicyControllerTemplateLibraryConfig
+    buildPolicyControllerTemplateLibraryConfig() {
+  final o = api.PolicyControllerTemplateLibraryConfig();
+  buildCounterPolicyControllerTemplateLibraryConfig++;
+  if (buildCounterPolicyControllerTemplateLibraryConfig < 3) {
+    o.installation = 'foo';
+  }
+  buildCounterPolicyControllerTemplateLibraryConfig--;
+  return o;
+}
+
+void checkPolicyControllerTemplateLibraryConfig(
+    api.PolicyControllerTemplateLibraryConfig o) {
+  buildCounterPolicyControllerTemplateLibraryConfig++;
+  if (buildCounterPolicyControllerTemplateLibraryConfig < 3) {
+    unittest.expect(
+      o.installation!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPolicyControllerTemplateLibraryConfig--;
+}
+
+core.int buildCounterPolicyControllerToleration = 0;
+api.PolicyControllerToleration buildPolicyControllerToleration() {
+  final o = api.PolicyControllerToleration();
+  buildCounterPolicyControllerToleration++;
+  if (buildCounterPolicyControllerToleration < 3) {
+    o.effect = 'foo';
+    o.key = 'foo';
+    o.operator = 'foo';
+    o.value = 'foo';
+  }
+  buildCounterPolicyControllerToleration--;
+  return o;
+}
+
+void checkPolicyControllerToleration(api.PolicyControllerToleration o) {
+  buildCounterPolicyControllerToleration++;
+  if (buildCounterPolicyControllerToleration < 3) {
+    unittest.expect(
+      o.effect!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.operator!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPolicyControllerToleration--;
+}
+
+core.Map<core.String, core.String> buildUnnamed50() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed42(core.Map<core.String, core.String> o) {
+void checkUnnamed50(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -3464,7 +3942,7 @@ api.RBACRoleBinding buildRBACRoleBinding() {
     o.createTime = 'foo';
     o.deleteTime = 'foo';
     o.group = 'foo';
-    o.labels = buildUnnamed42();
+    o.labels = buildUnnamed50();
     o.name = 'foo';
     o.role = buildRole();
     o.state = buildRBACRoleBindingLifecycleState();
@@ -3491,7 +3969,7 @@ void checkRBACRoleBinding(api.RBACRoleBinding o) {
       o.group!,
       unittest.equals('foo'),
     );
-    checkUnnamed42(o.labels!);
+    checkUnnamed50(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -3611,12 +4089,12 @@ void checkRole(api.Role o) {
   buildCounterRole--;
 }
 
-core.Map<core.String, core.String> buildUnnamed43() => {
+core.Map<core.String, core.String> buildUnnamed51() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed43(core.Map<core.String, core.String> o) {
+void checkUnnamed51(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -3628,12 +4106,12 @@ void checkUnnamed43(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed44() => {
+core.Map<core.String, core.String> buildUnnamed52() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed44(core.Map<core.String, core.String> o) {
+void checkUnnamed52(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -3650,12 +4128,11 @@ api.Scope buildScope() {
   final o = api.Scope();
   buildCounterScope++;
   if (buildCounterScope < 3) {
-    o.allMemberships = true;
     o.createTime = 'foo';
     o.deleteTime = 'foo';
-    o.labels = buildUnnamed43();
+    o.labels = buildUnnamed51();
     o.name = 'foo';
-    o.namespaceLabels = buildUnnamed44();
+    o.namespaceLabels = buildUnnamed52();
     o.state = buildScopeLifecycleState();
     o.uid = 'foo';
     o.updateTime = 'foo';
@@ -3667,7 +4144,6 @@ api.Scope buildScope() {
 void checkScope(api.Scope o) {
   buildCounterScope++;
   if (buildCounterScope < 3) {
-    unittest.expect(o.allMemberships!, unittest.isTrue);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -3676,12 +4152,12 @@ void checkScope(api.Scope o) {
       o.deleteTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed43(o.labels!);
+    checkUnnamed51(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed44(o.namespaceLabels!);
+    checkUnnamed52(o.namespaceLabels!);
     checkScopeLifecycleState(o.state!);
     unittest.expect(
       o.uid!,
@@ -3751,12 +4227,12 @@ void checkScopeLifecycleState(api.ScopeLifecycleState o) {
   buildCounterScopeLifecycleState--;
 }
 
-core.List<api.ServiceMeshStatusDetails> buildUnnamed45() => [
+core.List<api.ServiceMeshStatusDetails> buildUnnamed53() => [
       buildServiceMeshStatusDetails(),
       buildServiceMeshStatusDetails(),
     ];
 
-void checkUnnamed45(core.List<api.ServiceMeshStatusDetails> o) {
+void checkUnnamed53(core.List<api.ServiceMeshStatusDetails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServiceMeshStatusDetails(o[0]);
   checkServiceMeshStatusDetails(o[1]);
@@ -3767,7 +4243,7 @@ api.ServiceMeshControlPlaneManagement buildServiceMeshControlPlaneManagement() {
   final o = api.ServiceMeshControlPlaneManagement();
   buildCounterServiceMeshControlPlaneManagement++;
   if (buildCounterServiceMeshControlPlaneManagement < 3) {
-    o.details = buildUnnamed45();
+    o.details = buildUnnamed53();
     o.state = 'foo';
   }
   buildCounterServiceMeshControlPlaneManagement--;
@@ -3778,7 +4254,7 @@ void checkServiceMeshControlPlaneManagement(
     api.ServiceMeshControlPlaneManagement o) {
   buildCounterServiceMeshControlPlaneManagement++;
   if (buildCounterServiceMeshControlPlaneManagement < 3) {
-    checkUnnamed45(o.details!);
+    checkUnnamed53(o.details!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -3787,12 +4263,12 @@ void checkServiceMeshControlPlaneManagement(
   buildCounterServiceMeshControlPlaneManagement--;
 }
 
-core.List<api.ServiceMeshStatusDetails> buildUnnamed46() => [
+core.List<api.ServiceMeshStatusDetails> buildUnnamed54() => [
       buildServiceMeshStatusDetails(),
       buildServiceMeshStatusDetails(),
     ];
 
-void checkUnnamed46(core.List<api.ServiceMeshStatusDetails> o) {
+void checkUnnamed54(core.List<api.ServiceMeshStatusDetails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServiceMeshStatusDetails(o[0]);
   checkServiceMeshStatusDetails(o[1]);
@@ -3803,7 +4279,7 @@ api.ServiceMeshDataPlaneManagement buildServiceMeshDataPlaneManagement() {
   final o = api.ServiceMeshDataPlaneManagement();
   buildCounterServiceMeshDataPlaneManagement++;
   if (buildCounterServiceMeshDataPlaneManagement < 3) {
-    o.details = buildUnnamed46();
+    o.details = buildUnnamed54();
     o.state = 'foo';
   }
   buildCounterServiceMeshDataPlaneManagement--;
@@ -3813,7 +4289,7 @@ api.ServiceMeshDataPlaneManagement buildServiceMeshDataPlaneManagement() {
 void checkServiceMeshDataPlaneManagement(api.ServiceMeshDataPlaneManagement o) {
   buildCounterServiceMeshDataPlaneManagement++;
   if (buildCounterServiceMeshDataPlaneManagement < 3) {
-    checkUnnamed46(o.details!);
+    checkUnnamed54(o.details!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -3948,12 +4424,12 @@ void checkStatus(api.Status o) {
   buildCounterStatus--;
 }
 
-core.List<core.String> buildUnnamed47() => [
+core.List<core.String> buildUnnamed55() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed47(core.List<core.String> o) {
+void checkUnnamed55(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3970,7 +4446,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
   final o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed47();
+    o.permissions = buildUnnamed55();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -3979,17 +4455,17 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed47(o.permissions!);
+    checkUnnamed55(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed48() => [
+core.List<core.String> buildUnnamed56() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed48(core.List<core.String> o) {
+void checkUnnamed56(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4006,7 +4482,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed48();
+    o.permissions = buildUnnamed56();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -4015,7 +4491,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed48(o.permissions!);
+    checkUnnamed56(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -4972,6 +5448,137 @@ void main() {
       final od =
           api.Policy.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-PolicyControllerBundleInstallSpec', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPolicyControllerBundleInstallSpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PolicyControllerBundleInstallSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPolicyControllerBundleInstallSpec(od);
+    });
+  });
+
+  unittest.group('obj-schema-PolicyControllerHubConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPolicyControllerHubConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PolicyControllerHubConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPolicyControllerHubConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-PolicyControllerMembershipSpec', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPolicyControllerMembershipSpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PolicyControllerMembershipSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPolicyControllerMembershipSpec(od);
+    });
+  });
+
+  unittest.group('obj-schema-PolicyControllerMembershipState', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPolicyControllerMembershipState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PolicyControllerMembershipState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPolicyControllerMembershipState(od);
+    });
+  });
+
+  unittest.group('obj-schema-PolicyControllerMonitoringConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPolicyControllerMonitoringConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PolicyControllerMonitoringConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPolicyControllerMonitoringConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-PolicyControllerOnClusterState', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPolicyControllerOnClusterState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PolicyControllerOnClusterState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPolicyControllerOnClusterState(od);
+    });
+  });
+
+  unittest.group('obj-schema-PolicyControllerPolicyContentSpec', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPolicyControllerPolicyContentSpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PolicyControllerPolicyContentSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPolicyControllerPolicyContentSpec(od);
+    });
+  });
+
+  unittest.group('obj-schema-PolicyControllerPolicyContentState', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPolicyControllerPolicyContentState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PolicyControllerPolicyContentState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPolicyControllerPolicyContentState(od);
+    });
+  });
+
+  unittest.group('obj-schema-PolicyControllerPolicyControllerDeploymentConfig',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPolicyControllerPolicyControllerDeploymentConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PolicyControllerPolicyControllerDeploymentConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPolicyControllerPolicyControllerDeploymentConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-PolicyControllerResourceList', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPolicyControllerResourceList();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PolicyControllerResourceList.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPolicyControllerResourceList(od);
+    });
+  });
+
+  unittest.group('obj-schema-PolicyControllerResourceRequirements', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPolicyControllerResourceRequirements();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PolicyControllerResourceRequirements.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPolicyControllerResourceRequirements(od);
+    });
+  });
+
+  unittest.group('obj-schema-PolicyControllerTemplateLibraryConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPolicyControllerTemplateLibraryConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PolicyControllerTemplateLibraryConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPolicyControllerTemplateLibraryConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-PolicyControllerToleration', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPolicyControllerToleration();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PolicyControllerToleration.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPolicyControllerToleration(od);
     });
   });
 

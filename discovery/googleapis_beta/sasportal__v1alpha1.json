@@ -27,7 +27,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230731",
+    "revision": "20231030",
     "rootUrl": "https://sasportal.googleapis.com/",
     "servicePath": "",
     "title": "SAS Portal API",
@@ -250,6 +250,25 @@
                     },
                     "response": {
                         "$ref": "SasPortalProvisionDeploymentResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sasportal"
+                    ]
+                },
+                "setupSasAnalytics": {
+                    "description": "Setups the a GCP Project to receive SAS Analytics messages via GCP Pub/Sub with a subscription to BigQuery. All the Pub/Sub topics and BigQuery tables are created automatically as part of this service.",
+                    "flatPath": "v1alpha1/customers:setupSasAnalytics",
+                    "httpMethod": "POST",
+                    "id": "sasportal.customers.setupSasAnalytics",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1alpha1/customers:setupSasAnalytics",
+                    "request": {
+                        "$ref": "SasPortalSetupSasAnalyticsRequest"
+                    },
+                    "response": {
+                        "$ref": "SasPortalOperation"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
@@ -3483,7 +3502,7 @@
                         "description": "Properties of the object. Contains field @type with type URL.",
                         "type": "any"
                     },
-                    "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+                    "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
                     "type": "object"
                 }
             },
@@ -3556,6 +3575,29 @@
                     "type": "string"
                 }
             },
+            "type": "object"
+        },
+        "SasPortalSetupSasAnalyticsMetadata": {
+            "description": "Metadata returned by the long running operation for the SetupSasAnalytics rpc.",
+            "id": "SasPortalSetupSasAnalyticsMetadata",
+            "properties": {},
+            "type": "object"
+        },
+        "SasPortalSetupSasAnalyticsRequest": {
+            "description": "Request for the SetupSasAnalytics rpc.",
+            "id": "SasPortalSetupSasAnalyticsRequest",
+            "properties": {
+                "userId": {
+                    "description": "Optional. User id to setup analytics for, if not provided the user id associated with the project is used. optional",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SasPortalSetupSasAnalyticsResponse": {
+            "description": "Response returned by the long running operation for the SetupSasAnalytics rpc.",
+            "id": "SasPortalSetupSasAnalyticsResponse",
+            "properties": {},
             "type": "object"
         },
         "SasPortalSignDeviceRequest": {

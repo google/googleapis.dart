@@ -3151,7 +3151,7 @@ class FinalizedDeal {
 
   /// The resource name of the finalized deal.
   ///
-  /// Format: `buyers/{accountId}/finalizeddeals/{finalizedDealId}`
+  /// Format: `buyers/{accountId}/finalizedDeals/{finalizedDealId}`
   core.String? name;
 
   /// Whether the Programmatic Guaranteed deal is ready for serving.

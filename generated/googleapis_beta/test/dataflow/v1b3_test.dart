@@ -2361,6 +2361,7 @@ api.Job buildJob() {
     o.replacedByJobId = 'foo';
     o.requestedState = 'foo';
     o.runtimeUpdatableParams = buildRuntimeUpdatableParams();
+    o.satisfiesPzi = true;
     o.satisfiesPzs = true;
     o.stageStates = buildUnnamed28();
     o.startTime = 'foo';
@@ -2431,6 +2432,7 @@ void checkJob(api.Job o) {
       unittest.equals('foo'),
     );
     checkRuntimeUpdatableParams(o.runtimeUpdatableParams!);
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     checkUnnamed28(o.stageStates!);
     unittest.expect(
@@ -4036,6 +4038,7 @@ api.ParameterMetadata buildParameterMetadata() {
   buildCounterParameterMetadata++;
   if (buildCounterParameterMetadata < 3) {
     o.customMetadata = buildUnnamed64();
+    o.defaultValue = 'foo';
     o.enumOptions = buildUnnamed65();
     o.groupName = 'foo';
     o.helpText = 'foo';
@@ -4055,6 +4058,10 @@ void checkParameterMetadata(api.ParameterMetadata o) {
   buildCounterParameterMetadata++;
   if (buildCounterParameterMetadata < 3) {
     checkUnnamed64(o.customMetadata!);
+    unittest.expect(
+      o.defaultValue!,
+      unittest.equals('foo'),
+    );
     checkUnnamed65(o.enumOptions!);
     unittest.expect(
       o.groupName!,

@@ -5430,6 +5430,11 @@ class UsersResource {
   ///
   /// Request parameters:
   ///
+  /// [resolveConflictAccount] - Optional. If set to `true`, the option selected
+  /// for
+  /// [handling unmanaged user accounts](https://support.google.com/a/answer/11112794)
+  /// will apply. Default: `false`
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -5442,10 +5447,13 @@ class UsersResource {
   /// this method will complete with the same error.
   async.Future<User> insert(
     User request, {
+    core.bool? resolveConflictAccount,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (resolveConflictAccount != null)
+        'resolveConflictAccount': ['${resolveConflictAccount}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -7980,23 +7988,29 @@ class ChromeOsDevice {
 
   /// (Read-only) Deprovision reason.
   /// Possible string values are:
-  /// - "deprovisionReasonUnspecified" : The deprovision reason is unknown.
-  /// - "deprovisionReasonSameModelReplacement" : The device was replaced by a
-  /// device with the same model.
-  /// - "deprovisionReasonUpgrade" : The device was upgraded.
-  /// - "deprovisionReasonDomainMove" : The device's domain was changed.
-  /// - "deprovisionReasonServiceExpiration" : Service expired for the device.
-  /// - "deprovisionReasonOther" : The device was deprovisioned for a legacy
+  /// - "DEPROVISION_REASON_UNSPECIFIED" : The deprovision reason is unknown.
+  /// - "DEPROVISION_REASON_SAME_MODEL_REPLACEMENT" : Same model replacement.
+  /// You have return materials authorization (RMA) or you are replacing a
+  /// malfunctioning device under warranty with the same device model.
+  /// - "DEPROVISION_REASON_UPGRADE" : The device was upgraded.
+  /// - "DEPROVISION_REASON_DOMAIN_MOVE" : The device's domain was changed.
+  /// - "DEPROVISION_REASON_SERVICE_EXPIRATION" : Service expired for the
+  /// device.
+  /// - "DEPROVISION_REASON_OTHER" : The device was deprovisioned for a legacy
   /// reason that is no longer supported.
-  /// - "deprovisionReasonDifferentModelReplacement" : The device was replaced
-  /// by a device with a different model.
-  /// - "deprovisionReasonRetiringDevice" : The device was retired.
-  /// - "deprovisionReasonUpgradeTransfer" : The device's perpetual upgrade was
-  /// transferred to a new device.
-  /// - "deprovisionReasonNotRequired" : A reason was not required. For example,
-  /// the licenses were returned to the customer's license pool.
-  /// - "deprovisionReasonRepairCenter" : The device was deprovisioned by a
-  /// repair service center.
+  /// - "DEPROVISION_REASON_DIFFERENT_MODEL_REPLACEMENT" : Different model
+  /// replacement. You are replacing this device with an upgraded or newer
+  /// device model.
+  /// - "DEPROVISION_REASON_RETIRING_DEVICE" : Retiring from fleet. You are
+  /// donating, discarding, or otherwise removing the device from use.
+  /// - "DEPROVISION_REASON_UPGRADE_TRANSFER" : ChromeOS Flex upgrade transfer.
+  /// This is a ChromeOS Flex device that you are replacing with a Chromebook
+  /// within a year.
+  /// - "DEPROVISION_REASON_NOT_REQUIRED" : A reason was not required. For
+  /// example, the licenses were returned to the customer's license pool.
+  /// - "DEPROVISION_REASON_REPAIR_CENTER" : The device was deprovisioned by the
+  /// Repair Service Center. Can only be set by Repair Service Center during
+  /// RMA.
   core.String? deprovisionReason;
 
   /// A list of device files to download (Read-only)
@@ -8009,18 +8023,16 @@ class ChromeOsDevice {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "deviceLicenseTypeUnspecified" : UNSPECIFIED type.
-  /// - "enterprise" : Indicating the device is a
-  /// Chromebook/Chromebox/Chromebase enterprise, which is packaged with an
-  /// upgrade(license).
-  /// - "enterpriseUpgrade" : Indicating the device is consuming standalone
-  /// Chrome Enterprise Upgrade, a Chrome Enterprise license.
-  /// - "educationUpgrade" : Indicating the device is consuming Chrome Education
-  /// Upgrade(AKA Chrome EDU perpetual license).
-  /// - "education" : Packaged with a license as education.
-  /// - "terminal" : Packaged with a license as terminal.
-  /// - "kioskUpgrade" : Indicating the device is consuming standalone Chrome
-  /// Kiosk Upgrade, a Chrome Kiosk (annual) license.
+  /// - "deviceLicenseTypeUnspecified" : The license type is unknown.
+  /// - "enterprise" : The device is bundled with a perpetual Chrome Enterprise
+  /// Upgrade.
+  /// - "enterpriseUpgrade" : The device has an annual standalone Chrome
+  /// Enterprise Upgrade.
+  /// - "educationUpgrade" : The device has a perpetual standalone Chrome
+  /// Education Upgrade.
+  /// - "education" : The device is bundled with a perpetual Chrome Education
+  /// Upgrade.
+  /// - "kioskUpgrade" : The device has an annual Kiosk Upgrade.
   core.String? deviceLicenseType;
 
   /// Reports of disk space and other info about mounted/connected volumes.
@@ -10463,11 +10475,14 @@ class OrgUnit {
   /// parent organization.
   ///
   /// The default value is `false`, meaning a sub-organizational unit inherits
-  /// the settings of the nearest parent organizational unit. We recommend using
-  /// the default value because setting `block_inheritance` to `true` can have
+  /// the settings of the nearest parent organizational unit. This field is
+  /// deprecated. Setting it to `true` is no longer supported and can have
   /// _unintended consequences_. For more information about inheritance and
   /// users in an organization structure, see the
   /// [administration help center](https://support.google.com/a/answer/4352075).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? blockInheritance;
 
   /// Description of the organizational unit.

@@ -850,6 +850,11 @@ class ProjectsLocationsInstancesResource {
   /// `parent=projects/{project_id}/locations/{location}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [filter] - Optional. List filter.
+  ///
+  /// [orderBy] - Optional. Sort results. Supported values are "name", "name
+  /// desc" or "" (unsorted).
+  ///
   /// [pageSize] - Maximum return size of the list call.
   ///
   /// [pageToken] - A previous returned page token that can be used to continue
@@ -867,11 +872,15 @@ class ProjectsLocationsInstancesResource {
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(
     core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -886,6 +895,48 @@ class ProjectsLocationsInstancesResource {
     );
     return ListInstancesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Migrates an existing User-Managed Notebook to Workbench Instances.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> migrate(
+    MigrateInstanceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':migrate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Registers an existing legacy notebook instance to the Notebooks API
@@ -2057,6 +2108,11 @@ class ProjectsLocationsRuntimesResource {
   /// `parent=projects/{project_id}/locations/{location}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [filter] - Optional. List filter.
+  ///
+  /// [orderBy] - Optional. Sort results. Supported values are "name", "name
+  /// desc" or "" (unsorted).
+  ///
   /// [pageSize] - Maximum return size of the list call.
   ///
   /// [pageToken] - A previous returned page token that can be used to continue
@@ -2074,11 +2130,15 @@ class ProjectsLocationsRuntimesResource {
   /// this method will complete with the same error.
   async.Future<ListRuntimesResponse> list(
     core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -2093,6 +2153,48 @@ class ProjectsLocationsRuntimesResource {
     );
     return ListRuntimesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Migrate an existing Runtime to a new Workbench Instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/runtimes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> migrate(
+    MigrateRuntimeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':migrate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update Notebook Runtime configuration.
@@ -2801,6 +2903,7 @@ class AcceleratorConfig {
   /// - "NVIDIA_TESLA_P4" : Accelerator type is Nvidia Tesla P4.
   /// - "NVIDIA_TESLA_T4" : Accelerator type is Nvidia Tesla T4.
   /// - "NVIDIA_TESLA_A100" : Accelerator type is Nvidia Tesla A100.
+  /// - "NVIDIA_L4" : Accelerator type is Nvidia Tesla L4.
   /// - "NVIDIA_TESLA_T4_VWS" : Accelerator type is NVIDIA Tesla T4 Virtual
   /// Workstations.
   /// - "NVIDIA_TESLA_P100_VWS" : Accelerator type is NVIDIA Tesla P100 Virtual
@@ -3962,6 +4065,11 @@ class Instance {
   /// Only applicable to instances with GPUs.
   core.bool? installGpuDriver;
 
+  /// Checks how feasible a migration from UmN to WbI is.
+  ///
+  /// Output only.
+  InstanceMigrationEligibility? instanceMigrationEligibility;
+
   /// Input only.
   ///
   /// The owner of this instance after creation. Format: `alias@example.com`
@@ -3990,6 +4098,10 @@ class Instance {
   core.String? machineType;
 
   /// Custom metadata to apply to this instance.
+  ///
+  /// For example, to specify a Cloud Storage bucket for automatic backup, you
+  /// can use the `gcs-data-bucket` metadata tag. Format:
+  /// `"--metadata=gcs-data-bucket=``BUCKET''"`.
   core.Map<core.String, core.String>? metadata;
 
   /// Bool indicating whether this notebook has been migrated to a Workbench
@@ -4040,11 +4152,6 @@ class Instance {
   /// The path must be a URL or Cloud Storage path
   /// (`gs://path-to-file/file-name`).
   core.String? postStartupScript;
-
-  /// Check how possible a migration from UmN to WbI is.
-  ///
-  /// Output only.
-  PreMigrationCheck? preMigrationCheck;
 
   /// The proxy endpoint that is used to access the Jupyter notebook.
   ///
@@ -4145,6 +4252,7 @@ class Instance {
     this.diskEncryption,
     this.disks,
     this.installGpuDriver,
+    this.instanceMigrationEligibility,
     this.instanceOwners,
     this.kmsKey,
     this.labels,
@@ -4158,7 +4266,6 @@ class Instance {
     this.noPublicIp,
     this.noRemoveDataDisk,
     this.postStartupScript,
-    this.preMigrationCheck,
     this.proxyUri,
     this.reservationAffinity,
     this.serviceAccount,
@@ -4218,6 +4325,12 @@ class Instance {
           installGpuDriver: json_.containsKey('installGpuDriver')
               ? json_['installGpuDriver'] as core.bool
               : null,
+          instanceMigrationEligibility:
+              json_.containsKey('instanceMigrationEligibility')
+                  ? InstanceMigrationEligibility.fromJson(
+                      json_['instanceMigrationEligibility']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           instanceOwners: json_.containsKey('instanceOwners')
               ? (json_['instanceOwners'] as core.List)
                   .map((value) => value as core.String)
@@ -4266,10 +4379,6 @@ class Instance {
               : null,
           postStartupScript: json_.containsKey('postStartupScript')
               ? json_['postStartupScript'] as core.String
-              : null,
-          preMigrationCheck: json_.containsKey('preMigrationCheck')
-              ? PreMigrationCheck.fromJson(json_['preMigrationCheck']
-                  as core.Map<core.String, core.dynamic>)
               : null,
           proxyUri: json_.containsKey('proxyUri')
               ? json_['proxyUri'] as core.String
@@ -4330,6 +4439,8 @@ class Instance {
         if (diskEncryption != null) 'diskEncryption': diskEncryption!,
         if (disks != null) 'disks': disks!,
         if (installGpuDriver != null) 'installGpuDriver': installGpuDriver!,
+        if (instanceMigrationEligibility != null)
+          'instanceMigrationEligibility': instanceMigrationEligibility!,
         if (instanceOwners != null) 'instanceOwners': instanceOwners!,
         if (kmsKey != null) 'kmsKey': kmsKey!,
         if (labels != null) 'labels': labels!,
@@ -4343,7 +4454,6 @@ class Instance {
         if (noPublicIp != null) 'noPublicIp': noPublicIp!,
         if (noRemoveDataDisk != null) 'noRemoveDataDisk': noRemoveDataDisk!,
         if (postStartupScript != null) 'postStartupScript': postStartupScript!,
-        if (preMigrationCheck != null) 'preMigrationCheck': preMigrationCheck!,
         if (proxyUri != null) 'proxyUri': proxyUri!,
         if (reservationAffinity != null)
           'reservationAffinity': reservationAffinity!,
@@ -4391,6 +4501,46 @@ class InstanceConfig {
           'enableHealthMonitoring': enableHealthMonitoring!,
         if (notebookUpgradeSchedule != null)
           'notebookUpgradeSchedule': notebookUpgradeSchedule!,
+      };
+}
+
+/// InstanceMigrationEligibility represents the feasibility information of a
+/// migration from UmN to WbI.
+class InstanceMigrationEligibility {
+  /// Certain configurations make the UmN ineligible for an automatic migration.
+  ///
+  /// A manual migration is required.
+  ///
+  /// Output only.
+  core.List<core.String>? errors;
+
+  /// Certain configurations will be defaulted during the migration.
+  ///
+  /// Output only.
+  core.List<core.String>? warnings;
+
+  InstanceMigrationEligibility({
+    this.errors,
+    this.warnings,
+  });
+
+  InstanceMigrationEligibility.fromJson(core.Map json_)
+      : this(
+          errors: json_.containsKey('errors')
+              ? (json_['errors'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          warnings: json_.containsKey('warnings')
+              ? (json_['warnings'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (errors != null) 'errors': errors!,
+        if (warnings != null) 'warnings': warnings!,
       };
 }
 
@@ -4943,6 +5093,125 @@ class LocalDiskInitializeParams {
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
+/// Request for migrating a User-Managed Notebook to Workbench Instances.
+class MigrateInstanceRequest {
+  /// Specifies the behavior of post startup script during migration.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "POST_STARTUP_SCRIPT_OPTION_UNSPECIFIED" : Post startup script option is
+  /// not specified. Default is POST_STARTUP_SCRIPT_OPTION_SKIP.
+  /// - "POST_STARTUP_SCRIPT_OPTION_SKIP" : Not migrate the post startup script
+  /// to the new Workbench Instance.
+  /// - "POST_STARTUP_SCRIPT_OPTION_RERUN" : Redownload and rerun the same post
+  /// startup script as the User-Managed Notebook.
+  core.String? postStartupScriptOption;
+
+  MigrateInstanceRequest({
+    this.postStartupScriptOption,
+  });
+
+  MigrateInstanceRequest.fromJson(core.Map json_)
+      : this(
+          postStartupScriptOption: json_.containsKey('postStartupScriptOption')
+              ? json_['postStartupScriptOption'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (postStartupScriptOption != null)
+          'postStartupScriptOption': postStartupScriptOption!,
+      };
+}
+
+/// Request for migrating a Runtime to a Workbench Instance.
+class MigrateRuntimeRequest {
+  /// Name of the VPC that the new Instance is in.
+  ///
+  /// This is required if the Runtime uses google-managed network. If the
+  /// Runtime uses customer-owned network, it will reuse the same VPC, and this
+  /// field must be empty. Format:
+  /// `projects/{project_id}/global/networks/{network_id}`
+  ///
+  /// Optional.
+  core.String? network;
+
+  /// Specifies the behavior of post startup script during migration.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "POST_STARTUP_SCRIPT_OPTION_UNSPECIFIED" : Post startup script option is
+  /// not specified. Default is POST_STARTUP_SCRIPT_OPTION_SKIP.
+  /// - "POST_STARTUP_SCRIPT_OPTION_SKIP" : Not migrate the post startup script
+  /// to the new Workbench Instance.
+  /// - "POST_STARTUP_SCRIPT_OPTION_RERUN" : Redownload and rerun the same post
+  /// startup script as the Google-Managed Notebook.
+  core.String? postStartupScriptOption;
+
+  /// Idempotent request UUID.
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  /// The service account to be included in the Compute Engine instance of the
+  /// new Workbench Instance when the Runtime uses "single user only" mode for
+  /// permission.
+  ///
+  /// If not specified, the
+  /// [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account)
+  /// is used. When the Runtime uses service account mode for permission, it
+  /// will reuse the same service account, and this field must be empty.
+  ///
+  /// Optional.
+  core.String? serviceAccount;
+
+  /// Name of the subnet that the new Instance is in.
+  ///
+  /// This is required if the Runtime uses google-managed network. If the
+  /// Runtime uses customer-owned network, it will reuse the same subnet, and
+  /// this field must be empty. Format:
+  /// `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
+  ///
+  /// Optional.
+  core.String? subnet;
+
+  MigrateRuntimeRequest({
+    this.network,
+    this.postStartupScriptOption,
+    this.requestId,
+    this.serviceAccount,
+    this.subnet,
+  });
+
+  MigrateRuntimeRequest.fromJson(core.Map json_)
+      : this(
+          network: json_.containsKey('network')
+              ? json_['network'] as core.String
+              : null,
+          postStartupScriptOption: json_.containsKey('postStartupScriptOption')
+              ? json_['postStartupScriptOption'] as core.String
+              : null,
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
+          serviceAccount: json_.containsKey('serviceAccount')
+              ? json_['serviceAccount'] as core.String
+              : null,
+          subnet: json_.containsKey('subnet')
+              ? json_['subnet'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (network != null) 'network': network!,
+        if (postStartupScriptOption != null)
+          'postStartupScriptOption': postStartupScriptOption!,
+        if (requestId != null) 'requestId': requestId!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (subnet != null) 'subnet': subnet!,
+      };
+}
+
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
@@ -4973,7 +5242,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -5033,23 +5302,23 @@ class Operation {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Associates a list of `members`, or principals, with a `role`.
   ///
@@ -5129,44 +5398,8 @@ class Policy {
       };
 }
 
-/// PreMigrationCheck checks how feasible a migration from UmN is.
-class PreMigrationCheck {
-  /// Message provides a summary or workaround.
-  core.String? message;
-
-  /// Result returns the result of the check.
-  /// Possible string values are:
-  /// - "RESULT_UNSPECIFIED" : Default type.
-  /// - "IDENTICAL" : UmN can be migrated to WbI as is minus non-relevant parts.
-  /// - "PARTIAL" : Part of the UmN won't be ported. The migration might default
-  /// some values.
-  /// - "NOT_RECOMMENDED" : UmN has too many unsupported options for a migration
-  /// to WbI.
-  core.String? result;
-
-  PreMigrationCheck({
-    this.message,
-    this.result,
-  });
-
-  PreMigrationCheck.fromJson(core.Map json_)
-      : this(
-          message: json_.containsKey('message')
-              ? json_['message'] as core.String
-              : null,
-          result: json_.containsKey('result')
-              ? json_['result'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (message != null) 'message': message!,
-        if (result != null) 'result': result!,
-      };
-}
-
 /// Request for getting a new access token.
-typedef RefreshRuntimeTokenInternalRequest = $Request08;
+typedef RefreshRuntimeTokenInternalRequest = $Request09;
 
 /// Response with a new access token.
 class RefreshRuntimeTokenInternalResponse {
@@ -5468,6 +5701,11 @@ class Runtime {
   /// Output only.
   core.String? name;
 
+  /// Checks how feasible a migration from GmN to WbI is.
+  ///
+  /// Output only.
+  RuntimeMigrationEligibility? runtimeMigrationEligibility;
+
   /// The config settings for software inside the runtime.
   RuntimeSoftwareConfig? softwareConfig;
 
@@ -5506,6 +5744,7 @@ class Runtime {
     this.metrics,
     this.migrated,
     this.name,
+    this.runtimeMigrationEligibility,
     this.softwareConfig,
     this.state,
     this.updateTime,
@@ -5540,6 +5779,12 @@ class Runtime {
               ? json_['migrated'] as core.bool
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          runtimeMigrationEligibility:
+              json_.containsKey('runtimeMigrationEligibility')
+                  ? RuntimeMigrationEligibility.fromJson(
+                      json_['runtimeMigrationEligibility']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           softwareConfig: json_.containsKey('softwareConfig')
               ? RuntimeSoftwareConfig.fromJson(json_['softwareConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -5563,6 +5808,8 @@ class Runtime {
         if (metrics != null) 'metrics': metrics!,
         if (migrated != null) 'migrated': migrated!,
         if (name != null) 'name': name!,
+        if (runtimeMigrationEligibility != null)
+          'runtimeMigrationEligibility': runtimeMigrationEligibility!,
         if (softwareConfig != null) 'softwareConfig': softwareConfig!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -5724,6 +5971,46 @@ class RuntimeMetrics {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (systemMetrics != null) 'systemMetrics': systemMetrics!,
+      };
+}
+
+/// RuntimeMigrationEligibility represents the feasibility information of a
+/// migration from GmN to WbI.
+class RuntimeMigrationEligibility {
+  /// Certain configurations make the GmN ineligible for an automatic migration.
+  ///
+  /// A manual migration is required.
+  ///
+  /// Output only.
+  core.List<core.String>? errors;
+
+  /// Certain configurations will be defaulted during the migration.
+  ///
+  /// Output only.
+  core.List<core.String>? warnings;
+
+  RuntimeMigrationEligibility({
+    this.errors,
+    this.warnings,
+  });
+
+  RuntimeMigrationEligibility.fromJson(core.Map json_)
+      : this(
+          errors: json_.containsKey('errors')
+              ? (json_['errors'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          warnings: json_.containsKey('warnings')
+              ? (json_['warnings'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (errors != null) 'errors': errors!,
+        if (warnings != null) 'warnings': warnings!,
       };
 }
 
@@ -6120,6 +6407,7 @@ class SetInstanceAcceleratorRequest {
   /// - "NVIDIA_TESLA_P4" : Accelerator type is Nvidia Tesla P4.
   /// - "NVIDIA_TESLA_T4" : Accelerator type is Nvidia Tesla T4.
   /// - "NVIDIA_TESLA_A100" : Accelerator type is Nvidia Tesla A100.
+  /// - "NVIDIA_L4" : Accelerator type is Nvidia Tesla L4.
   /// - "NVIDIA_TESLA_T4_VWS" : Accelerator type is NVIDIA Tesla T4 Virtual
   /// Workstations.
   /// - "NVIDIA_TESLA_P100_VWS" : Accelerator type is NVIDIA Tesla P100 Virtual

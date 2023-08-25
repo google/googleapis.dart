@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230805",
+    "revision": "20231031",
     "rootUrl": "https://searchconsole.googleapis.com/",
     "servicePath": "",
     "title": "Google Search Console API",
@@ -1116,9 +1116,11 @@
                     "enum": [
                         "AUTO",
                         "BY_PROPERTY",
-                        "BY_PAGE"
+                        "BY_PAGE",
+                        "BY_NEWS_SHOWCASE_PANEL"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         ""
@@ -1239,9 +1241,11 @@
                     "enum": [
                         "AUTO",
                         "BY_PROPERTY",
-                        "BY_PAGE"
+                        "BY_PAGE",
+                        "BY_NEWS_SHOWCASE_PANEL"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         ""

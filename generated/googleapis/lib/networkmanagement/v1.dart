@@ -880,6 +880,8 @@ class AbortInfo {
   /// PSC endpoints satisfy test input).
   /// - "SOURCE_PSC_CLOUD_SQL_UNSUPPORTED" : Aborted because tests with a
   /// PSC-based Cloud SQL instance as a source are not supported.
+  /// - "SOURCE_FORWARDING_RULE_UNSUPPORTED" : Aborted because tests with a
+  /// forwarding rule as a source are not supported.
   core.String? cause;
 
   /// List of project IDs that the user has specified in the request but does
@@ -1368,6 +1370,15 @@ class ConnectivityTest {
   /// Required.
   core.String? name;
 
+  /// The probing details of this test from the latest run, present for
+  /// applicable tests only.
+  ///
+  /// The details are updated when creating a new test, updating an existing
+  /// test, or triggering a one-time rerun of an existing test.
+  ///
+  /// Output only.
+  ProbingDetails? probingDetails;
+
   /// IP Protocol of the test.
   ///
   /// When not provided, "TCP" is assumed.
@@ -1417,6 +1428,7 @@ class ConnectivityTest {
     this.displayName,
     this.labels,
     this.name,
+    this.probingDetails,
     this.protocol,
     this.reachabilityDetails,
     this.relatedProjects,
@@ -1448,6 +1460,10 @@ class ConnectivityTest {
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          probingDetails: json_.containsKey('probingDetails')
+              ? ProbingDetails.fromJson(json_['probingDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           protocol: json_.containsKey('protocol')
               ? json_['protocol'] as core.String
               : null,
@@ -1476,6 +1492,7 @@ class ConnectivityTest {
         if (displayName != null) 'displayName': displayName!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (probingDetails != null) 'probingDetails': probingDetails!,
         if (protocol != null) 'protocol': protocol!,
         if (reachabilityDetails != null)
           'reachabilityDetails': reachabilityDetails!,
@@ -1504,6 +1521,7 @@ class DeliverInfo {
   /// [Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-apis).
   /// - "PSC_VPC_SC" : Target is a VPC-SC that uses
   /// [Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-apis).
+  /// - "SERVERLESS_NEG" : Target is a serverless network endpoint group.
   core.String? target;
 
   DeliverInfo({
@@ -1656,6 +1674,28 @@ class DropInfo {
       };
 }
 
+/// Representation of a network edge location as per
+/// https://cloud.google.com/vpc/docs/edge-locations.
+class EdgeLocation {
+  /// Name of the metropolitan area.
+  core.String? metropolitanArea;
+
+  EdgeLocation({
+    this.metropolitanArea,
+  });
+
+  EdgeLocation.fromJson(core.Map json_)
+      : this(
+          metropolitanArea: json_.containsKey('metropolitanArea')
+              ? json_['metropolitanArea'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metropolitanArea != null) 'metropolitanArea': metropolitanArea!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -1689,6 +1729,19 @@ class Endpoint {
   /// or projects/{project}/regions/{region}/forwardingRules/{id}
   core.String? forwardingRule;
 
+  /// Specifies the type of the target of the forwarding rule.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "FORWARDING_RULE_TARGET_UNSPECIFIED" : Forwarding rule target is
+  /// unknown.
+  /// - "INSTANCE" : Compute Engine instance for protocol forwarding.
+  /// - "LOAD_BALANCER" : Load Balancer. The specific type can be found from
+  /// load_balancer_type.
+  /// - "VPN_GATEWAY" : Classic Cloud VPN Gateway.
+  /// - "PSC" : Forwarding Rule is a Private Service Connect endpoint.
+  core.String? forwardingRuleTarget;
+
   /// A cluster URI for
   /// [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
   core.String? gkeMasterCluster;
@@ -1698,9 +1751,37 @@ class Endpoint {
 
   /// The IP address of the endpoint, which can be an external or internal IP.
   ///
-  /// An IPv6 address is only allowed when the test's destination is a \[global
-  /// load balancer VIP\](/load-balancing/docs/load-balancing-overview).
+  /// An IPv6 address is only allowed when the test's destination is a
+  /// [global load balancer VIP](https://cloud.google.com/load-balancing/docs/load-balancing-overview).
   core.String? ipAddress;
+
+  /// ID of the load balancer the forwarding rule points to.
+  ///
+  /// Empty for forwarding rules not related to load balancers.
+  ///
+  /// Output only.
+  core.String? loadBalancerId;
+
+  /// Type of the load balancer the forwarding rule points to.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "LOAD_BALANCER_TYPE_UNSPECIFIED" : Forwarding rule points to a different
+  /// target than a load balancer or a load balancer type is unknown.
+  /// - "HTTPS_ADVANCED_LOAD_BALANCER" : Global external HTTP(S) load balancer.
+  /// - "HTTPS_LOAD_BALANCER" : Global external HTTP(S) load balancer (classic)
+  /// - "REGIONAL_HTTPS_LOAD_BALANCER" : Regional external HTTP(S) load
+  /// balancer.
+  /// - "INTERNAL_HTTPS_LOAD_BALANCER" : Internal HTTP(S) load balancer.
+  /// - "SSL_PROXY_LOAD_BALANCER" : External SSL proxy load balancer.
+  /// - "TCP_PROXY_LOAD_BALANCER" : External TCP proxy load balancer.
+  /// - "INTERNAL_TCP_PROXY_LOAD_BALANCER" : Internal regional TCP proxy load
+  /// balancer.
+  /// - "NETWORK_LOAD_BALANCER" : External TCP/UDP Network load balancer.
+  /// - "LEGACY_NETWORK_LOAD_BALANCER" : Target-pool based external TCP/UDP
+  /// Network load balancer.
+  /// - "TCP_UDP_INTERNAL_LOAD_BALANCER" : Internal TCP/UDP load balancer.
+  core.String? loadBalancerType;
 
   /// A Compute Engine network URI.
   core.String? network;
@@ -1738,9 +1819,12 @@ class Endpoint {
     this.cloudRunRevision,
     this.cloudSqlInstance,
     this.forwardingRule,
+    this.forwardingRuleTarget,
     this.gkeMasterCluster,
     this.instance,
     this.ipAddress,
+    this.loadBalancerId,
+    this.loadBalancerType,
     this.network,
     this.networkType,
     this.port,
@@ -1767,6 +1851,9 @@ class Endpoint {
           forwardingRule: json_.containsKey('forwardingRule')
               ? json_['forwardingRule'] as core.String
               : null,
+          forwardingRuleTarget: json_.containsKey('forwardingRuleTarget')
+              ? json_['forwardingRuleTarget'] as core.String
+              : null,
           gkeMasterCluster: json_.containsKey('gkeMasterCluster')
               ? json_['gkeMasterCluster'] as core.String
               : null,
@@ -1775,6 +1862,12 @@ class Endpoint {
               : null,
           ipAddress: json_.containsKey('ipAddress')
               ? json_['ipAddress'] as core.String
+              : null,
+          loadBalancerId: json_.containsKey('loadBalancerId')
+              ? json_['loadBalancerId'] as core.String
+              : null,
+          loadBalancerType: json_.containsKey('loadBalancerType')
+              ? json_['loadBalancerType'] as core.String
               : null,
           network: json_.containsKey('network')
               ? json_['network'] as core.String
@@ -1794,9 +1887,13 @@ class Endpoint {
         if (cloudRunRevision != null) 'cloudRunRevision': cloudRunRevision!,
         if (cloudSqlInstance != null) 'cloudSqlInstance': cloudSqlInstance!,
         if (forwardingRule != null) 'forwardingRule': forwardingRule!,
+        if (forwardingRuleTarget != null)
+          'forwardingRuleTarget': forwardingRuleTarget!,
         if (gkeMasterCluster != null) 'gkeMasterCluster': gkeMasterCluster!,
         if (instance != null) 'instance': instance!,
         if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (loadBalancerId != null) 'loadBalancerId': loadBalancerId!,
+        if (loadBalancerType != null) 'loadBalancerType': loadBalancerType!,
         if (network != null) 'network': network!,
         if (networkType != null) 'networkType': networkType!,
         if (port != null) 'port': port!,
@@ -1824,6 +1921,9 @@ class EndpointInfo {
   /// IP protocol in string format, for example: "TCP", "UDP", "ICMP".
   core.String? protocol;
 
+  /// URI of the source telemetry agent this packet originates from.
+  core.String? sourceAgentUri;
+
   /// Source IP address.
   core.String? sourceIp;
 
@@ -1840,6 +1940,7 @@ class EndpointInfo {
     this.destinationNetworkUri,
     this.destinationPort,
     this.protocol,
+    this.sourceAgentUri,
     this.sourceIp,
     this.sourceNetworkUri,
     this.sourcePort,
@@ -1859,6 +1960,9 @@ class EndpointInfo {
           protocol: json_.containsKey('protocol')
               ? json_['protocol'] as core.String
               : null,
+          sourceAgentUri: json_.containsKey('sourceAgentUri')
+              ? json_['sourceAgentUri'] as core.String
+              : null,
           sourceIp: json_.containsKey('sourceIp')
               ? json_['sourceIp'] as core.String
               : null,
@@ -1876,6 +1980,7 @@ class EndpointInfo {
           'destinationNetworkUri': destinationNetworkUri!,
         if (destinationPort != null) 'destinationPort': destinationPort!,
         if (protocol != null) 'protocol': protocol!,
+        if (sourceAgentUri != null) 'sourceAgentUri': sourceAgentUri!,
         if (sourceIp != null) 'sourceIp': sourceIp!,
         if (sourceNetworkUri != null) 'sourceNetworkUri': sourceNetworkUri!,
         if (sourcePort != null) 'sourcePort': sourcePort!,
@@ -1936,6 +2041,9 @@ class FirewallInfo {
   /// - "NETWORK_FIREWALL_POLICY_RULE" : Global network firewall policy rule.
   /// For details, see
   /// [Network firewall policies](https://cloud.google.com/vpc/docs/network-firewall-policies).
+  /// - "NETWORK_REGIONAL_FIREWALL_POLICY_RULE" : Regional network firewall
+  /// policy rule. For details, see
+  /// [Regional network firewall policies](https://cloud.google.com/firewall/docs/regional-firewall-policies).
   core.String? firewallRuleType;
 
   /// The URI of the VPC network that the firewall rule is associated with.
@@ -2046,6 +2154,7 @@ class ForwardInfo {
   /// route imported from a peering VPC.
   /// - "CLOUD_SQL_INSTANCE" : Forwarded to a Cloud SQL instance.
   /// - "ANOTHER_PROJECT" : Forwarded to a VPC network in another project.
+  /// - "NCC_HUB" : Forwarded to an NCC Hub.
   core.String? target;
 
   ForwardInfo({
@@ -2311,6 +2420,63 @@ class InstanceInfo {
         if (networkUri != null) 'networkUri': networkUri!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Describes measured latency distribution.
+class LatencyDistribution {
+  /// Representative latency percentiles.
+  core.List<LatencyPercentile>? latencyPercentiles;
+
+  LatencyDistribution({
+    this.latencyPercentiles,
+  });
+
+  LatencyDistribution.fromJson(core.Map json_)
+      : this(
+          latencyPercentiles: json_.containsKey('latencyPercentiles')
+              ? (json_['latencyPercentiles'] as core.List)
+                  .map((value) => LatencyPercentile.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (latencyPercentiles != null)
+          'latencyPercentiles': latencyPercentiles!,
+      };
+}
+
+/// Latency percentile rank and value.
+class LatencyPercentile {
+  /// percent-th percentile of latency observed, in microseconds.
+  ///
+  /// Fraction of percent/100 of samples have latency lower or equal to the
+  /// value of this field.
+  core.String? latencyMicros;
+
+  /// Percentage of samples this data point applies to.
+  core.int? percent;
+
+  LatencyPercentile({
+    this.latencyMicros,
+    this.percent,
+  });
+
+  LatencyPercentile.fromJson(core.Map json_)
+      : this(
+          latencyMicros: json_.containsKey('latencyMicros')
+              ? json_['latencyMicros'] as core.String
+              : null,
+          percent: json_.containsKey('percent')
+              ? json_['percent'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (latencyMicros != null) 'latencyMicros': latencyMicros!,
+        if (percent != null) 'percent': percent!,
       };
 }
 
@@ -2634,7 +2800,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -2694,23 +2860,23 @@ class Operation {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -2801,6 +2967,122 @@ class Policy {
       };
 }
 
+/// Results of active probing from the last run of the test.
+class ProbingDetails {
+  /// The reason probing was aborted.
+  /// Possible string values are:
+  /// - "PROBING_ABORT_CAUSE_UNSPECIFIED" : No reason was specified.
+  /// - "PERMISSION_DENIED" : The user lacks permission to access some of the
+  /// network resources required to run the test.
+  /// - "NO_SOURCE_LOCATION" : No valid source endpoint could be derived from
+  /// the request.
+  core.String? abortCause;
+
+  /// The EdgeLocation from which a packet destined for/originating from the
+  /// internet will egress/ingress the Google network.
+  ///
+  /// This will only be populated for a connectivity test which has an internet
+  /// destination/source address. The absence of this field *must not* be used
+  /// as an indication that the destination/source is part of the Google
+  /// network.
+  EdgeLocation? destinationEgressLocation;
+
+  /// The source and destination endpoints derived from the test input and used
+  /// for active probing.
+  EndpointInfo? endpointInfo;
+
+  /// Details about an internal failure or the cancellation of active probing.
+  Status? error;
+
+  /// Latency as measured by active probing in one direction: from the source to
+  /// the destination endpoint.
+  LatencyDistribution? probingLatency;
+
+  /// The overall result of active probing.
+  /// Possible string values are:
+  /// - "PROBING_RESULT_UNSPECIFIED" : No result was specified.
+  /// - "REACHABLE" : At least 95% of packets reached the destination.
+  /// - "UNREACHABLE" : No packets reached the destination.
+  /// - "REACHABILITY_INCONSISTENT" : Less than 95% of packets reached the
+  /// destination.
+  /// - "UNDETERMINED" : Reachability could not be determined. Possible reasons
+  /// are: * The user lacks permission to access some of the network resources
+  /// required to run the test. * No valid source endpoint could be derived from
+  /// the request. * An internal error occurred.
+  core.String? result;
+
+  /// Number of probes sent.
+  core.int? sentProbeCount;
+
+  /// Number of probes that reached the destination.
+  core.int? successfulProbeCount;
+
+  /// The time that reachability was assessed through active probing.
+  core.String? verifyTime;
+
+  ProbingDetails({
+    this.abortCause,
+    this.destinationEgressLocation,
+    this.endpointInfo,
+    this.error,
+    this.probingLatency,
+    this.result,
+    this.sentProbeCount,
+    this.successfulProbeCount,
+    this.verifyTime,
+  });
+
+  ProbingDetails.fromJson(core.Map json_)
+      : this(
+          abortCause: json_.containsKey('abortCause')
+              ? json_['abortCause'] as core.String
+              : null,
+          destinationEgressLocation:
+              json_.containsKey('destinationEgressLocation')
+                  ? EdgeLocation.fromJson(json_['destinationEgressLocation']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          endpointInfo: json_.containsKey('endpointInfo')
+              ? EndpointInfo.fromJson(
+                  json_['endpointInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          error: json_.containsKey('error')
+              ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          probingLatency: json_.containsKey('probingLatency')
+              ? LatencyDistribution.fromJson(json_['probingLatency']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          result: json_.containsKey('result')
+              ? json_['result'] as core.String
+              : null,
+          sentProbeCount: json_.containsKey('sentProbeCount')
+              ? json_['sentProbeCount'] as core.int
+              : null,
+          successfulProbeCount: json_.containsKey('successfulProbeCount')
+              ? json_['successfulProbeCount'] as core.int
+              : null,
+          verifyTime: json_.containsKey('verifyTime')
+              ? json_['verifyTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (abortCause != null) 'abortCause': abortCause!,
+        if (destinationEgressLocation != null)
+          'destinationEgressLocation': destinationEgressLocation!,
+        if (endpointInfo != null) 'endpointInfo': endpointInfo!,
+        if (error != null) 'error': error!,
+        if (probingLatency != null) 'probingLatency': probingLatency!,
+        if (result != null) 'result': result!,
+        if (sentProbeCount != null) 'sentProbeCount': sentProbeCount!,
+        if (successfulProbeCount != null)
+          'successfulProbeCount': successfulProbeCount!,
+        if (verifyTime != null) 'verifyTime': verifyTime!,
+      };
+}
+
 /// Results of the configuration analysis from the last run of the test.
 class ReachabilityDetails {
   /// The details of a failure or a cancellation of reachability analysis.
@@ -2886,13 +3168,25 @@ class RouteInfo {
   /// Policy based routes only.
   core.List<core.String>? destPortRanges;
 
-  /// Name of a Compute Engine route.
+  /// Name of a route.
   core.String? displayName;
 
   /// Instance tags of the route.
   core.List<core.String>? instanceTags;
 
+  /// URI of a NCC Hub.
+  ///
+  /// NCC_HUB routes only.
+  core.String? nccHubUri;
+
+  /// URI of a NCC Spoke.
+  ///
+  /// NCC_HUB routes only.
+  core.String? nccSpokeUri;
+
   /// URI of a Compute Engine network.
+  ///
+  /// NETWORK routes only.
   core.String? networkUri;
 
   /// Next hop of the route.
@@ -2919,6 +3213,7 @@ class RouteInfo {
   /// Balancer.
   /// - "NEXT_HOP_ROUTER_APPLIANCE" : Next hop is a
   /// [router appliance instance](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/ra-overview).
+  /// - "NEXT_HOP_NCC_HUB" : Next hop is an NCC hub.
   core.String? nextHopType;
 
   /// Priority of the route.
@@ -2928,6 +3223,14 @@ class RouteInfo {
   ///
   /// Policy based routes only.
   core.List<core.String>? protocols;
+
+  /// Indicates where route is applicable.
+  /// Possible string values are:
+  /// - "ROUTE_SCOPE_UNSPECIFIED" : Unspecified scope. Default value.
+  /// - "NETWORK" : Route is applicable to packets in Network.
+  /// - "NCC_HUB" : Route is applicable to packets using NCC Hub's routing
+  /// table.
+  core.String? routeScope;
 
   /// Type of route.
   /// Possible string values are:
@@ -2952,10 +3255,11 @@ class RouteInfo {
   /// Policy based routes only.
   core.List<core.String>? srcPortRanges;
 
-  /// URI of a Compute Engine route.
+  /// URI of a route.
   ///
-  /// Dynamic route from cloud router does not have a URI. Advertised route from
-  /// Google Cloud VPC to on-premises network also does not have a URI.
+  /// Dynamic, peering static and peering dynamic routes do not have an URI.
+  /// Advertised route from Google Cloud VPC to on-premises network also does
+  /// not have an URI.
   core.String? uri;
 
   RouteInfo({
@@ -2963,11 +3267,14 @@ class RouteInfo {
     this.destPortRanges,
     this.displayName,
     this.instanceTags,
+    this.nccHubUri,
+    this.nccSpokeUri,
     this.networkUri,
     this.nextHop,
     this.nextHopType,
     this.priority,
     this.protocols,
+    this.routeScope,
     this.routeType,
     this.srcIpRange,
     this.srcPortRanges,
@@ -2992,6 +3299,12 @@ class RouteInfo {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          nccHubUri: json_.containsKey('nccHubUri')
+              ? json_['nccHubUri'] as core.String
+              : null,
+          nccSpokeUri: json_.containsKey('nccSpokeUri')
+              ? json_['nccSpokeUri'] as core.String
+              : null,
           networkUri: json_.containsKey('networkUri')
               ? json_['networkUri'] as core.String
               : null,
@@ -3008,6 +3321,9 @@ class RouteInfo {
               ? (json_['protocols'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
+              : null,
+          routeScope: json_.containsKey('routeScope')
+              ? json_['routeScope'] as core.String
               : null,
           routeType: json_.containsKey('routeType')
               ? json_['routeType'] as core.String
@@ -3028,11 +3344,14 @@ class RouteInfo {
         if (destPortRanges != null) 'destPortRanges': destPortRanges!,
         if (displayName != null) 'displayName': displayName!,
         if (instanceTags != null) 'instanceTags': instanceTags!,
+        if (nccHubUri != null) 'nccHubUri': nccHubUri!,
+        if (nccSpokeUri != null) 'nccSpokeUri': nccSpokeUri!,
         if (networkUri != null) 'networkUri': networkUri!,
         if (nextHop != null) 'nextHop': nextHop!,
         if (nextHopType != null) 'nextHopType': nextHopType!,
         if (priority != null) 'priority': priority!,
         if (protocols != null) 'protocols': protocols!,
+        if (routeScope != null) 'routeScope': routeScope!,
         if (routeType != null) 'routeType': routeType!,
         if (srcIpRange != null) 'srcIpRange': srcIpRange!,
         if (srcPortRanges != null) 'srcPortRanges': srcPortRanges!,

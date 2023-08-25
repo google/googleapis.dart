@@ -751,7 +751,7 @@ class DrivesResource {
     return Drive.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Permanently deletes a shared drive for which the user is an organizer.
+  /// Permanently deletes a shared drive for which the user is an `organizer`.
   ///
   /// The shared drive cannot contain any untrashed items.
   ///
@@ -1236,9 +1236,9 @@ class FilesResource {
   /// Permanently deletes a file owned by the user without moving it to the
   /// trash.
   ///
-  /// If the file belongs to a shared drive the user must be an organizer on the
-  /// parent. If the target is a folder, all descendants owned by the user are
-  /// also deleted.
+  /// If the file belongs to a shared drive, the user must be an `organizer` on
+  /// the parent folder. If the target is a folder, all descendants owned by the
+  /// user are also deleted.
   ///
   /// Request parameters:
   ///
@@ -1642,7 +1642,7 @@ class FilesResource {
   ///
   /// Request parameters:
   ///
-  /// [fileId] - The ID for the file or shared drive.
+  /// [fileId] - The ID for the file.
   ///
   /// [maxResults] - The maximum number of labels to return per page. When not
   /// set, defaults to 100.
@@ -3465,6 +3465,9 @@ class CommentQuotedFileContent {
 }
 
 /// A comment on a file.
+///
+/// Some resource methods (such as `comments.update`) require a `commentId`. Use
+/// the `comments.list` method to retrieve the ID for a comment in a file.
 class Comment {
   /// A region of the document represented as a JSON string.
   ///
@@ -4125,6 +4128,9 @@ class DriveRestrictions {
 }
 
 /// Representation of a shared drive.
+///
+/// Some resource methods (such as `drives.update`) require a `driveId`. Use the
+/// `drives.list` method to retrieve the ID for a shared drive.
 class Drive {
   /// An image file and cropping parameters from which a background image for
   /// this shared drive is set.
@@ -5362,6 +5368,9 @@ class FileVideoMediaMetadata {
 }
 
 /// The metadata for a file.
+///
+/// Some resource methods (such as `files.update`) require a `fileId`. Use the
+/// `files.list` method to retrieve the ID for a file.
 class File {
   /// A collection of arbitrary key-value pairs which are private to the
   /// requesting app.
@@ -6737,8 +6746,10 @@ class PermissionTeamDrivePermissionDetails {
 
 /// A permission for a file.
 ///
-/// A permission grants a user, group, domain or the world access to a file or a
-/// folder hierarchy.
+/// A permission grants a user, group, domain, or the world access to a file or
+/// a folder hierarchy. Some resource methods (such as `permissions.update`)
+/// require a `permissionId`. Use the `permissions.list` method to retrieve the
+/// ID for a file, folder, or shared drive.
 class Permission {
   /// Whether the permission allows the file to be discovered through search.
   ///
@@ -6978,6 +6989,9 @@ class PermissionList {
 }
 
 /// A reply to a comment on a file.
+///
+/// Some resource methods (such as `replies.update`) require a `replyId`. Use
+/// the `replies.list` method to retrieve the ID for a reply.
 class Reply {
   /// The action the reply performed to the parent comment.
   ///
@@ -7132,6 +7146,9 @@ class ReplyList {
 }
 
 /// The metadata for a revision to a file.
+///
+/// Some resource methods (such as `revisions.update`) require a `revisionId`.
+/// Use the `revisions.list` method to retrieve the ID for a revision.
 class Revision {
   /// Links for exporting Docs Editors files to specific formats.
   ///

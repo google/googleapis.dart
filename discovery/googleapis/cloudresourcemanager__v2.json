@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230806",
+    "revision": "20231025",
     "rootUrl": "https://cloudresourcemanager.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Resource Manager API",

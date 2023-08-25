@@ -2798,7 +2798,7 @@ class ProjectsLocationsTcpRoutesResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [tcpRouteId] - Required. Short name of the TcpRoute resource to be
-  /// created. E.g. TODO(Add an example).
+  /// created.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3023,7 +3023,7 @@ class ProjectsLocationsTlsRoutesResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [tlsRouteId] - Required. Short name of the TlsRoute resource to be
-  /// created. E.g. TODO(Add an example).
+  /// created.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4085,7 +4085,7 @@ class GrpcRouteDestination {
   /// Specifies the proportion of requests forwarded to the backend referenced
   /// by the serviceName field.
   ///
-  /// This is computed as: weight/Sum(weights in this destination list). For
+  /// This is computed as: - weight/Sum(weights in this destination list). For
   /// non-zero values, there may be some epsilon from the exact proportion
   /// defined here depending on the precision an implementation supports. If
   /// only one serviceName is specified and it has a weight greater than 0, 100%
@@ -4343,6 +4343,11 @@ class GrpcRouteRouteAction {
   /// Optional.
   GrpcRouteRetryPolicy? retryPolicy;
 
+  /// Specifies cookie-based stateful session affinity.
+  ///
+  /// Optional.
+  GrpcRouteStatefulSessionAffinityPolicy? statefulSessionAffinity;
+
   /// Specifies the timeout for selected route.
   ///
   /// Timeout is computed from the time the request has been fully processed
@@ -4356,6 +4361,7 @@ class GrpcRouteRouteAction {
     this.destinations,
     this.faultInjectionPolicy,
     this.retryPolicy,
+    this.statefulSessionAffinity,
     this.timeout,
   });
 
@@ -4376,6 +4382,11 @@ class GrpcRouteRouteAction {
               ? GrpcRouteRetryPolicy.fromJson(
                   json_['retryPolicy'] as core.Map<core.String, core.dynamic>)
               : null,
+          statefulSessionAffinity: json_.containsKey('statefulSessionAffinity')
+              ? GrpcRouteStatefulSessionAffinityPolicy.fromJson(
+                  json_['statefulSessionAffinity']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           timeout: json_.containsKey('timeout')
               ? json_['timeout'] as core.String
               : null,
@@ -4386,6 +4397,8 @@ class GrpcRouteRouteAction {
         if (faultInjectionPolicy != null)
           'faultInjectionPolicy': faultInjectionPolicy!,
         if (retryPolicy != null) 'retryPolicy': retryPolicy!,
+        if (statefulSessionAffinity != null)
+          'statefulSessionAffinity': statefulSessionAffinity!,
         if (timeout != null) 'timeout': timeout!,
       };
 }
@@ -4474,6 +4487,18 @@ class GrpcRouteRouteRule {
         if (matches != null) 'matches': matches!,
       };
 }
+
+/// The specification for cookie-based stateful session affinity where the date
+/// plane supplies a “session cookie” with the name "GSSA" which encodes a
+/// specific destination host and each request containing that cookie will be
+/// directed to that host as long as the destination host remains up and
+/// healthy.
+///
+/// The gRPC proxyless mesh library or sidecar proxy will manage the session
+/// cookie but the client application code is responsible for copying the cookie
+/// from each RPC in the session to the next.
+typedef GrpcRouteStatefulSessionAffinityPolicy
+    = $RouteStatefulSessionAffinityPolicy;
 
 /// HttpRoute is the resource defining how HTTP traffic should be routed by a
 /// Mesh or Gateway resource.
@@ -4746,7 +4771,7 @@ class HttpRouteDestination {
   /// Specifies the proportion of requests forwarded to the backend referenced
   /// by the serviceName field.
   ///
-  /// This is computed as: weight/Sum(weights in this destination list). For
+  /// This is computed as: - weight/Sum(weights in this destination list). For
   /// non-zero values, there may be some epsilon from the exact proportion
   /// defined here depending on the precision an implementation supports. If
   /// only one serviceName is specified and it has a weight greater than 0, 100%
@@ -5268,6 +5293,11 @@ class HttpRouteRouteAction {
   /// Specifies the retry policy associated with this route.
   HttpRouteRetryPolicy? retryPolicy;
 
+  /// Specifies cookie-based stateful session affinity.
+  ///
+  /// Optional.
+  HttpRouteStatefulSessionAffinityPolicy? statefulSessionAffinity;
+
   /// Specifies the timeout for selected route.
   ///
   /// Timeout is computed from the time the request has been fully processed
@@ -5288,6 +5318,7 @@ class HttpRouteRouteAction {
     this.requestMirrorPolicy,
     this.responseHeaderModifier,
     this.retryPolicy,
+    this.statefulSessionAffinity,
     this.timeout,
     this.urlRewrite,
   });
@@ -5330,6 +5361,11 @@ class HttpRouteRouteAction {
               ? HttpRouteRetryPolicy.fromJson(
                   json_['retryPolicy'] as core.Map<core.String, core.dynamic>)
               : null,
+          statefulSessionAffinity: json_.containsKey('statefulSessionAffinity')
+              ? HttpRouteStatefulSessionAffinityPolicy.fromJson(
+                  json_['statefulSessionAffinity']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           timeout: json_.containsKey('timeout')
               ? json_['timeout'] as core.String
               : null,
@@ -5352,6 +5388,8 @@ class HttpRouteRouteAction {
         if (responseHeaderModifier != null)
           'responseHeaderModifier': responseHeaderModifier!,
         if (retryPolicy != null) 'retryPolicy': retryPolicy!,
+        if (statefulSessionAffinity != null)
+          'statefulSessionAffinity': statefulSessionAffinity!,
         if (timeout != null) 'timeout': timeout!,
         if (urlRewrite != null) 'urlRewrite': urlRewrite!,
       };
@@ -5484,6 +5522,18 @@ class HttpRouteRouteRule {
         if (matches != null) 'matches': matches!,
       };
 }
+
+/// The specification for cookie-based stateful session affinity where the date
+/// plane supplies a “session cookie” with the name "GSSA" which encodes a
+/// specific destination host and each request containing that cookie will be
+/// directed to that host as long as the destination host remains up and
+/// healthy.
+///
+/// The gRPC proxyless mesh library or sidecar proxy will manage the session
+/// cookie but the client application code is responsible for copying the cookie
+/// from each RPC in the session to the next.
+typedef HttpRouteStatefulSessionAffinityPolicy
+    = $RouteStatefulSessionAffinityPolicy;
 
 /// The specification for modifying the URL of the request, prior to forwarding
 /// the request to the destination.
@@ -6012,7 +6062,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -6072,23 +6122,23 @@ class Operation {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -6506,7 +6556,7 @@ class TcpRouteRouteDestination {
   /// Specifies the proportion of requests forwarded to the backend referenced
   /// by the serviceName field.
   ///
-  /// This is computed as: weight/Sum(weights in this destination list). For
+  /// This is computed as: - weight/Sum(weights in this destination list). For
   /// non-zero values, there may be some epsilon from the exact proportion
   /// defined here depending on the precision an implementation supports. If
   /// only one serviceName is specified and it has a weight greater than 0, 100%
@@ -6650,6 +6700,11 @@ class TlsRoute {
   /// Optional.
   core.List<core.String>? gateways;
 
+  /// Set of label tags associated with the TlsRoute resource.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
   /// Meshes defines a list of meshes this TlsRoute is attached to, as one of
   /// the routing rules to route the requests served by the mesh.
   ///
@@ -6689,6 +6744,7 @@ class TlsRoute {
     this.createTime,
     this.description,
     this.gateways,
+    this.labels,
     this.meshes,
     this.name,
     this.rules,
@@ -6708,6 +6764,14 @@ class TlsRoute {
               ? (json_['gateways'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
               : null,
           meshes: json_.containsKey('meshes')
               ? (json_['meshes'] as core.List)
@@ -6733,6 +6797,7 @@ class TlsRoute {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (gateways != null) 'gateways': gateways!,
+        if (labels != null) 'labels': labels!,
         if (meshes != null) 'meshes': meshes!,
         if (name != null) 'name': name!,
         if (rules != null) 'rules': rules!,
@@ -6779,7 +6844,7 @@ class TlsRouteRouteDestination {
   /// Specifies the proportion of requests forwareded to the backend referenced
   /// by the service_name field.
   ///
-  /// This is computed as: weight/Sum(weights in destinations) Weights in all
+  /// This is computed as: - weight/Sum(weights in destinations) Weights in all
   /// destinations does not need to sum up to 100.
   ///
   /// Optional.

@@ -797,72 +797,6 @@ class MediaResource {
   }
 }
 
-class ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle {
-  /// In the event that this policy was deprecated in favor of another policy,
-  /// the fully qualified namespace(s) of the new policies as they will show in
-  /// PolicyAPI.
-  core.List<core.String>? deprecatedInFavorOf;
-
-  /// Description about current life cycle.
-  core.String? description;
-
-  /// End supporting date for current policy.
-  GoogleTypeDate? endSupport;
-
-  /// Indicate current life cycle stage of the policy API.
-  /// Possible string values are:
-  /// - "API_UNSPECIFIED" : unspecified.
-  /// - "API_PREVIEW" : Policy is not working yet, but giving developers heads
-  /// up on format. This stage can transfer to API_DEVELOPEMNT or API_CURRENT.
-  /// - "API_DEVELOPMENT" : Policy can change format in backward incompatible
-  /// way (breaking change). This stage can transfer to API_CURRENT or
-  /// API_DEPRECATED. This could be used for policies launched only to TTs or
-  /// launched to selected customers for emergency usage.
-  /// - "API_CURRENT" : Policy in official format. Policy can change format in
-  /// backward compatible way (non-breaking change). Example: this policy can
-  /// introduce a new field, which is considered non-breaking change, when field
-  /// masks are properly utilized. This stage can transfer to API_DEPRECATED.
-  /// - "API_DEPRECATED" : Please stop using this policy. This policy is
-  /// deprecated and may/will be removed in the future. Most likely a new policy
-  /// was introduced to replace this one.
-  core.String? policyApiLifecycleStage;
-
-  ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle({
-    this.deprecatedInFavorOf,
-    this.description,
-    this.endSupport,
-    this.policyApiLifecycleStage,
-  });
-
-  ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle.fromJson(core.Map json_)
-      : this(
-          deprecatedInFavorOf: json_.containsKey('deprecatedInFavorOf')
-              ? (json_['deprecatedInFavorOf'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          endSupport: json_.containsKey('endSupport')
-              ? GoogleTypeDate.fromJson(
-                  json_['endSupport'] as core.Map<core.String, core.dynamic>)
-              : null,
-          policyApiLifecycleStage: json_.containsKey('policyApiLifecycleStage')
-              ? json_['policyApiLifecycleStage'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (deprecatedInFavorOf != null)
-          'deprecatedInFavorOf': deprecatedInFavorOf!,
-        if (description != null) 'description': description!,
-        if (endSupport != null) 'endSupport': endSupport!,
-        if (policyApiLifecycleStage != null)
-          'policyApiLifecycleStage': policyApiLifecycleStage!,
-      };
-}
-
 /// Additional key names that will be used to identify the target of the policy
 /// value.
 class GoogleChromePolicyVersionsV1AdditionalTargetKeyName {
@@ -1625,6 +1559,96 @@ class GoogleChromePolicyVersionsV1NumericRangeConstraint {
       };
 }
 
+/// Lifecycle information.
+class GoogleChromePolicyVersionsV1PolicyApiLifecycle {
+  /// In the event that this policy was deprecated in favor of another policy,
+  /// the fully qualified namespace(s) of the new policies as they will show in
+  /// PolicyAPI.
+  ///
+  /// Could only be set if policy_api_lifecycle_stage is API_DEPRECATED.
+  core.List<core.String>? deprecatedInFavorOf;
+
+  /// Description about current life cycle.
+  core.String? description;
+
+  /// End supporting date for current policy.
+  ///
+  /// Attempting to modify a policy after its end support date will result in a
+  /// Bad Request (400 error). Could only be set if policy_api_lifecycle_stage
+  /// is API_DEPRECATED.
+  GoogleTypeDate? endSupport;
+
+  /// Indicates current life cycle stage of the policy API.
+  /// Possible string values are:
+  /// - "API_UNSPECIFIED" : Policy Api Lifecycle is Unspecified.
+  /// - "API_PREVIEW" : Policy is not working yet, but giving developers heads
+  /// up on format. This stage can transfer to API_DEVELOPEMNT or API_CURRENT.
+  /// - "API_DEVELOPMENT" : Policy can change format in backward incompatible
+  /// way (breaking change). This stage can transfer to API_CURRENT or
+  /// API_DEPRECATED. This could be used for policies launched only to TTs or
+  /// launched to selected customers for emergency usage.
+  /// - "API_CURRENT" : Policy in official format. Policy can change format in
+  /// backward compatible way (non-breaking change). Example: this policy can
+  /// introduce a new field, which is considered non-breaking change, when field
+  /// masks are properly utilized. This stage can transfer to API_DEPRECATED.
+  /// - "API_DEPRECATED" : Please stop using this policy. This policy is
+  /// deprecated and may/will be removed in the future. Most likely a new policy
+  /// was introduced to replace this one.
+  core.String? policyApiLifecycleStage;
+
+  /// Corresponding to deprecated_in_favor_of, the fully qualified namespace(s)
+  /// of the old policies that will be deprecated because of introduction of
+  /// this policy.
+  ///
+  /// This field should not be manually set but will be set and exposed through
+  /// PolicyAPI automatically.
+  core.List<core.String>? scheduledToDeprecatePolicies;
+
+  GoogleChromePolicyVersionsV1PolicyApiLifecycle({
+    this.deprecatedInFavorOf,
+    this.description,
+    this.endSupport,
+    this.policyApiLifecycleStage,
+    this.scheduledToDeprecatePolicies,
+  });
+
+  GoogleChromePolicyVersionsV1PolicyApiLifecycle.fromJson(core.Map json_)
+      : this(
+          deprecatedInFavorOf: json_.containsKey('deprecatedInFavorOf')
+              ? (json_['deprecatedInFavorOf'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          endSupport: json_.containsKey('endSupport')
+              ? GoogleTypeDate.fromJson(
+                  json_['endSupport'] as core.Map<core.String, core.dynamic>)
+              : null,
+          policyApiLifecycleStage: json_.containsKey('policyApiLifecycleStage')
+              ? json_['policyApiLifecycleStage'] as core.String
+              : null,
+          scheduledToDeprecatePolicies:
+              json_.containsKey('scheduledToDeprecatePolicies')
+                  ? (json_['scheduledToDeprecatePolicies'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deprecatedInFavorOf != null)
+          'deprecatedInFavorOf': deprecatedInFavorOf!,
+        if (description != null) 'description': description!,
+        if (endSupport != null) 'endSupport': endSupport!,
+        if (policyApiLifecycleStage != null)
+          'policyApiLifecycleStage': policyApiLifecycleStage!,
+        if (scheduledToDeprecatePolicies != null)
+          'scheduledToDeprecatePolicies': scheduledToDeprecatePolicies!,
+      };
+}
+
 /// Resource representing a policy schema.
 class GoogleChromePolicyVersionsV1PolicySchema {
   /// Specific access restrictions related to this policy.
@@ -1669,7 +1693,7 @@ class GoogleChromePolicyVersionsV1PolicySchema {
   /// Current lifecycle information.
   ///
   /// Output only.
-  ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle? policyApiLifecycle;
+  GoogleChromePolicyVersionsV1PolicyApiLifecycle? policyApiLifecycle;
 
   /// Description about the policy schema for user consumption.
   ///
@@ -1751,7 +1775,7 @@ class GoogleChromePolicyVersionsV1PolicySchema {
                   .toList()
               : null,
           policyApiLifecycle: json_.containsKey('policyApiLifecycle')
-              ? ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle.fromJson(
+              ? GoogleChromePolicyVersionsV1PolicyApiLifecycle.fromJson(
                   json_['policyApiLifecycle']
                       as core.Map<core.String, core.dynamic>)
               : null,
@@ -2702,8 +2726,10 @@ class Proto2FieldDescriptorProto {
   ///
   /// Possible string values are:
   /// - "LABEL_OPTIONAL" : 0 is reserved for errors
-  /// - "LABEL_REQUIRED"
   /// - "LABEL_REPEATED"
+  /// - "LABEL_REQUIRED" : The required label is only allowed in proto2. In
+  /// proto3 and Editions it's explicitly prohibited. In Editions, the
+  /// `field_presence` feature can be used to get this behavior.
   core.String? label;
   core.String? name;
   core.int? number;
@@ -2752,8 +2778,10 @@ class Proto2FieldDescriptorProto {
   /// - "TYPE_BOOL"
   /// - "TYPE_STRING"
   /// - "TYPE_GROUP" : Tag-delimited aggregate. Group type is deprecated and not
-  /// supported in proto3. However, Proto3 implementations should still be able
-  /// to parse the group wire format and treat group fields as unknown fields.
+  /// supported after proto2. However, Proto3 implementations should still be
+  /// able to parse the group wire format and treat group fields as unknown
+  /// fields. In Editions, the group wire format can be enabled via the
+  /// `message_encoding` feature.
   /// - "TYPE_MESSAGE" : Length-delimited aggregate.
   /// - "TYPE_BYTES" : New in version 2.
   /// - "TYPE_UINT32"
@@ -2824,6 +2852,14 @@ class Proto2FieldDescriptorProto {
 
 /// Describes a complete .proto file.
 class Proto2FileDescriptorProto {
+  /// BEGIN GOOGLE-INTERNAL TODO(b/297898292) Deprecate and remove this field in
+  /// favor of enums.
+  ///
+  /// END GOOGLE-INTERNAL
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? editionDeprecated;
   core.List<Proto2EnumDescriptorProto>? enumType;
 
   /// All top-level definitions in this file.
@@ -2842,6 +2878,7 @@ class Proto2FileDescriptorProto {
   core.String? syntax;
 
   Proto2FileDescriptorProto({
+    this.editionDeprecated,
     this.enumType,
     this.messageType,
     this.name,
@@ -2851,6 +2888,9 @@ class Proto2FileDescriptorProto {
 
   Proto2FileDescriptorProto.fromJson(core.Map json_)
       : this(
+          editionDeprecated: json_.containsKey('editionDeprecated')
+              ? json_['editionDeprecated'] as core.String
+              : null,
           enumType: json_.containsKey('enumType')
               ? (json_['enumType'] as core.List)
                   .map((value) => Proto2EnumDescriptorProto.fromJson(
@@ -2873,6 +2913,7 @@ class Proto2FileDescriptorProto {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (editionDeprecated != null) 'editionDeprecated': editionDeprecated!,
         if (enumType != null) 'enumType': enumType!,
         if (messageType != null) 'messageType': messageType!,
         if (name != null) 'name': name!,

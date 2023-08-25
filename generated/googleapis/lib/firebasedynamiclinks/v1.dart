@@ -995,10 +995,10 @@ class GetIosPostInstallAttributionRequest {
   /// Possible string values are:
   /// - "UNKNOWN_PAYLOAD_RETRIEVAL_METHOD" : Unknown method.
   /// - "IMPLICIT_WEAK_MATCH" : iSDK performs a server lookup by device
-  /// fingerprint in the background when app is first-opened; no API called by
+  /// heuristics in the background when app is first-opened; no API called by
   /// developer.
   /// - "EXPLICIT_WEAK_MATCH" : iSDK performs a server lookup by device
-  /// fingerprint upon a dev API call.
+  /// heuristics upon a dev API call.
   /// - "EXPLICIT_STRONG_AFTER_WEAK_MATCH" : iSDK performs a strong match only
   /// if weak match is found upon a dev API call.
   core.String? retrievalMethod;
@@ -1009,7 +1009,7 @@ class GetIosPostInstallAttributionRequest {
   core.String? sdkVersion;
 
   /// Possible unique matched link that server need to check before performing
-  /// fingerprint match.
+  /// device heuristics match.
   ///
   /// If passed link is short server need to expand the link. If link is long
   /// server need to vslidate the link.
@@ -1090,14 +1090,14 @@ class GetIosPostInstallAttributionResponse {
   /// Possible string values are:
   /// - "UNKNOWN_ATTRIBUTION_CONFIDENCE" : Unset.
   /// - "WEAK" : Weak confidence, more than one matching link found or link
-  /// suspected to be false positive
-  /// - "DEFAULT" : Default confidence, match based on fingerprint
+  /// suspected to be false positive.
+  /// - "DEFAULT" : Default confidence, match based on device heuristics.
   /// - "UNIQUE" : Unique confidence, match based on "unique match link to
-  /// check" or other means
+  /// check" or other means.
   core.String? attributionConfidence;
 
   /// The deep-link attributed post-install via one of several techniques
-  /// (fingerprint, copy unique).
+  /// (device heuristics, copy unique).
   core.String? deepLink;
 
   /// User-agent specific custom-scheme URIs for iSDK to open.
@@ -1116,7 +1116,7 @@ class GetIosPostInstallAttributionResponse {
   core.String? fallbackLink;
 
   /// Invitation ID attributed post-install via one of several techniques
-  /// (fingerprint, copy unique).
+  /// (device heuristics, copy unique).
   core.String? invitationId;
 
   /// Instruction for iSDK to attemmpt to perform strong match.
@@ -1138,7 +1138,7 @@ class GetIosPostInstallAttributionResponse {
   core.String? requestIpVersion;
 
   /// Entire FDL (short or long) attributed post-install via one of several
-  /// techniques (fingerprint, copy unique).
+  /// techniques (device heuristics, copy unique).
   core.String? requestedLink;
 
   /// The entire FDL, expanded from a short link.

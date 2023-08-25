@@ -202,46 +202,6 @@ void checkFetchVerificationOptionsResponse(
   buildCounterFetchVerificationOptionsResponse--;
 }
 
-core.int buildCounterGenerateVerificationTokenRequest = 0;
-api.GenerateVerificationTokenRequest buildGenerateVerificationTokenRequest() {
-  final o = api.GenerateVerificationTokenRequest();
-  buildCounterGenerateVerificationTokenRequest++;
-  if (buildCounterGenerateVerificationTokenRequest < 3) {
-    o.location = buildLocation();
-  }
-  buildCounterGenerateVerificationTokenRequest--;
-  return o;
-}
-
-void checkGenerateVerificationTokenRequest(
-    api.GenerateVerificationTokenRequest o) {
-  buildCounterGenerateVerificationTokenRequest++;
-  if (buildCounterGenerateVerificationTokenRequest < 3) {
-    checkLocation(o.location!);
-  }
-  buildCounterGenerateVerificationTokenRequest--;
-}
-
-core.int buildCounterGenerateVerificationTokenResponse = 0;
-api.GenerateVerificationTokenResponse buildGenerateVerificationTokenResponse() {
-  final o = api.GenerateVerificationTokenResponse();
-  buildCounterGenerateVerificationTokenResponse++;
-  if (buildCounterGenerateVerificationTokenResponse < 3) {
-    o.token = buildVerificationToken();
-  }
-  buildCounterGenerateVerificationTokenResponse--;
-  return o;
-}
-
-void checkGenerateVerificationTokenResponse(
-    api.GenerateVerificationTokenResponse o) {
-  buildCounterGenerateVerificationTokenResponse++;
-  if (buildCounterGenerateVerificationTokenResponse < 3) {
-    checkVerificationToken(o.token!);
-  }
-  buildCounterGenerateVerificationTokenResponse--;
-}
-
 core.List<api.Verification> buildUnnamed1() => [
       buildVerification(),
       buildVerification(),
@@ -275,45 +235,6 @@ void checkListVerificationsResponse(api.ListVerificationsResponse o) {
     checkUnnamed1(o.verifications!);
   }
   buildCounterListVerificationsResponse--;
-}
-
-core.int buildCounterLocation = 0;
-api.Location buildLocation() {
-  final o = api.Location();
-  buildCounterLocation++;
-  if (buildCounterLocation < 3) {
-    o.address = buildPostalAddress();
-    o.name = 'foo';
-    o.primaryCategoryId = 'foo';
-    o.primaryPhone = 'foo';
-    o.websiteUri = 'foo';
-  }
-  buildCounterLocation--;
-  return o;
-}
-
-void checkLocation(api.Location o) {
-  buildCounterLocation++;
-  if (buildCounterLocation < 3) {
-    checkPostalAddress(o.address!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.primaryCategoryId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.primaryPhone!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.websiteUri!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterLocation--;
 }
 
 core.List<core.String> buildUnnamed2() => [
@@ -749,26 +670,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-GenerateVerificationTokenRequest', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGenerateVerificationTokenRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GenerateVerificationTokenRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGenerateVerificationTokenRequest(od);
-    });
-  });
-
-  unittest.group('obj-schema-GenerateVerificationTokenResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGenerateVerificationTokenResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GenerateVerificationTokenResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGenerateVerificationTokenResponse(od);
-    });
-  });
-
   unittest.group('obj-schema-ListVerificationsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListVerificationsResponse();
@@ -776,16 +677,6 @@ void main() {
       final od = api.ListVerificationsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkListVerificationsResponse(od);
-    });
-  });
-
-  unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildLocation();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Location.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkLocation(od);
     });
   });
 
@@ -1196,65 +1087,6 @@ void main() {
           pageToken: arg_pageToken,
           $fields: arg_$fields);
       checkListVerificationsResponse(response as api.ListVerificationsResponse);
-    });
-  });
-
-  unittest.group('resource-VerificationTokensResource', () {
-    unittest.test('method--generate', () async {
-      final mock = HttpServerMock();
-      final res = api.MyBusinessVerificationsApi(mock).verificationTokens;
-      final arg_request = buildGenerateVerificationTokenRequest();
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GenerateVerificationTokenRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGenerateVerificationTokenRequest(obj);
-
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 30),
-          unittest.equals('v1/verificationTokens:generate'),
-        );
-        pathOffset += 30;
-
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildGenerateVerificationTokenResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.generate(arg_request, $fields: arg_$fields);
-      checkGenerateVerificationTokenResponse(
-          response as api.GenerateVerificationTokenResponse);
     });
   });
 }

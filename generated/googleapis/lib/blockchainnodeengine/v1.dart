@@ -742,8 +742,15 @@ class ConnectionInfo {
   /// Output only.
   EndpointInfo? endpointInfo;
 
+  /// A service attachment that exposes a node, and has the following format:
+  /// projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
+  ///
+  /// Output only.
+  core.String? serviceAttachment;
+
   ConnectionInfo({
     this.endpointInfo,
+    this.serviceAttachment,
   });
 
   ConnectionInfo.fromJson(core.Map json_)
@@ -752,10 +759,14 @@ class ConnectionInfo {
               ? EndpointInfo.fromJson(
                   json_['endpointInfo'] as core.Map<core.String, core.dynamic>)
               : null,
+          serviceAttachment: json_.containsKey('serviceAttachment')
+              ? json_['serviceAttachment'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endpointInfo != null) 'endpointInfo': endpointInfo!,
+        if (serviceAttachment != null) 'serviceAttachment': serviceAttachment!,
       };
 }
 
@@ -816,6 +827,16 @@ class EthereumDetails {
   /// Immutable.
   core.bool? apiEnableDebug;
 
+  /// An Ethereum address which the beacon client will send fee rewards to if no
+  /// recipient is configured in the validator client.
+  ///
+  /// See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or
+  /// https://docs.prylabs.network/docs/execution-node/fee-recipient for
+  /// examples of how this is used. Note that while this is often described as
+  /// "suggested", as we run the execution node we can trust the execution node,
+  /// and therefore this is considered enforced.
+  core.String? beaconFeeRecipient;
+
   /// The consensus client.
   ///
   /// Immutable.
@@ -857,7 +878,7 @@ class EthereumDetails {
   /// - "MAINNET" : The Ethereum Mainnet.
   /// - "TESTNET_GOERLI_PRATER" : The Ethereum Testnet based on Goerli protocol.
   /// - "TESTNET_SEPOLIA" : The Ethereum Testnet based on Sepolia/Bepolia
-  /// protocol.
+  /// protocol. See https://github.com/eth-clients/sepolia.
   core.String? network;
 
   /// The type of Ethereum node.
@@ -877,6 +898,7 @@ class EthereumDetails {
     this.additionalEndpoints,
     this.apiEnableAdmin,
     this.apiEnableDebug,
+    this.beaconFeeRecipient,
     this.consensusClient,
     this.executionClient,
     this.gethDetails,
@@ -895,6 +917,9 @@ class EthereumDetails {
               : null,
           apiEnableDebug: json_.containsKey('apiEnableDebug')
               ? json_['apiEnableDebug'] as core.bool
+              : null,
+          beaconFeeRecipient: json_.containsKey('beaconFeeRecipient')
+              ? json_['beaconFeeRecipient'] as core.String
               : null,
           consensusClient: json_.containsKey('consensusClient')
               ? json_['consensusClient'] as core.String
@@ -919,6 +944,8 @@ class EthereumDetails {
           'additionalEndpoints': additionalEndpoints!,
         if (apiEnableAdmin != null) 'apiEnableAdmin': apiEnableAdmin!,
         if (apiEnableDebug != null) 'apiEnableDebug': apiEnableDebug!,
+        if (beaconFeeRecipient != null)
+          'beaconFeeRecipient': beaconFeeRecipient!,
         if (consensusClient != null) 'consensusClient': consensusClient!,
         if (executionClient != null) 'executionClient': executionClient!,
         if (gethDetails != null) 'gethDetails': gethDetails!,
@@ -1169,7 +1196,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard

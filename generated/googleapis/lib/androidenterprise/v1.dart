@@ -6216,9 +6216,13 @@ typedef PageInfo = $PageInfo;
 class Permission {
   /// A longer description of the Permissions resource, giving more details of
   /// what it affects.
+  ///
+  /// This field may be absent.
   core.String? description;
 
   /// The name of the permission.
+  ///
+  /// This field may be absent.
   core.String? name;
 
   /// An opaque string uniquely identifying the permission.

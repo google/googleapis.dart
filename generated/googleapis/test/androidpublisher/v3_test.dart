@@ -2789,6 +2789,7 @@ api.ManagedProductTaxAndComplianceSettings
   buildCounterManagedProductTaxAndComplianceSettings++;
   if (buildCounterManagedProductTaxAndComplianceSettings < 3) {
     o.eeaWithdrawalRightType = 'foo';
+    o.isTokenizedDigitalAsset = true;
     o.taxRateInfoByRegionCode = buildUnnamed43();
   }
   buildCounterManagedProductTaxAndComplianceSettings--;
@@ -2803,6 +2804,7 @@ void checkManagedProductTaxAndComplianceSettings(
       o.eeaWithdrawalRightType!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.isTokenizedDigitalAsset!, unittest.isTrue);
     checkUnnamed43(o.taxRateInfoByRegionCode!);
   }
   buildCounterManagedProductTaxAndComplianceSettings--;
@@ -4864,6 +4866,7 @@ api.SubscriptionTaxAndComplianceSettings
   buildCounterSubscriptionTaxAndComplianceSettings++;
   if (buildCounterSubscriptionTaxAndComplianceSettings < 3) {
     o.eeaWithdrawalRightType = 'foo';
+    o.isTokenizedDigitalAsset = true;
     o.taxRateInfoByRegionCode = buildUnnamed67();
   }
   buildCounterSubscriptionTaxAndComplianceSettings--;
@@ -4878,9 +4881,33 @@ void checkSubscriptionTaxAndComplianceSettings(
       o.eeaWithdrawalRightType!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.isTokenizedDigitalAsset!, unittest.isTrue);
     checkUnnamed67(o.taxRateInfoByRegionCode!);
   }
   buildCounterSubscriptionTaxAndComplianceSettings--;
+}
+
+core.int buildCounterSystemApkOptions = 0;
+api.SystemApkOptions buildSystemApkOptions() {
+  final o = api.SystemApkOptions();
+  buildCounterSystemApkOptions++;
+  if (buildCounterSystemApkOptions < 3) {
+    o.rotated = true;
+    o.uncompressedDexFiles = true;
+    o.uncompressedNativeLibraries = true;
+  }
+  buildCounterSystemApkOptions--;
+  return o;
+}
+
+void checkSystemApkOptions(api.SystemApkOptions o) {
+  buildCounterSystemApkOptions++;
+  if (buildCounterSystemApkOptions < 3) {
+    unittest.expect(o.rotated!, unittest.isTrue);
+    unittest.expect(o.uncompressedDexFiles!, unittest.isTrue);
+    unittest.expect(o.uncompressedNativeLibraries!, unittest.isTrue);
+  }
+  buildCounterSystemApkOptions--;
 }
 
 core.List<api.Variant> buildUnnamed68() => [
@@ -5692,6 +5719,7 @@ api.Variant buildVariant() {
   buildCounterVariant++;
   if (buildCounterVariant < 3) {
     o.deviceSpec = buildDeviceSpec();
+    o.options = buildSystemApkOptions();
     o.variantId = 42;
   }
   buildCounterVariant--;
@@ -5702,6 +5730,7 @@ void checkVariant(api.Variant o) {
   buildCounterVariant++;
   if (buildCounterVariant < 3) {
     checkDeviceSpec(o.deviceSpec!);
+    checkSystemApkOptions(o.options!);
     unittest.expect(
       o.variantId!,
       unittest.equals(42),
@@ -7251,6 +7280,16 @@ void main() {
       final od = api.SubscriptionTaxAndComplianceSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSubscriptionTaxAndComplianceSettings(od);
+    });
+  });
+
+  unittest.group('obj-schema-SystemApkOptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSystemApkOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SystemApkOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSystemApkOptions(od);
     });
   });
 

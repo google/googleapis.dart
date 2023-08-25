@@ -313,6 +313,7 @@ api.BitbucketServerConfig buildBitbucketServerConfig() {
     o.hostUri = 'foo';
     o.name = 'foo';
     o.peeredNetwork = 'foo';
+    o.peeredNetworkIpRange = 'foo';
     o.secrets = buildBitbucketServerSecrets();
     o.sslCa = 'foo';
     o.username = 'foo';
@@ -344,6 +345,10 @@ void checkBitbucketServerConfig(api.BitbucketServerConfig o) {
     );
     unittest.expect(
       o.peeredNetwork!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.peeredNetworkIpRange!,
       unittest.equals('foo'),
     );
     checkBitbucketServerSecrets(o.secrets!);
@@ -1319,6 +1324,38 @@ void checkCancelOperationRequest(api.CancelOperationRequest o) {
   buildCounterCancelOperationRequest++;
   if (buildCounterCancelOperationRequest < 3) {}
   buildCounterCancelOperationRequest--;
+}
+
+core.int buildCounterConnectedRepository = 0;
+api.ConnectedRepository buildConnectedRepository() {
+  final o = api.ConnectedRepository();
+  buildCounterConnectedRepository++;
+  if (buildCounterConnectedRepository < 3) {
+    o.dir = 'foo';
+    o.repository = 'foo';
+    o.revision = 'foo';
+  }
+  buildCounterConnectedRepository--;
+  return o;
+}
+
+void checkConnectedRepository(api.ConnectedRepository o) {
+  buildCounterConnectedRepository++;
+  if (buildCounterConnectedRepository < 3) {
+    unittest.expect(
+      o.dir!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.repository!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.revision!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterConnectedRepository--;
 }
 
 core.int buildCounterCreateBitbucketServerConnectedRepositoryRequest = 0;
@@ -3288,6 +3325,7 @@ api.Source buildSource() {
   final o = api.Source();
   buildCounterSource++;
   if (buildCounterSource < 3) {
+    o.connectedRepository = buildConnectedRepository();
     o.gitSource = buildGitSource();
     o.repoSource = buildRepoSource();
     o.storageSource = buildStorageSource();
@@ -3300,6 +3338,7 @@ api.Source buildSource() {
 void checkSource(api.Source o) {
   buildCounterSource++;
   if (buildCounterSource < 3) {
+    checkConnectedRepository(o.connectedRepository!);
     checkGitSource(o.gitSource!);
     checkRepoSource(o.repoSource!);
     checkStorageSource(o.storageSource!);
@@ -3325,6 +3364,8 @@ api.SourceProvenance buildSourceProvenance() {
   buildCounterSourceProvenance++;
   if (buildCounterSourceProvenance < 3) {
     o.fileHashes = buildUnnamed55();
+    o.resolvedConnectedRepository = buildConnectedRepository();
+    o.resolvedGitSource = buildGitSource();
     o.resolvedRepoSource = buildRepoSource();
     o.resolvedStorageSource = buildStorageSource();
     o.resolvedStorageSourceManifest = buildStorageSourceManifest();
@@ -3337,6 +3378,8 @@ void checkSourceProvenance(api.SourceProvenance o) {
   buildCounterSourceProvenance++;
   if (buildCounterSourceProvenance < 3) {
     checkUnnamed55(o.fileHashes!);
+    checkConnectedRepository(o.resolvedConnectedRepository!);
+    checkGitSource(o.resolvedGitSource!);
     checkRepoSource(o.resolvedRepoSource!);
     checkStorageSource(o.resolvedStorageSource!);
     checkStorageSourceManifest(o.resolvedStorageSourceManifest!);
@@ -3437,6 +3480,7 @@ api.StorageSource buildStorageSource() {
     o.bucket = 'foo';
     o.generation = 'foo';
     o.object = 'foo';
+    o.sourceFetcher = 'foo';
   }
   buildCounterStorageSource--;
   return o;
@@ -3455,6 +3499,10 @@ void checkStorageSource(api.StorageSource o) {
     );
     unittest.expect(
       o.object!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sourceFetcher!,
       unittest.equals('foo'),
     );
   }
@@ -3995,6 +4043,16 @@ void main() {
       final od = api.CancelOperationRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkCancelOperationRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-ConnectedRepository', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildConnectedRepository();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ConnectedRepository.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkConnectedRepository(od);
     });
   });
 

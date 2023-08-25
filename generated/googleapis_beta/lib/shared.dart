@@ -1323,6 +1323,35 @@ class $SasPortalProvisionDeploymentResponse {
 
 /// Used by:
 ///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalSetupSasAnalyticsRequest
+/// - sasportal:v1alpha1 : SasPortalSetupSasAnalyticsRequest
+class $SasPortalSetupSasAnalyticsRequest {
+  /// User id to setup analytics for, if not provided the user id associated
+  /// with the project is used.
+  ///
+  /// optional
+  ///
+  /// Optional.
+  core.String? userId;
+
+  $SasPortalSetupSasAnalyticsRequest({
+    this.userId,
+  });
+
+  $SasPortalSetupSasAnalyticsRequest.fromJson(core.Map json_)
+      : this(
+          userId: json_.containsKey('userId')
+              ? json_['userId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (userId != null) 'userId': userId!,
+      };
+}
+
+/// Used by:
+///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalTestPermissionsRequest
 /// - sasportal:v1alpha1 : SasPortalTestPermissionsRequest
 class $SasPortalTestPermissionsRequest {

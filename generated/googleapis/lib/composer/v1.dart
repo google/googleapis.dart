@@ -954,8 +954,19 @@ class DatabaseConfig {
   /// Optional.
   core.String? machineType;
 
+  /// The Compute Engine zone where the Airflow database is created.
+  ///
+  /// If zone is provided, it must be in the region selected for the
+  /// environment. If zone is not provided, a zone is automatically selected.
+  /// The zone can only be set during environment creation. Supported for Cloud
+  /// Composer environments in versions composer-2.*.*-airflow-*.*.*.
+  ///
+  /// Optional.
+  core.String? zone;
+
   DatabaseConfig({
     this.machineType,
+    this.zone,
   });
 
   DatabaseConfig.fromJson(core.Map json_)
@@ -963,10 +974,12 @@ class DatabaseConfig {
           machineType: json_.containsKey('machineType')
               ? json_['machineType'] as core.String
               : null,
+          zone: json_.containsKey('zone') ? json_['zone'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (machineType != null) 'machineType': machineType!,
+        if (zone != null) 'zone': zone!,
       };
 }
 
@@ -1049,6 +1062,11 @@ class Environment {
   /// lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
   core.String? name;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// The current state of the environment.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : The state of the environment is unknown.
@@ -1060,6 +1078,11 @@ class Environment {
   /// - "DELETING" : The environment is undergoing deletion. It cannot be used.
   /// - "ERROR" : The environment has encountered an error and cannot be used.
   core.String? state;
+
+  /// Storage configuration for this environment.
+  ///
+  /// Optional.
+  StorageConfig? storageConfig;
 
   /// The time at which this environment was last modified.
   ///
@@ -1078,7 +1101,9 @@ class Environment {
     this.createTime,
     this.labels,
     this.name,
+    this.satisfiesPzs,
     this.state,
+    this.storageConfig,
     this.updateTime,
     this.uuid,
   });
@@ -1101,8 +1126,15 @@ class Environment {
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          storageConfig: json_.containsKey('storageConfig')
+              ? StorageConfig.fromJson(
+                  json_['storageConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -1114,7 +1146,9 @@ class Environment {
         if (createTime != null) 'createTime': createTime!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (state != null) 'state': state!,
+        if (storageConfig != null) 'storageConfig': storageConfig!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (uuid != null) 'uuid': uuid!,
       };
@@ -2254,7 +2288,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -2997,6 +3031,72 @@ class StopAirflowCommandResponse {
       };
 }
 
+/// The configuration for data storage in the environment.
+class StorageConfig {
+  /// The name of the Cloud Storage bucket used by the environment.
+  ///
+  /// No `gs://` prefix.
+  ///
+  /// Optional.
+  core.String? bucket;
+
+  StorageConfig({
+    this.bucket,
+  });
+
+  StorageConfig.fromJson(core.Map json_)
+      : this(
+          bucket: json_.containsKey('bucket')
+              ? json_['bucket'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bucket != null) 'bucket': bucket!,
+      };
+}
+
+/// Configuration for resources used by Airflow triggerers.
+class TriggererResource {
+  /// The number of triggerers.
+  ///
+  /// Optional.
+  core.int? count;
+
+  /// CPU request and limit for a single Airflow triggerer replica.
+  ///
+  /// Optional.
+  core.double? cpu;
+
+  /// Memory (GB) request and limit for a single Airflow triggerer replica.
+  ///
+  /// Optional.
+  core.double? memoryGb;
+
+  TriggererResource({
+    this.count,
+    this.cpu,
+    this.memoryGb,
+  });
+
+  TriggererResource.fromJson(core.Map json_)
+      : this(
+          count: json_.containsKey('count') ? json_['count'] as core.int : null,
+          cpu: json_.containsKey('cpu')
+              ? (json_['cpu'] as core.num).toDouble()
+              : null,
+          memoryGb: json_.containsKey('memoryGb')
+              ? (json_['memoryGb'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (count != null) 'count': count!,
+        if (cpu != null) 'cpu': cpu!,
+        if (memoryGb != null) 'memoryGb': memoryGb!,
+      };
+}
+
 /// The configuration settings for the Airflow web server App Engine instance.
 ///
 /// Supported for Cloud Composer environments in versions
@@ -3169,6 +3269,11 @@ class WorkloadsConfig {
   /// Optional.
   SchedulerResource? scheduler;
 
+  /// Resources used by Airflow triggerers.
+  ///
+  /// Optional.
+  TriggererResource? triggerer;
+
   /// Resources used by Airflow web server.
   ///
   /// Optional.
@@ -3181,6 +3286,7 @@ class WorkloadsConfig {
 
   WorkloadsConfig({
     this.scheduler,
+    this.triggerer,
     this.webServer,
     this.worker,
   });
@@ -3190,6 +3296,10 @@ class WorkloadsConfig {
           scheduler: json_.containsKey('scheduler')
               ? SchedulerResource.fromJson(
                   json_['scheduler'] as core.Map<core.String, core.dynamic>)
+              : null,
+          triggerer: json_.containsKey('triggerer')
+              ? TriggererResource.fromJson(
+                  json_['triggerer'] as core.Map<core.String, core.dynamic>)
               : null,
           webServer: json_.containsKey('webServer')
               ? WebServerResource.fromJson(
@@ -3203,6 +3313,7 @@ class WorkloadsConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (scheduler != null) 'scheduler': scheduler!,
+        if (triggerer != null) 'triggerer': triggerer!,
         if (webServer != null) 'webServer': webServer!,
         if (worker != null) 'worker': worker!,
       };

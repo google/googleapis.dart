@@ -24,6 +24,8 @@
 ///   - [FoldersAssetsResource]
 ///   - [FoldersBigQueryExportsResource]
 ///   - [FoldersFindingsResource]
+///   - [FoldersLocationsResource]
+///     - [FoldersLocationsMuteConfigsResource]
 ///   - [FoldersMuteConfigsResource]
 ///   - [FoldersNotificationConfigsResource]
 ///   - [FoldersSecurityHealthAnalyticsSettingsResource]
@@ -38,6 +40,8 @@
 ///   - [OrganizationsEventThreatDetectionSettingsResource]
 ///     - [OrganizationsEventThreatDetectionSettingsCustomModulesResource]
 ///   - [OrganizationsFindingsResource]
+///   - [OrganizationsLocationsResource]
+///     - [OrganizationsLocationsMuteConfigsResource]
 ///   - [OrganizationsMuteConfigsResource]
 ///   - [OrganizationsNotificationConfigsResource]
 ///   - [OrganizationsOperationsResource]
@@ -60,6 +64,8 @@
 ///   - [ProjectsAssetsResource]
 ///   - [ProjectsBigQueryExportsResource]
 ///   - [ProjectsFindingsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsMuteConfigsResource]
 ///   - [ProjectsMuteConfigsResource]
 ///   - [ProjectsNotificationConfigsResource]
 ///   - [ProjectsSecurityHealthAnalyticsSettingsResource]
@@ -111,6 +117,8 @@ class FoldersResource {
   FoldersBigQueryExportsResource get bigQueryExports =>
       FoldersBigQueryExportsResource(_requester);
   FoldersFindingsResource get findings => FoldersFindingsResource(_requester);
+  FoldersLocationsResource get locations =>
+      FoldersLocationsResource(_requester);
   FoldersMuteConfigsResource get muteConfigs =>
       FoldersMuteConfigsResource(_requester);
   FoldersNotificationConfigsResource get notificationConfigs =>
@@ -670,6 +678,160 @@ class FoldersFindingsResource {
   }
 }
 
+class FoldersLocationsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsMuteConfigsResource get muteConfigs =>
+      FoldersLocationsMuteConfigsResource(_requester);
+
+  FoldersLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class FoldersLocationsMuteConfigsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsMuteConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes an existing mute config.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the mute config to delete. Its format is
+  /// organizations/{organization}/muteConfigs/{config_id},
+  /// folders/{folder}/muteConfigs/{config_id},
+  /// projects/{project}/muteConfigs/{config_id},
+  /// organizations/{organization}/locations/global/muteConfigs/{config_id},
+  /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
+  /// projects/{project}/locations/global/muteConfigs/{config_id}.
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a mute config.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the mute config to retrieve. Its format is
+  /// organizations/{organization}/muteConfigs/{config_id},
+  /// folders/{folder}/muteConfigs/{config_id},
+  /// projects/{project}/muteConfigs/{config_id},
+  /// organizations/{organization}/locations/global/muteConfigs/{config_id},
+  /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
+  /// projects/{project}/locations/global/muteConfigs/{config_id}.
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudSecuritycenterV1MuteConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1MuteConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a mute config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - This field will be ignored if provided on config creation. Format
+  /// "organizations/{organization}/muteConfigs/{mute_config}"
+  /// "folders/{folder}/muteConfigs/{mute_config}"
+  /// "projects/{project}/muteConfigs/{mute_config}"
+  /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
+  /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
+  /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to be updated. If empty all mutable
+  /// fields will be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudSecuritycenterV1MuteConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1MuteConfig> patch(
+    GoogleCloudSecuritycenterV1MuteConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class FoldersMuteConfigsResource {
   final commons.ApiRequester _requester;
 
@@ -731,8 +893,11 @@ class FoldersMuteConfigsResource {
   ///
   /// [name] - Required. Name of the mute config to delete. Its format is
   /// organizations/{organization}/muteConfigs/{config_id},
-  /// folders/{folder}/muteConfigs/{config_id}, or
-  /// projects/{project}/muteConfigs/{config_id}
+  /// folders/{folder}/muteConfigs/{config_id},
+  /// projects/{project}/muteConfigs/{config_id},
+  /// organizations/{organization}/locations/global/muteConfigs/{config_id},
+  /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
+  /// projects/{project}/locations/global/muteConfigs/{config_id}.
   /// Value must have pattern `^folders/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -769,8 +934,11 @@ class FoldersMuteConfigsResource {
   ///
   /// [name] - Required. Name of the mute config to retrieve. Its format is
   /// organizations/{organization}/muteConfigs/{config_id},
-  /// folders/{folder}/muteConfigs/{config_id}, or
-  /// projects/{project}/muteConfigs/{config_id}
+  /// folders/{folder}/muteConfigs/{config_id},
+  /// projects/{project}/muteConfigs/{config_id},
+  /// organizations/{organization}/locations/global/muteConfigs/{config_id},
+  /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
+  /// projects/{project}/locations/global/muteConfigs/{config_id}.
   /// Value must have pattern `^folders/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -864,6 +1032,9 @@ class FoldersMuteConfigsResource {
   /// "organizations/{organization}/muteConfigs/{mute_config}"
   /// "folders/{folder}/muteConfigs/{mute_config}"
   /// "projects/{project}/muteConfigs/{mute_config}"
+  /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
+  /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
+  /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
   /// Value must have pattern `^folders/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
   /// [updateMask] - The list of fields to be updated. If empty all mutable
@@ -1473,6 +1644,52 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
     );
     return GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
         .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Simulates a given SecurityHealthAnalyticsCustomModule and Resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The relative resource name of the organization,
+  /// project, or folder. See:
+  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
+  /// An example is: "organizations/{organization_id}".
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/securityHealthAnalyticsSettings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SimulateSecurityHealthAnalyticsCustomModuleResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SimulateSecurityHealthAnalyticsCustomModuleResponse> simulate(
+    SimulateSecurityHealthAnalyticsCustomModuleRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/customModules:simulate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SimulateSecurityHealthAnalyticsCustomModuleResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2121,6 +2338,8 @@ class OrganizationsResource {
           OrganizationsEventThreatDetectionSettingsResource(_requester);
   OrganizationsFindingsResource get findings =>
       OrganizationsFindingsResource(_requester);
+  OrganizationsLocationsResource get locations =>
+      OrganizationsLocationsResource(_requester);
   OrganizationsMuteConfigsResource get muteConfigs =>
       OrganizationsMuteConfigsResource(_requester);
   OrganizationsNotificationConfigsResource get notificationConfigs =>
@@ -3114,6 +3333,161 @@ class OrganizationsFindingsResource {
   }
 }
 
+class OrganizationsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsMuteConfigsResource get muteConfigs =>
+      OrganizationsLocationsMuteConfigsResource(_requester);
+
+  OrganizationsLocationsResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class OrganizationsLocationsMuteConfigsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsMuteConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes an existing mute config.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the mute config to delete. Its format is
+  /// organizations/{organization}/muteConfigs/{config_id},
+  /// folders/{folder}/muteConfigs/{config_id},
+  /// projects/{project}/muteConfigs/{config_id},
+  /// organizations/{organization}/locations/global/muteConfigs/{config_id},
+  /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
+  /// projects/{project}/locations/global/muteConfigs/{config_id}.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a mute config.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the mute config to retrieve. Its format is
+  /// organizations/{organization}/muteConfigs/{config_id},
+  /// folders/{folder}/muteConfigs/{config_id},
+  /// projects/{project}/muteConfigs/{config_id},
+  /// organizations/{organization}/locations/global/muteConfigs/{config_id},
+  /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
+  /// projects/{project}/locations/global/muteConfigs/{config_id}.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudSecuritycenterV1MuteConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1MuteConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a mute config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - This field will be ignored if provided on config creation. Format
+  /// "organizations/{organization}/muteConfigs/{mute_config}"
+  /// "folders/{folder}/muteConfigs/{mute_config}"
+  /// "projects/{project}/muteConfigs/{mute_config}"
+  /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
+  /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
+  /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to be updated. If empty all mutable
+  /// fields will be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudSecuritycenterV1MuteConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1MuteConfig> patch(
+    GoogleCloudSecuritycenterV1MuteConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class OrganizationsMuteConfigsResource {
   final commons.ApiRequester _requester;
 
@@ -3176,8 +3550,11 @@ class OrganizationsMuteConfigsResource {
   ///
   /// [name] - Required. Name of the mute config to delete. Its format is
   /// organizations/{organization}/muteConfigs/{config_id},
-  /// folders/{folder}/muteConfigs/{config_id}, or
-  /// projects/{project}/muteConfigs/{config_id}
+  /// folders/{folder}/muteConfigs/{config_id},
+  /// projects/{project}/muteConfigs/{config_id},
+  /// organizations/{organization}/locations/global/muteConfigs/{config_id},
+  /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
+  /// projects/{project}/locations/global/muteConfigs/{config_id}.
   /// Value must have pattern `^organizations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3214,8 +3591,11 @@ class OrganizationsMuteConfigsResource {
   ///
   /// [name] - Required. Name of the mute config to retrieve. Its format is
   /// organizations/{organization}/muteConfigs/{config_id},
-  /// folders/{folder}/muteConfigs/{config_id}, or
-  /// projects/{project}/muteConfigs/{config_id}
+  /// folders/{folder}/muteConfigs/{config_id},
+  /// projects/{project}/muteConfigs/{config_id},
+  /// organizations/{organization}/locations/global/muteConfigs/{config_id},
+  /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
+  /// projects/{project}/locations/global/muteConfigs/{config_id}.
   /// Value must have pattern `^organizations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3309,6 +3689,9 @@ class OrganizationsMuteConfigsResource {
   /// "organizations/{organization}/muteConfigs/{mute_config}"
   /// "folders/{folder}/muteConfigs/{mute_config}"
   /// "projects/{project}/muteConfigs/{mute_config}"
+  /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
+  /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
+  /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
   /// Value must have pattern `^organizations/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
   /// [updateMask] - The list of fields to be updated. If empty all mutable
@@ -4328,6 +4711,52 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
     );
     return GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
         .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Simulates a given SecurityHealthAnalyticsCustomModule and Resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The relative resource name of the organization,
+  /// project, or folder. See:
+  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
+  /// An example is: "organizations/{organization_id}".
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SimulateSecurityHealthAnalyticsCustomModuleResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SimulateSecurityHealthAnalyticsCustomModuleResponse> simulate(
+    SimulateSecurityHealthAnalyticsCustomModuleRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/customModules:simulate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SimulateSecurityHealthAnalyticsCustomModuleResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5677,6 +6106,8 @@ class ProjectsResource {
   ProjectsBigQueryExportsResource get bigQueryExports =>
       ProjectsBigQueryExportsResource(_requester);
   ProjectsFindingsResource get findings => ProjectsFindingsResource(_requester);
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
   ProjectsMuteConfigsResource get muteConfigs =>
       ProjectsMuteConfigsResource(_requester);
   ProjectsNotificationConfigsResource get notificationConfigs =>
@@ -6236,6 +6667,160 @@ class ProjectsFindingsResource {
   }
 }
 
+class ProjectsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsMuteConfigsResource get muteConfigs =>
+      ProjectsLocationsMuteConfigsResource(_requester);
+
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsMuteConfigsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsMuteConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes an existing mute config.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the mute config to delete. Its format is
+  /// organizations/{organization}/muteConfigs/{config_id},
+  /// folders/{folder}/muteConfigs/{config_id},
+  /// projects/{project}/muteConfigs/{config_id},
+  /// organizations/{organization}/locations/global/muteConfigs/{config_id},
+  /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
+  /// projects/{project}/locations/global/muteConfigs/{config_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a mute config.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the mute config to retrieve. Its format is
+  /// organizations/{organization}/muteConfigs/{config_id},
+  /// folders/{folder}/muteConfigs/{config_id},
+  /// projects/{project}/muteConfigs/{config_id},
+  /// organizations/{organization}/locations/global/muteConfigs/{config_id},
+  /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
+  /// projects/{project}/locations/global/muteConfigs/{config_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudSecuritycenterV1MuteConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1MuteConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a mute config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - This field will be ignored if provided on config creation. Format
+  /// "organizations/{organization}/muteConfigs/{mute_config}"
+  /// "folders/{folder}/muteConfigs/{mute_config}"
+  /// "projects/{project}/muteConfigs/{mute_config}"
+  /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
+  /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
+  /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/muteConfigs/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to be updated. If empty all mutable
+  /// fields will be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudSecuritycenterV1MuteConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudSecuritycenterV1MuteConfig> patch(
+    GoogleCloudSecuritycenterV1MuteConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudSecuritycenterV1MuteConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsMuteConfigsResource {
   final commons.ApiRequester _requester;
 
@@ -6298,8 +6883,11 @@ class ProjectsMuteConfigsResource {
   ///
   /// [name] - Required. Name of the mute config to delete. Its format is
   /// organizations/{organization}/muteConfigs/{config_id},
-  /// folders/{folder}/muteConfigs/{config_id}, or
-  /// projects/{project}/muteConfigs/{config_id}
+  /// folders/{folder}/muteConfigs/{config_id},
+  /// projects/{project}/muteConfigs/{config_id},
+  /// organizations/{organization}/locations/global/muteConfigs/{config_id},
+  /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
+  /// projects/{project}/locations/global/muteConfigs/{config_id}.
   /// Value must have pattern `^projects/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6336,8 +6924,11 @@ class ProjectsMuteConfigsResource {
   ///
   /// [name] - Required. Name of the mute config to retrieve. Its format is
   /// organizations/{organization}/muteConfigs/{config_id},
-  /// folders/{folder}/muteConfigs/{config_id}, or
-  /// projects/{project}/muteConfigs/{config_id}
+  /// folders/{folder}/muteConfigs/{config_id},
+  /// projects/{project}/muteConfigs/{config_id},
+  /// organizations/{organization}/locations/global/muteConfigs/{config_id},
+  /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
+  /// projects/{project}/locations/global/muteConfigs/{config_id}.
   /// Value must have pattern `^projects/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6431,6 +7022,9 @@ class ProjectsMuteConfigsResource {
   /// "organizations/{organization}/muteConfigs/{mute_config}"
   /// "folders/{folder}/muteConfigs/{mute_config}"
   /// "projects/{project}/muteConfigs/{mute_config}"
+  /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
+  /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
+  /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
   /// Value must have pattern `^projects/\[^/\]+/muteConfigs/\[^/\]+$`.
   ///
   /// [updateMask] - The list of fields to be updated. If empty all mutable
@@ -7040,6 +7634,52 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
     );
     return GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule
         .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Simulates a given SecurityHealthAnalyticsCustomModule and Resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The relative resource name of the organization,
+  /// project, or folder. See:
+  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
+  /// An example is: "organizations/{organization_id}".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/securityHealthAnalyticsSettings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SimulateSecurityHealthAnalyticsCustomModuleResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SimulateSecurityHealthAnalyticsCustomModuleResponse> simulate(
+    SimulateSecurityHealthAnalyticsCustomModuleRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/customModules:simulate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SimulateSecurityHealthAnalyticsCustomModuleResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8244,7 +8884,7 @@ class AttackPathNode {
   core.String? resource;
 
   /// The
-  /// [supported resource type](http://cloud/asset-inventory/docs/supported-asset-types")
+  /// [supported resource type](https://cloud.google.com/asset-inventory/docs/supported-asset-types")
   core.String? resourceType;
 
   /// Unique id of the attack path node.
@@ -9534,9 +10174,13 @@ class Exfiltration {
   /// the "joined" source data.
   core.List<ExfilResource>? targets;
 
+  /// Total exfiltrated bytes processed for the entire job.
+  core.String? totalExfiltratedBytes;
+
   Exfiltration({
     this.sources,
     this.targets,
+    this.totalExfiltratedBytes,
   });
 
   Exfiltration.fromJson(core.Map json_)
@@ -9553,11 +10197,16 @@ class Exfiltration {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          totalExfiltratedBytes: json_.containsKey('totalExfiltratedBytes')
+              ? json_['totalExfiltratedBytes'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sources != null) 'sources': sources!,
         if (targets != null) 'targets': targets!,
+        if (totalExfiltratedBytes != null)
+          'totalExfiltratedBytes': totalExfiltratedBytes!,
       };
 }
 
@@ -9757,6 +10406,8 @@ class Finding {
   /// - "OBSERVATION" : Describes a security observation that is for
   /// informational purposes.
   /// - "SCC_ERROR" : Describes an error that prevents some SCC functionality.
+  /// - "POSTURE_VIOLATION" : Describes a potential security risk due to a
+  /// change in the security posture.
   core.String? findingClass;
 
   /// Represents IAM bindings associated with the finding.
@@ -9776,6 +10427,9 @@ class Finding {
 
   /// Kubernetes resources associated with the finding.
   Kubernetes? kubernetes;
+
+  /// The load balancers associated with the finding.
+  core.List<LoadBalancer>? loadBalancers;
 
   /// MITRE ATT&CK tactics and techniques related to this finding.
   ///
@@ -9823,6 +10477,9 @@ class Finding {
   /// Steps to address the finding.
   core.String? nextSteps;
 
+  /// Contains information about the org policies associated with the finding.
+  core.List<OrgPolicy>? orgPolicies;
+
   /// The relative resource name of the source the finding belongs to.
   ///
   /// See:
@@ -9857,6 +10514,9 @@ class Finding {
   ///
   /// Output only.
   SecurityMarks? securityMarks;
+
+  /// The security posture associated with the finding.
+  SecurityPosture? securityPosture;
 
   /// The severity of the finding.
   ///
@@ -9950,6 +10610,7 @@ class Finding {
     this.indicator,
     this.kernelRootkit,
     this.kubernetes,
+    this.loadBalancers,
     this.mitreAttack,
     this.moduleName,
     this.mute,
@@ -9957,11 +10618,13 @@ class Finding {
     this.muteUpdateTime,
     this.name,
     this.nextSteps,
+    this.orgPolicies,
     this.parent,
     this.parentDisplayName,
     this.processes,
     this.resourceName,
     this.securityMarks,
+    this.securityPosture,
     this.severity,
     this.sourceProperties,
     this.state,
@@ -10077,6 +10740,12 @@ class Finding {
               ? Kubernetes.fromJson(
                   json_['kubernetes'] as core.Map<core.String, core.dynamic>)
               : null,
+          loadBalancers: json_.containsKey('loadBalancers')
+              ? (json_['loadBalancers'] as core.List)
+                  .map((value) => LoadBalancer.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           mitreAttack: json_.containsKey('mitreAttack')
               ? MitreAttack.fromJson(
                   json_['mitreAttack'] as core.Map<core.String, core.dynamic>)
@@ -10094,6 +10763,12 @@ class Finding {
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           nextSteps: json_.containsKey('nextSteps')
               ? json_['nextSteps'] as core.String
+              : null,
+          orgPolicies: json_.containsKey('orgPolicies')
+              ? (json_['orgPolicies'] as core.List)
+                  .map((value) => OrgPolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           parent: json_.containsKey('parent')
               ? json_['parent'] as core.String
@@ -10113,6 +10788,10 @@ class Finding {
           securityMarks: json_.containsKey('securityMarks')
               ? SecurityMarks.fromJson(
                   json_['securityMarks'] as core.Map<core.String, core.dynamic>)
+              : null,
+          securityPosture: json_.containsKey('securityPosture')
+              ? SecurityPosture.fromJson(json_['securityPosture']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           severity: json_.containsKey('severity')
               ? json_['severity'] as core.String
@@ -10154,6 +10833,7 @@ class Finding {
         if (indicator != null) 'indicator': indicator!,
         if (kernelRootkit != null) 'kernelRootkit': kernelRootkit!,
         if (kubernetes != null) 'kubernetes': kubernetes!,
+        if (loadBalancers != null) 'loadBalancers': loadBalancers!,
         if (mitreAttack != null) 'mitreAttack': mitreAttack!,
         if (moduleName != null) 'moduleName': moduleName!,
         if (mute != null) 'mute': mute!,
@@ -10161,11 +10841,13 @@ class Finding {
         if (muteUpdateTime != null) 'muteUpdateTime': muteUpdateTime!,
         if (name != null) 'name': name!,
         if (nextSteps != null) 'nextSteps': nextSteps!,
+        if (orgPolicies != null) 'orgPolicies': orgPolicies!,
         if (parent != null) 'parent': parent!,
         if (parentDisplayName != null) 'parentDisplayName': parentDisplayName!,
         if (processes != null) 'processes': processes!,
         if (resourceName != null) 'resourceName': resourceName!,
         if (securityMarks != null) 'securityMarks': securityMarks!,
+        if (securityPosture != null) 'securityPosture': securityPosture!,
         if (severity != null) 'severity': severity!,
         if (sourceProperties != null) 'sourceProperties': sourceProperties!,
         if (state != null) 'state': state!,
@@ -10618,11 +11300,12 @@ class GoogleCloudSecuritycenterV1ExternalSystem {
   /// References primary/secondary etc assignees in the external system.
   core.List<core.String>? assignees;
 
-  /// The most recent time when the corresponding finding's ticket/tracker was
-  /// updated in the external system.
+  /// The time when the case was last updated, as reported by the external
+  /// system.
   core.String? externalSystemUpdateTime;
 
-  /// Identifier that's used to track the given finding in the external system.
+  /// The identifier that's used to track the finding's corresponding case in
+  /// the external system.
   core.String? externalUid;
 
   /// Full resource name of the external system, for example:
@@ -10631,8 +11314,8 @@ class GoogleCloudSecuritycenterV1ExternalSystem {
   /// "projects/1234/sources/5678/findings/123456/externalSystems/jira"
   core.String? name;
 
-  /// Most recent status of the corresponding finding's ticket/tracker in the
-  /// external system.
+  /// The most recent status of the finding's corresponding case, as reported by
+  /// the external system.
   core.String? status;
 
   GoogleCloudSecuritycenterV1ExternalSystem({
@@ -10723,6 +11406,9 @@ class GoogleCloudSecuritycenterV1MuteConfig {
   /// Format "organizations/{organization}/muteConfigs/{mute_config}"
   /// "folders/{folder}/muteConfigs/{mute_config}"
   /// "projects/{project}/muteConfigs/{mute_config}"
+  /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
+  /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
+  /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
   core.String? name;
 
   /// The most recent time at which the mute config was updated.
@@ -10831,10 +11517,10 @@ class GoogleCloudSecuritycenterV1ResourceSelector {
       };
 }
 
-/// A resource value config is a mapping configuration of user's tag values to
-/// resource values.
+/// A resource value config (RVC) is a mapping configuration of user's resources
+/// to resource values.
 ///
-/// Used by the attack path simulation.
+/// Used in Attack path simulations.
 class GoogleCloudSecuritycenterV1ResourceValueConfig {
   /// Timestamp this resource value config was created.
   ///
@@ -11722,6 +12408,9 @@ class Kubernetes {
   /// information.
   core.List<Node>? nodes;
 
+  /// Kubernetes objects related to the finding.
+  core.List<Object>? objects;
+
   /// Kubernetes
   /// [Pods](https://cloud.google.com/kubernetes-engine/docs/concepts/pod)
   /// associated with the finding.
@@ -11738,6 +12427,7 @@ class Kubernetes {
     this.bindings,
     this.nodePools,
     this.nodes,
+    this.objects,
     this.pods,
     this.roles,
   });
@@ -11768,6 +12458,12 @@ class Kubernetes {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          objects: json_.containsKey('objects')
+              ? (json_['objects'] as core.List)
+                  .map((value) => Object.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           pods: json_.containsKey('pods')
               ? (json_['pods'] as core.List)
                   .map((value) => Pod.fromJson(
@@ -11787,6 +12483,7 @@ class Kubernetes {
         if (bindings != null) 'bindings': bindings!,
         if (nodePools != null) 'nodePools': nodePools!,
         if (nodes != null) 'nodes': nodes!,
+        if (objects != null) 'objects': objects!,
         if (pods != null) 'pods': pods!,
         if (roles != null) 'roles': roles!,
       };
@@ -12450,6 +13147,26 @@ class ListValuedResourcesResponse {
       };
 }
 
+/// Contains information related to the load balancer associated with the
+/// finding.
+class LoadBalancer {
+  /// The name of the load balancer associated with the finding.
+  core.String? name;
+
+  LoadBalancer({
+    this.name,
+  });
+
+  LoadBalancer.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
 /// A signature corresponding to memory page hashes.
 class MemoryHashSignature {
   /// The binary family.
@@ -12689,6 +13406,54 @@ class NotificationConfig {
       };
 }
 
+/// Kubernetes object related to the finding, uniquely identified by GKNN.
+///
+/// Used if the object Kind is not one of Pod, Node, NodePool, Binding, or
+/// AccessReview.
+class Object {
+  /// Kubernetes object group, such as "policy.k8s.io/v1".
+  core.String? group;
+
+  /// Kubernetes object kind, such as “Namespace”.
+  core.String? kind;
+
+  /// Kubernetes object name.
+  ///
+  /// For details see
+  /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/.
+  core.String? name;
+
+  /// Kubernetes object namespace.
+  ///
+  /// Must be a valid DNS label. Named "ns" to avoid collision with C++
+  /// namespace keyword. For details see
+  /// https://kubernetes.io/docs/tasks/administer-cluster/namespaces/.
+  core.String? ns;
+
+  Object({
+    this.group,
+    this.kind,
+    this.name,
+    this.ns,
+  });
+
+  Object.fromJson(core.Map json_)
+      : this(
+          group:
+              json_.containsKey('group') ? json_['group'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          ns: json_.containsKey('ns') ? json_['ns'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (group != null) 'group': group!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (ns != null) 'ns': ns!,
+      };
+}
+
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
@@ -12719,7 +13484,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -12762,6 +13527,27 @@ class Operation {
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (response != null) 'response': response!,
+      };
+}
+
+/// Contains information about the org policies associated with the finding.
+class OrgPolicy {
+  /// The resource name of the org policy.
+  ///
+  /// Example: "organizations/{organization_id}/policies/{constraint_name}"
+  core.String? name;
+
+  OrgPolicy({
+    this.name,
+  });
+
+  OrgPolicy.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
@@ -12912,23 +13698,23 @@ class Pod {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -13533,6 +14319,67 @@ class SecurityMarks {
       };
 }
 
+/// Represents a posture that is deployed on Google Cloud by the Security
+/// Command Center Posture Management service.
+///
+/// A posture contains one or more policy sets. A policy set is a group of
+/// policies that enforce a set of security rules on Google Cloud.
+class SecurityPosture {
+  /// The name of the policy that has been updated, for example,
+  /// `projects/{project_id}/policies/{constraint_name}`.
+  core.String? changedPolicy;
+
+  /// Name of the posture, for example,
+  /// `organizations/{org_id}/locations/{location}/postures/{posture_name}`.
+  core.String? name;
+
+  /// The name of the posture deployment, for example,
+  /// `projects/{project_id}/posturedeployments/{posture_deployment_id}`.
+  core.String? postureDeployment;
+
+  /// The project, folder, or organization on which the posture is deployed, for
+  /// example, `projects/{project_id}`.
+  core.String? postureDeploymentResource;
+
+  /// The version of the posture, for example, `c7cfa2a8`.
+  core.String? revisionId;
+
+  SecurityPosture({
+    this.changedPolicy,
+    this.name,
+    this.postureDeployment,
+    this.postureDeploymentResource,
+    this.revisionId,
+  });
+
+  SecurityPosture.fromJson(core.Map json_)
+      : this(
+          changedPolicy: json_.containsKey('changedPolicy')
+              ? json_['changedPolicy'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          postureDeployment: json_.containsKey('postureDeployment')
+              ? json_['postureDeployment'] as core.String
+              : null,
+          postureDeploymentResource:
+              json_.containsKey('postureDeploymentResource')
+                  ? json_['postureDeploymentResource'] as core.String
+                  : null,
+          revisionId: json_.containsKey('revisionId')
+              ? json_['revisionId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (changedPolicy != null) 'changedPolicy': changedPolicy!,
+        if (name != null) 'name': name!,
+        if (postureDeployment != null) 'postureDeployment': postureDeployment!,
+        if (postureDeploymentResource != null)
+          'postureDeploymentResource': postureDeploymentResource!,
+        if (revisionId != null) 'revisionId': revisionId!,
+      };
+}
+
 /// Identity delegation history of an authenticated service account.
 class ServiceAccountDelegationInfo {
   /// The email address of a Google account.
@@ -13670,6 +14517,159 @@ class SetMuteRequest {
       };
 }
 
+/// Request message to simulate a CustomConfig against a given test resource.
+///
+/// Maximum size of the request is 4 MB by default.
+class SimulateSecurityHealthAnalyticsCustomModuleRequest {
+  /// The user specified custom configuration to test.
+  ///
+  /// Required.
+  GoogleCloudSecuritycenterV1CustomConfig? customConfig;
+
+  /// Resource data to simulate custom module against.
+  ///
+  /// Required.
+  SimulatedResource? resource;
+
+  SimulateSecurityHealthAnalyticsCustomModuleRequest({
+    this.customConfig,
+    this.resource,
+  });
+
+  SimulateSecurityHealthAnalyticsCustomModuleRequest.fromJson(core.Map json_)
+      : this(
+          customConfig: json_.containsKey('customConfig')
+              ? GoogleCloudSecuritycenterV1CustomConfig.fromJson(
+                  json_['customConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          resource: json_.containsKey('resource')
+              ? SimulatedResource.fromJson(
+                  json_['resource'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customConfig != null) 'customConfig': customConfig!,
+        if (resource != null) 'resource': resource!,
+      };
+}
+
+/// Response message for simulating a SecurityHealthAnalyticsCustomModule
+/// against a given resource.
+class SimulateSecurityHealthAnalyticsCustomModuleResponse {
+  /// Result for test case in the corresponding request.
+  SimulatedResult? result;
+
+  SimulateSecurityHealthAnalyticsCustomModuleResponse({
+    this.result,
+  });
+
+  SimulateSecurityHealthAnalyticsCustomModuleResponse.fromJson(core.Map json_)
+      : this(
+          result: json_.containsKey('result')
+              ? SimulatedResult.fromJson(
+                  json_['result'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (result != null) 'result': result!,
+      };
+}
+
+/// Manually constructed resource.
+///
+/// If the custom module only evaluates against the resource data, the
+/// iam_policy_data field can be omitted, and vice versa.
+class SimulatedResource {
+  /// A representation of the IAM policy.
+  ///
+  /// Optional.
+  Policy? iamPolicyData;
+
+  /// A representation of the GCP resource.
+  ///
+  /// Should match the GCP resource JSON format.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? resourceData;
+
+  /// The type of the resource, e.g. `compute.googleapis.com/Disk`.
+  ///
+  /// Required.
+  core.String? resourceType;
+
+  SimulatedResource({
+    this.iamPolicyData,
+    this.resourceData,
+    this.resourceType,
+  });
+
+  SimulatedResource.fromJson(core.Map json_)
+      : this(
+          iamPolicyData: json_.containsKey('iamPolicyData')
+              ? Policy.fromJson(
+                  json_['iamPolicyData'] as core.Map<core.String, core.dynamic>)
+              : null,
+          resourceData: json_.containsKey('resourceData')
+              ? json_['resourceData'] as core.Map<core.String, core.dynamic>
+              : null,
+          resourceType: json_.containsKey('resourceType')
+              ? json_['resourceType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (iamPolicyData != null) 'iamPolicyData': iamPolicyData!,
+        if (resourceData != null) 'resourceData': resourceData!,
+        if (resourceType != null) 'resourceType': resourceType!,
+      };
+}
+
+/// Possible test result.
+class SimulatedResult {
+  /// Error encountered during the test.
+  Status? error;
+
+  /// Finding that would be published for the test case, if a violation is
+  /// detected.
+  Finding? finding;
+
+  /// Indicates that the test case does not trigger any violation.
+  Empty? noViolation;
+
+  SimulatedResult({
+    this.error,
+    this.finding,
+    this.noViolation,
+  });
+
+  SimulatedResult.fromJson(core.Map json_)
+      : this(
+          error: json_.containsKey('error')
+              ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          finding: json_.containsKey('finding')
+              ? Finding.fromJson(
+                  json_['finding'] as core.Map<core.String, core.dynamic>)
+              : null,
+          noViolation: json_.containsKey('noViolation')
+              ? Empty.fromJson(
+                  json_['noViolation'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (error != null) 'error': error!,
+        if (finding != null) 'finding': finding!,
+        if (noViolation != null) 'noViolation': noViolation!,
+      };
+}
+
 /// Attack path simulation
 class Simulation {
   /// Time simulation was created
@@ -13720,10 +14720,10 @@ class Simulation {
 /// source is like a container of findings that come from the same scanner,
 /// logger, monitor, and other tools.
 class Source {
-  /// The canonical name of the finding.
+  /// The canonical name of the finding source.
   ///
   /// It's either "organizations/{organization_id}/sources/{source_id}",
-  /// "folders/{folder_id}/sources/{source_id}" or
+  /// "folders/{folder_id}/sources/{source_id}", or
   /// "projects/{project_number}/sources/{source_id}", depending on the closest
   /// CRM ancestor of the resource associated with the finding.
   core.String? canonicalName;

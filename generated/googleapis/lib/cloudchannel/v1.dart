@@ -3757,7 +3757,7 @@ class ProductsSkusResource {
 }
 
 /// Request message for CloudChannelService.ActivateEntitlement.
-typedef GoogleCloudChannelV1ActivateEntitlementRequest = $Request01;
+typedef GoogleCloudChannelV1ActivateEntitlementRequest = $Request02;
 
 /// Information needed to create an Admin User for Google Workspace.
 class GoogleCloudChannelV1AdminUser {
@@ -3949,7 +3949,7 @@ class GoogleCloudChannelV1BillingAccountPurchaseInfo {
 }
 
 /// Request message for CloudChannelService.CancelEntitlement.
-typedef GoogleCloudChannelV1CancelEntitlementRequest = $Request01;
+typedef GoogleCloudChannelV1CancelEntitlementRequest = $Request02;
 
 /// Request message for CloudChannelService.ChangeOffer.
 class GoogleCloudChannelV1ChangeOfferRequest {
@@ -4850,9 +4850,9 @@ class GoogleCloudChannelV1Customer {
 
   /// The organization address for the customer.
   ///
-  /// To enforce US laws and embargoes, we require a region and zip code. You
-  /// must provide valid addresses for every customer. To set the customer's
-  /// language, use the Customer-level language code.
+  /// To enforce US laws and embargoes, we require a region, postal code, and
+  /// address lines. You must provide valid addresses for every customer. To set
+  /// the customer's language, use the Customer-level language code.
   ///
   /// Required.
   GoogleTypePostalAddress? orgPostalAddress;
@@ -7662,7 +7662,12 @@ class GoogleCloudChannelV1RepricingConfig {
 
   /// Applies the repricing configuration at the channel partner level.
   ///
-  /// Only ChannelPartnerRepricingConfig supports this value.
+  /// Only ChannelPartnerRepricingConfig supports this value. Deprecated: This
+  /// is no longer supported. Use RepricingConfig.entitlement_granularity
+  /// instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity?
       channelPartnerGranularity;
 
@@ -7765,8 +7770,10 @@ class GoogleCloudChannelV1RepricingConfig {
 /// Applies the repricing configuration at the channel partner level.
 ///
 /// The channel partner value is derived from the resource name. Takes an empty
-/// json object.
-typedef GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity = $Empty;
+/// json object. Deprecated: This is no longer supported. Use
+/// RepricingConfig.EntitlementGranularity instead.
+typedef GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity
+    = $Shared04;
 
 /// Applies the repricing configuration at the entitlement level.
 class GoogleCloudChannelV1RepricingConfigEntitlementGranularity {
@@ -8022,10 +8029,10 @@ class GoogleCloudChannelV1SkuPurchaseGroup {
 }
 
 /// Request message for CloudChannelService.StartPaidService.
-typedef GoogleCloudChannelV1StartPaidServiceRequest = $Request01;
+typedef GoogleCloudChannelV1StartPaidServiceRequest = $Request02;
 
 /// Request message for CloudChannelService.SuspendEntitlement.
-typedef GoogleCloudChannelV1SuspendEntitlementRequest = $Request01;
+typedef GoogleCloudChannelV1SuspendEntitlementRequest = $Request02;
 
 /// Specifies transfer eligibility of a SKU.
 class GoogleCloudChannelV1TransferEligibility {

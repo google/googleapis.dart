@@ -177,6 +177,7 @@ api.AddSubnetworkRequest buildAddSubnetworkRequest() {
     o.consumer = 'foo';
     o.consumerNetwork = 'foo';
     o.description = 'foo';
+    o.internalRange = 'foo';
     o.ipPrefixLength = 42;
     o.outsideAllocationPublicIpRange = 'foo';
     o.privateIpv6GoogleAccess = 'foo';
@@ -213,6 +214,10 @@ void checkAddSubnetworkRequest(api.AddSubnetworkRequest o) {
     );
     unittest.expect(
       o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.internalRange!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1506,6 +1511,25 @@ void checkValidateConsumerConfigResponse(api.ValidateConsumerConfigResponse o) {
   buildCounterValidateConsumerConfigResponse--;
 }
 
+core.int buildCounterVpcServiceControls = 0;
+api.VpcServiceControls buildVpcServiceControls() {
+  final o = api.VpcServiceControls();
+  buildCounterVpcServiceControls++;
+  if (buildCounterVpcServiceControls < 3) {
+    o.enabled = true;
+  }
+  buildCounterVpcServiceControls--;
+  return o;
+}
+
+void checkVpcServiceControls(api.VpcServiceControls o) {
+  buildCounterVpcServiceControls++;
+  if (buildCounterVpcServiceControls < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+  }
+  buildCounterVpcServiceControls--;
+}
+
 void main() {
   unittest.group('obj-schema-AddDnsRecordSetRequest', () {
     unittest.test('to-json--from-json', () async {
@@ -1887,6 +1911,16 @@ void main() {
       final od = api.ValidateConsumerConfigResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkValidateConsumerConfigResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-VpcServiceControls', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildVpcServiceControls();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.VpcServiceControls.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkVpcServiceControls(od);
     });
   });
 
@@ -3158,6 +3192,60 @@ void main() {
       final response = await res.get(arg_name,
           includeUsedIpRanges: arg_includeUsedIpRanges, $fields: arg_$fields);
       checkConsumerConfig(response as api.ConsumerConfig);
+    });
+
+    unittest.test('method--getVpcServiceControls', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.ServiceNetworkingApi(mock).services.projects.global.networks;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildVpcServiceControls());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.getVpcServiceControls(arg_name, $fields: arg_$fields);
+      checkVpcServiceControls(response as api.VpcServiceControls);
     });
 
     unittest.test('method--updateConsumerConfig', () async {

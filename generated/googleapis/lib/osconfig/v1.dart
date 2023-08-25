@@ -2739,9 +2739,6 @@ class OSPolicy {
   /// Length of the description is limited to 1024 characters.
   core.String? description;
 
-  /// OSPolicy fingerprint (checksum)
-  core.String? fingerprint;
-
   /// The id of the OS policy with the following restrictions: * Must contain
   /// only lowercase letters, numbers, and hyphens.
   ///
@@ -2777,7 +2774,6 @@ class OSPolicy {
   OSPolicy({
     this.allowNoResourceGroupMatch,
     this.description,
-    this.fingerprint,
     this.id,
     this.mode,
     this.resourceGroups,
@@ -2791,9 +2787,6 @@ class OSPolicy {
                   : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
-              : null,
-          fingerprint: json_.containsKey('fingerprint')
-              ? json_['fingerprint'] as core.String
               : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
@@ -2809,7 +2802,6 @@ class OSPolicy {
         if (allowNoResourceGroupMatch != null)
           'allowNoResourceGroupMatch': allowNoResourceGroupMatch!,
         if (description != null) 'description': description!,
-        if (fingerprint != null) 'fingerprint': fingerprint!,
         if (id != null) 'id': id!,
         if (mode != null) 'mode': mode!,
         if (resourceGroups != null) 'resourceGroups': resourceGroups!,
@@ -3057,7 +3049,7 @@ class OSPolicyAssignmentInstanceFilter {
 }
 
 /// VM inventory details.
-typedef OSPolicyAssignmentInstanceFilterInventory = $Shared06;
+typedef OSPolicyAssignmentInstanceFilterInventory = $Shared09;
 
 /// Message representing label set.
 ///
@@ -3453,7 +3445,7 @@ class OSPolicyAssignmentRollout {
 }
 
 /// Filtering criteria to select VMs based on inventory details.
-typedef OSPolicyInventoryFilter = $Shared06;
+typedef OSPolicyInventoryFilter = $Shared09;
 
 /// An OS policy resource is used to define the desired state configuration and
 /// provides a specific functionality like installing/removing packages,

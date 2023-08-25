@@ -192,6 +192,33 @@ void checkBinding(api.Binding o) {
   buildCounterBinding--;
 }
 
+core.int buildCounterCmekConfig = 0;
+api.CmekConfig buildCmekConfig() {
+  final o = api.CmekConfig();
+  buildCounterCmekConfig++;
+  if (buildCounterCmekConfig < 3) {
+    o.kmsKey = 'foo';
+    o.name = 'foo';
+  }
+  buildCounterCmekConfig--;
+  return o;
+}
+
+void checkCmekConfig(api.CmekConfig o) {
+  buildCounterCmekConfig++;
+  if (buildCounterCmekConfig < 3) {
+    unittest.expect(
+      o.kmsKey!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCmekConfig--;
+}
+
 core.int buildCounterCreateTaskRequest = 0;
 api.CreateTaskRequest buildCreateTaskRequest() {
   final o = api.CreateTaskRequest();
@@ -1141,6 +1168,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-CmekConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCmekConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.CmekConfig.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkCmekConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-CreateTaskRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCreateTaskRequest();
@@ -1454,6 +1491,58 @@ void main() {
       checkLocation(response as api.Location);
     });
 
+    unittest.test('method--getCmekConfig', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudTasksApi(mock).projects.locations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildCmekConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getCmekConfig(arg_name, $fields: arg_$fields);
+      checkCmekConfig(response as api.CmekConfig);
+    });
+
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.CloudTasksApi(mock).projects.locations;
@@ -1523,6 +1612,69 @@ void main() {
           pageToken: arg_pageToken,
           $fields: arg_$fields);
       checkListLocationsResponse(response as api.ListLocationsResponse);
+    });
+
+    unittest.test('method--updateCmekConfig', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudTasksApi(mock).projects.locations;
+      final arg_request = buildCmekConfig();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.CmekConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCmekConfig(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildCmekConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.updateCmekConfig(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkCmekConfig(response as api.CmekConfig);
     });
   });
 

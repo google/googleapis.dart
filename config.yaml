@@ -27,6 +27,7 @@ packages:
     - adsensehost:v4.1 # https://developers.google.com/adsense/host/
     - advisorynotifications:v1
     - aiplatform:v1
+    - alloydb:v1
     - analytics:v3 # https://developers.google.com/analytics/
     - analyticshub:v1
     - analyticsreporting:v4 # https://developers.google.com/analytics/devguides/reporting/core/v4/
@@ -42,9 +43,11 @@ packages:
     - artifactregistry:v1
     - assuredworkloads:v1
     - authorizedbuyersmarketplace:v1
+    - backupdr:v1
     - baremetalsolution:v2
     - batch:v1
     - beyondcorp:v1
+    - biglake:v1
     - bigquery:v2 # https://developers.google.com/bigquery/
     - bigquerydatatransfer:v1 # https://cloud.google.com/bigquery/transfer/
     - bigqueryreservation:v1
@@ -66,6 +69,7 @@ packages:
     - cloudasset:v1
     - cloudbilling:v1 # https://cloud.google.com/billing/
     - cloudbuild:v1 # https://cloud.google.com/container-builder/docs/
+    - cloudbuild:v2
     - cloudchannel:v1
     - clouddeploy:v1
     - cloudfunctions:v1 # https://cloud.google.com/functions/docs/
@@ -110,6 +114,7 @@ packages:
     - discovery:v1 # https://developers.google.com/discovery/
     - displayvideo:v1
     - displayvideo:v2
+    - displayvideo:v3
     - dlp:v2 # https://cloud.google.com/dlp/
     - dns:v1 # https://cloud.google.com/dns/api/v1/
     - docs:v1
@@ -139,7 +144,6 @@ packages:
     - games:v1 # https://developers.google.com/games/services/
     - gamesConfiguration:v1configuration # https://developers.google.com/games/services/publishing/api/
     - gamesManagement:v1management # https://developers.google.com/games/services/management/api/
-    - gameservices:v1
     - gkebackup:v1
     - gkehub:v1
     - gkeonprem:v1
@@ -164,6 +168,7 @@ packages:
     - kgsearch:v1 # https://developers.google.com/knowledge-graph/
     - kmsinventory:v1
     - language:v1 # https://cloud.google.com/natural-language/
+    - language:v2 # https://cloud.google.com/natural-language/
     - libraryagent:v1 # https://cloud.google.com/docs/quota
     - licensing:v1 # https://developers.google.com/admin-sdk/licensing/v1/how-tos/using
     - localservices:v1
@@ -207,6 +212,7 @@ packages:
     - publicca:v1
     - pubsub:v1 # https://cloud.google.com/pubsub/
     - pubsublite:v1
+    - rapidmigrationassessment:v1
     - readerrevenuesubscriptionlinking:v1
     - realtimebidding:v1
     - recaptchaenterprise:v1
@@ -219,6 +225,7 @@ packages:
     - run:v2
     - runtimeconfig:v1 # https://cloud.google.com/deployment-manager/runtime-configurator/
     - safebrowsing:v4 # https://developers.google.com/safe-browsing/
+    - safebrowsing:v5
     - script:v1 # https://developers.google.com/apps-script/execution/rest/v1/run
     - searchconsole:v1 # https://developers.google.com/webmaster-tools/search-console-api/
     - secretmanager:v1
@@ -249,6 +256,7 @@ packages:
     - tpu:v1 # https://cloud.google.com/tpu/
     - tpu:v2
     - trafficdirector:v2
+    - trafficdirector:v3
     - transcoder:v1
     - translate:v3
     - travelimpactmodel:v1
@@ -259,6 +267,7 @@ packages:
     - videointelligence:v1 # https://cloud.google.com/video-intelligence/
     - vision:v1 # https://cloud.google.com/vision/reference/rest/
     - vmmigration:v1
+    - vmwareengine:v1
     - vpcaccess:v1
     - webfonts:v1 # https://developers.google.com/fonts/docs/developer_api
     - webrisk:v1
@@ -266,6 +275,7 @@ packages:
     - workflowexecutions:v1
     - workflows:v1
     - workloadmanager:v1
+    - workstations:v1
     - youtube:v3 # https://developers.google.com/youtube/
     - youtubeAnalytics:v2 # https://developers.google.com/youtube/analytics/
     - youtubereporting:v1 # https://developers.google.com/youtube/reporting/v1/reports/
@@ -278,7 +288,7 @@ packages:
     changelog: resources/googleapis_beta/CHANGELOG.md
     mono_pkg: resources/googleapis_beta/_mono_pkg.yaml
     extraDevDependencies:
-        lints: ^2.0.0
+        dart_flutter_team_lints: ^2.0.0
     apis:
     - adexchangebuyer2:v2beta1 # https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/
     - alertcenter:v1beta1 # https://developers.google.com/admin-sdk/alertcenter/
@@ -308,12 +318,14 @@ packages:
 additional_apis:
   "firebaseremoteconfig:v1": https://firebaseremoteconfig.googleapis.com/$discovery/rest?version=v1
   "photoslibrary:v1": https://photoslibrary.googleapis.com/$discovery/rest?version=v1
-  "aiplatform": https://aiplatform.googleapis.com/$discovery/rest?version=v1
 
 # APIs that we do not wish to include in this package
 skipped_apis:
 - accesscontextmanager:v1beta
 - admob:v1beta #v1 included
+- aiplatform:v1beta1
+- alloydb:v1alpha
+- alloydb:v1beta
 - analyticsadmin:v1alpha
 - analyticshub:v1beta1
 - apigateway:v1beta # v1 included
@@ -373,7 +385,6 @@ skipped_apis:
 - firebaseml:v1beta2
 - firestore:v1beta1 # v1 included
 - firestore:v1beta2 # v1 included
-- gameservices:v1beta # v1 included
 - gkehub:v1alpha
 - gkehub:v1alpha2
 - gkehub:v1beta
@@ -405,6 +416,7 @@ skipped_apis:
 - oslogin:v1beta # v1 available
 - playdeveloperreporting:v1alpha1
 - playdeveloperreporting:v1beta1
+- playgrouping:v1alpha1
 - policyanalyzer:v1beta1
 - policysimulator:v1alpha
 - policysimulator:v1beta

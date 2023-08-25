@@ -34,7 +34,9 @@ api.AppProfile buildAppProfile() {
     o.etag = 'foo';
     o.multiClusterRoutingUseAny = buildMultiClusterRoutingUseAny();
     o.name = 'foo';
+    o.priority = 'foo';
     o.singleClusterRouting = buildSingleClusterRouting();
+    o.standardIsolation = buildStandardIsolation();
   }
   buildCounterAppProfile--;
   return o;
@@ -56,7 +58,12 @@ void checkAppProfile(api.AppProfile o) {
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.priority!,
+      unittest.equals('foo'),
+    );
     checkSingleClusterRouting(o.singleClusterRouting!);
+    checkStandardIsolation(o.standardIsolation!);
   }
   buildCounterAppProfile--;
 }
@@ -1545,7 +1552,6 @@ api.ModifyColumnFamiliesRequest buildModifyColumnFamiliesRequest() {
   final o = api.ModifyColumnFamiliesRequest();
   buildCounterModifyColumnFamiliesRequest++;
   if (buildCounterModifyColumnFamiliesRequest < 3) {
-    o.ignoreWarnings = true;
     o.modifications = buildUnnamed21();
   }
   buildCounterModifyColumnFamiliesRequest--;
@@ -1555,7 +1561,6 @@ api.ModifyColumnFamiliesRequest buildModifyColumnFamiliesRequest() {
 void checkModifyColumnFamiliesRequest(api.ModifyColumnFamiliesRequest o) {
   buildCounterModifyColumnFamiliesRequest++;
   if (buildCounterModifyColumnFamiliesRequest < 3) {
-    unittest.expect(o.ignoreWarnings!, unittest.isTrue);
     checkUnnamed21(o.modifications!);
   }
   buildCounterModifyColumnFamiliesRequest--;
@@ -1889,6 +1894,28 @@ void checkSplit(api.Split o) {
     );
   }
   buildCounterSplit--;
+}
+
+core.int buildCounterStandardIsolation = 0;
+api.StandardIsolation buildStandardIsolation() {
+  final o = api.StandardIsolation();
+  buildCounterStandardIsolation++;
+  if (buildCounterStandardIsolation < 3) {
+    o.priority = 'foo';
+  }
+  buildCounterStandardIsolation--;
+  return o;
+}
+
+void checkStandardIsolation(api.StandardIsolation o) {
+  buildCounterStandardIsolation++;
+  if (buildCounterStandardIsolation < 3) {
+    unittest.expect(
+      o.priority!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterStandardIsolation--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed27() => {
@@ -2709,6 +2736,16 @@ void main() {
       final od =
           api.Split.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkSplit(od);
+    });
+  });
+
+  unittest.group('obj-schema-StandardIsolation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStandardIsolation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StandardIsolation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkStandardIsolation(od);
     });
   });
 

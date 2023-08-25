@@ -13791,7 +13791,6 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DisplayVideoApi(mock).advertisers;
       final arg_filter = 'foo';
-      final arg_internalDebuggingConfig = 'foo';
       final arg_orderBy = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -13833,10 +13832,6 @@ void main() {
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          queryMap['internalDebuggingConfig']!.first,
-          unittest.equals(arg_internalDebuggingConfig),
-        );
-        unittest.expect(
           queryMap['orderBy']!.first,
           unittest.equals(arg_orderBy),
         );
@@ -13865,7 +13860,6 @@ void main() {
       }), true);
       final response = await res.list(
           filter: arg_filter,
-          internalDebuggingConfig: arg_internalDebuggingConfig,
           orderBy: arg_orderBy,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
@@ -21613,7 +21607,6 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DisplayVideoApi(mock).inventorySources;
       final arg_inventorySourceId = 'foo';
-      final arg_advertiserId = 'foo';
       final arg_partnerId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -21649,10 +21642,6 @@ void main() {
           }
         }
         unittest.expect(
-          queryMap['advertiserId']!.first,
-          unittest.equals(arg_advertiserId),
-        );
-        unittest.expect(
           queryMap['partnerId']!.first,
           unittest.equals(arg_partnerId),
         );
@@ -21668,9 +21657,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_inventorySourceId,
-          advertiserId: arg_advertiserId,
-          partnerId: arg_partnerId,
-          $fields: arg_$fields);
+          partnerId: arg_partnerId, $fields: arg_$fields);
       checkInventorySource(response as api.InventorySource);
     });
 

@@ -251,6 +251,9 @@ class VerifyChallengeResponseRequest {
 
 /// Result message for VerifiedAccess.VerifyChallengeResponse.
 class VerifyChallengeResponseResult {
+  /// Attested device id (ADID) of the device, read from the verified data.
+  core.String? attestedDeviceId;
+
   /// Device enrollment id is returned in this field (for the machine response
   /// only).
   core.String? deviceEnrollmentId;
@@ -279,6 +282,7 @@ class VerifyChallengeResponseResult {
   core.String? verificationOutput;
 
   VerifyChallengeResponseResult({
+    this.attestedDeviceId,
     this.deviceEnrollmentId,
     this.devicePermanentId,
     this.signedPublicKeyAndChallenge,
@@ -287,6 +291,9 @@ class VerifyChallengeResponseResult {
 
   VerifyChallengeResponseResult.fromJson(core.Map json_)
       : this(
+          attestedDeviceId: json_.containsKey('attestedDeviceId')
+              ? json_['attestedDeviceId'] as core.String
+              : null,
           deviceEnrollmentId: json_.containsKey('deviceEnrollmentId')
               ? json_['deviceEnrollmentId'] as core.String
               : null,
@@ -303,6 +310,7 @@ class VerifyChallengeResponseResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (attestedDeviceId != null) 'attestedDeviceId': attestedDeviceId!,
         if (deviceEnrollmentId != null)
           'deviceEnrollmentId': deviceEnrollmentId!,
         if (devicePermanentId != null) 'devicePermanentId': devicePermanentId!,

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230806",
+    "revision": "20231031",
     "rootUrl": "https://androidpublisher.googleapis.com/",
     "servicePath": "",
     "title": "Google Play Android Developer API",
@@ -636,7 +636,7 @@
                                 "accept": [
                                     "application/octet-stream"
                                 ],
-                                "maxSize": "1258291200",
+                                "maxSize": "1677721600",
                                 "protocols": {
                                     "resumable": {
                                         "multipart": true,
@@ -3175,7 +3175,7 @@
         "orders": {
             "methods": {
                 "refund": {
-                    "description": "Refunds a user's subscription or in-app purchase order. Orders older than 1 year cannot be refunded.",
+                    "description": "Refunds a user's subscription or in-app purchase order. Orders older than 3 years cannot be refunded.",
                     "flatPath": "androidpublisher/v3/applications/{packageName}/orders/{orderId}:refund",
                     "httpMethod": "POST",
                     "id": "androidpublisher.orders.refund",
@@ -4064,7 +4064,8 @@
                         "ARMEABI_V7A",
                         "ARM64_V8A",
                         "X86",
-                        "X86_64"
+                        "X86_64",
+                        "RISCV64"
                     ],
                     "enumDescriptions": [
                         "Unspecified abi.",
@@ -4072,7 +4073,8 @@
                         "ARMEABI_V7A abi.",
                         "ARM64_V8A abi.",
                         "X86 abi.",
-                        "X86_64 abi."
+                        "X86_64 abi.",
+                        "RISCV64 abi."
                     ],
                     "type": "string"
                 }
@@ -5873,6 +5875,10 @@
                     ],
                     "type": "string"
                 },
+                "isTokenizedDigitalAsset": {
+                    "description": "Whether this in-app product is declared as a product representing a tokenized digital asset.",
+                    "type": "boolean"
+                },
                 "taxRateInfoByRegionCode": {
                     "additionalProperties": {
                         "$ref": "RegionalTaxRateInfo"
@@ -6388,7 +6394,7 @@
             "id": "RegionalPriceMigrationConfig",
             "properties": {
                 "oldestAllowedPriceVersionTime": {
-                    "description": "Required. The cutoff time for historical prices that subscribers can remain paying. Subscribers who are on a price that was created before this cutoff time will be migrated to the currently-offered price. These subscribers will receive a notification that they will be paying a different price. Subscribers who do not agree to the new price will have their subscription ended at the next renewal.",
+                    "description": "Required. The cutoff time for historical prices that subscribers can remain paying. Subscribers on prices which were available at this cutoff time or later will stay on their existing price. Subscribers on older prices will be migrated to the currently-offered price. The migrated subscribers will receive a notification that they will be paying a different price. Subscribers who do not agree to the new price will have their subscription ended at the next renewal.",
                     "format": "google-datetime",
                     "type": "string"
                 },
@@ -6850,7 +6856,7 @@
             "id": "SubscriptionItemPriceChangeDetails",
             "properties": {
                 "expectedNewPriceChargeTime": {
-                    "description": "The renewal time at which the price change will become effective for the user. This is subject to change(to a future time) due to cases where the renewal time shifts like pause.",
+                    "description": "The renewal time at which the price change will become effective for the user. This is subject to change(to a future time) due to cases where the renewal time shifts like pause. This field is only populated if the price change has not taken effect.",
                     "format": "google-datetime",
                     "type": "string"
                 },
@@ -6863,12 +6869,14 @@
                     "enum": [
                         "PRICE_CHANGE_MODE_UNSPECIFIED",
                         "PRICE_DECREASE",
-                        "PRICE_INCREASE"
+                        "PRICE_INCREASE",
+                        "OPT_OUT_PRICE_INCREASE"
                     ],
                     "enumDescriptions": [
                         "Price change mode unspecified. This value should never be set.",
                         "If the subscription price is decreasing.",
-                        "If the subscription price is increasing and the user needs to accept it."
+                        "If the subscription price is increasing and the user needs to accept it.",
+                        "If the subscription price is increasing with opt out mode."
                     ],
                     "type": "string"
                 },
@@ -7354,12 +7362,35 @@
                     ],
                     "type": "string"
                 },
+                "isTokenizedDigitalAsset": {
+                    "description": "Whether this subscription is declared as a product representing a tokenized digital asset.",
+                    "type": "boolean"
+                },
                 "taxRateInfoByRegionCode": {
                     "additionalProperties": {
                         "$ref": "RegionalTaxRateInfo"
                     },
                     "description": "A mapping from region code to tax rate details. The keys are region codes as defined by Unicode's \"CLDR\".",
                     "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "SystemApkOptions": {
+            "description": "Options for system APKs.",
+            "id": "SystemApkOptions",
+            "properties": {
+                "rotated": {
+                    "description": "Whether to use the rotated key for signing the system APK.",
+                    "type": "boolean"
+                },
+                "uncompressedDexFiles": {
+                    "description": "Whether system APK was generated with uncompressed dex files.",
+                    "type": "boolean"
+                },
+                "uncompressedNativeLibraries": {
+                    "description": "Whether system APK was generated with uncompressed native libraries.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -7658,7 +7689,7 @@
                     "type": "string"
                 },
                 "tracks": {
-                    "description": "All tracks.",
+                    "description": "All tracks (including tracks with no releases).",
                     "items": {
                         "$ref": "Track"
                     },
@@ -7732,9 +7763,29 @@
                             "CAN_VIEW_NON_FINANCIAL_DATA_GLOBAL",
                             "CAN_VIEW_APP_QUALITY_GLOBAL"
                         ],
+                        "enumDeprecated": [
+                            false,
+                            true,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false
+                        ],
                         "enumDescriptions": [
                             "Unknown or unspecified permission.",
-                            "View app information and download bulk reports (read-only).",
+                            "View app information and download bulk reports (read-only). Deprecated: Check CAN_VIEW_NON_FINANCIAL_DATA_GLOBAL.",
                             "View financial data, orders, and cancellation survey responses.",
                             "Admin (all permissions).",
                             "Edit Play Games Services projects.",
@@ -7920,6 +7971,10 @@
                 "deviceSpec": {
                     "$ref": "DeviceSpec",
                     "description": "The device spec used to generate the APK."
+                },
+                "options": {
+                    "$ref": "SystemApkOptions",
+                    "description": "Optional. Options applied to the generated APK."
                 },
                 "variantId": {
                     "description": "Output only. The ID of a previously created system APK variant.",

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230729",
+    "revision": "20231020",
     "rootUrl": "https://cloudasset.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Asset API",
@@ -735,7 +735,7 @@
                             "type": "string"
                         },
                         "filter": {
-                            "description": "The expression to filter AnalyzeOrgPoliciesResponse.org_policy_results. The only supported field is `consolidated_policy.attached_resource`, and the only supported operator is `=`. Example: consolidated_policy.attached_resource=\"//cloudresourcemanager.googleapis.com/folders/001\" will return the org policy results of\"folders/001\".",
+                            "description": "The expression to filter AnalyzeOrgPoliciesResponse.org_policy_results. Filtering is currently available for bare literal values and the following fields: * consolidated_policy.attached_resource * consolidated_policy.rules.enforce When filtering by a specific field, the only supported operator is `=`. For example, filtering by consolidated_policy.attached_resource=\"//cloudresourcemanager.googleapis.com/folders/001\" will return all the Organization Policy results attached to \"folders/001\".",
                             "location": "query",
                             "type": "string"
                         },
@@ -781,7 +781,7 @@
                             "type": "string"
                         },
                         "filter": {
-                            "description": "The expression to filter the governed assets in result. The only supported fields for governed resources are `governed_resource.project` and `governed_resource.folders`. The only supported fields for governed iam policies are `governed_iam_policy.project` and `governed_iam_policy.folders`. The only supported operator is `=`. Example 1: governed_resource.project=\"projects/12345678\" filter will return all governed resources under projects/12345678 including the project ifself, if applicable. Example 2: governed_iam_policy.folders=\"folders/12345678\" filter will return all governed iam policies under folders/12345678, if applicable.",
+                            "description": "The expression to filter AnalyzeOrgPolicyGovernedAssetsResponse.governed_assets. For governed resources, filtering is currently available for bare literal values and the following fields: * governed_resource.project * governed_resource.folders * consolidated_policy.rules.enforce When filtering by `governed_resource.project` or `consolidated_policy.rules.enforce`, the only supported operator is `=`. When filtering by `governed_resource.folders`, the supported operators are `=` and `:`. For example, filtering by `governed_resource.project=\"projects/12345678\"` will return all the governed resources under \"projects/12345678\", including the project itself if applicable. For governed IAM policies, filtering is currently available for bare literal values and the following fields: * governed_iam_policy.project * governed_iam_policy.folders * consolidated_policy.rules.enforce When filtering by `governed_iam_policy.project` or `consolidated_policy.rules.enforce`, the only supported operator is `=`. When filtering by `governed_iam_policy.folders`, the supported operators are `=` and `:`. For example, filtering by `governed_iam_policy.folders:\"folders/12345678\"` will return all the governed IAM policies under \"folders/001\".",
                             "location": "query",
                             "type": "string"
                         },
@@ -827,7 +827,7 @@
                             "type": "string"
                         },
                         "filter": {
-                            "description": "The expression to filter the governed containers in result. The only supported field is `parent`, and the only supported operator is `=`. Example: parent=\"//cloudresourcemanager.googleapis.com/folders/001\" will return all containers under \"folders/001\".",
+                            "description": "The expression to filter AnalyzeOrgPolicyGovernedContainersResponse.governed_containers. Filtering is currently available for bare literal values and the following fields: * parent * consolidated_policy.rules.enforce When filtering by a specific field, the only supported operator is `=`. For example, filtering by parent=\"//cloudresourcemanager.googleapis.com/folders/001\" will return all the containers under \"folders/001\".",
                             "location": "query",
                             "type": "string"
                         },
@@ -1054,7 +1054,7 @@
                             "type": "string"
                         },
                         "orderBy": {
-                            "description": "Optional. A comma-separated list of fields specifying the sorting order of the results. The default order is ascending. Add \" DESC\" after the field name to indicate descending order. Redundant space characters are ignored. Example: \"location DESC, name\". Only singular primitive fields in the response are sortable: * name * assetType * project * displayName * description * location * createTime * updateTime * state * parentFullResourceName * parentAssetType All the other fields such as repeated fields (e.g., `networkTags`, `kmsKeys`), map fields (e.g., `labels`) and struct fields (e.g., `additionalAttributes`) are not supported.",
+                            "description": "Optional. A comma-separated list of fields specifying the sorting order of the results. The default order is ascending. Add \" DESC\" after the field name to indicate descending order. Redundant space characters are ignored. Example: \"location DESC, name\". Only the following fields in the response are sortable: * name * assetType * project * displayName * description * location * createTime * updateTime * state * parentFullResourceName * parentAssetType",
                             "location": "query",
                             "type": "string"
                         },
@@ -1070,12 +1070,12 @@
                             "type": "string"
                         },
                         "query": {
-                            "description": "Optional. The query statement. See [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query) for more information. If not specified or empty, it will search all the resources within the specified `scope`. Examples: * `name:Important` to find Google Cloud resources whose name contains \"Important\" as a word. * `name=Important` to find the Google Cloud resource whose name is exactly \"Important\". * `displayName:Impor*` to find Google Cloud resources whose display name contains \"Impor\" as a prefix of any word in the field. * `location:us-west*` to find Google Cloud resources whose location contains both \"us\" and \"west\" as prefixes. * `labels:prod` to find Google Cloud resources whose labels contain \"prod\" as a key or value. * `labels.env:prod` to find Google Cloud resources that have a label \"env\" and its value is \"prod\". * `labels.env:*` to find Google Cloud resources that have a label \"env\". * `kmsKey:key` to find Google Cloud resources encrypted with a customer-managed encryption key whose name contains \"key\" as a word. This field is deprecated. Please use the `kmsKeys` field to retrieve Cloud KMS key information. * `kmsKeys:key` to find Google Cloud resources encrypted with customer-managed encryption keys whose name contains the word \"key\". * `relationships:instance-group-1` to find Google Cloud resources that have relationships with \"instance-group-1\" in the related resource name. * `relationships:INSTANCE_TO_INSTANCEGROUP` to find Compute Engine instances that have relationships of type \"INSTANCE_TO_INSTANCEGROUP\". * `relationships.INSTANCE_TO_INSTANCEGROUP:instance-group-1` to find Compute Engine instances that have relationships with \"instance-group-1\" in the Compute Engine instance group resource name, for relationship type \"INSTANCE_TO_INSTANCEGROUP\". * `state:ACTIVE` to find Google Cloud resources whose state contains \"ACTIVE\" as a word. * `NOT state:ACTIVE` to find Google Cloud resources whose state doesn't contain \"ACTIVE\" as a word. * `createTime<1609459200` to find Google Cloud resources that were created before \"2021-01-01 00:00:00 UTC\". 1609459200 is the epoch timestamp of \"2021-01-01 00:00:00 UTC\" in seconds. * `updateTime>1609459200` to find Google Cloud resources that were updated after \"2021-01-01 00:00:00 UTC\". 1609459200 is the epoch timestamp of \"2021-01-01 00:00:00 UTC\" in seconds. * `Important` to find Google Cloud resources that contain \"Important\" as a word in any of the searchable fields. * `Impor*` to find Google Cloud resources that contain \"Impor\" as a prefix of any word in any of the searchable fields. * `Important location:(us-west1 OR global)` to find Google Cloud resources that contain \"Important\" as a word in any of the searchable fields and are also located in the \"us-west1\" region or the \"global\" location.",
+                            "description": "Optional. The query statement. See [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query) for more information. If not specified or empty, it will search all the resources within the specified `scope`. Examples: * `name:Important` to find Google Cloud resources whose name contains `Important` as a word. * `name=Important` to find the Google Cloud resource whose name is exactly `Important`. * `displayName:Impor*` to find Google Cloud resources whose display name contains `Impor` as a prefix of any word in the field. * `location:us-west*` to find Google Cloud resources whose location contains both `us` and `west` as prefixes. * `labels:prod` to find Google Cloud resources whose labels contain `prod` as a key or value. * `labels.env:prod` to find Google Cloud resources that have a label `env` and its value is `prod`. * `labels.env:*` to find Google Cloud resources that have a label `env`. * `tagKeys:env` to find Google Cloud resources that have directly attached tags where the [`TagKey`](https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys#resource:-tagkey) .`namespacedName` contains `env`. * `tagValues:prod*` to find Google Cloud resources that have directly attached tags where the [`TagValue`](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue) .`namespacedName` contains a word prefixed by `prod`. * `tagValueIds=tagValues/123` to find Google Cloud resources that have directly attached tags where the [`TagValue`](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue) .`name` is exactly `tagValues/123`. * `effectiveTagKeys:env` to find Google Cloud resources that have directly attached or inherited tags where the [`TagKey`](https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys#resource:-tagkey) .`namespacedName` contains `env`. * `effectiveTagValues:prod*` to find Google Cloud resources that have directly attached or inherited tags where the [`TagValue`](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue) .`namespacedName` contains a word prefixed by `prod`. * `effectiveTagValueIds=tagValues/123` to find Google Cloud resources that have directly attached or inherited tags where the [`TagValue`](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue) .`name` is exactly `tagValues/123`. * `kmsKey:key` to find Google Cloud resources encrypted with a customer-managed encryption key whose name contains `key` as a word. This field is deprecated. Please use the `kmsKeys` field to retrieve Cloud KMS key information. * `kmsKeys:key` to find Google Cloud resources encrypted with customer-managed encryption keys whose name contains the word `key`. * `relationships:instance-group-1` to find Google Cloud resources that have relationships with `instance-group-1` in the related resource name. * `relationships:INSTANCE_TO_INSTANCEGROUP` to find Compute Engine instances that have relationships of type `INSTANCE_TO_INSTANCEGROUP`. * `relationships.INSTANCE_TO_INSTANCEGROUP:instance-group-1` to find Compute Engine instances that have relationships with `instance-group-1` in the Compute Engine instance group resource name, for relationship type `INSTANCE_TO_INSTANCEGROUP`. * `sccSecurityMarks.key=value` to find Cloud resources that are attached with security marks whose key is `key` and value is `value'. * `sccSecurityMarks.key:*` to find Cloud resources that are attached with security marks whose key is `key`. * `state:ACTIVE` to find Google Cloud resources whose state contains `ACTIVE` as a word. * `NOT state:ACTIVE` to find Google Cloud resources whose state doesn't contain `ACTIVE` as a word. * `createTime<1609459200` to find Google Cloud resources that were created before `2021-01-01 00:00:00 UTC`. `1609459200` is the epoch timestamp of `2021-01-01 00:00:00 UTC` in seconds. * `updateTime>1609459200` to find Google Cloud resources that were updated after `2021-01-01 00:00:00 UTC`. `1609459200` is the epoch timestamp of `2021-01-01 00:00:00 UTC` in seconds. * `Important` to find Google Cloud resources that contain `Important` as a word in any of the searchable fields. * `Impor*` to find Google Cloud resources that contain `Impor` as a prefix of any word in any of the searchable fields. * `Important location:(us-west1 OR global)` to find Google Cloud resources that contain `Important` as a word in any of the searchable fields and are also located in the `us-west1` region or the `global` location.",
                             "location": "query",
                             "type": "string"
                         },
                         "readMask": {
-                            "description": "Optional. A comma-separated list of fields that you want returned in the results. The following fields are returned by default if not specified: * `name` * `assetType` * `project` * `folders` * `organization` * `displayName` * `description` * `location` * `labels` * `networkTags` * `kmsKeys` * `createTime` * `updateTime` * `state` * `additionalAttributes` * `parentFullResourceName` * `parentAssetType` Some fields of large size, such as `versionedResources` and `attachedResources`, are not returned by default, but you can specify them in the `read_mask` parameter if you want to include them. If `\"*\"` is specified, all [available fields](https://cloud.google.com/asset-inventory/docs/reference/rest/v1/TopLevel/searchAllResources#resourcesearchresult) are returned. Examples: `\"name,location\"`, `\"name,versionedResources\"`, `\"*\"`. Any invalid field path will trigger INVALID_ARGUMENT error.",
+                            "description": "Optional. A comma-separated list of fields that you want returned in the results. The following fields are returned by default if not specified: * `name` * `assetType` * `project` * `folders` * `organization` * `displayName` * `description` * `location` * `labels` * `tags` * `effectiveTags` * `networkTags` * `kmsKeys` * `createTime` * `updateTime` * `state` * `additionalAttributes` * `parentFullResourceName` * `parentAssetType` Some fields of large size, such as `versionedResources`, `attachedResources`, `effectiveTags` etc., are not returned by default, but you can specify them in the `read_mask` parameter if you want to include them. If `\"*\"` is specified, all [available fields](https://cloud.google.com/asset-inventory/docs/reference/rest/v1/TopLevel/searchAllResources#resourcesearchresult) are returned. Examples: `\"name,location\"`, `\"name,versionedResources\"`, `\"*\"`. Any invalid field path will trigger INVALID_ARGUMENT error.",
                             "format": "google-fieldmask",
                             "location": "query",
                             "type": "string"
@@ -1600,6 +1600,24 @@
                     "description": "The effective policies for the full_resource_name. These policies include the policy set on the full_resource_name and those set on its parents and ancestors up to the BatchGetEffectiveIamPoliciesRequest.scope. Note that these policies are not filtered according to the resource type of the full_resource_name. These policies are hierarchically ordered by PolicyInfo.attached_resource starting from full_resource_name itself to its parents and ancestors, such that policies[i]'s PolicyInfo.attached_resource is the child of policies[i+1]'s PolicyInfo.attached_resource, if policies[i+1] exists.",
                     "items": {
                         "$ref": "PolicyInfo"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "EffectiveTagDetails": {
+            "description": "The effective tags and the ancestor resources from which they were inherited.",
+            "id": "EffectiveTagDetails",
+            "properties": {
+                "attachedResource": {
+                    "description": "The [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format) of the ancestor from which an effective_tag is inherited, according to [tag inheritance](https://cloud.google.com/resource-manager/docs/tags/tags-overview#inheritance).",
+                    "type": "string"
+                },
+                "effectiveTags": {
+                    "description": "The effective tags inherited from the attached_resource. Note that tags with the same key but different values may attach to resources at a different hierarchy levels. The lower hierarchy tag value will overwrite the higher hierarchy tag value of the same tag key. In this case, the tag value at the higher hierarchy level will be removed. For more information, see [tag inheritance](https://cloud.google.com/resource-manager/docs/tags/tags-overview#inheritance).",
+                    "items": {
+                        "$ref": "Tag"
                     },
                     "type": "array"
                 }
@@ -2554,7 +2572,7 @@
                     "type": "string"
                 },
                 "scopes": {
-                    "description": "The scopes of a policy define which resources an ACM policy can restrict, and where ACM resources can be referenced. For example, a policy with scopes=[\"folders/123\"] has the following behavior: - vpcsc perimeters can only restrict projects within folders/123 - access levels can only be referenced by resources within folders/123. If empty, there are no limitations on which resources can be restricted by an ACM policy, and there are no limitations on where ACM resources can be referenced. Only one policy can include a given scope (attempting to create a second policy which includes \"folders/123\" will result in an error). Currently, scopes cannot be modified after a policy is created. Currently, policies can only have a single scope. Format: list of `folders/{folder_number}` or `projects/{project_number}`",
+                    "description": "The scopes of the AccessPolicy. Scopes define which resources a policy can restrict and where its resources can be referenced. For example, policy A with `scopes=[\"folders/123\"]` has the following behavior: - ServicePerimeter can only restrict projects within `folders/123`. - ServicePerimeter within policy A can only reference access levels defined within policy A. - Only one policy can include a given scope; thus, attempting to create a second policy which includes `folders/123` will result in an error. If no scopes are provided, then any resource within the organization can be restricted. Scopes cannot be modified after a policy is created. Policies can only have a single scope. Format: list of `folders/{folder_number}` or `projects/{project_number}`",
                     "items": {
                         "type": "string"
                     },
@@ -2648,6 +2666,13 @@
                     "description": "A list of other access levels defined in the same `Policy`, referenced by resource name. Referencing an `AccessLevel` which does not exist is an error. All access levels listed must be granted for the Condition to be true. Example: \"`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME\"`",
                     "items": {
                         "type": "string"
+                    },
+                    "type": "array"
+                },
+                "vpcNetworkSources": {
+                    "description": "The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.",
+                    "items": {
+                        "$ref": "GoogleIdentityAccesscontextmanagerV1VpcNetworkSource"
                     },
                     "type": "array"
                 }
@@ -2755,6 +2780,27 @@
                         "Authorize access from all service accounts outside the perimeter."
                     ],
                     "type": "string"
+                },
+                "sourceRestriction": {
+                    "description": "Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.",
+                    "enum": [
+                        "SOURCE_RESTRICTION_UNSPECIFIED",
+                        "SOURCE_RESTRICTION_ENABLED",
+                        "SOURCE_RESTRICTION_DISABLED"
+                    ],
+                    "enumDescriptions": [
+                        "Enforcement preference unspecified, will not enforce traffic restrictions based on `sources` in EgressFrom.",
+                        "Enforcement preference enabled, traffic restrictions will be enforced based on `sources` in EgressFrom.",
+                        "Enforcement preference disabled, will not enforce traffic restrictions based on `sources` in EgressFrom."
+                    ],
+                    "type": "string"
+                },
+                "sources": {
+                    "description": "Sources that this EgressPolicy authorizes access from. If this field is not empty, then `source_restriction` must be set to `SOURCE_RESTRICTION_ENABLED`.",
+                    "items": {
+                        "$ref": "GoogleIdentityAccesscontextmanagerV1EgressSource"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -2770,6 +2816,17 @@
                 "egressTo": {
                     "$ref": "GoogleIdentityAccesscontextmanagerV1EgressTo",
                     "description": "Defines the conditions on the ApiOperation and destination resources that cause this EgressPolicy to apply."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleIdentityAccesscontextmanagerV1EgressSource": {
+            "description": "The source that EgressPolicy authorizes access from inside the ServicePerimeter to somewhere outside the ServicePerimeter boundaries.",
+            "id": "GoogleIdentityAccesscontextmanagerV1EgressSource",
+            "properties": {
+                "accessLevel": {
+                    "description": "An AccessLevel resource name that allows protected resources inside the ServicePerimeters to access outside the ServicePerimeter boundaries. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If an AccessLevel name is not specified, only resources within the perimeter can be accessed through Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all EgressSources will be allowed.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -3045,6 +3102,35 @@
                 "enableRestriction": {
                     "description": "Whether to restrict API calls within the Service Perimeter to the list of APIs specified in 'allowed_services'.",
                     "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleIdentityAccesscontextmanagerV1VpcNetworkSource": {
+            "description": "The originating network source in Google Cloud.",
+            "id": "GoogleIdentityAccesscontextmanagerV1VpcNetworkSource",
+            "properties": {
+                "vpcSubnetwork": {
+                    "$ref": "GoogleIdentityAccesscontextmanagerV1VpcSubNetwork",
+                    "description": "Sub-segment ranges of a VPC network."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleIdentityAccesscontextmanagerV1VpcSubNetwork": {
+            "description": "Sub-segment ranges inside of a VPC Network.",
+            "id": "GoogleIdentityAccesscontextmanagerV1VpcSubNetwork",
+            "properties": {
+                "network": {
+                    "description": "Required. Network name. If the network is not part of the organization, the `compute.network.get` permission must be granted to the caller. Format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NETWORK_NAME}` Example: `//compute.googleapis.com/projects/my-project/global/networks/network-1`",
+                    "type": "string"
+                },
+                "vpcIpSubnetworks": {
+                    "description": "CIDR block IP subnetwork specification. The IP address must be an IPv4 address and can be a public or private IP address. Note that for a CIDR IP address block, the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example, \"192.0.2.0/24\" is accepted but \"192.0.2.1/24\" is not. If empty, all IP addresses are allowed.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -3474,7 +3560,7 @@
                         "description": "Properties of the object. Contains field @type with type URL.",
                         "type": "any"
                     },
-                    "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+                    "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
                     "type": "object"
                 }
             },
@@ -3619,7 +3705,7 @@
             "type": "object"
         },
         "Policy": {
-            "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
+            "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
             "id": "Policy",
             "properties": {
                 "auditConfigs": {
@@ -3970,6 +4056,13 @@
                     "description": "The display name of this resource. This field is available only when the resource's Protobuf contains it. To search against the `display_name`: * Use a field query. Example: `displayName:\"My Instance\"` * Use a free text query. Example: `\"My Instance\"`",
                     "type": "string"
                 },
+                "effectiveTags": {
+                    "description": "The effective tags on this resource. All of the tags that are both attached to and inherited by a resource are collectively called the effective tags. For more information, see [tag inheritance](https://cloud.google.com/resource-manager/docs/tags/tags-overview#inheritance). To search against the `effective_tags`: * Use a field query. Example: - `effectiveTagKeys:\"123456789/env*\"` - `effectiveTagKeys=\"123456789/env\"` - `effectiveTagKeys:\"env\"` - `effectiveTagValues:\"env\"` - `effectiveTagValues:\"env/prod\"` - `effectiveTagValues:\"123456789/env/prod*\"` - `effectiveTagValues=\"123456789/env/prod\"` - `effectiveTagValueIds=\"tagValues/456\"`",
+                    "items": {
+                        "$ref": "EffectiveTagDetails"
+                    },
+                    "type": "array"
+                },
                 "folders": {
                     "description": "The folder(s) that this resource belongs to, in the form of folders/{FOLDER_NUMBER}. This field is available when the resource belongs to one or more folders. To search against `folders`: * Use a field query. Example: `folders:(123 OR 456)` * Use a free text query. Example: `123` * Specify the `scope` field as this folder in your search request.",
                     "items": {
@@ -4034,28 +4127,45 @@
                     "description": "A map of related resources of this resource, keyed by the relationship type. A relationship type is in the format of {SourceType}_{ACTION}_{DestType}. Example: `DISK_TO_INSTANCE`, `DISK_TO_NETWORK`, `INSTANCE_TO_INSTANCEGROUP`. See [supported relationship types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#supported_relationship_types).",
                     "type": "object"
                 },
+                "sccSecurityMarks": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The actual content of Security Command Center security marks associated with the asset. Note that both staging & prod SecurityMarks are attached on prod resources. In CAS preprod/prod, both staging & prod SecurityMarks are ingested and returned in the following `security_marks` map. In that case, the prefix \"staging.\" will be added to the keys of all the staging marks. To search against SCC SecurityMarks field: * Use a field query: - query by a given key value pair. Example: `sccSecurityMarks.foo=bar` - query by a given key's existence. Example: `sccSecurityMarks.foo:*`",
+                    "type": "object"
+                },
                 "state": {
                     "description": "The state of this resource. Different resources types have different state definitions that are mapped from various fields of different resource types. This field is available only when the resource's Protobuf contains it. Example: If the resource is an instance provided by Compute Engine, its state will include PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. See `status` definition in [API Reference](https://cloud.google.com/compute/docs/reference/rest/v1/instances). If the resource is a project provided by Resource Manager, its state will include LIFECYCLE_STATE_UNSPECIFIED, ACTIVE, DELETE_REQUESTED and DELETE_IN_PROGRESS. See `lifecycleState` definition in [API Reference](https://cloud.google.com/resource-manager/reference/rest/v1/projects). To search against the `state`: * Use a field query. Example: `state:RUNNING` * Use a free text query. Example: `RUNNING`",
                     "type": "string"
                 },
                 "tagKeys": {
-                    "description": "TagKey namespaced names, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}. To search against the `tagKeys`: * Use a field query. Example: - `tagKeys:\"123456789/env*\"` - `tagKeys=\"123456789/env\"` - `tagKeys:\"env\"` * Use a free text query. Example: - `env`",
+                    "deprecated": true,
+                    "description": "This field is only present for the purpose of backward compatibility. Please use the `tags` field instead. TagKey namespaced names, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}. To search against the `tagKeys`: * Use a field query. Example: - `tagKeys:\"123456789/env*\"` - `tagKeys=\"123456789/env\"` - `tagKeys:\"env\"` * Use a free text query. Example: - `env`",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "tagValueIds": {
-                    "description": "TagValue IDs, in the format of tagValues/{TAG_VALUE_ID}. To search against the `tagValueIds`: * Use a field query. Example: - `tagValueIds=\"tagValues/456\"`",
+                    "deprecated": true,
+                    "description": "This field is only present for the purpose of backward compatibility. Please use the `tags` field instead. TagValue IDs, in the format of tagValues/{TAG_VALUE_ID}. To search against the `tagValueIds`: * Use a field query. Example: - `tagValueIds=\"tagValues/456\"` * Use a free text query. Example: - `456`",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "tagValues": {
-                    "description": "TagValue namespaced names, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}/{TAG_VALUE_SHORT_NAME}. To search against the `tagValues`: * Use a field query. Example: - `tagValues:\"env\"` - `tagValues:\"env/prod\"` - `tagValues:\"123456789/env/prod*\"` - `tagValues=\"123456789/env/prod\"` * Use a free text query. Example: - `prod`",
+                    "deprecated": true,
+                    "description": "This field is only present for the purpose of backward compatibility. Please use the `tags` field instead. TagValue namespaced names, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}/{TAG_VALUE_SHORT_NAME}. To search against the `tagValues`: * Use a field query. Example: - `tagValues:\"env\"` - `tagValues:\"env/prod\"` - `tagValues:\"123456789/env/prod*\"` - `tagValues=\"123456789/env/prod\"` * Use a free text query. Example: - `prod`",
                     "items": {
                         "type": "string"
+                    },
+                    "type": "array"
+                },
+                "tags": {
+                    "description": "The tags directly attached to this resource. To search against the `tags`: * Use a field query. Example: - `tagKeys:\"123456789/env*\"` - `tagKeys=\"123456789/env\"` - `tagKeys:\"env\"` - `tagValues:\"env\"` - `tagValues:\"env/prod\"` - `tagValues:\"123456789/env/prod*\"` - `tagValues=\"123456789/env/prod\"` - `tagValueIds=\"tagValues/456\"` * Use a free text query. Example: - `env/prod`",
+                    "items": {
+                        "$ref": "Tag"
                     },
                     "type": "array"
                 },
@@ -4275,6 +4385,25 @@
                         "$ref": "TableFieldSchema"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Tag": {
+            "description": "The key and value for a [tag](https://cloud.google.com/resource-manager/docs/tags/tags-overview),",
+            "id": "Tag",
+            "properties": {
+                "tagKey": {
+                    "description": "TagKey namespaced name, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}.",
+                    "type": "string"
+                },
+                "tagValue": {
+                    "description": "TagValue namespaced name, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}/{TAG_VALUE_SHORT_NAME}.",
+                    "type": "string"
+                },
+                "tagValueId": {
+                    "description": "TagValue ID, in the format of tagValues/{TAG_VALUE_ID}.",
+                    "type": "string"
                 }
             },
             "type": "object"

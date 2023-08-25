@@ -321,6 +321,47 @@ class CustomersResource {
     return SasPortalProvisionDeploymentResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Setups the a GCP Project to receive SAS Analytics messages via GCP Pub/Sub
+  /// with a subscription to BigQuery.
+  ///
+  /// All the Pub/Sub topics and BigQuery tables are created automatically as
+  /// part of this service.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalOperation> setupSasAnalytics(
+    SasPortalSetupSasAnalyticsRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1alpha1/customers:setupSasAnalytics';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SasPortalOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class CustomersDeploymentsResource {
@@ -4336,7 +4377,7 @@ class SasPortalOperation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -4488,6 +4529,9 @@ class SasPortalSetPolicyRequest {
         if (resource != null) 'resource': resource!,
       };
 }
+
+/// Request for the SetupSasAnalytics rpc.
+typedef SasPortalSetupSasAnalyticsRequest = $SasPortalSetupSasAnalyticsRequest;
 
 /// Request for SignDevice.
 class SasPortalSignDeviceRequest {

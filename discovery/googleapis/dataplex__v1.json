@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230801",
+    "revision": "20231018",
     "rootUrl": "https://dataplex.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Dataplex API",
@@ -1640,6 +1640,97 @@
                                             "description": "REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/entryTypes/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+resource}:testIamPermissions",
+                                    "request": {
+                                        "$ref": "GoogleIamV1TestIamPermissionsRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleIamV1TestIamPermissionsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                }
+                            }
+                        },
+                        "governanceRules": {
+                            "methods": {
+                                "getIamPolicy": {
+                                    "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/governanceRules/{governanceRulesId}:getIamPolicy",
+                                    "httpMethod": "GET",
+                                    "id": "dataplex.projects.locations.governanceRules.getIamPolicy",
+                                    "parameterOrder": [
+                                        "resource"
+                                    ],
+                                    "parameters": {
+                                        "options.requestedPolicyVersion": {
+                                            "description": "Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "resource": {
+                                            "description": "REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/governanceRules/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+resource}:getIamPolicy",
+                                    "response": {
+                                        "$ref": "GoogleIamV1Policy"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "setIamPolicy": {
+                                    "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/governanceRules/{governanceRulesId}:setIamPolicy",
+                                    "httpMethod": "POST",
+                                    "id": "dataplex.projects.locations.governanceRules.setIamPolicy",
+                                    "parameterOrder": [
+                                        "resource"
+                                    ],
+                                    "parameters": {
+                                        "resource": {
+                                            "description": "REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/governanceRules/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+resource}:setIamPolicy",
+                                    "request": {
+                                        "$ref": "GoogleIamV1SetIamPolicyRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "GoogleIamV1Policy"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "testIamPermissions": {
+                                    "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/governanceRules/{governanceRulesId}:testIamPermissions",
+                                    "httpMethod": "POST",
+                                    "id": "dataplex.projects.locations.governanceRules.testIamPermissions",
+                                    "parameterOrder": [
+                                        "resource"
+                                    ],
+                                    "parameters": {
+                                        "resource": {
+                                            "description": "REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/governanceRules/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
@@ -5414,7 +5505,7 @@
             "id": "GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport",
             "properties": {
                 "resultsTable": {
-                    "description": "Optional. The BigQuery table to export DataProfileScan results to. Format: projects/{project}/datasets/{dataset}/tables/{table}",
+                    "description": "Optional. The BigQuery table to export DataProfileScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID",
                     "type": "string"
                 }
             },
@@ -5434,10 +5525,26 @@
             },
             "type": "object"
         },
+        "GoogleCloudDataplexV1DataQualityDimension": {
+            "description": "A dimension captures data quality intent about a defined subset of the rules specified.",
+            "id": "GoogleCloudDataplexV1DataQualityDimension",
+            "properties": {
+                "name": {
+                    "description": "The dimension name a rule belongs to. Supported dimensions are \"COMPLETENESS\", \"ACCURACY\", \"CONSISTENCY\", \"VALIDITY\", \"UNIQUENESS\", \"INTEGRITY\"",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudDataplexV1DataQualityDimensionResult": {
             "description": "DataQualityDimensionResult provides a more detailed, per-dimension view of the results.",
             "id": "GoogleCloudDataplexV1DataQualityDimensionResult",
             "properties": {
+                "dimension": {
+                    "$ref": "GoogleCloudDataplexV1DataQualityDimension",
+                    "description": "Output only. The dimension config specified in the DataQualitySpec, as is.",
+                    "readOnly": true
+                },
                 "passed": {
                     "description": "Whether the dimension passed or failed.",
                     "type": "boolean"
@@ -5450,7 +5557,7 @@
             "id": "GoogleCloudDataplexV1DataQualityResult",
             "properties": {
                 "dimensions": {
-                    "description": "A list of results at the dimension level.",
+                    "description": "A list of results at the dimension level.A dimension will have a corresponding DataQualityDimensionResult if and only if there is at least one rule with the 'dimension' field set to it.",
                     "items": {
                         "$ref": "GoogleCloudDataplexV1DataQualityDimensionResult"
                     },
@@ -5893,7 +6000,7 @@
             "id": "GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport",
             "properties": {
                 "resultsTable": {
-                    "description": "Optional. The BigQuery table to export DataQualityScan results to. Format: projects/{project}/datasets/{dataset}/tables/{table}",
+                    "description": "Optional. The BigQuery table to export DataQualityScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID",
                     "type": "string"
                 }
             },
@@ -6922,6 +7029,80 @@
                     "description": "Output only. Queries over sessions to mark whether the environment is currently active or not",
                     "readOnly": true,
                     "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDataplexV1GovernanceEvent": {
+            "description": "Payload associated with Governance related log events.",
+            "id": "GoogleCloudDataplexV1GovernanceEvent",
+            "properties": {
+                "entity": {
+                    "$ref": "GoogleCloudDataplexV1GovernanceEventEntity",
+                    "description": "Entity resource information if the log event is associated with a specific entity."
+                },
+                "eventType": {
+                    "description": "The type of the event.",
+                    "enum": [
+                        "EVENT_TYPE_UNSPECIFIED",
+                        "RESOURCE_IAM_POLICY_UPDATE",
+                        "BIGQUERY_TABLE_CREATE",
+                        "BIGQUERY_TABLE_UPDATE",
+                        "BIGQUERY_TABLE_DELETE",
+                        "BIGQUERY_CONNECTION_CREATE",
+                        "BIGQUERY_CONNECTION_UPDATE",
+                        "BIGQUERY_CONNECTION_DELETE",
+                        "BIGQUERY_TAXONOMY_CREATE",
+                        "BIGQUERY_POLICY_TAG_CREATE",
+                        "BIGQUERY_POLICY_TAG_DELETE",
+                        "BIGQUERY_POLICY_TAG_SET_IAM_POLICY",
+                        "ACCESS_POLICY_UPDATE"
+                    ],
+                    "enumDescriptions": [
+                        "An unspecified event type.",
+                        "Resource IAM policy update event.",
+                        "BigQuery table create event.",
+                        "BigQuery table update event.",
+                        "BigQuery table delete event.",
+                        "BigQuery connection create event.",
+                        "BigQuery connection update event.",
+                        "BigQuery connection delete event.",
+                        "BigQuery taxonomy created.",
+                        "BigQuery policy tag created.",
+                        "BigQuery policy tag deleted.",
+                        "BigQuery set iam policy for policy tag.",
+                        "Access policy update event."
+                    ],
+                    "type": "string"
+                },
+                "message": {
+                    "description": "The log message.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudDataplexV1GovernanceEventEntity": {
+            "description": "Information about Entity resource that the log event is associated with.",
+            "id": "GoogleCloudDataplexV1GovernanceEventEntity",
+            "properties": {
+                "entity": {
+                    "description": "The Entity resource the log event is associated with. Format: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}",
+                    "type": "string"
+                },
+                "entityType": {
+                    "description": "Type of entity.",
+                    "enum": [
+                        "ENTITY_TYPE_UNSPECIFIED",
+                        "TABLE",
+                        "FILESET"
+                    ],
+                    "enumDescriptions": [
+                        "An unspecified Entity type.",
+                        "Table entity type.",
+                        "Fileset entity type."
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -9016,7 +9197,7 @@
                         "description": "Properties of the object. Contains field @type with type URL.",
                         "type": "any"
                     },
-                    "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update, the response should be the resource. For other methods, the response should have the type XxxResponse, where Xxx is the original method name. For example, if the original method name is TakeSnapshot(), the inferred response type is TakeSnapshotResponse.",
+                    "description": "The normal, successful response of the operation. If the original method returns no data on success, such as Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update, the response should be the resource. For other methods, the response should have the type XxxResponse, where Xxx is the original method name. For example, if the original method name is TakeSnapshot(), the inferred response type is TakeSnapshotResponse.",
                     "type": "object"
                 }
             },

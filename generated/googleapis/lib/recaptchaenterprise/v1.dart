@@ -92,7 +92,7 @@ class ProjectsAssessmentsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the Assessment, in the format
-  /// "projects/{project}/assessments/{assessment}".
+  /// `projects/{project}/assessments/{assessment}`.
   /// Value must have pattern `^projects/\[^/\]+/assessments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -136,7 +136,7 @@ class ProjectsAssessmentsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the project in which the assessment will
-  /// be created, in the format "projects/{project}".
+  /// be created, in the format `projects/{project}`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -188,7 +188,7 @@ class ProjectsFirewallpoliciesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the project this policy will apply to, in
-  /// the format "projects/{project}".
+  /// the format `projects/{project}`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -228,7 +228,7 @@ class ProjectsFirewallpoliciesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the policy to be deleted, in the format
-  /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+  /// `projects/{project}/firewallpolicies/{firewallpolicy}`.
   /// Value must have pattern `^projects/\[^/\]+/firewallpolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -265,7 +265,7 @@ class ProjectsFirewallpoliciesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the requested policy, in the format
-  /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+  /// `projects/{project}/firewallpolicies/{firewallpolicy}`.
   /// Value must have pattern `^projects/\[^/\]+/firewallpolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -302,7 +302,7 @@ class ProjectsFirewallpoliciesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the project to list the policies for, in
-  /// the format "projects/{project}".
+  /// the format `projects/{project}`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of policies to return. Default
@@ -353,7 +353,7 @@ class ProjectsFirewallpoliciesResource {
   /// Request parameters:
   ///
   /// [name] - The resource name for the FirewallPolicy in the format
-  /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+  /// `projects/{project}/firewallpolicies/{firewallpolicy}`.
   /// Value must have pattern `^projects/\[^/\]+/firewallpolicies/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. The mask to control which fields of the policy
@@ -406,7 +406,7 @@ class ProjectsKeysResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the project in which the key will be
-  /// created, in the format "projects/{project}".
+  /// created, in the format `projects/{project}`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -446,7 +446,7 @@ class ProjectsKeysResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the key to be deleted, in the format
-  /// "projects/{project}/keys/{key}".
+  /// `projects/{project}/keys/{key}`.
   /// Value must have pattern `^projects/\[^/\]+/keys/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -483,7 +483,7 @@ class ProjectsKeysResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the requested key, in the format
-  /// "projects/{project}/keys/{key}".
+  /// `projects/{project}/keys/{key}`.
   /// Value must have pattern `^projects/\[^/\]+/keys/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -522,7 +522,7 @@ class ProjectsKeysResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the requested metrics, in the format
-  /// "projects/{project}/keys/{key}/metrics".
+  /// `projects/{project}/keys/{key}/metrics`.
   /// Value must have pattern `^projects/\[^/\]+/keys/\[^/\]+/metrics$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -559,7 +559,7 @@ class ProjectsKeysResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the project that contains the keys that
-  /// will be listed, in the format "projects/{project}".
+  /// will be listed, in the format `projects/{project}`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of keys to return. Default is
@@ -613,7 +613,7 @@ class ProjectsKeysResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the key to be migrated, in the format
-  /// "projects/{project}/keys/{key}".
+  /// `projects/{project}/keys/{key}`.
   /// Value must have pattern `^projects/\[^/\]+/keys/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -655,7 +655,7 @@ class ProjectsKeysResource {
   /// Request parameters:
   ///
   /// [name] - The resource name for the Key in the format
-  /// "projects/{project}/keys/{key}".
+  /// `projects/{project}/keys/{key}`.
   /// Value must have pattern `^projects/\[^/\]+/keys/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. The mask to control which fields of the key get
@@ -703,7 +703,7 @@ class ProjectsKeysResource {
   /// Request parameters:
   ///
   /// [key] - Required. The public key name linked to the requested secret key
-  /// in the format "projects/{project}/keys/{key}".
+  /// in the format `projects/{project}/keys/{key}`.
   /// Value must have pattern `^projects/\[^/\]+/keys/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -753,7 +753,7 @@ class ProjectsRelatedaccountgroupmembershipsResource {
   ///
   /// [project] - Required. The name of the project to search related account
   /// group memberships from. Specify the project name in the following format:
-  /// "projects/{project}".
+  /// `projects/{project}`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -809,7 +809,7 @@ class ProjectsRelatedaccountgroupsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the project to list related account
-  /// groups from, in the format "projects/{project}".
+  /// groups from, in the format `projects/{project}`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of groups to return. The service
@@ -925,6 +925,8 @@ class ProjectsRelatedaccountgroupsMembershipsResource {
 /// Account defender risk assessment.
 class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment {
   /// Labels for this request.
+  ///
+  /// Output only.
   core.List<core.String>? labels;
 
   GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment({
@@ -949,11 +951,15 @@ class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment {
 /// Information about account verification, used for identity verification.
 class GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo {
   /// Endpoints that can be used for identity verification.
+  ///
+  /// Optional.
   core.List<GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo>?
       endpoints;
 
   /// Language code preference for the verification message, set as a IETF BCP
   /// 47 language code.
+  ///
+  /// Optional.
   core.String? languageCode;
 
   /// Result of the latest account verification challenge.
@@ -1035,15 +1041,21 @@ class GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo {
 /// Settings specific to keys that can be used by Android apps.
 class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
   /// If set to true, allowed_package_names are not enforced.
+  ///
+  /// Optional.
   core.bool? allowAllPackageNames;
 
   /// Android package names of apps allowed to use the key.
   ///
   /// Example: 'com.companyname.appname'
+  ///
+  /// Optional.
   core.List<core.String>? allowedPackageNames;
 
   /// Set to true for keys that are used in an Android application that is
   /// available for download in app stores in addition to the Google Play Store.
+  ///
+  /// Optional.
   core.bool? supportNonGoogleAppStoreDistribution;
 
   GoogleCloudRecaptchaenterpriseV1AndroidKeySettings({
@@ -1081,6 +1093,15 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
 
 /// The request message to annotate an Assessment.
 class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
+  /// A stable account identifier to apply to the assessment.
+  ///
+  /// This is an alternative to setting `account_id` in `CreateAssessment`, for
+  /// example when a stable account identifier is not yet known in the initial
+  /// request.
+  ///
+  /// Optional.
+  core.String? accountId;
+
   /// The annotation that will be assigned to the Event.
   ///
   /// This field can be left empty to provide reasons that apply to an event
@@ -1102,12 +1123,11 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
   /// instead.
   core.String? annotation;
 
-  /// Unique stable hashed user identifier to apply to the assessment.
+  /// A stable hashed account identifier to apply to the assessment.
   ///
-  /// This is an alternative to setting the hashed_account_id in
-  /// CreateAssessment, for example when the account identifier is not yet known
-  /// in the initial request. It is recommended that the identifier is hashed
-  /// using hmac-sha256 with stable secret.
+  /// This is an alternative to setting `hashed_account_id` in
+  /// `CreateAssessment`, for example when a stable account identifier is not
+  /// yet known in the initial request.
   ///
   /// Optional.
   core.String? hashedAccountId;
@@ -1119,7 +1139,7 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Optional reasons for the annotation that will be assigned to the Event.
+  /// Reasons for the annotation that are assigned to the event.
   ///
   /// Optional.
   core.List<core.String>? reasons;
@@ -1131,6 +1151,7 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
   GoogleCloudRecaptchaenterpriseV1TransactionEvent? transactionEvent;
 
   GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest({
+    this.accountId,
     this.annotation,
     this.hashedAccountId,
     this.reasons,
@@ -1140,6 +1161,9 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
   GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest.fromJson(
       core.Map json_)
       : this(
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
+              : null,
           annotation: json_.containsKey('annotation')
               ? json_['annotation'] as core.String
               : null,
@@ -1159,6 +1183,7 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (annotation != null) 'annotation': annotation!,
         if (hashedAccountId != null) 'hashedAccountId': hashedAccountId!,
         if (reasons != null) 'reasons': reasons!,
@@ -1219,8 +1244,10 @@ class GoogleCloudRecaptchaenterpriseV1AppleDeveloperId {
 
 /// A reCAPTCHA Enterprise assessment resource.
 class GoogleCloudRecaptchaenterpriseV1Assessment {
-  /// Assessment returned by account defender when a hashed_account_id is
+  /// Assessment returned by account defender when an account identifier is
   /// provided.
+  ///
+  /// Output only.
   GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment?
       accountDefenderAssessment;
 
@@ -1228,28 +1255,43 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
   ///
   /// The assessment event must include a token and site key to use this
   /// feature.
+  ///
+  /// Optional.
   GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo? accountVerification;
 
   /// The event being assessed.
+  ///
+  /// Optional.
   GoogleCloudRecaptchaenterpriseV1Event? event;
 
   /// Assessment returned when firewall policies belonging to the project are
   /// evaluated using the field firewall_policy_evaluation.
+  ///
+  /// Output only.
   GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment?
       firewallPolicyAssessment;
 
   /// Assessment returned by Fraud Prevention when TransactionData is provided.
+  ///
+  /// Output only.
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment?
       fraudPreventionAssessment;
 
+  /// Fraud Signals specific to the users involved in a payment transaction.
+  ///
+  /// Output only.
+  GoogleCloudRecaptchaenterpriseV1FraudSignals? fraudSignals;
+
   /// The resource name for the Assessment in the format
-  /// "projects/{project}/assessments/{assessment}".
+  /// `projects/{project}/assessments/{assessment}`.
   ///
   /// Output only.
   core.String? name;
 
   /// The private password leak verification field contains the parameters that
   /// are used to to check for leaks privately without sharing user credentials.
+  ///
+  /// Optional.
   GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification?
       privatePasswordLeakVerification;
 
@@ -1269,6 +1311,7 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
     this.event,
     this.firewallPolicyAssessment,
     this.fraudPreventionAssessment,
+    this.fraudSignals,
     this.name,
     this.privatePasswordLeakVerification,
     this.riskAnalysis,
@@ -1304,6 +1347,10 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
                       .fromJson(json_['fraudPreventionAssessment']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          fraudSignals: json_.containsKey('fraudSignals')
+              ? GoogleCloudRecaptchaenterpriseV1FraudSignals.fromJson(
+                  json_['fraudSignals'] as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           privatePasswordLeakVerification: json_
                   .containsKey('privatePasswordLeakVerification')
@@ -1332,6 +1379,7 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
           'firewallPolicyAssessment': firewallPolicyAssessment!,
         if (fraudPreventionAssessment != null)
           'fraudPreventionAssessment': fraudPreventionAssessment!,
+        if (fraudSignals != null) 'fraudSignals': fraudSignals!,
         if (name != null) 'name': name!,
         if (privatePasswordLeakVerification != null)
           'privatePasswordLeakVerification': privatePasswordLeakVerification!,
@@ -1472,11 +1520,15 @@ class GoogleCloudRecaptchaenterpriseV1Event {
   /// Optional.
   core.bool? firewallPolicyEvaluation;
 
-  /// Unique stable hashed user identifier for the request.
+  /// Deprecated: use `user_info.account_id` instead.
   ///
-  /// The identifier must be hashed using hmac-sha256 with stable secret.
+  /// Unique stable hashed user identifier for the request. The identifier must
+  /// be hashed using hmac-sha256 with stable secret.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? hashedAccountId;
   core.List<core.int> get hashedAccountIdAsBytes =>
       convert.base64.decode(hashedAccountId!);
@@ -1491,7 +1543,7 @@ class GoogleCloudRecaptchaenterpriseV1Event {
   /// Optional.
   core.List<core.String>? headers;
 
-  /// Optional JA3 fingerprint for SSL clients.
+  /// JA3 fingerprint for SSL clients.
   ///
   /// Optional.
   core.String? ja3;
@@ -1527,6 +1579,16 @@ class GoogleCloudRecaptchaenterpriseV1Event {
   /// Optional.
   core.String? userAgent;
 
+  /// Information about the user that generates this event, when they can be
+  /// identified.
+  ///
+  /// They are often identified through the use of an account for logged-in
+  /// requests or login/registration requests, or by providing user identifiers
+  /// for guest actions like checkout.
+  ///
+  /// Optional.
+  GoogleCloudRecaptchaenterpriseV1UserInfo? userInfo;
+
   /// The IP address in the request from the user's device related to this
   /// event.
   ///
@@ -1553,6 +1615,7 @@ class GoogleCloudRecaptchaenterpriseV1Event {
     this.token,
     this.transactionData,
     this.userAgent,
+    this.userInfo,
     this.userIpAddress,
     this.wafTokenAssessment,
   });
@@ -1594,6 +1657,10 @@ class GoogleCloudRecaptchaenterpriseV1Event {
           userAgent: json_.containsKey('userAgent')
               ? json_['userAgent'] as core.String
               : null,
+          userInfo: json_.containsKey('userInfo')
+              ? GoogleCloudRecaptchaenterpriseV1UserInfo.fromJson(
+                  json_['userInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
           userIpAddress: json_.containsKey('userIpAddress')
               ? json_['userIpAddress'] as core.String
               : null,
@@ -1615,6 +1682,7 @@ class GoogleCloudRecaptchaenterpriseV1Event {
         if (token != null) 'token': token!,
         if (transactionData != null) 'transactionData': transactionData!,
         if (userAgent != null) 'userAgent': userAgent!,
+        if (userInfo != null) 'userInfo': userInfo!,
         if (userIpAddress != null) 'userIpAddress': userIpAddress!,
         if (wafTokenAssessment != null)
           'wafTokenAssessment': wafTokenAssessment!,
@@ -1708,9 +1776,13 @@ typedef GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction = $Empty;
 /// This can be used to trigger custom protection implemented on the backend.
 class GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction {
   /// The header key to set in the request to the backend server.
+  ///
+  /// Optional.
   core.String? key;
 
   /// The header value to set in the request to the backend server.
+  ///
+  /// Optional.
   core.String? value;
 
   GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction({
@@ -1739,6 +1811,8 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction {
   ///
   /// The target is a relative path in the current host. Example:
   /// "/blog/404.html".
+  ///
+  /// Optional.
   core.String? path;
 
   GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction({
@@ -1762,9 +1836,11 @@ class GoogleCloudRecaptchaenterpriseV1FirewallPolicy {
   /// The actions that the caller should take regarding user access.
   ///
   /// There should be at most one terminal action. A terminal action is any
-  /// action that forces a response, such as AllowAction, BlockAction or
-  /// SubstituteAction. Zero or more non-terminal actions such as SetHeader
+  /// action that forces a response, such as `AllowAction`, `BlockAction` or
+  /// `SubstituteAction`. Zero or more non-terminal actions such as `SetHeader`
   /// might be specified. A single policy can contain up to 16 actions.
+  ///
+  /// Optional.
   core.List<GoogleCloudRecaptchaenterpriseV1FirewallAction>? actions;
 
   /// A CEL (Common Expression Language) conditional expression that specifies
@@ -1777,16 +1853,20 @@ class GoogleCloudRecaptchaenterpriseV1FirewallPolicy {
   /// and its
   /// [language definition](https://github.com/google/cel-spec/blob/master/doc/langdef.md).
   /// A condition has a max length of 500 characters.
+  ///
+  /// Optional.
   core.String? condition;
 
   /// A description of what this policy aims to achieve, for convenience
   /// purposes.
   ///
   /// The description can at most include 256 UTF-8 characters.
+  ///
+  /// Optional.
   core.String? description;
 
   /// The resource name for the FirewallPolicy in the format
-  /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+  /// `projects/{project}/firewallpolicies/{firewallpolicy}`.
   core.String? name;
 
   /// The path for which this policy applies, specified as a glob pattern.
@@ -1794,6 +1874,8 @@ class GoogleCloudRecaptchaenterpriseV1FirewallPolicy {
   /// For more information on glob, see the
   /// [manual page](https://man7.org/linux/man-pages/man7/glob.7.html). A path
   /// has a max length of 200 characters.
+  ///
+  /// Optional.
   core.String? path;
 
   GoogleCloudRecaptchaenterpriseV1FirewallPolicy({
@@ -1836,6 +1918,8 @@ class GoogleCloudRecaptchaenterpriseV1FirewallPolicy {
 class GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment {
   /// If the processing of a policy config fails, an error will be populated and
   /// the firewall_policy will be left empty.
+  ///
+  /// Output only.
   GoogleRpcStatus? error;
 
   /// The policy that matched the request.
@@ -1874,15 +1958,21 @@ class GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment {
 /// Assessment for Fraud Prevention.
 class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment {
   /// Assessment of this transaction for behavioral trust.
+  ///
+  /// Output only.
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict?
       behavioralTrustVerdict;
 
   /// Assessment of this transaction for risk of being part of a card testing
   /// attack.
+  ///
+  /// Output only.
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict?
       cardTestingVerdict;
 
   /// Assessment of this transaction for risk of a stolen instrument.
+  ///
+  /// Output only.
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict?
       stolenInstrumentVerdict;
 
@@ -1890,6 +1980,8 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment {
   ///
   /// Summarizes the combined risk of attack vectors below. Values are from 0.0
   /// (lowest) to 1.0 (highest).
+  ///
+  /// Output only.
   core.double? transactionRisk;
 
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment({
@@ -1939,6 +2031,8 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVe
   /// trustworthy way.
   ///
   /// Values are from 0.0 (lowest) to 1.0 (highest).
+  ///
+  /// Output only.
   core.double? trust;
 
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict({
@@ -1965,6 +2059,8 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdic
   /// attack.
   ///
   /// Values are from 0.0 (lowest) to 1.0 (highest).
+  ///
+  /// Output only.
   core.double? risk;
 
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict({
@@ -1990,6 +2086,8 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentV
   /// Probability of this transaction being executed with a stolen instrument.
   ///
   /// Values are from 0.0 (lowest) to 1.0 (highest).
+  ///
+  /// Output only.
   core.double? risk;
 
   GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict({
@@ -2009,14 +2107,119 @@ class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentV
       };
 }
 
+/// Fraud signals describing users and cards involved in the transaction.
+class GoogleCloudRecaptchaenterpriseV1FraudSignals {
+  /// Signals describing the payment card or cards used in this transaction.
+  ///
+  /// Output only.
+  GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals? cardSignals;
+
+  /// Signals describing the end user in this transaction.
+  ///
+  /// Output only.
+  GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals? userSignals;
+
+  GoogleCloudRecaptchaenterpriseV1FraudSignals({
+    this.cardSignals,
+    this.userSignals,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1FraudSignals.fromJson(core.Map json_)
+      : this(
+          cardSignals: json_.containsKey('cardSignals')
+              ? GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals
+                  .fromJson(json_['cardSignals']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          userSignals: json_.containsKey('userSignals')
+              ? GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals
+                  .fromJson(json_['userSignals']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cardSignals != null) 'cardSignals': cardSignals!,
+        if (userSignals != null) 'userSignals': userSignals!,
+      };
+}
+
+/// Signals describing the payment card used in this transaction.
+class GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals {
+  /// The labels for the payment card in this transaction.
+  ///
+  /// Output only.
+  core.List<core.String>? cardLabels;
+
+  GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals({
+    this.cardLabels,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals.fromJson(
+      core.Map json_)
+      : this(
+          cardLabels: json_.containsKey('cardLabels')
+              ? (json_['cardLabels'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cardLabels != null) 'cardLabels': cardLabels!,
+      };
+}
+
+/// Signals describing the user involved in this transaction.
+class GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals {
+  /// This user (based on email, phone, and other identifiers) has been seen on
+  /// the internet for at least this number of days.
+  ///
+  /// Output only.
+  core.int? activeDaysLowerBound;
+
+  /// Likelihood (from 0.0 to 1.0) this user includes synthetic components in
+  /// their identity, such as a randomly generated email address, temporary
+  /// phone number, or fake shipping address.
+  ///
+  /// Output only.
+  core.double? syntheticRisk;
+
+  GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals({
+    this.activeDaysLowerBound,
+    this.syntheticRisk,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals.fromJson(
+      core.Map json_)
+      : this(
+          activeDaysLowerBound: json_.containsKey('activeDaysLowerBound')
+              ? json_['activeDaysLowerBound'] as core.int
+              : null,
+          syntheticRisk: json_.containsKey('syntheticRisk')
+              ? (json_['syntheticRisk'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activeDaysLowerBound != null)
+          'activeDaysLowerBound': activeDaysLowerBound!,
+        if (syntheticRisk != null) 'syntheticRisk': syntheticRisk!,
+      };
+}
+
 /// Settings specific to keys that can be used by iOS apps.
 class GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
   /// If set to true, allowed_bundle_ids are not enforced.
+  ///
+  /// Optional.
   core.bool? allowAllBundleIds;
 
   /// iOS bundle ids of apps allowed to use the key.
   ///
   /// Example: 'com.companyname.productname.appname'
+  ///
+  /// Optional.
   core.List<core.String>? allowedBundleIds;
 
   /// Apple Developer account details for the app that is protected by the
@@ -2026,6 +2229,8 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
   /// Attest and Apple DeviceCheck to protect your app from abuse. Providing
   /// these fields allows reCAPTCHA Enterprise to get a better assessment of the
   /// integrity of your app.
+  ///
+  /// Optional.
   GoogleCloudRecaptchaenterpriseV1AppleDeveloperId? appleDeveloperId;
 
   GoogleCloudRecaptchaenterpriseV1IOSKeySettings({
@@ -2072,22 +2277,31 @@ class GoogleCloudRecaptchaenterpriseV1Key {
   /// Human-readable display name of this key.
   ///
   /// Modifiable by user.
+  ///
+  /// Required.
   core.String? displayName;
 
   /// Settings for keys that can be used by iOS apps.
   GoogleCloudRecaptchaenterpriseV1IOSKeySettings? iosSettings;
 
-  /// See Creating and managing labels.
+  /// See
+  /// [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// The resource name for the Key in the format
-  /// "projects/{project}/keys/{key}".
+  /// `projects/{project}/keys/{key}`.
   core.String? name;
 
   /// Options for user acceptance testing.
+  ///
+  /// Optional.
   GoogleCloudRecaptchaenterpriseV1TestingOptions? testingOptions;
 
   /// Settings for WAF
+  ///
+  /// Optional.
   GoogleCloudRecaptchaenterpriseV1WafSettings? wafSettings;
 
   /// Settings for keys that can be used by websites.
@@ -2318,7 +2532,7 @@ class GoogleCloudRecaptchaenterpriseV1Metrics {
   core.List<GoogleCloudRecaptchaenterpriseV1ChallengeMetrics>? challengeMetrics;
 
   /// The name of the metrics, in the format
-  /// "projects/{project}/keys/{key}/metrics".
+  /// `projects/{project}/keys/{key}/metrics`.
   ///
   /// Output only.
   core.String? name;
@@ -2430,7 +2644,7 @@ class GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification {
   ///
   /// It is used to look up password leaks associated with that hash prefix.
   ///
-  /// Optional.
+  /// Required.
   core.String? lookupHashPrefix;
   core.List<core.int> get lookupHashPrefixAsBytes =>
       convert.base64.decode(lookupHashPrefix!);
@@ -2592,15 +2806,21 @@ class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
   /// Extended verdict reasons to be used for experimentation only.
   ///
   /// The set of possible reasons is subject to change.
+  ///
+  /// Output only.
   core.List<core.String>? extendedVerdictReasons;
 
   /// Reasons contributing to the risk analysis verdict.
+  ///
+  /// Output only.
   core.List<core.String>? reasons;
 
   /// Legitimate event score from 0.0 to 1.0.
   ///
   /// (1.0 means very likely legitimate traffic while 0.0 means very likely
   /// non-legitimate traffic).
+  ///
+  /// Output only.
   core.double? score;
 
   GoogleCloudRecaptchaenterpriseV1RiskAnalysis({
@@ -2814,6 +3034,8 @@ class GoogleCloudRecaptchaenterpriseV1TestingOptions {
   /// For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge
   /// requests for this site will return nocaptcha if NOCAPTCHA, or an
   /// unsolvable challenge if CHALLENGE.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "TESTING_CHALLENGE_UNSPECIFIED" : Perform the normal risk analysis and
   /// return either nocaptcha or a challenge depending on risk and trust
@@ -2828,6 +3050,8 @@ class GoogleCloudRecaptchaenterpriseV1TestingOptions {
   ///
   /// Must be between 0 (likely not legitimate) and 1 (likely legitimate)
   /// inclusive.
+  ///
+  /// Optional.
   core.double? testingScore;
 
   GoogleCloudRecaptchaenterpriseV1TestingOptions({
@@ -2854,19 +3078,29 @@ class GoogleCloudRecaptchaenterpriseV1TestingOptions {
 /// Properties of the provided event token.
 class GoogleCloudRecaptchaenterpriseV1TokenProperties {
   /// Action name provided at token generation.
+  ///
+  /// Output only.
   core.String? action;
 
   /// The name of the Android package with which the token was generated
   /// (Android keys only).
+  ///
+  /// Output only.
   core.String? androidPackageName;
 
   /// The timestamp corresponding to the generation of the token.
+  ///
+  /// Output only.
   core.String? createTime;
 
   /// The hostname of the page on which the token was generated (Web keys only).
+  ///
+  /// Output only.
   core.String? hostname;
 
   /// Reason associated with the response when valid = false.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "INVALID_REASON_UNSPECIFIED" : Default unspecified type.
   /// - "UNKNOWN_INVALID_REASON" : If the failure reason was not accounted for.
@@ -2880,6 +3114,8 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
 
   /// The ID of the iOS bundle with which the token was generated (iOS keys
   /// only).
+  ///
+  /// Output only.
   core.String? iosBundleId;
 
   /// Whether the provided user response token is valid.
@@ -2888,6 +3124,8 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
   /// could also be due to a user failing to solve a challenge or a sitekey
   /// mismatch (i.e the sitekey used to generate the token was different than
   /// the one specified in the assessment).
+  ///
+  /// Output only.
   core.bool? valid;
 
   GoogleCloudRecaptchaenterpriseV1TokenProperties({
@@ -2938,29 +3176,41 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
 
 /// Transaction data associated with a payment protected by reCAPTCHA
 /// Enterprise.
-///
-/// All fields are optional.
 class GoogleCloudRecaptchaenterpriseV1TransactionData {
   /// Address associated with the payment method when applicable.
+  ///
+  /// Optional.
   GoogleCloudRecaptchaenterpriseV1TransactionDataAddress? billingAddress;
 
   /// The Bank Identification Number - generally the first 6 or 8 digits of the
   /// card.
+  ///
+  /// Optional.
   core.String? cardBin;
 
   /// The last four digits of the card.
+  ///
+  /// Optional.
   core.String? cardLastFour;
 
   /// The currency code in ISO-4217 format.
+  ///
+  /// Optional.
   core.String? currencyCode;
 
   /// Information about the payment gateway's response to the transaction.
+  ///
+  /// Optional.
   GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo? gatewayInfo;
 
   /// Items purchased in this transaction.
+  ///
+  /// Optional.
   core.List<GoogleCloudRecaptchaenterpriseV1TransactionDataItem>? items;
 
   /// Information about the user or users fulfilling the transaction.
+  ///
+  /// Optional.
   core.List<GoogleCloudRecaptchaenterpriseV1TransactionDataUser>? merchants;
 
   /// The payment method for the transaction.
@@ -2969,14 +3219,20 @@ class GoogleCloudRecaptchaenterpriseV1TransactionData {
   /// processor-{name} (If a third-party is used, for example, processor-paypal)
   /// * custom-{name} (If an alternative method is used, for example,
   /// custom-crypto)
+  ///
+  /// Optional.
   core.String? paymentMethod;
 
   /// Destination address if this transaction involves shipping a physical item.
+  ///
+  /// Optional.
   GoogleCloudRecaptchaenterpriseV1TransactionDataAddress? shippingAddress;
 
   /// The value of shipping in the specified currency.
   ///
   /// 0 for free or no shipping.
+  ///
+  /// Optional.
   core.double? shippingValue;
 
   /// Unique identifier for the transaction.
@@ -2987,9 +3243,13 @@ class GoogleCloudRecaptchaenterpriseV1TransactionData {
   core.String? transactionId;
 
   /// Information about the user paying/initiating the transaction.
+  ///
+  /// Optional.
   GoogleCloudRecaptchaenterpriseV1TransactionDataUser? user;
 
   /// The decimal value of the transaction in the specified currency.
+  ///
+  /// Optional.
   core.double? value;
 
   GoogleCloudRecaptchaenterpriseV1TransactionData({
@@ -3091,21 +3351,33 @@ class GoogleCloudRecaptchaenterpriseV1TransactionDataAddress {
   ///
   /// The first line generally contains the street name and number, and further
   /// lines may include information such as an apartment number.
+  ///
+  /// Optional.
   core.List<core.String>? address;
 
   /// The state, province, or otherwise administrative area of the address.
+  ///
+  /// Optional.
   core.String? administrativeArea;
 
   /// The town/city of the address.
+  ///
+  /// Optional.
   core.String? locality;
 
   /// The postal or ZIP code of the address.
+  ///
+  /// Optional.
   core.String? postalCode;
 
   /// The recipient name, potentially including information such as "care of".
+  ///
+  /// Optional.
   core.String? recipient;
 
   /// The CLDR country/region of the address.
+  ///
+  /// Optional.
   core.String? regionCode;
 
   GoogleCloudRecaptchaenterpriseV1TransactionDataAddress({
@@ -3157,16 +3429,24 @@ class GoogleCloudRecaptchaenterpriseV1TransactionDataAddress {
 class GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo {
   /// AVS response code from the gateway (available only when reCAPTCHA
   /// Enterprise is called after authorization).
+  ///
+  /// Optional.
   core.String? avsResponseCode;
 
   /// CVV response code from the gateway (available only when reCAPTCHA
   /// Enterprise is called after authorization).
+  ///
+  /// Optional.
   core.String? cvvResponseCode;
 
   /// Gateway response code describing the state of the transaction.
+  ///
+  /// Optional.
   core.String? gatewayResponseCode;
 
   /// Name of the gateway service (for example, stripe, square, paypal).
+  ///
+  /// Optional.
   core.String? name;
 
   GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo({
@@ -3205,16 +3485,24 @@ class GoogleCloudRecaptchaenterpriseV1TransactionDataItem {
   /// When a merchant is specified, its corresponding account_id.
   ///
   /// Necessary to populate marketplace-style transactions.
+  ///
+  /// Optional.
   core.String? merchantAccountId;
 
   /// The full name of the item.
+  ///
+  /// Optional.
   core.String? name;
 
   /// The quantity of this item that is being purchased.
+  ///
+  /// Optional.
   core.String? quantity;
 
   /// The value per item that the user is paying, in the transaction currency,
   /// after discounts.
+  ///
+  /// Optional.
   core.double? value;
 
   GoogleCloudRecaptchaenterpriseV1TransactionDataItem({
@@ -3252,23 +3540,35 @@ class GoogleCloudRecaptchaenterpriseV1TransactionDataUser {
   ///
   /// If using account defender, this should match the hashed_account_id field.
   /// Otherwise, a unique and persistent identifier for this account.
+  ///
+  /// Optional.
   core.String? accountId;
 
   /// The epoch milliseconds of the user's account creation.
+  ///
+  /// Optional.
   core.String? creationMs;
 
   /// The email address of the user.
+  ///
+  /// Optional.
   core.String? email;
 
   /// Whether the email has been verified to be accessible by the user (OTP or
   /// similar).
+  ///
+  /// Optional.
   core.bool? emailVerified;
 
   /// The phone number of the user, with country code.
+  ///
+  /// Optional.
   core.String? phoneNumber;
 
   /// Whether the phone number has been verified to be accessible by the user
   /// (OTP or similar).
+  ///
+  /// Optional.
   core.bool? phoneVerified;
 
   GoogleCloudRecaptchaenterpriseV1TransactionDataUser({
@@ -3435,6 +3735,109 @@ class GoogleCloudRecaptchaenterpriseV1TransactionEvent {
       };
 }
 
+/// An identifier associated with a user.
+class GoogleCloudRecaptchaenterpriseV1UserId {
+  /// An email address.
+  ///
+  /// Optional.
+  core.String? email;
+
+  /// A phone number.
+  ///
+  /// Should use the E.164 format.
+  ///
+  /// Optional.
+  core.String? phoneNumber;
+
+  /// A unique username, if different from all the other identifiers and
+  /// `account_id` that are provided.
+  ///
+  /// Can be a unique login handle or display name for a user.
+  ///
+  /// Optional.
+  core.String? username;
+
+  GoogleCloudRecaptchaenterpriseV1UserId({
+    this.email,
+    this.phoneNumber,
+    this.username,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1UserId.fromJson(core.Map json_)
+      : this(
+          email:
+              json_.containsKey('email') ? json_['email'] as core.String : null,
+          phoneNumber: json_.containsKey('phoneNumber')
+              ? json_['phoneNumber'] as core.String
+              : null,
+          username: json_.containsKey('username')
+              ? json_['username'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (email != null) 'email': email!,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+        if (username != null) 'username': username!,
+      };
+}
+
+/// User information associated with a request protected by reCAPTCHA
+/// Enterprise.
+class GoogleCloudRecaptchaenterpriseV1UserInfo {
+  /// For logged-in requests or login/registration requests, the unique account
+  /// identifier associated with this user.
+  ///
+  /// You can use the username if it is stable (meaning it is the same for every
+  /// request associated with the same user), or any stable user ID of your
+  /// choice. Leave blank for non logged-in actions or guest checkout.
+  ///
+  /// Optional.
+  core.String? accountId;
+
+  /// Creation time for this account associated with this user.
+  ///
+  /// Leave blank for non logged-in actions, guest checkout, or when there is no
+  /// account associated with the current user.
+  ///
+  /// Optional.
+  core.String? createAccountTime;
+
+  /// Identifiers associated with this user or request.
+  ///
+  /// Optional.
+  core.List<GoogleCloudRecaptchaenterpriseV1UserId>? userIds;
+
+  GoogleCloudRecaptchaenterpriseV1UserInfo({
+    this.accountId,
+    this.createAccountTime,
+    this.userIds,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1UserInfo.fromJson(core.Map json_)
+      : this(
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
+              : null,
+          createAccountTime: json_.containsKey('createAccountTime')
+              ? json_['createAccountTime'] as core.String
+              : null,
+          userIds: json_.containsKey('userIds')
+              ? (json_['userIds'] as core.List)
+                  .map((value) =>
+                      GoogleCloudRecaptchaenterpriseV1UserId.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (createAccountTime != null) 'createAccountTime': createAccountTime!,
+        if (userIds != null) 'userIds': userIds!,
+      };
+}
+
 /// Settings specific to keys that can be used for WAF (Web Application
 /// Firewall).
 class GoogleCloudRecaptchaenterpriseV1WafSettings {
@@ -3484,12 +3887,16 @@ class GoogleCloudRecaptchaenterpriseV1WafSettings {
 /// Settings specific to keys that can be used by websites.
 class GoogleCloudRecaptchaenterpriseV1WebKeySettings {
   /// If set to true, it means allowed_domains will not be enforced.
+  ///
+  /// Optional.
   core.bool? allowAllDomains;
 
   /// If set to true, the key can be used on AMP (Accelerated Mobile Pages)
   /// websites.
   ///
   /// This is supported only for the SCORE integration type.
+  ///
+  /// Optional.
   core.bool? allowAmpTraffic;
 
   /// Domains or subdomains of websites allowed to use the key.
@@ -3497,12 +3904,16 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettings {
   /// All subdomains of an allowed domain are automatically allowed. A valid
   /// domain requires a host and must not include any path, port, query or
   /// fragment. Examples: 'example.com' or 'subdomain.example.com'
+  ///
+  /// Optional.
   core.List<core.String>? allowedDomains;
 
   /// Settings for the frequency and difficulty at which this key triggers
   /// captcha challenges.
   ///
   /// This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED" : Default type that
   /// indicates this enum hasn't been specified.

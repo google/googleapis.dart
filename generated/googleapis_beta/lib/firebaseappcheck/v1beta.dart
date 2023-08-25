@@ -230,6 +230,57 @@ class OauthClientsResource {
         .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Validates a debug token secret that you have previously created using
+  /// CreateDebugToken.
+  ///
+  /// If valid, returns an AppCheckToken. Note that a restrictive quota is
+  /// enforced on this method to prevent accidental exposure of the app to
+  /// abuse.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [app] - Required. The relative resource name of the app, in the format:
+  /// ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
+  /// `project_number` element can be replaced with the project ID of the
+  /// Firebase project. Learn more about using project identifiers in Google's
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// Value must have pattern `^oauthClients/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1betaAppCheckToken].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaAppCheckToken> exchangeDebugToken(
+    GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest request,
+    core.String app, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1beta/' + core.Uri.encodeFull('$app') + ':exchangeDebugToken';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1betaAppCheckToken.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Generates a challenge that protects the integrity of an immediately
   /// following call to ExchangeAppAttestAttestation or
   /// ExchangeAppAttestAssertion.
@@ -3090,10 +3141,11 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Forces a short-lived token with a 5 minute TTL.
+  /// Specifies whether this attestation is for use in a *limited use* (`true`)
+  /// or *session based* (`false`) context.
   ///
-  /// Useful when the client wishes to impose stricter TTL requirements for this
-  /// exchange. Default: false.
+  /// To enable this attestation to be used with the *replay protection*
+  /// feature, set this to `true`. The default value is `false`.
   core.bool? limitedUse;
 
   GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest({
@@ -3167,10 +3219,11 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Forces a short-lived token with a 5 minute TTL.
+  /// Specifies whether this attestation is for use in a *limited use* (`true`)
+  /// or *session based* (`false`) context.
   ///
-  /// Useful when the client wishes to impose stricter TTL requirements for this
-  /// exchange. Default: false.
+  /// To enable this attestation to be used with the *replay protection*
+  /// feature, set this to `true`. The default value is `false`.
   core.bool? limitedUse;
 
   GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest({
@@ -3264,10 +3317,11 @@ class GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest {
   /// Required.
   core.String? customToken;
 
-  /// Forces a short-lived token with a 5 minute TTL.
+  /// Specifies whether this attestation is for use in a *limited use* (`true`)
+  /// or *session based* (`false`) context.
   ///
-  /// Useful when the client wishes to impose stricter TTL requirements for this
-  /// exchange. Default: false.
+  /// To enable this attestation to be used with the *replay protection*
+  /// feature, set this to `true`. The default value is `false`.
   core.bool? limitedUse;
 
   GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest({
@@ -3302,10 +3356,11 @@ class GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest {
   /// Required.
   core.String? debugToken;
 
-  /// Forces a short-lived token with a 5 minute TTL.
+  /// Specifies whether this attestation is for use in a *limited use* (`true`)
+  /// or *session based* (`false`) context.
   ///
-  /// Useful when the client wishes to impose stricter TTL requirements for this
-  /// exchange. Default: false.
+  /// To enable this attestation to be used with the *replay protection*
+  /// feature, set this to `true`. The default value is `false`.
   core.bool? limitedUse;
 
   GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest({
@@ -3339,10 +3394,11 @@ class GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest {
   /// Required.
   core.String? deviceToken;
 
-  /// Forces a short-lived token with a 5 minute TTL.
+  /// Specifies whether this attestation is for use in a *limited use* (`true`)
+  /// or *session based* (`false`) context.
   ///
-  /// Useful when the client wishes to impose stricter TTL requirements for this
-  /// exchange. Default: false.
+  /// To enable this attestation to be used with the *replay protection*
+  /// feature, set this to `true`. The default value is `false`.
   core.bool? limitedUse;
 
   GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest({
@@ -3369,10 +3425,11 @@ class GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest {
 
 /// Request message for the ExchangePlayIntegrityToken method.
 class GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest {
-  /// Forces a short-lived token with a 5 minute TTL.
+  /// Specifies whether this attestation is for use in a *limited use* (`true`)
+  /// or *session based* (`false`) context.
   ///
-  /// Useful when the client wishes to impose stricter TTL requirements for this
-  /// exchange. Default: false.
+  /// To enable this attestation to be used with the *replay protection*
+  /// feature, set this to `true`. The default value is `false`.
   core.bool? limitedUse;
 
   /// The
@@ -3407,10 +3464,11 @@ class GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest {
 
 /// Request message for the ExchangeRecaptchaEnterpriseToken method.
 class GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest {
-  /// Forces a short-lived token with a 5 minute TTL.
+  /// Specifies whether this attestation is for use in a *limited use* (`true`)
+  /// or *session based* (`false`) context.
   ///
-  /// Useful when the client wishes to impose stricter TTL requirements for this
-  /// exchange. Default: false.
+  /// To enable this attestation to be used with the *replay protection*
+  /// feature, set this to `true`. The default value is `false`.
   core.bool? limitedUse;
 
   /// The reCAPTCHA token as returned by the
@@ -3470,10 +3528,11 @@ class GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest {
 
 /// Request message for the ExchangeRecaptchaV3Token method.
 class GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest {
-  /// Forces a short-lived token with a 5 minute TTL.
+  /// Specifies whether this attestation is for use in a *limited use* (`true`)
+  /// or *session based* (`false`) context.
   ///
-  /// Useful when the client wishes to impose stricter TTL requirements for this
-  /// exchange. Default: false.
+  /// To enable this attestation to be used with the *replay protection*
+  /// feature, set this to `true`. The default value is `false`.
   core.bool? limitedUse;
 
   /// The reCAPTCHA token as returned by the

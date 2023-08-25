@@ -991,13 +991,17 @@ api.Entity buildEntity() {
   final o = api.Entity();
   buildCounterEntity++;
   if (buildCounterEntity < 3) {
+    o.builtInVariable = buildBuiltInVariable();
     o.changeStatus = 'foo';
     o.client = buildClient();
+    o.customTemplate = buildCustomTemplate();
     o.folder = buildFolder();
+    o.gtagConfig = buildGtagConfig();
     o.tag = buildTag();
     o.transformation = buildTransformation();
     o.trigger = buildTrigger();
     o.variable = buildVariable();
+    o.zone = buildZone();
   }
   buildCounterEntity--;
   return o;
@@ -1006,16 +1010,20 @@ api.Entity buildEntity() {
 void checkEntity(api.Entity o) {
   buildCounterEntity++;
   if (buildCounterEntity < 3) {
+    checkBuiltInVariable(o.builtInVariable!);
     unittest.expect(
       o.changeStatus!,
       unittest.equals('foo'),
     );
     checkClient(o.client!);
+    checkCustomTemplate(o.customTemplate!);
     checkFolder(o.folder!);
+    checkGtagConfig(o.gtagConfig!);
     checkTag(o.tag!);
     checkTransformation(o.transformation!);
     checkTrigger(o.trigger!);
     checkVariable(o.variable!);
+    checkZone(o.zone!);
   }
   buildCounterEntity--;
 }
@@ -2056,6 +2064,7 @@ api.Parameter buildParameter() {
   final o = api.Parameter();
   buildCounterParameter++;
   if (buildCounterParameter < 3) {
+    o.isWeakReference = true;
     o.key = 'foo';
     o.list = buildUnnamed40();
     o.map = buildUnnamed41();
@@ -2069,6 +2078,7 @@ api.Parameter buildParameter() {
 void checkParameter(api.Parameter o) {
   buildCounterParameter++;
   if (buildCounterParameter < 3) {
+    unittest.expect(o.isWeakReference!, unittest.isTrue);
     unittest.expect(
       o.key!,
       unittest.equals('foo'),

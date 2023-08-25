@@ -1400,6 +1400,32 @@ class Encryption {
 /// Fairplay configuration.
 typedef Fairplay = $Empty;
 
+/// `fmp4` container configuration.
+class Fmp4Config {
+  /// Specify the codec tag string that will be used in the media bitstream.
+  ///
+  /// When not specified, the codec appropriate value is used. Supported H265
+  /// codec tags: - `hvc1` (default) - `hev1`
+  ///
+  /// Optional.
+  core.String? codecTag;
+
+  Fmp4Config({
+    this.codecTag,
+  });
+
+  Fmp4Config.fromJson(core.Map json_)
+      : this(
+          codecTag: json_.containsKey('codecTag')
+              ? json_['codecTag'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (codecTag != null) 'codecTag': codecTag!,
+      };
+}
+
 /// H264 codec settings.
 class H264CodecSettings {
   /// Specifies whether an open Group of Pictures (GOP) structure should be
@@ -2581,6 +2607,11 @@ class MuxStream {
   /// `mux_stream0000000123.ts`.
   core.String? fileName;
 
+  /// `fmp4` container configuration.
+  ///
+  /// Optional.
+  Fmp4Config? fmp4;
+
   /// A unique key for this multiplexed stream.
   core.String? key;
 
@@ -2592,6 +2623,7 @@ class MuxStream {
     this.elementaryStreams,
     this.encryptionId,
     this.fileName,
+    this.fmp4,
     this.key,
     this.segmentSettings,
   });
@@ -2612,6 +2644,10 @@ class MuxStream {
           fileName: json_.containsKey('fileName')
               ? json_['fileName'] as core.String
               : null,
+          fmp4: json_.containsKey('fmp4')
+              ? Fmp4Config.fromJson(
+                  json_['fmp4'] as core.Map<core.String, core.dynamic>)
+              : null,
           key: json_.containsKey('key') ? json_['key'] as core.String : null,
           segmentSettings: json_.containsKey('segmentSettings')
               ? SegmentSettings.fromJson(json_['segmentSettings']
@@ -2624,6 +2660,7 @@ class MuxStream {
         if (elementaryStreams != null) 'elementaryStreams': elementaryStreams!,
         if (encryptionId != null) 'encryptionId': encryptionId!,
         if (fileName != null) 'fileName': fileName!,
+        if (fmp4 != null) 'fmp4': fmp4!,
         if (key != null) 'key': key!,
         if (segmentSettings != null) 'segmentSettings': segmentSettings!,
       };

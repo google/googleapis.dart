@@ -761,8 +761,79 @@ class GoogleCloudPaymentsResellerSubscriptionV1Duration {
 /// end user.
 ///
 /// The end user identity is inferred from the request OAuth context.
-typedef GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest
-    = $Empty;
+class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest {
+  /// The line items to be entitled.
+  ///
+  /// If unspecified, all line items will be entitled.
+  ///
+  /// Optional.
+  core.List<
+          GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails>?
+      lineItemEntitlementDetails;
+
+  GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest({
+    this.lineItemEntitlementDetails,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest.fromJson(
+      core.Map json_)
+      : this(
+          lineItemEntitlementDetails: json_
+                  .containsKey('lineItemEntitlementDetails')
+              ? (json_['lineItemEntitlementDetails'] as core.List)
+                  .map((value) =>
+                      GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lineItemEntitlementDetails != null)
+          'lineItemEntitlementDetails': lineItemEntitlementDetails!,
+      };
+}
+
+/// The details of the line item to be entitled.
+class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails {
+  /// The index of the line item to be entitled.
+  ///
+  /// Required.
+  core.int? lineItemIndex;
+
+  /// Only applicable if the line item corresponds to a hard bundle.
+  ///
+  /// Product resource names that identify the bundle elements to be entitled in
+  /// the line item. If unspecified, all bundle elements will be entitled. The
+  /// format is 'partners/{partner_id}/products/{product_id}'.
+  ///
+  /// Optional.
+  core.List<core.String>? products;
+
+  GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails({
+    this.lineItemIndex,
+    this.products,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails.fromJson(
+      core.Map json_)
+      : this(
+          lineItemIndex: json_.containsKey('lineItemIndex')
+              ? json_['lineItemIndex'] as core.int
+              : null,
+          products: json_.containsKey('products')
+              ? (json_['products'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lineItemIndex != null) 'lineItemIndex': lineItemIndex!,
+        if (products != null) 'products': products!,
+      };
+}
 
 class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse {
   /// The subscription that has user linked to it.
@@ -1014,6 +1085,32 @@ class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse {
       };
 }
 
+/// Details for a subscriptiin line item with finite billing cycles.
+class GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails {
+  /// The number of a subscription line item billing cycles after which billing
+  /// will stop automatically.
+  ///
+  /// Required.
+  core.String? billingCycleCountLimit;
+
+  GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails({
+    this.billingCycleCountLimit,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails.fromJson(
+      core.Map json_)
+      : this(
+          billingCycleCountLimit: json_.containsKey('billingCycleCountLimit')
+              ? json_['billingCycleCountLimit'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (billingCycleCountLimit != null)
+          'billingCycleCountLimit': billingCycleCountLimit!,
+      };
+}
+
 /// Payload specific to Google One products.
 class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload {
   /// Campaign attributed to sales of this subscription.
@@ -1189,6 +1286,19 @@ class GoogleCloudPaymentsResellerSubscriptionV1Location {
 
 /// A Product resource that defines a subscription service that can be resold.
 class GoogleCloudPaymentsResellerSubscriptionV1Product {
+  /// Specifies the details for a bundle product.
+  ///
+  /// Output only.
+  ProductBundleDetails? bundleDetails;
+
+  /// Details for a subscription line item with finite billing cycles.
+  ///
+  /// If unset, the line item will be charged indefinitely.
+  ///
+  /// Optional.
+  GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails?
+      finiteBillingCycleDetails;
+
   /// Response only.
   ///
   /// Resource name of the product. It will have the format of
@@ -1202,6 +1312,17 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
   /// Output only.
   core.List<GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig>?
       priceConfigs;
+
+  /// Specifies the type of the product.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PRODUCT_TYPE_UNSPECIFIED" : Unspecified. It's reserved as an unexpected
+  /// value, should not be used.
+  /// - "PRODUCT_TYPE_SUBSCRIPTION" : The product is a subscription.
+  /// - "PRODUCT_TYPE_BUNDLE_SUBSCRIPTION" : The product is a bundled
+  /// subscription plan, which includes multiple subscription elements.
+  core.String? productType;
 
   /// 2-letter ISO region code where the product is available in.
   ///
@@ -1222,8 +1343,11 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
   core.List<GoogleTypeLocalizedText>? titles;
 
   GoogleCloudPaymentsResellerSubscriptionV1Product({
+    this.bundleDetails,
+    this.finiteBillingCycleDetails,
     this.name,
     this.priceConfigs,
+    this.productType,
     this.regionCodes,
     this.subscriptionBillingCycleDuration,
     this.titles,
@@ -1231,6 +1355,16 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
 
   GoogleCloudPaymentsResellerSubscriptionV1Product.fromJson(core.Map json_)
       : this(
+          bundleDetails: json_.containsKey('bundleDetails')
+              ? ProductBundleDetails.fromJson(
+                  json_['bundleDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          finiteBillingCycleDetails: json_
+                  .containsKey('finiteBillingCycleDetails')
+              ? GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails
+                  .fromJson(json_['finiteBillingCycleDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           priceConfigs: json_.containsKey('priceConfigs')
               ? (json_['priceConfigs'] as core.List)
@@ -1239,6 +1373,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
                           .fromJson(
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          productType: json_.containsKey('productType')
+              ? json_['productType'] as core.String
               : null,
           regionCodes: json_.containsKey('regionCodes')
               ? (json_['regionCodes'] as core.List)
@@ -1260,12 +1397,42 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bundleDetails != null) 'bundleDetails': bundleDetails!,
+        if (finiteBillingCycleDetails != null)
+          'finiteBillingCycleDetails': finiteBillingCycleDetails!,
         if (name != null) 'name': name!,
         if (priceConfigs != null) 'priceConfigs': priceConfigs!,
+        if (productType != null) 'productType': productType!,
         if (regionCodes != null) 'regionCodes': regionCodes!,
         if (subscriptionBillingCycleDuration != null)
           'subscriptionBillingCycleDuration': subscriptionBillingCycleDuration!,
         if (titles != null) 'titles': titles!,
+      };
+}
+
+/// The individual product that is included in the bundle.
+class GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement {
+  /// Product resource name that identifies the bundle element.
+  ///
+  /// The format is 'partners/{partner_id}/products/{product_id}'.
+  ///
+  /// Required. Output only.
+  core.String? product;
+
+  GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement({
+    this.product,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement.fromJson(
+      core.Map json_)
+      : this(
+          product: json_.containsKey('product')
+              ? json_['product'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (product != null) 'product': product!,
       };
 }
 
@@ -1938,10 +2105,26 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
   /// Output only.
   GoogleCloudPaymentsResellerSubscriptionV1Amount? amount;
 
+  /// The bundle details for the line item.
+  ///
+  /// Only populated if the line item corresponds to a hard bundle.
+  ///
+  /// Output only.
+  SubscriptionLineItemBundleDetails? bundleDetails;
+
   /// Description of this line item.
   ///
   /// Output only.
   core.String? description;
+
+  /// Details for a subscription line item with finite billing cycles.
+  ///
+  /// If unset, the line item will be charged indefinitely. Used only with
+  /// LINE_ITEM_RECURRENCE_TYPE_PERIODIC.
+  ///
+  /// Optional.
+  GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails?
+      finiteBillingCycleDetails;
 
   /// The free trial end time will be populated after the line item is
   /// successfully processed.
@@ -2023,7 +2206,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
 
   GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem({
     this.amount,
+    this.bundleDetails,
     this.description,
+    this.finiteBillingCycleDetails,
     this.lineItemFreeTrialEndTime,
     this.lineItemIndex,
     this.lineItemPromotionSpecs,
@@ -2041,8 +2226,18 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
               ? GoogleCloudPaymentsResellerSubscriptionV1Amount.fromJson(
                   json_['amount'] as core.Map<core.String, core.dynamic>)
               : null,
+          bundleDetails: json_.containsKey('bundleDetails')
+              ? SubscriptionLineItemBundleDetails.fromJson(
+                  json_['bundleDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
+              : null,
+          finiteBillingCycleDetails: json_
+                  .containsKey('finiteBillingCycleDetails')
+              ? GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails
+                  .fromJson(json_['finiteBillingCycleDetails']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           lineItemFreeTrialEndTime:
               json_.containsKey('lineItemFreeTrialEndTime')
@@ -2082,7 +2277,10 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (amount != null) 'amount': amount!,
+        if (bundleDetails != null) 'bundleDetails': bundleDetails!,
         if (description != null) 'description': description!,
+        if (finiteBillingCycleDetails != null)
+          'finiteBillingCycleDetails': finiteBillingCycleDetails!,
         if (lineItemFreeTrialEndTime != null)
           'lineItemFreeTrialEndTime': lineItemFreeTrialEndTime!,
         if (lineItemIndex != null) 'lineItemIndex': lineItemIndex!,
@@ -2094,6 +2292,43 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
         if (productPayload != null) 'productPayload': productPayload!,
         if (recurrenceType != null) 'recurrenceType': recurrenceType!,
         if (state != null) 'state': state!,
+      };
+}
+
+/// The details for an element in the hard bundle.
+class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails {
+  /// Product resource name that identifies the bundle element.
+  ///
+  /// The format is 'partners/{partner_id}/products/{product_id}'.
+  ///
+  /// Output only.
+  core.String? product;
+
+  /// The time when this product is linked to an end user.
+  ///
+  /// Output only.
+  core.String? userAccountLinkedTime;
+
+  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails({
+    this.product,
+    this.userAccountLinkedTime,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails.fromJson(
+      core.Map json_)
+      : this(
+          product: json_.containsKey('product')
+              ? json_['product'] as core.String
+              : null,
+          userAccountLinkedTime: json_.containsKey('userAccountLinkedTime')
+              ? json_['userAccountLinkedTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (product != null) 'product': product!,
+        if (userAccountLinkedTime != null)
+          'userAccountLinkedTime': userAccountLinkedTime!,
       };
 }
 
@@ -2297,3 +2532,75 @@ class GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload {
 
 /// Localized variant of a text in a particular language.
 typedef GoogleTypeLocalizedText = $GoogleTypeLocalizedText;
+
+/// Details for a bundle product.
+class ProductBundleDetails {
+  /// The individual products that are included in the bundle.
+  core.List<
+          GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement>?
+      bundleElements;
+
+  /// The entitlement mode of the bundle product.
+  /// Possible string values are:
+  /// - "ENTITLEMENT_MODE_UNSPECIFIED" : Unspecified. It's reserved as an
+  /// unexpected value, should not be used.
+  /// - "ENTITLEMENT_MODE_FULL" : All the bundle elements must be fully
+  /// activated in a single request.
+  /// - "ENTITLEMENT_MODE_INCREMENTAL" : The bundle elements could be
+  /// incrementally activated.
+  core.String? entitlementMode;
+
+  ProductBundleDetails({
+    this.bundleElements,
+    this.entitlementMode,
+  });
+
+  ProductBundleDetails.fromJson(core.Map json_)
+      : this(
+          bundleElements: json_.containsKey('bundleElements')
+              ? (json_['bundleElements'] as core.List)
+                  .map((value) =>
+                      GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          entitlementMode: json_.containsKey('entitlementMode')
+              ? json_['entitlementMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bundleElements != null) 'bundleElements': bundleElements!,
+        if (entitlementMode != null) 'entitlementMode': entitlementMode!,
+      };
+}
+
+/// The bundle details for a line item corresponding to a hard bundle.
+class SubscriptionLineItemBundleDetails {
+  /// The details for each element in the hard bundle.
+  core.List<
+          GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails>?
+      bundleElementDetails;
+
+  SubscriptionLineItemBundleDetails({
+    this.bundleElementDetails,
+  });
+
+  SubscriptionLineItemBundleDetails.fromJson(core.Map json_)
+      : this(
+          bundleElementDetails: json_.containsKey('bundleElementDetails')
+              ? (json_['bundleElementDetails'] as core.List)
+                  .map((value) =>
+                      GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bundleElementDetails != null)
+          'bundleElementDetails': bundleElementDetails!,
+      };
+}

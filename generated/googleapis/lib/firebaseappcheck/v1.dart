@@ -2542,10 +2542,11 @@ class GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Forces a short lived token with a 5 minute TTL.
+  /// Specifies whether this attestation is for use in a *limited use* (`true`)
+  /// or *session based* (`false`) context.
   ///
-  /// Useful when the client wishes to self impose stricter TTL requirements for
-  /// this exchange. Default: false.
+  /// To enable this attestation to be used with the *replay protection*
+  /// feature, set this to `true`. The default value is `false`.
   core.bool? limitedUse;
 
   GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest({
@@ -2619,10 +2620,11 @@ class GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Forces a short lived token with a 5 minute TTL.
+  /// Specifies whether this attestation is for use in a *limited use* (`true`)
+  /// or *session based* (`false`) context.
   ///
-  /// Useful when the client wishes to self impose stricter TTL requirements for
-  /// this exchange. Default: false.
+  /// To enable this attestation to be used with the *replay protection*
+  /// feature, set this to `true`. The default value is `false`.
   core.bool? limitedUse;
 
   GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest({
@@ -2703,10 +2705,11 @@ class GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest {
   /// Required.
   core.String? customToken;
 
-  /// Forces a short lived token with a 5 minute TTL.
+  /// Specifies whether this attestation is for use in a *limited use* (`true`)
+  /// or *session based* (`false`) context.
   ///
-  /// Useful when the client wishes to self impose stricter TTL requirements for
-  /// this exchange. Default: false.
+  /// To enable this attestation to be used with the *replay protection*
+  /// feature, set this to `true`. The default value is `false`.
   core.bool? limitedUse;
 
   GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest({
@@ -2740,10 +2743,11 @@ class GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest {
   /// Required.
   core.String? debugToken;
 
-  /// Forces a short lived token with a 5 minute TTL.
+  /// Specifies whether this attestation is for use in a *limited use* (`true`)
+  /// or *session based* (`false`) context.
   ///
-  /// Useful when the client wishes to self impose stricter TTL requirements for
-  /// this exchange. Default: false.
+  /// To enable this attestation to be used with the *replay protection*
+  /// feature, set this to `true`. The default value is `false`.
   core.bool? limitedUse;
 
   GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest({
@@ -2777,10 +2781,11 @@ class GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest {
   /// Required.
   core.String? deviceToken;
 
-  /// Forces a short lived token with a 5 minute TTL.
+  /// Specifies whether this attestation is for use in a *limited use* (`true`)
+  /// or *session based* (`false`) context.
   ///
-  /// Useful when the client wishes to self impose stricter TTL requirements for
-  /// this exchange. Default: false.
+  /// To enable this attestation to be used with the *replay protection*
+  /// feature, set this to `true`. The default value is `false`.
   core.bool? limitedUse;
 
   GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest({
@@ -2807,10 +2812,11 @@ class GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest {
 
 /// Request message for the ExchangePlayIntegrityToken method.
 class GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest {
-  /// Forces a short-lived token with a 5 minute TTL.
+  /// Specifies whether this attestation is for use in a *limited use* (`true`)
+  /// or *session based* (`false`) context.
   ///
-  /// Useful when the client wishes to impose stricter TTL requirements for this
-  /// exchange. Default: false.
+  /// To enable this attestation to be used with the *replay protection*
+  /// feature, set this to `true`. The default value is `false`.
   core.bool? limitedUse;
 
   /// The
@@ -2845,10 +2851,11 @@ class GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest {
 
 /// Request message for the ExchangeRecaptchaEnterpriseToken method.
 class GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest {
-  /// Forces a short lived token with a 5 minute TTL.
+  /// Specifies whether this attestation is for use in a *limited use* (`true`)
+  /// or *session based* (`false`) context.
   ///
-  /// Useful when the client wishes to self impose stricter TTL requirements for
-  /// this exchange. Default: false.
+  /// To enable this attestation to be used with the *replay protection*
+  /// feature, set this to `true`. The default value is `false`.
   core.bool? limitedUse;
 
   /// The reCAPTCHA token as returned by the
@@ -2883,10 +2890,11 @@ class GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest {
 
 /// Request message for the ExchangeRecaptchaV3Token method.
 class GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest {
-  /// Forces a short lived token with a 5 minute TTL.
+  /// Specifies whether this attestation is for use in a *limited use* (`true`)
+  /// or *session based* (`false`) context.
   ///
-  /// Useful when the client wishes to self impose stricter TTL requirements for
-  /// this exchange. Default: false.
+  /// To enable this attestation to be used with the *replay protection*
+  /// feature, set this to `true`. The default value is `false`.
   core.bool? limitedUse;
 
   /// The reCAPTCHA token as returned by the
@@ -3398,6 +3406,10 @@ class GoogleFirebaseAppcheckV1Service {
   /// Check metrics collected. Though the service is not protected by App Check
   /// in this mode, other applicable protections, such as user authorization,
   /// are still enforced. An unconfigured service is in this mode by default.
+  /// Note that resource policies behave slightly differently as an unconfigured
+  /// resource policy means that the resource will inherit the EnforcementMode
+  /// configured for the service it belongs to and will not be considered as
+  /// being in OFF mode by default.
   /// - "UNENFORCED" : Firebase App Check is not enforced for the service. App
   /// Check metrics are collected to help you decide when to turn on enforcement
   /// for the service. Though the service is not protected by App Check in this

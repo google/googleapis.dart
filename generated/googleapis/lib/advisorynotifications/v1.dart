@@ -25,6 +25,7 @@
 library advisorynotifications_v1;
 
 import 'dart:async' as async;
+import 'dart:convert' as convert;
 import 'dart:core' as core;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
@@ -70,6 +71,87 @@ class OrganizationsLocationsResource {
 
   OrganizationsLocationsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Get notification settings.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the settings to retrieve. Format:
+  /// organizations/{organization}/locations/{location}/settings.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/settings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAdvisorynotificationsV1Settings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAdvisorynotificationsV1Settings> getSettings(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAdvisorynotificationsV1Settings.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update notification settings.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of the settings to retrieve.
+  /// Format: organizations/{organization}/locations/{location}/settings.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/settings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAdvisorynotificationsV1Settings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAdvisorynotificationsV1Settings> updateSettings(
+    GoogleCloudAdvisorynotificationsV1Settings request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAdvisorynotificationsV1Settings.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class OrganizationsLocationsNotificationsResource {
@@ -130,7 +212,7 @@ class OrganizationsLocationsNotificationsResource {
   ///
   /// [parent] - Required. The parent, which owns this collection of
   /// notifications. Must be of the form
-  /// "organizations/{organization}/locations/{location}".
+  /// "organizations/{organization}/locations/{location}"
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [languageCode] - ISO code for requested localization language. If unset,
@@ -473,6 +555,86 @@ class GoogleCloudAdvisorynotificationsV1Notification {
         if (name != null) 'name': name!,
         if (notificationType != null) 'notificationType': notificationType!,
         if (subject != null) 'subject': subject!,
+      };
+}
+
+/// Settings for each NotificationType.
+class GoogleCloudAdvisorynotificationsV1NotificationSettings {
+  /// Whether the associated NotificationType is enabled.
+  core.bool? enabled;
+
+  GoogleCloudAdvisorynotificationsV1NotificationSettings({
+    this.enabled,
+  });
+
+  GoogleCloudAdvisorynotificationsV1NotificationSettings.fromJson(
+      core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
+/// Settings for Advisory Notifications.
+class GoogleCloudAdvisorynotificationsV1Settings {
+  /// Fingerprint for optimistic concurrency returned in Get requests.
+  ///
+  /// Must be provided for Update requests. If the value provided does not match
+  /// the value known to the server, ABORTED will be thrown, and the client
+  /// should retry the read-modify-write cycle.
+  ///
+  /// Required.
+  core.String? etag;
+
+  /// The resource name of the settings to retrieve.
+  ///
+  /// Format: organizations/{organization}/locations/{location}/settings.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Map of each notification type and its settings to get/set all settings at
+  /// once.
+  ///
+  /// The server will validate the value for each notification type.
+  ///
+  /// Required.
+  core.Map<core.String, GoogleCloudAdvisorynotificationsV1NotificationSettings>?
+      notificationSettings;
+
+  GoogleCloudAdvisorynotificationsV1Settings({
+    this.etag,
+    this.name,
+    this.notificationSettings,
+  });
+
+  GoogleCloudAdvisorynotificationsV1Settings.fromJson(core.Map json_)
+      : this(
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          notificationSettings: json_.containsKey('notificationSettings')
+              ? (json_['notificationSettings']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    GoogleCloudAdvisorynotificationsV1NotificationSettings
+                        .fromJson(value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (notificationSettings != null)
+          'notificationSettings': notificationSettings!,
       };
 }
 

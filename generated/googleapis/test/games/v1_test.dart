@@ -1612,6 +1612,80 @@ void checkLeaderboardScores(api.LeaderboardScores o) {
   buildCounterLeaderboardScores--;
 }
 
+core.int buildCounterLinkPersonaRequest = 0;
+api.LinkPersonaRequest buildLinkPersonaRequest() {
+  final o = api.LinkPersonaRequest();
+  buildCounterLinkPersonaRequest++;
+  if (buildCounterLinkPersonaRequest < 3) {
+    o.cardinalityConstraint = 'foo';
+    o.conflictingLinksResolutionPolicy = 'foo';
+    o.expireTime = 'foo';
+    o.persona = 'foo';
+    o.sessionId = 'foo';
+    o.token = 'foo';
+    o.ttl = 'foo';
+  }
+  buildCounterLinkPersonaRequest--;
+  return o;
+}
+
+void checkLinkPersonaRequest(api.LinkPersonaRequest o) {
+  buildCounterLinkPersonaRequest++;
+  if (buildCounterLinkPersonaRequest < 3) {
+    unittest.expect(
+      o.cardinalityConstraint!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.conflictingLinksResolutionPolicy!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expireTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.persona!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sessionId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.token!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ttl!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterLinkPersonaRequest--;
+}
+
+core.int buildCounterLinkPersonaResponse = 0;
+api.LinkPersonaResponse buildLinkPersonaResponse() {
+  final o = api.LinkPersonaResponse();
+  buildCounterLinkPersonaResponse++;
+  if (buildCounterLinkPersonaResponse < 3) {
+    o.state = 'foo';
+  }
+  buildCounterLinkPersonaResponse--;
+  return o;
+}
+
+void checkLinkPersonaResponse(api.LinkPersonaResponse o) {
+  buildCounterLinkPersonaResponse++;
+  if (buildCounterLinkPersonaResponse < 3) {
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterLinkPersonaResponse--;
+}
+
 core.List<api.PlayerLevel> buildUnnamed17() => [
       buildPlayerLevel(),
       buildPlayerLevel(),
@@ -2351,6 +2425,106 @@ void checkProfileSettings(api.ProfileSettings o) {
   buildCounterProfileSettings--;
 }
 
+core.int buildCounterRecallToken = 0;
+api.RecallToken buildRecallToken() {
+  final o = api.RecallToken();
+  buildCounterRecallToken++;
+  if (buildCounterRecallToken < 3) {
+    o.expireTime = 'foo';
+    o.multiPlayerPersona = true;
+    o.token = 'foo';
+  }
+  buildCounterRecallToken--;
+  return o;
+}
+
+void checkRecallToken(api.RecallToken o) {
+  buildCounterRecallToken++;
+  if (buildCounterRecallToken < 3) {
+    unittest.expect(
+      o.expireTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.multiPlayerPersona!, unittest.isTrue);
+    unittest.expect(
+      o.token!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRecallToken--;
+}
+
+core.int buildCounterResetPersonaRequest = 0;
+api.ResetPersonaRequest buildResetPersonaRequest() {
+  final o = api.ResetPersonaRequest();
+  buildCounterResetPersonaRequest++;
+  if (buildCounterResetPersonaRequest < 3) {
+    o.persona = 'foo';
+  }
+  buildCounterResetPersonaRequest--;
+  return o;
+}
+
+void checkResetPersonaRequest(api.ResetPersonaRequest o) {
+  buildCounterResetPersonaRequest++;
+  if (buildCounterResetPersonaRequest < 3) {
+    unittest.expect(
+      o.persona!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterResetPersonaRequest--;
+}
+
+core.int buildCounterResetPersonaResponse = 0;
+api.ResetPersonaResponse buildResetPersonaResponse() {
+  final o = api.ResetPersonaResponse();
+  buildCounterResetPersonaResponse++;
+  if (buildCounterResetPersonaResponse < 3) {
+    o.unlinked = true;
+  }
+  buildCounterResetPersonaResponse--;
+  return o;
+}
+
+void checkResetPersonaResponse(api.ResetPersonaResponse o) {
+  buildCounterResetPersonaResponse++;
+  if (buildCounterResetPersonaResponse < 3) {
+    unittest.expect(o.unlinked!, unittest.isTrue);
+  }
+  buildCounterResetPersonaResponse--;
+}
+
+core.List<api.RecallToken> buildUnnamed26() => [
+      buildRecallToken(),
+      buildRecallToken(),
+    ];
+
+void checkUnnamed26(core.List<api.RecallToken> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRecallToken(o[0]);
+  checkRecallToken(o[1]);
+}
+
+core.int buildCounterRetrievePlayerTokensResponse = 0;
+api.RetrievePlayerTokensResponse buildRetrievePlayerTokensResponse() {
+  final o = api.RetrievePlayerTokensResponse();
+  buildCounterRetrievePlayerTokensResponse++;
+  if (buildCounterRetrievePlayerTokensResponse < 3) {
+    o.tokens = buildUnnamed26();
+  }
+  buildCounterRetrievePlayerTokensResponse--;
+  return o;
+}
+
+void checkRetrievePlayerTokensResponse(api.RetrievePlayerTokensResponse o) {
+  buildCounterRetrievePlayerTokensResponse++;
+  if (buildCounterRetrievePlayerTokensResponse < 3) {
+    checkUnnamed26(o.tokens!);
+  }
+  buildCounterRetrievePlayerTokensResponse--;
+}
+
 core.int buildCounterRevisionCheckResponse = 0;
 api.RevisionCheckResponse buildRevisionCheckResponse() {
   final o = api.RevisionCheckResponse();
@@ -2563,12 +2737,12 @@ void checkSnapshotImage(api.SnapshotImage o) {
   buildCounterSnapshotImage--;
 }
 
-core.List<api.Snapshot> buildUnnamed26() => [
+core.List<api.Snapshot> buildUnnamed27() => [
       buildSnapshot(),
       buildSnapshot(),
     ];
 
-void checkUnnamed26(core.List<api.Snapshot> o) {
+void checkUnnamed27(core.List<api.Snapshot> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSnapshot(o[0]);
   checkSnapshot(o[1]);
@@ -2579,7 +2753,7 @@ api.SnapshotListResponse buildSnapshotListResponse() {
   final o = api.SnapshotListResponse();
   buildCounterSnapshotListResponse++;
   if (buildCounterSnapshotListResponse < 3) {
-    o.items = buildUnnamed26();
+    o.items = buildUnnamed27();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -2590,7 +2764,7 @@ api.SnapshotListResponse buildSnapshotListResponse() {
 void checkSnapshotListResponse(api.SnapshotListResponse o) {
   buildCounterSnapshotListResponse++;
   if (buildCounterSnapshotListResponse < 3) {
-    checkUnnamed26(o.items!);
+    checkUnnamed27(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2675,12 +2849,63 @@ void checkStatsResponse(api.StatsResponse o) {
   buildCounterStatsResponse--;
 }
 
-core.List<core.String> buildUnnamed27() => [
+core.int buildCounterUnlinkPersonaRequest = 0;
+api.UnlinkPersonaRequest buildUnlinkPersonaRequest() {
+  final o = api.UnlinkPersonaRequest();
+  buildCounterUnlinkPersonaRequest++;
+  if (buildCounterUnlinkPersonaRequest < 3) {
+    o.persona = 'foo';
+    o.sessionId = 'foo';
+    o.token = 'foo';
+  }
+  buildCounterUnlinkPersonaRequest--;
+  return o;
+}
+
+void checkUnlinkPersonaRequest(api.UnlinkPersonaRequest o) {
+  buildCounterUnlinkPersonaRequest++;
+  if (buildCounterUnlinkPersonaRequest < 3) {
+    unittest.expect(
+      o.persona!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sessionId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.token!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterUnlinkPersonaRequest--;
+}
+
+core.int buildCounterUnlinkPersonaResponse = 0;
+api.UnlinkPersonaResponse buildUnlinkPersonaResponse() {
+  final o = api.UnlinkPersonaResponse();
+  buildCounterUnlinkPersonaResponse++;
+  if (buildCounterUnlinkPersonaResponse < 3) {
+    o.unlinked = true;
+  }
+  buildCounterUnlinkPersonaResponse--;
+  return o;
+}
+
+void checkUnlinkPersonaResponse(api.UnlinkPersonaResponse o) {
+  buildCounterUnlinkPersonaResponse++;
+  if (buildCounterUnlinkPersonaResponse < 3) {
+    unittest.expect(o.unlinked!, unittest.isTrue);
+  }
+  buildCounterUnlinkPersonaResponse--;
+}
+
+core.List<core.String> buildUnnamed28() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed27(core.List<core.String> o) {
+void checkUnnamed28(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3093,6 +3318,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-LinkPersonaRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLinkPersonaRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LinkPersonaRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkLinkPersonaRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-LinkPersonaResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLinkPersonaResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LinkPersonaResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkLinkPersonaResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-MetagameConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildMetagameConfig();
@@ -3263,6 +3508,46 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-RecallToken', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRecallToken();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RecallToken.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRecallToken(od);
+    });
+  });
+
+  unittest.group('obj-schema-ResetPersonaRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildResetPersonaRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ResetPersonaRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkResetPersonaRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-ResetPersonaResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildResetPersonaResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ResetPersonaResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkResetPersonaResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-RetrievePlayerTokensResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRetrievePlayerTokensResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RetrievePlayerTokensResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRetrievePlayerTokensResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-RevisionCheckResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildRevisionCheckResponse();
@@ -3330,6 +3615,26 @@ void main() {
       final od = api.StatsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkStatsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-UnlinkPersonaRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUnlinkPersonaRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UnlinkPersonaRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUnlinkPersonaRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-UnlinkPersonaResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUnlinkPersonaResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UnlinkPersonaResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUnlinkPersonaResponse(od);
     });
   });
 
@@ -4644,7 +4949,7 @@ void main() {
     unittest.test('method--getMultipleApplicationPlayerIds', () async {
       final mock = HttpServerMock();
       final res = api.GamesApi(mock).players;
-      final arg_applicationIds = buildUnnamed27();
+      final arg_applicationIds = buildUnnamed28();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -4823,6 +5128,234 @@ void main() {
           pageToken: arg_pageToken,
           $fields: arg_$fields);
       checkPlayerListResponse(response as api.PlayerListResponse);
+    });
+  });
+
+  unittest.group('resource-RecallResource', () {
+    unittest.test('method--linkPersona', () async {
+      final mock = HttpServerMock();
+      final res = api.GamesApi(mock).recall;
+      final arg_request = buildLinkPersonaRequest();
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.LinkPersonaRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLinkPersonaRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 27),
+          unittest.equals('games/v1/recall:linkPersona'),
+        );
+        pathOffset += 27;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildLinkPersonaResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.linkPersona(arg_request, $fields: arg_$fields);
+      checkLinkPersonaResponse(response as api.LinkPersonaResponse);
+    });
+
+    unittest.test('method--resetPersona', () async {
+      final mock = HttpServerMock();
+      final res = api.GamesApi(mock).recall;
+      final arg_request = buildResetPersonaRequest();
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ResetPersonaRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkResetPersonaRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 28),
+          unittest.equals('games/v1/recall:resetPersona'),
+        );
+        pathOffset += 28;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildResetPersonaResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.resetPersona(arg_request, $fields: arg_$fields);
+      checkResetPersonaResponse(response as api.ResetPersonaResponse);
+    });
+
+    unittest.test('method--retrieveTokens', () async {
+      final mock = HttpServerMock();
+      final res = api.GamesApi(mock).recall;
+      final arg_sessionId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 23),
+          unittest.equals('games/v1/recall/tokens/'),
+        );
+        pathOffset += 23;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_sessionId'),
+        );
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildRetrievePlayerTokensResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.retrieveTokens(arg_sessionId, $fields: arg_$fields);
+      checkRetrievePlayerTokensResponse(
+          response as api.RetrievePlayerTokensResponse);
+    });
+
+    unittest.test('method--unlinkPersona', () async {
+      final mock = HttpServerMock();
+      final res = api.GamesApi(mock).recall;
+      final arg_request = buildUnlinkPersonaRequest();
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.UnlinkPersonaRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUnlinkPersonaRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 29),
+          unittest.equals('games/v1/recall:unlinkPersona'),
+        );
+        pathOffset += 29;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildUnlinkPersonaResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.unlinkPersona(arg_request, $fields: arg_$fields);
+      checkUnlinkPersonaResponse(response as api.UnlinkPersonaResponse);
     });
   });
 

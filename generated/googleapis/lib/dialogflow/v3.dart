@@ -40,6 +40,7 @@
 ///         - [ProjectsLocationsAgentsSessionsEntityTypesResource]
 ///       - [ProjectsLocationsAgentsTestCasesResource]
 ///         - [ProjectsLocationsAgentsTestCasesResultsResource]
+///       - [ProjectsLocationsAgentsTransitionRouteGroupsResource]
 ///       - [ProjectsLocationsAgentsWebhooksResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsSecuritySettingsResource]
@@ -210,6 +211,9 @@ class ProjectsLocationsAgentsResource {
       ProjectsLocationsAgentsSessionsResource(_requester);
   ProjectsLocationsAgentsTestCasesResource get testCases =>
       ProjectsLocationsAgentsTestCasesResource(_requester);
+  ProjectsLocationsAgentsTransitionRouteGroupsResource
+      get transitionRouteGroups =>
+          ProjectsLocationsAgentsTransitionRouteGroupsResource(_requester);
   ProjectsLocationsAgentsWebhooksResource get webhooks =>
       ProjectsLocationsAgentsWebhooksResource(_requester);
 
@@ -384,6 +388,49 @@ class ProjectsLocationsAgentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowCxV3Agent.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the generative settings for the agent.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects//locations//agents//generativeSettings`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/generativeSettings$`.
+  ///
+  /// [languageCode] - Required. Language code of the generative settings.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3GenerativeSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3GenerativeSettings>
+      getGenerativeSettings(
+    core.String name, {
+    core.String? languageCode,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (languageCode != null) 'languageCode': [languageCode],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3GenerativeSettings.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -583,6 +630,54 @@ class ProjectsLocationsAgentsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the generative settings for the agent.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Format: `projects//locations//agents//generativeSettings`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/generativeSettings$`.
+  ///
+  /// [updateMask] - Optional. The mask to control which fields get updated. If
+  /// the mask is not present, all fields will be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3GenerativeSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3GenerativeSettings>
+      updateGenerativeSettings(
+    GoogleCloudDialogflowCxV3GenerativeSettings request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3GenerativeSettings.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -3160,7 +3255,8 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The flow to create an TransitionRouteGroup for.
-  /// Format: `projects//locations//agents//flows/`.
+  /// Format: `projects//locations//agents//flows/` or
+  /// `projects//locations//agents/` for agent-level groups.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/flows/\[^/\]+$`.
   ///
@@ -3216,7 +3312,8 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the TransitionRouteGroup to delete. Format:
-  /// `projects//locations//agents//flows//transitionRouteGroups/`.
+  /// `projects//locations//agents//flows//transitionRouteGroups/` or
+  /// `projects//locations//agents//transitionRouteGroups/`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/flows/\[^/\]+/transitionRouteGroups/\[^/\]+$`.
   ///
@@ -3263,7 +3360,8 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the TransitionRouteGroup. Format:
-  /// `projects//locations//agents//flows//transitionRouteGroups/`.
+  /// `projects//locations//agents//flows//transitionRouteGroups/` or
+  /// `projects//locations//agents//transitionRouteGroups/`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/flows/\[^/\]+/transitionRouteGroups/\[^/\]+$`.
   ///
@@ -3312,7 +3410,8 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The flow to list all transition route groups for.
-  /// Format: `projects//locations//agents//flows/`.
+  /// Format: \`projects//locations//agents//flows/\` or
+  /// \`projects//locations//agents/.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/flows/\[^/\]+$`.
   ///
@@ -3380,7 +3479,7 @@ class ProjectsLocationsAgentsFlowsTransitionRouteGroupsResource {
   /// [name] - The unique identifier of the transition route group.
   /// TransitionRouteGroups.CreateTransitionRouteGroup populates the name
   /// automatically. Format:
-  /// `projects//locations//agents//flows//transitionRouteGroups/`.
+  /// `projects//locations//agents//flows//transitionRouteGroups/` .
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/flows/\[^/\]+/transitionRouteGroups/\[^/\]+$`.
   ///
@@ -3859,6 +3958,54 @@ class ProjectsLocationsAgentsIntentsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Exports the selected intents.
+  ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: ExportIntentsMetadata - `response`: ExportIntentsResponse
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent agent to export intents.
+  /// Format: `projects//locations//agents/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> export(
+    GoogleCloudDialogflowCxV3ExportIntentsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/intents:export';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Retrieves the specified intent.
   ///
   /// Request parameters:
@@ -3903,6 +4050,54 @@ class ProjectsLocationsAgentsIntentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowCxV3Intent.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Imports the specified intents into the agent.
+  ///
+  /// This method is a \[long-running
+  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+  /// The returned `Operation` type has the following method-specific fields: -
+  /// `metadata`: ImportIntentsMetadata - `response`: ImportIntentsResponse
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The agent to import the intents into. Format:
+  /// `projects//locations//agents/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> import(
+    GoogleCloudDialogflowCxV3ImportIntentsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/intents:import';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -5040,6 +5235,299 @@ class ProjectsLocationsAgentsTestCasesResultsResource {
   }
 }
 
+class ProjectsLocationsAgentsTransitionRouteGroupsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAgentsTransitionRouteGroupsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an TransitionRouteGroup in the specified flow.
+  ///
+  /// Note: You should always train a flow prior to sending it queries. See the
+  /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The flow to create an TransitionRouteGroup for.
+  /// Format: `projects//locations//agents//flows/` or
+  /// `projects//locations//agents/` for agent-level groups.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+$`.
+  ///
+  /// [languageCode] - The language of the following fields in
+  /// `TransitionRouteGroup`: *
+  /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` *
+  /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases`
+  /// If not specified, the agent's default language is used.
+  /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
+  /// are supported. Note: languages must be enabled in the agent before they
+  /// can be used.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3TransitionRouteGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3TransitionRouteGroup> create(
+    GoogleCloudDialogflowCxV3TransitionRouteGroup request,
+    core.String parent, {
+    core.String? languageCode,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (languageCode != null) 'languageCode': [languageCode],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v3/' + core.Uri.encodeFull('$parent') + '/transitionRouteGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3TransitionRouteGroup.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified TransitionRouteGroup.
+  ///
+  /// Note: You should always train a flow prior to sending it queries. See the
+  /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the TransitionRouteGroup to delete. Format:
+  /// `projects//locations//agents//flows//transitionRouteGroups/` or
+  /// `projects//locations//agents//transitionRouteGroups/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/transitionRouteGroups/\[^/\]+$`.
+  ///
+  /// [force] - This field has no effect for transition route group that no page
+  /// is using. If the transition route group is referenced by any page: * If
+  /// `force` is set to false, an error will be returned with message indicating
+  /// pages that reference the transition route group. * If `force` is set to
+  /// true, Dialogflow will remove the transition route group, as well as any
+  /// reference to it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.bool? force,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the specified TransitionRouteGroup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the TransitionRouteGroup. Format:
+  /// `projects//locations//agents//flows//transitionRouteGroups/` or
+  /// `projects//locations//agents//transitionRouteGroups/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/transitionRouteGroups/\[^/\]+$`.
+  ///
+  /// [languageCode] - The language to retrieve the transition route group for.
+  /// The following fields are language dependent: *
+  /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` *
+  /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases`
+  /// If not specified, the agent's default language is used.
+  /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
+  /// are supported. Note: languages must be enabled in the agent before they
+  /// can be used.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3TransitionRouteGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3TransitionRouteGroup> get(
+    core.String name, {
+    core.String? languageCode,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (languageCode != null) 'languageCode': [languageCode],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3TransitionRouteGroup.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all transition route groups in the specified flow.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The flow to list all transition route groups for.
+  /// Format: \`projects//locations//agents//flows/\` or
+  /// \`projects//locations//agents/.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+$`.
+  ///
+  /// [languageCode] - The language to list transition route groups for. The
+  /// following fields are language dependent: *
+  /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` *
+  /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases`
+  /// If not specified, the agent's default language is used.
+  /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
+  /// are supported. Note: languages must be enabled in the agent before they
+  /// can be used.
+  ///
+  /// [pageSize] - The maximum number of items to return in a single page. By
+  /// default 100 and at most 1000.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse> list(
+    core.String parent, {
+    core.String? languageCode,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (languageCode != null) 'languageCode': [languageCode],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v3/' + core.Uri.encodeFull('$parent') + '/transitionRouteGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified TransitionRouteGroup.
+  ///
+  /// Note: You should always train a flow prior to sending it queries. See the
+  /// [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The unique identifier of the transition route group.
+  /// TransitionRouteGroups.CreateTransitionRouteGroup populates the name
+  /// automatically. Format:
+  /// `projects//locations//agents//flows//transitionRouteGroups/` .
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/transitionRouteGroups/\[^/\]+$`.
+  ///
+  /// [languageCode] - The language of the following fields in
+  /// `TransitionRouteGroup`: *
+  /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` *
+  /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases`
+  /// If not specified, the agent's default language is used.
+  /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
+  /// are supported. Note: languages must be enabled in the agent before they
+  /// can be used.
+  ///
+  /// [updateMask] - The mask to control which fields get updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3TransitionRouteGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3TransitionRouteGroup> patch(
+    GoogleCloudDialogflowCxV3TransitionRouteGroup request,
+    core.String name, {
+    core.String? languageCode,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (languageCode != null) 'languageCode': [languageCode],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3TransitionRouteGroup.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsAgentsWebhooksResource {
   final commons.ApiRequester _requester;
 
@@ -5795,6 +6283,12 @@ class GoogleCloudDialogflowCxV3AdvancedSettings {
   /// Exposed at the following levels: - Agent level - Flow level
   GoogleCloudDialogflowCxV3GcsDestination? audioExportGcsDestination;
 
+  /// Settings for DTMF.
+  ///
+  /// Exposed at the following levels: - Agent level - Flow level - Page level -
+  /// Parameter level.
+  GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings? dtmfSettings;
+
   /// Settings for logging.
   ///
   /// Settings for Dialogflow History, Contact Center messages, StackDriver
@@ -5803,6 +6297,7 @@ class GoogleCloudDialogflowCxV3AdvancedSettings {
 
   GoogleCloudDialogflowCxV3AdvancedSettings({
     this.audioExportGcsDestination,
+    this.dtmfSettings,
     this.loggingSettings,
   });
 
@@ -5814,6 +6309,10 @@ class GoogleCloudDialogflowCxV3AdvancedSettings {
                       json_['audioExportGcsDestination']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          dtmfSettings: json_.containsKey('dtmfSettings')
+              ? GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings.fromJson(
+                  json_['dtmfSettings'] as core.Map<core.String, core.dynamic>)
+              : null,
           loggingSettings: json_.containsKey('loggingSettings')
               ? GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings
                   .fromJson(json_['loggingSettings']
@@ -5824,7 +6323,51 @@ class GoogleCloudDialogflowCxV3AdvancedSettings {
   core.Map<core.String, core.dynamic> toJson() => {
         if (audioExportGcsDestination != null)
           'audioExportGcsDestination': audioExportGcsDestination!,
+        if (dtmfSettings != null) 'dtmfSettings': dtmfSettings!,
         if (loggingSettings != null) 'loggingSettings': loggingSettings!,
+      };
+}
+
+/// Define behaviors for DTMF (dual tone multi frequency).
+class GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings {
+  /// If true, incoming audio is processed for DTMF (dual tone multi frequency)
+  /// events.
+  ///
+  /// For example, if the caller presses a button on their telephone keypad and
+  /// DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3"
+  /// was pressed) in the incoming audio and pass the event to the bot to drive
+  /// business logic (e.g. when 3 is pressed, return the account balance).
+  core.bool? enabled;
+
+  /// The digit that terminates a DTMF digit sequence.
+  core.String? finishDigit;
+
+  /// Max length of DTMF digits.
+  core.int? maxDigits;
+
+  GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings({
+    this.enabled,
+    this.finishDigit,
+    this.maxDigits,
+  });
+
+  GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+          finishDigit: json_.containsKey('finishDigit')
+              ? json_['finishDigit'] as core.String
+              : null,
+          maxDigits: json_.containsKey('maxDigits')
+              ? json_['maxDigits'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (finishDigit != null) 'finishDigit': finishDigit!,
+        if (maxDigits != null) 'maxDigits': maxDigits!,
       };
 }
 
@@ -5867,8 +6410,8 @@ class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings {
 ///
 /// You can include agents in your app, product, or service to determine user
 /// intent and respond to the user in a natural way. After you create an agent,
-/// you can add Intents, Entity Types, Flows, Fulfillments, Webhooks, and so on
-/// to manage the conversation flows..
+/// you can add Intents, Entity Types, Flows, Fulfillments, Webhooks,
+/// TransitionRouteGroups and so on to manage the conversation flows.
 class GoogleCloudDialogflowCxV3Agent {
   /// Hierarchical advanced settings for this agent.
   ///
@@ -5915,6 +6458,9 @@ class GoogleCloudDialogflowCxV3Agent {
     'Not supported. Member documentation may have more information.',
   )
   core.bool? enableStackdriverLogging;
+
+  /// Gen App Builder-related agent-level settings.
+  GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings? genAppBuilderSettings;
 
   /// Git integration settings for this agent.
   GoogleCloudDialogflowCxV3AgentGitIntegrationSettings? gitIntegrationSettings;
@@ -5971,6 +6517,7 @@ class GoogleCloudDialogflowCxV3Agent {
     this.displayName,
     this.enableSpellCorrection,
     this.enableStackdriverLogging,
+    this.genAppBuilderSettings,
     this.gitIntegrationSettings,
     this.locked,
     this.name,
@@ -6008,6 +6555,11 @@ class GoogleCloudDialogflowCxV3Agent {
               json_.containsKey('enableStackdriverLogging')
                   ? json_['enableStackdriverLogging'] as core.bool
                   : null,
+          genAppBuilderSettings: json_.containsKey('genAppBuilderSettings')
+              ? GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings.fromJson(
+                  json_['genAppBuilderSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           gitIntegrationSettings: json_.containsKey('gitIntegrationSettings')
               ? GoogleCloudDialogflowCxV3AgentGitIntegrationSettings.fromJson(
                   json_['gitIntegrationSettings']
@@ -6053,6 +6605,8 @@ class GoogleCloudDialogflowCxV3Agent {
           'enableSpellCorrection': enableSpellCorrection!,
         if (enableStackdriverLogging != null)
           'enableStackdriverLogging': enableStackdriverLogging!,
+        if (genAppBuilderSettings != null)
+          'genAppBuilderSettings': genAppBuilderSettings!,
         if (gitIntegrationSettings != null)
           'gitIntegrationSettings': gitIntegrationSettings!,
         if (locked != null) 'locked': locked!,
@@ -6066,6 +6620,33 @@ class GoogleCloudDialogflowCxV3Agent {
         if (textToSpeechSettings != null)
           'textToSpeechSettings': textToSpeechSettings!,
         if (timeZone != null) 'timeZone': timeZone!,
+      };
+}
+
+/// Settings for Gen App Builder.
+class GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings {
+  /// The full name of the Gen App Builder engine related to this agent if there
+  /// is one.
+  ///
+  /// Format: `projects/{Project ID}/locations/{Location
+  /// ID}/collections/{Collection ID}/engines/{Engine ID}`
+  ///
+  /// Required.
+  core.String? engine;
+
+  GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings({
+    this.engine,
+  });
+
+  GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings.fromJson(core.Map json_)
+      : this(
+          engine: json_.containsKey('engine')
+              ? json_['engine'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (engine != null) 'engine': engine!,
       };
 }
 
@@ -6735,6 +7316,50 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
         if (status != null) 'status': status!,
         if (textResponses != null) 'textResponses': textResponses!,
         if (triggeredIntent != null) 'triggeredIntent': triggeredIntent!,
+      };
+}
+
+/// A data store connection.
+///
+/// It represents a data store in Discovery Engine and the type of the contents
+/// it contains.
+class GoogleCloudDialogflowCxV3DataStoreConnection {
+  /// The full name of the referenced data store.
+  ///
+  /// Formats:
+  /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`
+  /// `projects/{project}/locations/{location}/dataStores/{data_store}`
+  core.String? dataStore;
+
+  /// The type of the connected data store.
+  /// Possible string values are:
+  /// - "DATA_STORE_TYPE_UNSPECIFIED" : Not specified. This value indicates that
+  /// the data store type is not specified, so it will not be used during
+  /// search.
+  /// - "PUBLIC_WEB" : A data store that contains public web content.
+  /// - "UNSTRUCTURED" : A data store that contains unstructured private data.
+  /// - "STRUCTURED" : A data store that contains structured data (for example
+  /// FAQ).
+  core.String? dataStoreType;
+
+  GoogleCloudDialogflowCxV3DataStoreConnection({
+    this.dataStore,
+    this.dataStoreType,
+  });
+
+  GoogleCloudDialogflowCxV3DataStoreConnection.fromJson(core.Map json_)
+      : this(
+          dataStore: json_.containsKey('dataStore')
+              ? json_['dataStore'] as core.String
+              : null,
+          dataStoreType: json_.containsKey('dataStoreType')
+              ? json_['dataStoreType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataStore != null) 'dataStore': dataStore!,
+        if (dataStoreType != null) 'dataStoreType': dataStoreType!,
       };
 }
 
@@ -8088,6 +8713,78 @@ class GoogleCloudDialogflowCxV3ExportFlowRequest {
       };
 }
 
+/// The request message for Intents.ExportIntents.
+class GoogleCloudDialogflowCxV3ExportIntentsRequest {
+  /// The data format of the exported intents.
+  ///
+  /// If not specified, `BLOB` is assumed.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DATA_FORMAT_UNSPECIFIED" : Unspecified format. Treated as `BLOB`.
+  /// - "BLOB" : Intents will be exported as raw bytes.
+  /// - "JSON" : Intents will be exported in JSON format.
+  /// - "CSV" : Intents will be exported in CSV format.
+  core.String? dataFormat;
+
+  /// The name of the intents to export.
+  ///
+  /// Format: `projects//locations//agents//intents/`.
+  ///
+  /// Required.
+  core.List<core.String>? intents;
+
+  /// The option to return the serialized intents inline.
+  ///
+  /// Optional.
+  core.bool? intentsContentInline;
+
+  /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
+  /// export the intents to.
+  ///
+  /// The format of this URI must be `gs:///`. Dialogflow performs a write
+  /// operation for the Cloud Storage object on the caller's behalf, so your
+  /// request authentication must have write permissions for the object. For
+  /// more information, see
+  /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
+  ///
+  /// Optional.
+  core.String? intentsUri;
+
+  GoogleCloudDialogflowCxV3ExportIntentsRequest({
+    this.dataFormat,
+    this.intents,
+    this.intentsContentInline,
+    this.intentsUri,
+  });
+
+  GoogleCloudDialogflowCxV3ExportIntentsRequest.fromJson(core.Map json_)
+      : this(
+          dataFormat: json_.containsKey('dataFormat')
+              ? json_['dataFormat'] as core.String
+              : null,
+          intents: json_.containsKey('intents')
+              ? (json_['intents'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          intentsContentInline: json_.containsKey('intentsContentInline')
+              ? json_['intentsContentInline'] as core.bool
+              : null,
+          intentsUri: json_.containsKey('intentsUri')
+              ? json_['intentsUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataFormat != null) 'dataFormat': dataFormat!,
+        if (intents != null) 'intents': intents!,
+        if (intentsContentInline != null)
+          'intentsContentInline': intentsContentInline!,
+        if (intentsUri != null) 'intentsUri': intentsUri!,
+      };
+}
+
 /// The request message for TestCases.ExportTestCases.
 class GoogleCloudDialogflowCxV3ExportTestCasesRequest {
   /// The data format of the exported test cases.
@@ -8157,6 +8854,12 @@ class GoogleCloudDialogflowCxV3ExportTestCasesRequest {
 /// the conversation session into a different flow, the matched intent can be
 /// carried over and to be consumed in the target flow.
 class GoogleCloudDialogflowCxV3Flow {
+  /// Hierarchical advanced settings for this flow.
+  ///
+  /// The settings exposed at the lower level overrides the settings exposed at
+  /// the higher level.
+  GoogleCloudDialogflowCxV3AdvancedSettings? advancedSettings;
+
   /// The description of the flow.
   ///
   /// The maximum length is 500 characters. If exceeded, the request is
@@ -8179,6 +8882,12 @@ class GoogleCloudDialogflowCxV3Flow {
   /// being ignored.
   core.List<GoogleCloudDialogflowCxV3EventHandler>? eventHandlers;
 
+  /// Knowledge connector configuration.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3KnowledgeConnectorSettings?
+      knowledgeConnectorSettings;
+
   /// The unique identifier of the flow.
   ///
   /// Format: `projects//locations//agents//flows/`.
@@ -8193,7 +8902,9 @@ class GoogleCloudDialogflowCxV3Flow {
   /// * They are inherited by every page's transition route groups. Transition
   /// route groups defined in the page have higher priority than those defined
   /// in the flow.
-  /// Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+  /// Format:`projects//locations//agents//flows//transitionRouteGroups/` or
+  /// `projects//locations//agents//transitionRouteGroups/` for agent-level
+  /// groups.
   core.List<core.String>? transitionRouteGroups;
 
   /// A flow's transition routes serve two purposes: * They are responsible for
@@ -8210,9 +8921,11 @@ class GoogleCloudDialogflowCxV3Flow {
   core.List<GoogleCloudDialogflowCxV3TransitionRoute>? transitionRoutes;
 
   GoogleCloudDialogflowCxV3Flow({
+    this.advancedSettings,
     this.description,
     this.displayName,
     this.eventHandlers,
+    this.knowledgeConnectorSettings,
     this.name,
     this.nluSettings,
     this.transitionRouteGroups,
@@ -8221,6 +8934,11 @@ class GoogleCloudDialogflowCxV3Flow {
 
   GoogleCloudDialogflowCxV3Flow.fromJson(core.Map json_)
       : this(
+          advancedSettings: json_.containsKey('advancedSettings')
+              ? GoogleCloudDialogflowCxV3AdvancedSettings.fromJson(
+                  json_['advancedSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
@@ -8233,6 +8951,12 @@ class GoogleCloudDialogflowCxV3Flow {
                       GoogleCloudDialogflowCxV3EventHandler.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          knowledgeConnectorSettings: json_
+                  .containsKey('knowledgeConnectorSettings')
+              ? GoogleCloudDialogflowCxV3KnowledgeConnectorSettings.fromJson(
+                  json_['knowledgeConnectorSettings']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           nluSettings: json_.containsKey('nluSettings')
@@ -8254,14 +8978,58 @@ class GoogleCloudDialogflowCxV3Flow {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (advancedSettings != null) 'advancedSettings': advancedSettings!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (eventHandlers != null) 'eventHandlers': eventHandlers!,
+        if (knowledgeConnectorSettings != null)
+          'knowledgeConnectorSettings': knowledgeConnectorSettings!,
         if (name != null) 'name': name!,
         if (nluSettings != null) 'nluSettings': nluSettings!,
         if (transitionRouteGroups != null)
           'transitionRouteGroups': transitionRouteGroups!,
         if (transitionRoutes != null) 'transitionRoutes': transitionRoutes!,
+      };
+}
+
+/// The flow import strategy used for resource conflict resolution associated
+/// with an ImportFlowRequest.
+class GoogleCloudDialogflowCxV3FlowImportStrategy {
+  /// Import strategy for resource conflict resolution, applied globally
+  /// throughout the flow.
+  ///
+  /// It will be applied for all display name conflicts in the imported content.
+  /// If not specified, 'CREATE_NEW' is assumed.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "IMPORT_STRATEGY_UNSPECIFIED" : Unspecified. Treated as 'CREATE_NEW'.
+  /// - "IMPORT_STRATEGY_CREATE_NEW" : Create a new resource with a numeric
+  /// suffix appended to the end of the existing display name.
+  /// - "IMPORT_STRATEGY_REPLACE" : Replace existing resource with incoming
+  /// resource in the content to be imported.
+  /// - "IMPORT_STRATEGY_KEEP" : Keep existing resource and discard incoming
+  /// resource in the content to be imported.
+  /// - "IMPORT_STRATEGY_MERGE" : Combine existing and incoming resources when a
+  /// conflict is encountered.
+  /// - "IMPORT_STRATEGY_THROW_ERROR" : Throw error if a conflict is
+  /// encountered.
+  core.String? globalImportStrategy;
+
+  GoogleCloudDialogflowCxV3FlowImportStrategy({
+    this.globalImportStrategy,
+  });
+
+  GoogleCloudDialogflowCxV3FlowImportStrategy.fromJson(core.Map json_)
+      : this(
+          globalImportStrategy: json_.containsKey('globalImportStrategy')
+              ? json_['globalImportStrategy'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (globalImportStrategy != null)
+          'globalImportStrategy': globalImportStrategy!,
       };
 }
 
@@ -8340,6 +9108,12 @@ class GoogleCloudDialogflowCxV3Form {
 
 /// Represents a form parameter.
 class GoogleCloudDialogflowCxV3FormParameter {
+  /// Hierarchical advanced settings for this parameter.
+  ///
+  /// The settings exposed at the lower level overrides the settings exposed at
+  /// the higher level.
+  GoogleCloudDialogflowCxV3AdvancedSettings? advancedSettings;
+
   /// The default value of an optional parameter.
   ///
   /// If the parameter is required, the default value will be ignored.
@@ -8387,6 +9161,7 @@ class GoogleCloudDialogflowCxV3FormParameter {
   core.bool? required;
 
   GoogleCloudDialogflowCxV3FormParameter({
+    this.advancedSettings,
     this.defaultValue,
     this.displayName,
     this.entityType,
@@ -8398,6 +9173,11 @@ class GoogleCloudDialogflowCxV3FormParameter {
 
   GoogleCloudDialogflowCxV3FormParameter.fromJson(core.Map json_)
       : this(
+          advancedSettings: json_.containsKey('advancedSettings')
+              ? GoogleCloudDialogflowCxV3AdvancedSettings.fromJson(
+                  json_['advancedSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           defaultValue:
               json_.containsKey('defaultValue') ? json_['defaultValue'] : null,
           displayName: json_.containsKey('displayName')
@@ -8420,6 +9200,7 @@ class GoogleCloudDialogflowCxV3FormParameter {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (advancedSettings != null) 'advancedSettings': advancedSettings!,
         if (defaultValue != null) 'defaultValue': defaultValue!,
         if (displayName != null) 'displayName': displayName!,
         if (entityType != null) 'entityType': entityType!,
@@ -8614,9 +9395,23 @@ class GoogleCloudDialogflowCxV3FulfillIntentResponse {
 /// DetectIntentResponse, call the webhook (for example, to load user data from
 /// a database), or both.
 class GoogleCloudDialogflowCxV3Fulfillment {
+  /// Hierarchical advanced settings for this fulfillment.
+  ///
+  /// The settings exposed at the lower level overrides the settings exposed at
+  /// the higher level.
+  GoogleCloudDialogflowCxV3AdvancedSettings? advancedSettings;
+
   /// Conditional cases for this fulfillment.
   core.List<GoogleCloudDialogflowCxV3FulfillmentConditionalCases>?
       conditionalCases;
+
+  /// If the flag is true, the agent will utilize LLM to generate a text
+  /// response.
+  ///
+  /// If LLM generation fails, the defined responses in the fulfillment will be
+  /// respected. This flag is only useful for fulfillments associated with
+  /// no-match event handlers.
+  core.bool? enableGenerativeFallback;
 
   /// The list of rich message responses to present to the user.
   core.List<GoogleCloudDialogflowCxV3ResponseMessage>? messages;
@@ -8651,7 +9446,9 @@ class GoogleCloudDialogflowCxV3Fulfillment {
   core.String? webhook;
 
   GoogleCloudDialogflowCxV3Fulfillment({
+    this.advancedSettings,
     this.conditionalCases,
+    this.enableGenerativeFallback,
     this.messages,
     this.returnPartialResponses,
     this.setParameterActions,
@@ -8661,6 +9458,11 @@ class GoogleCloudDialogflowCxV3Fulfillment {
 
   GoogleCloudDialogflowCxV3Fulfillment.fromJson(core.Map json_)
       : this(
+          advancedSettings: json_.containsKey('advancedSettings')
+              ? GoogleCloudDialogflowCxV3AdvancedSettings.fromJson(
+                  json_['advancedSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           conditionalCases: json_.containsKey('conditionalCases')
               ? (json_['conditionalCases'] as core.List)
                   .map((value) =>
@@ -8669,6 +9471,10 @@ class GoogleCloudDialogflowCxV3Fulfillment {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          enableGenerativeFallback:
+              json_.containsKey('enableGenerativeFallback')
+                  ? json_['enableGenerativeFallback'] as core.bool
+                  : null,
           messages: json_.containsKey('messages')
               ? (json_['messages'] as core.List)
                   .map((value) =>
@@ -8694,7 +9500,10 @@ class GoogleCloudDialogflowCxV3Fulfillment {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (advancedSettings != null) 'advancedSettings': advancedSettings!,
         if (conditionalCases != null) 'conditionalCases': conditionalCases!,
+        if (enableGenerativeFallback != null)
+          'enableGenerativeFallback': enableGenerativeFallback!,
         if (messages != null) 'messages': messages!,
         if (returnPartialResponses != null)
           'returnPartialResponses': returnPartialResponses!,
@@ -8870,6 +9679,210 @@ class GoogleCloudDialogflowCxV3GcsDestination {
       };
 }
 
+/// Settings for Generative AI.
+class GoogleCloudDialogflowCxV3GenerativeSettings {
+  /// Settings for Generative Fallback.
+  GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettings? fallbackSettings;
+
+  /// Settings for Generative Safety.
+  GoogleCloudDialogflowCxV3SafetySettings? generativeSafetySettings;
+
+  /// Settings for knowledge connector.
+  GoogleCloudDialogflowCxV3GenerativeSettingsKnowledgeConnectorSettings?
+      knowledgeConnectorSettings;
+
+  /// Language for this settings.
+  core.String? languageCode;
+
+  /// Format: `projects//locations//agents//generativeSettings`.
+  core.String? name;
+
+  GoogleCloudDialogflowCxV3GenerativeSettings({
+    this.fallbackSettings,
+    this.generativeSafetySettings,
+    this.knowledgeConnectorSettings,
+    this.languageCode,
+    this.name,
+  });
+
+  GoogleCloudDialogflowCxV3GenerativeSettings.fromJson(core.Map json_)
+      : this(
+          fallbackSettings: json_.containsKey('fallbackSettings')
+              ? GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettings
+                  .fromJson(json_['fallbackSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          generativeSafetySettings:
+              json_.containsKey('generativeSafetySettings')
+                  ? GoogleCloudDialogflowCxV3SafetySettings.fromJson(
+                      json_['generativeSafetySettings']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          knowledgeConnectorSettings: json_
+                  .containsKey('knowledgeConnectorSettings')
+              ? GoogleCloudDialogflowCxV3GenerativeSettingsKnowledgeConnectorSettings
+                  .fromJson(json_['knowledgeConnectorSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fallbackSettings != null) 'fallbackSettings': fallbackSettings!,
+        if (generativeSafetySettings != null)
+          'generativeSafetySettings': generativeSafetySettings!,
+        if (knowledgeConnectorSettings != null)
+          'knowledgeConnectorSettings': knowledgeConnectorSettings!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Settings for Generative Fallback.
+class GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettings {
+  /// Stored prompts that can be selected, for example default templates like
+  /// "conservative" or "chatty", or user defined ones.
+  core.List<
+          GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsPromptTemplate>?
+      promptTemplates;
+
+  /// Display name of the selected prompt.
+  core.String? selectedPrompt;
+
+  GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettings({
+    this.promptTemplates,
+    this.selectedPrompt,
+  });
+
+  GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettings.fromJson(
+      core.Map json_)
+      : this(
+          promptTemplates: json_.containsKey('promptTemplates')
+              ? (json_['promptTemplates'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsPromptTemplate
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          selectedPrompt: json_.containsKey('selectedPrompt')
+              ? json_['selectedPrompt'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (promptTemplates != null) 'promptTemplates': promptTemplates!,
+        if (selectedPrompt != null) 'selectedPrompt': selectedPrompt!,
+      };
+}
+
+/// Prompt template.
+class GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsPromptTemplate {
+  /// Prompt name.
+  core.String? displayName;
+
+  /// If the flag is true, the prompt is frozen and cannot be modified by users.
+  core.bool? frozen;
+
+  /// Prompt text that is sent to a LLM on no-match default, placeholders are
+  /// filled downstream.
+  ///
+  /// For example: "Here is a conversation $conversation, a response is: "
+  core.String? promptText;
+
+  GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsPromptTemplate({
+    this.displayName,
+    this.frozen,
+    this.promptText,
+  });
+
+  GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsPromptTemplate.fromJson(
+      core.Map json_)
+      : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          frozen:
+              json_.containsKey('frozen') ? json_['frozen'] as core.bool : null,
+          promptText: json_.containsKey('promptText')
+              ? json_['promptText'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (frozen != null) 'frozen': frozen!,
+        if (promptText != null) 'promptText': promptText!,
+      };
+}
+
+/// Settings for knowledge connector.
+///
+/// These parameters are used for LLM prompt like "You are . You are a helpful
+/// and verbose at , . Your task is to help humans on ".
+class GoogleCloudDialogflowCxV3GenerativeSettingsKnowledgeConnectorSettings {
+  /// Name of the virtual agent.
+  ///
+  /// Used for LLM prompt. Can be left empty.
+  core.String? agent;
+
+  /// Identity of the agent, e.g. "virtual agent", "AI assistant".
+  core.String? agentIdentity;
+
+  /// Agent scope, e.g. "Example company website", "internal Example company
+  /// website for employees", "manual of car owner".
+  core.String? agentScope;
+
+  /// Name of the company, organization or other entity that the agent
+  /// represents.
+  ///
+  /// Used for knowledge connector LLM prompt and for knowledge search.
+  core.String? business;
+
+  /// Company description, used for LLM prompt, e.g. "a family company selling
+  /// freshly roasted coffee beans".
+  core.String? businessDescription;
+
+  GoogleCloudDialogflowCxV3GenerativeSettingsKnowledgeConnectorSettings({
+    this.agent,
+    this.agentIdentity,
+    this.agentScope,
+    this.business,
+    this.businessDescription,
+  });
+
+  GoogleCloudDialogflowCxV3GenerativeSettingsKnowledgeConnectorSettings.fromJson(
+      core.Map json_)
+      : this(
+          agent:
+              json_.containsKey('agent') ? json_['agent'] as core.String : null,
+          agentIdentity: json_.containsKey('agentIdentity')
+              ? json_['agentIdentity'] as core.String
+              : null,
+          agentScope: json_.containsKey('agentScope')
+              ? json_['agentScope'] as core.String
+              : null,
+          business: json_.containsKey('business')
+              ? json_['business'] as core.String
+              : null,
+          businessDescription: json_.containsKey('businessDescription')
+              ? json_['businessDescription'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agent != null) 'agent': agent!,
+        if (agentIdentity != null) 'agentIdentity': agentIdentity!,
+        if (agentScope != null) 'agentScope': agentScope!,
+        if (business != null) 'business': business!,
+        if (businessDescription != null)
+          'businessDescription': businessDescription!,
+      };
+}
+
 /// The request message for Flows.ImportFlow.
 class GoogleCloudDialogflowCxV3ImportFlowRequest {
   /// Uncompressed raw byte content for flow.
@@ -8881,6 +9894,11 @@ class GoogleCloudDialogflowCxV3ImportFlowRequest {
     flowContent =
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
+
+  /// Specifies the import strategy used when resolving resource conflicts.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3FlowImportStrategy? flowImportStrategy;
 
   /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
   /// import flow from.
@@ -8907,6 +9925,7 @@ class GoogleCloudDialogflowCxV3ImportFlowRequest {
 
   GoogleCloudDialogflowCxV3ImportFlowRequest({
     this.flowContent,
+    this.flowImportStrategy,
     this.flowUri,
     this.importOption,
   });
@@ -8915,6 +9934,11 @@ class GoogleCloudDialogflowCxV3ImportFlowRequest {
       : this(
           flowContent: json_.containsKey('flowContent')
               ? json_['flowContent'] as core.String
+              : null,
+          flowImportStrategy: json_.containsKey('flowImportStrategy')
+              ? GoogleCloudDialogflowCxV3FlowImportStrategy.fromJson(
+                  json_['flowImportStrategy']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           flowUri: json_.containsKey('flowUri')
               ? json_['flowUri'] as core.String
@@ -8926,8 +9950,73 @@ class GoogleCloudDialogflowCxV3ImportFlowRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (flowContent != null) 'flowContent': flowContent!,
+        if (flowImportStrategy != null)
+          'flowImportStrategy': flowImportStrategy!,
         if (flowUri != null) 'flowUri': flowUri!,
         if (importOption != null) 'importOption': importOption!,
+      };
+}
+
+/// The request message for Intents.ImportIntents.
+class GoogleCloudDialogflowCxV3ImportIntentsRequest {
+  /// Uncompressed byte content of intents.
+  GoogleCloudDialogflowCxV3InlineSource? intentsContent;
+
+  /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
+  /// import intents from.
+  ///
+  /// The format of this URI must be `gs:///`. Dialogflow performs a read
+  /// operation for the Cloud Storage object on the caller's behalf, so your
+  /// request authentication must have read permissions for the object. For more
+  /// information, see
+  /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
+  core.String? intentsUri;
+
+  /// Merge option for importing intents.
+  ///
+  /// If not specified, `REJECT` is assumed.
+  /// Possible string values are:
+  /// - "MERGE_OPTION_UNSPECIFIED" : Unspecified. Should not be used.
+  /// - "REJECT" : DEPRECATED: Please use REPORT_CONFLICT instead. Fail the
+  /// request if there are intents whose display names conflict with the display
+  /// names of intents in the agent.
+  /// - "REPLACE" : Replace the original intent in the agent with the new intent
+  /// when display name conflicts exist.
+  /// - "MERGE" : Merge the original intent with the new intent when display
+  /// name conflicts exist.
+  /// - "RENAME" : Create new intents with new display names to differentiate
+  /// them from the existing intents when display name conflicts exist.
+  /// - "REPORT_CONFLICT" : Report conflict information if display names
+  /// conflict is detected. Otherwise, import intents.
+  /// - "KEEP" : Keep the original intent and discard the conflicting new intent
+  /// when display name conflicts exist.
+  core.String? mergeOption;
+
+  GoogleCloudDialogflowCxV3ImportIntentsRequest({
+    this.intentsContent,
+    this.intentsUri,
+    this.mergeOption,
+  });
+
+  GoogleCloudDialogflowCxV3ImportIntentsRequest.fromJson(core.Map json_)
+      : this(
+          intentsContent: json_.containsKey('intentsContent')
+              ? GoogleCloudDialogflowCxV3InlineSource.fromJson(
+                  json_['intentsContent']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          intentsUri: json_.containsKey('intentsUri')
+              ? json_['intentsUri'] as core.String
+              : null,
+          mergeOption: json_.containsKey('mergeOption')
+              ? json_['mergeOption'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (intentsContent != null) 'intentsContent': intentsContent!,
+        if (intentsUri != null) 'intentsUri': intentsUri!,
+        if (mergeOption != null) 'mergeOption': mergeOption!,
       };
 }
 
@@ -8970,6 +10059,34 @@ class GoogleCloudDialogflowCxV3ImportTestCasesRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
         if (gcsUri != null) 'gcsUri': gcsUri!,
+      };
+}
+
+/// Inline source for a Dialogflow operation that reads or imports objects (e.g.
+/// intents) into Dialogflow.
+class GoogleCloudDialogflowCxV3InlineSource {
+  /// The uncompressed byte content for the objects.
+  core.String? content;
+  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
+
+  set contentAsBytes(core.List<core.int> bytes_) {
+    content =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  GoogleCloudDialogflowCxV3InlineSource({
+    this.content,
+  });
+
+  GoogleCloudDialogflowCxV3InlineSource.fromJson(core.Map json_)
+      : this(
+          content: json_.containsKey('content')
+              ? json_['content'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (content != null) 'content': content!,
       };
 }
 
@@ -9492,6 +10609,82 @@ class GoogleCloudDialogflowCxV3IntentTrainingPhrasePart {
   core.Map<core.String, core.dynamic> toJson() => {
         if (parameterId != null) 'parameterId': parameterId!,
         if (text != null) 'text': text!,
+      };
+}
+
+/// The Knowledge Connector settings for this page or flow.
+///
+/// This includes information such as the attached Knowledge Bases, and the way
+/// to execute fulfillment.
+class GoogleCloudDialogflowCxV3KnowledgeConnectorSettings {
+  /// List of related data store connections.
+  ///
+  /// Optional.
+  core.List<GoogleCloudDialogflowCxV3DataStoreConnection>? dataStoreConnections;
+
+  /// Whether Knowledge Connector is enabled or not.
+  core.bool? enabled;
+
+  /// The target flow to transition to.
+  ///
+  /// Format: `projects//locations//agents//flows/`.
+  core.String? targetFlow;
+
+  /// The target page to transition to.
+  ///
+  /// Format: `projects//locations//agents//flows//pages/`.
+  core.String? targetPage;
+
+  /// The fulfillment to be triggered.
+  ///
+  /// When the answers from the Knowledge Connector are selected by Dialogflow,
+  /// you can utitlize the request scoped parameter `$request.knowledge.answers`
+  /// (contains up to the 5 highest confidence answers) and
+  /// `$request.knowledge.questions` (contains the corresponding questions) to
+  /// construct the fulfillment.
+  GoogleCloudDialogflowCxV3Fulfillment? triggerFulfillment;
+
+  GoogleCloudDialogflowCxV3KnowledgeConnectorSettings({
+    this.dataStoreConnections,
+    this.enabled,
+    this.targetFlow,
+    this.targetPage,
+    this.triggerFulfillment,
+  });
+
+  GoogleCloudDialogflowCxV3KnowledgeConnectorSettings.fromJson(core.Map json_)
+      : this(
+          dataStoreConnections: json_.containsKey('dataStoreConnections')
+              ? (json_['dataStoreConnections'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3DataStoreConnection.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+          targetFlow: json_.containsKey('targetFlow')
+              ? json_['targetFlow'] as core.String
+              : null,
+          targetPage: json_.containsKey('targetPage')
+              ? json_['targetPage'] as core.String
+              : null,
+          triggerFulfillment: json_.containsKey('triggerFulfillment')
+              ? GoogleCloudDialogflowCxV3Fulfillment.fromJson(
+                  json_['triggerFulfillment']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataStoreConnections != null)
+          'dataStoreConnections': dataStoreConnections!,
+        if (enabled != null) 'enabled': enabled!,
+        if (targetFlow != null) 'targetFlow': targetFlow!,
+        if (targetPage != null) 'targetPage': targetPage!,
+        if (triggerFulfillment != null)
+          'triggerFulfillment': triggerFulfillment!,
       };
 }
 
@@ -10530,6 +11723,12 @@ class GoogleCloudDialogflowCxV3OutputAudioConfig {
 /// conversational state represented by the page. For more information, see the
 /// [Page guide](https://cloud.google.com/dialogflow/cx/docs/concept/page).
 class GoogleCloudDialogflowCxV3Page {
+  /// Hierarchical advanced settings for this page.
+  ///
+  /// The settings exposed at the lower level overrides the settings exposed at
+  /// the higher level.
+  GoogleCloudDialogflowCxV3AdvancedSettings? advancedSettings;
+
   /// The human-readable name of the page, unique within the flow.
   ///
   /// Required.
@@ -10546,21 +11745,31 @@ class GoogleCloudDialogflowCxV3Page {
   /// to the page.
   GoogleCloudDialogflowCxV3Form? form;
 
+  /// Knowledge connector configuration.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3KnowledgeConnectorSettings?
+      knowledgeConnectorSettings;
+
   /// The unique identifier of the page.
   ///
   /// Required for the Pages.UpdatePage method. Pages.CreatePage populates the
   /// name automatically. Format: `projects//locations//agents//flows//pages/`.
   core.String? name;
 
-  /// Ordered list of `TransitionRouteGroups` associated with the page.
+  /// Ordered list of `TransitionRouteGroups` added to the page.
   ///
-  /// Transition route groups must be unique within a page. * If multiple
-  /// transition routes within a page scope refer to the same intent, then the
-  /// precedence order is: page's transition route -\> page's transition route
-  /// group -\> flow's transition routes. * If multiple transition route groups
-  /// within a page contain the same intent, then the first group in the ordered
-  /// list takes precedence.
-  /// Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+  /// Transition route groups must be unique within a page. If the page links
+  /// both flow-level transition route groups and agent-level transition route
+  /// groups, the flow-level ones will have higher priority and will be put
+  /// before the agent-level ones. * If multiple transition routes within a page
+  /// scope refer to the same intent, then the precedence order is: page's
+  /// transition route -\> page's transition route group -\> flow's transition
+  /// routes. * If multiple transition route groups within a page contain the
+  /// same intent, then the first group in the ordered list takes precedence.
+  /// Format:`projects//locations//agents//flows//transitionRouteGroups/` or
+  /// `projects//locations//agents//transitionRouteGroups/` for agent-level
+  /// groups.
   core.List<core.String>? transitionRouteGroups;
 
   /// A list of transitions for the transition rules of this page.
@@ -10577,10 +11786,12 @@ class GoogleCloudDialogflowCxV3Page {
   core.List<GoogleCloudDialogflowCxV3TransitionRoute>? transitionRoutes;
 
   GoogleCloudDialogflowCxV3Page({
+    this.advancedSettings,
     this.displayName,
     this.entryFulfillment,
     this.eventHandlers,
     this.form,
+    this.knowledgeConnectorSettings,
     this.name,
     this.transitionRouteGroups,
     this.transitionRoutes,
@@ -10588,6 +11799,11 @@ class GoogleCloudDialogflowCxV3Page {
 
   GoogleCloudDialogflowCxV3Page.fromJson(core.Map json_)
       : this(
+          advancedSettings: json_.containsKey('advancedSettings')
+              ? GoogleCloudDialogflowCxV3AdvancedSettings.fromJson(
+                  json_['advancedSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
@@ -10607,6 +11823,12 @@ class GoogleCloudDialogflowCxV3Page {
               ? GoogleCloudDialogflowCxV3Form.fromJson(
                   json_['form'] as core.Map<core.String, core.dynamic>)
               : null,
+          knowledgeConnectorSettings: json_
+                  .containsKey('knowledgeConnectorSettings')
+              ? GoogleCloudDialogflowCxV3KnowledgeConnectorSettings.fromJson(
+                  json_['knowledgeConnectorSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           transitionRouteGroups: json_.containsKey('transitionRouteGroups')
               ? (json_['transitionRouteGroups'] as core.List)
@@ -10623,10 +11845,13 @@ class GoogleCloudDialogflowCxV3Page {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (advancedSettings != null) 'advancedSettings': advancedSettings!,
         if (displayName != null) 'displayName': displayName!,
         if (entryFulfillment != null) 'entryFulfillment': entryFulfillment!,
         if (eventHandlers != null) 'eventHandlers': eventHandlers!,
         if (form != null) 'form': form!,
+        if (knowledgeConnectorSettings != null)
+          'knowledgeConnectorSettings': knowledgeConnectorSettings!,
         if (name != null) 'name': name!,
         if (transitionRouteGroups != null)
           'transitionRouteGroups': transitionRouteGroups!,
@@ -10740,6 +11965,21 @@ class GoogleCloudDialogflowCxV3QueryParameters {
   /// Whether to disable webhook calls for this request.
   core.bool? disableWebhook;
 
+  /// Information about the end-user to improve the relevance and accuracy of
+  /// generative answers.
+  ///
+  /// This will be interpreted and used by a language model, so, for good
+  /// results, the data should be self-descriptive, and in a simple structure.
+  /// Example: ```json { "subscription plan": "Business Premium Plus", "devices
+  /// owned": [ {"model": "Google Pixel 7"}, {"model": "Google Pixel Tablet"} ]
+  /// } ```
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? endUserMetadata;
+
   /// A list of flow versions to override for the request.
   ///
   /// Format: `projects//locations//agents//flows//versions/`. If version 1 of
@@ -10821,6 +12061,7 @@ class GoogleCloudDialogflowCxV3QueryParameters {
     this.channel,
     this.currentPage,
     this.disableWebhook,
+    this.endUserMetadata,
     this.flowVersions,
     this.geoLocation,
     this.parameters,
@@ -10845,6 +12086,9 @@ class GoogleCloudDialogflowCxV3QueryParameters {
               : null,
           disableWebhook: json_.containsKey('disableWebhook')
               ? json_['disableWebhook'] as core.bool
+              : null,
+          endUserMetadata: json_.containsKey('endUserMetadata')
+              ? json_['endUserMetadata'] as core.Map<core.String, core.dynamic>
               : null,
           flowVersions: json_.containsKey('flowVersions')
               ? (json_['flowVersions'] as core.List)
@@ -10891,6 +12135,7 @@ class GoogleCloudDialogflowCxV3QueryParameters {
         if (channel != null) 'channel': channel!,
         if (currentPage != null) 'currentPage': currentPage!,
         if (disableWebhook != null) 'disableWebhook': disableWebhook!,
+        if (endUserMetadata != null) 'endUserMetadata': endUserMetadata!,
         if (flowVersions != null) 'flowVersions': flowVersions!,
         if (geoLocation != null) 'geoLocation': geoLocation!,
         if (parameters != null) 'parameters': parameters!,
@@ -10905,6 +12150,15 @@ class GoogleCloudDialogflowCxV3QueryParameters {
 
 /// Represents the result of a conversational query.
 class GoogleCloudDialogflowCxV3QueryResult {
+  /// Returns the current advanced settings including IVR settings.
+  ///
+  /// Even though the operations configured by these settings are performed by
+  /// Dialogflow, the client may need to perform special logic at the moment.
+  /// For example, if Dialogflow exports audio to Google Cloud Storage, then the
+  /// client may need to wait for the resulting object to appear in the bucket
+  /// before proceeding.
+  GoogleCloudDialogflowCxV3AdvancedSettings? advancedSettings;
+
   /// The current Page.
   ///
   /// Some, not all fields are filled in this message, including but not limited
@@ -11025,6 +12279,7 @@ class GoogleCloudDialogflowCxV3QueryResult {
   core.List<GoogleRpcStatus>? webhookStatuses;
 
   GoogleCloudDialogflowCxV3QueryResult({
+    this.advancedSettings,
     this.currentPage,
     this.diagnosticInfo,
     this.dtmf,
@@ -11045,6 +12300,11 @@ class GoogleCloudDialogflowCxV3QueryResult {
 
   GoogleCloudDialogflowCxV3QueryResult.fromJson(core.Map json_)
       : this(
+          advancedSettings: json_.containsKey('advancedSettings')
+              ? GoogleCloudDialogflowCxV3AdvancedSettings.fromJson(
+                  json_['advancedSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           currentPage: json_.containsKey('currentPage')
               ? GoogleCloudDialogflowCxV3Page.fromJson(
                   json_['currentPage'] as core.Map<core.String, core.dynamic>)
@@ -11110,6 +12370,7 @@ class GoogleCloudDialogflowCxV3QueryResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (advancedSettings != null) 'advancedSettings': advancedSettings!,
         if (currentPage != null) 'currentPage': currentPage!,
         if (diagnosticInfo != null) 'diagnosticInfo': diagnosticInfo!,
         if (dtmf != null) 'dtmf': dtmf!,
@@ -11193,6 +12454,10 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
   /// Output only.
   GoogleCloudDialogflowCxV3ResponseMessageEndInteraction? endInteraction;
 
+  /// Represents info card for knowledge answers, to be better rendered in
+  /// Dialogflow Messenger.
+  GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard? knowledgeInfoCard;
+
   /// Hands off conversation to a human agent.
   GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff? liveAgentHandoff;
 
@@ -11244,6 +12509,7 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
     this.channel,
     this.conversationSuccess,
     this.endInteraction,
+    this.knowledgeInfoCard,
     this.liveAgentHandoff,
     this.mixedAudio,
     this.outputAudioText,
@@ -11267,6 +12533,11 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
           endInteraction: json_.containsKey('endInteraction')
               ? GoogleCloudDialogflowCxV3ResponseMessageEndInteraction.fromJson(
                   json_['endInteraction']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          knowledgeInfoCard: json_.containsKey('knowledgeInfoCard')
+              ? GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard
+                  .fromJson(json_['knowledgeInfoCard']
                       as core.Map<core.String, core.dynamic>)
               : null,
           liveAgentHandoff: json_.containsKey('liveAgentHandoff')
@@ -11309,6 +12580,7 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
         if (conversationSuccess != null)
           'conversationSuccess': conversationSuccess!,
         if (endInteraction != null) 'endInteraction': endInteraction!,
+        if (knowledgeInfoCard != null) 'knowledgeInfoCard': knowledgeInfoCard!,
         if (liveAgentHandoff != null) 'liveAgentHandoff': liveAgentHandoff!,
         if (mixedAudio != null) 'mixedAudio': mixedAudio!,
         if (outputAudioText != null) 'outputAudioText': outputAudioText!,
@@ -11363,6 +12635,13 @@ class GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess {
 /// This message is generated by Dialogflow only and not supposed to be defined
 /// by the user.
 typedef GoogleCloudDialogflowCxV3ResponseMessageEndInteraction = $Empty;
+
+/// Represents info card response.
+///
+/// If the response contains generative knowledge prediction, Dialogflow will
+/// return a payload with Infobot Messenger compatible info card. Otherwise, the
+/// info card response is skipped.
+typedef GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard = $Empty;
 
 /// Indicates that the conversation should be handed off to a live agent.
 ///
@@ -11872,6 +13151,62 @@ class GoogleCloudDialogflowCxV3RunTestCaseRequest {
       };
 }
 
+/// Settings for Generative Safety.
+class GoogleCloudDialogflowCxV3SafetySettings {
+  /// Banned phrases for generated text.
+  core.List<GoogleCloudDialogflowCxV3SafetySettingsPhrase>? bannedPhrases;
+
+  GoogleCloudDialogflowCxV3SafetySettings({
+    this.bannedPhrases,
+  });
+
+  GoogleCloudDialogflowCxV3SafetySettings.fromJson(core.Map json_)
+      : this(
+          bannedPhrases: json_.containsKey('bannedPhrases')
+              ? (json_['bannedPhrases'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3SafetySettingsPhrase.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bannedPhrases != null) 'bannedPhrases': bannedPhrases!,
+      };
+}
+
+/// Text input which can be used for prompt or banned phrases.
+class GoogleCloudDialogflowCxV3SafetySettingsPhrase {
+  /// Language code of the phrase.
+  ///
+  /// Required.
+  core.String? languageCode;
+
+  /// Text input which can be used for prompt or banned phrases.
+  ///
+  /// Required.
+  core.String? text;
+
+  GoogleCloudDialogflowCxV3SafetySettingsPhrase({
+    this.languageCode,
+    this.text,
+  });
+
+  GoogleCloudDialogflowCxV3SafetySettingsPhrase.fromJson(core.Map json_)
+      : this(
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
+              : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (text != null) 'text': text!,
+      };
+}
+
 /// Represents the settings related to security issues, such as data redaction
 /// and data retention.
 ///
@@ -11961,6 +13296,16 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
   /// be persisted.
   core.String? redactionStrategy;
 
+  /// Specifies the retention behavior defined by
+  /// SecuritySettings.RetentionStrategy.
+  /// Possible string values are:
+  /// - "RETENTION_STRATEGY_UNSPECIFIED" : Retains the persisted data with
+  /// Dialogflow's internal default 365d TTLs.
+  /// - "REMOVE_AFTER_CONVERSATION" : Removes data when the conversation ends.
+  /// If there is no Conversation explicitly established, a default conversation
+  /// ends when the corresponding Dialogflow session ends.
+  core.String? retentionStrategy;
+
   /// Retains the data for the specified number of days.
   ///
   /// User must set a value lower than Dialogflow's default 365d TTL (30 days
@@ -11979,6 +13324,7 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
     this.purgeDataTypes,
     this.redactionScope,
     this.redactionStrategy,
+    this.retentionStrategy,
     this.retentionWindowDays,
   });
 
@@ -12015,6 +13361,9 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
           redactionStrategy: json_.containsKey('redactionStrategy')
               ? json_['redactionStrategy'] as core.String
               : null,
+          retentionStrategy: json_.containsKey('retentionStrategy')
+              ? json_['retentionStrategy'] as core.String
+              : null,
           retentionWindowDays: json_.containsKey('retentionWindowDays')
               ? json_['retentionWindowDays'] as core.int
               : null,
@@ -12033,6 +13382,7 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
         if (purgeDataTypes != null) 'purgeDataTypes': purgeDataTypes!,
         if (redactionScope != null) 'redactionScope': redactionScope!,
         if (redactionStrategy != null) 'redactionStrategy': redactionStrategy!,
+        if (retentionStrategy != null) 'retentionStrategy': retentionStrategy!,
         if (retentionWindowDays != null)
           'retentionWindowDays': retentionWindowDays!,
       };
@@ -12127,7 +13477,7 @@ class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings {
 /// Sentiment analysis inspects user input and identifies the prevailing
 /// subjective opinion, especially to determine a user's attitude as positive,
 /// negative, or neutral.
-typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared05;
+typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared07;
 
 /// Session entity types are referred to as **User** entity types and are
 /// entities that are built for an individual user such as favorites,
@@ -12790,6 +14140,13 @@ class GoogleCloudDialogflowCxV3TransitionRoute {
   /// when both are fulfilled.
   core.String? condition;
 
+  /// The description of the transition route.
+  ///
+  /// The maximum length is 500 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
   /// The unique identifier of an Intent.
   ///
   /// Format: `projects//locations//agents//intents/`. Indicates that the
@@ -12822,6 +14179,7 @@ class GoogleCloudDialogflowCxV3TransitionRoute {
 
   GoogleCloudDialogflowCxV3TransitionRoute({
     this.condition,
+    this.description,
     this.intent,
     this.name,
     this.targetFlow,
@@ -12833,6 +14191,9 @@ class GoogleCloudDialogflowCxV3TransitionRoute {
       : this(
           condition: json_.containsKey('condition')
               ? json_['condition'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
           intent: json_.containsKey('intent')
               ? json_['intent'] as core.String
@@ -12853,6 +14214,7 @@ class GoogleCloudDialogflowCxV3TransitionRoute {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!,
+        if (description != null) 'description': description!,
         if (intent != null) 'intent': intent!,
         if (name != null) 'name': name!,
         if (targetFlow != null) 'targetFlow': targetFlow!,
@@ -12862,7 +14224,7 @@ class GoogleCloudDialogflowCxV3TransitionRoute {
       };
 }
 
-/// An TransitionRouteGroup represents a group of `TransitionRoutes` to be used
+/// A TransitionRouteGroup represents a group of `TransitionRoutes` to be used
 /// by a Page.
 class GoogleCloudDialogflowCxV3TransitionRouteGroup {
   /// The human-readable name of the transition route group, unique within the
@@ -12877,7 +14239,7 @@ class GoogleCloudDialogflowCxV3TransitionRouteGroup {
   ///
   /// TransitionRouteGroups.CreateTransitionRouteGroup populates the name
   /// automatically. Format:
-  /// `projects//locations//agents//flows//transitionRouteGroups/`.
+  /// `projects//locations//agents//flows//transitionRouteGroups/` .
   core.String? name;
 
   /// Transition routes associated with the TransitionRouteGroup.
@@ -13033,10 +14395,10 @@ class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition {
 }
 
 /// The request message for Agents.ValidateAgent.
-typedef GoogleCloudDialogflowCxV3ValidateAgentRequest = $Request07;
+typedef GoogleCloudDialogflowCxV3ValidateAgentRequest = $Request08;
 
 /// The request message for Flows.ValidateFlow.
-typedef GoogleCloudDialogflowCxV3ValidateFlowRequest = $Request07;
+typedef GoogleCloudDialogflowCxV3ValidateFlowRequest = $Request08;
 
 /// Agent/flow validation message.
 class GoogleCloudDialogflowCxV3ValidationMessage {
@@ -13062,6 +14424,7 @@ class GoogleCloudDialogflowCxV3ValidationMessage {
   /// - "PAGE" : Page.
   /// - "PAGES" : Multiple pages.
   /// - "TRANSITION_ROUTE_GROUP" : Transition route group.
+  /// - "AGENT_TRANSITION_ROUTE_GROUP" : Agent transition route group.
   core.String? resourceType;
 
   /// The names of the resources where the message is found.
@@ -13706,7 +15069,7 @@ class GoogleLongrunningOperation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard

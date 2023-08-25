@@ -22,6 +22,7 @@
 ///
 /// - [ApplicationDetailServiceResource]
 /// - [ProjectsResource]
+///   - [ProjectsDeviceSessionsResource]
 ///   - [ProjectsTestMatricesResource]
 /// - [TestEnvironmentCatalogResource]
 library testing_v1;
@@ -114,10 +115,248 @@ class ApplicationDetailServiceResource {
 class ProjectsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsDeviceSessionsResource get deviceSessions =>
+      ProjectsDeviceSessionsResource(_requester);
   ProjectsTestMatricesResource get testMatrices =>
       ProjectsTestMatricesResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsDeviceSessionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsDeviceSessionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// POST /v1/projects/{project_id}/deviceSessions/{device_session_id}:cancel
+  /// Changes the DeviceSession to state FINISHED and terminates all
+  /// connections.
+  ///
+  /// Canceled sessions are not deleted and can be retrieved or listed by the
+  /// user until they expire based on the 28 day deletion policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the DeviceSession, e.g.
+  /// "projects/{project_id}/deviceSessions/{session_id}"
+  /// Value must have pattern `^projects/\[^/\]+/deviceSessions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    CancelDeviceSessionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// POST /v1/projects/{project_id}/deviceSessions
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The Compute Engine project under which this device
+  /// will be allocated. "projects/{project_id}"
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DeviceSession].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DeviceSession> create(
+    DeviceSession request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/deviceSessions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return DeviceSession.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// GET /v1/projects/{project_id}/deviceSessions/{device_session_id} Return a
+  /// DeviceSession, which documents the allocation status and whether the
+  /// device is allocated.
+  ///
+  /// Clients making requests from this API must poll GetDeviceSession.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the DeviceSession, e.g.
+  /// "projects/{project_id}/deviceSessions/{session_id}"
+  /// Value must have pattern `^projects/\[^/\]+/deviceSessions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DeviceSession].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DeviceSession> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DeviceSession.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// GET /v1/projects/{project_id}/deviceSessions Lists device Sessions owned
+  /// by the project user.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent to request, e.g.
+  /// "projects/{project_id}"
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. If specified, responses will be filtered by the given
+  /// filter. Allowed fields are: session_state.
+  ///
+  /// [pageSize] - Optional. The maximum number of DeviceSessions to return.
+  ///
+  /// [pageToken] - Optional. A continuation token for paging.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDeviceSessionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDeviceSessionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/deviceSessions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDeviceSessionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// PATCH
+  /// /v1/projects/{projectId}/deviceSessions/deviceSessionId}:updateDeviceSession
+  /// Updates the current device session to the fields described by the
+  /// update_mask.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Optional. Name of the DeviceSession, e.g.
+  /// "projects/{project_id}/deviceSessions/{session_id}"
+  /// Value must have pattern `^projects/\[^/\]+/deviceSessions/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DeviceSession].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DeviceSession> patch(
+    DeviceSession request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return DeviceSession.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsTestMatricesResource {
@@ -1402,6 +1641,9 @@ class AppBundle {
       };
 }
 
+/// The request object for cancelling a Device Session.
+typedef CancelDeviceSessionRequest = $Empty;
+
 /// Response containing the current state of the specified test matrix.
 class CancelTestMatrixResponse {
   /// The current rolled-up state of the test matrix.
@@ -1627,6 +1869,188 @@ class DeviceIpBlockCatalog {
       };
 }
 
+/// Protobuf message describing the device message, used from several RPCs.
+class DeviceSession {
+  /// The timestamp that the session first became ACTIVE.
+  ///
+  /// Output only.
+  core.String? activeStartTime;
+
+  /// The requested device
+  ///
+  /// Required.
+  AndroidDevice? androidDevice;
+
+  /// The time that the Session was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The title of the DeviceSession to be presented in the UI.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// If the device is still in use at this time, any connections will be ended
+  /// and the SessionState will transition from ACTIVE to FINISHED.
+  ///
+  /// Optional.
+  core.String? expireTime;
+
+  /// The interval of time that this device must be interacted with before it
+  /// transitions from ACTIVE to TIMEOUT_INACTIVITY.
+  ///
+  /// Output only.
+  core.String? inactivityTimeout;
+
+  /// Name of the DeviceSession, e.g.
+  /// "projects/{project_id}/deviceSessions/{session_id}"
+  ///
+  /// Optional.
+  core.String? name;
+
+  /// Current state of the DeviceSession.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SESSION_STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "REQUESTED" : Initial state of a session request. The session is being
+  /// validated for correctness and a device is not yet requested.
+  /// - "PENDING" : The session has been validated and is in the queue for a
+  /// device.
+  /// - "ACTIVE" : The session has been granted and the device is accepting
+  /// connections.
+  /// - "EXPIRED" : The session duration exceeded the device’s reservation time
+  /// period and timed out automatically.
+  /// - "FINISHED" : The user is finished with the session and it was canceled
+  /// by the user while the request was still getting allocated or after
+  /// allocation and during device usage period.
+  /// - "UNAVAILABLE" : Unable to complete the session because the device was
+  /// unavailable and it failed to allocate through the scheduler. For example,
+  /// a device not in the catalog was requested or the request expired in the
+  /// allocation queue.
+  /// - "ERROR" : Unable to complete the session for an internal reason, such as
+  /// an infrastructure failure.
+  core.String? state;
+
+  /// The historical state transitions of the session_state message including
+  /// the current session state.
+  ///
+  /// Output only.
+  core.List<SessionStateEvent>? stateHistories;
+
+  /// The amount of time that a device will be initially allocated for.
+  ///
+  /// This can eventually be extended with the UpdateDeviceSession RPC. Default:
+  /// 30 minutes.
+  ///
+  /// Optional.
+  core.String? ttl;
+
+  DeviceSession({
+    this.activeStartTime,
+    this.androidDevice,
+    this.createTime,
+    this.displayName,
+    this.expireTime,
+    this.inactivityTimeout,
+    this.name,
+    this.state,
+    this.stateHistories,
+    this.ttl,
+  });
+
+  DeviceSession.fromJson(core.Map json_)
+      : this(
+          activeStartTime: json_.containsKey('activeStartTime')
+              ? json_['activeStartTime'] as core.String
+              : null,
+          androidDevice: json_.containsKey('androidDevice')
+              ? AndroidDevice.fromJson(
+                  json_['androidDevice'] as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
+          inactivityTimeout: json_.containsKey('inactivityTimeout')
+              ? json_['inactivityTimeout'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          stateHistories: json_.containsKey('stateHistories')
+              ? (json_['stateHistories'] as core.List)
+                  .map((value) => SessionStateEvent.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          ttl: json_.containsKey('ttl') ? json_['ttl'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activeStartTime != null) 'activeStartTime': activeStartTime!,
+        if (androidDevice != null) 'androidDevice': androidDevice!,
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (inactivityTimeout != null) 'inactivityTimeout': inactivityTimeout!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (stateHistories != null) 'stateHistories': stateHistories!,
+        if (ttl != null) 'ttl': ttl!,
+      };
+}
+
+/// Denotes whether Direct Access is supported, and by which client versions.
+///
+/// DirectAccessService is currently available as a preview to select
+/// developers. You can register today on behalf of you and your team at
+/// https://developer.android.com/studio/preview/android-device-streaming
+class DirectAccessVersionInfo {
+  /// Whether direct access is supported at all.
+  ///
+  /// Clients are expected to filter down the device list to only android models
+  /// and versions which support Direct Access when that is the user intent.
+  core.bool? directAccessSupported;
+
+  /// Indicates client-device compatibility, where a device is known to work
+  /// only with certain workarounds implemented in the Android Studio client.
+  ///
+  /// Expected format "major.minor.micro.patch", e.g. "5921.22.2211.8881706".
+  ///
+  /// Output only.
+  core.String? minimumAndroidStudioVersion;
+
+  DirectAccessVersionInfo({
+    this.directAccessSupported,
+    this.minimumAndroidStudioVersion,
+  });
+
+  DirectAccessVersionInfo.fromJson(core.Map json_)
+      : this(
+          directAccessSupported: json_.containsKey('directAccessSupported')
+              ? json_['directAccessSupported'] as core.bool
+              : null,
+          minimumAndroidStudioVersion:
+              json_.containsKey('minimumAndroidStudioVersion')
+                  ? json_['minimumAndroidStudioVersion'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (directAccessSupported != null)
+          'directAccessSupported': directAccessSupported!,
+        if (minimumAndroidStudioVersion != null)
+          'minimumAndroidStudioVersion': minimumAndroidStudioVersion!,
+      };
+}
+
 /// Data about the relative number of devices running a given configuration of
 /// the Android platform.
 class Distribution {
@@ -1660,6 +2084,14 @@ class Distribution {
         if (measurementTime != null) 'measurementTime': measurementTime!,
       };
 }
+
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); }
+typedef Empty = $Empty;
 
 /// The environment in which the test is run.
 class Environment {
@@ -2183,6 +2615,53 @@ class IosModel {
       };
 }
 
+/// A test that explores an iOS application on an iOS device.
+class IosRoboTest {
+  /// The bundle ID for the app-under-test.
+  ///
+  /// This is determined by examining the application's "Info.plist" file.
+  core.String? appBundleId;
+
+  /// The ipa stored at this file should be used to run the test.
+  ///
+  /// Required.
+  FileReference? appIpa;
+
+  /// An optional Roboscript to customize the crawl.
+  ///
+  /// See
+  /// https://firebase.google.com/docs/test-lab/android/robo-scripts-reference
+  /// for more information about Roboscripts.
+  FileReference? roboScript;
+
+  IosRoboTest({
+    this.appBundleId,
+    this.appIpa,
+    this.roboScript,
+  });
+
+  IosRoboTest.fromJson(core.Map json_)
+      : this(
+          appBundleId: json_.containsKey('appBundleId')
+              ? json_['appBundleId'] as core.String
+              : null,
+          appIpa: json_.containsKey('appIpa')
+              ? FileReference.fromJson(
+                  json_['appIpa'] as core.Map<core.String, core.dynamic>)
+              : null,
+          roboScript: json_.containsKey('roboScript')
+              ? FileReference.fromJson(
+                  json_['roboScript'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appBundleId != null) 'appBundleId': appBundleId!,
+        if (appIpa != null) 'appIpa': appIpa!,
+        if (roboScript != null) 'roboScript': roboScript!,
+      };
+}
+
 /// iOS configuration that can be selected at the time a test is run.
 class IosRuntimeConfiguration {
   /// The set of available locales.
@@ -2481,6 +2960,40 @@ class IosXcTest {
 /// Specifies an intent that starts the main launcher activity.
 typedef LauncherActivityIntent = $Empty;
 
+/// A list of device sessions.
+class ListDeviceSessionsResponse {
+  /// The sessions matching the specified filter in the given cloud project.
+  core.List<DeviceSession>? deviceSessions;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListDeviceSessionsResponse({
+    this.deviceSessions,
+    this.nextPageToken,
+  });
+
+  ListDeviceSessionsResponse.fromJson(core.Map json_)
+      : this(
+          deviceSessions: json_.containsKey('deviceSessions')
+              ? (json_['deviceSessions'] as core.List)
+                  .map((value) => DeviceSession.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceSessions != null) 'deviceSessions': deviceSessions!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// A location/region designation for language.
 class Locale {
   /// The id for this locale.
@@ -2544,7 +3057,7 @@ class ManualSharding {
   /// You must specify at least one shard if this field is present. When you
   /// select one or more physical devices, the number of repeated
   /// test_targets_for_shard must be \<= 50. When you select one or more ARM
-  /// virtual devices, it must be \<= 100. When you select only x86 virtual
+  /// virtual devices, it must be \<= 200. When you select only x86 virtual
   /// devices, it must be \<= 500.
   ///
   /// Required.
@@ -2766,11 +3279,17 @@ class PerAndroidVersionInfo {
   /// state is very likely permanent.
   core.String? deviceCapacity;
 
+  /// Identifies supported clients for DirectAccess for this Android version.
+  ///
+  /// Output only.
+  DirectAccessVersionInfo? directAccessVersionInfo;
+
   /// An Android version.
   core.String? versionId;
 
   PerAndroidVersionInfo({
     this.deviceCapacity,
+    this.directAccessVersionInfo,
     this.versionId,
   });
 
@@ -2779,6 +3298,11 @@ class PerAndroidVersionInfo {
           deviceCapacity: json_.containsKey('deviceCapacity')
               ? json_['deviceCapacity'] as core.String
               : null,
+          directAccessVersionInfo: json_.containsKey('directAccessVersionInfo')
+              ? DirectAccessVersionInfo.fromJson(
+                  json_['directAccessVersionInfo']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           versionId: json_.containsKey('versionId')
               ? json_['versionId'] as core.String
               : null,
@@ -2786,6 +3310,8 @@ class PerAndroidVersionInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceCapacity != null) 'deviceCapacity': deviceCapacity!,
+        if (directAccessVersionInfo != null)
+          'directAccessVersionInfo': directAccessVersionInfo!,
         if (versionId != null) 'versionId': versionId!,
       };
 }
@@ -3128,6 +3654,69 @@ class Service {
       };
 }
 
+/// A message encapsulating a series of Session states and the time that the
+/// DeviceSession first entered those states.
+class SessionStateEvent {
+  /// The time that the session_state first encountered that state.
+  ///
+  /// Output only.
+  core.String? eventTime;
+
+  /// The session_state tracked by this event
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SESSION_STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "REQUESTED" : Initial state of a session request. The session is being
+  /// validated for correctness and a device is not yet requested.
+  /// - "PENDING" : The session has been validated and is in the queue for a
+  /// device.
+  /// - "ACTIVE" : The session has been granted and the device is accepting
+  /// connections.
+  /// - "EXPIRED" : The session duration exceeded the device’s reservation time
+  /// period and timed out automatically.
+  /// - "FINISHED" : The user is finished with the session and it was canceled
+  /// by the user while the request was still getting allocated or after
+  /// allocation and during device usage period.
+  /// - "UNAVAILABLE" : Unable to complete the session because the device was
+  /// unavailable and it failed to allocate through the scheduler. For example,
+  /// a device not in the catalog was requested or the request expired in the
+  /// allocation queue.
+  /// - "ERROR" : Unable to complete the session for an internal reason, such as
+  /// an infrastructure failure.
+  core.String? sessionState;
+
+  /// A human-readable message to explain the state.
+  ///
+  /// Output only.
+  core.String? stateMessage;
+
+  SessionStateEvent({
+    this.eventTime,
+    this.sessionState,
+    this.stateMessage,
+  });
+
+  SessionStateEvent.fromJson(core.Map json_)
+      : this(
+          eventTime: json_.containsKey('eventTime')
+              ? json_['eventTime'] as core.String
+              : null,
+          sessionState: json_.containsKey('sessionState')
+              ? json_['sessionState'] as core.String
+              : null,
+          stateMessage: json_.containsKey('stateMessage')
+              ? json_['stateMessage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventTime != null) 'eventTime': eventTime!,
+        if (sessionState != null) 'sessionState': sessionState!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+      };
+}
+
 /// Details about the shard.
 ///
 /// Output only.
@@ -3256,7 +3845,7 @@ class SmartSharding {
   /// before all tests can finish. Note that there is a limit for maximum number
   /// of shards. When you select one or more physical devices, the number of
   /// shards must be \<= 50. When you select one or more ARM virtual devices, it
-  /// must be \<= 100. When you select only x86 virtual devices, it must be \<=
+  /// must be \<= 200. When you select only x86 virtual devices, it must be \<=
   /// 500. To guarantee at least one test case for per shard, the number of
   /// shards will not exceed the number of test cases. Each shard created counts
   /// toward daily test quota.
@@ -3873,7 +4462,7 @@ class TestSetup {
 
   /// APKs to install in addition to those being directly tested.
   ///
-  /// Currently capped at 100.
+  /// These will be installed after the app under test. Currently capped at 100.
   core.List<Apk>? additionalApks;
 
   /// List of directories on the device to upload to GCS at the end of the test;
@@ -3895,6 +4484,13 @@ class TestSetup {
 
   /// List of files to push to the device before starting the test.
   core.List<DeviceFile>? filesToPush;
+
+  /// Initial setup APKs to install before the app under test is installed.
+  ///
+  /// Currently capped at 100.
+  ///
+  /// Optional.
+  core.List<Apk>? initialSetupApks;
 
   /// The network traffic profile used for running the test.
   ///
@@ -3920,6 +4516,7 @@ class TestSetup {
     this.dontAutograntPermissions,
     this.environmentVariables,
     this.filesToPush,
+    this.initialSetupApks,
     this.networkProfile,
     this.systrace,
   });
@@ -3957,6 +4554,12 @@ class TestSetup {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          initialSetupApks: json_.containsKey('initialSetupApks')
+              ? (json_['initialSetupApks'] as core.List)
+                  .map((value) => Apk.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           networkProfile: json_.containsKey('networkProfile')
               ? json_['networkProfile'] as core.String
               : null,
@@ -3975,6 +4578,7 @@ class TestSetup {
         if (environmentVariables != null)
           'environmentVariables': environmentVariables!,
         if (filesToPush != null) 'filesToPush': filesToPush!,
+        if (initialSetupApks != null) 'initialSetupApks': initialSetupApks!,
         if (networkProfile != null) 'networkProfile': networkProfile!,
         if (systrace != null) 'systrace': systrace!,
       };
@@ -4001,6 +4605,9 @@ class TestSpecification {
   /// May reduce test latency.
   core.bool? disableVideoRecording;
 
+  /// An iOS Robo test.
+  IosRoboTest? iosRoboTest;
+
   /// An iOS application with a test loop.
   IosTestLoop? iosTestLoop;
 
@@ -4026,6 +4633,7 @@ class TestSpecification {
     this.androidTestLoop,
     this.disablePerformanceMetrics,
     this.disableVideoRecording,
+    this.iosRoboTest,
     this.iosTestLoop,
     this.iosTestSetup,
     this.iosXcTest,
@@ -4055,6 +4663,10 @@ class TestSpecification {
                   : null,
           disableVideoRecording: json_.containsKey('disableVideoRecording')
               ? json_['disableVideoRecording'] as core.bool
+              : null,
+          iosRoboTest: json_.containsKey('iosRoboTest')
+              ? IosRoboTest.fromJson(
+                  json_['iosRoboTest'] as core.Map<core.String, core.dynamic>)
               : null,
           iosTestLoop: json_.containsKey('iosTestLoop')
               ? IosTestLoop.fromJson(
@@ -4086,6 +4698,7 @@ class TestSpecification {
           'disablePerformanceMetrics': disablePerformanceMetrics!,
         if (disableVideoRecording != null)
           'disableVideoRecording': disableVideoRecording!,
+        if (iosRoboTest != null) 'iosRoboTest': iosRoboTest!,
         if (iosTestLoop != null) 'iosTestLoop': iosTestLoop!,
         if (iosTestSetup != null) 'iosTestSetup': iosTestSetup!,
         if (iosXcTest != null) 'iosXcTest': iosXcTest!,
@@ -4321,7 +4934,7 @@ class UniformSharding {
   /// This must always be a positive number that is no greater than the total
   /// number of test cases. When you select one or more physical devices, the
   /// number of shards must be \<= 50. When you select one or more ARM virtual
-  /// devices, it must be \<= 100. When you select only x86 virtual devices, it
+  /// devices, it must be \<= 200. When you select only x86 virtual devices, it
   /// must be \<= 500.
   ///
   /// Required.

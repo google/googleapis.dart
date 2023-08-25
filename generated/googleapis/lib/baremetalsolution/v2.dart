@@ -26,6 +26,7 @@
 ///     - [ProjectsLocationsNetworksResource]
 ///     - [ProjectsLocationsNfsSharesResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsOsImagesResource]
 ///     - [ProjectsLocationsProvisioningConfigsResource]
 ///     - [ProjectsLocationsProvisioningQuotasResource]
 ///     - [ProjectsLocationsSshKeysResource]
@@ -86,6 +87,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsNfsSharesResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsOsImagesResource get osImages =>
+      ProjectsLocationsOsImagesResource(_requester);
   ProjectsLocationsProvisioningConfigsResource get provisioningConfigs =>
       ProjectsLocationsProvisioningConfigsResource(_requester);
   ProjectsLocationsProvisioningQuotasResource get provisioningQuotas =>
@@ -417,7 +420,8 @@ class ProjectsLocationsInstancesResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [updateMask] - The list of fields to update. The currently supported
-  /// fields are: `labels` `hyperthreading_enabled` `os_image`
+  /// fields are: `labels` `hyperthreading_enabled` `os_image` `ssh_keys`
+  /// `kms_key_version`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1145,6 +1149,96 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsOsImagesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOsImagesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get details of a single OS image.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the OS image.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/osImages/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OSImage].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OSImage> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return OSImage.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves the list of OS images which are currently approved.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for ListOSImagesRequest.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Requested page size. The server might return fewer items than
+  /// requested. If unspecified, server will pick an appropriate default. Notice
+  /// that page_size field is not supported and won't be respected in the API
+  /// request for now, will be updated when pagination is supported.
+  ///
+  /// [pageToken] - A token identifying a page of results from the server.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOSImagesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOSImagesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/osImages';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListOSImagesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2442,8 +2536,8 @@ class Instance {
 
   /// Pod name.
   ///
-  /// Pod is an independent part of infrastructure. Instance can be connected to
-  /// the assets (networks, volumes) allocated in the same pod only.
+  /// Pod is an independent part of infrastructure. Instance can only be
+  /// connected to the assets (networks, volumes) allocated in the same pod.
   ///
   /// Immutable.
   core.String? pod;
@@ -2620,6 +2714,9 @@ class InstanceConfig {
 
   /// A transient unique identifier to idenfity an instance within an
   /// ProvisioningConfig request.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? id;
 
   /// Instance type.
@@ -2635,8 +2732,6 @@ class InstanceConfig {
   core.List<GoogleCloudBaremetalsolutionV2LogicalInterface>? logicalInterfaces;
 
   /// The name of the instance config.
-  ///
-  /// Output only.
   core.String? name;
 
   /// The type of network configuration on the instance.
@@ -2667,6 +2762,8 @@ class InstanceConfig {
   NetworkAddress? privateNetwork;
 
   /// List of names of ssh keys used to provision the instance.
+  ///
+  /// Optional.
   core.List<core.String>? sshKeyNames;
 
   /// User note field, it can be used by customers to add additional information
@@ -3062,6 +3159,39 @@ class ListNfsSharesResponse {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (nfsShares != null) 'nfsShares': nfsShares!,
         if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Request for getting all available OS images.
+class ListOSImagesResponse {
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// The OS images available.
+  core.List<OSImage>? osImages;
+
+  ListOSImagesResponse({
+    this.nextPageToken,
+    this.osImages,
+  });
+
+  ListOSImagesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          osImages: json_.containsKey('osImages')
+              ? (json_['osImages'] as core.List)
+                  .map((value) => OSImage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (osImages != null) 'osImages': osImages!,
       };
 }
 
@@ -3474,7 +3604,10 @@ class Network {
 
   /// Pod name.
   ///
-  /// Output only.
+  /// Pod is an independent part of infrastructure. Network can only be
+  /// connected to the assets (instances, nfsshares) allocated in the same pod.
+  ///
+  /// Immutable.
   core.String? pod;
 
   /// List of IP address reservations in this network.
@@ -3506,8 +3639,17 @@ class Network {
   /// The vlan id of the Network.
   core.String? vlanId;
 
-  /// The vrf for the Network.
+  /// The Vrf for the Network.
+  ///
+  /// Use this only if a new Vrf needs to be created.
   VRF? vrf;
+
+  /// The name of a pre-existing Vrf that the network should be attached to.
+  ///
+  /// Format is `vrfs/{vrf}`.
+  ///
+  /// Optional.
+  core.String? vrfAttachment;
 
   Network({
     this.cidr,
@@ -3526,6 +3668,7 @@ class Network {
     this.type,
     this.vlanId,
     this.vrf,
+    this.vrfAttachment,
   });
 
   Network.fromJson(core.Map json_)
@@ -3581,6 +3724,9 @@ class Network {
               ? VRF
                   .fromJson(json_['vrf'] as core.Map<core.String, core.dynamic>)
               : null,
+          vrfAttachment: json_.containsKey('vrfAttachment')
+              ? json_['vrfAttachment'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3601,6 +3747,7 @@ class Network {
         if (type != null) 'type': type!,
         if (vlanId != null) 'vlanId': vlanId!,
         if (vrf != null) 'vrf': vrf!,
+        if (vrfAttachment != null) 'vrfAttachment': vrfAttachment!,
       };
 }
 
@@ -3986,6 +4133,14 @@ class NfsShare {
   /// Output only.
   core.String? nfsShareId;
 
+  /// Pod name.
+  ///
+  /// Pod is an independent part of infrastructure. NFSShare can only be
+  /// connected to the assets (networks, instances) allocated in the same pod.
+  ///
+  /// Immutable.
+  core.String? pod;
+
   /// The requested size, in GiB.
   core.String? requestedSizeGib;
 
@@ -4023,6 +4178,7 @@ class NfsShare {
     this.labels,
     this.name,
     this.nfsShareId,
+    this.pod,
     this.requestedSizeGib,
     this.state,
     this.storageType,
@@ -4050,6 +4206,7 @@ class NfsShare {
           nfsShareId: json_.containsKey('nfsShareId')
               ? json_['nfsShareId'] as core.String
               : null,
+          pod: json_.containsKey('pod') ? json_['pod'] as core.String : null,
           requestedSizeGib: json_.containsKey('requestedSizeGib')
               ? json_['requestedSizeGib'] as core.String
               : null,
@@ -4069,10 +4226,71 @@ class NfsShare {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (nfsShareId != null) 'nfsShareId': nfsShareId!,
+        if (pod != null) 'pod': pod!,
         if (requestedSizeGib != null) 'requestedSizeGib': requestedSizeGib!,
         if (state != null) 'state': state!,
         if (storageType != null) 'storageType': storageType!,
         if (volume != null) 'volume': volume!,
+      };
+}
+
+/// Operation System image.
+class OSImage {
+  /// Instance types this image is applicable to.
+  ///
+  /// [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
+  core.List<core.String>? applicableInstanceTypes;
+
+  /// OS Image code.
+  core.String? code;
+
+  /// OS Image description.
+  core.String? description;
+
+  /// OS Image's unique name.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Network templates that can be used with this OS Image.
+  core.List<core.String>? supportedNetworkTemplates;
+
+  OSImage({
+    this.applicableInstanceTypes,
+    this.code,
+    this.description,
+    this.name,
+    this.supportedNetworkTemplates,
+  });
+
+  OSImage.fromJson(core.Map json_)
+      : this(
+          applicableInstanceTypes: json_.containsKey('applicableInstanceTypes')
+              ? (json_['applicableInstanceTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          supportedNetworkTemplates:
+              json_.containsKey('supportedNetworkTemplates')
+                  ? (json_['supportedNetworkTemplates'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (applicableInstanceTypes != null)
+          'applicableInstanceTypes': applicableInstanceTypes!,
+        if (code != null) 'code': code!,
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (supportedNetworkTemplates != null)
+          'supportedNetworkTemplates': supportedNetworkTemplates!,
       };
 }
 
@@ -4106,7 +4324,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -4196,6 +4414,14 @@ class ProvisioningConfig {
   /// Networks to be created.
   core.List<NetworkConfig>? networks;
 
+  /// Pod name.
+  ///
+  /// Pod is an independent part of infrastructure. Instance can be connected to
+  /// the assets (networks, volumes, nfsshares) allocated in the same pod only.
+  ///
+  /// Optional.
+  core.String? pod;
+
   /// State of ProvisioningConfig.
   ///
   /// Output only.
@@ -4241,6 +4467,7 @@ class ProvisioningConfig {
     this.location,
     this.name,
     this.networks,
+    this.pod,
     this.state,
     this.statusMessage,
     this.ticketId,
@@ -4278,6 +4505,7 @@ class ProvisioningConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          pod: json_.containsKey('pod') ? json_['pod'] as core.String : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           statusMessage: json_.containsKey('statusMessage')
@@ -4310,6 +4538,7 @@ class ProvisioningConfig {
         if (location != null) 'location': location!,
         if (name != null) 'name': name!,
         if (networks != null) 'networks': networks!,
+        if (pod != null) 'pod': pod!,
         if (state != null) 'state': state!,
         if (statusMessage != null) 'statusMessage': statusMessage!,
         if (ticketId != null) 'ticketId': ticketId!,
@@ -4940,6 +5169,9 @@ class Volume {
 
   /// Pod name.
   ///
+  /// Pod is an independent part of infrastructure. Volume can only be connected
+  /// to the instances allocated in the same pod.
+  ///
   /// Immutable.
   core.String? pod;
 
@@ -4975,9 +5207,6 @@ class Volume {
   /// Details about snapshot space reservation and usage on the storage volume.
   SnapshotReservationDetail? snapshotReservationDetail;
 
-  /// The name of the snapshot schedule policy in use for this volume, if any.
-  core.String? snapshotSchedulePolicy;
-
   /// The state of this storage volume.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : The storage volume is in an unknown state.
@@ -4988,12 +5217,6 @@ class Volume {
   /// - "COOL_OFF" : The storage volume is in cool off state. It will be deleted
   /// after `expire_time`.
   core.String? state;
-
-  /// Input only.
-  ///
-  /// Name of the storage aggregate pool to allocate the volume in. Can be used
-  /// only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
-  core.String? storageAggregatePool;
 
   /// The storage type for this volume.
   /// Possible string values are:
@@ -5033,9 +5256,7 @@ class Volume {
     this.snapshotAutoDeleteBehavior,
     this.snapshotEnabled,
     this.snapshotReservationDetail,
-    this.snapshotSchedulePolicy,
     this.state,
-    this.storageAggregatePool,
     this.storageType,
     this.workloadProfile,
   });
@@ -5110,14 +5331,8 @@ class Volume {
                       json_['snapshotReservationDetail']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          snapshotSchedulePolicy: json_.containsKey('snapshotSchedulePolicy')
-              ? json_['snapshotSchedulePolicy'] as core.String
-              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
-          storageAggregatePool: json_.containsKey('storageAggregatePool')
-              ? json_['storageAggregatePool'] as core.String
-              : null,
           storageType: json_.containsKey('storageType')
               ? json_['storageType'] as core.String
               : null,
@@ -5151,11 +5366,7 @@ class Volume {
         if (snapshotEnabled != null) 'snapshotEnabled': snapshotEnabled!,
         if (snapshotReservationDetail != null)
           'snapshotReservationDetail': snapshotReservationDetail!,
-        if (snapshotSchedulePolicy != null)
-          'snapshotSchedulePolicy': snapshotSchedulePolicy!,
         if (state != null) 'state': state!,
-        if (storageAggregatePool != null)
-          'storageAggregatePool': storageAggregatePool!,
         if (storageType != null) 'storageType': storageType!,
         if (workloadProfile != null) 'workloadProfile': workloadProfile!,
       };
@@ -5216,12 +5427,6 @@ class VolumeConfig {
   /// Whether snapshots should be enabled.
   core.bool? snapshotsEnabled;
 
-  /// Input only.
-  ///
-  /// Name of the storage aggregate pool to allocate the volume in. Can be used
-  /// only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
-  core.String? storageAggregatePool;
-
   /// The type of this Volume.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : The unspecified type.
@@ -5244,7 +5449,6 @@ class VolumeConfig {
     this.protocol,
     this.sizeGb,
     this.snapshotsEnabled,
-    this.storageAggregatePool,
     this.type,
     this.userNote,
   });
@@ -5284,9 +5488,6 @@ class VolumeConfig {
           snapshotsEnabled: json_.containsKey('snapshotsEnabled')
               ? json_['snapshotsEnabled'] as core.bool
               : null,
-          storageAggregatePool: json_.containsKey('storageAggregatePool')
-              ? json_['storageAggregatePool'] as core.String
-              : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
           userNote: json_.containsKey('userNote')
               ? json_['userNote'] as core.String
@@ -5304,8 +5505,6 @@ class VolumeConfig {
         if (protocol != null) 'protocol': protocol!,
         if (sizeGb != null) 'sizeGb': sizeGb!,
         if (snapshotsEnabled != null) 'snapshotsEnabled': snapshotsEnabled!,
-        if (storageAggregatePool != null)
-          'storageAggregatePool': storageAggregatePool!,
         if (type != null) 'type': type!,
         if (userNote != null) 'userNote': userNote!,
       };

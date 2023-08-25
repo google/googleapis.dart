@@ -2425,6 +2425,16 @@ class AsyncAnnotateFileRequest {
 /// Multiple async file annotation requests are batched into a single service
 /// call.
 class AsyncBatchAnnotateFilesRequest {
+  /// The labels with user-defined metadata for the request.
+  ///
+  /// Label keys and values can be no longer than 63 characters (Unicode
+  /// codepoints), can only contain lowercase letters, numeric characters,
+  /// underscores and dashes. International characters are allowed. Label values
+  /// are optional. Label keys must start with a letter.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
   /// Target project and location to make a call.
   ///
   /// Format: `projects/{project-id}/locations/{location-id}`. If no parent is
@@ -2441,12 +2451,21 @@ class AsyncBatchAnnotateFilesRequest {
   core.List<AsyncAnnotateFileRequest>? requests;
 
   AsyncBatchAnnotateFilesRequest({
+    this.labels,
     this.parent,
     this.requests,
   });
 
   AsyncBatchAnnotateFilesRequest.fromJson(core.Map json_)
       : this(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           parent: json_.containsKey('parent')
               ? json_['parent'] as core.String
               : null,
@@ -2459,6 +2478,7 @@ class AsyncBatchAnnotateFilesRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (labels != null) 'labels': labels!,
         if (parent != null) 'parent': parent!,
         if (requests != null) 'requests': requests!,
       };
@@ -2466,6 +2486,16 @@ class AsyncBatchAnnotateFilesRequest {
 
 /// Request for async image annotation for a list of images.
 class AsyncBatchAnnotateImagesRequest {
+  /// The labels with user-defined metadata for the request.
+  ///
+  /// Label keys and values can be no longer than 63 characters (Unicode
+  /// codepoints), can only contain lowercase letters, numeric characters,
+  /// underscores and dashes. International characters are allowed. Label values
+  /// are optional. Label keys must start with a letter.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
   /// The desired output location and metadata (e.g. format).
   ///
   /// Required.
@@ -2487,6 +2517,7 @@ class AsyncBatchAnnotateImagesRequest {
   core.List<AnnotateImageRequest>? requests;
 
   AsyncBatchAnnotateImagesRequest({
+    this.labels,
     this.outputConfig,
     this.parent,
     this.requests,
@@ -2494,6 +2525,14 @@ class AsyncBatchAnnotateImagesRequest {
 
   AsyncBatchAnnotateImagesRequest.fromJson(core.Map json_)
       : this(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           outputConfig: json_.containsKey('outputConfig')
               ? OutputConfig.fromJson(
                   json_['outputConfig'] as core.Map<core.String, core.dynamic>)
@@ -2510,6 +2549,7 @@ class AsyncBatchAnnotateImagesRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (labels != null) 'labels': labels!,
         if (outputConfig != null) 'outputConfig': outputConfig!,
         if (parent != null) 'parent': parent!,
         if (requests != null) 'requests': requests!,
@@ -2518,6 +2558,16 @@ class AsyncBatchAnnotateImagesRequest {
 
 /// A list of requests to annotate files using the BatchAnnotateFiles API.
 class BatchAnnotateFilesRequest {
+  /// The labels with user-defined metadata for the request.
+  ///
+  /// Label keys and values can be no longer than 63 characters (Unicode
+  /// codepoints), can only contain lowercase letters, numeric characters,
+  /// underscores and dashes. International characters are allowed. Label values
+  /// are optional. Label keys must start with a letter.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
   /// Target project and location to make a call.
   ///
   /// Format: `projects/{project-id}/locations/{location-id}`. If no parent is
@@ -2537,12 +2587,21 @@ class BatchAnnotateFilesRequest {
   core.List<AnnotateFileRequest>? requests;
 
   BatchAnnotateFilesRequest({
+    this.labels,
     this.parent,
     this.requests,
   });
 
   BatchAnnotateFilesRequest.fromJson(core.Map json_)
       : this(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           parent: json_.containsKey('parent')
               ? json_['parent'] as core.String
               : null,
@@ -2555,6 +2614,7 @@ class BatchAnnotateFilesRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (labels != null) 'labels': labels!,
         if (parent != null) 'parent': parent!,
         if (requests != null) 'requests': requests!,
       };
@@ -2587,6 +2647,16 @@ class BatchAnnotateFilesResponse {
 
 /// Multiple image annotation requests are batched into a single service call.
 class BatchAnnotateImagesRequest {
+  /// The labels with user-defined metadata for the request.
+  ///
+  /// Label keys and values can be no longer than 63 characters (Unicode
+  /// codepoints), can only contain lowercase letters, numeric characters,
+  /// underscores and dashes. International characters are allowed. Label values
+  /// are optional. Label keys must start with a letter.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
   /// Target project and location to make a call.
   ///
   /// Format: `projects/{project-id}/locations/{location-id}`. If no parent is
@@ -2603,12 +2673,21 @@ class BatchAnnotateImagesRequest {
   core.List<AnnotateImageRequest>? requests;
 
   BatchAnnotateImagesRequest({
+    this.labels,
     this.parent,
     this.requests,
   });
 
   BatchAnnotateImagesRequest.fromJson(core.Map json_)
       : this(
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           parent: json_.containsKey('parent')
               ? json_['parent'] as core.String
               : null,
@@ -2621,6 +2700,7 @@ class BatchAnnotateImagesRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (labels != null) 'labels': labels!,
         if (parent != null) 'parent': parent!,
         if (requests != null) 'requests': requests!,
       };
@@ -4426,7 +4506,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard

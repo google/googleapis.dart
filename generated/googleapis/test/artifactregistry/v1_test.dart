@@ -25,6 +25,27 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAptRepository = 0;
+api.AptRepository buildAptRepository() {
+  final o = api.AptRepository();
+  buildCounterAptRepository++;
+  if (buildCounterAptRepository < 3) {
+    o.publicRepository =
+        buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository();
+  }
+  buildCounterAptRepository--;
+  return o;
+}
+
+void checkAptRepository(api.AptRepository o) {
+  buildCounterAptRepository++;
+  if (buildCounterAptRepository < 3) {
+    checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository(
+        o.publicRepository!);
+  }
+  buildCounterAptRepository--;
+}
+
 core.List<core.String> buildUnnamed0() => [
       'foo',
       'foo',
@@ -497,6 +518,76 @@ void checkGoogleDevtoolsArtifactregistryV1File(
     );
   }
   buildCounterGoogleDevtoolsArtifactregistryV1File--;
+}
+
+core.int
+    buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository =
+    0;
+api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository
+    buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository() {
+  final o = api
+      .GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository();
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository++;
+  if (buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository <
+      3) {
+    o.repositoryBase = 'foo';
+    o.repositoryPath = 'foo';
+  }
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository--;
+  return o;
+}
+
+void checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository(
+    api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository
+        o) {
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository++;
+  if (buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository <
+      3) {
+    unittest.expect(
+      o.repositoryBase!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.repositoryPath!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository--;
+}
+
+core.int
+    buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository =
+    0;
+api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository
+    buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository() {
+  final o = api
+      .GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository();
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository++;
+  if (buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository <
+      3) {
+    o.repositoryBase = 'foo';
+    o.repositoryPath = 'foo';
+  }
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository--;
+  return o;
+}
+
+void checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository(
+    api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository
+        o) {
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository++;
+  if (buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository <
+      3) {
+    unittest.expect(
+      o.repositoryBase!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.repositoryPath!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository--;
 }
 
 core.int buildCounterHash = 0;
@@ -1624,11 +1715,14 @@ api.RemoteRepositoryConfig buildRemoteRepositoryConfig() {
   final o = api.RemoteRepositoryConfig();
   buildCounterRemoteRepositoryConfig++;
   if (buildCounterRemoteRepositoryConfig < 3) {
+    o.aptRepository = buildAptRepository();
     o.description = 'foo';
     o.dockerRepository = buildDockerRepository();
     o.mavenRepository = buildMavenRepository();
     o.npmRepository = buildNpmRepository();
     o.pythonRepository = buildPythonRepository();
+    o.upstreamCredentials = buildUpstreamCredentials();
+    o.yumRepository = buildYumRepository();
   }
   buildCounterRemoteRepositoryConfig--;
   return o;
@@ -1637,6 +1731,7 @@ api.RemoteRepositoryConfig buildRemoteRepositoryConfig() {
 void checkRemoteRepositoryConfig(api.RemoteRepositoryConfig o) {
   buildCounterRemoteRepositoryConfig++;
   if (buildCounterRemoteRepositoryConfig < 3) {
+    checkAptRepository(o.aptRepository!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -1645,6 +1740,8 @@ void checkRemoteRepositoryConfig(api.RemoteRepositoryConfig o) {
     checkMavenRepository(o.mavenRepository!);
     checkNpmRepository(o.npmRepository!);
     checkPythonRepository(o.pythonRepository!);
+    checkUpstreamCredentials(o.upstreamCredentials!);
+    checkYumRepository(o.yumRepository!);
   }
   buildCounterRemoteRepositoryConfig--;
 }
@@ -1695,7 +1792,6 @@ api.Repository buildRepository() {
     o.name = 'foo';
     o.remoteRepositoryConfig = buildRemoteRepositoryConfig();
     o.satisfiesPzs = true;
-    o.sbomConfig = buildSbomConfig();
     o.sizeBytes = 'foo';
     o.updateTime = 'foo';
     o.virtualRepositoryConfig = buildVirtualRepositoryConfig();
@@ -1738,7 +1834,6 @@ void checkRepository(api.Repository o) {
     );
     checkRemoteRepositoryConfig(o.remoteRepositoryConfig!);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
-    checkSbomConfig(o.sbomConfig!);
     unittest.expect(
       o.sizeBytes!,
       unittest.equals('foo'),
@@ -1750,33 +1845,6 @@ void checkRepository(api.Repository o) {
     checkVirtualRepositoryConfig(o.virtualRepositoryConfig!);
   }
   buildCounterRepository--;
-}
-
-core.int buildCounterSbomConfig = 0;
-api.SbomConfig buildSbomConfig() {
-  final o = api.SbomConfig();
-  buildCounterSbomConfig++;
-  if (buildCounterSbomConfig < 3) {
-    o.enablementConfig = 'foo';
-    o.lastEnableTime = 'foo';
-  }
-  buildCounterSbomConfig--;
-  return o;
-}
-
-void checkSbomConfig(api.SbomConfig o) {
-  buildCounterSbomConfig++;
-  if (buildCounterSbomConfig < 3) {
-    unittest.expect(
-      o.enablementConfig!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.lastEnableTime!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterSbomConfig--;
 }
 
 core.int buildCounterSetIamPolicyRequest = 0;
@@ -2179,6 +2247,25 @@ void checkUploadYumArtifactRequest(api.UploadYumArtifactRequest o) {
   buildCounterUploadYumArtifactRequest--;
 }
 
+core.int buildCounterUpstreamCredentials = 0;
+api.UpstreamCredentials buildUpstreamCredentials() {
+  final o = api.UpstreamCredentials();
+  buildCounterUpstreamCredentials++;
+  if (buildCounterUpstreamCredentials < 3) {
+    o.usernamePasswordCredentials = buildUsernamePasswordCredentials();
+  }
+  buildCounterUpstreamCredentials--;
+  return o;
+}
+
+void checkUpstreamCredentials(api.UpstreamCredentials o) {
+  buildCounterUpstreamCredentials++;
+  if (buildCounterUpstreamCredentials < 3) {
+    checkUsernamePasswordCredentials(o.usernamePasswordCredentials!);
+  }
+  buildCounterUpstreamCredentials--;
+}
+
 core.int buildCounterUpstreamPolicy = 0;
 api.UpstreamPolicy buildUpstreamPolicy() {
   final o = api.UpstreamPolicy();
@@ -2209,6 +2296,33 @@ void checkUpstreamPolicy(api.UpstreamPolicy o) {
     );
   }
   buildCounterUpstreamPolicy--;
+}
+
+core.int buildCounterUsernamePasswordCredentials = 0;
+api.UsernamePasswordCredentials buildUsernamePasswordCredentials() {
+  final o = api.UsernamePasswordCredentials();
+  buildCounterUsernamePasswordCredentials++;
+  if (buildCounterUsernamePasswordCredentials < 3) {
+    o.passwordSecretVersion = 'foo';
+    o.username = 'foo';
+  }
+  buildCounterUsernamePasswordCredentials--;
+  return o;
+}
+
+void checkUsernamePasswordCredentials(api.UsernamePasswordCredentials o) {
+  buildCounterUsernamePasswordCredentials++;
+  if (buildCounterUsernamePasswordCredentials < 3) {
+    unittest.expect(
+      o.passwordSecretVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.username!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterUsernamePasswordCredentials--;
 }
 
 core.int buildCounterVPCSCConfig = 0;
@@ -2365,7 +2479,38 @@ void checkVirtualRepositoryConfig(api.VirtualRepositoryConfig o) {
   buildCounterVirtualRepositoryConfig--;
 }
 
+core.int buildCounterYumRepository = 0;
+api.YumRepository buildYumRepository() {
+  final o = api.YumRepository();
+  buildCounterYumRepository++;
+  if (buildCounterYumRepository < 3) {
+    o.publicRepository =
+        buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository();
+  }
+  buildCounterYumRepository--;
+  return o;
+}
+
+void checkYumRepository(api.YumRepository o) {
+  buildCounterYumRepository++;
+  if (buildCounterYumRepository < 3) {
+    checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository(
+        o.publicRepository!);
+  }
+  buildCounterYumRepository--;
+}
+
 void main() {
+  unittest.group('obj-schema-AptRepository', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAptRepository();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AptRepository.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAptRepository(od);
+    });
+  });
+
   unittest.group('obj-schema-BatchDeleteVersionsRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildBatchDeleteVersionsRequest();
@@ -2473,6 +2618,36 @@ void main() {
       final od = api.GoogleDevtoolsArtifactregistryV1File.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsArtifactregistryV1File(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository(
+          od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository(
+          od);
     });
   });
 
@@ -2786,16 +2961,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-SbomConfig', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildSbomConfig();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.SbomConfig.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkSbomConfig(od);
-    });
-  });
-
   unittest.group('obj-schema-SetIamPolicyRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSetIamPolicyRequest();
@@ -2945,6 +3110,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-UpstreamCredentials', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUpstreamCredentials();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpstreamCredentials.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUpstreamCredentials(od);
+    });
+  });
+
   unittest.group('obj-schema-UpstreamPolicy', () {
     unittest.test('to-json--from-json', () async {
       final o = buildUpstreamPolicy();
@@ -2952,6 +3127,16 @@ void main() {
       final od = api.UpstreamPolicy.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkUpstreamPolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-UsernamePasswordCredentials', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUsernamePasswordCredentials();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UsernamePasswordCredentials.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUsernamePasswordCredentials(od);
     });
   });
 
@@ -2982,6 +3167,16 @@ void main() {
       final od = api.VirtualRepositoryConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkVirtualRepositoryConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-YumRepository', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildYumRepository();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.YumRepository.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkYumRepository(od);
     });
   });
 

@@ -393,6 +393,7 @@ api.Certification buildCertification() {
   buildCounterCertification++;
   if (buildCounterCertification < 3) {
     o.authority = 'foo';
+    o.code = 'foo';
     o.link = 'foo';
     o.logo = 'foo';
     o.name = 'foo';
@@ -408,6 +409,10 @@ void checkCertification(api.Certification o) {
   if (buildCounterCertification < 3) {
     unittest.expect(
       o.authority!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.code!,
       unittest.equals('foo'),
     );
     unittest.expect(

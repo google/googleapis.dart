@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230720",
+    "revision": "20231019",
     "rootUrl": "https://cloudbuild.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Build API",
@@ -1586,7 +1586,7 @@
                         "triggers": {
                             "methods": {
                                 "create": {
-                                    "description": "Creates a new `BuildTrigger`. This API is experimental.",
+                                    "description": "Creates a new `BuildTrigger`.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/triggers",
                                     "httpMethod": "POST",
                                     "id": "cloudbuild.projects.locations.triggers.create",
@@ -1619,7 +1619,7 @@
                                     ]
                                 },
                                 "delete": {
-                                    "description": "Deletes a `BuildTrigger` by its project ID and trigger ID. This API is experimental.",
+                                    "description": "Deletes a `BuildTrigger` by its project ID and trigger ID.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}",
                                     "httpMethod": "DELETE",
                                     "id": "cloudbuild.projects.locations.triggers.delete",
@@ -1654,7 +1654,7 @@
                                     ]
                                 },
                                 "get": {
-                                    "description": "Returns information about a `BuildTrigger`. This API is experimental.",
+                                    "description": "Returns information about a `BuildTrigger`.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}",
                                     "httpMethod": "GET",
                                     "id": "cloudbuild.projects.locations.triggers.get",
@@ -1689,7 +1689,7 @@
                                     ]
                                 },
                                 "list": {
-                                    "description": "Lists existing `BuildTrigger`s. This API is experimental.",
+                                    "description": "Lists existing `BuildTrigger`s.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/triggers",
                                     "httpMethod": "GET",
                                     "id": "cloudbuild.projects.locations.triggers.list",
@@ -1730,7 +1730,7 @@
                                     ]
                                 },
                                 "patch": {
-                                    "description": "Updates a `BuildTrigger` by its project ID and trigger ID. This API is experimental.",
+                                    "description": "Updates a `BuildTrigger` by its project ID and trigger ID.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/triggers/{triggersId}",
                                     "httpMethod": "PATCH",
                                     "id": "cloudbuild.projects.locations.triggers.patch",
@@ -2030,7 +2030,7 @@
                 "triggers": {
                     "methods": {
                         "create": {
-                            "description": "Creates a new `BuildTrigger`. This API is experimental.",
+                            "description": "Creates a new `BuildTrigger`.",
                             "flatPath": "v1/projects/{projectId}/triggers",
                             "httpMethod": "POST",
                             "id": "cloudbuild.projects.triggers.create",
@@ -2062,7 +2062,7 @@
                             ]
                         },
                         "delete": {
-                            "description": "Deletes a `BuildTrigger` by its project ID and trigger ID. This API is experimental.",
+                            "description": "Deletes a `BuildTrigger` by its project ID and trigger ID.",
                             "flatPath": "v1/projects/{projectId}/triggers/{triggerId}",
                             "httpMethod": "DELETE",
                             "id": "cloudbuild.projects.triggers.delete",
@@ -2098,7 +2098,7 @@
                             ]
                         },
                         "get": {
-                            "description": "Returns information about a `BuildTrigger`. This API is experimental.",
+                            "description": "Returns information about a `BuildTrigger`.",
                             "flatPath": "v1/projects/{projectId}/triggers/{triggerId}",
                             "httpMethod": "GET",
                             "id": "cloudbuild.projects.triggers.get",
@@ -2134,7 +2134,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists existing `BuildTrigger`s. This API is experimental.",
+                            "description": "Lists existing `BuildTrigger`s.",
                             "flatPath": "v1/projects/{projectId}/triggers",
                             "httpMethod": "GET",
                             "id": "cloudbuild.projects.triggers.list",
@@ -2174,7 +2174,7 @@
                             ]
                         },
                         "patch": {
-                            "description": "Updates a `BuildTrigger` by its project ID and trigger ID. This API is experimental.",
+                            "description": "Updates a `BuildTrigger` by its project ID and trigger ID.",
                             "flatPath": "v1/projects/{projectId}/triggers/{triggerId}",
                             "httpMethod": "PATCH",
                             "id": "cloudbuild.projects.triggers.patch",
@@ -2595,6 +2595,10 @@
                 },
                 "peeredNetwork": {
                     "description": "Optional. The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.",
+                    "type": "string"
+                },
+                "peeredNetworkIpRange": {
+                    "description": "Immutable. IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a 29 bit prefix size. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used. The field only has an effect if peered_network is set.",
                     "type": "string"
                 },
                 "secrets": {
@@ -3462,6 +3466,25 @@
             "description": "The request message for Operations.CancelOperation.",
             "id": "CancelOperationRequest",
             "properties": {},
+            "type": "object"
+        },
+        "ConnectedRepository": {
+            "description": "Location of the source in a 2nd-gen Google Cloud Build repository resource.",
+            "id": "ConnectedRepository",
+            "properties": {
+                "dir": {
+                    "description": "Directory, relative to the source root, in which to run the build.",
+                    "type": "string"
+                },
+                "repository": {
+                    "description": "Required. Name of the Google Cloud Build repository, formatted as `projects/*/locations/*/connections/*/repositories/*`.",
+                    "type": "string"
+                },
+                "revision": {
+                    "description": "The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.",
+                    "type": "string"
+                }
+            },
             "type": "object"
         },
         "CreateBitbucketServerConfigOperationMetadata": {
@@ -4439,7 +4462,7 @@
                         "description": "Properties of the object. Contains field @type with type URL.",
                         "type": "any"
                     },
-                    "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+                    "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
                     "type": "object"
                 }
             },
@@ -4766,7 +4789,7 @@
                     "type": "array"
                 },
                 "buildStepOutputs": {
-                    "description": "List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.",
+                    "description": "List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored.",
                     "items": {
                         "format": "byte",
                         "type": "string"
@@ -4917,6 +4940,10 @@
             "description": "Location of the source in a supported storage service.",
             "id": "Source",
             "properties": {
+                "connectedRepository": {
+                    "$ref": "ConnectedRepository",
+                    "description": "Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource."
+                },
                 "gitSource": {
                     "$ref": "GitSource",
                     "description": "If provided, get the source from this Git repository."
@@ -4947,6 +4974,16 @@
                     "description": "Output only. Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.",
                     "readOnly": true,
                     "type": "object"
+                },
+                "resolvedConnectedRepository": {
+                    "$ref": "ConnectedRepository",
+                    "description": "Output only. A copy of the build's `source.connected_repository`, if exists, with any revisions resolved.",
+                    "readOnly": true
+                },
+                "resolvedGitSource": {
+                    "$ref": "GitSource",
+                    "description": "Output only. A copy of the build's `source.git_source`, if exists, with any revisions resolved.",
+                    "readOnly": true
                 },
                 "resolvedRepoSource": {
                     "$ref": "RepoSource",
@@ -5005,6 +5042,20 @@
                 },
                 "object": {
                     "description": "Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.",
+                    "type": "string"
+                },
+                "sourceFetcher": {
+                    "description": "Optional. Option to specify the tool to fetch the source file for the build.",
+                    "enum": [
+                        "SOURCE_FETCHER_UNSPECIFIED",
+                        "GSUTIL",
+                        "GCS_FETCHER"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified defaults to GSUTIL.",
+                        "Use the \"gsutil\" tool to download the source file.",
+                        "Use the Cloud Storage Fetcher tool to download the source file."
+                    ],
                     "type": "string"
                 }
             },

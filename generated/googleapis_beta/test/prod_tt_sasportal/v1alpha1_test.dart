@@ -1368,6 +1368,29 @@ void checkSasPortalSetPolicyRequest(api.SasPortalSetPolicyRequest o) {
   buildCounterSasPortalSetPolicyRequest--;
 }
 
+core.int buildCounterSasPortalSetupSasAnalyticsRequest = 0;
+api.SasPortalSetupSasAnalyticsRequest buildSasPortalSetupSasAnalyticsRequest() {
+  final o = api.SasPortalSetupSasAnalyticsRequest();
+  buildCounterSasPortalSetupSasAnalyticsRequest++;
+  if (buildCounterSasPortalSetupSasAnalyticsRequest < 3) {
+    o.userId = 'foo';
+  }
+  buildCounterSasPortalSetupSasAnalyticsRequest--;
+  return o;
+}
+
+void checkSasPortalSetupSasAnalyticsRequest(
+    api.SasPortalSetupSasAnalyticsRequest o) {
+  buildCounterSasPortalSetupSasAnalyticsRequest++;
+  if (buildCounterSasPortalSetupSasAnalyticsRequest < 3) {
+    unittest.expect(
+      o.userId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSasPortalSetupSasAnalyticsRequest--;
+}
+
 core.int buildCounterSasPortalSignDeviceRequest = 0;
 api.SasPortalSignDeviceRequest buildSasPortalSignDeviceRequest() {
   final o = api.SasPortalSignDeviceRequest();
@@ -1972,6 +1995,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SasPortalSetupSasAnalyticsRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSasPortalSetupSasAnalyticsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalSetupSasAnalyticsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSasPortalSetupSasAnalyticsRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-SasPortalSignDeviceRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSasPortalSignDeviceRequest();
@@ -2387,6 +2420,62 @@ void main() {
           await res.provisionDeployment(arg_request, $fields: arg_$fields);
       checkSasPortalProvisionDeploymentResponse(
           response as api.SasPortalProvisionDeploymentResponse);
+    });
+
+    unittest.test('method--setupSasAnalytics', () async {
+      final mock = HttpServerMock();
+      final res = api.SASPortalTestingApi(mock).customers;
+      final arg_request = buildSasPortalSetupSasAnalyticsRequest();
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.SasPortalSetupSasAnalyticsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalSetupSasAnalyticsRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 36),
+          unittest.equals('v1alpha1/customers:setupSasAnalytics'),
+        );
+        pathOffset += 36;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildSasPortalOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.setupSasAnalytics(arg_request, $fields: arg_$fields);
+      checkSasPortalOperation(response as api.SasPortalOperation);
     });
   });
 

@@ -29,6 +29,7 @@
 ///   - [OrganizationsInspectTemplatesResource]
 ///   - [OrganizationsLocationsResource]
 ///     - [OrganizationsLocationsDeidentifyTemplatesResource]
+///     - [OrganizationsLocationsDiscoveryConfigsResource]
 ///     - [OrganizationsLocationsDlpJobsResource]
 ///     - [OrganizationsLocationsInspectTemplatesResource]
 ///     - [OrganizationsLocationsJobTriggersResource]
@@ -44,6 +45,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsContentResource]
 ///     - [ProjectsLocationsDeidentifyTemplatesResource]
+///     - [ProjectsLocationsDiscoveryConfigsResource]
 ///     - [ProjectsLocationsDlpJobsResource]
 ///     - [ProjectsLocationsImageResource]
 ///     - [ProjectsLocationsInspectTemplatesResource]
@@ -409,19 +411,19 @@ class OrganizationsDeidentifyTemplatesResource {
   /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
-  /// or `desc` postfix. This list is case-insensitive, default sorting order is
-  /// ascending, redundant space characters are insignificant. Example: `name
-  /// asc,update_time, create_time desc` Supported fields are: - `create_time`:
-  /// corresponds to the time the template was created. - `update_time`:
-  /// corresponds to the time the template was last updated. - `name`:
-  /// corresponds to the template's name. - `display_name`: corresponds to the
-  /// template's display name.
+  /// or `desc` postfix. This list is case insensitive. The default sorting
+  /// order is ascending. Redundant space characters are insignificant. Example:
+  /// `name asc,update_time, create_time desc` Supported fields are: -
+  /// `create_time`: corresponds to the time the template was created. -
+  /// `update_time`: corresponds to the time the template was last updated. -
+  /// `name`: corresponds to the template's name. - `display_name`: corresponds
+  /// to the template's display name.
   ///
-  /// [pageSize] - Size of the page, can be limited by the server. If zero
-  /// server returns a page of max size 100.
+  /// [pageSize] - Size of the page. This value can be limited by the server. If
+  /// zero server returns a page of max size 100.
   ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to `ListDeidentifyTemplates`.
+  /// [pageToken] - Page token to continue retrieval. Comes from the previous
+  /// call to `ListDeidentifyTemplates`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -682,19 +684,19 @@ class OrganizationsInspectTemplatesResource {
   /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
-  /// or `desc` postfix. This list is case-insensitive, default sorting order is
-  /// ascending, redundant space characters are insignificant. Example: `name
-  /// asc,update_time, create_time desc` Supported fields are: - `create_time`:
-  /// corresponds to the time the template was created. - `update_time`:
-  /// corresponds to the time the template was last updated. - `name`:
-  /// corresponds to the template's name. - `display_name`: corresponds to the
-  /// template's display name.
+  /// or `desc` postfix. This list is case insensitive. The default sorting
+  /// order is ascending. Redundant space characters are insignificant. Example:
+  /// `name asc,update_time, create_time desc` Supported fields are: -
+  /// `create_time`: corresponds to the time the template was created. -
+  /// `update_time`: corresponds to the time the template was last updated. -
+  /// `name`: corresponds to the template's name. - `display_name`: corresponds
+  /// to the template's display name.
   ///
-  /// [pageSize] - Size of the page, can be limited by the server. If zero
-  /// server returns a page of max size 100.
+  /// [pageSize] - Size of the page. This value can be limited by the server. If
+  /// zero server returns a page of max size 100.
   ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to `ListInspectTemplates`.
+  /// [pageToken] - Page token to continue retrieval. Comes from the previous
+  /// call to `ListInspectTemplates`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -785,6 +787,8 @@ class OrganizationsLocationsResource {
 
   OrganizationsLocationsDeidentifyTemplatesResource get deidentifyTemplates =>
       OrganizationsLocationsDeidentifyTemplatesResource(_requester);
+  OrganizationsLocationsDiscoveryConfigsResource get discoveryConfigs =>
+      OrganizationsLocationsDiscoveryConfigsResource(_requester);
   OrganizationsLocationsDlpJobsResource get dlpJobs =>
       OrganizationsLocationsDlpJobsResource(_requester);
   OrganizationsLocationsInspectTemplatesResource get inspectTemplates =>
@@ -975,19 +979,19 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
-  /// or `desc` postfix. This list is case-insensitive, default sorting order is
-  /// ascending, redundant space characters are insignificant. Example: `name
-  /// asc,update_time, create_time desc` Supported fields are: - `create_time`:
-  /// corresponds to the time the template was created. - `update_time`:
-  /// corresponds to the time the template was last updated. - `name`:
-  /// corresponds to the template's name. - `display_name`: corresponds to the
-  /// template's display name.
+  /// or `desc` postfix. This list is case insensitive. The default sorting
+  /// order is ascending. Redundant space characters are insignificant. Example:
+  /// `name asc,update_time, create_time desc` Supported fields are: -
+  /// `create_time`: corresponds to the time the template was created. -
+  /// `update_time`: corresponds to the time the template was last updated. -
+  /// `name`: corresponds to the template's name. - `display_name`: corresponds
+  /// to the template's display name.
   ///
-  /// [pageSize] - Size of the page, can be limited by the server. If zero
-  /// server returns a page of max size 100.
+  /// [pageSize] - Size of the page. This value can be limited by the server. If
+  /// zero server returns a page of max size 100.
   ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to `ListDeidentifyTemplates`.
+  /// [pageToken] - Page token to continue retrieval. Comes from the previous
+  /// call to `ListDeidentifyTemplates`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1076,6 +1080,237 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   }
 }
 
+class OrganizationsLocationsDiscoveryConfigsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsDiscoveryConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a config for discovery to scan and profile storage.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource name. The format of this value is as
+  /// follows: `projects/`PROJECT_ID`/locations/`LOCATION_ID The following
+  /// example `parent` string specifies a parent project with the identifier
+  /// `example-project`, and specifies the `europe-west3` location for
+  /// processing data: parent=projects/example-project/locations/europe-west3
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2DiscoveryConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2DiscoveryConfig> create(
+    GooglePrivacyDlpV2CreateDiscoveryConfigRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/discoveryConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2DiscoveryConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a discovery configuration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the project and the config, for
+  /// example `projects/dlp-test-project/discoveryConfigs/53234423`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/discoveryConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a discovery configuration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the project and the configuration, for
+  /// example `projects/dlp-test-project/discoveryConfigs/53234423`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/discoveryConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2DiscoveryConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2DiscoveryConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2DiscoveryConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists discovery configurations.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource name. The format of this value is as
+  /// follows: `projects/`PROJECT_ID`/locations/`LOCATION_ID The following
+  /// example `parent` string specifies a parent project with the identifier
+  /// `example-project`, and specifies the `europe-west3` location for
+  /// processing data: parent=projects/example-project/locations/europe-west3
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [orderBy] - Comma separated list of config fields to order by, followed by
+  /// `asc` or `desc` postfix. This list is case insensitive. The default
+  /// sorting order is ascending. Redundant space characters are insignificant.
+  /// Example: `name asc,update_time, create_time desc` Supported fields are: -
+  /// `last_run_time`: corresponds to the last time the DiscoveryConfig ran. -
+  /// `name`: corresponds to the DiscoveryConfig's name. - `status`: corresponds
+  /// to DiscoveryConfig's status.
+  ///
+  /// [pageSize] - Size of the page. This value can be limited by a server.
+  ///
+  /// [pageToken] - Page token to continue retrieval. Comes from the previous
+  /// call to ListDiscoveryConfigs. `order_by` field must not change for
+  /// subsequent calls.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ListDiscoveryConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ListDiscoveryConfigsResponse> list(
+    core.String parent, {
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/discoveryConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2ListDiscoveryConfigsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a discovery configuration.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the project and the configuration, for
+  /// example `projects/dlp-test-project/discoveryConfigs/53234423`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/discoveryConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2DiscoveryConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2DiscoveryConfig> patch(
+    GooglePrivacyDlpV2UpdateDiscoveryConfigRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2DiscoveryConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class OrganizationsLocationsDlpJobsResource {
   final commons.ApiRequester _requester;
 
@@ -1123,9 +1358,9 @@ class OrganizationsLocationsDlpJobsResource {
   /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
-  /// or `desc` postfix. This list is case-insensitive, default sorting order is
-  /// ascending, redundant space characters are insignificant. Example: `name
-  /// asc, end_time asc, create_time desc` Supported fields are: -
+  /// or `desc` postfix. This list is case insensitive. The default sorting
+  /// order is ascending. Redundant space characters are insignificant. Example:
+  /// `name asc, end_time asc, create_time desc` Supported fields are: -
   /// `create_time`: corresponds to the time the job was created. - `end_time`:
   /// corresponds to the time the job ended. - `name`: corresponds to the job's
   /// name. - `state`: corresponds to `state`
@@ -1354,19 +1589,19 @@ class OrganizationsLocationsInspectTemplatesResource {
   /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
-  /// or `desc` postfix. This list is case-insensitive, default sorting order is
-  /// ascending, redundant space characters are insignificant. Example: `name
-  /// asc,update_time, create_time desc` Supported fields are: - `create_time`:
-  /// corresponds to the time the template was created. - `update_time`:
-  /// corresponds to the time the template was last updated. - `name`:
-  /// corresponds to the template's name. - `display_name`: corresponds to the
-  /// template's display name.
+  /// or `desc` postfix. This list is case insensitive. The default sorting
+  /// order is ascending. Redundant space characters are insignificant. Example:
+  /// `name asc,update_time, create_time desc` Supported fields are: -
+  /// `create_time`: corresponds to the time the template was created. -
+  /// `update_time`: corresponds to the time the template was last updated. -
+  /// `name`: corresponds to the template's name. - `display_name`: corresponds
+  /// to the template's display name.
   ///
-  /// [pageSize] - Size of the page, can be limited by the server. If zero
-  /// server returns a page of max size 100.
+  /// [pageSize] - Size of the page. This value can be limited by the server. If
+  /// zero server returns a page of max size 100.
   ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to `ListInspectTemplates`.
+  /// [pageToken] - Page token to continue retrieval. Comes from the previous
+  /// call to `ListInspectTemplates`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1628,8 +1863,8 @@ class OrganizationsLocationsJobTriggersResource {
   /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [orderBy] - Comma separated list of triggeredJob fields to order by,
-  /// followed by `asc` or `desc` postfix. This list is case-insensitive,
-  /// default sorting order is ascending, redundant space characters are
+  /// followed by `asc` or `desc` postfix. This list is case insensitive. The
+  /// default sorting order is ascending. Redundant space characters are
   /// insignificant. Example: `name asc,update_time, create_time desc` Supported
   /// fields are: - `create_time`: corresponds to the time the JobTrigger was
   /// created. - `update_time`: corresponds to the time the JobTrigger was last
@@ -1638,10 +1873,11 @@ class OrganizationsLocationsJobTriggersResource {
   /// corresponds to the JobTrigger's display name. - `status`: corresponds to
   /// JobTrigger's status.
   ///
-  /// [pageSize] - Size of the page, can be limited by a server.
+  /// [pageSize] - Size of the page. This value can be limited by a server.
   ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to ListJobTriggers. `order_by` field must not change for subsequent calls.
+  /// [pageToken] - Page token to continue retrieval. Comes from the previous
+  /// call to ListJobTriggers. `order_by` field must not change for subsequent
+  /// calls.
   ///
   /// [type] - The type of jobs. Will use `DlpJobType.INSPECT` if not set.
   /// Possible string values are:
@@ -1907,19 +2143,19 @@ class OrganizationsLocationsStoredInfoTypesResource {
   /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
-  /// or `desc` postfix. This list is case-insensitive, default sorting order is
-  /// ascending, redundant space characters are insignificant. Example: `name
-  /// asc, display_name, create_time desc` Supported fields are: -
+  /// or `desc` postfix. This list is case insensitive. The default sorting
+  /// order is ascending. Redundant space characters are insignificant. Example:
+  /// `name asc, display_name, create_time desc` Supported fields are: -
   /// `create_time`: corresponds to the time the most recent version of the
   /// resource was created. - `state`: corresponds to the state of the resource.
   /// - `name`: corresponds to resource name. - `display_name`: corresponds to
   /// info type's display name.
   ///
-  /// [pageSize] - Size of the page, can be limited by the server. If zero
-  /// server returns a page of max size 100.
+  /// [pageSize] - Size of the page. This value can be limited by the server. If
+  /// zero server returns a page of max size 100.
   ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to `ListStoredInfoTypes`.
+  /// [pageToken] - Page token to continue retrieval. Comes from the previous
+  /// call to `ListStoredInfoTypes`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2176,19 +2412,19 @@ class OrganizationsStoredInfoTypesResource {
   /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
-  /// or `desc` postfix. This list is case-insensitive, default sorting order is
-  /// ascending, redundant space characters are insignificant. Example: `name
-  /// asc, display_name, create_time desc` Supported fields are: -
+  /// or `desc` postfix. This list is case insensitive. The default sorting
+  /// order is ascending. Redundant space characters are insignificant. Example:
+  /// `name asc, display_name, create_time desc` Supported fields are: -
   /// `create_time`: corresponds to the time the most recent version of the
   /// resource was created. - `state`: corresponds to the state of the resource.
   /// - `name`: corresponds to resource name. - `display_name`: corresponds to
   /// info type's display name.
   ///
-  /// [pageSize] - Size of the page, can be limited by the server. If zero
-  /// server returns a page of max size 100.
+  /// [pageSize] - Size of the page. This value can be limited by the server. If
+  /// zero server returns a page of max size 100.
   ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to `ListStoredInfoTypes`.
+  /// [pageToken] - Page token to continue retrieval. Comes from the previous
+  /// call to `ListStoredInfoTypes`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2643,19 +2879,19 @@ class ProjectsDeidentifyTemplatesResource {
   /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
-  /// or `desc` postfix. This list is case-insensitive, default sorting order is
-  /// ascending, redundant space characters are insignificant. Example: `name
-  /// asc,update_time, create_time desc` Supported fields are: - `create_time`:
-  /// corresponds to the time the template was created. - `update_time`:
-  /// corresponds to the time the template was last updated. - `name`:
-  /// corresponds to the template's name. - `display_name`: corresponds to the
-  /// template's display name.
+  /// or `desc` postfix. This list is case insensitive. The default sorting
+  /// order is ascending. Redundant space characters are insignificant. Example:
+  /// `name asc,update_time, create_time desc` Supported fields are: -
+  /// `create_time`: corresponds to the time the template was created. -
+  /// `update_time`: corresponds to the time the template was last updated. -
+  /// `name`: corresponds to the template's name. - `display_name`: corresponds
+  /// to the template's display name.
   ///
-  /// [pageSize] - Size of the page, can be limited by the server. If zero
-  /// server returns a page of max size 100.
+  /// [pageSize] - Size of the page. This value can be limited by the server. If
+  /// zero server returns a page of max size 100.
   ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to `ListDeidentifyTemplates`.
+  /// [pageToken] - Page token to continue retrieval. Comes from the previous
+  /// call to `ListDeidentifyTemplates`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2970,9 +3206,9 @@ class ProjectsDlpJobsResource {
   /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
-  /// or `desc` postfix. This list is case-insensitive, default sorting order is
-  /// ascending, redundant space characters are insignificant. Example: `name
-  /// asc, end_time asc, create_time desc` Supported fields are: -
+  /// or `desc` postfix. This list is case insensitive. The default sorting
+  /// order is ascending. Redundant space characters are insignificant. Example:
+  /// `name asc, end_time asc, create_time desc` Supported fields are: -
   /// `create_time`: corresponds to the time the job was created. - `end_time`:
   /// corresponds to the time the job ended. - `name`: corresponds to the job's
   /// name. - `state`: corresponds to `state`
@@ -3262,19 +3498,19 @@ class ProjectsInspectTemplatesResource {
   /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
-  /// or `desc` postfix. This list is case-insensitive, default sorting order is
-  /// ascending, redundant space characters are insignificant. Example: `name
-  /// asc,update_time, create_time desc` Supported fields are: - `create_time`:
-  /// corresponds to the time the template was created. - `update_time`:
-  /// corresponds to the time the template was last updated. - `name`:
-  /// corresponds to the template's name. - `display_name`: corresponds to the
-  /// template's display name.
+  /// or `desc` postfix. This list is case insensitive. The default sorting
+  /// order is ascending. Redundant space characters are insignificant. Example:
+  /// `name asc,update_time, create_time desc` Supported fields are: -
+  /// `create_time`: corresponds to the time the template was created. -
+  /// `update_time`: corresponds to the time the template was last updated. -
+  /// `name`: corresponds to the template's name. - `display_name`: corresponds
+  /// to the template's display name.
   ///
-  /// [pageSize] - Size of the page, can be limited by the server. If zero
-  /// server returns a page of max size 100.
+  /// [pageSize] - Size of the page. This value can be limited by the server. If
+  /// zero server returns a page of max size 100.
   ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to `ListInspectTemplates`.
+  /// [pageToken] - Page token to continue retrieval. Comes from the previous
+  /// call to `ListInspectTemplates`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3578,8 +3814,8 @@ class ProjectsJobTriggersResource {
   /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [orderBy] - Comma separated list of triggeredJob fields to order by,
-  /// followed by `asc` or `desc` postfix. This list is case-insensitive,
-  /// default sorting order is ascending, redundant space characters are
+  /// followed by `asc` or `desc` postfix. This list is case insensitive. The
+  /// default sorting order is ascending. Redundant space characters are
   /// insignificant. Example: `name asc,update_time, create_time desc` Supported
   /// fields are: - `create_time`: corresponds to the time the JobTrigger was
   /// created. - `update_time`: corresponds to the time the JobTrigger was last
@@ -3588,10 +3824,11 @@ class ProjectsJobTriggersResource {
   /// corresponds to the JobTrigger's display name. - `status`: corresponds to
   /// JobTrigger's status.
   ///
-  /// [pageSize] - Size of the page, can be limited by a server.
+  /// [pageSize] - Size of the page. This value can be limited by a server.
   ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to ListJobTriggers. `order_by` field must not change for subsequent calls.
+  /// [pageToken] - Page token to continue retrieval. Comes from the previous
+  /// call to ListJobTriggers. `order_by` field must not change for subsequent
+  /// calls.
   ///
   /// [type] - The type of jobs. Will use `DlpJobType.INSPECT` if not set.
   /// Possible string values are:
@@ -3692,6 +3929,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsContentResource(_requester);
   ProjectsLocationsDeidentifyTemplatesResource get deidentifyTemplates =>
       ProjectsLocationsDeidentifyTemplatesResource(_requester);
+  ProjectsLocationsDiscoveryConfigsResource get discoveryConfigs =>
+      ProjectsLocationsDiscoveryConfigsResource(_requester);
   ProjectsLocationsDlpJobsResource get dlpJobs =>
       ProjectsLocationsDlpJobsResource(_requester);
   ProjectsLocationsImageResource get image =>
@@ -4057,19 +4296,19 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
-  /// or `desc` postfix. This list is case-insensitive, default sorting order is
-  /// ascending, redundant space characters are insignificant. Example: `name
-  /// asc,update_time, create_time desc` Supported fields are: - `create_time`:
-  /// corresponds to the time the template was created. - `update_time`:
-  /// corresponds to the time the template was last updated. - `name`:
-  /// corresponds to the template's name. - `display_name`: corresponds to the
-  /// template's display name.
+  /// or `desc` postfix. This list is case insensitive. The default sorting
+  /// order is ascending. Redundant space characters are insignificant. Example:
+  /// `name asc,update_time, create_time desc` Supported fields are: -
+  /// `create_time`: corresponds to the time the template was created. -
+  /// `update_time`: corresponds to the time the template was last updated. -
+  /// `name`: corresponds to the template's name. - `display_name`: corresponds
+  /// to the template's display name.
   ///
-  /// [pageSize] - Size of the page, can be limited by the server. If zero
-  /// server returns a page of max size 100.
+  /// [pageSize] - Size of the page. This value can be limited by the server. If
+  /// zero server returns a page of max size 100.
   ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to `ListDeidentifyTemplates`.
+  /// [pageToken] - Page token to continue retrieval. Comes from the previous
+  /// call to `ListDeidentifyTemplates`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4154,6 +4393,237 @@ class ProjectsLocationsDeidentifyTemplatesResource {
       queryParams: queryParams_,
     );
     return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsDiscoveryConfigsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDiscoveryConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a config for discovery to scan and profile storage.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource name. The format of this value is as
+  /// follows: `projects/`PROJECT_ID`/locations/`LOCATION_ID The following
+  /// example `parent` string specifies a parent project with the identifier
+  /// `example-project`, and specifies the `europe-west3` location for
+  /// processing data: parent=projects/example-project/locations/europe-west3
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2DiscoveryConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2DiscoveryConfig> create(
+    GooglePrivacyDlpV2CreateDiscoveryConfigRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/discoveryConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2DiscoveryConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a discovery configuration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the project and the config, for
+  /// example `projects/dlp-test-project/discoveryConfigs/53234423`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/discoveryConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a discovery configuration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the project and the configuration, for
+  /// example `projects/dlp-test-project/discoveryConfigs/53234423`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/discoveryConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2DiscoveryConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2DiscoveryConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2DiscoveryConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists discovery configurations.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource name. The format of this value is as
+  /// follows: `projects/`PROJECT_ID`/locations/`LOCATION_ID The following
+  /// example `parent` string specifies a parent project with the identifier
+  /// `example-project`, and specifies the `europe-west3` location for
+  /// processing data: parent=projects/example-project/locations/europe-west3
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [orderBy] - Comma separated list of config fields to order by, followed by
+  /// `asc` or `desc` postfix. This list is case insensitive. The default
+  /// sorting order is ascending. Redundant space characters are insignificant.
+  /// Example: `name asc,update_time, create_time desc` Supported fields are: -
+  /// `last_run_time`: corresponds to the last time the DiscoveryConfig ran. -
+  /// `name`: corresponds to the DiscoveryConfig's name. - `status`: corresponds
+  /// to DiscoveryConfig's status.
+  ///
+  /// [pageSize] - Size of the page. This value can be limited by a server.
+  ///
+  /// [pageToken] - Page token to continue retrieval. Comes from the previous
+  /// call to ListDiscoveryConfigs. `order_by` field must not change for
+  /// subsequent calls.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ListDiscoveryConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ListDiscoveryConfigsResponse> list(
+    core.String parent, {
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/discoveryConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2ListDiscoveryConfigsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a discovery configuration.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the project and the configuration, for
+  /// example `projects/dlp-test-project/discoveryConfigs/53234423`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/discoveryConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2DiscoveryConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2DiscoveryConfig> patch(
+    GooglePrivacyDlpV2UpdateDiscoveryConfigRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GooglePrivacyDlpV2DiscoveryConfig.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -4480,9 +4950,9 @@ class ProjectsLocationsDlpJobsResource {
   /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
-  /// or `desc` postfix. This list is case-insensitive, default sorting order is
-  /// ascending, redundant space characters are insignificant. Example: `name
-  /// asc, end_time asc, create_time desc` Supported fields are: -
+  /// or `desc` postfix. This list is case insensitive. The default sorting
+  /// order is ascending. Redundant space characters are insignificant. Example:
+  /// `name asc, end_time asc, create_time desc` Supported fields are: -
   /// `create_time`: corresponds to the time the job was created. - `end_time`:
   /// corresponds to the time the job ended. - `name`: corresponds to the job's
   /// name. - `state`: corresponds to `state`
@@ -4775,19 +5245,19 @@ class ProjectsLocationsInspectTemplatesResource {
   /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
-  /// or `desc` postfix. This list is case-insensitive, default sorting order is
-  /// ascending, redundant space characters are insignificant. Example: `name
-  /// asc,update_time, create_time desc` Supported fields are: - `create_time`:
-  /// corresponds to the time the template was created. - `update_time`:
-  /// corresponds to the time the template was last updated. - `name`:
-  /// corresponds to the template's name. - `display_name`: corresponds to the
-  /// template's display name.
+  /// or `desc` postfix. This list is case insensitive. The default sorting
+  /// order is ascending. Redundant space characters are insignificant. Example:
+  /// `name asc,update_time, create_time desc` Supported fields are: -
+  /// `create_time`: corresponds to the time the template was created. -
+  /// `update_time`: corresponds to the time the template was last updated. -
+  /// `name`: corresponds to the template's name. - `display_name`: corresponds
+  /// to the template's display name.
   ///
-  /// [pageSize] - Size of the page, can be limited by the server. If zero
-  /// server returns a page of max size 100.
+  /// [pageSize] - Size of the page. This value can be limited by the server. If
+  /// zero server returns a page of max size 100.
   ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to `ListInspectTemplates`.
+  /// [pageToken] - Page token to continue retrieval. Comes from the previous
+  /// call to `ListInspectTemplates`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5141,8 +5611,8 @@ class ProjectsLocationsJobTriggersResource {
   /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [orderBy] - Comma separated list of triggeredJob fields to order by,
-  /// followed by `asc` or `desc` postfix. This list is case-insensitive,
-  /// default sorting order is ascending, redundant space characters are
+  /// followed by `asc` or `desc` postfix. This list is case insensitive. The
+  /// default sorting order is ascending. Redundant space characters are
   /// insignificant. Example: `name asc,update_time, create_time desc` Supported
   /// fields are: - `create_time`: corresponds to the time the JobTrigger was
   /// created. - `update_time`: corresponds to the time the JobTrigger was last
@@ -5151,10 +5621,11 @@ class ProjectsLocationsJobTriggersResource {
   /// corresponds to the JobTrigger's display name. - `status`: corresponds to
   /// JobTrigger's status.
   ///
-  /// [pageSize] - Size of the page, can be limited by a server.
+  /// [pageSize] - Size of the page. This value can be limited by a server.
   ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to ListJobTriggers. `order_by` field must not change for subsequent calls.
+  /// [pageToken] - Page token to continue retrieval. Comes from the previous
+  /// call to ListJobTriggers. `order_by` field must not change for subsequent
+  /// calls.
   ///
   /// [type] - The type of jobs. Will use `DlpJobType.INSPECT` if not set.
   /// Possible string values are:
@@ -5420,19 +5891,19 @@ class ProjectsLocationsStoredInfoTypesResource {
   /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
-  /// or `desc` postfix. This list is case-insensitive, default sorting order is
-  /// ascending, redundant space characters are insignificant. Example: `name
-  /// asc, display_name, create_time desc` Supported fields are: -
+  /// or `desc` postfix. This list is case insensitive. The default sorting
+  /// order is ascending. Redundant space characters are insignificant. Example:
+  /// `name asc, display_name, create_time desc` Supported fields are: -
   /// `create_time`: corresponds to the time the most recent version of the
   /// resource was created. - `state`: corresponds to the state of the resource.
   /// - `name`: corresponds to resource name. - `display_name`: corresponds to
   /// info type's display name.
   ///
-  /// [pageSize] - Size of the page, can be limited by the server. If zero
-  /// server returns a page of max size 100.
+  /// [pageSize] - Size of the page. This value can be limited by the server. If
+  /// zero server returns a page of max size 100.
   ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to `ListStoredInfoTypes`.
+  /// [pageToken] - Page token to continue retrieval. Comes from the previous
+  /// call to `ListStoredInfoTypes`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5689,19 +6160,19 @@ class ProjectsStoredInfoTypesResource {
   /// [locationId] - Deprecated. This field has no effect.
   ///
   /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
-  /// or `desc` postfix. This list is case-insensitive, default sorting order is
-  /// ascending, redundant space characters are insignificant. Example: `name
-  /// asc, display_name, create_time desc` Supported fields are: -
+  /// or `desc` postfix. This list is case insensitive. The default sorting
+  /// order is ascending. Redundant space characters are insignificant. Example:
+  /// `name asc, display_name, create_time desc` Supported fields are: -
   /// `create_time`: corresponds to the time the most recent version of the
   /// resource was created. - `state`: corresponds to the state of the resource.
   /// - `name`: corresponds to resource name. - `display_name`: corresponds to
   /// info type's display name.
   ///
-  /// [pageSize] - Size of the page, can be limited by the server. If zero
-  /// server returns a page of max size 100.
+  /// [pageSize] - Size of the page. This value can be limited by the server. If
+  /// zero server returns a page of max size 100.
   ///
-  /// [pageToken] - Page token to continue retrieval. Comes from previous call
-  /// to `ListStoredInfoTypes`.
+  /// [pageToken] - Page token to continue retrieval. Comes from the previous
+  /// call to `ListStoredInfoTypes`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5909,6 +6380,12 @@ typedef GooglePrivacyDlpV2ActivateJobTriggerRequest = $Empty;
 /// Apply transformation to all findings.
 typedef GooglePrivacyDlpV2AllInfoTypes = $Empty;
 
+/// Catch-all for all other tables not specified by other filters.
+///
+/// Should always be last, except for single-table configurations, which will
+/// only have a TableReference target.
+typedef GooglePrivacyDlpV2AllOtherBigQueryTables = $Empty;
+
 /// Apply to all text.
 typedef GooglePrivacyDlpV2AllText = $Empty;
 
@@ -6081,6 +6558,64 @@ class GooglePrivacyDlpV2AuxiliaryTable {
       };
 }
 
+/// Target used to match against for discovery with BigQuery tables
+class GooglePrivacyDlpV2BigQueryDiscoveryTarget {
+  /// How often and when to update profiles.
+  ///
+  /// New tables that match both the filter and conditions are scanned as
+  /// quickly as possible depending on system capacity.
+  GooglePrivacyDlpV2DiscoveryGenerationCadence? cadence;
+
+  /// In addition to matching the filter, these conditions must be true before a
+  /// profile is generated.
+  GooglePrivacyDlpV2DiscoveryBigQueryConditions? conditions;
+
+  /// Tables that match this filter will not have profiles created.
+  GooglePrivacyDlpV2Disabled? disabled;
+
+  /// The tables the discovery cadence applies to.
+  ///
+  /// The first target with a matching filter will be the one to apply to a
+  /// table.
+  ///
+  /// Required.
+  GooglePrivacyDlpV2DiscoveryBigQueryFilter? filter;
+
+  GooglePrivacyDlpV2BigQueryDiscoveryTarget({
+    this.cadence,
+    this.conditions,
+    this.disabled,
+    this.filter,
+  });
+
+  GooglePrivacyDlpV2BigQueryDiscoveryTarget.fromJson(core.Map json_)
+      : this(
+          cadence: json_.containsKey('cadence')
+              ? GooglePrivacyDlpV2DiscoveryGenerationCadence.fromJson(
+                  json_['cadence'] as core.Map<core.String, core.dynamic>)
+              : null,
+          conditions: json_.containsKey('conditions')
+              ? GooglePrivacyDlpV2DiscoveryBigQueryConditions.fromJson(
+                  json_['conditions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          disabled: json_.containsKey('disabled')
+              ? GooglePrivacyDlpV2Disabled.fromJson(
+                  json_['disabled'] as core.Map<core.String, core.dynamic>)
+              : null,
+          filter: json_.containsKey('filter')
+              ? GooglePrivacyDlpV2DiscoveryBigQueryFilter.fromJson(
+                  json_['filter'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cadence != null) 'cadence': cadence!,
+        if (conditions != null) 'conditions': conditions!,
+        if (disabled != null) 'disabled': disabled!,
+        if (filter != null) 'filter': filter!,
+      };
+}
+
 /// Message defining a field of a BigQuery table.
 class GooglePrivacyDlpV2BigQueryField {
   /// Designated field in the BigQuery table.
@@ -6152,7 +6687,9 @@ class GooglePrivacyDlpV2BigQueryOptions {
   /// References to fields excluded from scanning.
   ///
   /// This allows you to skip inspection of entire columns which you know have
-  /// no findings.
+  /// no findings. When inspecting a table, we recommend that you inspect all
+  /// columns. Otherwise, findings might be affected because hints from excluded
+  /// columns will not be used.
   core.List<GooglePrivacyDlpV2FieldId>? excludedFields;
 
   /// Table fields that may uniquely identify a row within the table.
@@ -6164,6 +6701,10 @@ class GooglePrivacyDlpV2BigQueryOptions {
   core.List<GooglePrivacyDlpV2FieldId>? identifyingFields;
 
   /// Limit scanning only to these fields.
+  ///
+  /// When inspecting a table, we recommend that you inspect all columns.
+  /// Otherwise, findings might be affected because hints from excluded columns
+  /// will not be used.
   core.List<GooglePrivacyDlpV2FieldId>? includedFields;
 
   /// Max number of rows to scan.
@@ -6250,6 +6791,76 @@ class GooglePrivacyDlpV2BigQueryOptions {
       };
 }
 
+/// A pattern to match against one or more tables, datasets, or projects that
+/// contain BigQuery tables.
+///
+/// At least one pattern must be specified. Regular expressions use RE2
+/// [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found
+/// under the google/re2 repository on GitHub.
+class GooglePrivacyDlpV2BigQueryRegex {
+  /// If unset, this property matches all datasets.
+  core.String? datasetIdRegex;
+
+  /// For organizations, if unset, will match all projects.
+  ///
+  /// Has no effect for data profile configurations created within a project.
+  core.String? projectIdRegex;
+
+  /// If unset, this property matches all tables.
+  core.String? tableIdRegex;
+
+  GooglePrivacyDlpV2BigQueryRegex({
+    this.datasetIdRegex,
+    this.projectIdRegex,
+    this.tableIdRegex,
+  });
+
+  GooglePrivacyDlpV2BigQueryRegex.fromJson(core.Map json_)
+      : this(
+          datasetIdRegex: json_.containsKey('datasetIdRegex')
+              ? json_['datasetIdRegex'] as core.String
+              : null,
+          projectIdRegex: json_.containsKey('projectIdRegex')
+              ? json_['projectIdRegex'] as core.String
+              : null,
+          tableIdRegex: json_.containsKey('tableIdRegex')
+              ? json_['tableIdRegex'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (datasetIdRegex != null) 'datasetIdRegex': datasetIdRegex!,
+        if (projectIdRegex != null) 'projectIdRegex': projectIdRegex!,
+        if (tableIdRegex != null) 'tableIdRegex': tableIdRegex!,
+      };
+}
+
+/// A collection of regular expressions to determine what tables to match
+/// against.
+class GooglePrivacyDlpV2BigQueryRegexes {
+  /// A single BigQuery regular expression pattern to match against one or more
+  /// tables, datasets, or projects that contain BigQuery tables.
+  core.List<GooglePrivacyDlpV2BigQueryRegex>? patterns;
+
+  GooglePrivacyDlpV2BigQueryRegexes({
+    this.patterns,
+  });
+
+  GooglePrivacyDlpV2BigQueryRegexes.fromJson(core.Map json_)
+      : this(
+          patterns: json_.containsKey('patterns')
+              ? (json_['patterns'] as core.List)
+                  .map((value) => GooglePrivacyDlpV2BigQueryRegex.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (patterns != null) 'patterns': patterns!,
+      };
+}
+
 /// Message defining the location of a BigQuery table.
 ///
 /// A table is uniquely identified by its project_id, dataset_id, and
@@ -6290,6 +6901,54 @@ class GooglePrivacyDlpV2BigQueryTable {
         if (datasetId != null) 'datasetId': datasetId!,
         if (projectId != null) 'projectId': projectId!,
         if (tableId != null) 'tableId': tableId!,
+      };
+}
+
+/// Specifies a collection of BigQuery tables.
+///
+/// Used for Discovery.
+class GooglePrivacyDlpV2BigQueryTableCollection {
+  /// A collection of regular expressions to match a BigQuery table against.
+  GooglePrivacyDlpV2BigQueryRegexes? includeRegexes;
+
+  GooglePrivacyDlpV2BigQueryTableCollection({
+    this.includeRegexes,
+  });
+
+  GooglePrivacyDlpV2BigQueryTableCollection.fromJson(core.Map json_)
+      : this(
+          includeRegexes: json_.containsKey('includeRegexes')
+              ? GooglePrivacyDlpV2BigQueryRegexes.fromJson(
+                  json_['includeRegexes']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (includeRegexes != null) 'includeRegexes': includeRegexes!,
+      };
+}
+
+/// The types of BigQuery tables supported by Cloud DLP.
+class GooglePrivacyDlpV2BigQueryTableTypes {
+  /// A set of BigQuery table types.
+  core.List<core.String>? types;
+
+  GooglePrivacyDlpV2BigQueryTableTypes({
+    this.types,
+  });
+
+  GooglePrivacyDlpV2BigQueryTableTypes.fromJson(core.Map json_)
+      : this(
+          types: json_.containsKey('types')
+              ? (json_['types'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (types != null) 'types': types!,
       };
 }
 
@@ -7315,6 +7974,43 @@ class GooglePrivacyDlpV2CreateDeidentifyTemplateRequest {
       };
 }
 
+/// Request message for CreateDiscoveryConfig.
+class GooglePrivacyDlpV2CreateDiscoveryConfigRequest {
+  /// The config ID can contain uppercase and lowercase letters, numbers, and
+  /// hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`.
+  ///
+  /// The maximum length is 100 characters. Can be empty to allow the system to
+  /// generate one.
+  core.String? configId;
+
+  /// The DiscoveryConfig to create.
+  ///
+  /// Required.
+  GooglePrivacyDlpV2DiscoveryConfig? discoveryConfig;
+
+  GooglePrivacyDlpV2CreateDiscoveryConfigRequest({
+    this.configId,
+    this.discoveryConfig,
+  });
+
+  GooglePrivacyDlpV2CreateDiscoveryConfigRequest.fromJson(core.Map json_)
+      : this(
+          configId: json_.containsKey('configId')
+              ? json_['configId'] as core.String
+              : null,
+          discoveryConfig: json_.containsKey('discoveryConfig')
+              ? GooglePrivacyDlpV2DiscoveryConfig.fromJson(
+                  json_['discoveryConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (configId != null) 'configId': configId!,
+        if (discoveryConfig != null) 'discoveryConfig': discoveryConfig!,
+      };
+}
+
 /// Request message for CreateDlpJobRequest.
 ///
 /// Used to initiate long running jobs such as calculating risk metrics or
@@ -7922,6 +8618,61 @@ class GooglePrivacyDlpV2CustomInfoType {
         if (sensitivityScore != null) 'sensitivityScore': sensitivityScore!,
         if (storedType != null) 'storedType': storedType!,
         if (surrogateType != null) 'surrogateType': surrogateType!,
+      };
+}
+
+/// A task to execute when a data profile has been generated.
+class GooglePrivacyDlpV2DataProfileAction {
+  /// Export data profiles into a provided location.
+  GooglePrivacyDlpV2Export? exportData;
+
+  /// Publish a message into the Pub/Sub topic.
+  GooglePrivacyDlpV2PubSubNotification? pubSubNotification;
+
+  GooglePrivacyDlpV2DataProfileAction({
+    this.exportData,
+    this.pubSubNotification,
+  });
+
+  GooglePrivacyDlpV2DataProfileAction.fromJson(core.Map json_)
+      : this(
+          exportData: json_.containsKey('exportData')
+              ? GooglePrivacyDlpV2Export.fromJson(
+                  json_['exportData'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pubSubNotification: json_.containsKey('pubSubNotification')
+              ? GooglePrivacyDlpV2PubSubNotification.fromJson(
+                  json_['pubSubNotification']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (exportData != null) 'exportData': exportData!,
+        if (pubSubNotification != null)
+          'pubSubNotification': pubSubNotification!,
+      };
+}
+
+/// A condition for determining whether a Pub/Sub should be triggered.
+class GooglePrivacyDlpV2DataProfilePubSubCondition {
+  /// An expression.
+  GooglePrivacyDlpV2PubSubExpressions? expressions;
+
+  GooglePrivacyDlpV2DataProfilePubSubCondition({
+    this.expressions,
+  });
+
+  GooglePrivacyDlpV2DataProfilePubSubCondition.fromJson(core.Map json_)
+      : this(
+          expressions: json_.containsKey('expressions')
+              ? GooglePrivacyDlpV2PubSubExpressions.fromJson(
+                  json_['expressions'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (expressions != null) 'expressions': expressions!,
       };
 }
 
@@ -8812,6 +9563,445 @@ class GooglePrivacyDlpV2Dictionary {
       };
 }
 
+/// Do not profile the tables.
+typedef GooglePrivacyDlpV2Disabled = $Empty;
+
+/// Requirements that must be true before a table is scanned in discovery for
+/// the first time.
+///
+/// There is an AND relationship between the top-level attributes. Additionally,
+/// minimum conditions with an OR relationship that must be met before Cloud DLP
+/// scans a table can be set (like a minimum row count or a minimum table age).
+class GooglePrivacyDlpV2DiscoveryBigQueryConditions {
+  /// BigQuery table must have been created after this date.
+  ///
+  /// Used to avoid backfilling.
+  core.String? createdAfter;
+
+  /// At least one of the conditions must be true for a table to be scanned.
+  GooglePrivacyDlpV2OrConditions? orConditions;
+
+  /// Restrict discovery to categories of table types.
+  /// Possible string values are:
+  /// - "BIG_QUERY_COLLECTION_UNSPECIFIED" : Unused.
+  /// - "BIG_QUERY_COLLECTION_ALL_TYPES" : Automatically generate profiles for
+  /// all tables, even if the table type is not yet fully supported for
+  /// analysis. Profiles for unsupported tables will be generated with errors to
+  /// indicate their partial support. When full support is added, the tables
+  /// will automatically be profiled during the next scheduled run.
+  /// - "BIG_QUERY_COLLECTION_ONLY_SUPPORTED_TYPES" : Only those types fully
+  /// supported will be profiled. Will expand automatically as Cloud DLP adds
+  /// support for new table types. Unsupported table types will not have partial
+  /// profiles generated.
+  core.String? typeCollection;
+
+  /// Restrict discovery to specific table types.
+  GooglePrivacyDlpV2BigQueryTableTypes? types;
+
+  GooglePrivacyDlpV2DiscoveryBigQueryConditions({
+    this.createdAfter,
+    this.orConditions,
+    this.typeCollection,
+    this.types,
+  });
+
+  GooglePrivacyDlpV2DiscoveryBigQueryConditions.fromJson(core.Map json_)
+      : this(
+          createdAfter: json_.containsKey('createdAfter')
+              ? json_['createdAfter'] as core.String
+              : null,
+          orConditions: json_.containsKey('orConditions')
+              ? GooglePrivacyDlpV2OrConditions.fromJson(
+                  json_['orConditions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          typeCollection: json_.containsKey('typeCollection')
+              ? json_['typeCollection'] as core.String
+              : null,
+          types: json_.containsKey('types')
+              ? GooglePrivacyDlpV2BigQueryTableTypes.fromJson(
+                  json_['types'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createdAfter != null) 'createdAfter': createdAfter!,
+        if (orConditions != null) 'orConditions': orConditions!,
+        if (typeCollection != null) 'typeCollection': typeCollection!,
+        if (types != null) 'types': types!,
+      };
+}
+
+/// Determines what tables will have profiles generated within an organization
+/// or project.
+///
+/// Includes the ability to filter by regular expression patterns on project ID,
+/// dataset ID, and table ID.
+class GooglePrivacyDlpV2DiscoveryBigQueryFilter {
+  /// Catch-all.
+  ///
+  /// This should always be the last filter in the list because anything above
+  /// it will apply first. Should only appear once in a configuration. If none
+  /// is specified, a default one will be added automatically.
+  GooglePrivacyDlpV2AllOtherBigQueryTables? otherTables;
+
+  /// A specific set of tables for this filter to apply to.
+  ///
+  /// A table collection must be specified in only one filter per config. If a
+  /// table id or dataset is empty, Cloud DLP assumes all tables in that
+  /// collection must be profiled. Must specify a project ID.
+  GooglePrivacyDlpV2BigQueryTableCollection? tables;
+
+  GooglePrivacyDlpV2DiscoveryBigQueryFilter({
+    this.otherTables,
+    this.tables,
+  });
+
+  GooglePrivacyDlpV2DiscoveryBigQueryFilter.fromJson(core.Map json_)
+      : this(
+          otherTables: json_.containsKey('otherTables')
+              ? GooglePrivacyDlpV2AllOtherBigQueryTables.fromJson(
+                  json_['otherTables'] as core.Map<core.String, core.dynamic>)
+              : null,
+          tables: json_.containsKey('tables')
+              ? GooglePrivacyDlpV2BigQueryTableCollection.fromJson(
+                  json_['tables'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (otherTables != null) 'otherTables': otherTables!,
+        if (tables != null) 'tables': tables!,
+      };
+}
+
+/// Configuration for discovery to scan resources for profile generation.
+///
+/// Only one discovery configuration may exist per organization, folder, or
+/// project. The generated data profiles are retained according to the
+/// [data retention policy](https://cloud.google.com/dlp/docs/data-profiles#retention).
+class GooglePrivacyDlpV2DiscoveryConfig {
+  /// Actions to execute at the completion of scanning.
+  core.List<GooglePrivacyDlpV2DataProfileAction>? actions;
+
+  /// The creation timestamp of a DiscoveryConfig.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Display name (max 100 chars)
+  core.String? displayName;
+
+  /// A stream of errors encountered when the config was activated.
+  ///
+  /// Repeated errors may result in the config automatically being paused.
+  /// Output only field. Will return the last 100 errors. Whenever the config is
+  /// modified this list will be cleared.
+  ///
+  /// Output only.
+  core.List<GooglePrivacyDlpV2Error>? errors;
+
+  /// Detection logic for profile generation.
+  ///
+  /// Not all template features are used by Discovery. FindingLimits,
+  /// include_quote and exclude_info_types have no impact on Discovery. Multiple
+  /// templates may be provided if there is data in multiple regions. At most
+  /// one template must be specified per-region (including "global"). Each
+  /// region is scanned using the applicable template. If no region-specific
+  /// template is specified, but a "global" template is specified, it will be
+  /// copied to that region and used instead. If no global or region-specific
+  /// template is provided for a region with data, that region's data will not
+  /// be scanned. For more information, see
+  /// https://cloud.google.com/dlp/docs/data-profiles#data-residency.
+  core.List<core.String>? inspectTemplates;
+
+  /// The timestamp of the last time this config was executed.
+  ///
+  /// Output only.
+  core.String? lastRunTime;
+
+  /// Unique resource name for the DiscoveryConfig, assigned by the service when
+  /// the DiscoveryConfig is created, for example
+  /// `projects/dlp-test-project/locations/global/discoveryConfigs/53234423`.
+  core.String? name;
+
+  /// Only set when the parent is an org.
+  GooglePrivacyDlpV2OrgConfig? orgConfig;
+
+  /// A status for this configuration.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "STATUS_UNSPECIFIED" : Unused
+  /// - "RUNNING" : The discovery config is currently active.
+  /// - "PAUSED" : The discovery config is paused temporarily.
+  core.String? status;
+
+  /// Target to match against for determining what to scan and how frequently.
+  core.List<GooglePrivacyDlpV2DiscoveryTarget>? targets;
+
+  /// The last update timestamp of a DiscoveryConfig.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GooglePrivacyDlpV2DiscoveryConfig({
+    this.actions,
+    this.createTime,
+    this.displayName,
+    this.errors,
+    this.inspectTemplates,
+    this.lastRunTime,
+    this.name,
+    this.orgConfig,
+    this.status,
+    this.targets,
+    this.updateTime,
+  });
+
+  GooglePrivacyDlpV2DiscoveryConfig.fromJson(core.Map json_)
+      : this(
+          actions: json_.containsKey('actions')
+              ? (json_['actions'] as core.List)
+                  .map((value) => GooglePrivacyDlpV2DataProfileAction.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          errors: json_.containsKey('errors')
+              ? (json_['errors'] as core.List)
+                  .map((value) => GooglePrivacyDlpV2Error.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          inspectTemplates: json_.containsKey('inspectTemplates')
+              ? (json_['inspectTemplates'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          lastRunTime: json_.containsKey('lastRunTime')
+              ? json_['lastRunTime'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          orgConfig: json_.containsKey('orgConfig')
+              ? GooglePrivacyDlpV2OrgConfig.fromJson(
+                  json_['orgConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+          targets: json_.containsKey('targets')
+              ? (json_['targets'] as core.List)
+                  .map((value) => GooglePrivacyDlpV2DiscoveryTarget.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actions != null) 'actions': actions!,
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (errors != null) 'errors': errors!,
+        if (inspectTemplates != null) 'inspectTemplates': inspectTemplates!,
+        if (lastRunTime != null) 'lastRunTime': lastRunTime!,
+        if (name != null) 'name': name!,
+        if (orgConfig != null) 'orgConfig': orgConfig!,
+        if (status != null) 'status': status!,
+        if (targets != null) 'targets': targets!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// What must take place for a profile to be updated and how frequently it
+/// should occur.
+///
+/// New tables are scanned as quickly as possible depending on system capacity.
+class GooglePrivacyDlpV2DiscoveryGenerationCadence {
+  /// Governs when to update data profiles when a schema is modified.
+  GooglePrivacyDlpV2DiscoverySchemaModifiedCadence? schemaModifiedCadence;
+
+  /// Governs when to update data profiles when a table is modified.
+  GooglePrivacyDlpV2DiscoveryTableModifiedCadence? tableModifiedCadence;
+
+  GooglePrivacyDlpV2DiscoveryGenerationCadence({
+    this.schemaModifiedCadence,
+    this.tableModifiedCadence,
+  });
+
+  GooglePrivacyDlpV2DiscoveryGenerationCadence.fromJson(core.Map json_)
+      : this(
+          schemaModifiedCadence: json_.containsKey('schemaModifiedCadence')
+              ? GooglePrivacyDlpV2DiscoverySchemaModifiedCadence.fromJson(
+                  json_['schemaModifiedCadence']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          tableModifiedCadence: json_.containsKey('tableModifiedCadence')
+              ? GooglePrivacyDlpV2DiscoveryTableModifiedCadence.fromJson(
+                  json_['tableModifiedCadence']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (schemaModifiedCadence != null)
+          'schemaModifiedCadence': schemaModifiedCadence!,
+        if (tableModifiedCadence != null)
+          'tableModifiedCadence': tableModifiedCadence!,
+      };
+}
+
+/// The cadence at which to update data profiles when a schema is modified.
+class GooglePrivacyDlpV2DiscoverySchemaModifiedCadence {
+  /// How frequently profiles may be updated when schemas are modified.
+  ///
+  /// Defaults to monthly.
+  /// Possible string values are:
+  /// - "UPDATE_FREQUENCY_UNSPECIFIED" : Unspecified.
+  /// - "UPDATE_FREQUENCY_NEVER" : After the data profile is created, it will
+  /// never be updated.
+  /// - "UPDATE_FREQUENCY_DAILY" : The data profile can be updated up to once
+  /// every 24 hours.
+  /// - "UPDATE_FREQUENCY_MONTHLY" : The data profile can be updated up to once
+  /// every 30 days. Default.
+  core.String? frequency;
+
+  /// The type of events to consider when deciding if the table's schema has
+  /// been modified and should have the profile updated.
+  ///
+  /// Defaults to NEW_COLUMNS.
+  core.List<core.String>? types;
+
+  GooglePrivacyDlpV2DiscoverySchemaModifiedCadence({
+    this.frequency,
+    this.types,
+  });
+
+  GooglePrivacyDlpV2DiscoverySchemaModifiedCadence.fromJson(core.Map json_)
+      : this(
+          frequency: json_.containsKey('frequency')
+              ? json_['frequency'] as core.String
+              : null,
+          types: json_.containsKey('types')
+              ? (json_['types'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (frequency != null) 'frequency': frequency!,
+        if (types != null) 'types': types!,
+      };
+}
+
+/// The location to begin a discovery scan.
+///
+/// Denotes an organization ID or folder ID within an organization.
+class GooglePrivacyDlpV2DiscoveryStartingLocation {
+  /// The ID of the Folder within an organization to scan.
+  core.String? folderId;
+
+  /// The ID of an organization to scan.
+  core.String? organizationId;
+
+  GooglePrivacyDlpV2DiscoveryStartingLocation({
+    this.folderId,
+    this.organizationId,
+  });
+
+  GooglePrivacyDlpV2DiscoveryStartingLocation.fromJson(core.Map json_)
+      : this(
+          folderId: json_.containsKey('folderId')
+              ? json_['folderId'] as core.String
+              : null,
+          organizationId: json_.containsKey('organizationId')
+              ? json_['organizationId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (folderId != null) 'folderId': folderId!,
+        if (organizationId != null) 'organizationId': organizationId!,
+      };
+}
+
+/// The cadence at which to update data profiles when a table is modified.
+class GooglePrivacyDlpV2DiscoveryTableModifiedCadence {
+  /// How frequently data profiles can be updated when tables are modified.
+  ///
+  /// Defaults to never.
+  /// Possible string values are:
+  /// - "UPDATE_FREQUENCY_UNSPECIFIED" : Unspecified.
+  /// - "UPDATE_FREQUENCY_NEVER" : After the data profile is created, it will
+  /// never be updated.
+  /// - "UPDATE_FREQUENCY_DAILY" : The data profile can be updated up to once
+  /// every 24 hours.
+  /// - "UPDATE_FREQUENCY_MONTHLY" : The data profile can be updated up to once
+  /// every 30 days. Default.
+  core.String? frequency;
+
+  /// The type of events to consider when deciding if the table has been
+  /// modified and should have the profile updated.
+  ///
+  /// Defaults to MODIFIED_TIMESTAMP.
+  core.List<core.String>? types;
+
+  GooglePrivacyDlpV2DiscoveryTableModifiedCadence({
+    this.frequency,
+    this.types,
+  });
+
+  GooglePrivacyDlpV2DiscoveryTableModifiedCadence.fromJson(core.Map json_)
+      : this(
+          frequency: json_.containsKey('frequency')
+              ? json_['frequency'] as core.String
+              : null,
+          types: json_.containsKey('types')
+              ? (json_['types'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (frequency != null) 'frequency': frequency!,
+        if (types != null) 'types': types!,
+      };
+}
+
+/// Target used to match against for Discovery.
+class GooglePrivacyDlpV2DiscoveryTarget {
+  /// BigQuery target for Discovery.
+  ///
+  /// The first target to match a table will be the one applied.
+  GooglePrivacyDlpV2BigQueryDiscoveryTarget? bigQueryTarget;
+
+  GooglePrivacyDlpV2DiscoveryTarget({
+    this.bigQueryTarget,
+  });
+
+  GooglePrivacyDlpV2DiscoveryTarget.fromJson(core.Map json_)
+      : this(
+          bigQueryTarget: json_.containsKey('bigQueryTarget')
+              ? GooglePrivacyDlpV2BigQueryDiscoveryTarget.fromJson(
+                  json_['bigQueryTarget']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bigQueryTarget != null) 'bigQueryTarget': bigQueryTarget!,
+      };
+}
+
 /// Combines all of the information about a DLP job.
 class GooglePrivacyDlpV2DlpJob {
   /// Events that should occur after the job has completed.
@@ -8832,6 +10022,9 @@ class GooglePrivacyDlpV2DlpJob {
   /// If created by a job trigger, the resource name of the trigger that
   /// instantiated the job.
   core.String? jobTriggerName;
+
+  /// Time when the job was last modified by the system.
+  core.String? lastModified;
 
   /// The server-assigned name.
   core.String? name;
@@ -8871,6 +10064,7 @@ class GooglePrivacyDlpV2DlpJob {
     this.errors,
     this.inspectDetails,
     this.jobTriggerName,
+    this.lastModified,
     this.name,
     this.riskDetails,
     this.startTime,
@@ -8906,6 +10100,9 @@ class GooglePrivacyDlpV2DlpJob {
           jobTriggerName: json_.containsKey('jobTriggerName')
               ? json_['jobTriggerName'] as core.String
               : null,
+          lastModified: json_.containsKey('lastModified')
+              ? json_['lastModified'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           riskDetails: json_.containsKey('riskDetails')
               ? GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails.fromJson(
@@ -8926,6 +10123,7 @@ class GooglePrivacyDlpV2DlpJob {
         if (errors != null) 'errors': errors!,
         if (inspectDetails != null) 'inspectDetails': inspectDetails!,
         if (jobTriggerName != null) 'jobTriggerName': jobTriggerName!,
+        if (lastModified != null) 'lastModified': lastModified!,
         if (name != null) 'name': name!,
         if (riskDetails != null) 'riskDetails': riskDetails!,
         if (startTime != null) 'startTime': startTime!,
@@ -8991,6 +10189,8 @@ class GooglePrivacyDlpV2Error {
   GoogleRpcStatus? details;
 
   /// The times the error occurred.
+  ///
+  /// List includes the oldest timestamp and the last 9 timestamps.
   core.List<core.String>? timestamps;
 
   GooglePrivacyDlpV2Error({
@@ -9160,6 +10360,32 @@ class GooglePrivacyDlpV2ExclusionRule {
         if (excludeInfoTypes != null) 'excludeInfoTypes': excludeInfoTypes!,
         if (matchingType != null) 'matchingType': matchingType!,
         if (regex != null) 'regex': regex!,
+      };
+}
+
+/// If set, the detailed data profiles will be persisted to the location of your
+/// choice whenever updated.
+class GooglePrivacyDlpV2Export {
+  /// Store all table and column profiles in an existing table or a new table in
+  /// an existing dataset.
+  ///
+  /// Each re-generation will result in a new row in BigQuery.
+  GooglePrivacyDlpV2BigQueryTable? profileTable;
+
+  GooglePrivacyDlpV2Export({
+    this.profileTable,
+  });
+
+  GooglePrivacyDlpV2Export.fromJson(core.Map json_)
+      : this(
+          profileTable: json_.containsKey('profileTable')
+              ? GooglePrivacyDlpV2BigQueryTable.fromJson(
+                  json_['profileTable'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (profileTable != null) 'profileTable': profileTable!,
       };
 }
 
@@ -10176,8 +11402,8 @@ class GooglePrivacyDlpV2InfoTypeCategory {
   /// - "JAPAN" : The infoType is typically used in Japan.
   /// - "KOREA" : The infoType is typically used in Korea.
   /// - "MEXICO" : The infoType is typically used in Mexico.
-  /// - "NEW_ZEALAND" : The infoType is typically used in New Zealand.
   /// - "THE_NETHERLANDS" : The infoType is typically used in the Netherlands.
+  /// - "NEW_ZEALAND" : The infoType is typically used in New Zealand.
   /// - "NORWAY" : The infoType is typically used in Norway.
   /// - "PARAGUAY" : The infoType is typically used in Paraguay.
   /// - "PERU" : The infoType is typically used in Peru.
@@ -10187,6 +11413,7 @@ class GooglePrivacyDlpV2InfoTypeCategory {
   /// - "SOUTH_AFRICA" : The infoType is typically used in South Africa.
   /// - "SPAIN" : The infoType is typically used in Spain.
   /// - "SWEDEN" : The infoType is typically used in Sweden.
+  /// - "SWITZERLAND" : The infoType is typically used in Switzerland.
   /// - "TAIWAN" : The infoType is typically used in Taiwan.
   /// - "THAILAND" : The infoType is typically used in Thailand.
   /// - "TURKEY" : The infoType is typically used in Turkey.
@@ -10318,6 +11545,54 @@ class GooglePrivacyDlpV2InfoTypeDescription {
         if (sensitivityScore != null) 'sensitivityScore': sensitivityScore!,
         if (supportedBy != null) 'supportedBy': supportedBy!,
         if (versions != null) 'versions': versions!,
+      };
+}
+
+/// Configuration for setting a minimum likelihood per infotype.
+///
+/// Used to customize the minimum likelihood level for specific infotypes in the
+/// request. For example, use this if you want to lower the precision for
+/// PERSON_NAME without lowering the precision for the other infotypes in the
+/// request.
+class GooglePrivacyDlpV2InfoTypeLikelihood {
+  /// Type of information the likelihood threshold applies to.
+  ///
+  /// Only one likelihood per info_type should be provided. If
+  /// InfoTypeLikelihood does not have an info_type, the configuration fails.
+  GooglePrivacyDlpV2InfoType? infoType;
+
+  /// Only returns findings equal to or above this threshold.
+  ///
+  /// This field is required or else the configuration fails.
+  /// Possible string values are:
+  /// - "LIKELIHOOD_UNSPECIFIED" : Default value; same as POSSIBLE.
+  /// - "VERY_UNLIKELY" : Highest chance of a false positive.
+  /// - "UNLIKELY" : High chance of a false positive.
+  /// - "POSSIBLE" : Some matching signals. The default value.
+  /// - "LIKELY" : Low chance of a false positive.
+  /// - "VERY_LIKELY" : Confidence level is high. Lowest chance of a false
+  /// positive.
+  core.String? minLikelihood;
+
+  GooglePrivacyDlpV2InfoTypeLikelihood({
+    this.infoType,
+    this.minLikelihood,
+  });
+
+  GooglePrivacyDlpV2InfoTypeLikelihood.fromJson(core.Map json_)
+      : this(
+          infoType: json_.containsKey('infoType')
+              ? GooglePrivacyDlpV2InfoType.fromJson(
+                  json_['infoType'] as core.Map<core.String, core.dynamic>)
+              : null,
+          minLikelihood: json_.containsKey('minLikelihood')
+              ? json_['minLikelihood'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (infoType != null) 'infoType': infoType!,
+        if (minLikelihood != null) 'minLikelihood': minLikelihood!,
       };
 }
 
@@ -10507,10 +11782,12 @@ class GooglePrivacyDlpV2InspectConfig {
   /// values.
   GooglePrivacyDlpV2FindingLimits? limits;
 
-  /// Only returns findings equal or above this threshold.
+  /// Only returns findings equal to or above this threshold.
   ///
-  /// The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood
-  /// to learn more.
+  /// The default is POSSIBLE. In general, the highest likelihood setting yields
+  /// the fewest findings in results and the lowest chance of a false positive.
+  /// For more information, see
+  /// [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
   /// Possible string values are:
   /// - "LIKELIHOOD_UNSPECIFIED" : Default value; same as POSSIBLE.
   /// - "VERY_UNLIKELY" : Highest chance of a false positive.
@@ -10520,6 +11797,13 @@ class GooglePrivacyDlpV2InspectConfig {
   /// - "VERY_LIKELY" : Confidence level is high. Lowest chance of a false
   /// positive.
   core.String? minLikelihood;
+
+  /// Minimum likelihood per infotype.
+  ///
+  /// For each infotype, a user can specify a minimum likelihood. The system
+  /// only returns a finding if its likelihood is above this threshold. If this
+  /// field is not set, the system uses the InspectConfig min_likelihood.
+  core.List<GooglePrivacyDlpV2InfoTypeLikelihood>? minLikelihoodPerInfoType;
 
   /// Set of rules to apply to the findings for this InspectConfig.
   ///
@@ -10535,6 +11819,7 @@ class GooglePrivacyDlpV2InspectConfig {
     this.infoTypes,
     this.limits,
     this.minLikelihood,
+    this.minLikelihoodPerInfoType,
     this.ruleSet,
   });
 
@@ -10570,6 +11855,13 @@ class GooglePrivacyDlpV2InspectConfig {
           minLikelihood: json_.containsKey('minLikelihood')
               ? json_['minLikelihood'] as core.String
               : null,
+          minLikelihoodPerInfoType: json_
+                  .containsKey('minLikelihoodPerInfoType')
+              ? (json_['minLikelihoodPerInfoType'] as core.List)
+                  .map((value) => GooglePrivacyDlpV2InfoTypeLikelihood.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           ruleSet: json_.containsKey('ruleSet')
               ? (json_['ruleSet'] as core.List)
                   .map((value) => GooglePrivacyDlpV2InspectionRuleSet.fromJson(
@@ -10586,6 +11878,8 @@ class GooglePrivacyDlpV2InspectConfig {
         if (infoTypes != null) 'infoTypes': infoTypes!,
         if (limits != null) 'limits': limits!,
         if (minLikelihood != null) 'minLikelihood': minLikelihood!,
+        if (minLikelihoodPerInfoType != null)
+          'minLikelihoodPerInfoType': minLikelihoodPerInfoType!,
         if (ruleSet != null) 'ruleSet': ruleSet!,
       };
 }
@@ -11864,7 +13158,7 @@ class GooglePrivacyDlpV2ListDeidentifyTemplatesResponse {
   /// ListDeidentifyTemplatesRequest.
   core.List<GooglePrivacyDlpV2DeidentifyTemplate>? deidentifyTemplates;
 
-  /// If the next page is available then the next page token to be used in
+  /// If the next page is available then the next page token to be used in the
   /// following ListDeidentifyTemplates request.
   core.String? nextPageToken;
 
@@ -11889,6 +13183,39 @@ class GooglePrivacyDlpV2ListDeidentifyTemplatesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (deidentifyTemplates != null)
           'deidentifyTemplates': deidentifyTemplates!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for ListDiscoveryConfigs.
+class GooglePrivacyDlpV2ListDiscoveryConfigsResponse {
+  /// List of configs, up to page_size in ListDiscoveryConfigsRequest.
+  core.List<GooglePrivacyDlpV2DiscoveryConfig>? discoveryConfigs;
+
+  /// If the next page is available then the next page token to be used in the
+  /// following ListDiscoveryConfigs request.
+  core.String? nextPageToken;
+
+  GooglePrivacyDlpV2ListDiscoveryConfigsResponse({
+    this.discoveryConfigs,
+    this.nextPageToken,
+  });
+
+  GooglePrivacyDlpV2ListDiscoveryConfigsResponse.fromJson(core.Map json_)
+      : this(
+          discoveryConfigs: json_.containsKey('discoveryConfigs')
+              ? (json_['discoveryConfigs'] as core.List)
+                  .map((value) => GooglePrivacyDlpV2DiscoveryConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (discoveryConfigs != null) 'discoveryConfigs': discoveryConfigs!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -11955,7 +13282,7 @@ class GooglePrivacyDlpV2ListInspectTemplatesResponse {
   /// List of inspectTemplates, up to page_size in ListInspectTemplatesRequest.
   core.List<GooglePrivacyDlpV2InspectTemplate>? inspectTemplates;
 
-  /// If the next page is available then the next page token to be used in
+  /// If the next page is available then the next page token to be used in the
   /// following ListInspectTemplates request.
   core.String? nextPageToken;
 
@@ -11988,7 +13315,7 @@ class GooglePrivacyDlpV2ListJobTriggersResponse {
   /// List of triggeredJobs, up to page_size in ListJobTriggersRequest.
   core.List<GooglePrivacyDlpV2JobTrigger>? jobTriggers;
 
-  /// If the next page is available then the next page token to be used in
+  /// If the next page is available then the next page token to be used in the
   /// following ListJobTriggers request.
   core.String? nextPageToken;
 
@@ -12018,7 +13345,7 @@ class GooglePrivacyDlpV2ListJobTriggersResponse {
 
 /// Response message for ListStoredInfoTypes.
 class GooglePrivacyDlpV2ListStoredInfoTypesResponse {
-  /// If the next page is available then the next page token to be used in
+  /// If the next page is available then the next page token to be used in the
   /// following ListStoredInfoTypes request.
   core.String? nextPageToken;
 
@@ -12209,6 +13536,75 @@ class GooglePrivacyDlpV2NumericalStatsResult {
         if (maxValue != null) 'maxValue': maxValue!,
         if (minValue != null) 'minValue': minValue!,
         if (quantileValues != null) 'quantileValues': quantileValues!,
+      };
+}
+
+/// There is an OR relationship between these attributes.
+///
+/// They are used to determine if a table should be scanned or not in Discovery.
+class GooglePrivacyDlpV2OrConditions {
+  /// Minimum age a table must have before Cloud DLP can profile it.
+  ///
+  /// Value must be 1 hour or greater.
+  core.String? minAge;
+
+  /// Minimum number of rows that should be present before Cloud DLP profiles a
+  /// table
+  core.int? minRowCount;
+
+  GooglePrivacyDlpV2OrConditions({
+    this.minAge,
+    this.minRowCount,
+  });
+
+  GooglePrivacyDlpV2OrConditions.fromJson(core.Map json_)
+      : this(
+          minAge: json_.containsKey('minAge')
+              ? json_['minAge'] as core.String
+              : null,
+          minRowCount: json_.containsKey('minRowCount')
+              ? json_['minRowCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (minAge != null) 'minAge': minAge!,
+        if (minRowCount != null) 'minRowCount': minRowCount!,
+      };
+}
+
+/// Project and scan location information.
+///
+/// Only set when the parent is an org.
+class GooglePrivacyDlpV2OrgConfig {
+  /// The data to scan: folder, org, or project
+  GooglePrivacyDlpV2DiscoveryStartingLocation? location;
+
+  /// The project that will run the scan.
+  ///
+  /// The DLP service account that exists within this project must have access
+  /// to all resources that are profiled, and the Cloud DLP API must be enabled.
+  core.String? projectId;
+
+  GooglePrivacyDlpV2OrgConfig({
+    this.location,
+    this.projectId,
+  });
+
+  GooglePrivacyDlpV2OrgConfig.fromJson(core.Map json_)
+      : this(
+          location: json_.containsKey('location')
+              ? GooglePrivacyDlpV2DiscoveryStartingLocation.fromJson(
+                  json_['location'] as core.Map<core.String, core.dynamic>)
+              : null,
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (location != null) 'location': location!,
+        if (projectId != null) 'projectId': projectId!,
       };
 }
 
@@ -12598,6 +13994,152 @@ class GooglePrivacyDlpV2Proximity {
   core.Map<core.String, core.dynamic> toJson() => {
         if (windowAfter != null) 'windowAfter': windowAfter!,
         if (windowBefore != null) 'windowBefore': windowBefore!,
+      };
+}
+
+/// A condition consisting of a value.
+class GooglePrivacyDlpV2PubSubCondition {
+  /// The minimum data risk score that triggers the condition.
+  /// Possible string values are:
+  /// - "PROFILE_SCORE_BUCKET_UNSPECIFIED" : Unused.
+  /// - "HIGH" : High risk/sensitivity detected.
+  /// - "MEDIUM_OR_HIGH" : Medium or high risk/sensitivity detected.
+  core.String? minimumRiskScore;
+
+  /// The minimum sensitivity level that triggers the condition.
+  /// Possible string values are:
+  /// - "PROFILE_SCORE_BUCKET_UNSPECIFIED" : Unused.
+  /// - "HIGH" : High risk/sensitivity detected.
+  /// - "MEDIUM_OR_HIGH" : Medium or high risk/sensitivity detected.
+  core.String? minimumSensitivityScore;
+
+  GooglePrivacyDlpV2PubSubCondition({
+    this.minimumRiskScore,
+    this.minimumSensitivityScore,
+  });
+
+  GooglePrivacyDlpV2PubSubCondition.fromJson(core.Map json_)
+      : this(
+          minimumRiskScore: json_.containsKey('minimumRiskScore')
+              ? json_['minimumRiskScore'] as core.String
+              : null,
+          minimumSensitivityScore: json_.containsKey('minimumSensitivityScore')
+              ? json_['minimumSensitivityScore'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (minimumRiskScore != null) 'minimumRiskScore': minimumRiskScore!,
+        if (minimumSensitivityScore != null)
+          'minimumSensitivityScore': minimumSensitivityScore!,
+      };
+}
+
+/// An expression, consisting of an operator and conditions.
+class GooglePrivacyDlpV2PubSubExpressions {
+  /// Conditions to apply to the expression.
+  core.List<GooglePrivacyDlpV2PubSubCondition>? conditions;
+
+  /// The operator to apply to the collection of conditions.
+  /// Possible string values are:
+  /// - "LOGICAL_OPERATOR_UNSPECIFIED" : Unused.
+  /// - "OR" : Conditional OR.
+  /// - "AND" : Conditional AND.
+  core.String? logicalOperator;
+
+  GooglePrivacyDlpV2PubSubExpressions({
+    this.conditions,
+    this.logicalOperator,
+  });
+
+  GooglePrivacyDlpV2PubSubExpressions.fromJson(core.Map json_)
+      : this(
+          conditions: json_.containsKey('conditions')
+              ? (json_['conditions'] as core.List)
+                  .map((value) => GooglePrivacyDlpV2PubSubCondition.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          logicalOperator: json_.containsKey('logicalOperator')
+              ? json_['logicalOperator'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conditions != null) 'conditions': conditions!,
+        if (logicalOperator != null) 'logicalOperator': logicalOperator!,
+      };
+}
+
+/// Send a Pub/Sub message into the given Pub/Sub topic to connect other systems
+/// to data profile generation.
+///
+/// The message payload data will be the byte serialization of
+/// `DataProfilePubSubMessage`.
+class GooglePrivacyDlpV2PubSubNotification {
+  /// How much data to include in the Pub/Sub message.
+  ///
+  /// If the user wishes to limit the size of the message, they can use
+  /// resource_name and fetch the profile fields they wish to. Per table profile
+  /// (not per column).
+  /// Possible string values are:
+  /// - "DETAIL_LEVEL_UNSPECIFIED" : Unused.
+  /// - "TABLE_PROFILE" : The full table data profile.
+  /// - "RESOURCE_NAME" : The resource name of the table.
+  core.String? detailOfMessage;
+
+  /// The type of event that triggers a Pub/Sub.
+  ///
+  /// At most one `PubSubNotification` per EventType is permitted.
+  /// Possible string values are:
+  /// - "EVENT_TYPE_UNSPECIFIED" : Unused.
+  /// - "NEW_PROFILE" : New profile (not a re-profile).
+  /// - "CHANGED_PROFILE" : Changed one of the following profile metrics: *
+  /// Table data risk score * Table sensitivity score * Table resource
+  /// visibility * Table encryption type * Table predicted infoTypes * Table
+  /// other infoTypes
+  /// - "SCORE_INCREASED" : Table data risk score or sensitivity score
+  /// increased.
+  /// - "ERROR_CHANGED" : A user (non-internal) error occurred.
+  core.String? event;
+
+  /// Conditions (e.g., data risk or sensitivity level) for triggering a
+  /// Pub/Sub.
+  GooglePrivacyDlpV2DataProfilePubSubCondition? pubsubCondition;
+
+  /// Cloud Pub/Sub topic to send notifications to.
+  ///
+  /// Format is projects/{project}/topics/{topic}.
+  core.String? topic;
+
+  GooglePrivacyDlpV2PubSubNotification({
+    this.detailOfMessage,
+    this.event,
+    this.pubsubCondition,
+    this.topic,
+  });
+
+  GooglePrivacyDlpV2PubSubNotification.fromJson(core.Map json_)
+      : this(
+          detailOfMessage: json_.containsKey('detailOfMessage')
+              ? json_['detailOfMessage'] as core.String
+              : null,
+          event:
+              json_.containsKey('event') ? json_['event'] as core.String : null,
+          pubsubCondition: json_.containsKey('pubsubCondition')
+              ? GooglePrivacyDlpV2DataProfilePubSubCondition.fromJson(
+                  json_['pubsubCondition']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          topic:
+              json_.containsKey('topic') ? json_['topic'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (detailOfMessage != null) 'detailOfMessage': detailOfMessage!,
+        if (event != null) 'event': event!,
+        if (pubsubCondition != null) 'pubsubCondition': pubsubCondition!,
+        if (topic != null) 'topic': topic!,
       };
 }
 
@@ -14777,6 +16319,39 @@ class GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (deidentifyTemplate != null)
           'deidentifyTemplate': deidentifyTemplate!,
+        if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
+/// Request message for UpdateDiscoveryConfig.
+class GooglePrivacyDlpV2UpdateDiscoveryConfigRequest {
+  /// New DiscoveryConfig value.
+  ///
+  /// Required.
+  GooglePrivacyDlpV2DiscoveryConfig? discoveryConfig;
+
+  /// Mask to control which fields get updated.
+  core.String? updateMask;
+
+  GooglePrivacyDlpV2UpdateDiscoveryConfigRequest({
+    this.discoveryConfig,
+    this.updateMask,
+  });
+
+  GooglePrivacyDlpV2UpdateDiscoveryConfigRequest.fromJson(core.Map json_)
+      : this(
+          discoveryConfig: json_.containsKey('discoveryConfig')
+              ? GooglePrivacyDlpV2DiscoveryConfig.fromJson(
+                  json_['discoveryConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (discoveryConfig != null) 'discoveryConfig': discoveryConfig!,
         if (updateMask != null) 'updateMask': updateMask!,
       };
 }

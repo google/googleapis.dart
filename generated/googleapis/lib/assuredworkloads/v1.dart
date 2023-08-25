@@ -181,6 +181,79 @@ class OrganizationsLocationsWorkloadsResource {
   OrganizationsLocationsWorkloadsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Analyzes a hypothetical move of a source resource to a target workload to
+  /// surface compliance risks.
+  ///
+  /// The analysis is best effort and is not guaranteed to be exhaustive.
+  ///
+  /// Request parameters:
+  ///
+  /// [target] - Required. The resource ID of the folder-based destination
+  /// workload. This workload is where the source resource will hypothetically
+  /// be moved to. Specify the workload's relative resource name, formatted as:
+  /// "organizations/{ORGANIZATION_ID}/locations/{LOCATION_ID}/workloads/{WORKLOAD_ID}"
+  /// For example:
+  /// "organizations/123/locations/us-east1/workloads/assured-workload-2"
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/workloads/\[^/\]+$`.
+  ///
+  /// [assetTypes] - Optional. List of asset types to be analyzed, including and
+  /// under the source resource. If empty, all assets are analyzed. The complete
+  /// list of asset types is available
+  /// [here](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
+  ///
+  /// [pageSize] - Optional. Page size. If a value is not specified, the default
+  /// value of 10 is used.
+  ///
+  /// [pageToken] - Optional. The page token from the previous response. It
+  /// needs to be passed in the second and following requests.
+  ///
+  /// [project] - The source type is a project. Specify the project's relative
+  /// resource name, formatted as either a project number or a project ID:
+  /// "projects/{PROJECT_NUMBER}" or "projects/{PROJECT_ID}" For example:
+  /// "projects/951040570662" when specifying a project number, or
+  /// "projects/my-project-123" when specifying a project ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse>
+      analyzeWorkloadMove(
+    core.String target, {
+    core.List<core.String>? assetTypes,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? project,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (assetTypes != null) 'assetTypes': assetTypes,
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (project != null) 'project': [project],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$target') + ':analyzeWorkloadMove';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates Assured Workload.
   ///
   /// [request] - The metadata request object.
@@ -738,6 +811,88 @@ class GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest {
 /// Response for violation acknowledgement
 typedef GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse = $Empty;
 
+/// Response containing the analysis results for the hypothetical resource move.
+class GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse {
+  /// List of analysis results for each asset in scope.
+  core.List<GoogleCloudAssuredworkloadsV1AssetMoveAnalysis>? assetMoveAnalyses;
+
+  /// The next page token.
+  ///
+  /// Is empty if the last page is reached.
+  core.String? nextPageToken;
+
+  GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse({
+    this.assetMoveAnalyses,
+    this.nextPageToken,
+  });
+
+  GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse.fromJson(
+      core.Map json_)
+      : this(
+          assetMoveAnalyses: json_.containsKey('assetMoveAnalyses')
+              ? (json_['assetMoveAnalyses'] as core.List)
+                  .map((value) =>
+                      GoogleCloudAssuredworkloadsV1AssetMoveAnalysis.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assetMoveAnalyses != null) 'assetMoveAnalyses': assetMoveAnalyses!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Represents move analysis results for an asset.
+class GoogleCloudAssuredworkloadsV1AssetMoveAnalysis {
+  /// List of eligible analyses performed for the asset.
+  core.List<GoogleCloudAssuredworkloadsV1MoveAnalysisGroup>? analysisGroups;
+
+  /// The full resource name of the asset being analyzed.
+  ///
+  /// Example:
+  /// //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1
+  core.String? asset;
+
+  /// Type of the asset being analyzed.
+  ///
+  /// Possible values will be among the ones listed
+  /// [here](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
+  core.String? assetType;
+
+  GoogleCloudAssuredworkloadsV1AssetMoveAnalysis({
+    this.analysisGroups,
+    this.asset,
+    this.assetType,
+  });
+
+  GoogleCloudAssuredworkloadsV1AssetMoveAnalysis.fromJson(core.Map json_)
+      : this(
+          analysisGroups: json_.containsKey('analysisGroups')
+              ? (json_['analysisGroups'] as core.List)
+                  .map((value) =>
+                      GoogleCloudAssuredworkloadsV1MoveAnalysisGroup.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          asset:
+              json_.containsKey('asset') ? json_['asset'] as core.String : null,
+          assetType: json_.containsKey('assetType')
+              ? json_['assetType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (analysisGroups != null) 'analysisGroups': analysisGroups!,
+        if (asset != null) 'asset': asset!,
+        if (assetType != null) 'assetType': assetType!,
+      };
+}
+
 /// Response of ListViolations endpoint.
 class GoogleCloudAssuredworkloadsV1ListViolationsResponse {
   /// The next page token.
@@ -805,6 +960,111 @@ class GoogleCloudAssuredworkloadsV1ListWorkloadsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (workloads != null) 'workloads': workloads!,
+      };
+}
+
+/// Represents a logical group of checks performed for an asset.
+///
+/// If successful, the group contains the analysis result, otherwise it contains
+/// an error with the failure reason.
+class GoogleCloudAssuredworkloadsV1MoveAnalysisGroup {
+  /// Result of a successful analysis.
+  GoogleCloudAssuredworkloadsV1MoveAnalysisResult? analysisResult;
+
+  /// Name of the analysis group.
+  core.String? displayName;
+
+  /// Error details for a failed analysis.
+  GoogleRpcStatus? error;
+
+  GoogleCloudAssuredworkloadsV1MoveAnalysisGroup({
+    this.analysisResult,
+    this.displayName,
+    this.error,
+  });
+
+  GoogleCloudAssuredworkloadsV1MoveAnalysisGroup.fromJson(core.Map json_)
+      : this(
+          analysisResult: json_.containsKey('analysisResult')
+              ? GoogleCloudAssuredworkloadsV1MoveAnalysisResult.fromJson(
+                  json_['analysisResult']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          error: json_.containsKey('error')
+              ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (analysisResult != null) 'analysisResult': analysisResult!,
+        if (displayName != null) 'displayName': displayName!,
+        if (error != null) 'error': error!,
+      };
+}
+
+/// Represents the successful move analysis results for a group.
+class GoogleCloudAssuredworkloadsV1MoveAnalysisResult {
+  /// List of blockers.
+  ///
+  /// If not resolved, these will result in compliance violations in the target.
+  core.List<GoogleCloudAssuredworkloadsV1MoveImpact>? blockers;
+
+  /// List of warnings.
+  ///
+  /// These are risks that may or may not result in compliance violations.
+  core.List<GoogleCloudAssuredworkloadsV1MoveImpact>? warnings;
+
+  GoogleCloudAssuredworkloadsV1MoveAnalysisResult({
+    this.blockers,
+    this.warnings,
+  });
+
+  GoogleCloudAssuredworkloadsV1MoveAnalysisResult.fromJson(core.Map json_)
+      : this(
+          blockers: json_.containsKey('blockers')
+              ? (json_['blockers'] as core.List)
+                  .map((value) =>
+                      GoogleCloudAssuredworkloadsV1MoveImpact.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          warnings: json_.containsKey('warnings')
+              ? (json_['warnings'] as core.List)
+                  .map((value) =>
+                      GoogleCloudAssuredworkloadsV1MoveImpact.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (blockers != null) 'blockers': blockers!,
+        if (warnings != null) 'warnings': warnings!,
+      };
+}
+
+/// Represents the impact of moving the asset to the target.
+class GoogleCloudAssuredworkloadsV1MoveImpact {
+  /// Explanation of the impact.
+  core.String? detail;
+
+  GoogleCloudAssuredworkloadsV1MoveImpact({
+    this.detail,
+  });
+
+  GoogleCloudAssuredworkloadsV1MoveImpact.fromJson(core.Map json_)
+      : this(
+          detail: json_.containsKey('detail')
+              ? json_['detail'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (detail != null) 'detail': detail!,
       };
 }
 
@@ -900,7 +1160,7 @@ typedef GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse = $Empty;
 
 /// Workload monitoring Violation.
 ///
-/// Next Id: 27
+/// Next Id: 28
 class GoogleCloudAssuredworkloadsV1Violation {
   /// A boolean that indicates if the violation is acknowledged
   core.bool? acknowledged;
@@ -1168,8 +1428,6 @@ class GoogleCloudAssuredworkloadsV1ViolationRemediation {
   /// for list org policy which have denied values in the monitoring rule
   /// - "REMEDIATION_RESTRICT_CMEK_CRYPTO_KEY_PROJECTS_ORG_POLICY_VIOLATION" :
   /// Remediation type for gcp.restrictCmekCryptoKeyProjects
-  /// - "REMEDIATION_RESOURCE_VIOLATION" : Remediation type for resource
-  /// violation.
   core.String? remediationType;
 
   GoogleCloudAssuredworkloadsV1ViolationRemediation({
@@ -1369,6 +1627,8 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// - "ISR_REGIONS_AND_SUPPORT" : Assured Workloads for Israel Regions
   /// - "CA_PROTECTED_B" : Assured Workloads for Canada Protected B regime
   /// - "IL5" : Information protection as per DoD IL5 requirements.
+  /// - "IL2" : Information protection as per DoD IL2 requirements.
+  /// - "JP_REGIONS_AND_SUPPORT" : Assured Workloads for Japan Regions
   core.String? complianceRegime;
 
   /// Count of active Violations in the Workload.
@@ -1380,7 +1640,7 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// are currently disallowed by the ResourceUsageRestriction org policy.
   ///
   /// Invoke RestrictAllowedResources endpoint to allow your project developers
-  /// to use these services in their environment."
+  /// to use these services in their environment.
   ///
   /// Output only.
   core.List<core.String>? compliantButDisallowedServices;
@@ -1401,7 +1661,7 @@ class GoogleCloudAssuredworkloadsV1Workload {
 
   /// Represents the Ekm Provisioning State of the given workload.
   ///
-  /// Optional.
+  /// Output only.
   GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse?
       ekmProvisioningResponse;
 
@@ -1480,6 +1740,14 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// organization. Format: folders/{folder_id}
   core.String? provisionedResourcesParent;
 
+  /// Indicates whether resource monitoring is enabled for workload or not.
+  ///
+  /// It is true when Resource feed is subscribed to AWM topic and AWM Service
+  /// Agent Role is binded to AW Service Account for resource Assured workload.
+  ///
+  /// Output only.
+  core.bool? resourceMonitoringEnabled;
+
   /// Input only.
   ///
   /// Resource properties that are used to customize workload resources. These
@@ -1533,6 +1801,7 @@ class GoogleCloudAssuredworkloadsV1Workload {
     this.partner,
     this.partnerPermissions,
     this.provisionedResourcesParent,
+    this.resourceMonitoringEnabled,
     this.resourceSettings,
     this.resources,
     this.saaEnrollmentResponse,
@@ -1601,6 +1870,10 @@ class GoogleCloudAssuredworkloadsV1Workload {
               json_.containsKey('provisionedResourcesParent')
                   ? json_['provisionedResourcesParent'] as core.String
                   : null,
+          resourceMonitoringEnabled:
+              json_.containsKey('resourceMonitoringEnabled')
+                  ? json_['resourceMonitoringEnabled'] as core.bool
+                  : null,
           resourceSettings: json_.containsKey('resourceSettings')
               ? (json_['resourceSettings'] as core.List)
                   .map((value) =>
@@ -1651,6 +1924,8 @@ class GoogleCloudAssuredworkloadsV1Workload {
           'partnerPermissions': partnerPermissions!,
         if (provisionedResourcesParent != null)
           'provisionedResourcesParent': provisionedResourcesParent!,
+        if (resourceMonitoringEnabled != null)
+          'resourceMonitoringEnabled': resourceMonitoringEnabled!,
         if (resourceSettings != null) 'resourceSettings': resourceSettings!,
         if (resources != null) 'resources': resources!,
         if (saaEnrollmentResponse != null)
@@ -1701,7 +1976,7 @@ class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse {
   /// - "GOOGLE_SERVER_ERROR" : Internal logic breaks within provisioning code.
   /// - "EXTERNAL_USER_ERROR" : Error occurred with the customer not granting
   /// permission/creating resource.
-  /// - "EXTERNAL_PARTNER_ERROR" : Error occurred within the partner’s
+  /// - "EXTERNAL_PARTNER_ERROR" : Error occurred within the partner's
   /// provisioning cluster.
   /// - "TIMEOUT_ERROR" : Resource wasn't provisioned in the required 7 day time
   /// period
@@ -2036,7 +2311,7 @@ class GoogleLongrunningOperation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
