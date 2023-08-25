@@ -470,6 +470,7 @@ api.CloudSqlSettings buildCloudSqlSettings() {
     o.availabilityType = 'foo';
     o.cmekKeyName = 'foo';
     o.collation = 'foo';
+    o.dataCacheConfig = buildDataCacheConfig();
     o.dataDiskSizeGb = 'foo';
     o.dataDiskType = 'foo';
     o.databaseFlags = buildUnnamed4();
@@ -509,6 +510,7 @@ void checkCloudSqlSettings(api.CloudSqlSettings o) {
       o.collation!,
       unittest.equals('foo'),
     );
+    checkDataCacheConfig(o.dataCacheConfig!);
     unittest.expect(
       o.dataDiskSizeGb!,
       unittest.equals('foo'),
@@ -1166,6 +1168,25 @@ void checkConvertRowIdToColumn(api.ConvertRowIdToColumn o) {
     unittest.expect(o.onlyIfNoPrimaryKey!, unittest.isTrue);
   }
   buildCounterConvertRowIdToColumn--;
+}
+
+core.int buildCounterDataCacheConfig = 0;
+api.DataCacheConfig buildDataCacheConfig() {
+  final o = api.DataCacheConfig();
+  buildCounterDataCacheConfig++;
+  if (buildCounterDataCacheConfig < 3) {
+    o.dataCacheEnabled = true;
+  }
+  buildCounterDataCacheConfig--;
+  return o;
+}
+
+void checkDataCacheConfig(api.DataCacheConfig o) {
+  buildCounterDataCacheConfig++;
+  if (buildCounterDataCacheConfig < 3) {
+    unittest.expect(o.dataCacheEnabled!, unittest.isTrue);
+  }
+  buildCounterDataCacheConfig--;
 }
 
 core.int buildCounterDatabaseEngineInfo = 0;
@@ -5923,6 +5944,16 @@ void main() {
       final od = api.ConvertRowIdToColumn.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkConvertRowIdToColumn(od);
+    });
+  });
+
+  unittest.group('obj-schema-DataCacheConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDataCacheConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DataCacheConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDataCacheConfig(od);
     });
   });
 

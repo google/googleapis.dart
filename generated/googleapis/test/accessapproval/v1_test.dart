@@ -92,6 +92,7 @@ api.AccessApprovalSettings buildAccessApprovalSettings() {
     o.invalidKeyVersion = true;
     o.name = 'foo';
     o.notificationEmails = buildUnnamed1();
+    o.notificationPubsubTopic = 'foo';
     o.preferNoBroadApprovalRequests = true;
     o.preferredRequestExpirationDays = 42;
   }
@@ -115,6 +116,10 @@ void checkAccessApprovalSettings(api.AccessApprovalSettings o) {
       unittest.equals('foo'),
     );
     checkUnnamed1(o.notificationEmails!);
+    unittest.expect(
+      o.notificationPubsubTopic!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.preferNoBroadApprovalRequests!, unittest.isTrue);
     unittest.expect(
       o.preferredRequestExpirationDays!,

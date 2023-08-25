@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230728",
+    "revision": "20231023",
     "rootUrl": "https://containeranalysis.googleapis.com/",
     "servicePath": "",
     "title": "Container Analysis API",
@@ -2576,6 +2576,25 @@
             },
             "type": "object"
         },
+        "ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository": {
+            "description": "Location of the source in a 2nd-gen Google Cloud Build repository resource.",
+            "id": "ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository",
+            "properties": {
+                "dir": {
+                    "description": "Directory, relative to the source root, in which to run the build.",
+                    "type": "string"
+                },
+                "repository": {
+                    "description": "Required. Name of the Google Cloud Build repository, formatted as `projects/*/locations/*/connections/*/repositories/*`.",
+                    "type": "string"
+                },
+                "revision": {
+                    "description": "The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes": {
             "description": "Container message for hashes of byte content of files, used in SourceProvenance messages to verify integrity of source input to the build.",
             "id": "ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes",
@@ -2718,7 +2737,7 @@
                     "type": "array"
                 },
                 "buildStepOutputs": {
-                    "description": "List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.",
+                    "description": "List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored.",
                     "items": {
                         "format": "byte",
                         "type": "string"
@@ -2820,6 +2839,10 @@
             "description": "Location of the source in a supported storage service.",
             "id": "ContaineranalysisGoogleDevtoolsCloudbuildV1Source",
             "properties": {
+                "connectedRepository": {
+                    "$ref": "ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository",
+                    "description": "Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource."
+                },
                 "gitSource": {
                     "$ref": "ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource",
                     "description": "If provided, get the source from this Git repository."
@@ -2851,6 +2874,16 @@
                     "readOnly": true,
                     "type": "object"
                 },
+                "resolvedConnectedRepository": {
+                    "$ref": "ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository",
+                    "description": "Output only. A copy of the build's `source.connected_repository`, if exists, with any revisions resolved.",
+                    "readOnly": true
+                },
+                "resolvedGitSource": {
+                    "$ref": "ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource",
+                    "description": "Output only. A copy of the build's `source.git_source`, if exists, with any revisions resolved.",
+                    "readOnly": true
+                },
                 "resolvedRepoSource": {
                     "$ref": "ContaineranalysisGoogleDevtoolsCloudbuildV1RepoSource",
                     "description": "A copy of the build's `source.repo_source`, if exists, with any revisions resolved."
@@ -2881,6 +2914,20 @@
                 },
                 "object": {
                     "description": "Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.",
+                    "type": "string"
+                },
+                "sourceFetcher": {
+                    "description": "Optional. Option to specify the tool to fetch the source file for the build.",
+                    "enum": [
+                        "SOURCE_FETCHER_UNSPECIFIED",
+                        "GSUTIL",
+                        "GCS_FETCHER"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified defaults to GSUTIL.",
+                        "Use the \"gsutil\" tool to download the source file.",
+                        "Use the Cloud Storage Fetcher tool to download the source file."
+                    ],
                     "type": "string"
                 }
             },
@@ -4489,7 +4536,7 @@
             "type": "object"
         },
         "Policy": {
-            "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
+            "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
             "id": "Policy",
             "properties": {
                 "bindings": {
@@ -5545,6 +5592,10 @@
                         "High severity.",
                         "Critical severity."
                     ],
+                    "type": "string"
+                },
+                "extraDetails": {
+                    "description": "Occurrence-specific extra details about the vulnerability.",
                     "type": "string"
                 },
                 "fixAvailable": {

@@ -1096,11 +1096,13 @@ class V1Resource {
   /// organization policies for the provided constraint.
   ///
   /// [filter] - The expression to filter
-  /// AnalyzeOrgPoliciesResponse.org_policy_results. The only supported field is
-  /// `consolidated_policy.attached_resource`, and the only supported operator
-  /// is `=`. Example:
+  /// AnalyzeOrgPoliciesResponse.org_policy_results. Filtering is currently
+  /// available for bare literal values and the following fields: *
+  /// consolidated_policy.attached_resource * consolidated_policy.rules.enforce
+  /// When filtering by a specific field, the only supported operator is `=`.
+  /// For example, filtering by
   /// consolidated_policy.attached_resource="//cloudresourcemanager.googleapis.com/folders/001"
-  /// will return the org policy results of"folders/001".
+  /// will return all the Organization Policy results attached to "folders/001".
   ///
   /// [pageSize] - The maximum number of items to return per page. If
   /// unspecified, AnalyzeOrgPoliciesResponse.org_policy_results will contain 20
@@ -1172,17 +1174,26 @@ class V1Resource {
   /// assets for. The analysis only contains analyzed organization policies for
   /// the provided constraint.
   ///
-  /// [filter] - The expression to filter the governed assets in result. The
-  /// only supported fields for governed resources are
-  /// `governed_resource.project` and `governed_resource.folders`. The only
-  /// supported fields for governed iam policies are
-  /// `governed_iam_policy.project` and `governed_iam_policy.folders`. The only
-  /// supported operator is `=`. Example 1:
-  /// governed_resource.project="projects/12345678" filter will return all
-  /// governed resources under projects/12345678 including the project ifself,
-  /// if applicable. Example 2: governed_iam_policy.folders="folders/12345678"
-  /// filter will return all governed iam policies under folders/12345678, if
-  /// applicable.
+  /// [filter] - The expression to filter
+  /// AnalyzeOrgPolicyGovernedAssetsResponse.governed_assets. For governed
+  /// resources, filtering is currently available for bare literal values and
+  /// the following fields: * governed_resource.project *
+  /// governed_resource.folders * consolidated_policy.rules.enforce When
+  /// filtering by `governed_resource.project` or
+  /// `consolidated_policy.rules.enforce`, the only supported operator is `=`.
+  /// When filtering by `governed_resource.folders`, the supported operators are
+  /// `=` and `:`. For example, filtering by
+  /// `governed_resource.project="projects/12345678"` will return all the
+  /// governed resources under "projects/12345678", including the project itself
+  /// if applicable. For governed IAM policies, filtering is currently available
+  /// for bare literal values and the following fields: *
+  /// governed_iam_policy.project * governed_iam_policy.folders *
+  /// consolidated_policy.rules.enforce When filtering by
+  /// `governed_iam_policy.project` or `consolidated_policy.rules.enforce`, the
+  /// only supported operator is `=`. When filtering by
+  /// `governed_iam_policy.folders`, the supported operators are `=` and `:`.
+  /// For example, filtering by `governed_iam_policy.folders:"folders/12345678"`
+  /// will return all the governed IAM policies under "folders/001".
   ///
   /// [pageSize] - The maximum number of items to return per page. If
   /// unspecified, AnalyzeOrgPolicyGovernedAssetsResponse.governed_assets will
@@ -1246,10 +1257,13 @@ class V1Resource {
   /// containers for. The analysis only contains organization policies for the
   /// provided constraint.
   ///
-  /// [filter] - The expression to filter the governed containers in result. The
-  /// only supported field is `parent`, and the only supported operator is `=`.
-  /// Example: parent="//cloudresourcemanager.googleapis.com/folders/001" will
-  /// return all containers under "folders/001".
+  /// [filter] - The expression to filter
+  /// AnalyzeOrgPolicyGovernedContainersResponse.governed_containers. Filtering
+  /// is currently available for bare literal values and the following fields: *
+  /// parent * consolidated_policy.rules.enforce When filtering by a specific
+  /// field, the only supported operator is `=`. For example, filtering by
+  /// parent="//cloudresourcemanager.googleapis.com/folders/001" will return all
+  /// the containers under "folders/001".
   ///
   /// [pageSize] - The maximum number of items to return per page. If
   /// unspecified,
@@ -1657,13 +1671,10 @@ class V1Resource {
   /// [orderBy] - Optional. A comma-separated list of fields specifying the
   /// sorting order of the results. The default order is ascending. Add " DESC"
   /// after the field name to indicate descending order. Redundant space
-  /// characters are ignored. Example: "location DESC, name". Only singular
-  /// primitive fields in the response are sortable: * name * assetType *
-  /// project * displayName * description * location * createTime * updateTime *
-  /// state * parentFullResourceName * parentAssetType All the other fields such
-  /// as repeated fields (e.g., `networkTags`, `kmsKeys`), map fields (e.g.,
-  /// `labels`) and struct fields (e.g., `additionalAttributes`) are not
-  /// supported.
+  /// characters are ignored. Example: "location DESC, name". Only the following
+  /// fields in the response are sortable: * name * assetType * project *
+  /// displayName * description * location * createTime * updateTime * state *
+  /// parentFullResourceName * parentAssetType
   ///
   /// [pageSize] - Optional. The page size for search result pagination. Page
   /// size is capped at 500 even if a larger value is given. If set to zero or a
@@ -1679,55 +1690,82 @@ class V1Resource {
   /// [query] - Optional. The query statement. See
   /// [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query)
   /// for more information. If not specified or empty, it will search all the
-  /// resources within the specified `scope`. Examples: * `name:Important` to
-  /// find Google Cloud resources whose name contains "Important" as a word. *
-  /// `name=Important` to find the Google Cloud resource whose name is exactly
-  /// "Important". * `displayName:Impor*` to find Google Cloud resources whose
-  /// display name contains "Impor" as a prefix of any word in the field. *
-  /// `location:us-west*` to find Google Cloud resources whose location contains
-  /// both "us" and "west" as prefixes. * `labels:prod` to find Google Cloud
-  /// resources whose labels contain "prod" as a key or value. *
-  /// `labels.env:prod` to find Google Cloud resources that have a label "env"
-  /// and its value is "prod". * `labels.env:*` to find Google Cloud resources
-  /// that have a label "env". * `kmsKey:key` to find Google Cloud resources
-  /// encrypted with a customer-managed encryption key whose name contains "key"
-  /// as a word. This field is deprecated. Please use the `kmsKeys` field to
-  /// retrieve Cloud KMS key information. * `kmsKeys:key` to find Google Cloud
-  /// resources encrypted with customer-managed encryption keys whose name
-  /// contains the word "key". * `relationships:instance-group-1` to find Google
-  /// Cloud resources that have relationships with "instance-group-1" in the
-  /// related resource name. * `relationships:INSTANCE_TO_INSTANCEGROUP` to find
-  /// Compute Engine instances that have relationships of type
-  /// "INSTANCE_TO_INSTANCEGROUP". *
-  /// `relationships.INSTANCE_TO_INSTANCEGROUP:instance-group-1` to find Compute
-  /// Engine instances that have relationships with "instance-group-1" in the
-  /// Compute Engine instance group resource name, for relationship type
-  /// "INSTANCE_TO_INSTANCEGROUP". * `state:ACTIVE` to find Google Cloud
-  /// resources whose state contains "ACTIVE" as a word. * `NOT state:ACTIVE` to
-  /// find Google Cloud resources whose state doesn't contain "ACTIVE" as a
-  /// word. * `createTime<1609459200` to find Google Cloud resources that were
-  /// created before "2021-01-01 00:00:00 UTC". 1609459200 is the epoch
-  /// timestamp of "2021-01-01 00:00:00 UTC" in seconds. *
-  /// `updateTime>1609459200` to find Google Cloud resources that were updated
-  /// after "2021-01-01 00:00:00 UTC". 1609459200 is the epoch timestamp of
-  /// "2021-01-01 00:00:00 UTC" in seconds. * `Important` to find Google Cloud
-  /// resources that contain "Important" as a word in any of the searchable
-  /// fields. * `Impor*` to find Google Cloud resources that contain "Impor" as
-  /// a prefix of any word in any of the searchable fields. * `Important
-  /// location:(us-west1 OR global)` to find Google Cloud resources that contain
-  /// "Important" as a word in any of the searchable fields and are also located
-  /// in the "us-west1" region or the "global" location.
+  /// resources within the specified \`scope\`. Examples: * \`name:Important\`
+  /// to find Google Cloud resources whose name contains \`Important\` as a
+  /// word. * \`name=Important\` to find the Google Cloud resource whose name is
+  /// exactly \`Important\`. * \`displayName:Impor*\` to find Google Cloud
+  /// resources whose display name contains \`Impor\` as a prefix of any word in
+  /// the field. * \`location:us-west*\` to find Google Cloud resources whose
+  /// location contains both \`us\` and \`west\` as prefixes. * \`labels:prod\`
+  /// to find Google Cloud resources whose labels contain \`prod\` as a key or
+  /// value. * \`labels.env:prod\` to find Google Cloud resources that have a
+  /// label \`env\` and its value is \`prod\`. * \`labels.env:*\` to find Google
+  /// Cloud resources that have a label \`env\`. * \`tagKeys:env\` to find
+  /// Google Cloud resources that have directly attached tags where the
+  /// \[\`TagKey\`\](https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys#resource:-tagkey)
+  /// .\`namespacedName\` contains \`env\`. * \`tagValues:prod*\` to find Google
+  /// Cloud resources that have directly attached tags where the
+  /// \[\`TagValue\`\](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue)
+  /// .\`namespacedName\` contains a word prefixed by \`prod\`. *
+  /// \`tagValueIds=tagValues/123\` to find Google Cloud resources that have
+  /// directly attached tags where the
+  /// \[\`TagValue\`\](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue)
+  /// .\`name\` is exactly \`tagValues/123\`. * \`effectiveTagKeys:env\` to find
+  /// Google Cloud resources that have directly attached or inherited tags where
+  /// the
+  /// \[\`TagKey\`\](https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys#resource:-tagkey)
+  /// .\`namespacedName\` contains \`env\`. * \`effectiveTagValues:prod*\` to
+  /// find Google Cloud resources that have directly attached or inherited tags
+  /// where the
+  /// \[\`TagValue\`\](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue)
+  /// .\`namespacedName\` contains a word prefixed by \`prod\`. *
+  /// \`effectiveTagValueIds=tagValues/123\` to find Google Cloud resources that
+  /// have directly attached or inherited tags where the
+  /// \[\`TagValue\`\](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue)
+  /// .\`name\` is exactly \`tagValues/123\`. * \`kmsKey:key\` to find Google
+  /// Cloud resources encrypted with a customer-managed encryption key whose
+  /// name contains \`key\` as a word. This field is deprecated. Please use the
+  /// \`kmsKeys\` field to retrieve Cloud KMS key information. * \`kmsKeys:key\`
+  /// to find Google Cloud resources encrypted with customer-managed encryption
+  /// keys whose name contains the word \`key\`. *
+  /// \`relationships:instance-group-1\` to find Google Cloud resources that
+  /// have relationships with \`instance-group-1\` in the related resource name.
+  /// * \`relationships:INSTANCE_TO_INSTANCEGROUP\` to find Compute Engine
+  /// instances that have relationships of type \`INSTANCE_TO_INSTANCEGROUP\`. *
+  /// \`relationships.INSTANCE_TO_INSTANCEGROUP:instance-group-1\` to find
+  /// Compute Engine instances that have relationships with \`instance-group-1\`
+  /// in the Compute Engine instance group resource name, for relationship type
+  /// \`INSTANCE_TO_INSTANCEGROUP\`. * \`sccSecurityMarks.key=value\` to find
+  /// Cloud resources that are attached with security marks whose key is \`key\`
+  /// and value is \`value'. * \`sccSecurityMarks.key:*\` to find Cloud
+  /// resources that are attached with security marks whose key is \`key\`. *
+  /// \`state:ACTIVE\` to find Google Cloud resources whose state contains
+  /// \`ACTIVE\` as a word. * \`NOT state:ACTIVE\` to find Google Cloud
+  /// resources whose state doesn't contain \`ACTIVE\` as a word. *
+  /// \`createTime\<1609459200\` to find Google Cloud resources that were
+  /// created before \`2021-01-01 00:00:00 UTC\`. \`1609459200\` is the epoch
+  /// timestamp of \`2021-01-01 00:00:00 UTC\` in seconds. *
+  /// \`updateTime\>1609459200\` to find Google Cloud resources that were
+  /// updated after \`2021-01-01 00:00:00 UTC\`. \`1609459200\` is the epoch
+  /// timestamp of \`2021-01-01 00:00:00 UTC\` in seconds. * \`Important\` to
+  /// find Google Cloud resources that contain \`Important\` as a word in any of
+  /// the searchable fields. * \`Impor*\` to find Google Cloud resources that
+  /// contain \`Impor\` as a prefix of any word in any of the searchable fields.
+  /// * \`Important location:(us-west1 OR global)\` to find Google Cloud
+  /// resources that contain \`Important\` as a word in any of the searchable
+  /// fields and are also located in the \`us-west1\` region or the \`global\`
+  /// location.
   ///
   /// [readMask] - Optional. A comma-separated list of fields that you want
   /// returned in the results. The following fields are returned by default if
   /// not specified: * `name` * `assetType` * `project` * `folders` *
   /// `organization` * `displayName` * `description` * `location` * `labels` *
-  /// `networkTags` * `kmsKeys` * `createTime` * `updateTime` * `state` *
-  /// `additionalAttributes` * `parentFullResourceName` * `parentAssetType` Some
-  /// fields of large size, such as `versionedResources` and
-  /// `attachedResources`, are not returned by default, but you can specify them
-  /// in the `read_mask` parameter if you want to include them. If `"*"` is
-  /// specified, all
+  /// `tags` * `effectiveTags` * `networkTags` * `kmsKeys` * `createTime` *
+  /// `updateTime` * `state` * `additionalAttributes` * `parentFullResourceName`
+  /// * `parentAssetType` Some fields of large size, such as
+  /// `versionedResources`, `attachedResources`, `effectiveTags` etc., are not
+  /// returned by default, but you can specify them in the `read_mask` parameter
+  /// if you want to include them. If `"*"` is specified, all
   /// [available fields](https://cloud.google.com/asset-inventory/docs/reference/rest/v1/TopLevel/searchAllResources#resourcesearchresult)
   /// are returned. Examples: `"name,location"`, `"name,versionedResources"`,
   /// `"*"`. Any invalid field path will trigger INVALID_ARGUMENT error.
@@ -2875,6 +2913,49 @@ class EffectiveIamPolicy {
   core.Map<core.String, core.dynamic> toJson() => {
         if (fullResourceName != null) 'fullResourceName': fullResourceName!,
         if (policies != null) 'policies': policies!,
+      };
+}
+
+/// The effective tags and the ancestor resources from which they were
+/// inherited.
+class EffectiveTagDetails {
+  /// The
+  /// [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
+  /// of the ancestor from which an effective_tag is inherited, according to
+  /// [tag inheritance](https://cloud.google.com/resource-manager/docs/tags/tags-overview#inheritance).
+  core.String? attachedResource;
+
+  /// The effective tags inherited from the attached_resource.
+  ///
+  /// Note that tags with the same key but different values may attach to
+  /// resources at a different hierarchy levels. The lower hierarchy tag value
+  /// will overwrite the higher hierarchy tag value of the same tag key. In this
+  /// case, the tag value at the higher hierarchy level will be removed. For
+  /// more information, see
+  /// [tag inheritance](https://cloud.google.com/resource-manager/docs/tags/tags-overview#inheritance).
+  core.List<Tag>? effectiveTags;
+
+  EffectiveTagDetails({
+    this.attachedResource,
+    this.effectiveTags,
+  });
+
+  EffectiveTagDetails.fromJson(core.Map json_)
+      : this(
+          attachedResource: json_.containsKey('attachedResource')
+              ? json_['attachedResource'] as core.String
+              : null,
+          effectiveTags: json_.containsKey('effectiveTags')
+              ? (json_['effectiveTags'] as core.List)
+                  .map((value) => Tag.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attachedResource != null) 'attachedResource': attachedResource!,
+        if (effectiveTags != null) 'effectiveTags': effectiveTags!,
       };
 }
 
@@ -4575,6 +4656,13 @@ class GoogleIdentityAccesscontextmanagerV1Condition {
   /// "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
   core.List<core.String>? requiredAccessLevels;
 
+  /// The request must originate from one of the provided VPC networks in Google
+  /// Cloud.
+  ///
+  /// Cannot specify this field together with `ip_subnetworks`.
+  core.List<GoogleIdentityAccesscontextmanagerV1VpcNetworkSource>?
+      vpcNetworkSources;
+
   GoogleIdentityAccesscontextmanagerV1Condition({
     this.devicePolicy,
     this.ipSubnetworks,
@@ -4582,6 +4670,7 @@ class GoogleIdentityAccesscontextmanagerV1Condition {
     this.negate,
     this.regions,
     this.requiredAccessLevels,
+    this.vpcNetworkSources,
   });
 
   GoogleIdentityAccesscontextmanagerV1Condition.fromJson(core.Map json_)
@@ -4612,6 +4701,14 @@ class GoogleIdentityAccesscontextmanagerV1Condition {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          vpcNetworkSources: json_.containsKey('vpcNetworkSources')
+              ? (json_['vpcNetworkSources'] as core.List)
+                  .map((value) =>
+                      GoogleIdentityAccesscontextmanagerV1VpcNetworkSource
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4622,6 +4719,7 @@ class GoogleIdentityAccesscontextmanagerV1Condition {
         if (regions != null) 'regions': regions!,
         if (requiredAccessLevels != null)
           'requiredAccessLevels': requiredAccessLevels!,
+        if (vpcNetworkSources != null) 'vpcNetworkSources': vpcNetworkSources!,
       };
 }
 
@@ -4745,7 +4843,84 @@ class GoogleIdentityAccesscontextmanagerV1DevicePolicy {
 /// if the destination of the request is also protected by a ServicePerimeter,
 /// then that ServicePerimeter must have an IngressPolicy which allows access in
 /// order for this request to succeed.
-typedef GoogleIdentityAccesscontextmanagerV1EgressFrom = $EgressFrom;
+class GoogleIdentityAccesscontextmanagerV1EgressFrom {
+  /// A list of identities that are allowed access through this
+  /// \[EgressPolicy\].
+  ///
+  /// Should be in the format of email address. The email address should
+  /// represent individual user or service account only.
+  core.List<core.String>? identities;
+
+  /// Specifies the type of identities that are allowed access to outside the
+  /// perimeter.
+  ///
+  /// If left unspecified, then members of `identities` field will be allowed
+  /// access.
+  /// Possible string values are:
+  /// - "IDENTITY_TYPE_UNSPECIFIED" : No blanket identity group specified.
+  /// - "ANY_IDENTITY" : Authorize access from all identities outside the
+  /// perimeter.
+  /// - "ANY_USER_ACCOUNT" : Authorize access from all human users outside the
+  /// perimeter.
+  /// - "ANY_SERVICE_ACCOUNT" : Authorize access from all service accounts
+  /// outside the perimeter.
+  core.String? identityType;
+
+  /// Whether to enforce traffic restrictions based on `sources` field.
+  ///
+  /// If the `sources` fields is non-empty, then this field must be set to
+  /// `SOURCE_RESTRICTION_ENABLED`.
+  /// Possible string values are:
+  /// - "SOURCE_RESTRICTION_UNSPECIFIED" : Enforcement preference unspecified,
+  /// will not enforce traffic restrictions based on `sources` in EgressFrom.
+  /// - "SOURCE_RESTRICTION_ENABLED" : Enforcement preference enabled, traffic
+  /// restrictions will be enforced based on `sources` in EgressFrom.
+  /// - "SOURCE_RESTRICTION_DISABLED" : Enforcement preference disabled, will
+  /// not enforce traffic restrictions based on `sources` in EgressFrom.
+  core.String? sourceRestriction;
+
+  /// Sources that this EgressPolicy authorizes access from.
+  ///
+  /// If this field is not empty, then `source_restriction` must be set to
+  /// `SOURCE_RESTRICTION_ENABLED`.
+  core.List<GoogleIdentityAccesscontextmanagerV1EgressSource>? sources;
+
+  GoogleIdentityAccesscontextmanagerV1EgressFrom({
+    this.identities,
+    this.identityType,
+    this.sourceRestriction,
+    this.sources,
+  });
+
+  GoogleIdentityAccesscontextmanagerV1EgressFrom.fromJson(core.Map json_)
+      : this(
+          identities: json_.containsKey('identities')
+              ? (json_['identities'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          identityType: json_.containsKey('identityType')
+              ? json_['identityType'] as core.String
+              : null,
+          sourceRestriction: json_.containsKey('sourceRestriction')
+              ? json_['sourceRestriction'] as core.String
+              : null,
+          sources: json_.containsKey('sources')
+              ? (json_['sources'] as core.List)
+                  .map((value) =>
+                      GoogleIdentityAccesscontextmanagerV1EgressSource.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (identities != null) 'identities': identities!,
+        if (identityType != null) 'identityType': identityType!,
+        if (sourceRestriction != null) 'sourceRestriction': sourceRestriction!,
+        if (sources != null) 'sources': sources!,
+      };
+}
 
 /// Policy for egress from perimeter.
 ///
@@ -4792,6 +4967,10 @@ class GoogleIdentityAccesscontextmanagerV1EgressPolicy {
         if (egressTo != null) 'egressTo': egressTo!,
       };
 }
+
+/// The source that EgressPolicy authorizes access from inside the
+/// ServicePerimeter to somewhere outside the ServicePerimeter boundaries.
+typedef GoogleIdentityAccesscontextmanagerV1EgressSource = $EgressSource;
 
 /// Defines the conditions under which an EgressPolicy matches a request.
 ///
@@ -5253,6 +5432,31 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
 /// Specifies how APIs are allowed to communicate within the Service Perimeter.
 typedef GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices
     = $VpcAccessibleServices;
+
+/// The originating network source in Google Cloud.
+class GoogleIdentityAccesscontextmanagerV1VpcNetworkSource {
+  /// Sub-segment ranges of a VPC network.
+  GoogleIdentityAccesscontextmanagerV1VpcSubNetwork? vpcSubnetwork;
+
+  GoogleIdentityAccesscontextmanagerV1VpcNetworkSource({
+    this.vpcSubnetwork,
+  });
+
+  GoogleIdentityAccesscontextmanagerV1VpcNetworkSource.fromJson(core.Map json_)
+      : this(
+          vpcSubnetwork: json_.containsKey('vpcSubnetwork')
+              ? GoogleIdentityAccesscontextmanagerV1VpcSubNetwork.fromJson(
+                  json_['vpcSubnetwork'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (vpcSubnetwork != null) 'vpcSubnetwork': vpcSubnetwork!,
+      };
+}
+
+/// Sub-segment ranges inside of a VPC Network.
+typedef GoogleIdentityAccesscontextmanagerV1VpcSubNetwork = $VpcSubNetwork;
 
 /// An analysis message to group the query and results.
 class IamPolicyAnalysis {
@@ -6130,7 +6334,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -6464,23 +6668,23 @@ class Permissions {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -7300,6 +7504,20 @@ class ResourceSearchResult {
   /// Instance"`
   core.String? displayName;
 
+  /// The effective tags on this resource.
+  ///
+  /// All of the tags that are both attached to and inherited by a resource are
+  /// collectively called the effective tags. For more information, see
+  /// [tag inheritance](https://cloud.google.com/resource-manager/docs/tags/tags-overview#inheritance).
+  /// To search against the `effective_tags`: * Use a field query. Example: -
+  /// `effectiveTagKeys:"123456789/env*"` - `effectiveTagKeys="123456789/env"` -
+  /// `effectiveTagKeys:"env"` - `effectiveTagValues:"env"` -
+  /// `effectiveTagValues:"env/prod"` -
+  /// `effectiveTagValues:"123456789/env/prod*"` -
+  /// `effectiveTagValues="123456789/env/prod"` -
+  /// `effectiveTagValueIds="tagValues/456"`
+  core.List<EffectiveTagDetails>? effectiveTags;
+
   /// The folder(s) that this resource belongs to, in the form of
   /// folders/{FOLDER_NUMBER}.
   ///
@@ -7420,6 +7638,18 @@ class ResourceSearchResult {
   /// [supported relationship types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#supported_relationship_types).
   core.Map<core.String, RelatedResources>? relationships;
 
+  /// The actual content of Security Command Center security marks associated
+  /// with the asset.
+  ///
+  /// Note that both staging & prod SecurityMarks are attached on prod
+  /// resources. In CAS preprod/prod, both staging & prod SecurityMarks are
+  /// ingested and returned in the following `security_marks` map. In that case,
+  /// the prefix "staging." will be added to the keys of all the staging marks.
+  /// To search against SCC SecurityMarks field: * Use a field query: - query by
+  /// a given key value pair. Example: `sccSecurityMarks.foo=bar` - query by a
+  /// given key's existence. Example: `sccSecurityMarks.foo:*`
+  core.Map<core.String, core.String>? sccSecurityMarks;
+
   /// The state of this resource.
   ///
   /// Different resources types have different state definitions that are mapped
@@ -7437,27 +7667,51 @@ class ResourceSearchResult {
   /// `state:RUNNING` * Use a free text query. Example: `RUNNING`
   core.String? state;
 
-  /// TagKey namespaced names, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}.
+  /// This field is only present for the purpose of backward compatibility.
   ///
-  /// To search against the `tagKeys`: * Use a field query. Example: -
-  /// `tagKeys:"123456789/env*"` - `tagKeys="123456789/env"` - `tagKeys:"env"` *
-  /// Use a free text query. Example: - `env`
+  /// Please use the `tags` field instead. TagKey namespaced names, in the
+  /// format of {ORG_ID}/{TAG_KEY_SHORT_NAME}. To search against the `tagKeys`:
+  /// * Use a field query. Example: - `tagKeys:"123456789/env*"` -
+  /// `tagKeys="123456789/env"` - `tagKeys:"env"` * Use a free text query.
+  /// Example: - `env`
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? tagKeys;
 
-  /// TagValue IDs, in the format of tagValues/{TAG_VALUE_ID}.
+  /// This field is only present for the purpose of backward compatibility.
   ///
-  /// To search against the `tagValueIds`: * Use a field query. Example: -
-  /// `tagValueIds="tagValues/456"`
+  /// Please use the `tags` field instead. TagValue IDs, in the format of
+  /// tagValues/{TAG_VALUE_ID}. To search against the `tagValueIds`: * Use a
+  /// field query. Example: - `tagValueIds="tagValues/456"` * Use a free text
+  /// query. Example: - `456`
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? tagValueIds;
 
-  /// TagValue namespaced names, in the format of
-  /// {ORG_ID}/{TAG_KEY_SHORT_NAME}/{TAG_VALUE_SHORT_NAME}.
+  /// This field is only present for the purpose of backward compatibility.
   ///
-  /// To search against the `tagValues`: * Use a field query. Example: -
-  /// `tagValues:"env"` - `tagValues:"env/prod"` -
-  /// `tagValues:"123456789/env/prod*"` - `tagValues="123456789/env/prod"` * Use
-  /// a free text query. Example: - `prod`
+  /// Please use the `tags` field instead. TagValue namespaced names, in the
+  /// format of {ORG_ID}/{TAG_KEY_SHORT_NAME}/{TAG_VALUE_SHORT_NAME}. To search
+  /// against the `tagValues`: * Use a field query. Example: - `tagValues:"env"`
+  /// - `tagValues:"env/prod"` - `tagValues:"123456789/env/prod*"` -
+  /// `tagValues="123456789/env/prod"` * Use a free text query. Example: -
+  /// `prod`
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? tagValues;
+
+  /// The tags directly attached to this resource.
+  ///
+  /// To search against the `tags`: * Use a field query. Example: -
+  /// `tagKeys:"123456789/env*"` - `tagKeys="123456789/env"` - `tagKeys:"env"` -
+  /// `tagValues:"env"` - `tagValues:"env/prod"` -
+  /// `tagValues:"123456789/env/prod*"` - `tagValues="123456789/env/prod"` -
+  /// `tagValueIds="tagValues/456"` * Use a free text query. Example: -
+  /// `env/prod`
+  core.List<Tag>? tags;
 
   /// The last update timestamp of this resource, at which the resource was last
   /// modified or deleted.
@@ -7486,6 +7740,7 @@ class ResourceSearchResult {
     this.createTime,
     this.description,
     this.displayName,
+    this.effectiveTags,
     this.folders,
     this.kmsKey,
     this.kmsKeys,
@@ -7498,10 +7753,12 @@ class ResourceSearchResult {
     this.parentFullResourceName,
     this.project,
     this.relationships,
+    this.sccSecurityMarks,
     this.state,
     this.tagKeys,
     this.tagValueIds,
     this.tagValues,
+    this.tags,
     this.updateTime,
     this.versionedResources,
   });
@@ -7529,6 +7786,12 @@ class ResourceSearchResult {
               : null,
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
+              : null,
+          effectiveTags: json_.containsKey('effectiveTags')
+              ? (json_['effectiveTags'] as core.List)
+                  .map((value) => EffectiveTagDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           folders: json_.containsKey('folders')
               ? (json_['folders'] as core.List)
@@ -7582,6 +7845,16 @@ class ResourceSearchResult {
                   ),
                 )
               : null,
+          sccSecurityMarks: json_.containsKey('sccSecurityMarks')
+              ? (json_['sccSecurityMarks']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           tagKeys: json_.containsKey('tagKeys')
@@ -7597,6 +7870,12 @@ class ResourceSearchResult {
           tagValues: json_.containsKey('tagValues')
               ? (json_['tagValues'] as core.List)
                   .map((value) => value as core.String)
+                  .toList()
+              : null,
+          tags: json_.containsKey('tags')
+              ? (json_['tags'] as core.List)
+                  .map((value) => Tag.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           updateTime: json_.containsKey('updateTime')
@@ -7618,6 +7897,7 @@ class ResourceSearchResult {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
+        if (effectiveTags != null) 'effectiveTags': effectiveTags!,
         if (folders != null) 'folders': folders!,
         if (kmsKey != null) 'kmsKey': kmsKey!,
         if (kmsKeys != null) 'kmsKeys': kmsKeys!,
@@ -7631,10 +7911,12 @@ class ResourceSearchResult {
           'parentFullResourceName': parentFullResourceName!,
         if (project != null) 'project': project!,
         if (relationships != null) 'relationships': relationships!,
+        if (sccSecurityMarks != null) 'sccSecurityMarks': sccSecurityMarks!,
         if (state != null) 'state': state!,
         if (tagKeys != null) 'tagKeys': tagKeys!,
         if (tagValueIds != null) 'tagValueIds': tagValueIds!,
         if (tagValues != null) 'tagValues': tagValues!,
+        if (tags != null) 'tags': tags!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (versionedResources != null)
           'versionedResources': versionedResources!,
@@ -8044,6 +8326,45 @@ class TableSchema {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fields != null) 'fields': fields!,
+      };
+}
+
+/// The key and value for a
+/// [tag](https://cloud.google.com/resource-manager/docs/tags/tags-overview),
+class Tag {
+  /// TagKey namespaced name, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}.
+  core.String? tagKey;
+
+  /// TagValue namespaced name, in the format of
+  /// {ORG_ID}/{TAG_KEY_SHORT_NAME}/{TAG_VALUE_SHORT_NAME}.
+  core.String? tagValue;
+
+  /// TagValue ID, in the format of tagValues/{TAG_VALUE_ID}.
+  core.String? tagValueId;
+
+  Tag({
+    this.tagKey,
+    this.tagValue,
+    this.tagValueId,
+  });
+
+  Tag.fromJson(core.Map json_)
+      : this(
+          tagKey: json_.containsKey('tagKey')
+              ? json_['tagKey'] as core.String
+              : null,
+          tagValue: json_.containsKey('tagValue')
+              ? json_['tagValue'] as core.String
+              : null,
+          tagValueId: json_.containsKey('tagValueId')
+              ? json_['tagValueId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (tagKey != null) 'tagKey': tagKey!,
+        if (tagValue != null) 'tagValue': tagValue!,
+        if (tagValueId != null) 'tagValueId': tagValueId!,
       };
 }
 

@@ -980,6 +980,7 @@ api.InstancePolicy buildInstancePolicy() {
     o.machineType = 'foo';
     o.minCpuPlatform = 'foo';
     o.provisioningModel = 'foo';
+    o.reservation = 'foo';
   }
   buildCounterInstancePolicy--;
   return o;
@@ -1001,6 +1002,10 @@ void checkInstancePolicy(api.InstancePolicy o) {
     );
     unittest.expect(
       o.provisioningModel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.reservation!,
       unittest.equals('foo'),
     );
   }
@@ -1934,6 +1939,7 @@ api.ReportAgentStateResponse buildReportAgentStateResponse() {
     o.defaultReportInterval = 'foo';
     o.minReportInterval = 'foo';
     o.tasks = buildUnnamed33();
+    o.useBatchMonitoredResource = true;
   }
   buildCounterReportAgentStateResponse--;
   return o;
@@ -1951,6 +1957,7 @@ void checkReportAgentStateResponse(api.ReportAgentStateResponse o) {
       unittest.equals('foo'),
     );
     checkUnnamed33(o.tasks!);
+    unittest.expect(o.useBatchMonitoredResource!, unittest.isTrue);
   }
   buildCounterReportAgentStateResponse--;
 }
@@ -1981,6 +1988,7 @@ api.Runnable buildRunnable() {
     o.background = true;
     o.barrier = buildBarrier();
     o.container = buildContainer();
+    o.displayName = 'foo';
     o.environment = buildEnvironment();
     o.ignoreExitStatus = true;
     o.labels = buildUnnamed34();
@@ -1998,6 +2006,10 @@ void checkRunnable(api.Runnable o) {
     unittest.expect(o.background!, unittest.isTrue);
     checkBarrier(o.barrier!);
     checkContainer(o.container!);
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
     checkEnvironment(o.environment!);
     unittest.expect(o.ignoreExitStatus!, unittest.isTrue);
     checkUnnamed34(o.labels!);

@@ -1227,15 +1227,7 @@ class FieldValueChange {
 }
 
 /// This item is deprecated; please see `DriveFile` instead.
-class File {
-  File();
-
-  File.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map json_);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
-}
+typedef File = $Shared04;
 
 /// A comment on a file.
 class FileComment {

@@ -111,6 +111,7 @@ api.ConnectionInfo buildConnectionInfo() {
   buildCounterConnectionInfo++;
   if (buildCounterConnectionInfo < 3) {
     o.endpointInfo = buildEndpointInfo();
+    o.serviceAttachment = 'foo';
   }
   buildCounterConnectionInfo--;
   return o;
@@ -120,6 +121,10 @@ void checkConnectionInfo(api.ConnectionInfo o) {
   buildCounterConnectionInfo++;
   if (buildCounterConnectionInfo < 3) {
     checkEndpointInfo(o.endpointInfo!);
+    unittest.expect(
+      o.serviceAttachment!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterConnectionInfo--;
 }
@@ -159,6 +164,7 @@ api.EthereumDetails buildEthereumDetails() {
     o.additionalEndpoints = buildEthereumEndpoints();
     o.apiEnableAdmin = true;
     o.apiEnableDebug = true;
+    o.beaconFeeRecipient = 'foo';
     o.consensusClient = 'foo';
     o.executionClient = 'foo';
     o.gethDetails = buildGethDetails();
@@ -175,6 +181,10 @@ void checkEthereumDetails(api.EthereumDetails o) {
     checkEthereumEndpoints(o.additionalEndpoints!);
     unittest.expect(o.apiEnableAdmin!, unittest.isTrue);
     unittest.expect(o.apiEnableDebug!, unittest.isTrue);
+    unittest.expect(
+      o.beaconFeeRecipient!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.consensusClient!,
       unittest.equals('foo'),

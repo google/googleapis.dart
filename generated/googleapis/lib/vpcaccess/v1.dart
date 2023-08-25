@@ -141,8 +141,9 @@ class ProjectsLocationsConnectorsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project and location in which the configuration
-  /// should be created, specified in the format `projects / * /locations / * `.
+  /// [parent] - Required. The project ID and location in which the
+  /// configuration should be created, specified in the format `projects / *
+  /// /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [connectorId] - Required. The ID to use for this connector.
@@ -467,7 +468,8 @@ class Connector {
 
   /// Maximum throughput of the connector in Mbps.
   ///
-  /// Default is 300, max is 1000.
+  /// Default is 300, max is 1000. If both max-throughput and max-instances are
+  /// provided, max-instances takes precedence over max-throughput.
   core.int? maxThroughput;
 
   /// Minimum value of instances in autoscaling group underlying the connector.
@@ -475,7 +477,8 @@ class Connector {
 
   /// Minimum throughput of the connector in Mbps.
   ///
-  /// Default and min is 200.
+  /// Default and min is 200. If both min-throughput and min-instances are
+  /// provided, min-instances takes precedence over min-throughput.
   core.int? minThroughput;
 
   /// The resource name in the format `projects / * /locations / * /connectors /
@@ -695,7 +698,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard

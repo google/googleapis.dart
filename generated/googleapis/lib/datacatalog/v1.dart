@@ -4357,6 +4357,7 @@ class GoogleCloudDatacatalogV1DataplexExternalTable {
   /// - "CLOUD_BIGTABLE" : Cloud Bigtable
   /// - "CLOUD_SQL" : Cloud Sql
   /// - "LOOKER" : Looker
+  /// - "VERTEX_AI" : Vertex AI
   core.String? system;
 
   GoogleCloudDatacatalogV1DataplexExternalTable({
@@ -4509,6 +4510,31 @@ class GoogleCloudDatacatalogV1DataplexTableSpec {
       };
 }
 
+/// Specification that applies to a dataset.
+///
+/// Valid only for entries with the `DATASET` type.
+class GoogleCloudDatacatalogV1DatasetSpec {
+  /// Vertex AI Dataset specific fields
+  GoogleCloudDatacatalogV1VertexDatasetSpec? vertexDatasetSpec;
+
+  GoogleCloudDatacatalogV1DatasetSpec({
+    this.vertexDatasetSpec,
+  });
+
+  GoogleCloudDatacatalogV1DatasetSpec.fromJson(core.Map json_)
+      : this(
+          vertexDatasetSpec: json_.containsKey('vertexDatasetSpec')
+              ? GoogleCloudDatacatalogV1VertexDatasetSpec.fromJson(
+                  json_['vertexDatasetSpec']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (vertexDatasetSpec != null) 'vertexDatasetSpec': vertexDatasetSpec!,
+      };
+}
+
 /// Entry metadata.
 ///
 /// A Data Catalog entry represents another resource in Google Cloud Platform
@@ -4559,6 +4585,9 @@ class GoogleCloudDatacatalogV1Entry {
   /// Valid only for entries with the `TABLE` or `EXPLORE` type.
   GoogleCloudDatacatalogV1DatabaseTableSpec? databaseTableSpec;
 
+  /// Specification that applies to a dataset.
+  GoogleCloudDatacatalogV1DatasetSpec? datasetSpec;
+
   /// Entry description that can consist of several sentences or paragraphs that
   /// describe entry contents.
   ///
@@ -4607,6 +4636,7 @@ class GoogleCloudDatacatalogV1Entry {
   /// - "CLOUD_BIGTABLE" : Cloud Bigtable
   /// - "CLOUD_SQL" : Cloud Sql
   /// - "LOOKER" : Looker
+  /// - "VERTEX_AI" : Vertex AI
   core.String? integratedSystem;
 
   /// Cloud labels attached to the entry.
@@ -4634,6 +4664,9 @@ class GoogleCloudDatacatalogV1Entry {
   ///
   /// Only settable when `user_specified_system` is equal to `LOOKER`
   GoogleCloudDatacatalogV1LookerSystemSpec? lookerSystemSpec;
+
+  /// Model specification.
+  GoogleCloudDatacatalogV1ModelSpec? modelSpec;
 
   /// The resource name of an entry in URL format.
   ///
@@ -4737,6 +4770,7 @@ class GoogleCloudDatacatalogV1Entry {
     this.dataSource,
     this.dataSourceConnectionSpec,
     this.databaseTableSpec,
+    this.datasetSpec,
     this.description,
     this.displayName,
     this.filesetSpec,
@@ -4746,6 +4780,7 @@ class GoogleCloudDatacatalogV1Entry {
     this.labels,
     this.linkedResource,
     this.lookerSystemSpec,
+    this.modelSpec,
     this.name,
     this.personalDetails,
     this.routineSpec,
@@ -4796,6 +4831,10 @@ class GoogleCloudDatacatalogV1Entry {
                   json_['databaseTableSpec']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          datasetSpec: json_.containsKey('datasetSpec')
+              ? GoogleCloudDatacatalogV1DatasetSpec.fromJson(
+                  json_['datasetSpec'] as core.Map<core.String, core.dynamic>)
+              : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
@@ -4832,6 +4871,10 @@ class GoogleCloudDatacatalogV1Entry {
               ? GoogleCloudDatacatalogV1LookerSystemSpec.fromJson(
                   json_['lookerSystemSpec']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+          modelSpec: json_.containsKey('modelSpec')
+              ? GoogleCloudDatacatalogV1ModelSpec.fromJson(
+                  json_['modelSpec'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           personalDetails: json_.containsKey('personalDetails')
@@ -4885,6 +4928,7 @@ class GoogleCloudDatacatalogV1Entry {
         if (dataSourceConnectionSpec != null)
           'dataSourceConnectionSpec': dataSourceConnectionSpec!,
         if (databaseTableSpec != null) 'databaseTableSpec': databaseTableSpec!,
+        if (datasetSpec != null) 'datasetSpec': datasetSpec!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (filesetSpec != null) 'filesetSpec': filesetSpec!,
@@ -4895,6 +4939,7 @@ class GoogleCloudDatacatalogV1Entry {
         if (labels != null) 'labels': labels!,
         if (linkedResource != null) 'linkedResource': linkedResource!,
         if (lookerSystemSpec != null) 'lookerSystemSpec': lookerSystemSpec!,
+        if (modelSpec != null) 'modelSpec': modelSpec!,
         if (name != null) 'name': name!,
         if (personalDetails != null) 'personalDetails': personalDetails!,
         if (routineSpec != null) 'routineSpec': routineSpec!,
@@ -5610,6 +5655,31 @@ class GoogleCloudDatacatalogV1LookerSystemSpec {
         if (parentViewDisplayName != null)
           'parentViewDisplayName': parentViewDisplayName!,
         if (parentViewId != null) 'parentViewId': parentViewId!,
+      };
+}
+
+/// Specification that applies to a model.
+///
+/// Valid only for entries with the `MODEL` type.
+class GoogleCloudDatacatalogV1ModelSpec {
+  /// Specification for vertex model resources.
+  GoogleCloudDatacatalogV1VertexModelSpec? vertexModelSpec;
+
+  GoogleCloudDatacatalogV1ModelSpec({
+    this.vertexModelSpec,
+  });
+
+  GoogleCloudDatacatalogV1ModelSpec.fromJson(core.Map json_)
+      : this(
+          vertexModelSpec: json_.containsKey('vertexModelSpec')
+              ? GoogleCloudDatacatalogV1VertexModelSpec.fromJson(
+                  json_['vertexModelSpec']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (vertexModelSpec != null) 'vertexModelSpec': vertexModelSpec!,
       };
 }
 
@@ -6475,6 +6545,7 @@ class GoogleCloudDatacatalogV1SearchCatalogResult {
   /// - "CLOUD_BIGTABLE" : Cloud Bigtable
   /// - "CLOUD_SQL" : Cloud Sql
   /// - "LOOKER" : Looker
+  /// - "VERTEX_AI" : Vertex AI
   core.String? integratedSystem;
 
   /// The full name of the Google Cloud resource the entry belongs to.
@@ -7535,6 +7606,156 @@ class GoogleCloudDatacatalogV1UsageStats {
       };
 }
 
+/// Specification for vertex dataset resources.
+class GoogleCloudDatacatalogV1VertexDatasetSpec {
+  /// The number of DataItems in this Dataset.
+  ///
+  /// Only apply for non-structured Dataset.
+  core.String? dataItemCount;
+
+  /// Type of the dataset.
+  /// Possible string values are:
+  /// - "DATA_TYPE_UNSPECIFIED" : Should not be used.
+  /// - "TABLE" : Structured data dataset.
+  /// - "IMAGE" : Image dataset which supports ImageClassification,
+  /// ImageObjectDetection and ImageSegmentation problems.
+  /// - "TEXT" : Document dataset which supports TextClassification,
+  /// TextExtraction and TextSentiment problems.
+  /// - "VIDEO" : Video dataset which supports VideoClassification,
+  /// VideoObjectTracking and VideoActionRecognition problems.
+  /// - "CONVERSATION" : Conversation dataset which supports conversation
+  /// problems.
+  /// - "TIME_SERIES" : TimeSeries dataset.
+  /// - "DOCUMENT" : Document dataset which supports DocumentAnnotation
+  /// problems.
+  /// - "TEXT_TO_SPEECH" : TextToSpeech dataset which supports TextToSpeech
+  /// problems.
+  /// - "TRANSLATION" : Translation dataset which supports Translation problems.
+  /// - "STORE_VISION" : Store Vision dataset which is used for HITL
+  /// integration.
+  /// - "ENTERPRISE_KNOWLEDGE_GRAPH" : Enterprise Knowledge Graph dataset which
+  /// is used for HITL labeling integration.
+  /// - "TEXT_PROMPT" : Text prompt dataset which supports Large Language
+  /// Models.
+  core.String? dataType;
+
+  GoogleCloudDatacatalogV1VertexDatasetSpec({
+    this.dataItemCount,
+    this.dataType,
+  });
+
+  GoogleCloudDatacatalogV1VertexDatasetSpec.fromJson(core.Map json_)
+      : this(
+          dataItemCount: json_.containsKey('dataItemCount')
+              ? json_['dataItemCount'] as core.String
+              : null,
+          dataType: json_.containsKey('dataType')
+              ? json_['dataType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataItemCount != null) 'dataItemCount': dataItemCount!,
+        if (dataType != null) 'dataType': dataType!,
+      };
+}
+
+/// Detail description of the source information of a Vertex model.
+class GoogleCloudDatacatalogV1VertexModelSourceInfo {
+  /// If this Model is copy of another Model.
+  ///
+  /// If true then source_type pertains to the original.
+  core.bool? copy;
+
+  /// Type of the model source.
+  /// Possible string values are:
+  /// - "MODEL_SOURCE_TYPE_UNSPECIFIED" : Should not be used.
+  /// - "AUTOML" : The Model is uploaded by automl training pipeline.
+  /// - "CUSTOM" : The Model is uploaded by user or custom training pipeline.
+  /// - "BQML" : The Model is registered and sync'ed from BigQuery ML.
+  /// - "MODEL_GARDEN" : The Model is saved or tuned from Model Garden.
+  core.String? sourceType;
+
+  GoogleCloudDatacatalogV1VertexModelSourceInfo({
+    this.copy,
+    this.sourceType,
+  });
+
+  GoogleCloudDatacatalogV1VertexModelSourceInfo.fromJson(core.Map json_)
+      : this(
+          copy: json_.containsKey('copy') ? json_['copy'] as core.bool : null,
+          sourceType: json_.containsKey('sourceType')
+              ? json_['sourceType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (copy != null) 'copy': copy!,
+        if (sourceType != null) 'sourceType': sourceType!,
+      };
+}
+
+/// Specification for vertex model resources.
+class GoogleCloudDatacatalogV1VertexModelSpec {
+  /// URI of the Docker image to be used as the custom container for serving
+  /// predictions.
+  core.String? containerImageUri;
+
+  /// User provided version aliases so that a model version can be referenced
+  /// via alias
+  core.List<core.String>? versionAliases;
+
+  /// The description of this version.
+  core.String? versionDescription;
+
+  /// The version ID of the model.
+  core.String? versionId;
+
+  /// Source of a Vertex model.
+  GoogleCloudDatacatalogV1VertexModelSourceInfo? vertexModelSourceInfo;
+
+  GoogleCloudDatacatalogV1VertexModelSpec({
+    this.containerImageUri,
+    this.versionAliases,
+    this.versionDescription,
+    this.versionId,
+    this.vertexModelSourceInfo,
+  });
+
+  GoogleCloudDatacatalogV1VertexModelSpec.fromJson(core.Map json_)
+      : this(
+          containerImageUri: json_.containsKey('containerImageUri')
+              ? json_['containerImageUri'] as core.String
+              : null,
+          versionAliases: json_.containsKey('versionAliases')
+              ? (json_['versionAliases'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          versionDescription: json_.containsKey('versionDescription')
+              ? json_['versionDescription'] as core.String
+              : null,
+          versionId: json_.containsKey('versionId')
+              ? json_['versionId'] as core.String
+              : null,
+          vertexModelSourceInfo: json_.containsKey('vertexModelSourceInfo')
+              ? GoogleCloudDatacatalogV1VertexModelSourceInfo.fromJson(
+                  json_['vertexModelSourceInfo']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (containerImageUri != null) 'containerImageUri': containerImageUri!,
+        if (versionAliases != null) 'versionAliases': versionAliases!,
+        if (versionDescription != null)
+          'versionDescription': versionDescription!,
+        if (versionId != null) 'versionId': versionId!,
+        if (vertexModelSourceInfo != null)
+          'vertexModelSourceInfo': vertexModelSourceInfo!,
+      };
+}
+
 /// Table view specification.
 class GoogleCloudDatacatalogV1ViewSpec {
   /// The query that defines the table view.
@@ -7620,7 +7841,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -7680,23 +7901,23 @@ class Operation {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Associates a list of `members`, or principals, with a `role`.
   ///

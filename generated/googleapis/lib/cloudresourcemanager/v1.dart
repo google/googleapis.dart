@@ -874,7 +874,7 @@ class OrganizationsResource {
   /// This method returns Organizations in an unspecified order. New
   /// Organizations do not necessarily appear at the end of the results. Search
   /// will only return organizations on which the user has the permission
-  /// `resourcemanager.organizations.get`
+  /// `resourcemanager.organizations.get` or has super admin privileges.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1600,19 +1600,20 @@ class ProjectsResource {
   /// user cannot be granted the owner role using `setIamPolicy()`. The user
   /// must be granted the owner role using the Cloud Platform Console and must
   /// explicitly accept the invitation. + You can only grant ownership of a
-  /// project to a member by using the GCP Console. Inviting a member will
-  /// deliver an invitation email that they must accept. An invitation email is
-  /// not generated if you are granting a role other than owner, or if both the
-  /// member you are inviting and the project are part of your organization. +
-  /// If the project is not part of an organization, there must be at least one
-  /// owner who has accepted the Terms of Service (ToS) agreement in the policy.
-  /// Calling `setIamPolicy()` to remove the last ToS-accepted owner from the
-  /// policy will fail. This restriction also applies to legacy projects that no
-  /// longer have owners who have accepted the ToS. Edits to IAM policies will
-  /// be rejected until the lack of a ToS-accepting owner is rectified. If the
-  /// project is part of an organization, you can remove all owners, potentially
-  /// making the organization inaccessible. Authorization requires the Google
-  /// IAM permission `resourcemanager.projects.setIamPolicy` on the project
+  /// project to a member by using the Google Cloud console. Inviting a member
+  /// will deliver an invitation email that they must accept. An invitation
+  /// email is not generated if you are granting a role other than owner, or if
+  /// both the member you are inviting and the project are part of your
+  /// organization. + If the project is not part of an organization, there must
+  /// be at least one owner who has accepted the Terms of Service (ToS)
+  /// agreement in the policy. Calling `setIamPolicy()` to remove the last
+  /// ToS-accepted owner from the policy will fail. This restriction also
+  /// applies to legacy projects that no longer have owners who have accepted
+  /// the ToS. Edits to IAM policies will be rejected until the lack of a
+  /// ToS-accepting owner is rectified. If the project is part of an
+  /// organization, you can remove all owners, potentially making the
+  /// organization inaccessible. Authorization requires the Google IAM
+  /// permission `resourcemanager.projects.setIamPolicy` on the project
   ///
   /// [request] - The metadata request object.
   ///
@@ -2278,7 +2279,7 @@ typedef Lien = $Lien;
 
 /// The request sent to the `ListAvailableOrgPolicyConstraints` method on the
 /// project, folder, or organization.
-typedef ListAvailableOrgPolicyConstraintsRequest = $Request04;
+typedef ListAvailableOrgPolicyConstraintsRequest = $Request05;
 
 /// The response returned from the `ListAvailableOrgPolicyConstraints` method.
 ///
@@ -2389,7 +2390,7 @@ class ListLiensResponse {
 }
 
 /// The request sent to the ListOrgPolicies method.
-typedef ListOrgPoliciesRequest = $Request04;
+typedef ListOrgPoliciesRequest = $Request05;
 
 /// The response returned from the `ListOrgPolicies` method.
 ///
@@ -2679,8 +2680,8 @@ class Organization {
   /// Assigned by the server.
   core.String? creationTime;
 
-  /// A human-readable string that refers to the Organization in the GCP Console
-  /// UI.
+  /// A human-readable string that refers to the Organization in the Google
+  /// Cloud console.
   ///
   /// This string is set by the server and cannot be changed. The string will be
   /// set to the primary domain (for example, "google.com") of the G Suite

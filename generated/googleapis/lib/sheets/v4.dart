@@ -1871,7 +1871,7 @@ class AutoResizeDimensionsRequest {
 
 /// A banded (alternating colors) range in a sheet.
 class BandedRange {
-  /// The id of the banded range.
+  /// The ID of the banded range.
   core.int? bandedRangeId;
 
   /// Properties for column bands.
@@ -2693,7 +2693,7 @@ class BasicSeriesDataPointStyleOverride {
   /// takes precedence.
   ColorStyle? colorStyle;
 
-  /// Zero based index of the series data point.
+  /// The zero-based index of the series data point.
   core.int? index;
 
   /// Point style of the series data point.
@@ -3492,7 +3492,8 @@ class BatchUpdateValuesResponse {
 
 /// The specification of a BigQuery data source that's connected to a sheet.
 class BigQueryDataSourceSpec {
-  /// The ID of a BigQuery enabled GCP project with a billing account attached.
+  /// The ID of a BigQuery enabled Google Cloud project with a billing account
+  /// attached.
   ///
   /// For any queries executed against the data source, the project is charged.
   core.String? projectId;
@@ -3554,8 +3555,8 @@ class BigQueryQuerySpec {
 
 /// Specifies a BigQuery table definition.
 ///
-/// Only [native tables](https://cloud.google.com/bigquery/docs/tables-intro) is
-/// allowed.
+/// Only [native tables](https://cloud.google.com/bigquery/docs/tables-intro)
+/// are allowed.
 class BigQueryTableSpec {
   /// The BigQuery dataset id.
   core.String? datasetId;
@@ -3749,7 +3750,7 @@ class BooleanRule {
   /// The format to apply.
   ///
   /// Conditional formatting can only apply a subset of formatting: bold,
-  /// italic, strikethrough, foreground color & background color.
+  /// italic, strikethrough, foreground color and, background color.
   CellFormat? format;
 
   BooleanRule({
@@ -6150,7 +6151,7 @@ class DataSourceRefreshDailySchedule {
 class DataSourceRefreshMonthlySchedule {
   /// Days of the month to refresh.
   ///
-  /// Only 1-28 are supported, mapping to the 1st to the 28th day. At lesat one
+  /// Only 1-28 are supported, mapping to the 1st to the 28th day. At least one
   /// day must be specified.
   core.List<core.int>? daysOfMonth;
 
@@ -6190,8 +6191,8 @@ class DataSourceRefreshMonthlySchedule {
 /// Data sources in the spreadsheet are refreshed within a time interval. You
 /// can specify the start time by clicking the Scheduled Refresh button in the
 /// Sheets editor, but the interval is fixed at 4 hours. For example, if you
-/// specify a start time of 8am , the refresh will take place between 8am and
-/// 12pm every day.
+/// specify a start time of 8 AM , the refresh will take place between 8 AM and
+/// 12 PM every day.
 class DataSourceRefreshSchedule {
   /// Daily refresh schedule.
   DataSourceRefreshDailySchedule? dailySchedule;
@@ -7985,7 +7986,7 @@ class FilterCriteria {
 
 /// The filter criteria associated with a specific column.
 class FilterSpec {
-  /// The column index.
+  /// The zero-based column index.
   core.int? columnIndex;
 
   /// Reference to a data source column.
@@ -9777,7 +9778,7 @@ class PivotFilterCriteria {
 /// The pivot table filter criteria associated with a specific source column
 /// offset.
 class PivotFilterSpec {
-  /// The column offset of the source range.
+  /// The zero-based column offset of the source range.
   core.int? columnOffsetIndex;
 
   /// The reference to the data source column.
@@ -10423,7 +10424,7 @@ class ProtectedRange {
   ///
   /// Warning-based protection means that every user can edit data in the
   /// protected range, except editing will prompt a warning asking the user to
-  /// confirm the edit. When writing: if this field is true, then editors is
+  /// confirm the edit. When writing: if this field is true, then editors are
   /// ignored. Additionally, if this field is changed from true to false and the
   /// `editors` field is not set (nor included in the field mask), then the
   /// editors will be set to all the editors in the document.
@@ -12002,9 +12003,9 @@ class SheetProperties {
   /// When adding or updating sheet properties, if this field is excluded then
   /// the sheet is added or moved to the end of the sheet list. When updating
   /// sheet indices or inserting sheets, movement is considered in "before the
-  /// move" indexes. For example, if there were 3 sheets (S1, S2, S3) in order
-  /// to move S1 ahead of S2 the index would have to be set to 2. A sheet index
-  /// update request is ignored if the requested index is identical to the
+  /// move" indexes. For example, if there were three sheets (S1, S2, S3) in
+  /// order to move S1 ahead of S2 the index would have to be set to 2. A sheet
+  /// index update request is ignored if the requested index is identical to the
   /// sheets current index or if the requested new index is equal to the current
   /// sheet index + 1.
   core.int? index;
@@ -12172,7 +12173,8 @@ class SlicerSpec {
   /// If background_color is also set, this field takes precedence.
   ColorStyle? backgroundColorStyle;
 
-  /// The column index in the data table on which the filter is applied to.
+  /// The zero-based column index in the data table on which the filter is
+  /// applied to.
   core.int? columnIndex;
 
   /// The data range of the slicer.
@@ -12791,7 +12793,8 @@ class TextFormatRun {
   /// Absent values inherit the cell's format.
   TextFormat? format;
 
-  /// The character index where this run starts.
+  /// The zero-based character index where this run starts, in UTF-16 code
+  /// units.
   core.int? startIndex;
 
   TextFormatRun({
@@ -14485,7 +14488,7 @@ class WaterfallChartCustomSubtotal {
   /// A label for the subtotal column.
   core.String? label;
 
-  /// The 0-based index of a data point within the series.
+  /// The zero-based index of a data point within the series.
   ///
   /// If data_is_subtotal is true, the data point at this index is the subtotal.
   /// Otherwise, the subtotal appears after the data point with this index. A

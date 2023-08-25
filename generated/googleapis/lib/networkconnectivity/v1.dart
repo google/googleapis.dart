@@ -212,6 +212,48 @@ class ProjectsLocationsGlobalHubsResource {
   ProjectsLocationsGlobalHubsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Accepts a proposal to attach a Network Connectivity Center spoke to a hub.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the hub into which to accept the spoke.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/hubs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> acceptSpoke(
+    AcceptHubSpokeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':acceptSpoke';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a new Network Connectivity Center hub in the specified project.
   ///
   /// [request] - The metadata request object.
@@ -224,8 +266,8 @@ class ProjectsLocationsGlobalHubsResource {
   /// [hubId] - Required. A unique identifier for the hub.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
-  /// unique request ID so that if you must retry your request, the server will
-  /// know to ignore the request if it has already been completed. The server
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
   /// guarantees that a request doesn't result in creation of duplicate
   /// commitments for at least 60 minutes. For example, consider a situation
   /// where you make an initial request and the request times out. If you make
@@ -281,8 +323,8 @@ class ProjectsLocationsGlobalHubsResource {
   /// `^projects/\[^/\]+/locations/global/hubs/\[^/\]+$`.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
-  /// unique request ID so that if you must retry your request, the server will
-  /// know to ignore the request if it has already been completed. The server
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
   /// guarantees that a request doesn't result in creation of duplicate
   /// commitments for at least 60 minutes. For example, consider a situation
   /// where you make an initial request and the request times out. If you make
@@ -563,8 +605,8 @@ class ProjectsLocationsGlobalHubsResource {
   /// `^projects/\[^/\]+/locations/global/hubs/\[^/\]+$`.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
-  /// unique request ID so that if you must retry your request, the server will
-  /// know to ignore the request if it has already been completed. The server
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
   /// guarantees that a request doesn't result in creation of duplicate
   /// commitments for at least 60 minutes. For example, consider a situation
   /// where you make an initial request and the request times out. If you make
@@ -610,6 +652,52 @@ class ProjectsLocationsGlobalHubsResource {
     final response_ = await _requester.request(
       url_,
       'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Rejects a Network Connectivity Center spoke from being attached to a hub.
+  ///
+  /// If the spoke was previously in the `ACTIVE` state, it transitions to the
+  /// `INACTIVE` state and is no longer able to connect to other spokes that are
+  /// attached to the hub.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the hub from which to reject the spoke.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/hubs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> rejectSpoke(
+    RejectHubSpokeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':rejectSpoke';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
       body: body_,
       queryParams: queryParams_,
     );
@@ -1170,6 +1258,155 @@ class ProjectsLocationsGlobalPolicyBasedRoutesResource {
   ProjectsLocationsGlobalPolicyBasedRoutesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates a new policy-based route in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource's name of the PolicyBasedRoute.
+  /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
+  ///
+  /// [policyBasedRouteId] - Required. Unique id for the policy-based route to
+  /// create.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    PolicyBasedRoute request,
+    core.String parent, {
+    core.String? policyBasedRouteId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (policyBasedRouteId != null)
+        'policyBasedRouteId': [policyBasedRouteId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/policyBasedRoutes';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single policy-based route.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the policy-based route resource to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/policyBasedRoutes/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single policy-based route.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the PolicyBasedRoute resource to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/policyBasedRoutes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PolicyBasedRoute].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PolicyBasedRoute> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return PolicyBasedRoute.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -1225,6 +1462,60 @@ class ProjectsLocationsGlobalPolicyBasedRoutesResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists policy-based routes in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource's name.
+  /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
+  ///
+  /// [filter] - A filter expression that filters the results listed in the
+  /// response.
+  ///
+  /// [orderBy] - Sort the results by a certain order.
+  ///
+  /// [pageSize] - The maximum number of results per page that should be
+  /// returned.
+  ///
+  /// [pageToken] - The page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListPolicyBasedRoutesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListPolicyBasedRoutesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/policyBasedRoutes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListPolicyBasedRoutesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -3333,8 +3624,8 @@ class ProjectsLocationsSpokesResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
-  /// unique request ID so that if you must retry your request, the server will
-  /// know to ignore the request if it has already been completed. The server
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
   /// guarantees that a request doesn't result in creation of duplicate
   /// commitments for at least 60 minutes. For example, consider a situation
   /// where you make an initial request and the request times out. If you make
@@ -3392,8 +3683,8 @@ class ProjectsLocationsSpokesResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/spokes/\[^/\]+$`.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
-  /// unique request ID so that if you must retry your request, the server will
-  /// know to ignore the request if it has already been completed. The server
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
   /// guarantees that a request doesn't result in creation of duplicate
   /// commitments for at least 60 minutes. For example, consider a situation
   /// where you make an initial request and the request times out. If you make
@@ -3594,8 +3885,8 @@ class ProjectsLocationsSpokesResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/spokes/\[^/\]+$`.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
-  /// unique request ID so that if you must retry your request, the server will
-  /// know to ignore the request if it has already been completed. The server
+  /// unique request ID so that if you must retry your request, the server knows
+  /// to ignore the request if it has already been completed. The server
   /// guarantees that a request doesn't result in creation of duplicate
   /// commitments for at least 60 minutes. For example, consider a situation
   /// where you make an initial request and the request times out. If you make
@@ -3794,18 +4085,63 @@ class ProjectsLocationsSpokesResource {
   }
 }
 
+/// The request for HubService.AcceptHubSpoke.
+class AcceptHubSpokeRequest {
+  /// A request ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server knows to ignore the request if it has already been completed. The
+  /// server guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check to see
+  /// whether the original operation was received. If it was, the server ignores
+  /// the second request. This behavior prevents clients from mistakenly
+  /// creating duplicate commitments. The request ID must be a valid UUID, with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  /// The URI of the spoke to accept into the hub.
+  ///
+  /// Required.
+  core.String? spokeUri;
+
+  AcceptHubSpokeRequest({
+    this.requestId,
+    this.spokeUri,
+  });
+
+  AcceptHubSpokeRequest.fromJson(core.Map json_)
+      : this(
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
+          spokeUri: json_.containsKey('spokeUri')
+              ? json_['spokeUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
+        if (spokeUri != null) 'spokeUri': spokeUri!,
+      };
+}
+
 /// The request for HubService.AcceptSpoke.
 class AcceptSpokeRequest {
   /// A request ID to identify requests.
   ///
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server guarantees that a request doesn't result in creation of
-  /// duplicate commitments for at least 60 minutes. For example, consider a
-  /// situation where you make an initial request and the request times out. If
-  /// you make the request again with the same request ID, the server can check
-  /// to see whether the original operation was received. If it was, the server
-  /// ignores the second request. This behavior prevents clients from mistakenly
+  /// server knows to ignore the request if it has already been completed. The
+  /// server guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check to see
+  /// whether the original operation was received. If it was, the server ignores
+  /// the second request. This behavior prevents clients from mistakenly
   /// creating duplicate commitments. The request ID must be a valid UUID, with
   /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
@@ -4037,6 +4373,9 @@ class ConsumerPscConfig {
 /// PSC connection details on consumer side.
 class ConsumerPscConnection {
   /// The most recent error during operating this connection.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleRpcStatus? error;
 
   /// The error info for the latest error during operating this connection.
@@ -4189,6 +4528,72 @@ typedef Empty = $Empty;
 /// information.
 typedef Expr = $Expr;
 
+/// Filter matches L4 traffic.
+class Filter {
+  /// The destination IP range of outgoing packets that this policy-based route
+  /// applies to.
+  ///
+  /// Default is "0.0.0.0/0" if protocol version is IPv4.
+  ///
+  /// Optional.
+  core.String? destRange;
+
+  /// The IP protocol that this policy-based route applies to.
+  ///
+  /// Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
+  ///
+  /// Optional.
+  core.String? ipProtocol;
+
+  /// Internet protocol versions this policy-based route applies to.
+  ///
+  /// For this version, only IPV4 is supported.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "PROTOCOL_VERSION_UNSPECIFIED" : Default value.
+  /// - "IPV4" : The PBR is for IPv4 internet protocol traffic.
+  core.String? protocolVersion;
+
+  /// The source IP range of outgoing packets that this policy-based route
+  /// applies to.
+  ///
+  /// Default is "0.0.0.0/0" if protocol version is IPv4.
+  ///
+  /// Optional.
+  core.String? srcRange;
+
+  Filter({
+    this.destRange,
+    this.ipProtocol,
+    this.protocolVersion,
+    this.srcRange,
+  });
+
+  Filter.fromJson(core.Map json_)
+      : this(
+          destRange: json_.containsKey('destRange')
+              ? json_['destRange'] as core.String
+              : null,
+          ipProtocol: json_.containsKey('ipProtocol')
+              ? json_['ipProtocol'] as core.String
+              : null,
+          protocolVersion: json_.containsKey('protocolVersion')
+              ? json_['protocolVersion'] as core.String
+              : null,
+          srcRange: json_.containsKey('srcRange')
+              ? json_['srcRange'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (destRange != null) 'destRange': destRange!,
+        if (ipProtocol != null) 'ipProtocol': ipProtocol!,
+        if (protocolVersion != null) 'protocolVersion': protocolVersion!,
+        if (srcRange != null) 'srcRange': srcRange!,
+      };
+}
+
 /// The request message for Operations.CancelOperation.
 typedef GoogleLongrunningCancelOperationRequest = $Empty;
 
@@ -4254,7 +4659,7 @@ class GoogleLongrunningOperation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -4378,11 +4783,7 @@ class GoogleRpcErrorInfo {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef GoogleRpcStatus = $Status;
 
-/// A group is a set of spokes to which you can apply policies.
-///
-/// Each group of spokes has its own route table. For each group, you can also
-/// set different rules for whether spokes can be automatically attached to the
-/// hub.
+/// A group represents a subset of spokes attached to a hub.
 class Group {
   /// The time the group was created.
   ///
@@ -4394,7 +4795,7 @@ class Group {
   /// Optional.
   core.String? description;
 
-  /// Labels in key:value format.
+  /// Labels in key-value pair format.
   ///
   /// For more information about labels, see
   /// [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -4503,7 +4904,7 @@ class Hub {
   /// An optional description of the hub.
   core.String? description;
 
-  /// Optional labels in key:value format.
+  /// Optional labels in key-value pair format.
   ///
   /// For more information about labels, see
   /// [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -4638,6 +5039,32 @@ class Hub {
         if (state != null) 'state': state!,
         if (uniqueId != null) 'uniqueId': uniqueId!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// InterconnectAttachment that this route applies to.
+class InterconnectAttachment {
+  /// Cloud region to install this policy-based route on interconnect
+  /// attachment.
+  ///
+  /// Use `all` to install it on all interconnect attachments.
+  ///
+  /// Optional.
+  core.String? region;
+
+  InterconnectAttachment({
+    this.region,
+  });
+
+  InterconnectAttachment.fromJson(core.Map json_)
+      : this(
+          region: json_.containsKey('region')
+              ? json_['region'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (region != null) 'region': region!,
       };
 }
 
@@ -5240,6 +5667,51 @@ class ListLocationsResponse {
       };
 }
 
+/// Response for PolicyBasedRouting.ListPolicyBasedRoutes method.
+class ListPolicyBasedRoutesResponse {
+  /// The next pagination token in the List response.
+  ///
+  /// It should be used as page_token for the following request. An empty value
+  /// means no more result.
+  core.String? nextPageToken;
+
+  /// Policy-based routes to be returned.
+  core.List<PolicyBasedRoute>? policyBasedRoutes;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListPolicyBasedRoutesResponse({
+    this.nextPageToken,
+    this.policyBasedRoutes,
+    this.unreachable,
+  });
+
+  ListPolicyBasedRoutesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          policyBasedRoutes: json_.containsKey('policyBasedRoutes')
+              ? (json_['policyBasedRoutes'] as core.List)
+                  .map((value) => PolicyBasedRoute.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (policyBasedRoutes != null) 'policyBasedRoutes': policyBasedRoutes!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// Response for HubService.ListRouteTables method.
 class ListRouteTablesResponse {
   /// The token for the next page of the response.
@@ -5594,23 +6066,23 @@ class NextHopVpcNetwork {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -5701,6 +6173,204 @@ class Policy {
       };
 }
 
+/// Policy-based routes route L4 network traffic based on not just destination
+/// IP address, but also source IP address, protocol, and more.
+///
+/// If a policy-based route conflicts with other types of routes, the
+/// policy-based route always take precedence.
+class PolicyBasedRoute {
+  /// Time when the policy-based route was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// An optional description of this resource.
+  ///
+  /// Provide this field when you create the resource.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The filter to match L4 traffic.
+  ///
+  /// Required.
+  Filter? filter;
+
+  /// The interconnect attachments that this policy-based route applies to.
+  ///
+  /// Optional.
+  InterconnectAttachment? interconnectAttachment;
+
+  /// Type of this resource.
+  ///
+  /// Always networkconnectivity#policyBasedRoute for policy-based Route
+  /// resources.
+  ///
+  /// Output only.
+  core.String? kind;
+
+  /// User-defined labels.
+  core.Map<core.String, core.String>? labels;
+
+  /// A unique name of the resource in the form of
+  /// `projects/{project_number}/locations/global/PolicyBasedRoutes/{policy_based_route_id}`
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// Fully-qualified URL of the network that this route applies to, for
+  /// example: projects/my-project/global/networks/my-network.
+  ///
+  /// Required.
+  core.String? network;
+
+  /// The IP address of a global-access-enabled L4 ILB that is the next hop for
+  /// matching packets.
+  ///
+  /// For this version, only nextHopIlbIp is supported.
+  ///
+  /// Optional.
+  core.String? nextHopIlbIp;
+
+  /// Other routes that will be referenced to determine the next hop of the
+  /// packet.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "OTHER_ROUTES_UNSPECIFIED" : Default value.
+  /// - "DEFAULT_ROUTING" : Use the routes from the default routing tables
+  /// (system-generated routes, custom routes, peering route) to determine the
+  /// next hop. This will effectively exclude matching packets being applied on
+  /// other PBRs with a lower priority.
+  core.String? nextHopOtherRoutes;
+
+  /// The priority of this policy-based route.
+  ///
+  /// Priority is used to break ties in cases where there are more than one
+  /// matching policy-based routes found. In cases where multiple policy-based
+  /// routes are matched, the one with the lowest-numbered priority value wins.
+  /// The default value is 1000. The priority value must be from 1 to 65535,
+  /// inclusive.
+  ///
+  /// Optional.
+  core.int? priority;
+
+  /// Server-defined fully-qualified URL for this resource.
+  ///
+  /// Output only.
+  core.String? selfLink;
+
+  /// Time when the policy-based route was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// VM instances to which this policy-based route applies to.
+  ///
+  /// Optional.
+  VirtualMachine? virtualMachine;
+
+  /// If potential misconfigurations are detected for this route, this field
+  /// will be populated with warning messages.
+  ///
+  /// Output only.
+  core.List<Warnings>? warnings;
+
+  PolicyBasedRoute({
+    this.createTime,
+    this.description,
+    this.filter,
+    this.interconnectAttachment,
+    this.kind,
+    this.labels,
+    this.name,
+    this.network,
+    this.nextHopIlbIp,
+    this.nextHopOtherRoutes,
+    this.priority,
+    this.selfLink,
+    this.updateTime,
+    this.virtualMachine,
+    this.warnings,
+  });
+
+  PolicyBasedRoute.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          filter: json_.containsKey('filter')
+              ? Filter.fromJson(
+                  json_['filter'] as core.Map<core.String, core.dynamic>)
+              : null,
+          interconnectAttachment: json_.containsKey('interconnectAttachment')
+              ? InterconnectAttachment.fromJson(json_['interconnectAttachment']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          network: json_.containsKey('network')
+              ? json_['network'] as core.String
+              : null,
+          nextHopIlbIp: json_.containsKey('nextHopIlbIp')
+              ? json_['nextHopIlbIp'] as core.String
+              : null,
+          nextHopOtherRoutes: json_.containsKey('nextHopOtherRoutes')
+              ? json_['nextHopOtherRoutes'] as core.String
+              : null,
+          priority: json_.containsKey('priority')
+              ? json_['priority'] as core.int
+              : null,
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+          virtualMachine: json_.containsKey('virtualMachine')
+              ? VirtualMachine.fromJson(json_['virtualMachine']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          warnings: json_.containsKey('warnings')
+              ? (json_['warnings'] as core.List)
+                  .map((value) => Warnings.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (filter != null) 'filter': filter!,
+        if (interconnectAttachment != null)
+          'interconnectAttachment': interconnectAttachment!,
+        if (kind != null) 'kind': kind!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (network != null) 'network': network!,
+        if (nextHopIlbIp != null) 'nextHopIlbIp': nextHopIlbIp!,
+        if (nextHopOtherRoutes != null)
+          'nextHopOtherRoutes': nextHopOtherRoutes!,
+        if (priority != null) 'priority': priority!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (virtualMachine != null) 'virtualMachine': virtualMachine!,
+        if (warnings != null) 'warnings': warnings!,
+      };
+}
+
 /// The PSC configurations on producer side.
 class ProducerPscConfig {
   /// The resource path of a service attachment.
@@ -5775,6 +6445,9 @@ class PscConnection {
   core.String? consumerTargetProject;
 
   /// The most recent error during operating this connection.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleRpcStatus? error;
 
   /// The error info for the latest error during operating this connection.
@@ -5868,6 +6541,61 @@ class PscConnection {
       };
 }
 
+/// The request for HubService.RejectHubSpoke.
+class RejectHubSpokeRequest {
+  /// Additional information provided by the hub administrator.
+  ///
+  /// Optional.
+  core.String? details;
+
+  /// A request ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server knows to ignore the request if it has already been completed. The
+  /// server guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check to see
+  /// whether the original operation was received. If it was, the server ignores
+  /// the second request. This behavior prevents clients from mistakenly
+  /// creating duplicate commitments. The request ID must be a valid UUID, with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  /// The URI of the spoke to reject from the hub.
+  ///
+  /// Required.
+  core.String? spokeUri;
+
+  RejectHubSpokeRequest({
+    this.details,
+    this.requestId,
+    this.spokeUri,
+  });
+
+  RejectHubSpokeRequest.fromJson(core.Map json_)
+      : this(
+          details: json_.containsKey('details')
+              ? json_['details'] as core.String
+              : null,
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
+          spokeUri: json_.containsKey('spokeUri')
+              ? json_['spokeUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (details != null) 'details': details!,
+        if (requestId != null) 'requestId': requestId!,
+        if (spokeUri != null) 'spokeUri': spokeUri!,
+      };
+}
+
 /// The request for HubService.RejectSpoke.
 class RejectSpokeRequest {
   /// Additional information provided by the hub administrator in the
@@ -5879,13 +6607,13 @@ class RejectSpokeRequest {
   /// A request ID to identify requests.
   ///
   /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server guarantees that a request doesn't result in creation of
-  /// duplicate commitments for at least 60 minutes. For example, consider a
-  /// situation where you make an initial request and the request times out. If
-  /// you make the request again with the same request ID, the server can check
-  /// to see whether the original operation was received. If it was, the server
-  /// ignores the second request. This behavior prevents clients from mistakenly
+  /// server knows to ignore the request if it has already been completed. The
+  /// server guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check to see
+  /// whether the original operation was received. If it was, the server ignores
+  /// the second request. This behavior prevents clients from mistakenly
   /// creating duplicate commitments. The request ID must be a valid UUID, with
   /// the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
@@ -5930,7 +6658,7 @@ class Route {
   /// The destination IP address range.
   core.String? ipCidrRange;
 
-  /// Optional labels in key:value format.
+  /// Optional labels in key-value pair format.
   ///
   /// For more information about labels, see
   /// [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -6085,7 +6813,7 @@ class RouteTable {
   /// An optional description of the route table.
   core.String? description;
 
-  /// Optional labels in key:value format.
+  /// Optional labels in key-value pair format.
   ///
   /// For more information about labels, see
   /// [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -6785,7 +7513,8 @@ class SetIamPolicyRequest {
 ///
 /// When you create a spoke, you associate it with a hub. You must also identify
 /// a value for exactly one of the following fields: * linked_vpn_tunnels *
-/// linked_interconnect_attachments * linked_router_appliance_instances
+/// linked_interconnect_attachments * linked_router_appliance_instances *
+/// linked_vpc_network
 class Spoke {
   /// The time the spoke was created.
   ///
@@ -6796,6 +7525,8 @@ class Spoke {
   core.String? description;
 
   /// The name of the group that this spoke is associated with.
+  ///
+  /// Optional.
   core.String? group;
 
   /// The name of the hub that this spoke is attached to.
@@ -6803,7 +7534,7 @@ class Spoke {
   /// Immutable.
   core.String? hub;
 
-  /// Optional labels in key:value format.
+  /// Optional labels in key-value pair format.
   ///
   /// For more information about labels, see
   /// [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -7211,3 +7942,89 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// VM instances to which this policy-based route applies to.
+class VirtualMachine {
+  /// A list of VM instance tags the this policy-based route applies to.
+  ///
+  /// VM instances that have ANY of tags specified here will install this PBR.
+  ///
+  /// Optional.
+  core.List<core.String>? tags;
+
+  VirtualMachine({
+    this.tags,
+  });
+
+  VirtualMachine.fromJson(core.Map json_)
+      : this(
+          tags: json_.containsKey('tags')
+              ? (json_['tags'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (tags != null) 'tags': tags!,
+      };
+}
+
+/// Informational warning message.
+class Warnings {
+  /// A warning code, if applicable.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "WARNING_UNSPECIFIED" : Default value.
+  /// - "RESOURCE_NOT_ACTIVE" : The policy-based route is not active and
+  /// functioning. Common causes are the dependent network was deleted or the
+  /// resource project was turned off.
+  /// - "RESOURCE_BEING_MODIFIED" : The policy-based route is being modified
+  /// (e.g. created/deleted) at this time.
+  core.String? code;
+
+  /// Metadata about this warning in key: value format.
+  ///
+  /// The key should provides more detail on the warning being returned. For
+  /// example, for warnings where there are no results in a list request for a
+  /// particular zone, this key might be scope and the key value might be the
+  /// zone name. Other examples might be a key indicating a deprecated resource
+  /// and a suggested replacement.
+  ///
+  /// Output only.
+  core.Map<core.String, core.String>? data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String? warningMessage;
+
+  Warnings({
+    this.code,
+    this.data,
+    this.warningMessage,
+  });
+
+  Warnings.fromJson(core.Map json_)
+      : this(
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          data: json_.containsKey('data')
+              ? (json_['data'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          warningMessage: json_.containsKey('warningMessage')
+              ? json_['warningMessage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (data != null) 'data': data!,
+        if (warningMessage != null) 'warningMessage': warningMessage!,
+      };
+}

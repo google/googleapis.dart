@@ -2733,6 +2733,7 @@ api.RevisionStatus buildRevisionStatus() {
   buildCounterRevisionStatus++;
   if (buildCounterRevisionStatus < 3) {
     o.conditions = buildUnnamed53();
+    o.desiredReplicas = 42;
     o.imageDigest = 'foo';
     o.logUrl = 'foo';
     o.observedGeneration = 42;
@@ -2746,6 +2747,10 @@ void checkRevisionStatus(api.RevisionStatus o) {
   buildCounterRevisionStatus++;
   if (buildCounterRevisionStatus < 3) {
     checkUnnamed53(o.conditions!);
+    unittest.expect(
+      o.desiredReplicas!,
+      unittest.equals(42),
+    );
     unittest.expect(
       o.imageDigest!,
       unittest.equals('foo'),

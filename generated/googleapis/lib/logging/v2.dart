@@ -1077,11 +1077,11 @@ class BillingAccountsLocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The full resource name of the link to
-  /// delete."projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// [name] - Required. The full resource name of the link to delete.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
   /// Value must have pattern
   /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
   ///
@@ -1117,11 +1117,11 @@ class BillingAccountsLocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the
-  /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+  /// [name] - Required. The resource name of the link:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
   /// Value must have pattern
   /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
   ///
@@ -1157,11 +1157,11 @@ class BillingAccountsLocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource whose links are to be
-  /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+  /// [parent] - Required. The parent resource whose links are to be listed:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// Value must have pattern
   /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -1309,7 +1309,7 @@ class BillingAccountsLocationsBucketsViewsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a view on a log bucket..
+  /// Gets a view on a log bucket.
   ///
   /// Request parameters:
   ///
@@ -1832,8 +1832,10 @@ class BillingAccountsSinksResource {
   /// sink's destination must be in the same project as the sink itself.If this
   /// field is set to true, or if the sink is owned by a non-project resource
   /// such as an organization, then the value of writer_identity will be a
-  /// unique service account used only for exports from the new sink. For more
-  /// information, see writer_identity in LogSink.
+  /// service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// used by the sinks with the same parent. For more information, see
+  /// writer_identity in LogSink.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2027,10 +2029,10 @@ class BillingAccountsSinksResource {
   /// Value must have pattern `^billingAccounts/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [customWriterIdentity] - Optional. A service account provided by the
-  /// caller that will be used to write the log entries. Must be of format
-  /// serviceAccount:some@email. This can only be specified if writing to a
-  /// destination outside the sink's project. If not specified, a p4 service
-  /// account will automatically be generated.
+  /// caller that will be used to write the log entries. The format must be
+  /// serviceAccount:some@email. This field can only be specified if you are
+  /// routing logs to a destination outside this sink's project. If not
+  /// specified, a Logging service account will automatically be generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -2038,8 +2040,10 @@ class BillingAccountsSinksResource {
   /// of this field: If the old and new values of this field are both false or
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
+  /// changed to a service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// owned by Cloud Logging. It is an error if the old value is true and the
+  /// new value is set to false or defaulted to false.
   ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
@@ -2110,10 +2114,10 @@ class BillingAccountsSinksResource {
   /// Value must have pattern `^billingAccounts/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [customWriterIdentity] - Optional. A service account provided by the
-  /// caller that will be used to write the log entries. Must be of format
-  /// serviceAccount:some@email. This can only be specified if writing to a
-  /// destination outside the sink's project. If not specified, a p4 service
-  /// account will automatically be generated.
+  /// caller that will be used to write the log entries. The format must be
+  /// serviceAccount:some@email. This field can only be specified if you are
+  /// routing logs to a destination outside this sink's project. If not
+  /// specified, a Logging service account will automatically be generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -2121,8 +2125,10 @@ class BillingAccountsSinksResource {
   /// of this field: If the old and new values of this field are both false or
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
+  /// changed to a service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// owned by Cloud Logging. It is an error if the old value is true and the
+  /// new value is set to false or defaulted to false.
   ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
@@ -2301,8 +2307,9 @@ class EntriesResource {
   /// This API method is the only way to send log entries to Logging. This
   /// method is used, directly or indirectly, by the Logging agent (fluentd) and
   /// all logging libraries configured to use Logging. A single request may
-  /// contain log entries for a maximum of 1000 different resources (projects,
-  /// organizations, billing accounts or folders)
+  /// contain log entries for a maximum of 1000 different resource names
+  /// (projects, organizations, billing accounts or folders), where the resource
+  /// name for a log entry is determined from its logName field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3585,11 +3592,11 @@ class FoldersLocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The full resource name of the link to
-  /// delete."projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// [name] - Required. The full resource name of the link to delete.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
   ///
@@ -3625,11 +3632,11 @@ class FoldersLocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the
-  /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+  /// [name] - Required. The resource name of the link:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
   ///
@@ -3665,11 +3672,11 @@ class FoldersLocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource whose links are to be
-  /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+  /// [parent] - Required. The parent resource whose links are to be listed:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -3817,7 +3824,7 @@ class FoldersLocationsBucketsViewsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a view on a log bucket..
+  /// Gets a view on a log bucket.
   ///
   /// Request parameters:
   ///
@@ -4338,8 +4345,10 @@ class FoldersSinksResource {
   /// sink's destination must be in the same project as the sink itself.If this
   /// field is set to true, or if the sink is owned by a non-project resource
   /// such as an organization, then the value of writer_identity will be a
-  /// unique service account used only for exports from the new sink. For more
-  /// information, see writer_identity in LogSink.
+  /// service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// used by the sinks with the same parent. For more information, see
+  /// writer_identity in LogSink.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4533,10 +4542,10 @@ class FoldersSinksResource {
   /// Value must have pattern `^folders/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [customWriterIdentity] - Optional. A service account provided by the
-  /// caller that will be used to write the log entries. Must be of format
-  /// serviceAccount:some@email. This can only be specified if writing to a
-  /// destination outside the sink's project. If not specified, a p4 service
-  /// account will automatically be generated.
+  /// caller that will be used to write the log entries. The format must be
+  /// serviceAccount:some@email. This field can only be specified if you are
+  /// routing logs to a destination outside this sink's project. If not
+  /// specified, a Logging service account will automatically be generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -4544,8 +4553,10 @@ class FoldersSinksResource {
   /// of this field: If the old and new values of this field are both false or
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
+  /// changed to a service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// owned by Cloud Logging. It is an error if the old value is true and the
+  /// new value is set to false or defaulted to false.
   ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
@@ -4616,10 +4627,10 @@ class FoldersSinksResource {
   /// Value must have pattern `^folders/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [customWriterIdentity] - Optional. A service account provided by the
-  /// caller that will be used to write the log entries. Must be of format
-  /// serviceAccount:some@email. This can only be specified if writing to a
-  /// destination outside the sink's project. If not specified, a p4 service
-  /// account will automatically be generated.
+  /// caller that will be used to write the log entries. The format must be
+  /// serviceAccount:some@email. This field can only be specified if you are
+  /// routing logs to a destination outside this sink's project. If not
+  /// specified, a Logging service account will automatically be generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -4627,8 +4638,10 @@ class FoldersSinksResource {
   /// of this field: If the old and new values of this field are both false or
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
+  /// changed to a service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// owned by Cloud Logging. It is an error if the old value is true and the
+  /// new value is set to false or defaulted to false.
   ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
@@ -5260,11 +5273,11 @@ class LocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The full resource name of the link to
-  /// delete."projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// [name] - Required. The full resource name of the link to delete.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
   /// Value must have pattern
   /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
   ///
@@ -5300,11 +5313,11 @@ class LocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the
-  /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+  /// [name] - Required. The resource name of the link:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
   /// Value must have pattern
   /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
   ///
@@ -5340,11 +5353,11 @@ class LocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource whose links are to be
-  /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+  /// [parent] - Required. The parent resource whose links are to be listed:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// Value must have pattern
   /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -5489,7 +5502,7 @@ class LocationsBucketsViewsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a view on a log bucket..
+  /// Gets a view on a log bucket.
   ///
   /// Request parameters:
   ///
@@ -7026,11 +7039,11 @@ class OrganizationsLocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The full resource name of the link to
-  /// delete."projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// [name] - Required. The full resource name of the link to delete.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
   ///
@@ -7066,11 +7079,11 @@ class OrganizationsLocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the
-  /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+  /// [name] - Required. The resource name of the link:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
   ///
@@ -7106,11 +7119,11 @@ class OrganizationsLocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource whose links are to be
-  /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+  /// [parent] - Required. The parent resource whose links are to be listed:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -7258,7 +7271,7 @@ class OrganizationsLocationsBucketsViewsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a view on a log bucket..
+  /// Gets a view on a log bucket.
   ///
   /// Request parameters:
   ///
@@ -7779,8 +7792,10 @@ class OrganizationsSinksResource {
   /// sink's destination must be in the same project as the sink itself.If this
   /// field is set to true, or if the sink is owned by a non-project resource
   /// such as an organization, then the value of writer_identity will be a
-  /// unique service account used only for exports from the new sink. For more
-  /// information, see writer_identity in LogSink.
+  /// service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// used by the sinks with the same parent. For more information, see
+  /// writer_identity in LogSink.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7974,10 +7989,10 @@ class OrganizationsSinksResource {
   /// Value must have pattern `^organizations/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [customWriterIdentity] - Optional. A service account provided by the
-  /// caller that will be used to write the log entries. Must be of format
-  /// serviceAccount:some@email. This can only be specified if writing to a
-  /// destination outside the sink's project. If not specified, a p4 service
-  /// account will automatically be generated.
+  /// caller that will be used to write the log entries. The format must be
+  /// serviceAccount:some@email. This field can only be specified if you are
+  /// routing logs to a destination outside this sink's project. If not
+  /// specified, a Logging service account will automatically be generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -7985,8 +8000,10 @@ class OrganizationsSinksResource {
   /// of this field: If the old and new values of this field are both false or
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
+  /// changed to a service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// owned by Cloud Logging. It is an error if the old value is true and the
+  /// new value is set to false or defaulted to false.
   ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
@@ -8057,10 +8074,10 @@ class OrganizationsSinksResource {
   /// Value must have pattern `^organizations/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [customWriterIdentity] - Optional. A service account provided by the
-  /// caller that will be used to write the log entries. Must be of format
-  /// serviceAccount:some@email. This can only be specified if writing to a
-  /// destination outside the sink's project. If not specified, a p4 service
-  /// account will automatically be generated.
+  /// caller that will be used to write the log entries. The format must be
+  /// serviceAccount:some@email. This field can only be specified if you are
+  /// routing logs to a destination outside this sink's project. If not
+  /// specified, a Logging service account will automatically be generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -8068,8 +8085,10 @@ class OrganizationsSinksResource {
   /// of this field: If the old and new values of this field are both false or
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
+  /// changed to a service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// owned by Cloud Logging. It is an error if the old value is true and the
+  /// new value is set to false or defaulted to false.
   ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
@@ -9062,11 +9081,11 @@ class ProjectsLocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The full resource name of the link to
-  /// delete."projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
+  /// [name] - Required. The full resource name of the link to delete.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
   ///
@@ -9102,11 +9121,11 @@ class ProjectsLocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the
-  /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+  /// [name] - Required. The resource name of the link:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+/links/\[^/\]+$`.
   ///
@@ -9142,11 +9161,11 @@ class ProjectsLocationsBucketsLinksResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource whose links are to be
-  /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
-  /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-  /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-  /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+  /// [parent] - Required. The parent resource whose links are to be listed:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -9294,7 +9313,7 @@ class ProjectsLocationsBucketsViewsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a view on a log bucket..
+  /// Gets a view on a log bucket.
   ///
   /// Request parameters:
   ///
@@ -10029,8 +10048,10 @@ class ProjectsSinksResource {
   /// sink's destination must be in the same project as the sink itself.If this
   /// field is set to true, or if the sink is owned by a non-project resource
   /// such as an organization, then the value of writer_identity will be a
-  /// unique service account used only for exports from the new sink. For more
-  /// information, see writer_identity in LogSink.
+  /// service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// used by the sinks with the same parent. For more information, see
+  /// writer_identity in LogSink.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10224,10 +10245,10 @@ class ProjectsSinksResource {
   /// Value must have pattern `^projects/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [customWriterIdentity] - Optional. A service account provided by the
-  /// caller that will be used to write the log entries. Must be of format
-  /// serviceAccount:some@email. This can only be specified if writing to a
-  /// destination outside the sink's project. If not specified, a p4 service
-  /// account will automatically be generated.
+  /// caller that will be used to write the log entries. The format must be
+  /// serviceAccount:some@email. This field can only be specified if you are
+  /// routing logs to a destination outside this sink's project. If not
+  /// specified, a Logging service account will automatically be generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -10235,8 +10256,10 @@ class ProjectsSinksResource {
   /// of this field: If the old and new values of this field are both false or
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
+  /// changed to a service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// owned by Cloud Logging. It is an error if the old value is true and the
+  /// new value is set to false or defaulted to false.
   ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
@@ -10307,10 +10330,10 @@ class ProjectsSinksResource {
   /// Value must have pattern `^projects/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [customWriterIdentity] - Optional. A service account provided by the
-  /// caller that will be used to write the log entries. Must be of format
-  /// serviceAccount:some@email. This can only be specified if writing to a
-  /// destination outside the sink's project. If not specified, a p4 service
-  /// account will automatically be generated.
+  /// caller that will be used to write the log entries. The format must be
+  /// serviceAccount:some@email. This field can only be specified if you are
+  /// routing logs to a destination outside this sink's project. If not
+  /// specified, a Logging service account will automatically be generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -10318,8 +10341,10 @@ class ProjectsSinksResource {
   /// of this field: If the old and new values of this field are both false or
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
+  /// changed to a service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// owned by Cloud Logging. It is an error if the old value is true and the
+  /// new value is set to false or defaulted to false.
   ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
@@ -10406,8 +10431,10 @@ class SinksResource {
   /// sink's destination must be in the same project as the sink itself.If this
   /// field is set to true, or if the sink is owned by a non-project resource
   /// such as an organization, then the value of writer_identity will be a
-  /// unique service account used only for exports from the new sink. For more
-  /// information, see writer_identity in LogSink.
+  /// service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// used by the sinks with the same parent. For more information, see
+  /// writer_identity in LogSink.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10601,10 +10628,10 @@ class SinksResource {
   /// Value must have pattern `^\[^/\]+/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [customWriterIdentity] - Optional. A service account provided by the
-  /// caller that will be used to write the log entries. Must be of format
-  /// serviceAccount:some@email. This can only be specified if writing to a
-  /// destination outside the sink's project. If not specified, a p4 service
-  /// account will automatically be generated.
+  /// caller that will be used to write the log entries. The format must be
+  /// serviceAccount:some@email. This field can only be specified if you are
+  /// routing logs to a destination outside this sink's project. If not
+  /// specified, a Logging service account will automatically be generated.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -10612,8 +10639,10 @@ class SinksResource {
   /// of this field: If the old and new values of this field are both false or
   /// both true, then there is no change to the sink's writer_identity. If the
   /// old value is false and the new value is true, then writer_identity is
-  /// changed to a unique service account. It is an error if the old value is
-  /// true and the new value is set to false or defaulted to false.
+  /// changed to a service agent
+  /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)
+  /// owned by Cloud Logging. It is an error if the old value is true and the
+  /// new value is set to false or defaulted to false.
   ///
   /// [updateMask] - Optional. Field mask that specifies the fields in sink that
   /// need an update. A sink field will be overwritten if, and only if, it is in
@@ -11681,9 +11710,9 @@ class ListLogEntriesRequest {
 
   /// The maximum number of results to return from this request.
   ///
-  /// Default is 50. If the value is negative or exceeds 1000, the request is
-  /// rejected. The presence of next_page_token in the response indicates that
-  /// more results might be available.
+  /// Default is 50. If the value is negative, the request is rejected.The
+  /// presence of next_page_token in the response indicates that more results
+  /// might be available.
   ///
   /// Optional.
   core.int? pageSize;
@@ -12366,19 +12395,18 @@ class LogEntry {
   /// For example, if your trace data is stored in the Cloud project
   /// "my-trace-project" and if the service that is creating the log entry
   /// receives a trace header that includes the trace ID "12345", then the
-  /// service should use "projects/my-tracing-project/traces/12345".The trace
+  /// service should use "projects/my-trace-project/traces/12345".The trace
   /// field provides the link between logs and traces. By using this field, you
   /// can navigate from a log entry to a trace.
   ///
   /// Optional.
   core.String? trace;
 
-  /// The sampling decision of the trace associated with the log entry.True
-  /// means that the trace resource name in the trace field was sampled for
-  /// storage in a trace backend.
+  /// The sampling decision of the span associated with the log entry at the
+  /// time the log entry was created.
   ///
-  /// False means that the trace was not sampled for storage when this log entry
-  /// was written, or the sampling decision was unknown at the time. A
+  /// This field corresponds to the sampled flag in the W3C trace-context
+  /// specification (https://www.w3.org/TR/trace-context/#sampled-flag). A
   /// non-sampled trace value is still useful as a request correlation
   /// identifier. The default is False.
   ///
@@ -13684,7 +13712,7 @@ class Operation {
   /// ending with operations/{unique_id}.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as Delete, the
   /// response is google.protobuf.Empty. If the original method is standard

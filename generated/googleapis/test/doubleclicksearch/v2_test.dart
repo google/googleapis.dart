@@ -106,6 +106,7 @@ api.Conversion buildConversion() {
   if (buildCounterConversion < 3) {
     o.adGroupId = 'foo';
     o.adId = 'foo';
+    o.adUserDataConsent = 'foo';
     o.advertiserId = 'foo';
     o.agencyId = 'foo';
     o.attributionModel = 'foo';
@@ -152,6 +153,10 @@ void checkConversion(api.Conversion o) {
     );
     unittest.expect(
       o.adId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.adUserDataConsent!,
       unittest.equals('foo'),
     );
     unittest.expect(

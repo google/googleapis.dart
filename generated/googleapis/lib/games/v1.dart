@@ -27,6 +27,7 @@
 /// - [LeaderboardsResource]
 /// - [MetagameResource]
 /// - [PlayersResource]
+/// - [RecallResource]
 /// - [RevisionsResource]
 /// - [ScoresResource]
 /// - [SnapshotsResource]
@@ -48,6 +49,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// The Google Play games service allows developers to enhance games with social
 /// leaderboards, achievements, game state, sign-in with Google, and more.
 class GamesApi {
+  /// View and manage your Google Play Developer account
+  static const androidpublisherScope =
+      'https://www.googleapis.com/auth/androidpublisher';
+
   /// See, create, and delete its own configuration data in your Google Drive
   static const driveAppdataScope =
       'https://www.googleapis.com/auth/drive.appdata';
@@ -65,6 +70,7 @@ class GamesApi {
   LeaderboardsResource get leaderboards => LeaderboardsResource(_requester);
   MetagameResource get metagame => MetagameResource(_requester);
   PlayersResource get players => PlayersResource(_requester);
+  RecallResource get recall => RecallResource(_requester);
   RevisionsResource get revisions => RevisionsResource(_requester);
   ScoresResource get scores => ScoresResource(_requester);
   SnapshotsResource get snapshots => SnapshotsResource(_requester);
@@ -144,7 +150,7 @@ class AchievementsResource {
   ///
   /// [achievementId] - The ID of the achievement used by this method.
   ///
-  /// [stepsToIncrement] - The number of steps to increment.
+  /// [stepsToIncrement] - Required. The number of steps to increment.
   ///
   /// [requestId] - A randomly generated numeric ID for each request specified
   /// by the caller. This number is used at the server to ensure that the
@@ -299,7 +305,7 @@ class AchievementsResource {
   ///
   /// [achievementId] - The ID of the achievement used by this method.
   ///
-  /// [steps] - The minimum value to set the steps to.
+  /// [steps] - Required. The minimum value to set the steps to.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -430,7 +436,6 @@ class ApplicationsResource {
   /// [platformType] - Restrict application details returned to the specific
   /// platform.
   /// Possible string values are:
-  /// - "PLATFORM_TYPE_UNSPECIFIED" : Default value, don't use.
   /// - "ANDROID" : Retrieve applications that can be played on Android.
   /// - "IOS" : Retrieve applications that can be played on iOS.
   /// - "WEB_APP" : Retrieve applications that can be played on desktop web.
@@ -478,7 +483,6 @@ class ApplicationsResource {
   ///
   /// [endPointType] - Type of endpoint being requested.
   /// Possible string values are:
-  /// - "END_POINT_TYPE_UNSPECIFIED" : Default value. This value is unused.
   /// - "PROFILE_CREATION" : Request a URL to create a new profile.
   /// - "PROFILE_SETTINGS" : Request a URL for the Settings view.
   ///
@@ -870,7 +874,6 @@ class MetagameResource {
   /// [collection] - The collection of categories for which data will be
   /// returned.
   /// Possible string values are:
-  /// - "COLLECTION_UNSPECIFIED" : Default value. This value is unused.
   /// - "ALL" : Retrieve data for all categories. This is the default.
   ///
   /// [language] - The preferred language to use for strings returned by this
@@ -1111,6 +1114,168 @@ class PlayersResource {
   }
 }
 
+class RecallResource {
+  final commons.ApiRequester _requester;
+
+  RecallResource(commons.ApiRequester client) : _requester = client;
+
+  /// Associate the PGS Player principal encoded in the provided recall session
+  /// id with an in-game account
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LinkPersonaResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LinkPersonaResponse> linkPersona(
+    LinkPersonaRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'games/v1/recall:linkPersona';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return LinkPersonaResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete all Recall tokens linking the given persona to any player (with or
+  /// without a profile).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResetPersonaResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResetPersonaResponse> resetPersona(
+    ResetPersonaRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'games/v1/recall:resetPersona';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ResetPersonaResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieve all Recall tokens associated with the PGS Player principal
+  /// encoded in the provided recall session id.
+  ///
+  /// The API is only available for users that have active PGS Player profile.
+  ///
+  /// Request parameters:
+  ///
+  /// [sessionId] - Required. Opaque server-generated string that encodes all
+  /// the necessary information to identify the PGS player / Google user and
+  /// application.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RetrievePlayerTokensResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RetrievePlayerTokensResponse> retrieveTokens(
+    core.String sessionId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'games/v1/recall/tokens/' + commons.escapeVariable('$sessionId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RetrievePlayerTokensResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete a Recall token linking the PGS Player principal identified by the
+  /// Recall session and an in-game account identified either by the 'persona'
+  /// or by the token value.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UnlinkPersonaResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UnlinkPersonaResponse> unlinkPersona(
+    UnlinkPersonaRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'games/v1/recall:unlinkPersona';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return UnlinkPersonaResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class RevisionsResource {
   final commons.ApiRequester _requester;
 
@@ -1120,7 +1285,7 @@ class RevisionsResource {
   ///
   /// Request parameters:
   ///
-  /// [clientRevision] - The revision of the client SDK used by your
+  /// [clientRevision] - Required. The revision of the client SDK used by your
   /// application. Format: `[PLATFORM_TYPE]:[VERSION_NUMBER]`. Possible values
   /// of `PLATFORM_TYPE` are: * `ANDROID` - Client is running the Android SDK. *
   /// `IOS` - Client is running the iOS SDK. * `WEB_APP` - Client is running as
@@ -1180,7 +1345,6 @@ class ScoresResource {
   ///
   /// [timeSpan] - The time span for the scores and ranks you're requesting.
   /// Possible string values are:
-  /// - "SCORE_TIME_SPAN_UNSPECIFIED" : Default value. This value is unused.
   /// - "ALL" : Get the high scores for all time spans. If this is used,
   /// maxResults values will be ignored.
   /// - "ALL_TIME" : Get the all time high score.
@@ -1190,7 +1354,6 @@ class ScoresResource {
   /// [includeRankType] - The types of ranks to return. If the parameter is
   /// omitted, no ranks will be returned.
   /// Possible string values are:
-  /// - "INCLUDE_RANK_TYPE_UNSPECIFIED" : Default value. Should be unused.
   /// - "ALL" : Retrieve all supported ranks. In HTTP, this parameter value can
   /// also be specified as `ALL`.
   /// - "PUBLIC" : Retrieve public ranks, if the player is sharing their
@@ -1259,14 +1422,13 @@ class ScoresResource {
   ///
   /// [collection] - The collection of scores you're requesting.
   /// Possible string values are:
-  /// - "SCORE_COLLECTION_UNSPECIFIED" : Default value. This value is unused.
   /// - "PUBLIC" : List all scores in the public leaderboard.
   /// - "SOCIAL" : (Obsolete) Legacy G+ social scores.
   /// - "FRIENDS" : List only scores of friends.
   ///
-  /// [timeSpan] - The time span for the scores and ranks you're requesting.
+  /// [timeSpan] - Required. The time span for the scores and ranks you're
+  /// requesting.
   /// Possible string values are:
-  /// - "SCORE_TIME_SPAN_UNSPECIFIED" : Default value. This value is unused.
   /// - "ALL_TIME" : The score is an all-time score.
   /// - "WEEKLY" : The score is a weekly score.
   /// - "DAILY" : The score is a daily score.
@@ -1329,14 +1491,13 @@ class ScoresResource {
   ///
   /// [collection] - The collection of scores you're requesting.
   /// Possible string values are:
-  /// - "SCORE_COLLECTION_UNSPECIFIED" : Default value. This value is unused.
   /// - "PUBLIC" : List all scores in the public leaderboard.
   /// - "SOCIAL" : (Obsolete) Legacy G+ social scores.
   /// - "FRIENDS" : List only scores of friends.
   ///
-  /// [timeSpan] - The time span for the scores and ranks you're requesting.
+  /// [timeSpan] - Required. The time span for the scores and ranks you're
+  /// requesting.
   /// Possible string values are:
-  /// - "SCORE_TIME_SPAN_UNSPECIFIED" : Default value. This value is unused.
   /// - "ALL_TIME" : The score is an all-time score.
   /// - "WEEKLY" : The score is a weekly score.
   /// - "DAILY" : The score is a daily score.
@@ -1410,12 +1571,12 @@ class ScoresResource {
   ///
   /// [leaderboardId] - The ID of the leaderboard.
   ///
-  /// [score] - The score you're submitting. The submitted score is ignored if
-  /// it is worse than a previously submitted score, where worse depends on the
-  /// leaderboard sort order. The meaning of the score value depends on the
-  /// leaderboard format type. For fixed-point, the score represents the raw
-  /// value. For time, the score represents elapsed time in milliseconds. For
-  /// currency, the score represents a value in micro units.
+  /// [score] - Required. The score you're submitting. The submitted score is
+  /// ignored if it is worse than a previously submitted score, where worse
+  /// depends on the leaderboard sort order. The meaning of the score value
+  /// depends on the leaderboard format type. For fixed-point, the score
+  /// represents the raw value. For time, the score represents elapsed time in
+  /// milliseconds. For currency, the score represents a value in micro units.
   ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
@@ -1647,7 +1808,6 @@ class StatsResource {
 class AchievementDefinition {
   /// The type of the achievement.
   /// Possible string values are:
-  /// - "ACHIEVEMENT_TYPE_UNSPECIFIED" : Safe default, don't use.
   /// - "STANDARD" : Achievement is either locked or unlocked.
   /// - "INCREMENTAL" : Achievement is incremental.
   core.String? achievementType;
@@ -1666,7 +1826,6 @@ class AchievementDefinition {
 
   /// The initial state of the achievement.
   /// Possible string values are:
-  /// - "INITIAL_ACHIEVEMENT_STATE_UNSPECIFIED" : Safe default, don't use.
   /// - "HIDDEN" : Achievement is hidden.
   /// - "REVEALED" : Achievement is revealed.
   /// - "UNLOCKED" : Achievement is unlocked.
@@ -1857,7 +2016,6 @@ class AchievementRevealResponse {
   ///
   /// This might be `UNLOCKED` if the achievement was already unlocked.
   /// Possible string values are:
-  /// - "REVEAL_ACHIEVEMENT_STATE_UNSPECIFIED" : Safe default, don't use.
   /// - "REVEALED" : Achievement is revealed.
   /// - "UNLOCKED" : Achievement is unlocked.
   core.String? currentState;
@@ -2041,7 +2199,6 @@ class AchievementUpdateRequest {
 
   /// The type of update being applied.
   /// Possible string values are:
-  /// - "ACHIEVEMENT_UPDATE_TYPE_UNSPECIFIED" : Safe default, don't use.
   /// - "REVEAL" : Achievement is revealed.
   /// - "UNLOCK" : Achievement is unlocked.
   /// - "INCREMENT" : Achievement is incremented.
@@ -2094,7 +2251,6 @@ class AchievementUpdateResponse {
 
   /// The current state of the achievement.
   /// Possible string values are:
-  /// - "UPDATED_ACHIEVEMENT_STATE_UNSPECIFIED" : Safe default, don't use.
   /// - "HIDDEN" : Achievement is hidden.
   /// - "REVEALED" : Achievement is revealed.
   /// - "UNLOCKED" : Achievement is unlocked.
@@ -2486,7 +2642,6 @@ class EndPoint {
 class EventBatchRecordFailure {
   /// The cause for the update failure.
   /// Possible string values are:
-  /// - "EVENT_FAILURE_CAUSE_UNSPECIFIED" : Default value. Should not be used.
   /// - "TOO_LARGE" : A batch request was issued with more events than are
   /// allowed in a single batch.
   /// - "TIME_PERIOD_EXPIRED" : A batch was sent with data too far in the past
@@ -2591,7 +2746,6 @@ class EventDefinition {
 
   /// The visibility of event being tracked in this definition.
   /// Possible string values are:
-  /// - "EVENT_VISIBILITY_UNSPECIFIED" : Default value. Should not be used.
   /// - "REVEALED" : This event should be visible to all users.
   /// - "HIDDEN" : This event should only be shown to users that have recorded
   /// this event at least once.
@@ -2774,8 +2928,6 @@ class EventRecordFailure {
 
   /// The cause for the update failure.
   /// Possible string values are:
-  /// - "EVENT_UPDATE_FAILURE_CAUSE_UNSPECIFIED" : Default value. Should not
-  /// use.
   /// - "NOT_FOUND" : An attempt was made to set an event that was not defined.
   /// - "INVALID_UPDATE_VALUE" : An attempt was made to increment an event by a
   /// non-positive value.
@@ -3108,7 +3260,6 @@ class Instance {
 
   /// The platform type.
   /// Possible string values are:
-  /// - "PLATFORM_TYPE_UNSPECIFIED" : Default value. Should be unused.
   /// - "ANDROID" : Instance is for Android.
   /// - "IOS" : Instance is for iOS.
   /// - "WEB_APP" : Instance is for Web App.
@@ -3354,7 +3505,6 @@ class Leaderboard {
 
   /// How scores are ordered.
   /// Possible string values are:
-  /// - "SCORE_ORDER_UNSPECIFIED" : Default value. This value is unused.
   /// - "LARGER_IS_BETTER" : Larger values are better; scores are sorted in
   /// descending order
   /// - "SMALLER_IS_BETTER" : Smaller values are better; scores are sorted in
@@ -3425,7 +3575,6 @@ class LeaderboardEntry {
 
   /// The time span of this high score.
   /// Possible string values are:
-  /// - "SCORE_TIME_SPAN_UNSPECIFIED" : Default value. This value is unused.
   /// - "ALL_TIME" : The score is an all-time score.
   /// - "WEEKLY" : The score is a weekly score.
   /// - "DAILY" : The score is a daily score.
@@ -3654,6 +3803,160 @@ class LeaderboardScores {
       };
 }
 
+/// Request to link an in-game account with a PGS principal (encoded in the
+/// session id).
+class LinkPersonaRequest {
+  /// Cardinality constraint to observe when linking a persona to a player in
+  /// the scope of a game.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "ONE_PERSONA_TO_ONE_PLAYER" : 1:1 cardinality between in-game personas
+  /// and Play Games Services players. By the end of the linking operation only
+  /// one entry for the player and the persona should remain in the scope of the
+  /// application. Whether a new link is created or not when this constraint is
+  /// specified is determined by the chosen `ConflictingLinksResolutionPolicy`:
+  /// * If `KEEP_EXISTING_LINKS` is specified and the provided persona is
+  /// already linked to a different player, or the player is already linked to a
+  /// different persona, no new link will be created and the already existing
+  /// link(s) will remain as is(are). * If `CREATE_NEW_LINK` is specified and
+  /// the provided persona is already linked to a different player, or the
+  /// player is already linked to another persona, the older link(s) will be
+  /// removed in favour of the new link being created.
+  core.String? cardinalityConstraint;
+
+  /// Resolution policy to apply when the linking of a persona to a player would
+  /// result in violating the specified cardinality constraint.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "KEEP_EXISTING_LINKS" : If link(s) between a player and persona already
+  /// exists which would result in violating the specified
+  /// `RecallTokensCardinalityConstraint` if the new link was created, keep the
+  /// already existing link(s). For example, if Persona1-Player1 is already
+  /// linked in the scope of application1 and a new link Persona1-Player2 is
+  /// attempted to be created in the scope of application1, then the old link
+  /// will remain and no new link will be added. Note that if the already
+  /// existing links do violate the specified policy (which could occur if not
+  /// all `LinkPersona` calls use the same `RecallTokensCardinalityConstraint`)
+  /// this policy will leave these violations unresolved; in order to resolve
+  /// conflicts, the {@link `CREATE_NEW_LINK` policy needs to be used to rewrite
+  /// links resolving conflicts.
+  /// - "CREATE_NEW_LINK" : If an existing link between a player and persona
+  /// already exists which would result in violating the specified
+  /// `RecallTokensCardinalityConstraint` if the new link was created, replace
+  /// the already existing link(s) with the new link. For example, if
+  /// Persona1-Player1 is already linked in the scope of application1 and a new
+  /// link Persona1-Player2 is attempted to be created in the scope of
+  /// application1, then the old link will be removed and the new link will be
+  /// added to replace it.
+  core.String? conflictingLinksResolutionPolicy;
+
+  /// Input only.
+  ///
+  /// Optional expiration time.
+  core.String? expireTime;
+
+  /// Stable identifier of the in-game account.
+  ///
+  /// Please refrain from re-using the same persona for different games.
+  ///
+  /// Required.
+  core.String? persona;
+
+  /// Opaque server-generated string that encodes all the necessary information
+  /// to identify the PGS player / Google user and application.
+  ///
+  /// Required.
+  core.String? sessionId;
+
+  /// Value of the token to create.
+  ///
+  /// Opaque to Play Games and assumed to be non-stable (encrypted with key
+  /// rotation).
+  ///
+  /// Required.
+  core.String? token;
+
+  /// Input only.
+  ///
+  /// Optional time-to-live.
+  core.String? ttl;
+
+  LinkPersonaRequest({
+    this.cardinalityConstraint,
+    this.conflictingLinksResolutionPolicy,
+    this.expireTime,
+    this.persona,
+    this.sessionId,
+    this.token,
+    this.ttl,
+  });
+
+  LinkPersonaRequest.fromJson(core.Map json_)
+      : this(
+          cardinalityConstraint: json_.containsKey('cardinalityConstraint')
+              ? json_['cardinalityConstraint'] as core.String
+              : null,
+          conflictingLinksResolutionPolicy:
+              json_.containsKey('conflictingLinksResolutionPolicy')
+                  ? json_['conflictingLinksResolutionPolicy'] as core.String
+                  : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
+          persona: json_.containsKey('persona')
+              ? json_['persona'] as core.String
+              : null,
+          sessionId: json_.containsKey('sessionId')
+              ? json_['sessionId'] as core.String
+              : null,
+          token:
+              json_.containsKey('token') ? json_['token'] as core.String : null,
+          ttl: json_.containsKey('ttl') ? json_['ttl'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cardinalityConstraint != null)
+          'cardinalityConstraint': cardinalityConstraint!,
+        if (conflictingLinksResolutionPolicy != null)
+          'conflictingLinksResolutionPolicy': conflictingLinksResolutionPolicy!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (persona != null) 'persona': persona!,
+        if (sessionId != null) 'sessionId': sessionId!,
+        if (token != null) 'token': token!,
+        if (ttl != null) 'ttl': ttl!,
+      };
+}
+
+/// Outcome of a persona linking attempt.
+class LinkPersonaResponse {
+  /// State of a persona linking attempt.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "LINK_CREATED" : The link specified in the request was created.
+  /// - "PERSONA_OR_PLAYER_ALREADY_LINKED" : The link specified in the request
+  /// was not created because already existing links would result in the new
+  /// link violating the specified `RecallTokensCardinalityConstraint` if
+  /// created.
+  core.String? state;
+
+  LinkPersonaResponse({
+    this.state,
+  });
+
+  LinkPersonaResponse.fromJson(core.Map json_)
+      : this(
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (state != null) 'state': state!,
+      };
+}
+
 /// The metagame config resource
 class MetagameConfig {
   /// Current version of the metagame configuration data.
@@ -3751,7 +4054,6 @@ class Player {
   /// This is unset if the player is not sharing their friends list with the
   /// game.
   /// Possible string values are:
-  /// - "FRIEND_STATUS_UNSPECIFIED" : Default value. This value is unused.
   /// - "NO_RELATIONSHIP" : There is no relationship between the players.
   /// - "FRIEND" : The player and requester are friends.
   core.String? friendStatus;
@@ -3867,7 +4169,6 @@ class Player {
 class PlayerAchievement {
   /// The state of the achievement.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
   /// - "HIDDEN" : Achievement is hidden.
   /// - "REVEALED" : Achievement is revealed.
   /// - "UNLOCKED" : Achievement is unlocked.
@@ -4177,7 +4478,6 @@ class PlayerLeaderboardScore {
 
   /// The time span of this score.
   /// Possible string values are:
-  /// - "SCORE_TIME_SPAN_UNSPECIFIED" : Default value. This value is unused.
   /// - "ALL_TIME" : The score is an all-time score.
   /// - "WEEKLY" : The score is a weekly score.
   /// - "DAILY" : The score is a daily score.
@@ -4405,7 +4705,6 @@ class PlayerScore {
 
   /// The time span for this player score.
   /// Possible string values are:
-  /// - "SCORE_TIME_SPAN_UNSPECIFIED" : Default value. This value is unused.
   /// - "ALL_TIME" : The score is an all-time score.
   /// - "WEEKLY" : The score is a weekly score.
   /// - "DAILY" : The score is a daily score.
@@ -4587,7 +4886,6 @@ class PlayerScoreSubmissionList {
 class ProfileSettings {
   ///
   /// Possible string values are:
-  /// - "FRIENDS_LIST_VISIBILITY_UNSPECIFIED" : Unused.
   /// - "VISIBLE" : The friends list is currently visible to the game.
   /// - "REQUEST_REQUIRED" : The developer does not have access to the friends
   /// list, but can call the Android API to show a consent dialog.
@@ -4631,6 +4929,122 @@ class ProfileSettings {
       };
 }
 
+/// Recall token data returned from RetrievePlayerTokens RPC
+class RecallToken {
+  /// Optional expiration time of the token
+  ///
+  /// Optional.
+  core.String? expireTime;
+
+  /// Whether the persona identified by the token is linked to multiple PGS
+  /// Players
+  ///
+  /// Required.
+  core.bool? multiPlayerPersona;
+
+  /// Value of the Recall token as it is provided by the client via LinkPersona
+  /// RPC
+  ///
+  /// Required.
+  core.String? token;
+
+  RecallToken({
+    this.expireTime,
+    this.multiPlayerPersona,
+    this.token,
+  });
+
+  RecallToken.fromJson(core.Map json_)
+      : this(
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
+          multiPlayerPersona: json_.containsKey('multiPlayerPersona')
+              ? json_['multiPlayerPersona'] as core.bool
+              : null,
+          token:
+              json_.containsKey('token') ? json_['token'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (multiPlayerPersona != null)
+          'multiPlayerPersona': multiPlayerPersona!,
+        if (token != null) 'token': token!,
+      };
+}
+
+/// Request to remove all Recall tokens associated with a persona for an app.
+class ResetPersonaRequest {
+  /// Value of the 'persona' field as it was provided by the client in
+  /// LinkPersona RPC
+  core.String? persona;
+
+  ResetPersonaRequest({
+    this.persona,
+  });
+
+  ResetPersonaRequest.fromJson(core.Map json_)
+      : this(
+          persona: json_.containsKey('persona')
+              ? json_['persona'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (persona != null) 'persona': persona!,
+      };
+}
+
+/// Response for the ResetPersona RPC
+class ResetPersonaResponse {
+  /// Whether any tokens were unlinked as a result of this request.
+  ///
+  /// Required.
+  core.bool? unlinked;
+
+  ResetPersonaResponse({
+    this.unlinked,
+  });
+
+  ResetPersonaResponse.fromJson(core.Map json_)
+      : this(
+          unlinked: json_.containsKey('unlinked')
+              ? json_['unlinked'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (unlinked != null) 'unlinked': unlinked!,
+      };
+}
+
+/// Response for the RetrievePlayerTokens RPC
+class RetrievePlayerTokensResponse {
+  /// Recall tokens associated with the requested PGS Player principal
+  ///
+  /// Required.
+  core.List<RecallToken>? tokens;
+
+  RetrievePlayerTokensResponse({
+    this.tokens,
+  });
+
+  RetrievePlayerTokensResponse.fromJson(core.Map json_)
+      : this(
+          tokens: json_.containsKey('tokens')
+              ? (json_['tokens'] as core.List)
+                  .map((value) => RecallToken.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (tokens != null) 'tokens': tokens!,
+      };
+}
+
 /// A third party checking a revision response.
 class RevisionCheckResponse {
   /// The version of the API this client revision should use when calling API
@@ -4644,7 +5058,6 @@ class RevisionCheckResponse {
 
   /// The result of the revision check.
   /// Possible string values are:
-  /// - "REVISION_STATUS_UNSPECIFIED" : Default value. This value is unused.
   /// - "OK" : The revision being used is current.
   /// - "DEPRECATED" : There is currently a newer version available, but the
   /// revision being used still works.
@@ -4809,7 +5222,6 @@ class Snapshot {
 
   /// The type of this snapshot.
   /// Possible string values are:
-  /// - "SNAPSHOT_TYPE_UNSPECIFIED" : Default value. This value is unused.
   /// - "SAVE_GAME" : A snapshot representing a save game.
   core.String? type;
 
@@ -5106,5 +5518,73 @@ class StatsResponse {
         if (spendProbability != null) 'spend_probability': spendProbability!,
         if (totalSpendNext28Days != null)
           'total_spend_next_28_days': totalSpendNext28Days!,
+      };
+}
+
+/// Request to remove a Recall token linking PGS principal and an in-game
+/// account
+class UnlinkPersonaRequest {
+  /// Value of the 'persona' field as it was provided by the client in
+  /// LinkPersona RPC
+  core.String? persona;
+
+  /// Opaque server-generated string that encodes all the necessary information
+  /// to identify the PGS player / Google user and application.
+  ///
+  /// Required.
+  core.String? sessionId;
+
+  /// Value of the Recall token as it was provided by the client in LinkPersona
+  /// RPC
+  core.String? token;
+
+  UnlinkPersonaRequest({
+    this.persona,
+    this.sessionId,
+    this.token,
+  });
+
+  UnlinkPersonaRequest.fromJson(core.Map json_)
+      : this(
+          persona: json_.containsKey('persona')
+              ? json_['persona'] as core.String
+              : null,
+          sessionId: json_.containsKey('sessionId')
+              ? json_['sessionId'] as core.String
+              : null,
+          token:
+              json_.containsKey('token') ? json_['token'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (persona != null) 'persona': persona!,
+        if (sessionId != null) 'sessionId': sessionId!,
+        if (token != null) 'token': token!,
+      };
+}
+
+/// Response for the UnlinkPersona RPC
+class UnlinkPersonaResponse {
+  /// Whether a Recall token specified by the request was deleted.
+  ///
+  /// Can be 'false' when there were no Recall tokens satisfied the criteria
+  /// from the request.
+  ///
+  /// Required.
+  core.bool? unlinked;
+
+  UnlinkPersonaResponse({
+    this.unlinked,
+  });
+
+  UnlinkPersonaResponse.fromJson(core.Map json_)
+      : this(
+          unlinked: json_.containsKey('unlinked')
+              ? json_['unlinked'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (unlinked != null) 'unlinked': unlinked!,
       };
 }

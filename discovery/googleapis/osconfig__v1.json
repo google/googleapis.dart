@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230806",
+    "revision": "20231029",
     "rootUrl": "https://osconfig.googleapis.com/",
     "servicePath": "",
     "title": "OS Config API",
@@ -1912,10 +1912,6 @@
                 },
                 "description": {
                     "description": "Policy description. Length of the description is limited to 1024 characters.",
-                    "type": "string"
-                },
-                "fingerprint": {
-                    "description": "OSPolicy fingerprint (checksum)",
                     "type": "string"
                 },
                 "id": {

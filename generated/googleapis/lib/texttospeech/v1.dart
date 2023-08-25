@@ -537,7 +537,7 @@ class CustomVoiceParams {
 
   /// The usage of the synthesized audio to be reported.
   ///
-  /// Optional.
+  /// Optional. Deprecated.
   /// Possible string values are:
   /// - "REPORTED_USAGE_UNSPECIFIED" : Request with reported usage unspecified
   /// will be rejected.
@@ -547,6 +547,9 @@ class CustomVoiceParams {
   /// - "OFFLINE" : For scenarios where the synthesized audio is downloadable
   /// and can be reused. For example, the synthesized audio is downloaded,
   /// stored in customer service system and played repeatedly.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? reportedUsage;
 
   CustomVoiceParams({
@@ -663,7 +666,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard

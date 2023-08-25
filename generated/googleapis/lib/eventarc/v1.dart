@@ -2113,9 +2113,9 @@ class CloudRun {
 class Destination {
   /// The Cloud Function resource name.
   ///
-  /// Only Cloud Functions V2 is supported. Format:
+  /// Cloud Functions V1 and V2 are supported. Format:
   /// `projects/{project}/locations/{location}/functions/{function}` This is a
-  /// read-only field. Creating Cloud Functions V2 triggers is only supported
+  /// read-only field. Creating Cloud Functions V1/V2 triggers is only supported
   /// via the Cloud Functions product. An error will be returned if the user
   /// sets this value.
   core.String? cloudFunction;
@@ -2130,6 +2130,17 @@ class Destination {
   /// The service should be running in the same project as the trigger.
   GKE? gke;
 
+  /// An HTTP endpoint destination described by an URI.
+  HttpEndpoint? httpEndpoint;
+
+  /// Network config is used to configure how Eventarc resolves and connect to a
+  /// destination.
+  ///
+  /// This should only be used with HttpEndpoint destination type.
+  ///
+  /// Optional.
+  NetworkConfig? networkConfig;
+
   /// The resource name of the Workflow whose Executions are triggered by the
   /// events.
   ///
@@ -2142,6 +2153,8 @@ class Destination {
     this.cloudFunction,
     this.cloudRun,
     this.gke,
+    this.httpEndpoint,
+    this.networkConfig,
     this.workflow,
   });
 
@@ -2158,6 +2171,14 @@ class Destination {
               ? GKE
                   .fromJson(json_['gke'] as core.Map<core.String, core.dynamic>)
               : null,
+          httpEndpoint: json_.containsKey('httpEndpoint')
+              ? HttpEndpoint.fromJson(
+                  json_['httpEndpoint'] as core.Map<core.String, core.dynamic>)
+              : null,
+          networkConfig: json_.containsKey('networkConfig')
+              ? NetworkConfig.fromJson(
+                  json_['networkConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           workflow: json_.containsKey('workflow')
               ? json_['workflow'] as core.String
               : null,
@@ -2167,6 +2188,8 @@ class Destination {
         if (cloudFunction != null) 'cloudFunction': cloudFunction!,
         if (cloudRun != null) 'cloudRun': cloudRun!,
         if (gke != null) 'gke': gke!,
+        if (httpEndpoint != null) 'httpEndpoint': httpEndpoint!,
+        if (networkConfig != null) 'networkConfig': networkConfig!,
         if (workflow != null) 'workflow': workflow!,
       };
 }
@@ -2563,7 +2586,7 @@ class GoogleLongrunningOperation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -2617,6 +2640,33 @@ class GoogleLongrunningOperation {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef GoogleRpcStatus = $Status;
+
+/// Represents a HTTP endpoint destination.
+class HttpEndpoint {
+  /// The URI of the HTTP enpdoint.
+  ///
+  /// The value must be a RFC2396 URI string. Examples:
+  /// `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only
+  /// HTTP and HTTPS protocols are supported. The host can be either a static IP
+  /// addressable from the VPC specified by the network config, or an internal
+  /// DNS hostname of the service resolvable via Cloud DNS.
+  ///
+  /// Required.
+  core.String? uri;
+
+  HttpEndpoint({
+    this.uri,
+  });
+
+  HttpEndpoint.fromJson(core.Map json_)
+      : this(
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
 
 /// The response message for the `ListChannelConnections` method.
 class ListChannelConnectionsResponse {
@@ -2832,6 +2882,33 @@ class ListTriggersResponse {
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
+/// Represents a network config to be used for destination resolution and
+/// connectivity.
+class NetworkConfig {
+  /// Name of the NetworkAttachment that allows access to the destination VPC.
+  ///
+  /// Format:
+  /// `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+  ///
+  /// Required.
+  core.String? networkAttachment;
+
+  NetworkConfig({
+    this.networkAttachment,
+  });
+
+  NetworkConfig.fromJson(core.Map json_)
+      : this(
+          networkAttachment: json_.containsKey('networkAttachment')
+              ? json_['networkAttachment'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (networkAttachment != null) 'networkAttachment': networkAttachment!,
+      };
+}
+
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
 ///
@@ -2846,23 +2923,23 @@ typedef Location = $Location00;
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;

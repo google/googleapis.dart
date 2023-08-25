@@ -219,6 +219,38 @@ void checkBuildConfig(api.BuildConfig o) {
   buildCounterBuildConfig--;
 }
 
+core.int buildCounterDate = 0;
+api.Date buildDate() {
+  final o = api.Date();
+  buildCounterDate++;
+  if (buildCounterDate < 3) {
+    o.day = 42;
+    o.month = 42;
+    o.year = 42;
+  }
+  buildCounterDate--;
+  return o;
+}
+
+void checkDate(api.Date o) {
+  buildCounterDate++;
+  if (buildCounterDate < 3) {
+    unittest.expect(
+      o.day!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.month!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.year!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterDate--;
+}
+
 core.int buildCounterEventFilter = 0;
 api.EventFilter buildEventFilter() {
   final o = api.EventFilter();
@@ -1056,6 +1088,8 @@ api.Runtime buildRuntime() {
   final o = api.Runtime();
   buildCounterRuntime++;
   if (buildCounterRuntime < 3) {
+    o.decommissionDate = buildDate();
+    o.deprecationDate = buildDate();
     o.displayName = 'foo';
     o.environment = 'foo';
     o.name = 'foo';
@@ -1069,6 +1103,8 @@ api.Runtime buildRuntime() {
 void checkRuntime(api.Runtime o) {
   buildCounterRuntime++;
   if (buildCounterRuntime < 3) {
+    checkDate(o.decommissionDate!);
+    checkDate(o.deprecationDate!);
     unittest.expect(
       o.displayName!,
       unittest.equals('foo'),
@@ -1636,6 +1672,16 @@ void main() {
       final od = api.BuildConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkBuildConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-Date', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDate();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Date.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkDate(od);
     });
   });
 

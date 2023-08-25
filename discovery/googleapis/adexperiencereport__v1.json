@@ -16,7 +16,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230508",
+    "revision": "20231002",
     "rootUrl": "https://adexperiencereport.googleapis.com/",
     "servicePath": "",
     "title": "Ad Experience Report API",
@@ -156,6 +156,12 @@
                         "WARNING",
                         "FAILING"
                     ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        true,
+                        false
+                    ],
                     "enumDescriptions": [
                         "Not reviewed.",
                         "Passing.",
@@ -193,6 +199,7 @@
                     "type": "string"
                 },
                 "region": {
+                    "deprecated": true,
                     "description": "The site's regions on this platform. No longer populated, because there is no longer any semantic difference between sites in different regions.",
                     "items": {
                         "enum": [

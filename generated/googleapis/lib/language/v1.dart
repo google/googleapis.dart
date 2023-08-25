@@ -824,34 +824,7 @@ class AnnotateTextResponse {
 }
 
 /// Represents a category returned from the text classifier.
-class ClassificationCategory {
-  /// The classifier's confidence of the category.
-  ///
-  /// Number represents how certain the classifier is that this category
-  /// represents the given text.
-  core.double? confidence;
-
-  /// The name of the category representing the document.
-  core.String? name;
-
-  ClassificationCategory({
-    this.confidence,
-    this.name,
-  });
-
-  ClassificationCategory.fromJson(core.Map json_)
-      : this(
-          confidence: json_.containsKey('confidence')
-              ? (json_['confidence'] as core.num).toDouble()
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (name != null) 'name': name!,
-      };
-}
+typedef ClassificationCategory = $ClassificationCategory;
 
 /// Model options available for classification requests.
 class ClassificationModelOptions {
@@ -1668,66 +1641,10 @@ class Sentence {
 
 /// Represents the feeling associated with the entire text or entities in the
 /// text.
-class Sentiment {
-  /// A non-negative number in the \[0, +inf) range, which represents the
-  /// absolute magnitude of sentiment regardless of score (positive or
-  /// negative).
-  core.double? magnitude;
-
-  /// Sentiment score between -1.0 (negative sentiment) and 1.0 (positive
-  /// sentiment).
-  core.double? score;
-
-  Sentiment({
-    this.magnitude,
-    this.score,
-  });
-
-  Sentiment.fromJson(core.Map json_)
-      : this(
-          magnitude: json_.containsKey('magnitude')
-              ? (json_['magnitude'] as core.num).toDouble()
-              : null,
-          score: json_.containsKey('score')
-              ? (json_['score'] as core.num).toDouble()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (magnitude != null) 'magnitude': magnitude!,
-        if (score != null) 'score': score!,
-      };
-}
+typedef Sentiment = $Sentiment;
 
 /// Represents a text span in the input document.
-class TextSpan {
-  /// The API calculates the beginning offset of the content in the original
-  /// document according to the EncodingType specified in the API request.
-  core.int? beginOffset;
-
-  /// The content of the text span, which is a substring of the document.
-  core.String? content;
-
-  TextSpan({
-    this.beginOffset,
-    this.content,
-  });
-
-  TextSpan.fromJson(core.Map json_)
-      : this(
-          beginOffset: json_.containsKey('beginOffset')
-              ? json_['beginOffset'] as core.int
-              : null,
-          content: json_.containsKey('content')
-              ? json_['content'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (beginOffset != null) 'beginOffset': beginOffset!,
-        if (content != null) 'content': content!,
-      };
-}
+typedef TextSpan = $TextSpan;
 
 /// Represents the smallest syntactic building block of the text.
 class Token {

@@ -548,7 +548,60 @@ void checkGoogleCloudDatacatalogLineageV1ProcessLinks(
   buildCounterGoogleCloudDatacatalogLineageV1ProcessLinks--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed8() => {
+core.List<core.String> buildUnnamed8() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed8(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int
+    buildCounterGoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse =
+    0;
+api.GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse
+    buildGoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse() {
+  final o =
+      api.GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse();
+  buildCounterGoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse++;
+  if (buildCounterGoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse <
+      3) {
+    o.lineageEvents = buildUnnamed8();
+    o.process = 'foo';
+    o.run = 'foo';
+  }
+  buildCounterGoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse--;
+  return o;
+}
+
+void checkGoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse(
+    api.GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse o) {
+  buildCounterGoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse++;
+  if (buildCounterGoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse <
+      3) {
+    checkUnnamed8(o.lineageEvents!);
+    unittest.expect(
+      o.process!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.run!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed9() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -561,7 +614,7 @@ core.Map<core.String, core.Object?> buildUnnamed8() => {
       },
     };
 
-void checkUnnamed8(core.Map<core.String, core.Object?> o) {
+void checkUnnamed9(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -599,7 +652,7 @@ api.GoogleCloudDatacatalogLineageV1Run
   final o = api.GoogleCloudDatacatalogLineageV1Run();
   buildCounterGoogleCloudDatacatalogLineageV1Run++;
   if (buildCounterGoogleCloudDatacatalogLineageV1Run < 3) {
-    o.attributes = buildUnnamed8();
+    o.attributes = buildUnnamed9();
     o.displayName = 'foo';
     o.endTime = 'foo';
     o.name = 'foo';
@@ -614,7 +667,7 @@ void checkGoogleCloudDatacatalogLineageV1Run(
     api.GoogleCloudDatacatalogLineageV1Run o) {
   buildCounterGoogleCloudDatacatalogLineageV1Run++;
   if (buildCounterGoogleCloudDatacatalogLineageV1Run < 3) {
-    checkUnnamed8(o.attributes!);
+    checkUnnamed9(o.attributes!);
     unittest.expect(
       o.displayName!,
       unittest.equals('foo'),
@@ -672,12 +725,12 @@ void checkGoogleCloudDatacatalogLineageV1SearchLinksRequest(
   buildCounterGoogleCloudDatacatalogLineageV1SearchLinksRequest--;
 }
 
-core.List<api.GoogleCloudDatacatalogLineageV1Link> buildUnnamed9() => [
+core.List<api.GoogleCloudDatacatalogLineageV1Link> buildUnnamed10() => [
       buildGoogleCloudDatacatalogLineageV1Link(),
       buildGoogleCloudDatacatalogLineageV1Link(),
     ];
 
-void checkUnnamed9(core.List<api.GoogleCloudDatacatalogLineageV1Link> o) {
+void checkUnnamed10(core.List<api.GoogleCloudDatacatalogLineageV1Link> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDatacatalogLineageV1Link(o[0]);
   checkGoogleCloudDatacatalogLineageV1Link(o[1]);
@@ -689,7 +742,7 @@ api.GoogleCloudDatacatalogLineageV1SearchLinksResponse
   final o = api.GoogleCloudDatacatalogLineageV1SearchLinksResponse();
   buildCounterGoogleCloudDatacatalogLineageV1SearchLinksResponse++;
   if (buildCounterGoogleCloudDatacatalogLineageV1SearchLinksResponse < 3) {
-    o.links = buildUnnamed9();
+    o.links = buildUnnamed10();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDatacatalogLineageV1SearchLinksResponse--;
@@ -700,7 +753,7 @@ void checkGoogleCloudDatacatalogLineageV1SearchLinksResponse(
     api.GoogleCloudDatacatalogLineageV1SearchLinksResponse o) {
   buildCounterGoogleCloudDatacatalogLineageV1SearchLinksResponse++;
   if (buildCounterGoogleCloudDatacatalogLineageV1SearchLinksResponse < 3) {
-    checkUnnamed9(o.links!);
+    checkUnnamed10(o.links!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -726,12 +779,12 @@ void checkGoogleLongrunningCancelOperationRequest(
   buildCounterGoogleLongrunningCancelOperationRequest--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed10() => [
+core.List<api.GoogleLongrunningOperation> buildUnnamed11() => [
       buildGoogleLongrunningOperation(),
       buildGoogleLongrunningOperation(),
     ];
 
-void checkUnnamed10(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed11(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
@@ -744,7 +797,7 @@ api.GoogleLongrunningListOperationsResponse
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed10();
+    o.operations = buildUnnamed11();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -758,12 +811,12 @@ void checkGoogleLongrunningListOperationsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed10(o.operations!);
+    checkUnnamed11(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed11() => {
+core.Map<core.String, core.Object?> buildUnnamed12() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -776,7 +829,7 @@ core.Map<core.String, core.Object?> buildUnnamed11() => {
       },
     };
 
-void checkUnnamed11(core.Map<core.String, core.Object?> o) {
+void checkUnnamed12(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -808,7 +861,7 @@ void checkUnnamed11(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed12() => {
+core.Map<core.String, core.Object?> buildUnnamed13() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -821,7 +874,7 @@ core.Map<core.String, core.Object?> buildUnnamed12() => {
       },
     };
 
-void checkUnnamed12(core.Map<core.String, core.Object?> o) {
+void checkUnnamed13(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -860,9 +913,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed11();
+    o.metadata = buildUnnamed12();
     o.name = 'foo';
-    o.response = buildUnnamed12();
+    o.response = buildUnnamed13();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -873,12 +926,12 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed11(o.metadata!);
+    checkUnnamed12(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed12(o.response!);
+    checkUnnamed13(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -898,7 +951,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed13() => {
+core.Map<core.String, core.Object?> buildUnnamed14() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -911,7 +964,7 @@ core.Map<core.String, core.Object?> buildUnnamed13() => {
       },
     };
 
-void checkUnnamed13(core.Map<core.String, core.Object?> o) {
+void checkUnnamed14(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
@@ -943,15 +996,15 @@ void checkUnnamed13(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed14() => [
-      buildUnnamed13(),
-      buildUnnamed13(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed15() => [
+      buildUnnamed14(),
+      buildUnnamed14(),
     ];
 
-void checkUnnamed14(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed15(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed13(o[0]);
-  checkUnnamed13(o[1]);
+  checkUnnamed14(o[0]);
+  checkUnnamed14(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -960,7 +1013,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed14();
+    o.details = buildUnnamed15();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -974,7 +1027,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed14(o.details!);
+    checkUnnamed15(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1130,6 +1183,21 @@ void main() {
     });
   });
 
+  unittest.group(
+      'obj-schema-GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse(
+          od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudDatacatalogLineageV1Run', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudDatacatalogLineageV1Run();
@@ -1277,6 +1345,67 @@ void main() {
       checkGoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse(
           response as api
               .GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse);
+    });
+
+    unittest.test('method--processOpenLineageRunEvent', () async {
+      final mock = HttpServerMock();
+      final res = api.DatalineageApi(mock).projects.locations;
+      final arg_parent = 'foo';
+      final arg_requestId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['requestId']!.first,
+          unittest.equals(arg_requestId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(
+            buildGoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.processOpenLineageRunEvent(arg_parent,
+          requestId: arg_requestId, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse(
+          response as api
+              .GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse);
     });
 
     unittest.test('method--searchLinks', () async {

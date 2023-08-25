@@ -894,6 +894,7 @@ api.CertificateTemplate buildCertificateTemplate() {
     o.description = 'foo';
     o.identityConstraints = buildCertificateIdentityConstraints();
     o.labels = buildUnnamed17();
+    o.maximumLifetime = 'foo';
     o.name = 'foo';
     o.passthroughExtensions = buildCertificateExtensionConstraints();
     o.predefinedValues = buildX509Parameters();
@@ -916,6 +917,10 @@ void checkCertificateTemplate(api.CertificateTemplate o) {
     );
     checkCertificateIdentityConstraints(o.identityConstraints!);
     checkUnnamed17(o.labels!);
+    unittest.expect(
+      o.maximumLifetime!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.name!,
       unittest.equals('foo'),

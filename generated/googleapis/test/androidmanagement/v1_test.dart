@@ -1137,6 +1137,7 @@ api.CrossProfilePolicies buildCrossProfilePolicies() {
   if (buildCounterCrossProfilePolicies < 3) {
     o.crossProfileCopyPaste = 'foo';
     o.crossProfileDataSharing = 'foo';
+    o.exemptionsToShowWorkContactsInPersonalProfile = buildPackageNameList();
     o.showWorkContactsInPersonalProfile = 'foo';
     o.workProfileWidgetsDefault = 'foo';
   }
@@ -1155,6 +1156,7 @@ void checkCrossProfilePolicies(api.CrossProfilePolicies o) {
       o.crossProfileDataSharing!,
       unittest.equals('foo'),
     );
+    checkPackageNameList(o.exemptionsToShowWorkContactsInPersonalProfile!);
     unittest.expect(
       o.showWorkContactsInPersonalProfile!,
       unittest.equals('foo'),
@@ -1488,6 +1490,8 @@ api.DeviceRadioState buildDeviceRadioState() {
   buildCounterDeviceRadioState++;
   if (buildCounterDeviceRadioState < 3) {
     o.airplaneModeState = 'foo';
+    o.cellularTwoGState = 'foo';
+    o.ultraWidebandState = 'foo';
     o.wifiState = 'foo';
   }
   buildCounterDeviceRadioState--;
@@ -1499,6 +1503,14 @@ void checkDeviceRadioState(api.DeviceRadioState o) {
   if (buildCounterDeviceRadioState < 3) {
     unittest.expect(
       o.airplaneModeState!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.cellularTwoGState!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ultraWidebandState!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -4120,6 +4132,7 @@ api.SigninDetail buildSigninDetail() {
     o.qrCode = 'foo';
     o.signinEnrollmentToken = 'foo';
     o.signinUrl = 'foo';
+    o.tokenTag = 'foo';
   }
   buildCounterSigninDetail--;
   return o;
@@ -4142,6 +4155,10 @@ void checkSigninDetail(api.SigninDetail o) {
     );
     unittest.expect(
       o.signinUrl!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tokenTag!,
       unittest.equals('foo'),
     );
   }

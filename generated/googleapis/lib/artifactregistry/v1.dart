@@ -447,7 +447,7 @@ class ProjectsLocationsRepositoriesResource {
   /// will be created.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [repositoryId] - The repository id to use for this repository.
+  /// [repositoryId] - Required. The repository id to use for this repository.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2321,6 +2321,31 @@ class ProjectsLocationsRepositoriesYumArtifactsResource {
   }
 }
 
+/// Configuration for an Apt remote repository.
+class AptRepository {
+  /// One of the publicly available Apt repositories supported by Artifact
+  /// Registry.
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository?
+      publicRepository;
+
+  AptRepository({
+    this.publicRepository,
+  });
+
+  AptRepository.fromJson(core.Map json_)
+      : this(
+          publicRepository: json_.containsKey('publicRepository')
+              ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository
+                  .fromJson(json_['publicRepository']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (publicRepository != null) 'publicRepository': publicRepository!,
+      };
+}
+
 /// The request to delete multiple versions across a repository.
 class BatchDeleteVersionsRequest {
   /// The names of the versions to delete.
@@ -2886,6 +2911,80 @@ class GoogleDevtoolsArtifactregistryV1File {
         if (owner != null) 'owner': owner!,
         if (sizeBytes != null) 'sizeBytes': sizeBytes!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Publicly available Apt repositories constructed from a common repository
+/// base and a custom repository path.
+class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository {
+  /// A common public repository base for Apt.
+  /// Possible string values are:
+  /// - "REPOSITORY_BASE_UNSPECIFIED" : Unspecified repository base.
+  /// - "DEBIAN" : Debian.
+  /// - "UBUNTU" : Ubuntu LTS/Pro.
+  core.String? repositoryBase;
+
+  /// A custom field to define a path to a specific repository from the base.
+  core.String? repositoryPath;
+
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository({
+    this.repositoryBase,
+    this.repositoryPath,
+  });
+
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository.fromJson(
+      core.Map json_)
+      : this(
+          repositoryBase: json_.containsKey('repositoryBase')
+              ? json_['repositoryBase'] as core.String
+              : null,
+          repositoryPath: json_.containsKey('repositoryPath')
+              ? json_['repositoryPath'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (repositoryBase != null) 'repositoryBase': repositoryBase!,
+        if (repositoryPath != null) 'repositoryPath': repositoryPath!,
+      };
+}
+
+/// Publicly available Yum repositories constructed from a common repository
+/// base and a custom repository path.
+class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository {
+  /// A common public repository base for Yum.
+  /// Possible string values are:
+  /// - "REPOSITORY_BASE_UNSPECIFIED" : Unspecified repository base.
+  /// - "CENTOS" : CentOS.
+  /// - "CENTOS_DEBUG" : CentOS Debug.
+  /// - "CENTOS_VAULT" : CentOS Vault.
+  /// - "CENTOS_STREAM" : CentOS Stream.
+  /// - "ROCKY" : Rocky.
+  /// - "EPEL" : Fedora Extra Packages for Enterprise Linux (EPEL).
+  core.String? repositoryBase;
+
+  /// A custom field to define a path to a specific repository from the base.
+  core.String? repositoryPath;
+
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository({
+    this.repositoryBase,
+    this.repositoryPath,
+  });
+
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository.fromJson(
+      core.Map json_)
+      : this(
+          repositoryBase: json_.containsKey('repositoryBase')
+              ? json_['repositoryBase'] as core.String
+              : null,
+          repositoryPath: json_.containsKey('repositoryPath')
+              ? json_['repositoryPath'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (repositoryBase != null) 'repositoryBase': repositoryBase!,
+        if (repositoryPath != null) 'repositoryPath': repositoryPath!,
       };
 }
 
@@ -3981,6 +4080,9 @@ class PythonRepository {
 
 /// Remote repository configuration.
 class RemoteRepositoryConfig {
+  /// Specific settings for an Apt remote repository.
+  AptRepository? aptRepository;
+
   /// The description of the remote source.
   core.String? description;
 
@@ -3996,16 +4098,31 @@ class RemoteRepositoryConfig {
   /// Specific settings for a Python remote repository.
   PythonRepository? pythonRepository;
 
+  /// The credentials used to access the remote repository.
+  ///
+  /// Optional.
+  UpstreamCredentials? upstreamCredentials;
+
+  /// Specific settings for a Yum remote repository.
+  YumRepository? yumRepository;
+
   RemoteRepositoryConfig({
+    this.aptRepository,
     this.description,
     this.dockerRepository,
     this.mavenRepository,
     this.npmRepository,
     this.pythonRepository,
+    this.upstreamCredentials,
+    this.yumRepository,
   });
 
   RemoteRepositoryConfig.fromJson(core.Map json_)
       : this(
+          aptRepository: json_.containsKey('aptRepository')
+              ? AptRepository.fromJson(
+                  json_['aptRepository'] as core.Map<core.String, core.dynamic>)
+              : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
@@ -4025,14 +4142,26 @@ class RemoteRepositoryConfig {
               ? PythonRepository.fromJson(json_['pythonRepository']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          upstreamCredentials: json_.containsKey('upstreamCredentials')
+              ? UpstreamCredentials.fromJson(json_['upstreamCredentials']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          yumRepository: json_.containsKey('yumRepository')
+              ? YumRepository.fromJson(
+                  json_['yumRepository'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (aptRepository != null) 'aptRepository': aptRepository!,
         if (description != null) 'description': description!,
         if (dockerRepository != null) 'dockerRepository': dockerRepository!,
         if (mavenRepository != null) 'mavenRepository': mavenRepository!,
         if (npmRepository != null) 'npmRepository': npmRepository!,
         if (pythonRepository != null) 'pythonRepository': pythonRepository!,
+        if (upstreamCredentials != null)
+          'upstreamCredentials': upstreamCredentials!,
+        if (yumRepository != null) 'yumRepository': yumRepository!,
       };
 }
 
@@ -4067,6 +4196,8 @@ class Repository {
   DockerRepositoryConfig? dockerConfig;
 
   /// The format of packages that are stored in the repository.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "FORMAT_UNSPECIFIED" : Unspecified package format.
   /// - "DOCKER" : Docker package format.
@@ -4101,6 +4232,8 @@ class Repository {
   MavenRepositoryConfig? mavenConfig;
 
   /// The mode of the repository.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "MODE_UNSPECIFIED" : Unspecified mode.
   /// - "STANDARD_REPOSITORY" : A standard repository storing artifacts.
@@ -4121,11 +4254,6 @@ class Repository {
   ///
   /// Output only.
   core.bool? satisfiesPzs;
-
-  /// Config and state for sbom generation for resources within this Repository.
-  ///
-  /// Optional.
-  SbomConfig? sbomConfig;
 
   /// The size, in bytes, of all artifact storage in this repository.
   ///
@@ -4157,7 +4285,6 @@ class Repository {
     this.name,
     this.remoteRepositoryConfig,
     this.satisfiesPzs,
-    this.sbomConfig,
     this.sizeBytes,
     this.updateTime,
     this.virtualRepositoryConfig,
@@ -4216,10 +4343,6 @@ class Repository {
           satisfiesPzs: json_.containsKey('satisfiesPzs')
               ? json_['satisfiesPzs'] as core.bool
               : null,
-          sbomConfig: json_.containsKey('sbomConfig')
-              ? SbomConfig.fromJson(
-                  json_['sbomConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
           sizeBytes: json_.containsKey('sizeBytes')
               ? json_['sizeBytes'] as core.String
               : null,
@@ -4249,52 +4372,10 @@ class Repository {
         if (remoteRepositoryConfig != null)
           'remoteRepositoryConfig': remoteRepositoryConfig!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-        if (sbomConfig != null) 'sbomConfig': sbomConfig!,
         if (sizeBytes != null) 'sizeBytes': sizeBytes!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (virtualRepositoryConfig != null)
           'virtualRepositoryConfig': virtualRepositoryConfig!,
-      };
-}
-
-/// Config for whether to generate SBOMs for resources in this repository, as
-/// well as output fields describing current state.
-class SbomConfig {
-  /// Config for whether this repository has sbom generation disabled.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "ENABLEMENT_CONFIG_UNSPECIFIED" : Unspecified config was not set. This
-  /// will be interpreted as DISABLED.
-  /// - "INHERITED" : Inherited indicates the repository is allowed for SBOM
-  /// generation, however the actual state will be inherited from the API
-  /// enablement state.
-  /// - "DISABLED" : Disabled indicates the repository will not generate SBOMs.
-  core.String? enablementConfig;
-
-  /// The last time this repository config was set to INHERITED.
-  ///
-  /// Output only.
-  core.String? lastEnableTime;
-
-  SbomConfig({
-    this.enablementConfig,
-    this.lastEnableTime,
-  });
-
-  SbomConfig.fromJson(core.Map json_)
-      : this(
-          enablementConfig: json_.containsKey('enablementConfig')
-              ? json_['enablementConfig'] as core.String
-              : null,
-          lastEnableTime: json_.containsKey('lastEnableTime')
-              ? json_['lastEnableTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (enablementConfig != null) 'enablementConfig': enablementConfig!,
-        if (lastEnableTime != null) 'lastEnableTime': lastEnableTime!,
       };
 }
 
@@ -4528,6 +4609,31 @@ class UploadYumArtifactMediaResponse {
 /// The request to upload an artifact.
 typedef UploadYumArtifactRequest = $Empty;
 
+/// The credentials to access the remote repository.
+class UpstreamCredentials {
+  /// Use username and password to access the remote repository.
+  UsernamePasswordCredentials? usernamePasswordCredentials;
+
+  UpstreamCredentials({
+    this.usernamePasswordCredentials,
+  });
+
+  UpstreamCredentials.fromJson(core.Map json_)
+      : this(
+          usernamePasswordCredentials:
+              json_.containsKey('usernamePasswordCredentials')
+                  ? UsernamePasswordCredentials.fromJson(
+                      json_['usernamePasswordCredentials']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (usernamePasswordCredentials != null)
+          'usernamePasswordCredentials': usernamePasswordCredentials!,
+      };
+}
+
 /// Artifact policy configuration for the repository contents.
 class UpstreamPolicy {
   /// The user-provided ID of the upstream policy.
@@ -4561,6 +4667,40 @@ class UpstreamPolicy {
         if (id != null) 'id': id!,
         if (priority != null) 'priority': priority!,
         if (repository != null) 'repository': repository!,
+      };
+}
+
+/// Username and password credentials.
+class UsernamePasswordCredentials {
+  /// The Secret Manager key version that holds the password to access the
+  /// remote repository.
+  ///
+  /// Must be in the format of
+  /// `projects/{project}/secrets/{secret}/versions/{version}`.
+  core.String? passwordSecretVersion;
+
+  /// The username to access the remote repository.
+  core.String? username;
+
+  UsernamePasswordCredentials({
+    this.passwordSecretVersion,
+    this.username,
+  });
+
+  UsernamePasswordCredentials.fromJson(core.Map json_)
+      : this(
+          passwordSecretVersion: json_.containsKey('passwordSecretVersion')
+              ? json_['passwordSecretVersion'] as core.String
+              : null,
+          username: json_.containsKey('username')
+              ? json_['username'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (passwordSecretVersion != null)
+          'passwordSecretVersion': passwordSecretVersion!,
+        if (username != null) 'username': username!,
       };
 }
 
@@ -4711,5 +4851,30 @@ class VirtualRepositoryConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (upstreamPolicies != null) 'upstreamPolicies': upstreamPolicies!,
+      };
+}
+
+/// Configuration for a Yum remote repository.
+class YumRepository {
+  /// One of the publicly available Yum repositories supported by Artifact
+  /// Registry.
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository?
+      publicRepository;
+
+  YumRepository({
+    this.publicRepository,
+  });
+
+  YumRepository.fromJson(core.Map json_)
+      : this(
+          publicRepository: json_.containsKey('publicRepository')
+              ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository
+                  .fromJson(json_['publicRepository']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (publicRepository != null) 'publicRepository': publicRepository!,
       };
 }

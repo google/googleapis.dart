@@ -924,8 +924,11 @@ api.GoogleAnalyticsAdminV1betaConversionEvent
   final o = api.GoogleAnalyticsAdminV1betaConversionEvent();
   buildCounterGoogleAnalyticsAdminV1betaConversionEvent++;
   if (buildCounterGoogleAnalyticsAdminV1betaConversionEvent < 3) {
+    o.countingMethod = 'foo';
     o.createTime = 'foo';
     o.custom = true;
+    o.defaultConversionValue =
+        buildGoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue();
     o.deletable = true;
     o.eventName = 'foo';
     o.name = 'foo';
@@ -939,10 +942,16 @@ void checkGoogleAnalyticsAdminV1betaConversionEvent(
   buildCounterGoogleAnalyticsAdminV1betaConversionEvent++;
   if (buildCounterGoogleAnalyticsAdminV1betaConversionEvent < 3) {
     unittest.expect(
+      o.countingMethod!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
     );
     unittest.expect(o.custom!, unittest.isTrue);
+    checkGoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue(
+        o.defaultConversionValue!);
     unittest.expect(o.deletable!, unittest.isTrue);
     unittest.expect(
       o.eventName!,
@@ -954,6 +963,40 @@ void checkGoogleAnalyticsAdminV1betaConversionEvent(
     );
   }
   buildCounterGoogleAnalyticsAdminV1betaConversionEvent--;
+}
+
+core.int
+    buildCounterGoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue =
+    0;
+api.GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue
+    buildGoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue() {
+  final o =
+      api.GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue();
+  buildCounterGoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue++;
+  if (buildCounterGoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue <
+      3) {
+    o.currencyCode = 'foo';
+    o.value = 42.0;
+  }
+  buildCounterGoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue--;
+  return o;
+}
+
+void checkGoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue(
+    api.GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue o) {
+  buildCounterGoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue++;
+  if (buildCounterGoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue <
+      3) {
+    unittest.expect(
+      o.currencyCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals(42.0),
+    );
+  }
+  buildCounterGoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue--;
 }
 
 core.int buildCounterGoogleAnalyticsAdminV1betaCustomDimension = 0;
@@ -2039,6 +2082,8 @@ api.GoogleAnalyticsAdminV1betaRunAccessReportRequest
     o.dateRanges = buildUnnamed17();
     o.dimensionFilter = buildGoogleAnalyticsAdminV1betaAccessFilterExpression();
     o.dimensions = buildUnnamed18();
+    o.expandGroups = true;
+    o.includeAllUsers = true;
     o.limit = 'foo';
     o.metricFilter = buildGoogleAnalyticsAdminV1betaAccessFilterExpression();
     o.metrics = buildUnnamed19();
@@ -2058,6 +2103,8 @@ void checkGoogleAnalyticsAdminV1betaRunAccessReportRequest(
     checkUnnamed17(o.dateRanges!);
     checkGoogleAnalyticsAdminV1betaAccessFilterExpression(o.dimensionFilter!);
     checkUnnamed18(o.dimensions!);
+    unittest.expect(o.expandGroups!, unittest.isTrue);
+    unittest.expect(o.includeAllUsers!, unittest.isTrue);
     unittest.expect(
       o.limit!,
       unittest.equals('foo'),
@@ -2635,6 +2682,20 @@ void main() {
       final od = api.GoogleAnalyticsAdminV1betaConversionEvent.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1betaConversionEvent(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue(od);
     });
   });
 
@@ -4331,6 +4392,71 @@ void main() {
           $fields: arg_$fields);
       checkGoogleAnalyticsAdminV1betaListConversionEventsResponse(response
           as api.GoogleAnalyticsAdminV1betaListConversionEventsResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.GoogleAnalyticsAdminApi(mock).properties.conversionEvents;
+      final arg_request = buildGoogleAnalyticsAdminV1betaConversionEvent();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleAnalyticsAdminV1betaConversionEvent.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleAnalyticsAdminV1betaConversionEvent(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('v1beta/'),
+        );
+        pathOffset += 7;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleAnalyticsAdminV1betaConversionEvent());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1betaConversionEvent(
+          response as api.GoogleAnalyticsAdminV1betaConversionEvent);
     });
   });
 

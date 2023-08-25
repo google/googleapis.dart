@@ -303,6 +303,74 @@ void checkGoogleCloudAdvisorynotificationsV1Notification(
   buildCounterGoogleCloudAdvisorynotificationsV1Notification--;
 }
 
+core.int buildCounterGoogleCloudAdvisorynotificationsV1NotificationSettings = 0;
+api.GoogleCloudAdvisorynotificationsV1NotificationSettings
+    buildGoogleCloudAdvisorynotificationsV1NotificationSettings() {
+  final o = api.GoogleCloudAdvisorynotificationsV1NotificationSettings();
+  buildCounterGoogleCloudAdvisorynotificationsV1NotificationSettings++;
+  if (buildCounterGoogleCloudAdvisorynotificationsV1NotificationSettings < 3) {
+    o.enabled = true;
+  }
+  buildCounterGoogleCloudAdvisorynotificationsV1NotificationSettings--;
+  return o;
+}
+
+void checkGoogleCloudAdvisorynotificationsV1NotificationSettings(
+    api.GoogleCloudAdvisorynotificationsV1NotificationSettings o) {
+  buildCounterGoogleCloudAdvisorynotificationsV1NotificationSettings++;
+  if (buildCounterGoogleCloudAdvisorynotificationsV1NotificationSettings < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+  }
+  buildCounterGoogleCloudAdvisorynotificationsV1NotificationSettings--;
+}
+
+core.Map<core.String,
+        api.GoogleCloudAdvisorynotificationsV1NotificationSettings>
+    buildUnnamed6() => {
+          'x': buildGoogleCloudAdvisorynotificationsV1NotificationSettings(),
+          'y': buildGoogleCloudAdvisorynotificationsV1NotificationSettings(),
+        };
+
+void checkUnnamed6(
+    core.Map<core.String,
+            api.GoogleCloudAdvisorynotificationsV1NotificationSettings>
+        o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudAdvisorynotificationsV1NotificationSettings(o['x']!);
+  checkGoogleCloudAdvisorynotificationsV1NotificationSettings(o['y']!);
+}
+
+core.int buildCounterGoogleCloudAdvisorynotificationsV1Settings = 0;
+api.GoogleCloudAdvisorynotificationsV1Settings
+    buildGoogleCloudAdvisorynotificationsV1Settings() {
+  final o = api.GoogleCloudAdvisorynotificationsV1Settings();
+  buildCounterGoogleCloudAdvisorynotificationsV1Settings++;
+  if (buildCounterGoogleCloudAdvisorynotificationsV1Settings < 3) {
+    o.etag = 'foo';
+    o.name = 'foo';
+    o.notificationSettings = buildUnnamed6();
+  }
+  buildCounterGoogleCloudAdvisorynotificationsV1Settings--;
+  return o;
+}
+
+void checkGoogleCloudAdvisorynotificationsV1Settings(
+    api.GoogleCloudAdvisorynotificationsV1Settings o) {
+  buildCounterGoogleCloudAdvisorynotificationsV1Settings++;
+  if (buildCounterGoogleCloudAdvisorynotificationsV1Settings < 3) {
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed6(o.notificationSettings!);
+  }
+  buildCounterGoogleCloudAdvisorynotificationsV1Settings--;
+}
+
 core.int buildCounterGoogleCloudAdvisorynotificationsV1Subject = 0;
 api.GoogleCloudAdvisorynotificationsV1Subject
     buildGoogleCloudAdvisorynotificationsV1Subject() {
@@ -434,6 +502,28 @@ void main() {
     });
   });
 
+  unittest.group(
+      'obj-schema-GoogleCloudAdvisorynotificationsV1NotificationSettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudAdvisorynotificationsV1NotificationSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudAdvisorynotificationsV1NotificationSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAdvisorynotificationsV1NotificationSettings(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudAdvisorynotificationsV1Settings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudAdvisorynotificationsV1Settings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudAdvisorynotificationsV1Settings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAdvisorynotificationsV1Settings(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudAdvisorynotificationsV1Subject', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudAdvisorynotificationsV1Subject();
@@ -451,6 +541,122 @@ void main() {
       final od = api.GoogleCloudAdvisorynotificationsV1Text.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAdvisorynotificationsV1Text(od);
+    });
+  });
+
+  unittest.group('resource-OrganizationsLocationsResource', () {
+    unittest.test('method--getSettings', () async {
+      final mock = HttpServerMock();
+      final res = api.AdvisorynotificationsApi(mock).organizations.locations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleCloudAdvisorynotificationsV1Settings());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getSettings(arg_name, $fields: arg_$fields);
+      checkGoogleCloudAdvisorynotificationsV1Settings(
+          response as api.GoogleCloudAdvisorynotificationsV1Settings);
+    });
+
+    unittest.test('method--updateSettings', () async {
+      final mock = HttpServerMock();
+      final res = api.AdvisorynotificationsApi(mock).organizations.locations;
+      final arg_request = buildGoogleCloudAdvisorynotificationsV1Settings();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GoogleCloudAdvisorynotificationsV1Settings.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudAdvisorynotificationsV1Settings(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleCloudAdvisorynotificationsV1Settings());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.updateSettings(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudAdvisorynotificationsV1Settings(
+          response as api.GoogleCloudAdvisorynotificationsV1Settings);
     });
   });
 

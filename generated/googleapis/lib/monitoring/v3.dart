@@ -2927,7 +2927,9 @@ class ProjectsTimeSeriesResource {
   ///
   /// The response is empty if all time series in the request were written. If
   /// any time series could not be written, a corresponding failure message is
-  /// included in the error response.
+  /// included in the error response. This method does not support resource
+  /// locations constraint of an organization policy
+  /// (https://cloud.google.com/resource-manager/docs/organization-policy/defining-locations#setting_the_organization_policy).
   ///
   /// [request] - The metadata request object.
   ///
@@ -4102,7 +4104,7 @@ class ServicesServiceLevelObjectivesResource {
   ///
   /// [serviceLevelObjectiveId] - Optional. The ServiceLevelObjective id to use
   /// for this ServiceLevelObjective. If omitted, an id will be generated
-  /// instead. Must match the pattern \[a-z0-9\-\]+
+  /// instead. Must match the pattern ^\[a-zA-Z0-9-_:.\]+$
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4776,11 +4778,11 @@ class AlertPolicy {
   /// Each key and value is limited to 63 Unicode characters or 128 bytes,
   /// whichever is smaller. Labels and values can contain only lowercase
   /// letters, numerals, underscores, and dashes. Keys must begin with a
-  /// letter.Note that Prometheus {rule group name} and {alert name} are valid
-  /// Prometheus label names
-  /// (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels).
-  /// This means that they cannot be stored as-is in user labels, because
-  /// Prometheus labels may contain upper-case letters.
+  /// letter.Note that Prometheus {alert name} is a valid Prometheus label names
+  /// (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels),
+  /// whereas Prometheus {rule group} is an unrestricted UTF-8 string. This
+  /// means that they cannot be stored as-is in user labels, because they may
+  /// contain characters that are not allowed in user-label values.
   core.Map<core.String, core.String>? userLabels;
 
   /// Read-only description of how the alert policy is invalid.
@@ -6259,7 +6261,8 @@ class ForecastOptions {
   ///
   /// If the predicted value is found to violate the threshold, and the
   /// violation is observed in all forecasts made for the configured duration,
-  /// then the time series is considered to be failing.
+  /// then the time series is considered to be failing. The forecast horizon can
+  /// range from 1 hour to 60 hours.
   ///
   /// Required.
   core.String? forecastHorizon;
@@ -9208,6 +9211,7 @@ class PrometheusQueryLanguageCondition {
   /// the future.This field is optional. If this field is not empty, then it
   /// must be a valid Prometheus label name
   /// (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels).
+  /// This field may not exceed 2048 Unicode characters in length.
   ///
   /// Optional.
   core.String? alertRule;
@@ -9216,20 +9220,20 @@ class PrometheusQueryLanguageCondition {
   /// be "true" for this long.
   ///
   /// Alerts whose PromQL expression was not evaluated to be "true" for long
-  /// enough are considered pending. The default value is zero. Must be zero or
-  /// positive.
+  /// enough are considered pending. Must be a non-negative duration or missing.
+  /// This field is optional. Its default value is zero.
   ///
   /// Optional.
   core.String? duration;
 
   /// How often this rule should be evaluated.
   ///
-  /// Must be a positive multiple of 30 seconds or missing. The default value is
-  /// 30 seconds. If this PrometheusQueryLanguageCondition was generated from a
-  /// Prometheus alerting rule, then this value should be taken from the
-  /// enclosing rule group.
+  /// Must be a positive multiple of 30 seconds or missing. This field is
+  /// optional. Its default value is 30 seconds. If this
+  /// PrometheusQueryLanguageCondition was generated from a Prometheus alerting
+  /// rule, then this value should be taken from the enclosing rule group.
   ///
-  /// Required.
+  /// Optional.
   core.String? evaluationInterval;
 
   /// Labels to add to or overwrite in the PromQL query result.
@@ -9261,8 +9265,8 @@ class PrometheusQueryLanguageCondition {
   /// The rule group name and the alert name are necessary to update the
   /// relevant AlertPolicies in case the definition of the rule group changes in
   /// the future.This field is optional. If this field is not empty, then it
-  /// must be a valid Prometheus label name
-  /// (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels).
+  /// must contain a valid UTF-8 string. This field may not exceed 2048 Unicode
+  /// characters in length.
   ///
   /// Optional.
   core.String? ruleGroup;

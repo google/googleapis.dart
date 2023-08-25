@@ -3801,6 +3801,9 @@ class GoogleCloudRetailV2CatalogAttribute {
   /// attribute.
   core.String? exactSearchableOption;
 
+  /// Contains facet options.
+  GoogleCloudRetailV2CatalogAttributeFacetConfig? facetConfig;
+
   /// Indicates whether this attribute has been used by any products.
   ///
   /// `True` if at least one Product is using this attribute in
@@ -3885,6 +3888,7 @@ class GoogleCloudRetailV2CatalogAttribute {
   GoogleCloudRetailV2CatalogAttribute({
     this.dynamicFacetableOption,
     this.exactSearchableOption,
+    this.facetConfig,
     this.inUse,
     this.indexableOption,
     this.key,
@@ -3900,6 +3904,10 @@ class GoogleCloudRetailV2CatalogAttribute {
               : null,
           exactSearchableOption: json_.containsKey('exactSearchableOption')
               ? json_['exactSearchableOption'] as core.String
+              : null,
+          facetConfig: json_.containsKey('facetConfig')
+              ? GoogleCloudRetailV2CatalogAttributeFacetConfig.fromJson(
+                  json_['facetConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           inUse:
               json_.containsKey('inUse') ? json_['inUse'] as core.bool : null,
@@ -3921,12 +3929,180 @@ class GoogleCloudRetailV2CatalogAttribute {
           'dynamicFacetableOption': dynamicFacetableOption!,
         if (exactSearchableOption != null)
           'exactSearchableOption': exactSearchableOption!,
+        if (facetConfig != null) 'facetConfig': facetConfig!,
         if (inUse != null) 'inUse': inUse!,
         if (indexableOption != null) 'indexableOption': indexableOption!,
         if (key != null) 'key': key!,
         if (retrievableOption != null) 'retrievableOption': retrievableOption!,
         if (searchableOption != null) 'searchableOption': searchableOption!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Possible options for the facet that corresponds to the current attribute
+/// config.
+class GoogleCloudRetailV2CatalogAttributeFacetConfig {
+  /// If you don't set the facet SearchRequest.FacetSpec.FacetKey.intervals in
+  /// the request to a numerical attribute, then we use the computed intervals
+  /// with rounded bounds obtained from all its product numerical attribute
+  /// values.
+  ///
+  /// The computed intervals might not be ideal for some attributes. Therefore,
+  /// we give you the option to overwrite them with the facet_intervals field.
+  /// The maximum of facet intervals per CatalogAttribute is 40. Each interval
+  /// must have a lower bound or an upper bound. If both bounds are provided,
+  /// then the lower bound must be smaller or equal than the upper bound.
+  core.List<GoogleCloudRetailV2Interval>? facetIntervals;
+
+  /// Each instance represents a list of attribute values to ignore as facet
+  /// values for a specific time range.
+  ///
+  /// The maximum number of instances per CatalogAttribute is 25.
+  core.List<GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues>?
+      ignoredFacetValues;
+
+  /// Each instance replaces a list of facet values by a merged facet value.
+  ///
+  /// If a facet value is not in any list, then it will stay the same. To avoid
+  /// conflicts, only paths of length 1 are accepted. In other words, if
+  /// "dark_blue" merged into "BLUE", then the latter can't merge into "blues"
+  /// because this would create a path of length 2. The maximum number of
+  /// instances of MergedFacetValue per CatalogAttribute is 100. This feature is
+  /// available only for textual custom attributes.
+  core.List<GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue>?
+      mergedFacetValues;
+
+  GoogleCloudRetailV2CatalogAttributeFacetConfig({
+    this.facetIntervals,
+    this.ignoredFacetValues,
+    this.mergedFacetValues,
+  });
+
+  GoogleCloudRetailV2CatalogAttributeFacetConfig.fromJson(core.Map json_)
+      : this(
+          facetIntervals: json_.containsKey('facetIntervals')
+              ? (json_['facetIntervals'] as core.List)
+                  .map((value) => GoogleCloudRetailV2Interval.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          ignoredFacetValues: json_.containsKey('ignoredFacetValues')
+              ? (json_['ignoredFacetValues'] as core.List)
+                  .map((value) =>
+                      GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          mergedFacetValues: json_.containsKey('mergedFacetValues')
+              ? (json_['mergedFacetValues'] as core.List)
+                  .map((value) =>
+                      GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (facetIntervals != null) 'facetIntervals': facetIntervals!,
+        if (ignoredFacetValues != null)
+          'ignoredFacetValues': ignoredFacetValues!,
+        if (mergedFacetValues != null) 'mergedFacetValues': mergedFacetValues!,
+      };
+}
+
+/// Facet values to ignore on facets during the specified time range for the
+/// given SearchResponse.Facet.key attribute.
+class GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues {
+  /// If start time is empty and end time is not empty, then ignore these facet
+  /// values before end time.
+  core.String? endTime;
+
+  /// Time range for the current list of facet values to ignore.
+  ///
+  /// If multiple time ranges are specified for an facet value for the current
+  /// attribute, consider all of them. If both are empty, ignore always. If
+  /// start time and end time are set, then start time must be before end time.
+  /// If start time is not empty and end time is empty, then will ignore these
+  /// facet values after the start time.
+  core.String? startTime;
+
+  /// List of facet values to ignore for the following time range.
+  ///
+  /// The facet values are the same as the attribute values. There is a limit of
+  /// 10 values per instance of IgnoredFacetValues. Each value can have at most
+  /// 128 characters.
+  core.List<core.String>? values;
+
+  GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues({
+    this.endTime,
+    this.startTime,
+    this.values,
+  });
+
+  GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues.fromJson(
+      core.Map json_)
+      : this(
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
+              : null,
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
+              : null,
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
+        if (values != null) 'values': values!,
+      };
+}
+
+/// Replaces a set of textual facet values by the same (possibly different)
+/// merged facet value.
+///
+/// Each facet value should appear at most once as a value per CatalogAttribute.
+/// This feature is available only for textual custom attributes.
+class GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue {
+  /// All the previous values are replaced by this merged facet value.
+  ///
+  /// This merged_value must be non-empty and can have up to 128 characters.
+  core.String? mergedValue;
+
+  /// All the facet values that are replaces by the same merged_value that
+  /// follows.
+  ///
+  /// The maximum number of values per MergedFacetValue is 25. Each value can
+  /// have up to 128 characters.
+  core.List<core.String>? values;
+
+  GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue({
+    this.mergedValue,
+    this.values,
+  });
+
+  GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue.fromJson(
+      core.Map json_)
+      : this(
+          mergedValue: json_.containsKey('mergedValue')
+              ? json_['mergedValue'] as core.String
+              : null,
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mergedValue != null) 'mergedValue': mergedValue!,
+        if (values != null) 'values': values!,
       };
 }
 
@@ -4359,6 +4535,12 @@ class GoogleCloudRetailV2Condition {
   /// Condition true if any time range matches.
   core.List<GoogleCloudRetailV2ConditionTimeRange>? activeTimeRange;
 
+  /// Used to support browse uses cases.
+  ///
+  /// A list (up to 10 entries) of categories or departments. The format should
+  /// be the same as UserEvent.page_categories;
+  core.List<core.String>? pageCategories;
+
   /// A list (up to 10 entries) of terms to match the query on.
   ///
   /// If not specified, match all queries. If many query terms are specified,
@@ -4368,6 +4550,7 @@ class GoogleCloudRetailV2Condition {
 
   GoogleCloudRetailV2Condition({
     this.activeTimeRange,
+    this.pageCategories,
     this.queryTerms,
   });
 
@@ -4378,6 +4561,11 @@ class GoogleCloudRetailV2Condition {
                   .map((value) =>
                       GoogleCloudRetailV2ConditionTimeRange.fromJson(
                           value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          pageCategories: json_.containsKey('pageCategories')
+              ? (json_['pageCategories'] as core.List)
+                  .map((value) => value as core.String)
                   .toList()
               : null,
           queryTerms: json_.containsKey('queryTerms')
@@ -4391,6 +4579,7 @@ class GoogleCloudRetailV2Condition {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (activeTimeRange != null) 'activeTimeRange': activeTimeRange!,
+        if (pageCategories != null) 'pageCategories': pageCategories!,
         if (queryTerms != null) 'queryTerms': queryTerms!,
       };
 }
@@ -7390,6 +7579,9 @@ class GoogleCloudRetailV2Rule {
   /// Filters results.
   GoogleCloudRetailV2RuleFilterAction? filterAction;
 
+  /// Force returns an attribute as a facet in the request.
+  GoogleCloudRetailV2RuleForceReturnFacetAction? forceReturnFacetAction;
+
   /// Ignores specific terms from query during search.
   GoogleCloudRetailV2RuleIgnoreAction? ignoreAction;
 
@@ -7400,6 +7592,9 @@ class GoogleCloudRetailV2Rule {
 
   /// Redirects a shopper to a specific page.
   GoogleCloudRetailV2RuleRedirectAction? redirectAction;
+
+  /// Remove an attribute as a facet in the request (if present).
+  GoogleCloudRetailV2RuleRemoveFacetAction? removeFacetAction;
 
   /// Replaces specific terms in the query.
   GoogleCloudRetailV2RuleReplacementAction? replacementAction;
@@ -7412,9 +7607,11 @@ class GoogleCloudRetailV2Rule {
     this.condition,
     this.doNotAssociateAction,
     this.filterAction,
+    this.forceReturnFacetAction,
     this.ignoreAction,
     this.onewaySynonymsAction,
     this.redirectAction,
+    this.removeFacetAction,
     this.replacementAction,
     this.twowaySynonymsAction,
   });
@@ -7438,6 +7635,11 @@ class GoogleCloudRetailV2Rule {
               ? GoogleCloudRetailV2RuleFilterAction.fromJson(
                   json_['filterAction'] as core.Map<core.String, core.dynamic>)
               : null,
+          forceReturnFacetAction: json_.containsKey('forceReturnFacetAction')
+              ? GoogleCloudRetailV2RuleForceReturnFacetAction.fromJson(
+                  json_['forceReturnFacetAction']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           ignoreAction: json_.containsKey('ignoreAction')
               ? GoogleCloudRetailV2RuleIgnoreAction.fromJson(
                   json_['ignoreAction'] as core.Map<core.String, core.dynamic>)
@@ -7450,6 +7652,11 @@ class GoogleCloudRetailV2Rule {
           redirectAction: json_.containsKey('redirectAction')
               ? GoogleCloudRetailV2RuleRedirectAction.fromJson(
                   json_['redirectAction']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          removeFacetAction: json_.containsKey('removeFacetAction')
+              ? GoogleCloudRetailV2RuleRemoveFacetAction.fromJson(
+                  json_['removeFacetAction']
                       as core.Map<core.String, core.dynamic>)
               : null,
           replacementAction: json_.containsKey('replacementAction')
@@ -7470,10 +7677,13 @@ class GoogleCloudRetailV2Rule {
         if (doNotAssociateAction != null)
           'doNotAssociateAction': doNotAssociateAction!,
         if (filterAction != null) 'filterAction': filterAction!,
+        if (forceReturnFacetAction != null)
+          'forceReturnFacetAction': forceReturnFacetAction!,
         if (ignoreAction != null) 'ignoreAction': ignoreAction!,
         if (onewaySynonymsAction != null)
           'onewaySynonymsAction': onewaySynonymsAction!,
         if (redirectAction != null) 'redirectAction': redirectAction!,
+        if (removeFacetAction != null) 'removeFacetAction': removeFacetAction!,
         if (replacementAction != null) 'replacementAction': replacementAction!,
         if (twowaySynonymsAction != null)
           'twowaySynonymsAction': twowaySynonymsAction!,
@@ -7616,6 +7826,89 @@ class GoogleCloudRetailV2RuleFilterAction {
       };
 }
 
+/// Force returns an attribute/facet in the request around a certain position or
+/// above.
+///
+/// * Rule Condition: - Must specify non-empty Condition.query_terms (for search
+/// only) or Condition.page_categories (for browse only), but can't specify
+/// both. * Action Inputs: attribute name, position * Action Result: Will force
+/// return a facet key around a certain position or above if the condition is
+/// satisfied. Example: Suppose the query is "shoes", the Condition.query_terms
+/// is "shoes", the
+/// ForceReturnFacetAction.FacetPositionAdjustment.attribute_name is "size" and
+/// the ForceReturnFacetAction.FacetPositionAdjustment.position is 8. Two cases:
+/// a) The facet key "size" is not already in the top 8 slots, then the facet
+/// "size" will appear at a position close to 8. b) The facet key "size" in
+/// among the top 8 positions in the request, then it will stay at its current
+/// rank.
+class GoogleCloudRetailV2RuleForceReturnFacetAction {
+  /// Each instance corresponds to a force return attribute for the given
+  /// condition.
+  ///
+  /// There can't be more 3 instances here.
+  core.List<
+          GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment>?
+      facetPositionAdjustments;
+
+  GoogleCloudRetailV2RuleForceReturnFacetAction({
+    this.facetPositionAdjustments,
+  });
+
+  GoogleCloudRetailV2RuleForceReturnFacetAction.fromJson(core.Map json_)
+      : this(
+          facetPositionAdjustments: json_
+                  .containsKey('facetPositionAdjustments')
+              ? (json_['facetPositionAdjustments'] as core.List)
+                  .map((value) =>
+                      GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (facetPositionAdjustments != null)
+          'facetPositionAdjustments': facetPositionAdjustments!,
+      };
+}
+
+/// Each facet position adjustment consists of a single attribute name (i.e.
+/// facet key) along with a specified position.
+class GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment {
+  /// The attribute name to force return as a facet.
+  ///
+  /// Each attribute name should be a valid attribute name, be non-empty and
+  /// contain at most 80 characters long.
+  core.String? attributeName;
+
+  /// This is the position in the request as explained above.
+  ///
+  /// It should be strictly positive be at most 100.
+  core.int? position;
+
+  GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment({
+    this.attributeName,
+    this.position,
+  });
+
+  GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment.fromJson(
+      core.Map json_)
+      : this(
+          attributeName: json_.containsKey('attributeName')
+              ? json_['attributeName'] as core.String
+              : null,
+          position: json_.containsKey('position')
+              ? json_['position'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributeName != null) 'attributeName': attributeName!,
+        if (position != null) 'position': position!,
+      };
+}
+
 /// Prevents a term in the query from being used in search.
 ///
 /// Example: Don't search for "shoddy".
@@ -7715,6 +8008,41 @@ class GoogleCloudRetailV2RuleRedirectAction {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (redirectUri != null) 'redirectUri': redirectUri!,
+      };
+}
+
+/// Removes an attribute/facet in the request if is present.
+///
+/// * Rule Condition: - Must specify non-empty Condition.query_terms (for search
+/// only) or Condition.page_categories (for browse only), but can't specify
+/// both. * Action Input: attribute name * Action Result: Will remove the
+/// attribute (as a facet) from the request if it is present. Example: Suppose
+/// the query is "shoes", the Condition.query_terms is "shoes" and the attribute
+/// name "size", then facet key "size" will be removed from the request (if it
+/// is present).
+class GoogleCloudRetailV2RuleRemoveFacetAction {
+  /// The attribute names (i.e. facet keys) to remove from the dynamic facets
+  /// (if present in the request).
+  ///
+  /// There can't be more 3 attribute names. Each attribute name should be a
+  /// valid attribute name, be non-empty and contain at most 80 characters.
+  core.List<core.String>? attributeNames;
+
+  GoogleCloudRetailV2RuleRemoveFacetAction({
+    this.attributeNames,
+  });
+
+  GoogleCloudRetailV2RuleRemoveFacetAction.fromJson(core.Map json_)
+      : this(
+          attributeNames: json_.containsKey('attributeNames')
+              ? (json_['attributeNames'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributeNames != null) 'attributeNames': attributeNames!,
       };
 }
 
@@ -9983,7 +10311,7 @@ class GoogleLongrunningOperation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard

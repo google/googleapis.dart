@@ -29,6 +29,7 @@
 ///       - [ProjectsLocationsDataTaxonomiesAttributesResource]
 ///     - [ProjectsLocationsEntryGroupsResource]
 ///     - [ProjectsLocationsEntryTypesResource]
+///     - [ProjectsLocationsGovernanceRulesResource]
 ///     - [ProjectsLocationsLakesResource]
 ///       - [ProjectsLocationsLakesActionsResource]
 ///       - [ProjectsLocationsLakesContentResource]
@@ -101,6 +102,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsEntryGroupsResource(_requester);
   ProjectsLocationsEntryTypesResource get entryTypes =>
       ProjectsLocationsEntryTypesResource(_requester);
+  ProjectsLocationsGovernanceRulesResource get governanceRules =>
+      ProjectsLocationsGovernanceRulesResource(_requester);
   ProjectsLocationsLakesResource get lakes =>
       ProjectsLocationsLakesResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
@@ -2503,6 +2506,170 @@ class ProjectsLocationsEntryTypesResource {
   /// value for this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/entryTypes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGovernanceRulesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGovernanceRulesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/governanceRules/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy.Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected.Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset.The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1.To learn which resources support
+  /// conditions in their IAM policies, see the IAM documentation
+  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
+  /// PERMISSION_DENIED errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/governanceRules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.Note: This operation is designed to be
+  /// used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See Resource names
+  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
+  /// value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/governanceRules/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8598,7 +8765,8 @@ class GoogleCloudDataplexV1DataProfileSpecPostScanActions {
 class GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport {
   /// The BigQuery table to export DataProfileScan results to.
   ///
-  /// Format: projects/{project}/datasets/{dataset}/tables/{table}
+  /// Format:
+  /// //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
   ///
   /// Optional.
   core.String? resultsTable;
@@ -8649,30 +8817,66 @@ class GoogleCloudDataplexV1DataProfileSpecSelectedFields {
       };
 }
 
+/// A dimension captures data quality intent about a defined subset of the rules
+/// specified.
+class GoogleCloudDataplexV1DataQualityDimension {
+  /// The dimension name a rule belongs to.
+  ///
+  /// Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY",
+  /// "VALIDITY", "UNIQUENESS", "INTEGRITY"
+  core.String? name;
+
+  GoogleCloudDataplexV1DataQualityDimension({
+    this.name,
+  });
+
+  GoogleCloudDataplexV1DataQualityDimension.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+      };
+}
+
 /// DataQualityDimensionResult provides a more detailed, per-dimension view of
 /// the results.
 class GoogleCloudDataplexV1DataQualityDimensionResult {
+  /// The dimension config specified in the DataQualitySpec, as is.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataQualityDimension? dimension;
+
   /// Whether the dimension passed or failed.
   core.bool? passed;
 
   GoogleCloudDataplexV1DataQualityDimensionResult({
+    this.dimension,
     this.passed,
   });
 
   GoogleCloudDataplexV1DataQualityDimensionResult.fromJson(core.Map json_)
       : this(
+          dimension: json_.containsKey('dimension')
+              ? GoogleCloudDataplexV1DataQualityDimension.fromJson(
+                  json_['dimension'] as core.Map<core.String, core.dynamic>)
+              : null,
           passed:
               json_.containsKey('passed') ? json_['passed'] as core.bool : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (dimension != null) 'dimension': dimension!,
         if (passed != null) 'passed': passed!,
       };
 }
 
 /// The output of a DataQualityScan.
 class GoogleCloudDataplexV1DataQualityResult {
-  /// A list of results at the dimension level.
+  /// A list of results at the dimension level.A dimension will have a
+  /// corresponding DataQualityDimensionResult if and only if there is at least
+  /// one rule with the 'dimension' field set to it.
   core.List<GoogleCloudDataplexV1DataQualityDimensionResult>? dimensions;
 
   /// Overall data quality result -- true if all rules passed.
@@ -9344,7 +9548,8 @@ class GoogleCloudDataplexV1DataQualitySpecPostScanActions {
 class GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport {
   /// The BigQuery table to export DataQualityScan results to.
   ///
-  /// Format: projects/{project}/datasets/{dataset}/tables/{table}
+  /// Format:
+  /// //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
   ///
   /// Optional.
   core.String? resultsTable;
@@ -13926,7 +14131,7 @@ class GoogleLongrunningOperation {
   /// ending with operations/{unique_id}.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as Delete, the
   /// response is google.protobuf.Empty. If the original method is standard

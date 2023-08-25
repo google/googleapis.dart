@@ -4155,9 +4155,14 @@ class CseIdentity {
   /// If a key pair is associated, the ID of the key pair, CseKeyPair.
   core.String? primaryKeyPairId;
 
+  /// The configuration of a CSE identity that uses different key pairs for
+  /// signing and encryption.
+  SignAndEncryptKeyPairs? signAndEncryptKeyPairs;
+
   CseIdentity({
     this.emailAddress,
     this.primaryKeyPairId,
+    this.signAndEncryptKeyPairs,
   });
 
   CseIdentity.fromJson(core.Map json_)
@@ -4168,11 +4173,17 @@ class CseIdentity {
           primaryKeyPairId: json_.containsKey('primaryKeyPairId')
               ? json_['primaryKeyPairId'] as core.String
               : null,
+          signAndEncryptKeyPairs: json_.containsKey('signAndEncryptKeyPairs')
+              ? SignAndEncryptKeyPairs.fromJson(json_['signAndEncryptKeyPairs']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (emailAddress != null) 'emailAddress': emailAddress!,
         if (primaryKeyPairId != null) 'primaryKeyPairId': primaryKeyPairId!,
+        if (signAndEncryptKeyPairs != null)
+          'signAndEncryptKeyPairs': signAndEncryptKeyPairs!,
       };
 }
 
@@ -4286,6 +4297,9 @@ class CseKeyPair {
 
 /// Metadata for a private key instance.
 class CsePrivateKeyMetadata {
+  /// Metadata for hardware keys.
+  HardwareKeyMetadata? hardwareKeyMetadata;
+
   /// Metadata for a private key instance managed by an external key access
   /// control list service.
   KaclsKeyMetadata? kaclsKeyMetadata;
@@ -4296,12 +4310,17 @@ class CsePrivateKeyMetadata {
   core.String? privateKeyMetadataId;
 
   CsePrivateKeyMetadata({
+    this.hardwareKeyMetadata,
     this.kaclsKeyMetadata,
     this.privateKeyMetadataId,
   });
 
   CsePrivateKeyMetadata.fromJson(core.Map json_)
       : this(
+          hardwareKeyMetadata: json_.containsKey('hardwareKeyMetadata')
+              ? HardwareKeyMetadata.fromJson(json_['hardwareKeyMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           kaclsKeyMetadata: json_.containsKey('kaclsKeyMetadata')
               ? KaclsKeyMetadata.fromJson(json_['kaclsKeyMetadata']
                   as core.Map<core.String, core.dynamic>)
@@ -4312,6 +4331,8 @@ class CsePrivateKeyMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (hardwareKeyMetadata != null)
+          'hardwareKeyMetadata': hardwareKeyMetadata!,
         if (kaclsKeyMetadata != null) 'kaclsKeyMetadata': kaclsKeyMetadata!,
         if (privateKeyMetadataId != null)
           'privateKeyMetadataId': privateKeyMetadataId!,
@@ -4608,6 +4629,27 @@ class ForwardingAddress {
         if (forwardingEmail != null) 'forwardingEmail': forwardingEmail!,
         if (verificationStatus != null)
           'verificationStatus': verificationStatus!,
+      };
+}
+
+/// Metadata for hardware keys.
+class HardwareKeyMetadata {
+  /// Description about the hardware key.
+  core.String? description;
+
+  HardwareKeyMetadata({
+    this.description,
+  });
+
+  HardwareKeyMetadata.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
       };
 }
 
@@ -6040,6 +6082,37 @@ class SendAs {
         if (treatAsAlias != null) 'treatAsAlias': treatAsAlias!,
         if (verificationStatus != null)
           'verificationStatus': verificationStatus!,
+      };
+}
+
+/// The configuration of a CSE identity that uses different key pairs for
+/// signing and encryption.
+class SignAndEncryptKeyPairs {
+  /// The ID of the CseKeyPair that encrypts signed outgoing mail.
+  core.String? encryptionKeyPairId;
+
+  /// The ID of the CseKeyPair that signs outgoing mail.
+  core.String? signingKeyPairId;
+
+  SignAndEncryptKeyPairs({
+    this.encryptionKeyPairId,
+    this.signingKeyPairId,
+  });
+
+  SignAndEncryptKeyPairs.fromJson(core.Map json_)
+      : this(
+          encryptionKeyPairId: json_.containsKey('encryptionKeyPairId')
+              ? json_['encryptionKeyPairId'] as core.String
+              : null,
+          signingKeyPairId: json_.containsKey('signingKeyPairId')
+              ? json_['signingKeyPairId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (encryptionKeyPairId != null)
+          'encryptionKeyPairId': encryptionKeyPairId!,
+        if (signingKeyPairId != null) 'signingKeyPairId': signingKeyPairId!,
       };
 }
 

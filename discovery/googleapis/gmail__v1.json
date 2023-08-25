@@ -64,7 +64,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230731",
+    "revision": "20231023",
     "rootUrl": "https://gmail.googleapis.com/",
     "servicePath": "",
     "title": "Gmail API",
@@ -3166,6 +3166,10 @@
                 "primaryKeyPairId": {
                     "description": "If a key pair is associated, the ID of the key pair, CseKeyPair.",
                     "type": "string"
+                },
+                "signAndEncryptKeyPairs": {
+                    "$ref": "SignAndEncryptKeyPairs",
+                    "description": "The configuration of a CSE identity that uses different key pairs for signing and encryption."
                 }
             },
             "type": "object"
@@ -3231,6 +3235,10 @@
             "description": "Metadata for a private key instance.",
             "id": "CsePrivateKeyMetadata",
             "properties": {
+                "hardwareKeyMetadata": {
+                    "$ref": "HardwareKeyMetadata",
+                    "description": "Metadata for hardware keys."
+                },
                 "kaclsKeyMetadata": {
                     "$ref": "KaclsKeyMetadata",
                     "description": "Metadata for a private key instance managed by an external key access control list service."
@@ -3422,6 +3430,17 @@
                         "The address is ready to use for forwarding.",
                         "The address is awaiting verification by the owner."
                     ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "HardwareKeyMetadata": {
+            "description": "Metadata for hardware keys.",
+            "id": "HardwareKeyMetadata",
+            "properties": {
+                "description": {
+                    "description": "Description about the hardware key.",
                     "type": "string"
                 }
             },
@@ -4195,6 +4214,21 @@
                         "The address is ready to use as a send-as alias.",
                         "The address is awaiting verification by the owner."
                     ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SignAndEncryptKeyPairs": {
+            "description": "The configuration of a CSE identity that uses different key pairs for signing and encryption.",
+            "id": "SignAndEncryptKeyPairs",
+            "properties": {
+                "encryptionKeyPairId": {
+                    "description": "The ID of the CseKeyPair that encrypts signed outgoing mail.",
+                    "type": "string"
+                },
+                "signingKeyPairId": {
+                    "description": "The ID of the CseKeyPair that signs outgoing mail.",
                     "type": "string"
                 }
             },

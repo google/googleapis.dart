@@ -3338,6 +3338,7 @@ class GoogleCloudContentwarehouseV1FileTypeFilter {
   /// - "ALL" : Returns all document types, including folders.
   /// - "FOLDER" : Returns only folders.
   /// - "DOCUMENT" : Returns only non-folder documents.
+  /// - "ROOT_FOLDER" : Returns only root folders
   core.String? fileType;
 
   GoogleCloudContentwarehouseV1FileTypeFilter({
@@ -3726,6 +3727,23 @@ class GoogleCloudContentwarehouseV1HistogramQueryResult {
 
 /// The ingestion pipeline config.
 class GoogleCloudContentwarehouseV1IngestPipelineConfig {
+  /// The Cloud Function resource name.
+  ///
+  /// The Cloud Function needs to live inside consumer project and is accessible
+  /// to Document AI Warehouse P4SA. Only Cloud Functions V2 is supported. Cloud
+  /// function execution should complete within 5 minutes or this file ingestion
+  /// may fail due to timeout. Format:
+  /// `https://{region}-{project_id}.cloudfunctions.net/{cloud_function}` The
+  /// following keys are available the request json payload. * display_name *
+  /// properties * plain_text * reference_id * document_schema_name *
+  /// raw_document_path * raw_document_file_type The following keys from the
+  /// cloud function json response payload will be ingested to the Document AI
+  /// Warehouse as part of Document proto content and/or related information.
+  /// The original values will be overridden if any key is present in the
+  /// response. * display_name * properties * plain_text * document_acl_policy *
+  /// folder
+  core.String? cloudFunction;
+
   /// The document level acl policy config.
   ///
   /// This refers to an Identity and Access (IAM) policy, which specifies access
@@ -3754,6 +3772,7 @@ class GoogleCloudContentwarehouseV1IngestPipelineConfig {
   core.String? folder;
 
   GoogleCloudContentwarehouseV1IngestPipelineConfig({
+    this.cloudFunction,
     this.documentAclPolicy,
     this.enableDocumentTextExtraction,
     this.folder,
@@ -3761,6 +3780,9 @@ class GoogleCloudContentwarehouseV1IngestPipelineConfig {
 
   GoogleCloudContentwarehouseV1IngestPipelineConfig.fromJson(core.Map json_)
       : this(
+          cloudFunction: json_.containsKey('cloudFunction')
+              ? json_['cloudFunction'] as core.String
+              : null,
           documentAclPolicy: json_.containsKey('documentAclPolicy')
               ? GoogleIamV1Policy.fromJson(json_['documentAclPolicy']
                   as core.Map<core.String, core.dynamic>)
@@ -3775,6 +3797,7 @@ class GoogleCloudContentwarehouseV1IngestPipelineConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudFunction != null) 'cloudFunction': cloudFunction!,
         if (documentAclPolicy != null) 'documentAclPolicy': documentAclPolicy!,
         if (enableDocumentTextExtraction != null)
           'enableDocumentTextExtraction': enableDocumentTextExtraction!,
@@ -5676,6 +5699,10 @@ class GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument {
   /// This document only contains indexed metadata information.
   GoogleCloudContentwarehouseV1Document? document;
 
+  /// Return the 1-based page indices where those pages have one or more matched
+  /// tokens.
+  core.List<core.String>? matchedTokenPageIndices;
+
   /// Experimental.
   ///
   /// Additional result info if the question-answering feature is enabled.
@@ -5694,6 +5721,7 @@ class GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument {
 
   GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument({
     this.document,
+    this.matchedTokenPageIndices,
     this.qaResult,
     this.searchTextSnippet,
   });
@@ -5704,6 +5732,11 @@ class GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument {
           document: json_.containsKey('document')
               ? GoogleCloudContentwarehouseV1Document.fromJson(
                   json_['document'] as core.Map<core.String, core.dynamic>)
+              : null,
+          matchedTokenPageIndices: json_.containsKey('matchedTokenPageIndices')
+              ? (json_['matchedTokenPageIndices'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
               : null,
           qaResult: json_.containsKey('qaResult')
               ? GoogleCloudContentwarehouseV1QAResult.fromJson(
@@ -5716,6 +5749,8 @@ class GoogleCloudContentwarehouseV1SearchDocumentsResponseMatchingDocument {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (document != null) 'document': document!,
+        if (matchedTokenPageIndices != null)
+          'matchedTokenPageIndices': matchedTokenPageIndices!,
         if (qaResult != null) 'qaResult': qaResult!,
         if (searchTextSnippet != null) 'searchTextSnippet': searchTextSnippet!,
       };
@@ -8521,23 +8556,23 @@ class GoogleIamV1Binding {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class GoogleIamV1Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<GoogleIamV1AuditConfig>? auditConfigs;
@@ -8658,7 +8693,7 @@ class GoogleLongrunningOperation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard

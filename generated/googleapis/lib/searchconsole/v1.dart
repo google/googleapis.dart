@@ -1556,6 +1556,7 @@ class SearchAnalyticsQueryRequest {
   /// - "AUTO"
   /// - "BY_PROPERTY"
   /// - "BY_PAGE"
+  /// - "BY_NEWS_SHOWCASE_PANEL"
   core.String? aggregationType;
 
   /// The data state to be fetched, can be full or all, the latter including
@@ -1709,6 +1710,7 @@ class SearchAnalyticsQueryResponse {
   /// - "AUTO"
   /// - "BY_PROPERTY"
   /// - "BY_PAGE"
+  /// - "BY_NEWS_SHOWCASE_PANEL"
   core.String? responseAggregationType;
 
   /// A list of rows grouped by the key values in the order given in the query.

@@ -130,6 +130,45 @@ class ProjectsLocationsResource {
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// GetRegionalSettings gets settings of a region.
+  ///
+  /// RegionalSettings is a singleton resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the Regional Settings.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/regionalSettings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RegionalSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RegionalSettings> getRegionalSettings(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RegionalSettings.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the runtimeConfig of a location.
   ///
   /// RuntimeConfig is a singleton resource for each location.
@@ -220,6 +259,52 @@ class ProjectsLocationsResource {
     );
     return ListLocationsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update the settings of a region.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name of the Connection. Format:
+  /// projects/{project}/locations/{location}/regionalSettings
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/regionalSettings$`.
+  ///
+  /// [updateMask] - Required. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateRegionalSettings(
+    RegionalSettings request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3132,6 +3217,11 @@ class Connection {
   /// Output only.
   core.String? imageLocation;
 
+  /// Is trusted tester program enabled for the project.
+  ///
+  /// Output only.
+  core.bool? isTrustedTester;
+
   /// Resource labels to represent user-provided metadata.
   ///
   /// Refer to cloud documentation on labels for more details.
@@ -3219,6 +3309,7 @@ class Connection {
     this.eventingEnablementType,
     this.eventingRuntimeData,
     this.imageLocation,
+    this.isTrustedTester,
     this.labels,
     this.lockConfig,
     this.logConfig,
@@ -3290,6 +3381,9 @@ class Connection {
           imageLocation: json_.containsKey('imageLocation')
               ? json_['imageLocation'] as core.String
               : null,
+          isTrustedTester: json_.containsKey('isTrustedTester')
+              ? json_['isTrustedTester'] as core.bool
+              : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -3358,6 +3452,7 @@ class Connection {
         if (eventingRuntimeData != null)
           'eventingRuntimeData': eventingRuntimeData!,
         if (imageLocation != null) 'imageLocation': imageLocation!,
+        if (isTrustedTester != null) 'isTrustedTester': isTrustedTester!,
         if (labels != null) 'labels': labels!,
         if (lockConfig != null) 'lockConfig': lockConfig!,
         if (logConfig != null) 'logConfig': logConfig!,
@@ -3408,6 +3503,12 @@ class ConnectionSchemaMetadata {
   /// - "STATE_UNSPECIFIED" : Default state.
   /// - "REFRESHING" : Schema refresh is in progress.
   /// - "UPDATED" : Schema has been updated.
+  /// - "REFRESHING_SCHEMA_METADATA" : Schema refresh for metadata is in
+  /// progress.
+  /// - "UPDATED_SCHEMA_METADATA" : Schema metadata has been updated.
+  /// - "REFRESH_SCHEMA_METADATA_FAILED" : Failed to refresh schema metadata
+  /// - "REFRESHING_FULL_SCHEMA" : Triggered full schema refresh
+  /// - "UPDATED_FULL_SCHEMA" : Updated full schema
   core.String? state;
 
   /// Timestamp when the connection runtime schema was updated.
@@ -3648,19 +3749,58 @@ class Connector {
 /// This cofiguration provides infra configs like rate limit threshold which
 /// need to be configurable for every connector version
 class ConnectorInfraConfig {
+  /// The window used for ratelimiting runtime requests to connections.
+  core.String? connectionRatelimitWindowSeconds;
+
+  /// Indicate whether connector is deployed on GKE/CloudRun
+  /// Possible string values are:
+  /// - "DEPLOYMENT_MODEL_UNSPECIFIED" : Deployment model is not specified.
+  /// - "GKE_MST" : Default model gke mst.
+  /// - "CLOUD_RUN_MST" : Cloud run mst.
+  core.String? deploymentModel;
+
+  /// HPA autoscaling config.
+  HPAConfig? hpaConfig;
+
   /// Max QPS supported for internal requests originating from Connd.
   core.String? internalclientRatelimitThreshold;
 
   /// Max QPS supported by the connector version before throttling of requests.
   core.String? ratelimitThreshold;
 
+  /// System resource limits.
+  ResourceLimits? resourceLimits;
+
+  /// System resource requests.
+  ResourceRequests? resourceRequests;
+
+  /// The name of shared connector deployment.
+  core.String? sharedDeployment;
+
   ConnectorInfraConfig({
+    this.connectionRatelimitWindowSeconds,
+    this.deploymentModel,
+    this.hpaConfig,
     this.internalclientRatelimitThreshold,
     this.ratelimitThreshold,
+    this.resourceLimits,
+    this.resourceRequests,
+    this.sharedDeployment,
   });
 
   ConnectorInfraConfig.fromJson(core.Map json_)
       : this(
+          connectionRatelimitWindowSeconds:
+              json_.containsKey('connectionRatelimitWindowSeconds')
+                  ? json_['connectionRatelimitWindowSeconds'] as core.String
+                  : null,
+          deploymentModel: json_.containsKey('deploymentModel')
+              ? json_['deploymentModel'] as core.String
+              : null,
+          hpaConfig: json_.containsKey('hpaConfig')
+              ? HPAConfig.fromJson(
+                  json_['hpaConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           internalclientRatelimitThreshold:
               json_.containsKey('internalclientRatelimitThreshold')
                   ? json_['internalclientRatelimitThreshold'] as core.String
@@ -3668,13 +3808,31 @@ class ConnectorInfraConfig {
           ratelimitThreshold: json_.containsKey('ratelimitThreshold')
               ? json_['ratelimitThreshold'] as core.String
               : null,
+          resourceLimits: json_.containsKey('resourceLimits')
+              ? ResourceLimits.fromJson(json_['resourceLimits']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          resourceRequests: json_.containsKey('resourceRequests')
+              ? ResourceRequests.fromJson(json_['resourceRequests']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sharedDeployment: json_.containsKey('sharedDeployment')
+              ? json_['sharedDeployment'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (connectionRatelimitWindowSeconds != null)
+          'connectionRatelimitWindowSeconds': connectionRatelimitWindowSeconds!,
+        if (deploymentModel != null) 'deploymentModel': deploymentModel!,
+        if (hpaConfig != null) 'hpaConfig': hpaConfig!,
         if (internalclientRatelimitThreshold != null)
           'internalclientRatelimitThreshold': internalclientRatelimitThreshold!,
         if (ratelimitThreshold != null)
           'ratelimitThreshold': ratelimitThreshold!,
+        if (resourceLimits != null) 'resourceLimits': resourceLimits!,
+        if (resourceRequests != null) 'resourceRequests': resourceRequests!,
+        if (sharedDeployment != null) 'sharedDeployment': sharedDeployment!,
       };
 }
 
@@ -3910,6 +4068,16 @@ class ConnectorVersion {
 /// This cofiguration provides infra configs like rate limit threshold which
 /// need to be configurable for every connector version
 class ConnectorVersionInfraConfig {
+  /// The window used for ratelimiting runtime requests to connections.
+  ///
+  /// Output only.
+  core.String? connectionRatelimitWindowSeconds;
+
+  /// HPA autoscaling config.
+  ///
+  /// Output only.
+  HPAConfig? hpaConfig;
+
   /// Max QPS supported for internal requests originating from Connd.
   ///
   /// Output only.
@@ -3920,13 +4088,41 @@ class ConnectorVersionInfraConfig {
   /// Output only.
   core.String? ratelimitThreshold;
 
+  /// System resource limits.
+  ///
+  /// Output only.
+  ResourceLimits? resourceLimits;
+
+  /// System resource requests.
+  ///
+  /// Output only.
+  ResourceRequests? resourceRequests;
+
+  /// The name of shared connector deployment.
+  ///
+  /// Output only.
+  core.String? sharedDeployment;
+
   ConnectorVersionInfraConfig({
+    this.connectionRatelimitWindowSeconds,
+    this.hpaConfig,
     this.internalclientRatelimitThreshold,
     this.ratelimitThreshold,
+    this.resourceLimits,
+    this.resourceRequests,
+    this.sharedDeployment,
   });
 
   ConnectorVersionInfraConfig.fromJson(core.Map json_)
       : this(
+          connectionRatelimitWindowSeconds:
+              json_.containsKey('connectionRatelimitWindowSeconds')
+                  ? json_['connectionRatelimitWindowSeconds'] as core.String
+                  : null,
+          hpaConfig: json_.containsKey('hpaConfig')
+              ? HPAConfig.fromJson(
+                  json_['hpaConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           internalclientRatelimitThreshold:
               json_.containsKey('internalclientRatelimitThreshold')
                   ? json_['internalclientRatelimitThreshold'] as core.String
@@ -3934,13 +4130,30 @@ class ConnectorVersionInfraConfig {
           ratelimitThreshold: json_.containsKey('ratelimitThreshold')
               ? json_['ratelimitThreshold'] as core.String
               : null,
+          resourceLimits: json_.containsKey('resourceLimits')
+              ? ResourceLimits.fromJson(json_['resourceLimits']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          resourceRequests: json_.containsKey('resourceRequests')
+              ? ResourceRequests.fromJson(json_['resourceRequests']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sharedDeployment: json_.containsKey('sharedDeployment')
+              ? json_['sharedDeployment'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (connectionRatelimitWindowSeconds != null)
+          'connectionRatelimitWindowSeconds': connectionRatelimitWindowSeconds!,
+        if (hpaConfig != null) 'hpaConfig': hpaConfig!,
         if (internalclientRatelimitThreshold != null)
           'internalclientRatelimitThreshold': internalclientRatelimitThreshold!,
         if (ratelimitThreshold != null)
           'ratelimitThreshold': ratelimitThreshold!,
+        if (resourceLimits != null) 'resourceLimits': resourceLimits!,
+        if (resourceRequests != null) 'resourceRequests': resourceRequests!,
+        if (sharedDeployment != null) 'sharedDeployment': sharedDeployment!,
       };
 }
 
@@ -3975,6 +4188,9 @@ class Destination {
   /// PSC service attachments.
   ///
   /// Format: projects / * /regions / * /serviceAttachments / *
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? serviceAttachment;
 
   Destination({
@@ -4364,6 +4580,11 @@ class EventSubscription {
   /// Optional.
   core.String? eventTypeId;
 
+  /// JMS is the source for the event listener.
+  ///
+  /// Optional.
+  JMS? jms;
+
   /// Resource name of the EventSubscription.
   ///
   /// Format:
@@ -4396,6 +4617,7 @@ class EventSubscription {
     this.createTime,
     this.destinations,
     this.eventTypeId,
+    this.jms,
     this.name,
     this.status,
     this.subscriber,
@@ -4414,6 +4636,10 @@ class EventSubscription {
               : null,
           eventTypeId: json_.containsKey('eventTypeId')
               ? json_['eventTypeId'] as core.String
+              : null,
+          jms: json_.containsKey('jms')
+              ? JMS
+                  .fromJson(json_['jms'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           status: json_.containsKey('status')
@@ -4435,6 +4661,7 @@ class EventSubscription {
         if (createTime != null) 'createTime': createTime!,
         if (destinations != null) 'destinations': destinations!,
         if (eventTypeId != null) 'eventTypeId': eventTypeId!,
+        if (jms != null) 'jms': jms!,
         if (name != null) 'name': name!,
         if (status != null) 'status': status!,
         if (subscriber != null) 'subscriber': subscriber!,
@@ -4642,7 +4869,19 @@ class EventingConfig {
   /// Enrichment Enabled.
   core.bool? enrichmentEnabled;
 
-  /// Registration endpoint for auto regsitration.
+  /// Ingress endpoint of the event listener.
+  ///
+  /// This is used only when private connectivity is enabled.
+  ///
+  /// Optional.
+  core.String? eventsListenerIngressEndpoint;
+
+  /// Private Connectivity Enabled.
+  ///
+  /// Optional.
+  core.bool? privateConnectivityEnabled;
+
+  /// Registration endpoint for auto registration.
   DestinationConfig? registrationDestinationConfig;
 
   EventingConfig({
@@ -4650,6 +4889,8 @@ class EventingConfig {
     this.authConfig,
     this.encryptionKey,
     this.enrichmentEnabled,
+    this.eventsListenerIngressEndpoint,
+    this.privateConnectivityEnabled,
     this.registrationDestinationConfig,
   });
 
@@ -4672,6 +4913,14 @@ class EventingConfig {
           enrichmentEnabled: json_.containsKey('enrichmentEnabled')
               ? json_['enrichmentEnabled'] as core.bool
               : null,
+          eventsListenerIngressEndpoint:
+              json_.containsKey('eventsListenerIngressEndpoint')
+                  ? json_['eventsListenerIngressEndpoint'] as core.String
+                  : null,
+          privateConnectivityEnabled:
+              json_.containsKey('privateConnectivityEnabled')
+                  ? json_['privateConnectivityEnabled'] as core.bool
+                  : null,
           registrationDestinationConfig:
               json_.containsKey('registrationDestinationConfig')
                   ? DestinationConfig.fromJson(
@@ -4686,6 +4935,10 @@ class EventingConfig {
         if (authConfig != null) 'authConfig': authConfig!,
         if (encryptionKey != null) 'encryptionKey': encryptionKey!,
         if (enrichmentEnabled != null) 'enrichmentEnabled': enrichmentEnabled!,
+        if (eventsListenerIngressEndpoint != null)
+          'eventsListenerIngressEndpoint': eventsListenerIngressEndpoint!,
+        if (privateConnectivityEnabled != null)
+          'privateConnectivityEnabled': privateConnectivityEnabled!,
         if (registrationDestinationConfig != null)
           'registrationDestinationConfig': registrationDestinationConfig!,
       };
@@ -4711,6 +4964,14 @@ class EventingConfigTemplate {
   /// Enrichment Supported.
   core.bool? enrichmentSupported;
 
+  /// The type of the event listener for a specific connector.
+  /// Possible string values are:
+  /// - "EVENT_LISTENER_TYPE_UNSPECIFIED" : Default value.
+  /// - "WEBHOOK_LISTENER" : Webhook listener. e.g. Jira, Zendesk, Servicenow
+  /// etc.,
+  /// - "JMS_LISTENER" : JMS Listener. e.g. IBM MQ, Rabbit MQ etc.,
+  core.String? eventListenerType;
+
   /// Is Eventing Supported.
   core.bool? isEventingSupported;
 
@@ -4724,6 +4985,7 @@ class EventingConfigTemplate {
     this.autoRegistrationSupported,
     this.encryptionKeyTemplate,
     this.enrichmentSupported,
+    this.eventListenerType,
     this.isEventingSupported,
     this.registrationDestinationConfig,
   });
@@ -4756,6 +5018,9 @@ class EventingConfigTemplate {
           enrichmentSupported: json_.containsKey('enrichmentSupported')
               ? json_['enrichmentSupported'] as core.bool
               : null,
+          eventListenerType: json_.containsKey('eventListenerType')
+              ? json_['eventListenerType'] as core.String
+              : null,
           isEventingSupported: json_.containsKey('isEventingSupported')
               ? json_['isEventingSupported'] as core.bool
               : null,
@@ -4779,6 +5044,7 @@ class EventingConfigTemplate {
           'encryptionKeyTemplate': encryptionKeyTemplate!,
         if (enrichmentSupported != null)
           'enrichmentSupported': enrichmentSupported!,
+        if (eventListenerType != null) 'eventListenerType': eventListenerType!,
         if (isEventingSupported != null)
           'isEventingSupported': isEventingSupported!,
         if (registrationDestinationConfig != null)
@@ -4885,6 +5151,14 @@ class EventingRuntimeData {
   /// Output only.
   core.String? eventsListenerEndpoint;
 
+  /// Events listener PSC Service attachment.
+  ///
+  /// The value will be populated after provisioning the events listener with
+  /// private connectivity enabled.
+  ///
+  /// Output only.
+  core.String? eventsListenerPscSa;
+
   /// Current status of eventing.
   ///
   /// Output only.
@@ -4892,6 +5166,7 @@ class EventingRuntimeData {
 
   EventingRuntimeData({
     this.eventsListenerEndpoint,
+    this.eventsListenerPscSa,
     this.status,
   });
 
@@ -4899,6 +5174,9 @@ class EventingRuntimeData {
       : this(
           eventsListenerEndpoint: json_.containsKey('eventsListenerEndpoint')
               ? json_['eventsListenerEndpoint'] as core.String
+              : null,
+          eventsListenerPscSa: json_.containsKey('eventsListenerPscSa')
+              ? json_['eventsListenerPscSa'] as core.String
               : null,
           status: json_.containsKey('status')
               ? EventingStatus.fromJson(
@@ -4909,6 +5187,8 @@ class EventingRuntimeData {
   core.Map<core.String, core.dynamic> toJson() => {
         if (eventsListenerEndpoint != null)
           'eventsListenerEndpoint': eventsListenerEndpoint!,
+        if (eventsListenerPscSa != null)
+          'eventsListenerPscSa': eventsListenerPscSa!,
         if (status != null) 'status': status!,
       };
 }
@@ -4927,6 +5207,7 @@ class EventingStatus {
   /// - "STATE_UNSPECIFIED" : Default state.
   /// - "ACTIVE" : Eventing is enabled and ready to receive events.
   /// - "ERROR" : Eventing is not active due to an error.
+  /// - "INGRESS_ENDPOINT_REQUIRED" : Ingress endpoint required.
   core.String? state;
 
   EventingStatus({
@@ -5100,6 +5381,9 @@ class Field {
   /// Name of the Field.
   core.String? field;
 
+  /// JsonSchema representation of this entity's schema
+  JsonSchema? jsonSchema;
+
   /// The following boolean field specifies if the current Field acts as a
   /// primary key or id if the parent is of type entity.
   core.bool? key;
@@ -5116,6 +5400,7 @@ class Field {
     this.defaultValue,
     this.description,
     this.field,
+    this.jsonSchema,
     this.key,
     this.nullable,
     this.readonly,
@@ -5137,6 +5422,10 @@ class Field {
               : null,
           field:
               json_.containsKey('field') ? json_['field'] as core.String : null,
+          jsonSchema: json_.containsKey('jsonSchema')
+              ? JsonSchema.fromJson(
+                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
+              : null,
           key: json_.containsKey('key') ? json_['key'] as core.bool : null,
           nullable: json_.containsKey('nullable')
               ? json_['nullable'] as core.bool
@@ -5152,6 +5441,7 @@ class Field {
         if (defaultValue != null) 'defaultValue': defaultValue!,
         if (description != null) 'description': description!,
         if (field != null) 'field': field!,
+        if (jsonSchema != null) 'jsonSchema': jsonSchema!,
         if (key != null) 'key': key!,
         if (nullable != null) 'nullable': nullable!,
         if (readonly != null) 'readonly': readonly!,
@@ -5210,6 +5500,42 @@ class FieldComparison {
         if (intValue != null) 'intValue': intValue!,
         if (key != null) 'key': key!,
         if (stringValue != null) 'stringValue': stringValue!,
+      };
+}
+
+/// Autoscaling config for connector deployment system metrics.
+class HPAConfig {
+  /// Percent CPU utilization where HPA triggers autoscaling.
+  ///
+  /// Output only.
+  core.String? cpuUtilizationThreshold;
+
+  /// Percent Memory utilization where HPA triggers autoscaling.
+  ///
+  /// Output only.
+  core.String? memoryUtilizationThreshold;
+
+  HPAConfig({
+    this.cpuUtilizationThreshold,
+    this.memoryUtilizationThreshold,
+  });
+
+  HPAConfig.fromJson(core.Map json_)
+      : this(
+          cpuUtilizationThreshold: json_.containsKey('cpuUtilizationThreshold')
+              ? json_['cpuUtilizationThreshold'] as core.String
+              : null,
+          memoryUtilizationThreshold:
+              json_.containsKey('memoryUtilizationThreshold')
+                  ? json_['memoryUtilizationThreshold'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cpuUtilizationThreshold != null)
+          'cpuUtilizationThreshold': cpuUtilizationThreshold!,
+        if (memoryUtilizationThreshold != null)
+          'memoryUtilizationThreshold': memoryUtilizationThreshold!,
       };
 }
 
@@ -5303,6 +5629,9 @@ class InputParameter {
   /// A brief description of the Parameter.
   core.String? description;
 
+  /// JsonSchema representation of this action's parameter
+  JsonSchema? jsonSchema;
+
   /// Specifies whether a null value is allowed.
   core.bool? nullable;
 
@@ -5313,6 +5642,7 @@ class InputParameter {
     this.dataType,
     this.defaultValue,
     this.description,
+    this.jsonSchema,
     this.nullable,
     this.parameter,
   });
@@ -5327,6 +5657,10 @@ class InputParameter {
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
+          jsonSchema: json_.containsKey('jsonSchema')
+              ? JsonSchema.fromJson(
+                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
+              : null,
           nullable: json_.containsKey('nullable')
               ? json_['nullable'] as core.bool
               : null,
@@ -5339,8 +5673,202 @@ class InputParameter {
         if (dataType != null) 'dataType': dataType!,
         if (defaultValue != null) 'defaultValue': defaultValue!,
         if (description != null) 'description': description!,
+        if (jsonSchema != null) 'jsonSchema': jsonSchema!,
         if (nullable != null) 'nullable': nullable!,
         if (parameter != null) 'parameter': parameter!,
+      };
+}
+
+/// JMS message denotes the source of the event
+class JMS {
+  /// Name of the JMS source.
+  ///
+  /// i.e. queueName or topicName
+  ///
+  /// Optional.
+  core.String? name;
+
+  /// Type of the JMS Source.
+  ///
+  /// i.e. Queue or Topic
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Default state.
+  /// - "QUEUE" : JMS Queue.
+  /// - "TOPIC" : JMS Topic.
+  core.String? type;
+
+  JMS({
+    this.name,
+    this.type,
+  });
+
+  JMS.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// JsonSchema representation of schema metadata
+class JsonSchema {
+  /// The default value of the field or object described by this schema.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? default_;
+
+  /// A description of this schema.
+  core.String? description;
+
+  /// Possible values for an enumeration.
+  ///
+  /// This works in conjunction with `type` to represent types with a fixed set
+  /// of legal values
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Object?>? enum_;
+
+  /// Format of the value as per
+  /// https://json-schema.org/understanding-json-schema/reference/string.html#format
+  core.String? format;
+
+  /// Schema that applies to array values, applicable only if this is of type
+  /// `array`.
+  JsonSchema? items;
+
+  /// JDBC datatype of the field.
+  /// Possible string values are:
+  /// - "DATA_TYPE_UNSPECIFIED" : Data type is not specified.
+  /// - "DATA_TYPE_INT" : DEPRECATED! Use DATA_TYPE_INTEGER.
+  /// - "DATA_TYPE_SMALLINT" : Short integer(int16) data type.
+  /// - "DATA_TYPE_DOUBLE" : Double data type.
+  /// - "DATA_TYPE_DATE" : Date data type.
+  /// - "DATA_TYPE_DATETIME" : DEPRECATED! Use DATA_TYPE_TIMESTAMP.
+  /// - "DATA_TYPE_TIME" : Time data type.
+  /// - "DATA_TYPE_STRING" : DEPRECATED! Use DATA_TYPE_VARCHAR.
+  /// - "DATA_TYPE_LONG" : DEPRECATED! Use DATA_TYPE_BIGINT.
+  /// - "DATA_TYPE_BOOLEAN" : Boolean data type.
+  /// - "DATA_TYPE_DECIMAL" : Decimal data type.
+  /// - "DATA_TYPE_UUID" : DEPRECATED! Use DATA_TYPE_VARCHAR.
+  /// - "DATA_TYPE_BLOB" : UNSUPPORTED! Binary data type.
+  /// - "DATA_TYPE_BIT" : Bit data type.
+  /// - "DATA_TYPE_TINYINT" : Small integer(int8) data type.
+  /// - "DATA_TYPE_INTEGER" : Integer(int32) data type.
+  /// - "DATA_TYPE_BIGINT" : Long integer(int64) data type.
+  /// - "DATA_TYPE_FLOAT" : Float data type.
+  /// - "DATA_TYPE_REAL" : Real data type.
+  /// - "DATA_TYPE_NUMERIC" : Numeric data type.
+  /// - "DATA_TYPE_CHAR" : Char data type.
+  /// - "DATA_TYPE_VARCHAR" : Varchar data type.
+  /// - "DATA_TYPE_LONGVARCHAR" : Longvarchar data type.
+  /// - "DATA_TYPE_TIMESTAMP" : Timestamp data type.
+  /// - "DATA_TYPE_NCHAR" : Nchar data type.
+  /// - "DATA_TYPE_NVARCHAR" : Nvarchar data type.
+  /// - "DATA_TYPE_LONGNVARCHAR" : Longnvarchar data type.
+  /// - "DATA_TYPE_NULL" : Null data type.
+  /// - "DATA_TYPE_OTHER" : UNSUPPORTED! Binary data type.
+  /// - "DATA_TYPE_JAVA_OBJECT" : UNSUPPORTED! Binary data type.
+  /// - "DATA_TYPE_DISTINCT" : UNSUPPORTED! Binary data type.
+  /// - "DATA_TYPE_STRUCT" : UNSUPPORTED! Binary data type.
+  /// - "DATA_TYPE_ARRAY" : UNSUPPORTED! Binary data type.
+  /// - "DATA_TYPE_CLOB" : UNSUPPORTED! Binary data type.
+  /// - "DATA_TYPE_REF" : UNSUPPORTED! Binary data type.
+  /// - "DATA_TYPE_DATALINK" : UNSUPPORTED! Binary data type.
+  /// - "DATA_TYPE_ROWID" : UNSUPPORTED! Row id data type.
+  /// - "DATA_TYPE_BINARY" : UNSUPPORTED! Binary data type.
+  /// - "DATA_TYPE_VARBINARY" : UNSUPPORTED! Variable binary data type.
+  /// - "DATA_TYPE_LONGVARBINARY" : UNSUPPORTED! Long variable binary data type.
+  /// - "DATA_TYPE_NCLOB" : UNSUPPORTED! NCLOB data type.
+  /// - "DATA_TYPE_SQLXML" : UNSUPPORTED! SQL XML data type is not supported.
+  /// - "DATA_TYPE_REF_CURSOR" : UNSUPPORTED! Cursor reference type is not
+  /// supported.
+  /// - "DATA_TYPE_TIME_WITH_TIMEZONE" : UNSUPPORTED! Use TIME or TIMESTAMP
+  /// instead.
+  /// - "DATA_TYPE_TIMESTAMP_WITH_TIMEZONE" : UNSUPPORTED! Use TIMESTAMP
+  /// instead.
+  core.String? jdbcType;
+
+  /// The child schemas, applicable only if this is of type `object`.
+  ///
+  /// The key is the name of the property and the value is the json schema that
+  /// describes that property
+  core.Map<core.String, JsonSchema>? properties;
+
+  /// Whether this property is required.
+  core.List<core.String>? required;
+
+  /// JSON Schema Validation: A Vocabulary for Structural Validation of JSON
+  core.List<core.String>? type;
+
+  JsonSchema({
+    this.default_,
+    this.description,
+    this.enum_,
+    this.format,
+    this.items,
+    this.jdbcType,
+    this.properties,
+    this.required,
+    this.type,
+  });
+
+  JsonSchema.fromJson(core.Map json_)
+      : this(
+          default_: json_.containsKey('default') ? json_['default'] : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          enum_: json_.containsKey('enum') ? json_['enum'] as core.List : null,
+          format: json_.containsKey('format')
+              ? json_['format'] as core.String
+              : null,
+          items: json_.containsKey('items')
+              ? JsonSchema.fromJson(
+                  json_['items'] as core.Map<core.String, core.dynamic>)
+              : null,
+          jdbcType: json_.containsKey('jdbcType')
+              ? json_['jdbcType'] as core.String
+              : null,
+          properties: json_.containsKey('properties')
+              ? (json_['properties'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    JsonSchema.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          required: json_.containsKey('required')
+              ? (json_['required'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          type: json_.containsKey('type')
+              ? (json_['type'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (default_ != null) 'default': default_!,
+        if (description != null) 'description': description!,
+        if (enum_ != null) 'enum': enum_!,
+        if (format != null) 'format': format!,
+        if (items != null) 'items': items!,
+        if (jdbcType != null) 'jdbcType': jdbcType!,
+        if (properties != null) 'properties': properties!,
+        if (required != null) 'required': required!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -6009,6 +6537,45 @@ class ManagedZone {
       };
 }
 
+/// Regional Network Config.
+class NetworkConfig {
+  /// Egress IPs
+  ///
+  /// Output only.
+  core.List<core.String>? egressIps;
+
+  /// Egress mode for the network.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "NETWORK_EGRESS_MODE_UNSPECIFIED" : Egress mode unspecified.
+  /// - "AUTO_IP" : Network egress through auto assigned IPs.
+  /// - "STATIC_IP" : Network egress through static IPs.
+  core.String? egressMode;
+
+  NetworkConfig({
+    this.egressIps,
+    this.egressMode,
+  });
+
+  NetworkConfig.fromJson(core.Map json_)
+      : this(
+          egressIps: json_.containsKey('egressIps')
+              ? (json_['egressIps'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          egressMode: json_.containsKey('egressMode')
+              ? json_['egressMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (egressIps != null) 'egressIps': egressIps!,
+        if (egressMode != null) 'egressMode': egressMode!,
+      };
+}
+
 /// Node configuration for the connection.
 class NodeConfig {
   /// Maximum number of nodes in the runtime nodes.
@@ -6222,7 +6789,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -6520,6 +7087,40 @@ class Provider {
 /// Request message for ConnectorsService.RefreshConnectionSchemaMetadata.
 typedef RefreshConnectionSchemaMetadataRequest = $Empty;
 
+/// Regional Settings details.
+class RegionalSettings {
+  /// Resource name of the Connection.
+  ///
+  /// Format: projects/{project}/locations/{location}/regionalSettings
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Regional network config.
+  ///
+  /// Optional.
+  NetworkConfig? networkConfig;
+
+  RegionalSettings({
+    this.name,
+    this.networkConfig,
+  });
+
+  RegionalSettings.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          networkConfig: json_.containsKey('networkConfig')
+              ? NetworkConfig.fromJson(
+                  json_['networkConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (networkConfig != null) 'networkConfig': networkConfig!,
+      };
+}
+
 /// Request message for ConnectorsService.RepairEventing
 typedef RepairEventingRequest = $Empty;
 
@@ -6557,6 +7158,68 @@ class Resource {
   core.Map<core.String, core.dynamic> toJson() => {
         if (pathTemplate != null) 'pathTemplate': pathTemplate!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Resource limits defined for connection pods of a given connector type.
+class ResourceLimits {
+  /// CPU limit.
+  ///
+  /// Output only.
+  core.String? cpu;
+
+  /// Memory limit.
+  ///
+  /// Output only.
+  core.String? memory;
+
+  ResourceLimits({
+    this.cpu,
+    this.memory,
+  });
+
+  ResourceLimits.fromJson(core.Map json_)
+      : this(
+          cpu: json_.containsKey('cpu') ? json_['cpu'] as core.String : null,
+          memory: json_.containsKey('memory')
+              ? json_['memory'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cpu != null) 'cpu': cpu!,
+        if (memory != null) 'memory': memory!,
+      };
+}
+
+/// Resource requests defined for connection pods of a given connector type.
+class ResourceRequests {
+  /// CPU request.
+  ///
+  /// Output only.
+  core.String? cpu;
+
+  /// Memory request.
+  ///
+  /// Output only.
+  core.String? memory;
+
+  ResourceRequests({
+    this.cpu,
+    this.memory,
+  });
+
+  ResourceRequests.fromJson(core.Map json_)
+      : this(
+          cpu: json_.containsKey('cpu') ? json_['cpu'] as core.String : null,
+          memory: json_.containsKey('memory')
+              ? json_['memory'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cpu != null) 'cpu': cpu!,
+        if (memory != null) 'memory': memory!,
       };
 }
 
@@ -6620,10 +7283,14 @@ class ResultMetadata {
   /// Name of the result field.
   core.String? field;
 
+  /// JsonSchema representation of this action's result
+  JsonSchema? jsonSchema;
+
   ResultMetadata({
     this.dataType,
     this.description,
     this.field,
+    this.jsonSchema,
   });
 
   ResultMetadata.fromJson(core.Map json_)
@@ -6636,12 +7303,17 @@ class ResultMetadata {
               : null,
           field:
               json_.containsKey('field') ? json_['field'] as core.String : null,
+          jsonSchema: json_.containsKey('jsonSchema')
+              ? JsonSchema.fromJson(
+                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataType != null) 'dataType': dataType!,
         if (description != null) 'description': description!,
         if (field != null) 'field': field!,
+        if (jsonSchema != null) 'jsonSchema': jsonSchema!,
       };
 }
 
@@ -6715,10 +7387,30 @@ class RuntimeActionSchema {
   /// Output only.
   core.String? action;
 
+  /// Brief Description of action
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// Display Name of action to be shown on client side
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// JsonSchema representation of this action's input metadata
+  ///
+  /// Output only.
+  JsonSchema? inputJsonSchema;
+
   /// List of input parameter metadata for the action.
   ///
   /// Output only.
   core.List<InputParameter>? inputParameters;
+
+  /// JsonSchema representation of this action's result metadata
+  ///
+  /// Output only.
+  JsonSchema? resultJsonSchema;
 
   /// List of result field metadata.
   ///
@@ -6727,7 +7419,11 @@ class RuntimeActionSchema {
 
   RuntimeActionSchema({
     this.action,
+    this.description,
+    this.displayName,
+    this.inputJsonSchema,
     this.inputParameters,
+    this.resultJsonSchema,
     this.resultMetadata,
   });
 
@@ -6736,11 +7432,25 @@ class RuntimeActionSchema {
           action: json_.containsKey('action')
               ? json_['action'] as core.String
               : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          inputJsonSchema: json_.containsKey('inputJsonSchema')
+              ? JsonSchema.fromJson(json_['inputJsonSchema']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           inputParameters: json_.containsKey('inputParameters')
               ? (json_['inputParameters'] as core.List)
                   .map((value) => InputParameter.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          resultJsonSchema: json_.containsKey('resultJsonSchema')
+              ? JsonSchema.fromJson(json_['resultJsonSchema']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           resultMetadata: json_.containsKey('resultMetadata')
               ? (json_['resultMetadata'] as core.List)
@@ -6752,7 +7462,11 @@ class RuntimeActionSchema {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (inputJsonSchema != null) 'inputJsonSchema': inputJsonSchema!,
         if (inputParameters != null) 'inputParameters': inputParameters!,
+        if (resultJsonSchema != null) 'resultJsonSchema': resultJsonSchema!,
         if (resultMetadata != null) 'resultMetadata': resultMetadata!,
       };
 }
@@ -6905,9 +7619,15 @@ class RuntimeEntitySchema {
   /// Output only.
   core.List<Field>? fields;
 
+  /// JsonSchema representation of this entity's metadata
+  ///
+  /// Output only.
+  JsonSchema? jsonSchema;
+
   RuntimeEntitySchema({
     this.entity,
     this.fields,
+    this.jsonSchema,
   });
 
   RuntimeEntitySchema.fromJson(core.Map json_)
@@ -6921,11 +7641,16 @@ class RuntimeEntitySchema {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          jsonSchema: json_.containsKey('jsonSchema')
+              ? JsonSchema.fromJson(
+                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (entity != null) 'entity': entity!,
         if (fields != null) 'fields': fields!,
+        if (jsonSchema != null) 'jsonSchema': jsonSchema!,
       };
 }
 

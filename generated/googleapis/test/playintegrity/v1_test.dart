@@ -199,21 +199,15 @@ void checkDeviceIntegrity(api.DeviceIntegrity o) {
   buildCounterDeviceIntegrity--;
 }
 
-core.List<core.String> buildUnnamed2() => [
-      'foo',
-      'foo',
+core.List<api.UserRemediationDetails> buildUnnamed2() => [
+      buildUserRemediationDetails(),
+      buildUserRemediationDetails(),
     ];
 
-void checkUnnamed2(core.List<core.String> o) {
+void checkUnnamed2(core.List<api.UserRemediationDetails> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  checkUserRemediationDetails(o[0]);
+  checkUserRemediationDetails(o[1]);
 }
 
 core.int buildCounterGuidanceDetails = 0;
@@ -221,7 +215,7 @@ api.GuidanceDetails buildGuidanceDetails() {
   final o = api.GuidanceDetails();
   buildCounterGuidanceDetails++;
   if (buildCounterGuidanceDetails < 3) {
-    o.userRemediation = buildUnnamed2();
+    o.userRemediationDetails = buildUnnamed2();
   }
   buildCounterGuidanceDetails--;
   return o;
@@ -230,7 +224,7 @@ api.GuidanceDetails buildGuidanceDetails() {
 void checkGuidanceDetails(api.GuidanceDetails o) {
   buildCounterGuidanceDetails++;
   if (buildCounterGuidanceDetails < 3) {
-    checkUnnamed2(o.userRemediation!);
+    checkUnnamed2(o.userRemediationDetails!);
   }
   buildCounterGuidanceDetails--;
 }
@@ -318,6 +312,28 @@ void checkTokenPayloadExternal(api.TokenPayloadExternal o) {
     checkTestingDetails(o.testingDetails!);
   }
   buildCounterTokenPayloadExternal--;
+}
+
+core.int buildCounterUserRemediationDetails = 0;
+api.UserRemediationDetails buildUserRemediationDetails() {
+  final o = api.UserRemediationDetails();
+  buildCounterUserRemediationDetails++;
+  if (buildCounterUserRemediationDetails < 3) {
+    o.remediation = 'foo';
+  }
+  buildCounterUserRemediationDetails--;
+  return o;
+}
+
+void checkUserRemediationDetails(api.UserRemediationDetails o) {
+  buildCounterUserRemediationDetails++;
+  if (buildCounterUserRemediationDetails < 3) {
+    unittest.expect(
+      o.remediation!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterUserRemediationDetails--;
 }
 
 void main() {
@@ -418,6 +434,16 @@ void main() {
       final od = api.TokenPayloadExternal.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTokenPayloadExternal(od);
+    });
+  });
+
+  unittest.group('obj-schema-UserRemediationDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUserRemediationDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UserRemediationDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUserRemediationDetails(od);
     });
   });
 

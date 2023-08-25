@@ -2899,6 +2899,62 @@ class ProjectsInstancesDatabasesSessionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Batches the supplied mutation groups in a collection of efficient
+  /// transactions.
+  ///
+  /// All mutations in a group are committed atomically. However, mutations
+  /// across groups can be committed non-atomically in an unspecified order and
+  /// thus, they must be independent of each other. Partial failure is possible,
+  /// i.e., some groups may have been committed successfully, while some may
+  /// have failed. The results of individual batches are streamed into the
+  /// response as the batches are applied. BatchWrite requests are not replay
+  /// protected, meaning that each mutation group may be applied more than once.
+  /// Replays of non-idempotent mutations may have undesirable effects. For
+  /// example, replays of an insert mutation may produce an already exists error
+  /// or if you use generated or commit timestamp-based keys, it may result in
+  /// additional rows being added to the mutation's table. We recommend
+  /// structuring your mutation groups to be idempotent to avoid this issue.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [session] - Required. The session in which the batch request is to be run.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/databases/\[^/\]+/sessions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchWriteResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchWriteResponse> batchWrite(
+    BatchWriteRequest request,
+    core.String session, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$session') + ':batchWrite';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BatchWriteResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Begins a new transaction.
   ///
   /// This step can often be skipped: Read, ExecuteSql and Commit can begin a
@@ -4032,6 +4088,149 @@ class ScansResource {
   }
 }
 
+/// Autoscaling config for an instance.
+class AutoscalingConfig {
+  /// Autoscaling limits for an instance.
+  ///
+  /// Required.
+  AutoscalingLimits? autoscalingLimits;
+
+  /// The autoscaling targets for an instance.
+  ///
+  /// Required.
+  AutoscalingTargets? autoscalingTargets;
+
+  AutoscalingConfig({
+    this.autoscalingLimits,
+    this.autoscalingTargets,
+  });
+
+  AutoscalingConfig.fromJson(core.Map json_)
+      : this(
+          autoscalingLimits: json_.containsKey('autoscalingLimits')
+              ? AutoscalingLimits.fromJson(json_['autoscalingLimits']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          autoscalingTargets: json_.containsKey('autoscalingTargets')
+              ? AutoscalingTargets.fromJson(json_['autoscalingTargets']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (autoscalingLimits != null) 'autoscalingLimits': autoscalingLimits!,
+        if (autoscalingTargets != null)
+          'autoscalingTargets': autoscalingTargets!,
+      };
+}
+
+/// The autoscaling limits for the instance.
+///
+/// Users can define the minimum and maximum compute capacity allocated to the
+/// instance, and the autoscaler will only scale within that range. Users can
+/// either use nodes or processing units to specify the limits, but should use
+/// the same unit to set both the min_limit and max_limit.
+class AutoscalingLimits {
+  /// Maximum number of nodes allocated to the instance.
+  ///
+  /// If set, this number should be greater than or equal to min_nodes.
+  core.int? maxNodes;
+
+  /// Maximum number of processing units allocated to the instance.
+  ///
+  /// If set, this number should be multiples of 1000 and be greater than or
+  /// equal to min_processing_units.
+  core.int? maxProcessingUnits;
+
+  /// Minimum number of nodes allocated to the instance.
+  ///
+  /// If set, this number should be greater than or equal to 1.
+  core.int? minNodes;
+
+  /// Minimum number of processing units allocated to the instance.
+  ///
+  /// If set, this number should be multiples of 1000.
+  core.int? minProcessingUnits;
+
+  AutoscalingLimits({
+    this.maxNodes,
+    this.maxProcessingUnits,
+    this.minNodes,
+    this.minProcessingUnits,
+  });
+
+  AutoscalingLimits.fromJson(core.Map json_)
+      : this(
+          maxNodes: json_.containsKey('maxNodes')
+              ? json_['maxNodes'] as core.int
+              : null,
+          maxProcessingUnits: json_.containsKey('maxProcessingUnits')
+              ? json_['maxProcessingUnits'] as core.int
+              : null,
+          minNodes: json_.containsKey('minNodes')
+              ? json_['minNodes'] as core.int
+              : null,
+          minProcessingUnits: json_.containsKey('minProcessingUnits')
+              ? json_['minProcessingUnits'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxNodes != null) 'maxNodes': maxNodes!,
+        if (maxProcessingUnits != null)
+          'maxProcessingUnits': maxProcessingUnits!,
+        if (minNodes != null) 'minNodes': minNodes!,
+        if (minProcessingUnits != null)
+          'minProcessingUnits': minProcessingUnits!,
+      };
+}
+
+/// The autoscaling targets for an instance.
+class AutoscalingTargets {
+  /// The target high priority cpu utilization percentage that the autoscaler
+  /// should be trying to achieve for the instance.
+  ///
+  /// This number is on a scale from 0 (no utilization) to 100 (full
+  /// utilization). The valid range is \[10, 90\] inclusive.
+  ///
+  /// Required.
+  core.int? highPriorityCpuUtilizationPercent;
+
+  /// The target storage utilization percentage that the autoscaler should be
+  /// trying to achieve for the instance.
+  ///
+  /// This number is on a scale from 0 (no utilization) to 100 (full
+  /// utilization). The valid range is \[10, 100\] inclusive.
+  ///
+  /// Required.
+  core.int? storageUtilizationPercent;
+
+  AutoscalingTargets({
+    this.highPriorityCpuUtilizationPercent,
+    this.storageUtilizationPercent,
+  });
+
+  AutoscalingTargets.fromJson(core.Map json_)
+      : this(
+          highPriorityCpuUtilizationPercent:
+              json_.containsKey('highPriorityCpuUtilizationPercent')
+                  ? json_['highPriorityCpuUtilizationPercent'] as core.int
+                  : null,
+          storageUtilizationPercent:
+              json_.containsKey('storageUtilizationPercent')
+                  ? json_['storageUtilizationPercent'] as core.int
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (highPriorityCpuUtilizationPercent != null)
+          'highPriorityCpuUtilizationPercent':
+              highPriorityCpuUtilizationPercent!,
+        if (storageUtilizationPercent != null)
+          'storageUtilizationPercent': storageUtilizationPercent!,
+      };
+}
+
 /// A backup of a Cloud Spanner database.
 class Backup {
   /// The time the CreateBackup request is received.
@@ -4321,6 +4520,88 @@ class BatchCreateSessionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (session != null) 'session': session!,
+      };
+}
+
+/// The request for BatchWrite.
+class BatchWriteRequest {
+  /// The groups of mutations to be applied.
+  ///
+  /// Required.
+  core.List<MutationGroup>? mutationGroups;
+
+  /// Common options for this request.
+  RequestOptions? requestOptions;
+
+  BatchWriteRequest({
+    this.mutationGroups,
+    this.requestOptions,
+  });
+
+  BatchWriteRequest.fromJson(core.Map json_)
+      : this(
+          mutationGroups: json_.containsKey('mutationGroups')
+              ? (json_['mutationGroups'] as core.List)
+                  .map((value) => MutationGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          requestOptions: json_.containsKey('requestOptions')
+              ? RequestOptions.fromJson(json_['requestOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mutationGroups != null) 'mutationGroups': mutationGroups!,
+        if (requestOptions != null) 'requestOptions': requestOptions!,
+      };
+}
+
+/// The result of applying a batch of mutations.
+class BatchWriteResponse {
+  /// The commit timestamp of the transaction that applied this batch.
+  ///
+  /// Present if `status` is `OK`, absent otherwise.
+  core.String? commitTimestamp;
+
+  /// The mutation groups applied in this batch.
+  ///
+  /// The values index into the `mutation_groups` field in the corresponding
+  /// `BatchWriteRequest`.
+  core.List<core.int>? indexes;
+
+  /// An `OK` status indicates success.
+  ///
+  /// Any other status indicates a failure.
+  Status? status;
+
+  BatchWriteResponse({
+    this.commitTimestamp,
+    this.indexes,
+    this.status,
+  });
+
+  BatchWriteResponse.fromJson(core.Map json_)
+      : this(
+          commitTimestamp: json_.containsKey('commitTimestamp')
+              ? json_['commitTimestamp'] as core.String
+              : null,
+          indexes: json_.containsKey('indexes')
+              ? (json_['indexes'] as core.List)
+                  .map((value) => value as core.int)
+                  .toList()
+              : null,
+          status: json_.containsKey('status')
+              ? Status.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commitTimestamp != null) 'commitTimestamp': commitTimestamp!,
+        if (indexes != null) 'indexes': indexes!,
+        if (status != null) 'status': status!,
       };
 }
 
@@ -5953,6 +6234,44 @@ class GetIamPolicyRequest {
 /// Encapsulates settings provided to GetIamPolicy.
 typedef GetPolicyOptions = $GetPolicyOptions;
 
+/// Recommendation to add new indexes to run queries more efficiently.
+class IndexAdvice {
+  /// DDL statements to add new indexes that will improve the query.
+  ///
+  /// Optional.
+  core.List<core.String>? ddl;
+
+  /// Estimated latency improvement factor.
+  ///
+  /// For example if the query currently takes 500 ms to run and the estimated
+  /// latency with new indexes is 100 ms this field will be 5.
+  ///
+  /// Optional.
+  core.double? improvementFactor;
+
+  IndexAdvice({
+    this.ddl,
+    this.improvementFactor,
+  });
+
+  IndexAdvice.fromJson(core.Map json_)
+      : this(
+          ddl: json_.containsKey('ddl')
+              ? (json_['ddl'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          improvementFactor: json_.containsKey('improvementFactor')
+              ? (json_['improvementFactor'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ddl != null) 'ddl': ddl!,
+        if (improvementFactor != null) 'improvementFactor': improvementFactor!,
+      };
+}
+
 /// A message representing a (sparse) collection of hot keys for specific key
 /// buckets.
 class IndexedHotKey {
@@ -6017,6 +6336,15 @@ class IndexedKeyRangeInfos {
 
 /// An isolated set of Cloud Spanner resources on which databases can be hosted.
 class Instance {
+  /// The autoscaling configuration.
+  ///
+  /// Autoscaling is enabled if this field is set. When autoscaling is enabled,
+  /// node_count and processing_units are treated as OUTPUT_ONLY fields and
+  /// reflect the current compute capacity allocated to the instance.
+  ///
+  /// Optional.
+  AutoscalingConfig? autoscalingConfig;
+
   /// The name of the instance's configuration.
   ///
   /// Values are of the form `projects//instanceConfigs/`. See also
@@ -6126,6 +6454,7 @@ class Instance {
   core.String? updateTime;
 
   Instance({
+    this.autoscalingConfig,
     this.config,
     this.createTime,
     this.displayName,
@@ -6142,6 +6471,10 @@ class Instance {
 
   Instance.fromJson(core.Map json_)
       : this(
+          autoscalingConfig: json_.containsKey('autoscalingConfig')
+              ? AutoscalingConfig.fromJson(json_['autoscalingConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           config: json_.containsKey('config')
               ? json_['config'] as core.String
               : null,
@@ -6186,6 +6519,7 @@ class Instance {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (autoscalingConfig != null) 'autoscalingConfig': autoscalingConfig!,
         if (config != null) 'config': config!,
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
@@ -7401,6 +7735,36 @@ class Mutation {
       };
 }
 
+/// A group of mutations to be committed together.
+///
+/// Related mutations should be placed in a group. For example, two mutations
+/// inserting rows with the same primary key prefix in both parent and child
+/// tables are related.
+class MutationGroup {
+  /// The mutations in this group.
+  ///
+  /// Required.
+  core.List<Mutation>? mutations;
+
+  MutationGroup({
+    this.mutations,
+  });
+
+  MutationGroup.fromJson(core.Map json_)
+      : this(
+          mutations: json_.containsKey('mutations')
+              ? (json_['mutations'] as core.List)
+                  .map((value) => Mutation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mutations != null) 'mutations': mutations!,
+      };
+}
+
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
@@ -7431,7 +7795,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -7699,13 +8063,15 @@ class PartitionQueryRequest {
 
   /// The query request to generate partitions for.
   ///
-  /// The request will fail if the query is not root partitionable. The query
-  /// plan of a root partitionable query has a single distributed union
-  /// operator. A distributed union operator conceptually divides one or more
-  /// tables into multiple splits, remotely evaluates a subquery independently
-  /// on each split, and then unions all results. This must not contain DML
-  /// commands, such as INSERT, UPDATE, or DELETE. Use ExecuteStreamingSql with
-  /// a PartitionedDml transaction for large, partition-friendly DML operations.
+  /// The request will fail if the query is not root partitionable. For a query
+  /// to be root partitionable, it needs to satisfy a few conditions. For
+  /// example, the first operator in the query execution plan must be a
+  /// distributed union operator. For more information about other conditions,
+  /// see
+  /// [Read data in parallel](https://cloud.google.com/spanner/docs/reads#read_data_in_parallel).
+  /// The query request must not contain DML commands, such as INSERT, UPDATE,
+  /// or DELETE. Use ExecuteStreamingSql with a PartitionedDml transaction for
+  /// large, partition-friendly DML operations.
   ///
   /// Required.
   core.String? sql;
@@ -7983,23 +8349,23 @@ class PlanNode {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Associates a list of `members`, or principals, with a `role`.
   ///
@@ -8134,6 +8500,36 @@ class PrefixNode {
       };
 }
 
+/// Output of query advisor analysis.
+class QueryAdvisorResult {
+  /// Index Recommendation for a query.
+  ///
+  /// This is an optional field and the recommendation will only be available
+  /// when the recommendation guarantees significant improvement in query
+  /// performance.
+  ///
+  /// Optional.
+  core.List<IndexAdvice>? indexAdvice;
+
+  QueryAdvisorResult({
+    this.indexAdvice,
+  });
+
+  QueryAdvisorResult.fromJson(core.Map json_)
+      : this(
+          indexAdvice: json_.containsKey('indexAdvice')
+              ? (json_['indexAdvice'] as core.List)
+                  .map((value) => IndexAdvice.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (indexAdvice != null) 'indexAdvice': indexAdvice!,
+      };
+}
+
 /// Query optimizer configuration.
 class QueryOptions {
   /// An option to control the selection of optimizer statistics package.
@@ -8199,8 +8595,16 @@ class QueryPlan {
   /// PlanNode's `id` corresponds to its index in `plan_nodes`.
   core.List<PlanNode>? planNodes;
 
+  /// The advices/recommendations for a query.
+  ///
+  /// Currently this field will be serving index recommendations for a query.
+  ///
+  /// Optional.
+  QueryAdvisorResult? queryAdvice;
+
   QueryPlan({
     this.planNodes,
+    this.queryAdvice,
   });
 
   QueryPlan.fromJson(core.Map json_)
@@ -8211,10 +8615,15 @@ class QueryPlan {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          queryAdvice: json_.containsKey('queryAdvice')
+              ? QueryAdvisorResult.fromJson(
+                  json_['queryAdvice'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (planNodes != null) 'planNodes': planNodes!,
+        if (queryAdvice != null) 'queryAdvice': queryAdvice!,
       };
 }
 

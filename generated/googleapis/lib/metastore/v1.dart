@@ -2386,9 +2386,15 @@ class Binding {
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
-/// Contains information of the customer's network configurations.Next available
-/// ID: 5
+/// Contains information of the customer's network configurations.
 class Consumer {
+  /// The location of the endpoint URI.
+  ///
+  /// Format: projects/{project}/locations/{location}.
+  ///
+  /// Output only.
+  core.String? endpointLocation;
+
   /// The URI of the endpoint used to access the metastore service.
   ///
   /// Output only.
@@ -2407,12 +2413,16 @@ class Consumer {
   core.String? subnetwork;
 
   Consumer({
+    this.endpointLocation,
     this.endpointUri,
     this.subnetwork,
   });
 
   Consumer.fromJson(core.Map json_)
       : this(
+          endpointLocation: json_.containsKey('endpointLocation')
+              ? json_['endpointLocation'] as core.String
+              : null,
           endpointUri: json_.containsKey('endpointUri')
               ? json_['endpointUri'] as core.String
               : null,
@@ -2422,8 +2432,36 @@ class Consumer {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (endpointLocation != null) 'endpointLocation': endpointLocation!,
         if (endpointUri != null) 'endpointUri': endpointUri!,
         if (subnetwork != null) 'subnetwork': subnetwork!,
+      };
+}
+
+/// Specifies how metastore metadata should be integrated with the Data Catalog
+/// service.
+class DataCatalogConfig {
+  /// Defines whether the metastore metadata should be synced to Data Catalog.
+  ///
+  /// The default value is to disable syncing metastore metadata to Data
+  /// Catalog.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  DataCatalogConfig({
+    this.enabled,
+  });
+
+  DataCatalogConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
       };
 }
 
@@ -3332,6 +3370,31 @@ class MetadataImport {
       };
 }
 
+/// Specifies how metastore metadata should be integrated with external
+/// services.
+class MetadataIntegration {
+  /// The integration config for the Data Catalog service.
+  ///
+  /// Optional.
+  DataCatalogConfig? dataCatalogConfig;
+
+  MetadataIntegration({
+    this.dataCatalogConfig,
+  });
+
+  MetadataIntegration.fromJson(core.Map json_)
+      : this(
+          dataCatalogConfig: json_.containsKey('dataCatalogConfig')
+              ? DataCatalogConfig.fromJson(json_['dataCatalogConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataCatalogConfig != null) 'dataCatalogConfig': dataCatalogConfig!,
+      };
+}
+
 /// The metadata management activities of the metastore service.
 class MetadataManagementActivity {
   /// The latest metadata exports of the metastore service.
@@ -3414,8 +3477,7 @@ class MoveTableToDatabaseRequest {
       };
 }
 
-/// Network configuration for the Dataproc Metastore service.Next available ID:
-/// 4
+/// Network configuration for the Dataproc Metastore service.
 class NetworkConfig {
   /// The consumer-side network configuration for the Dataproc Metastore
   /// instance.
@@ -3472,7 +3534,7 @@ class Operation {
   /// ending with operations/{unique_id}.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as Delete, the
   /// response is google.protobuf.Empty. If the original method is standard
@@ -3916,6 +3978,12 @@ class Service {
   /// SPANNER database type.
   MaintenanceWindow? maintenanceWindow;
 
+  /// The setting that defines how metastore metadata should be integrated with
+  /// external services and systems.
+  ///
+  /// Optional.
+  MetadataIntegration? metadataIntegration;
+
   /// The metadata management activities of the metastore service.
   ///
   /// Output only.
@@ -4023,6 +4091,7 @@ class Service {
     this.hiveMetastoreConfig,
     this.labels,
     this.maintenanceWindow,
+    this.metadataIntegration,
     this.metadataManagementActivity,
     this.name,
     this.network,
@@ -4070,6 +4139,10 @@ class Service {
               : null,
           maintenanceWindow: json_.containsKey('maintenanceWindow')
               ? MaintenanceWindow.fromJson(json_['maintenanceWindow']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          metadataIntegration: json_.containsKey('metadataIntegration')
+              ? MetadataIntegration.fromJson(json_['metadataIntegration']
                   as core.Map<core.String, core.dynamic>)
               : null,
           metadataManagementActivity:
@@ -4120,6 +4193,8 @@ class Service {
           'hiveMetastoreConfig': hiveMetastoreConfig!,
         if (labels != null) 'labels': labels!,
         if (maintenanceWindow != null) 'maintenanceWindow': maintenanceWindow!,
+        if (metadataIntegration != null)
+          'metadataIntegration': metadataIntegration!,
         if (metadataManagementActivity != null)
           'metadataManagementActivity': metadataManagementActivity!,
         if (name != null) 'name': name!,

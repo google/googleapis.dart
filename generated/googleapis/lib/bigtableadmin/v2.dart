@@ -1427,7 +1427,7 @@ class ProjectsInstancesClustersBackupsResource {
     return Backup.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the access control policy for a Table resource.
+  /// Gets the access control policy for a Table or Backup resource.
   ///
   /// Returns an empty policy if the resource exists but does not have a policy
   /// set.
@@ -1620,7 +1620,7 @@ class ProjectsInstancesClustersBackupsResource {
     return Backup.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Sets the access control policy on a Table resource.
+  /// Sets the access control policy on a Table or Backup resource.
   ///
   /// Replaces any existing policy.
   ///
@@ -1666,7 +1666,8 @@ class ProjectsInstancesClustersBackupsResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Returns permissions that the caller has on the specified table resource.
+  /// Returns permissions that the caller has on the specified Table or Backup
+  /// resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2073,7 +2074,7 @@ class ProjectsInstancesTablesResource {
     return Table.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the access control policy for a Table resource.
+  /// Gets the access control policy for a Table or Backup resource.
   ///
   /// Returns an empty policy if the resource exists but does not have a policy
   /// set.
@@ -2338,7 +2339,7 @@ class ProjectsInstancesTablesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Sets the access control policy on a Table resource.
+  /// Sets the access control policy on a Table or Backup resource.
   ///
   /// Replaces any existing policy.
   ///
@@ -2384,7 +2385,8 @@ class ProjectsInstancesTablesResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Returns permissions that the caller has on the specified table resource.
+  /// Returns permissions that the caller has on the specified Table or Backup
+  /// resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2592,15 +2594,36 @@ class AppProfile {
   /// `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
   core.String? name;
 
+  /// This field has been deprecated in favor of `standard_isolation.priority`.
+  ///
+  /// If you set this field, `standard_isolation.priority` will be set instead.
+  /// The priority of requests sent using this app profile.
+  /// Possible string values are:
+  /// - "PRIORITY_UNSPECIFIED" : Default value. Mapped to PRIORITY_HIGH (the
+  /// legacy behavior) on creation.
+  /// - "PRIORITY_LOW"
+  /// - "PRIORITY_MEDIUM"
+  /// - "PRIORITY_HIGH"
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? priority;
+
   /// Use a single-cluster routing policy.
   SingleClusterRouting? singleClusterRouting;
+
+  /// The standard options used for isolating this app profile's traffic from
+  /// other use cases.
+  StandardIsolation? standardIsolation;
 
   AppProfile({
     this.description,
     this.etag,
     this.multiClusterRoutingUseAny,
     this.name,
+    this.priority,
     this.singleClusterRouting,
+    this.standardIsolation,
   });
 
   AppProfile.fromJson(core.Map json_)
@@ -2616,8 +2639,15 @@ class AppProfile {
                           as core.Map<core.String, core.dynamic>)
                   : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          priority: json_.containsKey('priority')
+              ? json_['priority'] as core.String
+              : null,
           singleClusterRouting: json_.containsKey('singleClusterRouting')
               ? SingleClusterRouting.fromJson(json_['singleClusterRouting']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          standardIsolation: json_.containsKey('standardIsolation')
+              ? StandardIsolation.fromJson(json_['standardIsolation']
                   as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -2628,8 +2658,10 @@ class AppProfile {
         if (multiClusterRoutingUseAny != null)
           'multiClusterRoutingUseAny': multiClusterRoutingUseAny!,
         if (name != null) 'name': name!,
+        if (priority != null) 'priority': priority!,
         if (singleClusterRouting != null)
           'singleClusterRouting': singleClusterRouting!,
+        if (standardIsolation != null) 'standardIsolation': standardIsolation!,
       };
 }
 
@@ -3159,9 +3191,10 @@ class Cluster {
   /// `projects/{project}/instances/{instance}/clusters/a-z*`.
   core.String? name;
 
-  /// The number of nodes allocated to this cluster.
+  /// The number of nodes in the cluster.
   ///
-  /// More nodes enable higher throughput and more consistent performance.
+  /// If no value is set, Cloud Bigtable automatically allocates nodes based on
+  /// your data footprint and optimized for 50% storage utilization.
   core.int? serveNodes;
 
   /// The current state of the cluster.
@@ -4494,9 +4527,6 @@ class Modification {
 /// Request message for
 /// google.bigtable.admin.v2.BigtableTableAdmin.ModifyColumnFamilies
 class ModifyColumnFamiliesRequest {
-  /// If true, ignore safety checks when modifying the column families.
-  core.bool? ignoreWarnings;
-
   /// Modifications to be atomically applied to the specified table's families.
   ///
   /// Entries are applied in order, meaning that earlier modifications can be
@@ -4507,15 +4537,11 @@ class ModifyColumnFamiliesRequest {
   core.List<Modification>? modifications;
 
   ModifyColumnFamiliesRequest({
-    this.ignoreWarnings,
     this.modifications,
   });
 
   ModifyColumnFamiliesRequest.fromJson(core.Map json_)
       : this(
-          ignoreWarnings: json_.containsKey('ignoreWarnings')
-              ? json_['ignoreWarnings'] as core.bool
-              : null,
           modifications: json_.containsKey('modifications')
               ? (json_['modifications'] as core.List)
                   .map((value) => Modification.fromJson(
@@ -4525,7 +4551,6 @@ class ModifyColumnFamiliesRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ignoreWarnings != null) 'ignoreWarnings': ignoreWarnings!,
         if (modifications != null) 'modifications': modifications!,
       };
 }
@@ -4591,7 +4616,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -4651,23 +4676,23 @@ class Operation {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -4926,6 +4951,34 @@ class Split {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
+      };
+}
+
+/// Standard options for isolating this app profile's traffic from other use
+/// cases.
+class StandardIsolation {
+  /// The priority of requests sent using this app profile.
+  /// Possible string values are:
+  /// - "PRIORITY_UNSPECIFIED" : Default value. Mapped to PRIORITY_HIGH (the
+  /// legacy behavior) on creation.
+  /// - "PRIORITY_LOW"
+  /// - "PRIORITY_MEDIUM"
+  /// - "PRIORITY_HIGH"
+  core.String? priority;
+
+  StandardIsolation({
+    this.priority,
+  });
+
+  StandardIsolation.fromJson(core.Map json_)
+      : this(
+          priority: json_.containsKey('priority')
+              ? json_['priority'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (priority != null) 'priority': priority!,
       };
 }
 

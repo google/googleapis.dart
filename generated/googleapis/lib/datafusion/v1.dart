@@ -1453,6 +1453,11 @@ class Instance {
   /// Output only.
   core.String? p4ServiceAccount;
 
+  /// Current patch revision of the Data Fusion.
+  ///
+  /// Optional.
+  core.String? patchRevision;
+
   /// Specifies whether the Data Fusion instance should be private.
   ///
   /// If set to true, all Data Fusion nodes will have private IP addresses and
@@ -1534,6 +1539,11 @@ class Instance {
   /// Only specifiable in Update.
   core.String? version;
 
+  /// Endpoint on which the Data Fusion UI is accessible to third-party users
+  ///
+  /// Output only.
+  core.String? workforceIdentityServiceEndpoint;
+
   /// Name of the zone in which the Data Fusion instance will be created.
   ///
   /// Only DEVELOPER instances use this field.
@@ -1560,6 +1570,7 @@ class Instance {
     this.networkConfig,
     this.options,
     this.p4ServiceAccount,
+    this.patchRevision,
     this.privateInstance,
     this.satisfiesPzs,
     this.serviceAccount,
@@ -1570,6 +1581,7 @@ class Instance {
     this.type,
     this.updateTime,
     this.version,
+    this.workforceIdentityServiceEndpoint,
     this.zone,
   });
 
@@ -1656,6 +1668,9 @@ class Instance {
           p4ServiceAccount: json_.containsKey('p4ServiceAccount')
               ? json_['p4ServiceAccount'] as core.String
               : null,
+          patchRevision: json_.containsKey('patchRevision')
+              ? json_['patchRevision'] as core.String
+              : null,
           privateInstance: json_.containsKey('privateInstance')
               ? json_['privateInstance'] as core.bool
               : null,
@@ -1683,6 +1698,10 @@ class Instance {
           version: json_.containsKey('version')
               ? json_['version'] as core.String
               : null,
+          workforceIdentityServiceEndpoint:
+              json_.containsKey('workforceIdentityServiceEndpoint')
+                  ? json_['workforceIdentityServiceEndpoint'] as core.String
+                  : null,
           zone: json_.containsKey('zone') ? json_['zone'] as core.String : null,
         );
 
@@ -1712,6 +1731,7 @@ class Instance {
         if (networkConfig != null) 'networkConfig': networkConfig!,
         if (options != null) 'options': options!,
         if (p4ServiceAccount != null) 'p4ServiceAccount': p4ServiceAccount!,
+        if (patchRevision != null) 'patchRevision': patchRevision!,
         if (privateInstance != null) 'privateInstance': privateInstance!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
@@ -1722,6 +1742,8 @@ class Instance {
         if (type != null) 'type': type!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (version != null) 'version': version!,
+        if (workforceIdentityServiceEndpoint != null)
+          'workforceIdentityServiceEndpoint': workforceIdentityServiceEndpoint!,
         if (zone != null) 'zone': zone!,
       };
 }
@@ -1978,7 +2000,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -2038,23 +2060,23 @@ class Operation {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;

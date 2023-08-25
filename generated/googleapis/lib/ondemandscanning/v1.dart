@@ -2058,7 +2058,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -2136,6 +2136,15 @@ class PackageData {
   /// This field will be unset for non Maven packages.
   core.String? hashDigest;
 
+  /// The list of licenses found that are related to a given package.
+  ///
+  /// Note that licenses may also be stored on the BinarySourceInfo. If there is
+  /// no BinarySourceInfo (because there's no concept of source vs binary), then
+  /// it will be stored here, while if there are BinarySourceInfos, it will be
+  /// stored there, as one source can have multiple binaries with different
+  /// licenses.
+  core.List<core.String>? licenses;
+
   /// The maintainer of the package.
   Maintainer? maintainer;
 
@@ -2179,6 +2188,7 @@ class PackageData {
     this.dependencyChain,
     this.fileLocation,
     this.hashDigest,
+    this.licenses,
     this.maintainer,
     this.os,
     this.osVersion,
@@ -2223,6 +2233,11 @@ class PackageData {
           hashDigest: json_.containsKey('hashDigest')
               ? json_['hashDigest'] as core.String
               : null,
+          licenses: json_.containsKey('licenses')
+              ? (json_['licenses'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           maintainer: json_.containsKey('maintainer')
               ? Maintainer.fromJson(
                   json_['maintainer'] as core.Map<core.String, core.dynamic>)
@@ -2262,6 +2277,7 @@ class PackageData {
         if (dependencyChain != null) 'dependencyChain': dependencyChain!,
         if (fileLocation != null) 'fileLocation': fileLocation!,
         if (hashDigest != null) 'hashDigest': hashDigest!,
+        if (licenses != null) 'licenses': licenses!,
         if (maintainer != null) 'maintainer': maintainer!,
         if (os != null) 'os': os!,
         if (osVersion != null) 'osVersion': osVersion!,
@@ -2498,16 +2514,29 @@ class PackageOccurrence {
 }
 
 class PackageVersion {
+  /// The licenses associated with this package.
+  ///
+  /// Note that this has to go on the PackageVersion level, because we can have
+  /// cases with images with the same source having different licences. E.g. in
+  /// Alpine, musl and musl-utils both have the same origin musl, but have
+  /// different sets of licenses.
+  core.List<core.String>? licenses;
   core.String? name;
   core.String? version;
 
   PackageVersion({
+    this.licenses,
     this.name,
     this.version,
   });
 
   PackageVersion.fromJson(core.Map json_)
       : this(
+          licenses: json_.containsKey('licenses')
+              ? (json_['licenses'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           version: json_.containsKey('version')
               ? json_['version'] as core.String
@@ -2515,6 +2544,7 @@ class PackageVersion {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (licenses != null) 'licenses': licenses!,
         if (name != null) 'name': name!,
         if (version != null) 'version': version!,
       };
@@ -3392,6 +3422,9 @@ class VulnerabilityOccurrence {
   /// - "CRITICAL" : Critical severity.
   core.String? effectiveSeverity;
 
+  /// Occurrence-specific extra details about the vulnerability.
+  core.String? extraDetails;
+
   /// Whether at least one of the affected packages has a fix available.
   ///
   /// Output only.
@@ -3441,6 +3474,7 @@ class VulnerabilityOccurrence {
     this.cvssVersion,
     this.cvssv3,
     this.effectiveSeverity,
+    this.extraDetails,
     this.fixAvailable,
     this.longDescription,
     this.packageIssue,
@@ -3469,6 +3503,9 @@ class VulnerabilityOccurrence {
               : null,
           effectiveSeverity: json_.containsKey('effectiveSeverity')
               ? json_['effectiveSeverity'] as core.String
+              : null,
+          extraDetails: json_.containsKey('extraDetails')
+              ? json_['extraDetails'] as core.String
               : null,
           fixAvailable: json_.containsKey('fixAvailable')
               ? json_['fixAvailable'] as core.bool
@@ -3507,6 +3544,7 @@ class VulnerabilityOccurrence {
         if (cvssVersion != null) 'cvssVersion': cvssVersion!,
         if (cvssv3 != null) 'cvssv3': cvssv3!,
         if (effectiveSeverity != null) 'effectiveSeverity': effectiveSeverity!,
+        if (extraDetails != null) 'extraDetails': extraDetails!,
         if (fixAvailable != null) 'fixAvailable': fixAvailable!,
         if (longDescription != null) 'longDescription': longDescription!,
         if (packageIssue != null) 'packageIssue': packageIssue!,

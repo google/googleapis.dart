@@ -13727,6 +13727,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DirectoryApi(mock).users;
       final arg_request = buildUser();
+      final arg_resolveConflictAccount = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj =
@@ -13764,6 +13765,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['resolveConflictAccount']!.first,
+          unittest.equals('$arg_resolveConflictAccount'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -13774,7 +13779,9 @@ void main() {
         final resp = convert.json.encode(buildUser());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.insert(arg_request, $fields: arg_$fields);
+      final response = await res.insert(arg_request,
+          resolveConflictAccount: arg_resolveConflictAccount,
+          $fields: arg_$fields);
       checkUser(response as api.User);
     });
 

@@ -281,6 +281,8 @@ api.TrafficStats buildTrafficStats() {
     o.spammyFeedbackLoops = buildUnnamed5();
     o.spfSuccessRatio = 42.0;
     o.userReportedSpamRatio = 42.0;
+    o.userReportedSpamRatioLowerBound = 42.0;
+    o.userReportedSpamRatioUpperBound = 42.0;
   }
   buildCounterTrafficStats--;
   return o;
@@ -322,6 +324,14 @@ void checkTrafficStats(api.TrafficStats o) {
     );
     unittest.expect(
       o.userReportedSpamRatio!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.userReportedSpamRatioLowerBound!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.userReportedSpamRatioUpperBound!,
       unittest.equals(42.0),
     );
   }

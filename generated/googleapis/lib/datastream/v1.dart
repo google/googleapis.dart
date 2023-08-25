@@ -1412,11 +1412,12 @@ class ProjectsLocationsStreamsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/streams/\[^/\]+$`.
   ///
-  /// [cdcStrategy_specificStartPosition_mysqlLogPosition_logFile] - The binary
-  /// log file name.
+  /// [cdcStrategy_specificStartPosition_mysqlLogPosition_logFile] - Required.
+  /// The binary log file name.
   ///
-  /// [cdcStrategy_specificStartPosition_mysqlLogPosition_logPosition] - The
-  /// position within the binary log file. Default is head of file.
+  /// [cdcStrategy_specificStartPosition_mysqlLogPosition_logPosition] -
+  /// Optional. The position within the binary log file. Default is head of
+  /// file.
   ///
   /// [force] - Optional. Update the stream without validating it.
   ///
@@ -1493,6 +1494,8 @@ class ProjectsLocationsStreamsResource {
 
   /// Use this method to start, resume or recover a stream with a non default
   /// CDC strategy.
+  ///
+  /// NOTE: This feature is currently experimental.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3017,11 +3020,15 @@ class MysqlDatabase {
 /// MySQL log position
 class MysqlLogPosition {
   /// The binary log file name.
+  ///
+  /// Required.
   core.String? logFile;
 
   /// The position within the binary log file.
   ///
   /// Default is head of file.
+  ///
+  /// Optional.
   core.int? logPosition;
 
   MysqlLogPosition({
@@ -3364,7 +3371,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -3510,6 +3517,11 @@ class OracleProfile {
   /// Required.
   core.String? hostname;
 
+  /// SSL configuration for the Oracle connection.
+  ///
+  /// Optional.
+  OracleSslConfig? oracleSslConfig;
+
   /// Password for the Oracle connection.
   ///
   /// Required.
@@ -3527,6 +3539,7 @@ class OracleProfile {
     this.connectionAttributes,
     this.databaseService,
     this.hostname,
+    this.oracleSslConfig,
     this.password,
     this.port,
     this.username,
@@ -3550,6 +3563,10 @@ class OracleProfile {
           hostname: json_.containsKey('hostname')
               ? json_['hostname'] as core.String
               : null,
+          oracleSslConfig: json_.containsKey('oracleSslConfig')
+              ? OracleSslConfig.fromJson(json_['oracleSslConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           password: json_.containsKey('password')
               ? json_['password'] as core.String
               : null,
@@ -3564,6 +3581,7 @@ class OracleProfile {
           'connectionAttributes': connectionAttributes!,
         if (databaseService != null) 'databaseService': databaseService!,
         if (hostname != null) 'hostname': hostname!,
+        if (oracleSslConfig != null) 'oracleSslConfig': oracleSslConfig!,
         if (password != null) 'password': password!,
         if (port != null) 'port': port!,
         if (username != null) 'username': username!,
@@ -3700,6 +3718,41 @@ class OracleSourceConfig {
           'maxConcurrentCdcTasks': maxConcurrentCdcTasks!,
         if (streamLargeObjects != null)
           'streamLargeObjects': streamLargeObjects!,
+      };
+}
+
+/// Oracle SSL configuration information.
+class OracleSslConfig {
+  /// Input only.
+  ///
+  /// PEM-encoded certificate of the CA that signed the source database server's
+  /// certificate.
+  core.String? caCertificate;
+
+  /// Indicates whether the ca_certificate field has been set for this
+  /// Connection-Profile.
+  ///
+  /// Output only.
+  core.bool? caCertificateSet;
+
+  OracleSslConfig({
+    this.caCertificate,
+    this.caCertificateSet,
+  });
+
+  OracleSslConfig.fromJson(core.Map json_)
+      : this(
+          caCertificate: json_.containsKey('caCertificate')
+              ? json_['caCertificate'] as core.String
+              : null,
+          caCertificateSet: json_.containsKey('caCertificateSet')
+              ? json_['caCertificateSet'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (caCertificate != null) 'caCertificate': caCertificate!,
+        if (caCertificateSet != null) 'caCertificateSet': caCertificateSet!,
       };
 }
 
@@ -4547,6 +4600,13 @@ class Stream {
   /// Labels.
   core.Map<core.String, core.String>? labels;
 
+  /// If the stream was recovered, the time of the last recovery.
+  ///
+  /// Note: This field is currently experimental.
+  ///
+  /// Output only.
+  core.String? lastRecoveryTime;
+
   /// The stream's name.
   ///
   /// Output only.
@@ -4588,6 +4648,7 @@ class Stream {
     this.displayName,
     this.errors,
     this.labels,
+    this.lastRecoveryTime,
     this.name,
     this.sourceConfig,
     this.state,
@@ -4632,6 +4693,9 @@ class Stream {
                   ),
                 )
               : null,
+          lastRecoveryTime: json_.containsKey('lastRecoveryTime')
+              ? json_['lastRecoveryTime'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           sourceConfig: json_.containsKey('sourceConfig')
               ? SourceConfig.fromJson(
@@ -4654,6 +4718,7 @@ class Stream {
         if (displayName != null) 'displayName': displayName!,
         if (errors != null) 'errors': errors!,
         if (labels != null) 'labels': labels!,
+        if (lastRecoveryTime != null) 'lastRecoveryTime': lastRecoveryTime!,
         if (name != null) 'name': name!,
         if (sourceConfig != null) 'sourceConfig': sourceConfig!,
         if (state != null) 'state': state!,

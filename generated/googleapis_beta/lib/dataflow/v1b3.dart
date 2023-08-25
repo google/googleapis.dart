@@ -5940,6 +5940,14 @@ class Job {
   ///
   /// This field is set only in responses from the server; it is ignored if it
   /// is set in any requests.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// This field is set only in responses from the server; it is ignored if it
+  /// is set in any requests.
   core.bool? satisfiesPzs;
 
   /// This field may be mutated by the Cloud Dataflow service; callers cannot
@@ -6006,6 +6014,7 @@ class Job {
     this.replacedByJobId,
     this.requestedState,
     this.runtimeUpdatableParams,
+    this.satisfiesPzi,
     this.satisfiesPzs,
     this.stageStates,
     this.startTime,
@@ -6078,6 +6087,9 @@ class Job {
               ? RuntimeUpdatableParams.fromJson(json_['runtimeUpdatableParams']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          satisfiesPzi: json_.containsKey('satisfiesPzi')
+              ? json_['satisfiesPzi'] as core.bool
+              : null,
           satisfiesPzs: json_.containsKey('satisfiesPzs')
               ? json_['satisfiesPzs'] as core.bool
               : null,
@@ -6139,6 +6151,7 @@ class Job {
         if (requestedState != null) 'requestedState': requestedState!,
         if (runtimeUpdatableParams != null)
           'runtimeUpdatableParams': runtimeUpdatableParams!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (stageStates != null) 'stageStates': stageStates!,
         if (startTime != null) 'startTime': startTime!,
@@ -7721,6 +7734,15 @@ class ParameterMetadata {
   /// Optional.
   core.Map<core.String, core.String>? customMetadata;
 
+  /// The default values will pre-populate the parameter with the given value
+  /// from the proto.
+  ///
+  /// If default_value is left empty, the parameter will be populated with a
+  /// default of the relevant type, e.g. false for a boolean.
+  ///
+  /// Optional.
+  core.String? defaultValue;
+
   /// The options shown when ENUM ParameterType is specified.
   ///
   /// Optional.
@@ -7817,6 +7839,7 @@ class ParameterMetadata {
 
   ParameterMetadata({
     this.customMetadata,
+    this.defaultValue,
     this.enumOptions,
     this.groupName,
     this.helpText,
@@ -7839,6 +7862,9 @@ class ParameterMetadata {
                     value as core.String,
                   ),
                 )
+              : null,
+          defaultValue: json_.containsKey('defaultValue')
+              ? json_['defaultValue'] as core.String
               : null,
           enumOptions: json_.containsKey('enumOptions')
               ? (json_['enumOptions'] as core.List)
@@ -7878,6 +7904,7 @@ class ParameterMetadata {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customMetadata != null) 'customMetadata': customMetadata!,
+        if (defaultValue != null) 'defaultValue': defaultValue!,
         if (enumOptions != null) 'enumOptions': enumOptions!,
         if (groupName != null) 'groupName': groupName!,
         if (helpText != null) 'helpText': helpText!,

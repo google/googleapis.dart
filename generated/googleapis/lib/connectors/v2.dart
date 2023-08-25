@@ -190,6 +190,43 @@ class ProjectsLocationsConnectionsActionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets the schema of the given action.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the Action. Format:
+  /// projects/{project}/locations/{location}/connections/{connection}/actions/{action}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/actions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Action].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Action> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Action.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the schema of all the actions supported by the connector.
   ///
   /// Request parameters:
@@ -205,6 +242,14 @@ class ProjectsLocationsConnectionsActionsResource {
   /// can be used retrieve the next page of content. If unspecified, the request
   /// returns the first page of actions.
   ///
+  /// [view] - Specifies which fields of the Action are returned in the
+  /// response.
+  /// Possible string values are:
+  /// - "ACTION_VIEW_UNSPECIFIED" : VIEW_UNSPECIFIED. The unset value Defaults
+  /// to FULL View.
+  /// - "ACTION_VIEW_BASIC" : Return only action names.
+  /// - "ACTION_VIEW_FULL" : Return actions with schema.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -219,11 +264,13 @@ class ProjectsLocationsConnectionsActionsResource {
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -248,6 +295,44 @@ class ProjectsLocationsConnectionsEntityTypesResource {
   ProjectsLocationsConnectionsEntityTypesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Gets metadata of given entity type
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the Entity Type. Format:
+  /// projects/{project}/locations/{location}/connections/{connection}/entityTypes/{entityType}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/entityTypes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EntityType].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EntityType> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return EntityType.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists metadata related to all entity types present in the external system.
   ///
   /// Request parameters:
@@ -263,6 +348,14 @@ class ProjectsLocationsConnectionsEntityTypesResource {
   /// that can be used retrieve the next page of content. If unspecified, the
   /// request returns the first page of entity types.
   ///
+  /// [view] - Specifies which fields of the Entity Type are returned in the
+  /// response.
+  /// Possible string values are:
+  /// - "ENTITY_TYPE_VIEW_UNSPECIFIED" : VIEW_UNSPECIFIED. The unset value.
+  /// Defaults to FULL View.
+  /// - "ENTITY_TYPE_VIEW_BASIC" : Return only entity type names.
+  /// - "ENTITY_TYPE_VIEW_FULL" : Return entity types with schema
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -277,11 +370,13 @@ class ProjectsLocationsConnectionsEntityTypesResource {
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -654,23 +749,49 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
 /// Action message contains metadata information about a single action present
 /// in the external system.
 class Action {
+  /// Brief Description of action
+  core.String? description;
+
+  /// Display Name of action to be shown on client side
+  core.String? displayName;
+
+  /// JsonSchema representation of this actions's input schema
+  JsonSchema? inputJsonSchema;
+
   /// List containing input parameter metadata.
   core.List<InputParameter>? inputParameters;
 
   /// Name of the action.
   core.String? name;
 
+  /// JsonSchema representation of this actions's result schema
+  JsonSchema? resultJsonSchema;
+
   /// List containing the metadata of result fields.
   core.List<ResultMetadata>? resultMetadata;
 
   Action({
+    this.description,
+    this.displayName,
+    this.inputJsonSchema,
     this.inputParameters,
     this.name,
+    this.resultJsonSchema,
     this.resultMetadata,
   });
 
   Action.fromJson(core.Map json_)
       : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          inputJsonSchema: json_.containsKey('inputJsonSchema')
+              ? JsonSchema.fromJson(json_['inputJsonSchema']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           inputParameters: json_.containsKey('inputParameters')
               ? (json_['inputParameters'] as core.List)
                   .map((value) => InputParameter.fromJson(
@@ -678,6 +799,10 @@ class Action {
                   .toList()
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          resultJsonSchema: json_.containsKey('resultJsonSchema')
+              ? JsonSchema.fromJson(json_['resultJsonSchema']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           resultMetadata: json_.containsKey('resultMetadata')
               ? (json_['resultMetadata'] as core.List)
                   .map((value) => ResultMetadata.fromJson(
@@ -687,8 +812,12 @@ class Action {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (inputJsonSchema != null) 'inputJsonSchema': inputJsonSchema!,
         if (inputParameters != null) 'inputParameters': inputParameters!,
         if (name != null) 'name': name!,
+        if (resultJsonSchema != null) 'resultJsonSchema': resultJsonSchema!,
         if (resultMetadata != null) 'resultMetadata': resultMetadata!,
       };
 }
@@ -745,11 +874,15 @@ class EntityType {
   /// List containing metadata information about each field of the entity type.
   core.List<Field>? fields;
 
+  /// JsonSchema representation of this entity's schema
+  JsonSchema? jsonSchema;
+
   /// The name of the entity type.
   core.String? name;
 
   EntityType({
     this.fields,
+    this.jsonSchema,
     this.name,
   });
 
@@ -761,11 +894,16 @@ class EntityType {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          jsonSchema: json_.containsKey('jsonSchema')
+              ? JsonSchema.fromJson(
+                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fields != null) 'fields': fields!,
+        if (jsonSchema != null) 'jsonSchema': jsonSchema!,
         if (name != null) 'name': name!,
       };
 }
@@ -954,6 +1092,9 @@ class Field {
   /// A brief description of the Field.
   core.String? description;
 
+  /// JsonSchema of the field, applicable only if field is of type `STRUCT`
+  JsonSchema? jsonSchema;
+
   /// The following boolean field specifies if the current Field acts as a
   /// primary key or id if the parent is of type entity.
   core.bool? key;
@@ -974,6 +1115,7 @@ class Field {
     this.dataType,
     this.defaultValue,
     this.description,
+    this.jsonSchema,
     this.key,
     this.name,
     this.nullable,
@@ -994,6 +1136,10 @@ class Field {
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
+          jsonSchema: json_.containsKey('jsonSchema')
+              ? JsonSchema.fromJson(
+                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
+              : null,
           key: json_.containsKey('key') ? json_['key'] as core.bool : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           nullable: json_.containsKey('nullable')
@@ -1010,6 +1156,7 @@ class Field {
         if (dataType != null) 'dataType': dataType!,
         if (defaultValue != null) 'defaultValue': defaultValue!,
         if (description != null) 'description': description!,
+        if (jsonSchema != null) 'jsonSchema': jsonSchema!,
         if (key != null) 'key': key!,
         if (name != null) 'name': name!,
         if (nullable != null) 'nullable': nullable!,
@@ -1020,6 +1167,13 @@ class Field {
 /// Input Parameter message contains metadata about the parameters required for
 /// executing an Action.
 class InputParameter {
+  /// The following map contains fields that are not explicitly mentioned
+  /// above,this give connectors the flexibility to add new metadata fields.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? additionalDetails;
+
   /// The data type of the Parameter
   /// Possible string values are:
   /// - "DATA_TYPE_UNSPECIFIED" : Datatype unspecified.
@@ -1079,6 +1233,10 @@ class InputParameter {
   /// A brief description of the Parameter.
   core.String? description;
 
+  /// JsonSchema of the parameter, applicable only if parameter is of type
+  /// `STRUCT`
+  JsonSchema? jsonSchema;
+
   /// Name of the Parameter.
   core.String? name;
 
@@ -1086,15 +1244,21 @@ class InputParameter {
   core.bool? nullable;
 
   InputParameter({
+    this.additionalDetails,
     this.dataType,
     this.defaultValue,
     this.description,
+    this.jsonSchema,
     this.name,
     this.nullable,
   });
 
   InputParameter.fromJson(core.Map json_)
       : this(
+          additionalDetails: json_.containsKey('additionalDetails')
+              ? json_['additionalDetails']
+                  as core.Map<core.String, core.dynamic>
+              : null,
           dataType: json_.containsKey('dataType')
               ? json_['dataType'] as core.String
               : null,
@@ -1103,6 +1267,10 @@ class InputParameter {
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
+          jsonSchema: json_.containsKey('jsonSchema')
+              ? JsonSchema.fromJson(
+                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           nullable: json_.containsKey('nullable')
               ? json_['nullable'] as core.bool
@@ -1110,11 +1278,179 @@ class InputParameter {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalDetails != null) 'additionalDetails': additionalDetails!,
         if (dataType != null) 'dataType': dataType!,
         if (defaultValue != null) 'defaultValue': defaultValue!,
         if (description != null) 'description': description!,
+        if (jsonSchema != null) 'jsonSchema': jsonSchema!,
         if (name != null) 'name': name!,
         if (nullable != null) 'nullable': nullable!,
+      };
+}
+
+/// JsonSchema representation of schema metadata
+class JsonSchema {
+  /// Additional details apart from standard json schema fields, this gives
+  /// flexibility to store metadata about the schema
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? additionalDetails;
+
+  /// The default value of the field or object described by this schema.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? default_;
+
+  /// A description of this schema.
+  core.String? description;
+
+  /// Possible values for an enumeration.
+  ///
+  /// This works in conjunction with `type` to represent types with a fixed set
+  /// of legal values
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Object?>? enum_;
+
+  /// Format of the value as per
+  /// https://json-schema.org/understanding-json-schema/reference/string.html#format
+  core.String? format;
+
+  /// Schema that applies to array values, applicable only if this is of type
+  /// `array`.
+  JsonSchema? items;
+
+  /// JDBC datatype of the field.
+  /// Possible string values are:
+  /// - "DATA_TYPE_UNSPECIFIED" : Datatype unspecified.
+  /// - "INT" : Deprecated Int type, use INTEGER type instead.
+  /// - "SMALLINT" : Small int type.
+  /// - "DOUBLE" : Double type.
+  /// - "DATE" : Date type.
+  /// - "DATETIME" : Deprecated Datetime type.
+  /// - "TIME" : Time type.
+  /// - "STRING" : Deprecated string type, use VARCHAR type instead.
+  /// - "LONG" : Deprecated Long type, use BIGINT type instead.
+  /// - "BOOLEAN" : Boolean type.
+  /// - "DECIMAL" : Decimal type.
+  /// - "UUID" : Deprecated UUID type, use VARCHAR instead.
+  /// - "BLOB" : Blob type.
+  /// - "BIT" : Bit type.
+  /// - "TINYINT" : Tiny int type.
+  /// - "INTEGER" : Integer type.
+  /// - "BIGINT" : Big int type.
+  /// - "FLOAT" : Float type.
+  /// - "REAL" : Real type.
+  /// - "NUMERIC" : Numeric type.
+  /// - "CHAR" : Char type.
+  /// - "VARCHAR" : Varchar type.
+  /// - "LONGVARCHAR" : Long varchar type.
+  /// - "TIMESTAMP" : Timestamp type.
+  /// - "NCHAR" : Nchar type.
+  /// - "NVARCHAR" : Nvarchar type.
+  /// - "LONGNVARCHAR" : Long Nvarchar type.
+  /// - "NULL" : Null type.
+  /// - "OTHER" : Other type.
+  /// - "JAVA_OBJECT" : Java object type.
+  /// - "DISTINCT" : Distinct type keyword.
+  /// - "STRUCT" : Struct type.
+  /// - "ARRAY" : Array type.
+  /// - "CLOB" : Clob type.
+  /// - "REF" : Ref type.
+  /// - "DATALINK" : Datalink type.
+  /// - "ROWID" : Row ID type.
+  /// - "BINARY" : Binary type.
+  /// - "VARBINARY" : Varbinary type.
+  /// - "LONGVARBINARY" : Long Varbinary type.
+  /// - "NCLOB" : Nclob type.
+  /// - "SQLXML" : SQLXML type.
+  /// - "REF_CURSOR" : Ref_cursor type.
+  /// - "TIME_WITH_TIMEZONE" : Time with timezone type.
+  /// - "TIMESTAMP_WITH_TIMEZONE" : Timestamp with timezone type.
+  core.String? jdbcType;
+
+  /// The child schemas, applicable only if this is of type `object`.
+  ///
+  /// The key is the name of the property and the value is the json schema that
+  /// describes that property
+  core.Map<core.String, JsonSchema>? properties;
+
+  /// Whether this property is required.
+  core.List<core.String>? required;
+
+  /// JSON Schema Validation: A Vocabulary for Structural Validation of JSON
+  core.List<core.String>? type;
+
+  JsonSchema({
+    this.additionalDetails,
+    this.default_,
+    this.description,
+    this.enum_,
+    this.format,
+    this.items,
+    this.jdbcType,
+    this.properties,
+    this.required,
+    this.type,
+  });
+
+  JsonSchema.fromJson(core.Map json_)
+      : this(
+          additionalDetails: json_.containsKey('additionalDetails')
+              ? json_['additionalDetails']
+                  as core.Map<core.String, core.dynamic>
+              : null,
+          default_: json_.containsKey('default') ? json_['default'] : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          enum_: json_.containsKey('enum') ? json_['enum'] as core.List : null,
+          format: json_.containsKey('format')
+              ? json_['format'] as core.String
+              : null,
+          items: json_.containsKey('items')
+              ? JsonSchema.fromJson(
+                  json_['items'] as core.Map<core.String, core.dynamic>)
+              : null,
+          jdbcType: json_.containsKey('jdbcType')
+              ? json_['jdbcType'] as core.String
+              : null,
+          properties: json_.containsKey('properties')
+              ? (json_['properties'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    JsonSchema.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          required: json_.containsKey('required')
+              ? (json_['required'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          type: json_.containsKey('type')
+              ? (json_['type'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalDetails != null) 'additionalDetails': additionalDetails!,
+        if (default_ != null) 'default': default_!,
+        if (description != null) 'description': description!,
+        if (enum_ != null) 'enum': enum_!,
+        if (format != null) 'format': format!,
+        if (items != null) 'items': items!,
+        if (jdbcType != null) 'jdbcType': jdbcType!,
+        if (properties != null) 'properties': properties!,
+        if (required != null) 'required': required!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1245,23 +1581,128 @@ class ListEntityTypesResponse {
 /// This is needed so that the JSON representation of ExecuteSqlQueryRequest has
 /// the following format: `{"query":"select *"}`.
 class Query {
+  /// Sets the limit for the maximum number of rows returned after the query
+  /// execution.
+  core.String? maxRows;
+
   /// Sql query to execute.
   ///
   /// Required.
   core.String? query;
 
+  /// In the struct, the value corresponds to the value of query parameter and
+  /// date type corresponds to the date type of the query parameter.
+  core.List<QueryParameter>? queryParameters;
+
+  /// Sets the number of seconds the driver will wait for a query to execute.
+  core.String? timeout;
+
   Query({
+    this.maxRows,
     this.query,
+    this.queryParameters,
+    this.timeout,
   });
 
   Query.fromJson(core.Map json_)
       : this(
+          maxRows: json_.containsKey('maxRows')
+              ? json_['maxRows'] as core.String
+              : null,
           query:
               json_.containsKey('query') ? json_['query'] as core.String : null,
+          queryParameters: json_.containsKey('queryParameters')
+              ? (json_['queryParameters'] as core.List)
+                  .map((value) => QueryParameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          timeout: json_.containsKey('timeout')
+              ? json_['timeout'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (maxRows != null) 'maxRows': maxRows!,
         if (query != null) 'query': query!,
+        if (queryParameters != null) 'queryParameters': queryParameters!,
+        if (timeout != null) 'timeout': timeout!,
+      };
+}
+
+/// Query parameter definition
+class QueryParameter {
+  ///
+  /// Possible string values are:
+  /// - "DATA_TYPE_UNSPECIFIED" : Datatype unspecified.
+  /// - "INT" : Deprecated Int type, use INTEGER type instead.
+  /// - "SMALLINT" : Small int type.
+  /// - "DOUBLE" : Double type.
+  /// - "DATE" : Date type.
+  /// - "DATETIME" : Deprecated Datetime type.
+  /// - "TIME" : Time type.
+  /// - "STRING" : Deprecated string type, use VARCHAR type instead.
+  /// - "LONG" : Deprecated Long type, use BIGINT type instead.
+  /// - "BOOLEAN" : Boolean type.
+  /// - "DECIMAL" : Decimal type.
+  /// - "UUID" : Deprecated UUID type, use VARCHAR instead.
+  /// - "BLOB" : Blob type.
+  /// - "BIT" : Bit type.
+  /// - "TINYINT" : Tiny int type.
+  /// - "INTEGER" : Integer type.
+  /// - "BIGINT" : Big int type.
+  /// - "FLOAT" : Float type.
+  /// - "REAL" : Real type.
+  /// - "NUMERIC" : Numeric type.
+  /// - "CHAR" : Char type.
+  /// - "VARCHAR" : Varchar type.
+  /// - "LONGVARCHAR" : Long varchar type.
+  /// - "TIMESTAMP" : Timestamp type.
+  /// - "NCHAR" : Nchar type.
+  /// - "NVARCHAR" : Nvarchar type.
+  /// - "LONGNVARCHAR" : Long Nvarchar type.
+  /// - "NULL" : Null type.
+  /// - "OTHER" : Other type.
+  /// - "JAVA_OBJECT" : Java object type.
+  /// - "DISTINCT" : Distinct type keyword.
+  /// - "STRUCT" : Struct type.
+  /// - "ARRAY" : Array type.
+  /// - "CLOB" : Clob type.
+  /// - "REF" : Ref type.
+  /// - "DATALINK" : Datalink type.
+  /// - "ROWID" : Row ID type.
+  /// - "BINARY" : Binary type.
+  /// - "VARBINARY" : Varbinary type.
+  /// - "LONGVARBINARY" : Long Varbinary type.
+  /// - "NCLOB" : Nclob type.
+  /// - "SQLXML" : SQLXML type.
+  /// - "REF_CURSOR" : Ref_cursor type.
+  /// - "TIME_WITH_TIMEZONE" : Time with timezone type.
+  /// - "TIMESTAMP_WITH_TIMEZONE" : Timestamp with timezone type.
+  core.String? dataType;
+
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? value;
+
+  QueryParameter({
+    this.dataType,
+    this.value,
+  });
+
+  QueryParameter.fromJson(core.Map json_)
+      : this(
+          dataType: json_.containsKey('dataType')
+              ? json_['dataType'] as core.String
+              : null,
+          value: json_.containsKey('value') ? json_['value'] : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataType != null) 'dataType': dataType!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1344,12 +1785,16 @@ class ResultMetadata {
   /// A brief description of the metadata field.
   core.String? description;
 
+  /// JsonSchema of the result, applicable only if parameter is of type `STRUCT`
+  JsonSchema? jsonSchema;
+
   /// Name of the metadata field.
   core.String? name;
 
   ResultMetadata({
     this.dataType,
     this.description,
+    this.jsonSchema,
     this.name,
   });
 
@@ -1361,12 +1806,17 @@ class ResultMetadata {
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
+          jsonSchema: json_.containsKey('jsonSchema')
+              ? JsonSchema.fromJson(
+                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataType != null) 'dataType': dataType!,
         if (description != null) 'description': description!,
+        if (jsonSchema != null) 'jsonSchema': jsonSchema!,
         if (name != null) 'name': name!,
       };
 }

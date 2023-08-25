@@ -583,6 +583,50 @@ class ProjectsLocationsDeliveryPipelinesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Creates a `Rollout` to roll back the specified target.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The `DeliveryPipeline` for which the rollback `Rollout`
+  /// should be created. Format should be
+  /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RollbackTargetResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RollbackTargetResponse> rollbackTarget(
+    RollbackTargetRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':rollbackTarget';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RollbackTargetResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Sets the access control policy on the specified resource.
   ///
   /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
@@ -2466,14 +2510,14 @@ class CanaryDeployment {
 
   /// Configuration for the postdeploy job of the last phase.
   ///
-  /// If this is not configured, postdeploy job will not be present.
+  /// If this is not configured, there will be no postdeploy job for this phase.
   ///
   /// Optional.
   Postdeploy? postdeploy;
 
   /// Configuration for the predeploy job of the first phase.
   ///
-  /// If this is not configured, predeploy job will not be present.
+  /// If this is not configured, there will be no predeploy job for this phase.
   ///
   /// Optional.
   Predeploy? predeploy;
@@ -2617,6 +2661,13 @@ class CloudRunLocation {
 
 /// CloudRunMetadata contains information from a Cloud Run deployment.
 class CloudRunMetadata {
+  /// The name of the Cloud Run job that is associated with a `Rollout`.
+  ///
+  /// Format is projects/{project}/locations/{location}/jobs/{job_name}.
+  ///
+  /// Output only.
+  core.String? job;
+
   /// The Cloud Run Revision id associated with a `Rollout`.
   ///
   /// Output only.
@@ -2635,6 +2686,7 @@ class CloudRunMetadata {
   core.List<core.String>? serviceUrls;
 
   CloudRunMetadata({
+    this.job,
     this.revision,
     this.service,
     this.serviceUrls,
@@ -2642,6 +2694,7 @@ class CloudRunMetadata {
 
   CloudRunMetadata.fromJson(core.Map json_)
       : this(
+          job: json_.containsKey('job') ? json_['job'] as core.String : null,
           revision: json_.containsKey('revision')
               ? json_['revision'] as core.String
               : null,
@@ -2656,6 +2709,7 @@ class CloudRunMetadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (job != null) 'job': job!,
         if (revision != null) 'revision': revision!,
         if (service != null) 'service': service!,
         if (serviceUrls != null) 'serviceUrls': serviceUrls!,
@@ -3060,7 +3114,7 @@ class DeployJobRun {
   /// [Required permission](https://cloud.google.com/deploy/docs/cloud-deploy-service-account#required_permissions).
   /// - "EXECUTION_FAILED" : The deploy operation did not complete successfully;
   /// check Cloud Build logs.
-  /// - "DEADLINE_EXCEEDED" : The deploy build did not complete within the
+  /// - "DEADLINE_EXCEEDED" : The deploy job run did not complete within the
   /// alloted time.
   /// - "MISSING_RESOURCES_FOR_CANARY" : There were missing resources in the
   /// runtime environment required for a canary deployment. Check the Cloud
@@ -3199,18 +3253,12 @@ class DeploymentJobs {
   /// Output only.
   Job? deployJob;
 
-  /// The postdeploy Job.
-  ///
-  /// This is the postdeploy job in the phase. This is the last job of the
-  /// phase.
+  /// The postdeploy Job, which is the last job on the phase.
   ///
   /// Output only.
   Job? postdeployJob;
 
-  /// The predeploy Job.
-  ///
-  /// This is the predeploy job in the phase. This is the first job of the
-  /// phase.
+  /// The predeploy Job, which is the first job on the phase.
   ///
   /// Output only.
   Job? predeployJob;
@@ -4230,7 +4278,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -4413,16 +4461,14 @@ class PhaseConfig {
 
   /// Configuration for the postdeploy job of this phase.
   ///
-  /// If this is not configured, postdeploy job will not be present for this
-  /// phase.
+  /// If this is not configured, there will be no postdeploy job for this phase.
   ///
   /// Optional.
   Postdeploy? postdeploy;
 
   /// Configuration for the predeploy job of this phase.
   ///
-  /// If this is not configured, predeploy job will not be present for this
-  /// phase.
+  /// If this is not configured, there will be no predeploy job for this phase.
   ///
   /// Optional.
   Predeploy? predeploy;
@@ -4572,23 +4618,23 @@ class PipelineReadyCondition {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -4681,7 +4727,7 @@ class Policy {
 
 /// Postdeploy contains the postdeploy job configuration information.
 class Postdeploy {
-  /// A sequence of skaffold custom actions to invoke during execution of the
+  /// A sequence of Skaffold custom actions to invoke during execution of the
   /// postdeploy job.
   ///
   /// Optional.
@@ -4754,7 +4800,7 @@ class PostdeployJobRun {
   /// [required permission](https://cloud.google.com/deploy/docs/cloud-deploy-service-account#required_permissions).
   /// - "EXECUTION_FAILED" : The postdeploy operation did not complete
   /// successfully; check Cloud Build logs.
-  /// - "DEADLINE_EXCEEDED" : The postdeploy build did not complete within the
+  /// - "DEADLINE_EXCEEDED" : The postdeploy job run did not complete within the
   /// alloted time.
   /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Cloud
   /// Deploy's request. See failure_message for additional details.
@@ -4792,7 +4838,7 @@ class PostdeployJobRun {
 
 /// Predeploy contains the predeploy job configuration information.
 class Predeploy {
-  /// A sequence of skaffold custom actions to invoke during execution of the
+  /// A sequence of Skaffold custom actions to invoke during execution of the
   /// predeploy job.
   ///
   /// Optional.
@@ -4865,7 +4911,7 @@ class PredeployJobRun {
   /// [required permission](https://cloud.google.com/deploy/docs/cloud-deploy-service-account#required_permissions).
   /// - "EXECUTION_FAILED" : The predeploy operation did not complete
   /// successfully; check Cloud Build logs.
-  /// - "DEADLINE_EXCEEDED" : The predeploy build did not complete within the
+  /// - "DEADLINE_EXCEEDED" : The predeploy job run did not complete within the
   /// alloted time.
   /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Cloud
   /// Deploy's request. See failure_message for additional details.
@@ -5354,6 +5400,142 @@ class RetryJobRequest {
 /// The response object from 'RetryJob'.
 typedef RetryJobResponse = $Empty;
 
+/// Configs for the Rollback rollout.
+class RollbackTargetConfig {
+  /// The rollback `Rollout` to create.
+  ///
+  /// Optional.
+  Rollout? rollout;
+
+  /// The starting phase ID for the `Rollout`.
+  ///
+  /// If unspecified, the `Rollout` will start in the stable phase.
+  ///
+  /// Optional.
+  core.String? startingPhaseId;
+
+  RollbackTargetConfig({
+    this.rollout,
+    this.startingPhaseId,
+  });
+
+  RollbackTargetConfig.fromJson(core.Map json_)
+      : this(
+          rollout: json_.containsKey('rollout')
+              ? Rollout.fromJson(
+                  json_['rollout'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startingPhaseId: json_.containsKey('startingPhaseId')
+              ? json_['startingPhaseId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rollout != null) 'rollout': rollout!,
+        if (startingPhaseId != null) 'startingPhaseId': startingPhaseId!,
+      };
+}
+
+/// The request object for `RollbackTarget`.
+class RollbackTargetRequest {
+  /// ID of the `Release` to roll back to.
+  ///
+  /// If this isn't specified, the previous successful `Rollout` to the
+  /// specified target will be used to determine the `Release`.
+  ///
+  /// Optional.
+  core.String? releaseId;
+
+  /// Configs for the rollback `Rollout`.
+  ///
+  /// Optional.
+  RollbackTargetConfig? rollbackConfig;
+
+  /// ID of the rollback `Rollout` to create.
+  ///
+  /// Required.
+  core.String? rolloutId;
+
+  /// If provided, this must be the latest `Rollout` that is on the `Target`.
+  ///
+  /// Optional.
+  core.String? rolloutToRollBack;
+
+  /// ID of the `Target` that is being rolled back.
+  ///
+  /// Required.
+  core.String? targetId;
+
+  /// If set to true, the request is validated and the user is provided with a
+  /// `RollbackTargetResponse`.
+  ///
+  /// Optional.
+  core.bool? validateOnly;
+
+  RollbackTargetRequest({
+    this.releaseId,
+    this.rollbackConfig,
+    this.rolloutId,
+    this.rolloutToRollBack,
+    this.targetId,
+    this.validateOnly,
+  });
+
+  RollbackTargetRequest.fromJson(core.Map json_)
+      : this(
+          releaseId: json_.containsKey('releaseId')
+              ? json_['releaseId'] as core.String
+              : null,
+          rollbackConfig: json_.containsKey('rollbackConfig')
+              ? RollbackTargetConfig.fromJson(json_['rollbackConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          rolloutId: json_.containsKey('rolloutId')
+              ? json_['rolloutId'] as core.String
+              : null,
+          rolloutToRollBack: json_.containsKey('rolloutToRollBack')
+              ? json_['rolloutToRollBack'] as core.String
+              : null,
+          targetId: json_.containsKey('targetId')
+              ? json_['targetId'] as core.String
+              : null,
+          validateOnly: json_.containsKey('validateOnly')
+              ? json_['validateOnly'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (releaseId != null) 'releaseId': releaseId!,
+        if (rollbackConfig != null) 'rollbackConfig': rollbackConfig!,
+        if (rolloutId != null) 'rolloutId': rolloutId!,
+        if (rolloutToRollBack != null) 'rolloutToRollBack': rolloutToRollBack!,
+        if (targetId != null) 'targetId': targetId!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
+      };
+}
+
+/// The response object from `RollbackTarget`.
+class RollbackTargetResponse {
+  /// The config of the rollback `Rollout` created or will be created.
+  RollbackTargetConfig? rollbackConfig;
+
+  RollbackTargetResponse({
+    this.rollbackConfig,
+  });
+
+  RollbackTargetResponse.fromJson(core.Map json_)
+      : this(
+          rollbackConfig: json_.containsKey('rollbackConfig')
+              ? RollbackTargetConfig.fromJson(json_['rollbackConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rollbackConfig != null) 'rollbackConfig': rollbackConfig!,
+      };
+}
+
 /// A `Rollout` resource in the Cloud Deploy API.
 ///
 /// A `Rollout` contains information around a specific deployment to a `Target`.
@@ -5487,6 +5669,18 @@ class Rollout {
   /// Output only.
   core.List<Phase>? phases;
 
+  /// Name of the `Rollout` that is rolled back by this `Rollout`.
+  ///
+  /// Empty if this `Rollout` wasn't created as a rollback.
+  ///
+  /// Output only.
+  core.String? rollbackOfRollout;
+
+  /// Names of `Rollouts` that rolled back this `Rollout`.
+  ///
+  /// Output only.
+  core.List<core.String>? rolledBackByRollouts;
+
   /// Current state of the `Rollout`.
   ///
   /// Output only.
@@ -5534,6 +5728,8 @@ class Rollout {
     this.metadata,
     this.name,
     this.phases,
+    this.rollbackOfRollout,
+    this.rolledBackByRollouts,
     this.state,
     this.targetId,
     this.uid,
@@ -5603,6 +5799,14 @@ class Rollout {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          rollbackOfRollout: json_.containsKey('rollbackOfRollout')
+              ? json_['rollbackOfRollout'] as core.String
+              : null,
+          rolledBackByRollouts: json_.containsKey('rolledBackByRollouts')
+              ? (json_['rolledBackByRollouts'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           targetId: json_.containsKey('targetId')
@@ -5630,6 +5834,9 @@ class Rollout {
         if (metadata != null) 'metadata': metadata!,
         if (name != null) 'name': name!,
         if (phases != null) 'phases': phases!,
+        if (rollbackOfRollout != null) 'rollbackOfRollout': rollbackOfRollout!,
+        if (rolledBackByRollouts != null)
+          'rolledBackByRollouts': rolledBackByRollouts!,
         if (state != null) 'state': state!,
         if (targetId != null) 'targetId': targetId!,
         if (uid != null) 'uid': uid!,
@@ -6338,6 +6545,9 @@ class TargetRender {
   /// check Cloud Build logs.
   /// - "CLOUD_BUILD_REQUEST_FAILED" : Cloud Build failed to fulfill Cloud
   /// Deploy's request. See failure_message for additional details.
+  /// - "VERIFICATION_CONFIG_NOT_FOUND" : The render operation did not complete
+  /// successfully because the verification stanza required for verify was not
+  /// found on the skaffold configuration.
   /// - "CUSTOM_ACTION_NOT_FOUND" : The render operation did not complete
   /// successfully because the custom action required for predeploy or
   /// postdeploy was not found in the skaffold configuration. See
@@ -6535,7 +6745,7 @@ class VerifyJobRun {
   /// [required permission](https://cloud.google.com/deploy/docs/cloud-deploy-service-account#required_permissions).
   /// - "EXECUTION_FAILED" : The verify operation did not complete successfully;
   /// check Cloud Build logs.
-  /// - "DEADLINE_EXCEEDED" : The verify build did not complete within the
+  /// - "DEADLINE_EXCEEDED" : The verify job run did not complete within the
   /// alloted time.
   /// - "VERIFICATION_CONFIG_NOT_FOUND" : No Skaffold verify configuration was
   /// found.

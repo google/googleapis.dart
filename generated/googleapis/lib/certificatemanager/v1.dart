@@ -1531,7 +1531,8 @@ class ProjectsLocationsTrustConfigsResource {
   /// the format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [trustConfigId] - Required. A user-provided name of the TrustConfig.
+  /// [trustConfigId] - Required. A user-provided name of the TrustConfig. Must
+  /// match the regexp `[a-z0-9-]{1,63}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1878,7 +1879,8 @@ class Certificate {
   /// certificates, served from Edge Points of Presence. See
   /// https://cloud.google.com/vpc/docs/edge-locations.
   /// - "ALL_REGIONS" : Certificates with ALL_REGIONS scope are served from all
-  /// GCP regions. See https://cloud.google.com/compute/docs/regions-zones.
+  /// Google Cloud regions. See
+  /// https://cloud.google.com/compute/docs/regions-zones.
   core.String? scope;
 
   /// If set, defines data of a self-managed certificate.

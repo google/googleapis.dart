@@ -420,6 +420,9 @@ class Key {
 /// It contains a summary histogram of real world Chrome usage as a series of
 /// `bins`.
 class Metric {
+  /// For enum metrics, provides fractions which add up to approximately 1.0.
+  core.Map<core.String, core.double>? fractions;
+
   /// The histogram of user experiences for a metric.
   ///
   /// The histogram will have at least one bin and the densities of all bins
@@ -433,12 +436,21 @@ class Metric {
   Percentiles? percentiles;
 
   Metric({
+    this.fractions,
     this.histogram,
     this.percentiles,
   });
 
   Metric.fromJson(core.Map json_)
       : this(
+          fractions: json_.containsKey('fractions')
+              ? (json_['fractions'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    (value as core.num).toDouble(),
+                  ),
+                )
+              : null,
           histogram: json_.containsKey('histogram')
               ? (json_['histogram'] as core.List)
                   .map((value) => Bin.fromJson(
@@ -452,6 +464,7 @@ class Metric {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (fractions != null) 'fractions': fractions!,
         if (histogram != null) 'histogram': histogram!,
         if (percentiles != null) 'percentiles': percentiles!,
       };

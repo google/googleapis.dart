@@ -4711,8 +4711,19 @@ class GoogleCloudDocumentaiV1OcrConfig {
   /// algorithm based on their situation.
   core.List<core.String>? advancedOcrOptions;
 
-  /// Turn on font id model and returns font style information.
+  /// Turn on font identification model and return font style information.
+  ///
+  /// Deprecated, use PremiumFeatures.compute_style_info instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? computeStyleInfo;
+
+  /// Turn off character box detector in OCR engine.
+  ///
+  /// Character box detection is enabled by default in OCR 2.0 (and later)
+  /// processors.
+  core.bool? disableCharacterBoxesDetection;
 
   /// Enables intelligent document quality scores after OCR.
   ///
@@ -4732,13 +4743,18 @@ class GoogleCloudDocumentaiV1OcrConfig {
   /// Hints for the OCR model.
   GoogleCloudDocumentaiV1OcrConfigHints? hints;
 
+  /// Configurations for premium OCR features.
+  GoogleCloudDocumentaiV1OcrConfigPremiumFeatures? premiumFeatures;
+
   GoogleCloudDocumentaiV1OcrConfig({
     this.advancedOcrOptions,
     this.computeStyleInfo,
+    this.disableCharacterBoxesDetection,
     this.enableImageQualityScores,
     this.enableNativePdfParsing,
     this.enableSymbol,
     this.hints,
+    this.premiumFeatures,
   });
 
   GoogleCloudDocumentaiV1OcrConfig.fromJson(core.Map json_)
@@ -4751,6 +4767,10 @@ class GoogleCloudDocumentaiV1OcrConfig {
           computeStyleInfo: json_.containsKey('computeStyleInfo')
               ? json_['computeStyleInfo'] as core.bool
               : null,
+          disableCharacterBoxesDetection:
+              json_.containsKey('disableCharacterBoxesDetection')
+                  ? json_['disableCharacterBoxesDetection'] as core.bool
+                  : null,
           enableImageQualityScores:
               json_.containsKey('enableImageQualityScores')
                   ? json_['enableImageQualityScores'] as core.bool
@@ -4765,18 +4785,26 @@ class GoogleCloudDocumentaiV1OcrConfig {
               ? GoogleCloudDocumentaiV1OcrConfigHints.fromJson(
                   json_['hints'] as core.Map<core.String, core.dynamic>)
               : null,
+          premiumFeatures: json_.containsKey('premiumFeatures')
+              ? GoogleCloudDocumentaiV1OcrConfigPremiumFeatures.fromJson(
+                  json_['premiumFeatures']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advancedOcrOptions != null)
           'advancedOcrOptions': advancedOcrOptions!,
         if (computeStyleInfo != null) 'computeStyleInfo': computeStyleInfo!,
+        if (disableCharacterBoxesDetection != null)
+          'disableCharacterBoxesDetection': disableCharacterBoxesDetection!,
         if (enableImageQualityScores != null)
           'enableImageQualityScores': enableImageQualityScores!,
         if (enableNativePdfParsing != null)
           'enableNativePdfParsing': enableNativePdfParsing!,
         if (enableSymbol != null) 'enableSymbol': enableSymbol!,
         if (hints != null) 'hints': hints!,
+        if (premiumFeatures != null) 'premiumFeatures': premiumFeatures!,
       };
 }
 
@@ -4809,19 +4837,86 @@ class GoogleCloudDocumentaiV1OcrConfigHints {
       };
 }
 
+/// Configurations for premium OCR features.
+class GoogleCloudDocumentaiV1OcrConfigPremiumFeatures {
+  /// Turn on font identification model and return font style information.
+  core.bool? computeStyleInfo;
+
+  /// Turn on the model that can extract LaTeX math formulas.
+  core.bool? enableMathOcr;
+
+  /// Turn on selection mark detector in OCR engine.
+  ///
+  /// Only available in OCR 2.0 (and later) processors.
+  core.bool? enableSelectionMarkDetection;
+
+  GoogleCloudDocumentaiV1OcrConfigPremiumFeatures({
+    this.computeStyleInfo,
+    this.enableMathOcr,
+    this.enableSelectionMarkDetection,
+  });
+
+  GoogleCloudDocumentaiV1OcrConfigPremiumFeatures.fromJson(core.Map json_)
+      : this(
+          computeStyleInfo: json_.containsKey('computeStyleInfo')
+              ? json_['computeStyleInfo'] as core.bool
+              : null,
+          enableMathOcr: json_.containsKey('enableMathOcr')
+              ? json_['enableMathOcr'] as core.bool
+              : null,
+          enableSelectionMarkDetection:
+              json_.containsKey('enableSelectionMarkDetection')
+                  ? json_['enableSelectionMarkDetection'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (computeStyleInfo != null) 'computeStyleInfo': computeStyleInfo!,
+        if (enableMathOcr != null) 'enableMathOcr': enableMathOcr!,
+        if (enableSelectionMarkDetection != null)
+          'enableSelectionMarkDetection': enableSelectionMarkDetection!,
+      };
+}
+
 /// Options for Process API
 class GoogleCloudDocumentaiV1ProcessOptions {
+  /// Only process certain pages from the end, same as above.
+  core.int? fromEnd;
+
+  /// Only process certain pages from the start.
+  ///
+  /// Process all if the document has fewer pages.
+  core.int? fromStart;
+
+  /// Which pages to process (1-indexed).
+  GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector?
+      individualPageSelector;
+
   /// Only applicable to `OCR_PROCESSOR`.
   ///
   /// Returns error if set on other processor types.
   GoogleCloudDocumentaiV1OcrConfig? ocrConfig;
 
   GoogleCloudDocumentaiV1ProcessOptions({
+    this.fromEnd,
+    this.fromStart,
+    this.individualPageSelector,
     this.ocrConfig,
   });
 
   GoogleCloudDocumentaiV1ProcessOptions.fromJson(core.Map json_)
       : this(
+          fromEnd: json_.containsKey('fromEnd')
+              ? json_['fromEnd'] as core.int
+              : null,
+          fromStart: json_.containsKey('fromStart')
+              ? json_['fromStart'] as core.int
+              : null,
+          individualPageSelector: json_.containsKey('individualPageSelector')
+              ? GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector
+                  .fromJson(json_['individualPageSelector']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           ocrConfig: json_.containsKey('ocrConfig')
               ? GoogleCloudDocumentaiV1OcrConfig.fromJson(
                   json_['ocrConfig'] as core.Map<core.String, core.dynamic>)
@@ -4829,7 +4924,37 @@ class GoogleCloudDocumentaiV1ProcessOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (fromEnd != null) 'fromEnd': fromEnd!,
+        if (fromStart != null) 'fromStart': fromStart!,
+        if (individualPageSelector != null)
+          'individualPageSelector': individualPageSelector!,
         if (ocrConfig != null) 'ocrConfig': ocrConfig!,
+      };
+}
+
+/// A list of individual page numbers.
+class GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector {
+  /// Indices of the pages (starting from 1).
+  ///
+  /// Optional.
+  core.List<core.int>? pages;
+
+  GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector({
+    this.pages,
+  });
+
+  GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector.fromJson(
+      core.Map json_)
+      : this(
+          pages: json_.containsKey('pages')
+              ? (json_['pages'] as core.List)
+                  .map((value) => value as core.int)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pages != null) 'pages': pages!,
       };
 }
 
@@ -5391,7 +5516,7 @@ class GoogleCloudDocumentaiV1RawDocument {
   /// except the following: `*`, `?`, `[`, `]`, `%`, `{`, `}`,`'`, `\"`, `,`
   /// `~`, `=` and `:` are reserved.
   ///
-  /// If not specified, a default ID will be generated.
+  /// If not specified, a default ID is generated.
   core.String? displayName;
 
   /// An IANA MIME type (RFC6838) indicating the nature and format of the
@@ -5747,7 +5872,7 @@ class GoogleLongrunningOperation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard

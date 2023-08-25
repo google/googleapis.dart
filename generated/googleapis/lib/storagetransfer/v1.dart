@@ -1047,6 +1047,15 @@ class AwsS3Data {
   /// Required.
   core.String? bucketName;
 
+  /// Cloudfront domain name pointing to this bucket (as origin), to use when
+  /// fetching.
+  ///
+  /// Format: `https://{id}.cloudfront.net` or any valid custom domain
+  /// `https://...`
+  ///
+  /// Optional.
+  core.String? cloudfrontDomain;
+
   /// The Resource name of a secret in Secret Manager.
   ///
   /// The Azure SAS token must be stored in Secret Manager in JSON format: {
@@ -1082,6 +1091,7 @@ class AwsS3Data {
   AwsS3Data({
     this.awsAccessKey,
     this.bucketName,
+    this.cloudfrontDomain,
     this.credentialsSecret,
     this.path,
     this.roleArn,
@@ -1096,6 +1106,9 @@ class AwsS3Data {
           bucketName: json_.containsKey('bucketName')
               ? json_['bucketName'] as core.String
               : null,
+          cloudfrontDomain: json_.containsKey('cloudfrontDomain')
+              ? json_['cloudfrontDomain'] as core.String
+              : null,
           credentialsSecret: json_.containsKey('credentialsSecret')
               ? json_['credentialsSecret'] as core.String
               : null,
@@ -1108,6 +1121,7 @@ class AwsS3Data {
   core.Map<core.String, core.dynamic> toJson() => {
         if (awsAccessKey != null) 'awsAccessKey': awsAccessKey!,
         if (bucketName != null) 'bucketName': bucketName!,
+        if (cloudfrontDomain != null) 'cloudfrontDomain': cloudfrontDomain!,
         if (credentialsSecret != null) 'credentialsSecret': credentialsSecret!,
         if (path != null) 'path': path!,
         if (roleArn != null) 'roleArn': roleArn!,
@@ -1997,7 +2011,7 @@ class Operation {
   /// The format of `name` is `transferOperations/some/unique/name`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard

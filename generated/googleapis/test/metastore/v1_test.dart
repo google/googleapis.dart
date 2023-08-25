@@ -326,6 +326,7 @@ api.Consumer buildConsumer() {
   final o = api.Consumer();
   buildCounterConsumer++;
   if (buildCounterConsumer < 3) {
+    o.endpointLocation = 'foo';
     o.endpointUri = 'foo';
     o.subnetwork = 'foo';
   }
@@ -337,6 +338,10 @@ void checkConsumer(api.Consumer o) {
   buildCounterConsumer++;
   if (buildCounterConsumer < 3) {
     unittest.expect(
+      o.endpointLocation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.endpointUri!,
       unittest.equals('foo'),
     );
@@ -346,6 +351,25 @@ void checkConsumer(api.Consumer o) {
     );
   }
   buildCounterConsumer--;
+}
+
+core.int buildCounterDataCatalogConfig = 0;
+api.DataCatalogConfig buildDataCatalogConfig() {
+  final o = api.DataCatalogConfig();
+  buildCounterDataCatalogConfig++;
+  if (buildCounterDataCatalogConfig < 3) {
+    o.enabled = true;
+  }
+  buildCounterDataCatalogConfig--;
+  return o;
+}
+
+void checkDataCatalogConfig(api.DataCatalogConfig o) {
+  buildCounterDataCatalogConfig++;
+  if (buildCounterDataCatalogConfig < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+  }
+  buildCounterDataCatalogConfig--;
 }
 
 core.int buildCounterDatabaseDump = 0;
@@ -1172,6 +1196,25 @@ void checkMetadataImport(api.MetadataImport o) {
   buildCounterMetadataImport--;
 }
 
+core.int buildCounterMetadataIntegration = 0;
+api.MetadataIntegration buildMetadataIntegration() {
+  final o = api.MetadataIntegration();
+  buildCounterMetadataIntegration++;
+  if (buildCounterMetadataIntegration < 3) {
+    o.dataCatalogConfig = buildDataCatalogConfig();
+  }
+  buildCounterMetadataIntegration--;
+  return o;
+}
+
+void checkMetadataIntegration(api.MetadataIntegration o) {
+  buildCounterMetadataIntegration++;
+  if (buildCounterMetadataIntegration < 3) {
+    checkDataCatalogConfig(o.dataCatalogConfig!);
+  }
+  buildCounterMetadataIntegration--;
+}
+
 core.List<api.MetadataExport> buildUnnamed21() => [
       buildMetadataExport(),
       buildMetadataExport(),
@@ -1630,6 +1673,7 @@ api.Service buildService() {
     o.hiveMetastoreConfig = buildHiveMetastoreConfig();
     o.labels = buildUnnamed28();
     o.maintenanceWindow = buildMaintenanceWindow();
+    o.metadataIntegration = buildMetadataIntegration();
     o.metadataManagementActivity = buildMetadataManagementActivity();
     o.name = 'foo';
     o.network = 'foo';
@@ -1671,6 +1715,7 @@ void checkService(api.Service o) {
     checkHiveMetastoreConfig(o.hiveMetastoreConfig!);
     checkUnnamed28(o.labels!);
     checkMaintenanceWindow(o.maintenanceWindow!);
+    checkMetadataIntegration(o.metadataIntegration!);
     checkMetadataManagementActivity(o.metadataManagementActivity!);
     unittest.expect(
       o.name!,
@@ -2009,6 +2054,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-DataCatalogConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDataCatalogConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DataCatalogConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDataCatalogConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-DatabaseDump', () {
     unittest.test('to-json--from-json', () async {
       final o = buildDatabaseDump();
@@ -2186,6 +2241,16 @@ void main() {
       final od = api.MetadataImport.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkMetadataImport(od);
+    });
+  });
+
+  unittest.group('obj-schema-MetadataIntegration', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMetadataIntegration();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MetadataIntegration.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMetadataIntegration(od);
     });
   });
 

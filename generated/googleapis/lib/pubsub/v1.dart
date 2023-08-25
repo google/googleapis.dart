@@ -135,8 +135,8 @@ class ProjectsSchemasResource {
   ///
   /// [schemaId] - The ID to use for the schema, which will become the final
   /// component of the schema's resource name. See
-  /// https://cloud.google.com/pubsub/docs/admin#resource_names for resource
-  /// name constraints.
+  /// https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names for
+  /// resource name constraints.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -711,7 +711,7 @@ class ProjectsSnapshotsResource {
   /// field. If the name is not provided in the request, the server will assign
   /// a random name for this snapshot on the same project as the subscription,
   /// conforming to the
-  /// [resource name format](https://cloud.google.com/pubsub/docs/admin#resource_names).
+  /// [resource name format](https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names).
   /// The generated name is populated in the returned Snapshot object. Note that
   /// for REST API requests, you must specify a name in the request.
   ///
@@ -723,7 +723,7 @@ class ProjectsSnapshotsResource {
   /// not provided in the request, the server will assign a random name for this
   /// snapshot on the same project as the subscription. Note that for REST API
   /// requests, you must specify a name. See the
-  /// [resource name rules](https://cloud.google.com/pubsub/docs/admin#resource_names).
+  /// [resource name rules](https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names).
   /// Format is `projects/{project}/snapshots/{snap}`.
   /// Value must have pattern `^projects/\[^/\]+/snapshots/\[^/\]+$`.
   ///
@@ -1155,12 +1155,12 @@ class ProjectsSubscriptionsResource {
   /// Creates a subscription to a given topic.
   ///
   /// See the
-  /// [resource name rules](https://cloud.google.com/pubsub/docs/admin#resource_names).
+  /// [resource name rules](https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names).
   /// If the subscription already exists, returns `ALREADY_EXISTS`. If the
   /// corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not
   /// provided in the request, the server will assign a random name for this
   /// subscription on the same project as the topic, conforming to the
-  /// [resource name format](https://cloud.google.com/pubsub/docs/admin#resource_names).
+  /// [resource name format](https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names).
   /// The generated name is populated in the returned Subscription object. Note
   /// that for REST API requests, you must specify a name in the request.
   ///
@@ -1776,7 +1776,7 @@ class ProjectsTopicsResource {
   /// Creates the given topic with the given name.
   ///
   /// See the
-  /// [resource name rules](https://cloud.google.com/pubsub/docs/admin#resource_names).
+  /// [resource name rules](https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2342,6 +2342,11 @@ class AvroConfig {
   /// When true, write the subscription name, message_id, publish_time,
   /// attributes, and ordering_key as additional fields in the output.
   ///
+  /// The subscription name, message_id, and publish_time fields are put in
+  /// their own fields while all other message properties other than data (for
+  /// example, an ordering_key, if present) are added as entries in the
+  /// attributes map.
+  ///
   /// Optional.
   core.bool? writeMetadata;
 
@@ -2390,6 +2395,9 @@ class BigQueryConfig {
   /// exist.
   /// - "SCHEMA_MISMATCH" : Cannot write to the BigQuery table due to a schema
   /// mismatch.
+  /// - "IN_TRANSIT_LOCATION_RESTRICTION" : Cannot write to the destination
+  /// because enforce_in_transit is set to true and the destination locations
+  /// are not in the allowed regions.
   core.String? state;
 
   /// The name of the table to which to write data, of the form
@@ -2593,6 +2601,9 @@ class CloudStorageConfig {
   /// of permission denied errors.
   /// - "NOT_FOUND" : Cannot write to the Cloud Storage bucket because it does
   /// not exist.
+  /// - "IN_TRANSIT_LOCATION_RESTRICTION" : Cannot write to the destination
+  /// because enforce_in_transit is set to true and the destination locations
+  /// are not in the allowed regions.
   core.String? state;
 
   /// If set, message data will be written to Cloud Storage in text format.
@@ -3092,13 +3103,13 @@ class ListTopicsResponse {
 
 /// A policy constraining the storage of messages published to the topic.
 class MessageStoragePolicy {
-  /// A list of IDs of GCP regions where messages that are published to the
-  /// topic may be persisted in storage.
+  /// A list of IDs of Google Cloud regions where messages that are published to
+  /// the topic may be persisted in storage.
   ///
-  /// Messages published by publishers running in non-allowed GCP regions (or
-  /// running outside of GCP altogether) will be routed for storage in one of
-  /// the allowed regions. An empty list means that no regions are allowed, and
-  /// is not a valid configuration.
+  /// Messages published by publishers running in non-allowed Google Cloud
+  /// regions (or running outside of Google Cloud altogether) are routed for
+  /// storage in one of the allowed regions. An empty list means that no regions
+  /// are allowed, and is not a valid configuration.
   ///
   /// Optional.
   core.List<core.String>? allowedPersistenceRegions;
@@ -3283,23 +3294,23 @@ class OidcToken {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Associates a list of `members`, or principals, with a `role`.
   ///

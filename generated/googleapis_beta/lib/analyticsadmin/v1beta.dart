@@ -144,9 +144,9 @@ class AccountsResource {
   /// This API does not have a method to restore soft-deleted accounts. However,
   /// they can be restored using the Trash Can UI. If the accounts are not
   /// restored before the expiration time, the account and all child resources
-  /// (eg: Properties, GoogleAdsLinks, Streams, UserLinks) will be permanently
-  /// purged. https://support.google.com/analytics/answer/6154772 Returns an
-  /// error if the target is not found.
+  /// (eg: Properties, GoogleAdsLinks, Streams, AccessBindings) will be
+  /// permanently purged. https://support.google.com/analytics/answer/6154772
+  /// Returns an error if the target is not found.
   ///
   /// Request parameters:
   ///
@@ -623,9 +623,9 @@ class PropertiesResource {
   /// This API does not have a method to restore soft-deleted properties.
   /// However, they can be restored using the Trash Can UI. If the properties
   /// are not restored before the expiration time, the Property and all child
-  /// resources (eg: GoogleAdsLinks, Streams, UserLinks) will be permanently
-  /// purged. https://support.google.com/analytics/answer/6154772 Returns an
-  /// error if the target is not found, or is not a GA4 Property.
+  /// resources (eg: GoogleAdsLinks, Streams, AccessBindings) will be
+  /// permanently purged. https://support.google.com/analytics/answer/6154772
+  /// Returns an error if the target is not found, or is not a GA4 Property.
   ///
   /// Request parameters:
   ///
@@ -1144,6 +1144,55 @@ class PropertiesConversionEventsResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1betaListConversionEventsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a conversion event with the specified attributes.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Resource name of this conversion event. Format:
+  /// properties/{property}/conversionEvents/{conversion_event}
+  /// Value must have pattern `^properties/\[^/\]+/conversionEvents/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to be updated. Field names
+  /// must be in snake case (e.g., "field_to_update"). Omitted fields will not
+  /// be updated. To replace the entire entity, use one path with the string "*"
+  /// to match all fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1betaConversionEvent].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1betaConversionEvent> patch(
+    GoogleAnalyticsAdminV1betaConversionEvent request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAnalyticsAdminV1betaConversionEvent.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -3363,6 +3412,20 @@ class GoogleAnalyticsAdminV1betaChangeHistoryEvent {
 
 /// A conversion event in a Google Analytics property.
 class GoogleAnalyticsAdminV1betaConversionEvent {
+  /// The method by which conversions will be counted across multiple events
+  /// within a session.
+  ///
+  /// If this value is not provided, it will be set to `ONCE_PER_EVENT`.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CONVERSION_COUNTING_METHOD_UNSPECIFIED" : Counting method not
+  /// specified.
+  /// - "ONCE_PER_EVENT" : Each Event instance is considered a Conversion.
+  /// - "ONCE_PER_SESSION" : An Event instance is considered a Conversion at
+  /// most once per session per user.
+  core.String? countingMethod;
+
   /// Time when this conversion event was created in the property.
   ///
   /// Output only.
@@ -3378,6 +3441,12 @@ class GoogleAnalyticsAdminV1betaConversionEvent {
   ///
   /// Output only.
   core.bool? custom;
+
+  /// Defines a default value/currency for a conversion event.
+  ///
+  /// Optional.
+  GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue?
+      defaultConversionValue;
 
   /// If set, this event can currently be deleted with DeleteConversionEvent.
   ///
@@ -3399,8 +3468,10 @@ class GoogleAnalyticsAdminV1betaConversionEvent {
   core.String? name;
 
   GoogleAnalyticsAdminV1betaConversionEvent({
+    this.countingMethod,
     this.createTime,
     this.custom,
+    this.defaultConversionValue,
     this.deletable,
     this.eventName,
     this.name,
@@ -3408,11 +3479,19 @@ class GoogleAnalyticsAdminV1betaConversionEvent {
 
   GoogleAnalyticsAdminV1betaConversionEvent.fromJson(core.Map json_)
       : this(
+          countingMethod: json_.containsKey('countingMethod')
+              ? json_['countingMethod'] as core.String
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
           custom:
               json_.containsKey('custom') ? json_['custom'] as core.bool : null,
+          defaultConversionValue: json_.containsKey('defaultConversionValue')
+              ? GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue
+                  .fromJson(json_['defaultConversionValue']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           deletable: json_.containsKey('deletable')
               ? json_['deletable'] as core.bool
               : null,
@@ -3423,11 +3502,51 @@ class GoogleAnalyticsAdminV1betaConversionEvent {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (countingMethod != null) 'countingMethod': countingMethod!,
         if (createTime != null) 'createTime': createTime!,
         if (custom != null) 'custom': custom!,
+        if (defaultConversionValue != null)
+          'defaultConversionValue': defaultConversionValue!,
         if (deletable != null) 'deletable': deletable!,
         if (eventName != null) 'eventName': eventName!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// Defines a default value/currency for a conversion event.
+///
+/// Both value and currency must be provided.
+class GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue {
+  /// When a conversion event for this event_name has no set currency, this
+  /// currency will be applied as the default.
+  ///
+  /// Must be in ISO 4217 currency code format. See
+  /// https://en.wikipedia.org/wiki/ISO_4217 for more.
+  core.String? currencyCode;
+
+  /// This value will be used to populate the value for all conversions of the
+  /// specified event_name where the event "value" parameter is unset.
+  core.double? value;
+
+  GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue({
+    this.currencyCode,
+    this.value,
+  });
+
+  GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue.fromJson(
+      core.Map json_)
+      : this(
+          currencyCode: json_.containsKey('currencyCode')
+              ? json_['currencyCode'] as core.String
+              : null,
+          value: json_.containsKey('value')
+              ? (json_['value'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -4642,8 +4761,7 @@ class GoogleAnalyticsAdminV1betaProperty {
   /// The property type for this Property resource.
   ///
   /// When creating a property, if the type is "PROPERTY_TYPE_UNSPECIFIED", then
-  /// "ORDINARY_PROPERTY" will be implied. "SUBPROPERTY" and "ROLLUP_PROPERTY"
-  /// types cannot yet be created with the Google Analytics Admin API.
+  /// "ORDINARY_PROPERTY" will be implied.
   ///
   /// Immutable.
   /// Possible string values are:
@@ -4886,6 +5004,26 @@ class GoogleAnalyticsAdminV1betaRunAccessReportRequest {
   /// Requests are allowed up to 9 dimensions.
   core.List<GoogleAnalyticsAdminV1betaAccessDimension>? dimensions;
 
+  /// Decides whether to return the users within user groups.
+  ///
+  /// This field works only when include_all_users is set to true. If true, it
+  /// will return all users with access to the specified property or account. If
+  /// false, only the users with direct access will be returned.
+  ///
+  /// Optional.
+  core.bool? expandGroups;
+
+  /// Determines whether to include users who have never made an API call in the
+  /// response.
+  ///
+  /// If true, all users with access to the specified property or account are
+  /// included in the response, regardless of whether they have made an API call
+  /// or not. If false, only the users who have made an API call will be
+  /// included.
+  ///
+  /// Optional.
+  core.bool? includeAllUsers;
+
   /// The number of rows to return.
   ///
   /// If unspecified, 10,000 rows are returned. The API returns a maximum of
@@ -4943,6 +5081,8 @@ class GoogleAnalyticsAdminV1betaRunAccessReportRequest {
     this.dateRanges,
     this.dimensionFilter,
     this.dimensions,
+    this.expandGroups,
+    this.includeAllUsers,
     this.limit,
     this.metricFilter,
     this.metrics,
@@ -4972,6 +5112,12 @@ class GoogleAnalyticsAdminV1betaRunAccessReportRequest {
                       GoogleAnalyticsAdminV1betaAccessDimension.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          expandGroups: json_.containsKey('expandGroups')
+              ? json_['expandGroups'] as core.bool
+              : null,
+          includeAllUsers: json_.containsKey('includeAllUsers')
+              ? json_['includeAllUsers'] as core.bool
               : null,
           limit:
               json_.containsKey('limit') ? json_['limit'] as core.String : null,
@@ -5008,6 +5154,8 @@ class GoogleAnalyticsAdminV1betaRunAccessReportRequest {
         if (dateRanges != null) 'dateRanges': dateRanges!,
         if (dimensionFilter != null) 'dimensionFilter': dimensionFilter!,
         if (dimensions != null) 'dimensions': dimensions!,
+        if (expandGroups != null) 'expandGroups': expandGroups!,
+        if (includeAllUsers != null) 'includeAllUsers': includeAllUsers!,
         if (limit != null) 'limit': limit!,
         if (metricFilter != null) 'metricFilter': metricFilter!,
         if (metrics != null) 'metrics': metrics!,

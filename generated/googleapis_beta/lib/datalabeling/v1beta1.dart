@@ -5355,6 +5355,9 @@ class GoogleCloudDatalabelingV1beta1Instruction {
   /// should have exact two columns, in the following format: * The first column
   /// is labeled data, such as an image reference, text. * The second column is
   /// comma separated labels associated with data.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleCloudDatalabelingV1beta1CsvInstruction? csvInstruction;
 
   /// The data type of this instruction.
@@ -6790,6 +6793,9 @@ class GoogleCloudDatalabelingV1beta1TextClassificationConfig {
   /// incompatible with uCAIP.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleCloudDatalabelingV1beta1SentimentConfig? sentimentConfig;
 
   GoogleCloudDatalabelingV1beta1TextClassificationConfig({
@@ -7303,7 +7309,7 @@ class GoogleLongrunningOperation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard

@@ -1438,7 +1438,7 @@ class ProvisioningInfoResource {
 
   ProvisioningInfoResource(commons.ApiRequester client) : _requester = client;
 
-  /// Get the device provisioning info by the identifier provided via the
+  /// Get the device provisioning information by the identifier provided in the
   /// sign-in url.
   ///
   /// Request parameters:
@@ -2116,7 +2116,8 @@ class ApplicationPermission {
 /// Policy for an individual app.
 ///
 /// Note: Application availability on a given device cannot be changed using
-/// this policy if installAppsDisabled is enabled.
+/// this policy if installAppsDisabled is enabled. The maximum number of
+/// applications that you can specify per enterprise policy is 3,000.
 class ApplicationPolicy {
   /// List of the app’s track IDs that a device belonging to the enterprise can
   /// access.
@@ -2152,10 +2153,11 @@ class ApplicationPolicy {
   /// Possible string values are:
   /// - "AUTO_UPDATE_MODE_UNSPECIFIED" : Unspecified. Defaults to
   /// AUTO_UPDATE_DEFAULT.
-  /// - "AUTO_UPDATE_DEFAULT" : The app is automatically updated with low
-  /// priority to minimize the impact on the user.The app is updated when all of
-  /// the following constraints are met: The device is not actively used. The
-  /// device is connected to an unmetered network. The device is charging.The
+  /// - "AUTO_UPDATE_DEFAULT" : The default update mode.The app is automatically
+  /// updated with low priority to minimize the impact on the user.The app is
+  /// updated when all of the following constraints are met: The device is not
+  /// actively used. The device is connected to an unmetered network. The device
+  /// is charging. The app to be updated is not running in the foreground.The
   /// device is notified about a new update within 24 hours after it is
   /// published by the developer, after which the app is updated the next time
   /// the constraints above are met.
@@ -2197,6 +2199,9 @@ class ApplicationPolicy {
   core.String? defaultPermissionPolicy;
 
   /// The scopes delegated to the app from Android Device Policy.
+  ///
+  /// These provide additional privileges for the applications they are applied
+  /// to.
   core.List<core.String>? delegatedScopes;
 
   /// Whether the app is disabled.
@@ -2214,10 +2219,11 @@ class ApplicationPolicy {
   /// - "INSTALL_TYPE_UNSPECIFIED" : Unspecified. Defaults to AVAILABLE.
   /// - "PREINSTALLED" : The app is automatically installed and can be removed
   /// by the user.
-  /// - "FORCE_INSTALLED" : The app is automatically installed and can't be
-  /// removed by the user.
+  /// - "FORCE_INSTALLED" : The app is automatically installed regardless of a
+  /// set maintenance window and can't be removed by the user.
   /// - "BLOCKED" : The app is blocked and can't be installed. If the app was
-  /// installed under a previous policy, it will be uninstalled.
+  /// installed under a previous policy, it will be uninstalled. This also
+  /// blocks its instant app functionality.
   /// - "AVAILABLE" : The app is available to install.
   /// - "REQUIRED_FOR_SETUP" : The app is automatically installed and can't be
   /// removed by the user and will prevent setup from completion until
@@ -2783,6 +2789,10 @@ class Command {
 
   /// For commands of type RESET_PASSWORD, optionally specifies the new
   /// password.
+  ///
+  /// Note: The new password must be at least 6 characters long if it is numeric
+  /// in case of Android 14 devices. Else the command will fail with
+  /// INVALID_VALUE.
   core.String? newPassword;
 
   /// For commands of type RESET_PASSWORD, optionally specifies flags.
@@ -3166,7 +3176,11 @@ class ContentProviderEndpoint {
       };
 }
 
-/// Cross-profile policies applied on the device.
+/// Controls the data from the work profile that can be accessed from the
+/// personal profile and vice versa.
+///
+/// A nonComplianceDetail with MANAGEMENT_MODE is reported if the device does
+/// not have a work profile.
 class CrossProfilePolicies {
   /// Whether text copied from one profile (personal or work) can be pasted in
   /// the other profile.
@@ -3200,17 +3214,52 @@ class CrossProfilePolicies {
   /// shared with the other profile.
   core.String? crossProfileDataSharing;
 
-  /// Whether contacts stored in the work profile can be shown in personal
-  /// profile contact searches and incoming calls.
+  /// List of apps which are excluded from the ShowWorkContactsInPersonalProfile
+  /// setting.
+  ///
+  /// For this to be set, ShowWorkContactsInPersonalProfile must be set to one
+  /// of the following values: SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_ALLOWED.
+  /// In this case, these exemptions act as a blocklist.
+  /// SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED. In this case, these
+  /// exemptions act as an allowlist.
+  /// SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED_EXCEPT_SYSTEM. In this
+  /// case, these exemptions act as an allowlist, in addition to the already
+  /// allowlisted system apps.Supported on Android 14 and above. A
+  /// nonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 14.
+  PackageNameList? exemptionsToShowWorkContactsInPersonalProfile;
+
+  /// Whether personal apps can access contacts stored in the work profile.See
+  /// also exemptions_to_show_work_contacts_in_personal_profile.
   /// Possible string values are:
   /// - "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_UNSPECIFIED" : Unspecified.
-  /// Defaults to SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_ALLOWED.
-  /// - "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED" : Prevents work
-  /// profile contacts from appearing in personal profile contact searches and
-  /// incoming calls
-  /// - "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_ALLOWED" : Default. Allows work
-  /// profile contacts to appear in personal profile contact searches and
-  /// incoming calls
+  /// Defaults to SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_ALLOWED.When this is
+  /// set, exemptions_to_show_work_contacts_in_personal_profile must not be set.
+  /// - "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED" : Prevents personal
+  /// apps from accessing work profile contacts and looking up work
+  /// contacts.When this is set, personal apps specified in
+  /// exemptions_to_show_work_contacts_in_personal_profile are allowlisted and
+  /// can access work profile contacts directly.Supported on Android 7.0 and
+  /// above. A nonComplianceDetail with API_LEVEL is reported if the Android
+  /// version is less than 7.0.
+  /// - "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_ALLOWED" : Default. Allows apps
+  /// in the personal profile to access work profile contacts including contact
+  /// searches and incoming calls.When this is set, personal apps specified in
+  /// exemptions_to_show_work_contacts_in_personal_profile are blocklisted and
+  /// can not access work profile contacts directly.Supported on Android 7.0 and
+  /// above. A nonComplianceDetail with API_LEVEL is reported if the Android
+  /// version is less than 7.0.
+  /// - "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED_EXCEPT_SYSTEM" :
+  /// Prevents most personal apps from accessing work profile contacts including
+  /// contact searches and incoming calls, except for the OEM default Dialer,
+  /// Messages, and Contacts apps. Neither user-configured Dialer, Messages, and
+  /// Contacts apps, nor any other system or play installed apps, will be able
+  /// to query work contacts directly.When this is set, personal apps specified
+  /// in exemptions_to_show_work_contacts_in_personal_profile are allowlisted
+  /// and can access work profile contacts.Supported on Android 14 and above. If
+  /// this is set on a device with Android version less than 14, the behaviour
+  /// falls back to SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED and a
+  /// nonComplianceDetail with API_LEVEL is reported.
   core.String? showWorkContactsInPersonalProfile;
 
   /// Specifies the default behaviour for work profile widgets.
@@ -3233,6 +3282,7 @@ class CrossProfilePolicies {
   CrossProfilePolicies({
     this.crossProfileCopyPaste,
     this.crossProfileDataSharing,
+    this.exemptionsToShowWorkContactsInPersonalProfile,
     this.showWorkContactsInPersonalProfile,
     this.workProfileWidgetsDefault,
   });
@@ -3245,6 +3295,12 @@ class CrossProfilePolicies {
           crossProfileDataSharing: json_.containsKey('crossProfileDataSharing')
               ? json_['crossProfileDataSharing'] as core.String
               : null,
+          exemptionsToShowWorkContactsInPersonalProfile:
+              json_.containsKey('exemptionsToShowWorkContactsInPersonalProfile')
+                  ? PackageNameList.fromJson(
+                      json_['exemptionsToShowWorkContactsInPersonalProfile']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           showWorkContactsInPersonalProfile:
               json_.containsKey('showWorkContactsInPersonalProfile')
                   ? json_['showWorkContactsInPersonalProfile'] as core.String
@@ -3260,6 +3316,9 @@ class CrossProfilePolicies {
           'crossProfileCopyPaste': crossProfileCopyPaste!,
         if (crossProfileDataSharing != null)
           'crossProfileDataSharing': crossProfileDataSharing!,
+        if (exemptionsToShowWorkContactsInPersonalProfile != null)
+          'exemptionsToShowWorkContactsInPersonalProfile':
+              exemptionsToShowWorkContactsInPersonalProfile!,
         if (showWorkContactsInPersonalProfile != null)
           'showWorkContactsInPersonalProfile':
               showWorkContactsInPersonalProfile!,
@@ -3848,16 +3907,39 @@ class DeviceConnectivityManagement {
 
 /// Controls for device radio settings.
 class DeviceRadioState {
-  /// Controls whether airplane mode can be toggled by the user or not
+  /// Controls whether airplane mode can be toggled by the user or not.
   /// Possible string values are:
   /// - "AIRPLANE_MODE_STATE_UNSPECIFIED" : Unspecified. Defaults to
-  /// AIRPLANE_MODE_USER_CHOICE
+  /// AIRPLANE_MODE_USER_CHOICE.
   /// - "AIRPLANE_MODE_USER_CHOICE" : The user is allowed to toggle airplane
   /// mode on or off.
   /// - "AIRPLANE_MODE_DISABLED" : Airplane mode is disabled. The user is not
   /// allowed to toggle airplane mode on. A nonComplianceDetail with API_LEVEL
   /// is reported if the Android version is less than 9.
   core.String? airplaneModeState;
+
+  /// Controls whether cellular 2G setting can be toggled by the user or not.
+  /// Possible string values are:
+  /// - "CELLULAR_TWO_G_STATE_UNSPECIFIED" : Unspecified. Defaults to
+  /// CELLULAR_TWO_G_USER_CHOICE.
+  /// - "CELLULAR_TWO_G_USER_CHOICE" : The user is allowed to toggle cellular 2G
+  /// on or off.
+  /// - "CELLULAR_TWO_G_DISABLED" : Cellular 2G is disabled. The user is not
+  /// allowed to toggle cellular 2G on via settings. A nonComplianceDetail with
+  /// API_LEVEL is reported if the Android version is less than 14.
+  core.String? cellularTwoGState;
+
+  /// Controls the state of the ultra wideband setting and whether the user can
+  /// toggle it on or off.
+  /// Possible string values are:
+  /// - "ULTRA_WIDEBAND_STATE_UNSPECIFIED" : Unspecified. Defaults to
+  /// ULTRA_WIDEBAND_USER_CHOICE.
+  /// - "ULTRA_WIDEBAND_USER_CHOICE" : The user is allowed to toggle ultra
+  /// wideband on or off.
+  /// - "ULTRA_WIDEBAND_DISABLED" : Ultra wideband is disabled. The user is not
+  /// allowed to toggle ultra wideband on via settings. A nonComplianceDetail
+  /// with API_LEVEL is reported if the Android version is less than 14.
+  core.String? ultraWidebandState;
 
   /// Controls current state of Wi-Fi and if user can change its state.
   /// Possible string values are:
@@ -3874,6 +3956,8 @@ class DeviceRadioState {
 
   DeviceRadioState({
     this.airplaneModeState,
+    this.cellularTwoGState,
+    this.ultraWidebandState,
     this.wifiState,
   });
 
@@ -3882,6 +3966,12 @@ class DeviceRadioState {
           airplaneModeState: json_.containsKey('airplaneModeState')
               ? json_['airplaneModeState'] as core.String
               : null,
+          cellularTwoGState: json_.containsKey('cellularTwoGState')
+              ? json_['cellularTwoGState'] as core.String
+              : null,
+          ultraWidebandState: json_.containsKey('ultraWidebandState')
+              ? json_['ultraWidebandState'] as core.String
+              : null,
           wifiState: json_.containsKey('wifiState')
               ? json_['wifiState'] as core.String
               : null,
@@ -3889,6 +3979,9 @@ class DeviceRadioState {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (airplaneModeState != null) 'airplaneModeState': airplaneModeState!,
+        if (cellularTwoGState != null) 'cellularTwoGState': cellularTwoGState!,
+        if (ultraWidebandState != null)
+          'ultraWidebandState': ultraWidebandState!,
         if (wifiState != null) 'wifiState': wifiState!,
       };
 }
@@ -4427,17 +4520,17 @@ class ExternalData {
 /// A system freeze period.
 ///
 /// When a device’s clock is within the freeze period, all incoming system
-/// updates (including security patches) are blocked and won’t be installed.
-/// When a device is outside the freeze period, normal update behavior applies.
-/// Leap years are ignored in freeze period calculations, in particular: * If
-/// Feb. 29th is set as the start or end date of a freeze period, the freeze
-/// period will start or end on Feb. 28th instead. * When a device’s system
-/// clock reads Feb. 29th, it’s treated as Feb. 28th. * When calculating the
-/// number of days in a freeze period or the time between two freeze periods,
-/// Feb. 29th is ignored and not counted as a day.Note: For Freeze Periods to
-/// take effect, SystemUpdateType cannot be specified as
-/// SYSTEM_UPDATE_TYPE_UNSPECIFIED, because freeze periods require a defined
-/// policy to be specified.
+/// updates (including security patches) are blocked and won’t be installed.When
+/// the device is outside any set freeze periods, the normal policy behavior
+/// (automatic, windowed, or postponed) applies.Leap years are ignored in freeze
+/// period calculations, in particular: If Feb. 29th is set as the start or end
+/// date of a freeze period, the freeze period will start or end on Feb. 28th
+/// instead. When a device’s system clock reads Feb. 29th, it’s treated as Feb.
+/// 28th. When calculating the number of days in a freeze period or the time
+/// between two freeze periods, Feb. 29th is ignored and not counted as a
+/// day.Note: For Freeze Periods to take effect, SystemUpdateType cannot be
+/// specified as SYSTEM_UPDATE_TYPE_UNSPECIFIED, because freeze periods require
+/// a defined policy to be specified.
 class FreezePeriod {
   /// The end date (inclusive) of the freeze period.
   ///
@@ -5503,6 +5596,18 @@ class NonComplianceDetail {
   /// Terms of Service.
   /// - "USER_INVALID" : The user is no longer valid. The user may have been
   /// deleted or disabled.
+  /// - "NETWORK_ERROR_UNRELIABLE_CONNECTION" : A network error on the user's
+  /// device has prevented the install from succeeding. This usually happens
+  /// when the device's internet connectivity is degraded, unavailable or
+  /// there's a network configuration issue. Please ensure the device has access
+  /// to full internet connectivity on a network that meets Android Enterprise
+  /// Network Requirements
+  /// (https://support.google.com/work/android/answer/10513641). App install or
+  /// update will automatically resume once this is the case.
+  /// - "INSUFFICIENT_STORAGE" : The user's device does not have sufficient
+  /// storage space to install the app. This can be resolved by clearing up
+  /// storage space on the device. App install or update will automatically
+  /// resume once the device has sufficient storage.
   core.String? installationFailureReason;
 
   /// The reason the device is not in compliance with the setting.
@@ -5788,7 +5893,7 @@ class Operation {
   /// ending with operations/{unique_id}.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as Delete, the
   /// response is google.protobuf.Empty. If the original method is standard
@@ -6276,7 +6381,8 @@ class PersonalApplicationPolicy {
   /// Possible string values are:
   /// - "INSTALL_TYPE_UNSPECIFIED" : Unspecified. Defaults to AVAILABLE.
   /// - "BLOCKED" : The app is blocked and can't be installed in the personal
-  /// profile.
+  /// profile. If the app was previously installed in the device, it will be
+  /// uninstalled.
   /// - "AVAILABLE" : The app is available to install in the personal profile.
   core.String? installType;
 
@@ -6315,7 +6421,12 @@ class PersonalUsagePolicies {
 
   /// Controls how long the work profile can stay off.
   ///
-  /// The duration must be at least 3 days.
+  /// The minimum duration must be at least 3 days. Other details are as
+  /// follows: - If the duration is set to 0, the feature is turned off. - If
+  /// the duration is set to a value smaller than the minimum duration, the
+  /// feature returns an error. *Note:* If you want to avoid personal profiles
+  /// being suspended during long periods of off-time, you can temporarily set a
+  /// large value for this parameter.
   core.int? maxDaysWithWorkOff;
 
   /// Policy applied to applications in the personal profile.
@@ -6526,7 +6637,8 @@ class Policy {
 
   /// Rules for determining apps' access to private keys.
   ///
-  /// See ChoosePrivateKeyRule for details.
+  /// See ChoosePrivateKeyRule for details. This must be empty if any
+  /// application has CERT_SELECTION delegation scope.
   core.List<ChoosePrivateKeyRule>? choosePrivateKeyRules;
 
   /// Rules declaring which mitigating actions to take when a device is not
@@ -6826,7 +6938,8 @@ class Policy {
   /// there are no matching rules in ChoosePrivateKeyRules.
   ///
   /// For devices below Android P, setting this may leave enterprise keys
-  /// vulnerable.
+  /// vulnerable. This value will have no effect if any application has
+  /// CERT_SELECTION delegation scope.
   core.bool? privateKeySelectionEnabled;
 
   /// The network-independent global HTTP proxy.
@@ -7741,7 +7854,7 @@ class ProvisioningInfo {
   /// The API level of the Android platform version running on the device.
   core.int? apiLevel;
 
-  /// Brand of the device.
+  /// The brand of the device.
   ///
   /// For example, Google.
   core.String? brand;
@@ -7953,6 +8066,23 @@ class SetupAction {
 }
 
 /// A resource containing sign in details for an enterprise.
+///
+/// Use enterprises to manage SigninDetails for a given enterprise.For an
+/// enterprise, we can have any number of SigninDetails that is uniquely
+/// identified by combination of the following three fields (signin_url,
+/// allow_personal_usage, token_tag). One cannot create two SigninDetails with
+/// the same (signin_url, allow_personal_usage, token_tag). (token_tag is an
+/// optional field).Patch: The operation updates the current list of
+/// SigninDetails with the new list of SigninDetails. If the stored SigninDetail
+/// configuration is passed, it returns the same signin_enrollment_token and
+/// qr_code. If we pass multiple identical SigninDetail configurations that are
+/// not stored, it will store the first one amongst those SigninDetail
+/// configurations. if the configuration already exists we cannot request it
+/// more than once in a particular patch API call, otherwise it will give a
+/// duplicate key error and the whole operation will fail. If we remove certain
+/// SigninDetail configuration from the request then it will get removed from
+/// the storage. We can then request another signin_enrollment_token and qr_code
+/// for the same SigninDetail configuration.
 class SigninDetail {
   /// Controls whether personal usage is allowed on a device provisioned with
   /// this enrollment token.For company-owned devices: Enabling personal usage
@@ -7992,11 +8122,16 @@ class SigninDetail {
   /// failed login.
   core.String? signinUrl;
 
+  /// An EMM-specified metadata to distinguish between instances of
+  /// SigninDetail.
+  core.String? tokenTag;
+
   SigninDetail({
     this.allowPersonalUsage,
     this.qrCode,
     this.signinEnrollmentToken,
     this.signinUrl,
+    this.tokenTag,
   });
 
   SigninDetail.fromJson(core.Map json_)
@@ -8013,6 +8148,9 @@ class SigninDetail {
           signinUrl: json_.containsKey('signinUrl')
               ? json_['signinUrl'] as core.String
               : null,
+          tokenTag: json_.containsKey('tokenTag')
+              ? json_['tokenTag'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8022,6 +8160,7 @@ class SigninDetail {
         if (signinEnrollmentToken != null)
           'signinEnrollmentToken': signinEnrollmentToken!,
         if (signinUrl != null) 'signinUrl': signinUrl!,
+        if (tokenTag != null) 'tokenTag': tokenTag!,
       };
 }
 
@@ -8509,7 +8648,8 @@ class SystemUpdate {
   /// autoUpdateMode is set to AUTO_UPDATE_HIGH_PRIORITY for an app, then the
   /// maintenance window is ignored for that app and it is updated as soon as
   /// possible even outside of the maintenance window.
-  /// - "POSTPONE" : Postpone automatic install up to a maximum of 30 days.
+  /// - "POSTPONE" : Postpone automatic install up to a maximum of 30 days. This
+  /// policy does not affect security updates (e.g. monthly security patches).
   core.String? type;
 
   SystemUpdate({

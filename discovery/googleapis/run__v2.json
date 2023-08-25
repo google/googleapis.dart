@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230730",
+    "revision": "20231022",
     "rootUrl": "https://run.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Run Admin API",
@@ -411,6 +411,34 @@
                             "resources": {
                                 "executions": {
                                     "methods": {
+                                        "cancel": {
+                                            "description": "Cancels an Execution.",
+                                            "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}/executions/{executionsId}:cancel",
+                                            "httpMethod": "POST",
+                                            "id": "run.projects.locations.jobs.executions.cancel",
+                                            "parameterOrder": [
+                                                "name"
+                                            ],
+                                            "parameters": {
+                                                "name": {
+                                                    "description": "Required. The name of the Execution to cancel. Format: `projects/{project}/locations/{location}/jobs/{job}/executions/{execution}`, where `{project}` can be project id or number.",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+/executions/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v2/{+name}:cancel",
+                                            "request": {
+                                                "$ref": "GoogleCloudRunV2CancelExecutionRequest"
+                                            },
+                                            "response": {
+                                                "$ref": "GoogleLongrunningOperation"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
                                         "delete": {
                                             "description": "Deletes an Execution.",
                                             "flatPath": "v2/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}/executions/{executionsId}",
@@ -426,7 +454,7 @@
                                                     "type": "string"
                                                 },
                                                 "name": {
-                                                    "description": "Required. The name of the Execution to delete. Format: projects/{project}/locations/{location}/jobs/{job}/executions/{execution}, where {project} can be project id or number.",
+                                                    "description": "Required. The name of the Execution to delete. Format: `projects/{project}/locations/{location}/jobs/{job}/executions/{execution}`, where `{project}` can be project id or number.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+/executions/[^/]+$",
                                                     "required": true,
@@ -456,7 +484,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "Required. The full name of the Execution. Format: projects/{project}/locations/{location}/jobs/{job}/executions/{execution}, where {project} can be project id or number.",
+                                                    "description": "Required. The full name of the Execution. Format: `projects/{project}/locations/{location}/jobs/{job}/executions/{execution}`, where `{project}` can be project id or number.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+/executions/[^/]+$",
                                                     "required": true,
@@ -492,7 +520,7 @@
                                                     "type": "string"
                                                 },
                                                 "parent": {
-                                                    "description": "Required. The Execution from which the Executions should be listed. To list all Executions across Jobs, use \"-\" instead of Job name. Format: projects/{project}/locations/{location}/jobs/{job}, where {project} can be project id or number.",
+                                                    "description": "Required. The Execution from which the Executions should be listed. To list all Executions across Jobs, use \"-\" instead of Job name. Format: `projects/{project}/locations/{location}/jobs/{job}`, where `{project}` can be project id or number.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$",
                                                     "required": true,
@@ -1107,6 +1135,21 @@
             },
             "type": "object"
         },
+        "GoogleCloudRunV2CancelExecutionRequest": {
+            "description": "Request message for deleting an Execution.",
+            "id": "GoogleCloudRunV2CancelExecutionRequest",
+            "properties": {
+                "etag": {
+                    "description": "A system-generated fingerprint for this version of the resource. This may be used to detect modification conflict during updates.",
+                    "type": "string"
+                },
+                "validateOnly": {
+                    "description": "Indicates that the request should be validated without actually cancelling any resources.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudRunV2CloudSqlInstance": {
             "description": "Represents a set of Cloud SQL instances. Each one will be available under /cloudsql/[instance]. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.",
             "id": "GoogleCloudRunV2CloudSqlInstance",
@@ -1340,6 +1383,35 @@
             },
             "type": "object"
         },
+        "GoogleCloudRunV2ContainerOverride": {
+            "description": "Per-container override specification.",
+            "id": "GoogleCloudRunV2ContainerOverride",
+            "properties": {
+                "args": {
+                    "description": "Optional. Arguments to the entrypoint. Will replace existing args for override.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "clearArgs": {
+                    "description": "Optional. True if the intention is to clear out existing args list.",
+                    "type": "boolean"
+                },
+                "env": {
+                    "description": "List of environment variables to set in the container. Will be merged with existing env for override.",
+                    "items": {
+                        "$ref": "GoogleCloudRunV2EnvVar"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "description": "The name of the container specified as a DNS_LABEL.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudRunV2ContainerPort": {
             "description": "ContainerPort represents a network port in a single container.",
             "id": "GoogleCloudRunV2ContainerPort",
@@ -1384,7 +1456,7 @@
             "id": "GoogleCloudRunV2EnvVar",
             "properties": {
                 "name": {
-                    "description": "Required. Name of the environment variable. Must be a C_IDENTIFIER, and must not exceed 32768 characters.",
+                    "description": "Required. Name of the environment variable. Must not exceed 32768 characters.",
                     "type": "string"
                 },
                 "value": {
@@ -1660,7 +1732,7 @@
                     "type": "integer"
                 },
                 "service": {
-                    "description": "Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.",
+                    "description": "Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC.",
                     "type": "string"
                 }
             },
@@ -1949,6 +2021,52 @@
             },
             "type": "object"
         },
+        "GoogleCloudRunV2NetworkInterface": {
+            "description": "Direct VPC egress settings.",
+            "id": "GoogleCloudRunV2NetworkInterface",
+            "properties": {
+                "network": {
+                    "description": "The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork.",
+                    "type": "string"
+                },
+                "subnetwork": {
+                    "description": "The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used.",
+                    "type": "string"
+                },
+                "tags": {
+                    "description": "Network tags applied to this Cloud Run resource.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRunV2Overrides": {
+            "description": "RunJob Overrides that contains Execution fields to be overridden.",
+            "id": "GoogleCloudRunV2Overrides",
+            "properties": {
+                "containerOverrides": {
+                    "description": "Per container override specification.",
+                    "items": {
+                        "$ref": "GoogleCloudRunV2ContainerOverride"
+                    },
+                    "type": "array"
+                },
+                "taskCount": {
+                    "description": "Optional. The desired number of tasks the execution should run. Will replace existing task_count value.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "timeout": {
+                    "description": "Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. Will replace existing timeout_seconds value.",
+                    "format": "google-duration",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudRunV2Probe": {
             "description": "Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.",
             "id": "GoogleCloudRunV2Probe",
@@ -2170,6 +2288,11 @@
                     "$ref": "GoogleCloudRunV2RevisionScaling",
                     "description": "Scaling settings for this revision."
                 },
+                "scalingStatus": {
+                    "$ref": "GoogleCloudRunV2RevisionScalingStatus",
+                    "description": "Output only. The current effective scaling settings for the revision.",
+                    "readOnly": true
+                },
                 "service": {
                     "description": "Output only. The name of the parent service.",
                     "readOnly": true,
@@ -2224,6 +2347,18 @@
                 },
                 "minInstanceCount": {
                     "description": "Minimum number of serving instances that this resource should have.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRunV2RevisionScalingStatus": {
+            "description": "Effective settings for the current revision",
+            "id": "GoogleCloudRunV2RevisionScalingStatus",
+            "properties": {
+                "desiredMinInstanceCount": {
+                    "description": "The current number of min instances provisioned for this revision.",
                     "format": "int32",
                     "type": "integer"
                 }
@@ -2320,6 +2455,10 @@
                 "etag": {
                     "description": "A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.",
                     "type": "string"
+                },
+                "overrides": {
+                    "$ref": "GoogleCloudRunV2Overrides",
+                    "description": "Overrides specification for a given execution of a job. If provided, overrides will be applied to update the execution or task spec."
                 },
                 "validateOnly": {
                     "description": "Indicates that the request should be validated without actually deleting any resources.",
@@ -2524,6 +2663,10 @@
                     "readOnly": true,
                     "type": "boolean"
                 },
+                "scaling": {
+                    "$ref": "GoogleCloudRunV2ServiceScaling",
+                    "description": "Optional. Specifies service-level scaling settings"
+                },
                 "template": {
                     "$ref": "GoogleCloudRunV2RevisionTemplate",
                     "description": "Required. The template used to create revisions for this Service."
@@ -2563,6 +2706,18 @@
                     "description": "Output only. The main URI in which this Service is serving traffic.",
                     "readOnly": true,
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRunV2ServiceScaling": {
+            "description": "Scaling settings that apply to the service as a whole rather than the individual revision.",
+            "id": "GoogleCloudRunV2ServiceScaling",
+            "properties": {
+                "minInstanceCount": {
+                    "description": "total min instances for the service. This number of instances will be divide among all revisions with specified traffic based on the percent of traffic they are receiving. (ALPHA)",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -2613,7 +2768,7 @@
                     "type": "array"
                 },
                 "createTime": {
-                    "description": "Output only. Represents time when the task was created by the job controller. It is not guaranteed to be set in happens-before order across separate operations.",
+                    "description": "Output only. Represents time when the task was created by the system. It is not guaranteed to be set in happens-before order across separate operations.",
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
@@ -2725,6 +2880,12 @@
                     "description": "Output only. Reserved for future use.",
                     "readOnly": true,
                     "type": "boolean"
+                },
+                "scheduledTime": {
+                    "description": "Output only. Represents time when the task was scheduled to run by the system. It is not guaranteed to be set in happens-before order across separate operations.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
                 },
                 "serviceAccount": {
                     "description": "Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.",
@@ -2973,11 +3134,11 @@
             "type": "object"
         },
         "GoogleCloudRunV2VpcAccess": {
-            "description": "VPC Access settings. For more information on creating a VPC Connector, visit https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For information on how to configure Cloud Run with an existing VPC Connector, visit https://cloud.google.com/run/docs/configuring/connecting-vpc",
+            "description": "VPC Access settings. For more information on sending traffic to a VPC network, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.",
             "id": "GoogleCloudRunV2VpcAccess",
             "properties": {
                 "connector": {
-                    "description": "VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.",
+                    "description": "VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number. For more information on sending traffic to a VPC network via a connector, visit https://cloud.google.com/run/docs/configuring/vpc-connectors.",
                     "type": "string"
                 },
                 "egress": {
@@ -2993,6 +3154,13 @@
                         "Only private IP ranges are routed through the VPC connector."
                     ],
                     "type": "string"
+                },
+                "networkInterfaces": {
+                    "description": "Direct VPC egress settings. Currently only single network interface is supported.",
+                    "items": {
+                        "$ref": "GoogleCloudRunV2NetworkInterface"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -3068,7 +3236,7 @@
             "type": "object"
         },
         "GoogleIamV1Policy": {
-            "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
+            "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
             "id": "GoogleIamV1Policy",
             "properties": {
                 "auditConfigs": {
@@ -3189,7 +3357,7 @@
                         "description": "Properties of the object. Contains field @type with type URL.",
                         "type": "any"
                     },
-                    "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+                    "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
                     "type": "object"
                 }
             },

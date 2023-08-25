@@ -47,9 +47,6 @@
 /// -
 /// [ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesWorkloadSourcesOperationsResource]
 /// - [ProjectsLocationsWorkloadIdentityPoolsNamespacesOperationsResource]
-/// - [ProjectsLocationsWorkloadIdentityPoolsNamespacesWorkloadSourcesResource]
-/// -
-/// [ProjectsLocationsWorkloadIdentityPoolsNamespacesWorkloadSourcesOperationsResource]
 ///       - [ProjectsLocationsWorkloadIdentityPoolsOperationsResource]
 ///       - [ProjectsLocationsWorkloadIdentityPoolsProvidersResource]
 ///         - [ProjectsLocationsWorkloadIdentityPoolsProvidersKeysResource]
@@ -2210,10 +2207,6 @@ class ProjectsLocationsWorkloadIdentityPoolsNamespacesResource {
       get operations =>
           ProjectsLocationsWorkloadIdentityPoolsNamespacesOperationsResource(
               _requester);
-  ProjectsLocationsWorkloadIdentityPoolsNamespacesWorkloadSourcesResource
-      get workloadSources =>
-          ProjectsLocationsWorkloadIdentityPoolsNamespacesWorkloadSourcesResource(
-              _requester);
 
   ProjectsLocationsWorkloadIdentityPoolsNamespacesResource(
       commons.ApiRequester client)
@@ -2361,66 +2354,6 @@ class ProjectsLocationsWorkloadIdentityPoolsNamespacesOperationsResource {
   /// [name] - The name of the operation resource.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/namespaces/\[^/\]+/operations/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Operation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class ProjectsLocationsWorkloadIdentityPoolsNamespacesWorkloadSourcesResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsWorkloadIdentityPoolsNamespacesWorkloadSourcesOperationsResource
-      get operations =>
-          ProjectsLocationsWorkloadIdentityPoolsNamespacesWorkloadSourcesOperationsResource(
-              _requester);
-
-  ProjectsLocationsWorkloadIdentityPoolsNamespacesWorkloadSourcesResource(
-      commons.ApiRequester client)
-      : _requester = client;
-}
-
-class ProjectsLocationsWorkloadIdentityPoolsNamespacesWorkloadSourcesOperationsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsWorkloadIdentityPoolsNamespacesWorkloadSourcesOperationsResource(
-      commons.ApiRequester client)
-      : _requester = client;
-
-  /// Gets the latest state of a long-running operation.
-  ///
-  /// Clients can use this method to poll the operation result at intervals as
-  /// recommended by the API service.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/namespaces/\[^/\]+/workloadSources/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4875,6 +4808,50 @@ class RolesResource {
   }
 }
 
+/// Access related restrictions on the workforce pool.
+class AccessRestrictions {
+  /// Services allowed for web sign-in with the workforce pool.
+  ///
+  /// If not set by default there are no restrictions.
+  ///
+  /// Optional. Immutable.
+  core.List<ServiceConfig>? allowedServices;
+
+  /// Disable programmatic sign-in by disabling token issue via the Security
+  /// Token API endpoint.
+  ///
+  /// See
+  /// [Security Token Service API](https://cloud.google.com/iam/docs/reference/sts/rest).
+  ///
+  /// Optional.
+  core.bool? disableProgrammaticSignin;
+
+  AccessRestrictions({
+    this.allowedServices,
+    this.disableProgrammaticSignin,
+  });
+
+  AccessRestrictions.fromJson(core.Map json_)
+      : this(
+          allowedServices: json_.containsKey('allowedServices')
+              ? (json_['allowedServices'] as core.List)
+                  .map((value) => ServiceConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          disableProgrammaticSignin:
+              json_.containsKey('disableProgrammaticSignin')
+                  ? json_['disableProgrammaticSignin'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowedServices != null) 'allowedServices': allowedServices!,
+        if (disableProgrammaticSignin != null)
+          'disableProgrammaticSignin': disableProgrammaticSignin!,
+      };
+}
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -5267,6 +5244,17 @@ class GoogleIamAdminV1WorkforcePoolProviderOidc {
   /// Required.
   core.String? issuerUri;
 
+  /// OIDC JWKs in JSON String format.
+  ///
+  /// For details on the definition of a JWK, see
+  /// https://tools.ietf.org/html/rfc7517. If not set, the `jwks_uri` from the
+  /// discovery document(fetched from the .well-known path of the `issuer_uri`)
+  /// will be used. Currently, RSA and EC asymmetric keys are supported. The JWK
+  /// must use following format and include only the following fields: { "keys":
+  /// \[ { "kty": "RSA/EC", "alg": "", "use": "sig", "kid": "", "n": "", "e":
+  /// "", "x": "", "y": "", "crv": "" } \] }
+  core.String? jwksJson;
+
   /// Configuration for web single sign-on for the OIDC provider.
   ///
   /// Here, web sign-in refers to console sign-in and gcloud sign-in through the
@@ -5279,6 +5267,7 @@ class GoogleIamAdminV1WorkforcePoolProviderOidc {
     this.clientId,
     this.clientSecret,
     this.issuerUri,
+    this.jwksJson,
     this.webSsoConfig,
   });
 
@@ -5294,6 +5283,9 @@ class GoogleIamAdminV1WorkforcePoolProviderOidc {
           issuerUri: json_.containsKey('issuerUri')
               ? json_['issuerUri'] as core.String
               : null,
+          jwksJson: json_.containsKey('jwksJson')
+              ? json_['jwksJson'] as core.String
+              : null,
           webSsoConfig: json_.containsKey('webSsoConfig')
               ? GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig.fromJson(
                   json_['webSsoConfig'] as core.Map<core.String, core.dynamic>)
@@ -5304,6 +5296,7 @@ class GoogleIamAdminV1WorkforcePoolProviderOidc {
         if (clientId != null) 'clientId': clientId!,
         if (clientSecret != null) 'clientSecret': clientSecret!,
         if (issuerUri != null) 'issuerUri': issuerUri!,
+        if (jwksJson != null) 'jwksJson': jwksJson!,
         if (webSsoConfig != null) 'webSsoConfig': webSsoConfig!,
       };
 }
@@ -5444,7 +5437,7 @@ class GoogleIamAdminV1WorkforcePoolProviderSaml {
   /// constraints: 1) Must contain an Identity Provider Entity ID. 2) Must
   /// contain at least one non-expired signing key certificate. 3) For each
   /// signing key: a) Valid from should be no more than 7 days from now. b)
-  /// Valid to should be no more than 14 years in the future. 4) Up to 3 IdP
+  /// Valid to should be no more than 15 years in the future. 4) Up to 3 IdP
   /// signing keys are allowed in the metadata xml. When updating the provider's
   /// metadata xml, at least one non-expired signing key must overlap with the
   /// existing metadata. This requirement is skipped if there are no non-expired
@@ -6104,7 +6097,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -6288,23 +6281,23 @@ class Permission {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -6726,7 +6719,7 @@ class Saml {
   /// constraints: 1) Must contain an Identity Provider Entity ID. 2) Must
   /// contain at least one non-expired signing key certificate. 3) For each
   /// signing key: a) Valid from should be no more than 7 days from now. b)
-  /// Valid to should be no more than 14 years in the future. 4) Upto 3 IdP
+  /// Valid to should be no more than 15 years in the future. 4) Upto 3 IdP
   /// signing keys are allowed in the metadata xml. When updating the provider's
   /// metadata xml, at lease one non-expired signing key must overlap with the
   /// existing metadata. This requirement is skipped if there are no non-expired
@@ -7042,6 +7035,31 @@ class ServiceAccountKey {
         if (publicKeyData != null) 'publicKeyData': publicKeyData!,
         if (validAfterTime != null) 'validAfterTime': validAfterTime!,
         if (validBeforeTime != null) 'validBeforeTime': validBeforeTime!,
+      };
+}
+
+/// Configuration for a service.
+class ServiceConfig {
+  /// Domain name of the service.
+  ///
+  /// Example: console.cloud.google
+  ///
+  /// Optional.
+  core.String? domain;
+
+  ServiceConfig({
+    this.domain,
+  });
+
+  ServiceConfig.fromJson(core.Map json_)
+      : this(
+          domain: json_.containsKey('domain')
+              ? json_['domain'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (domain != null) 'domain': domain!,
       };
 }
 
@@ -7379,6 +7397,15 @@ class UploadServiceAccountKeyRequest {
 /// Provides namespaces for federated users that can be referenced in IAM
 /// policies.
 class WorkforcePool {
+  /// Configure access restrictions on the workforce pool users.
+  ///
+  /// This is an optional field. If specified web sign-in can be restricted to
+  /// given set of services or programmatic sign-in can be disabled for pool
+  /// users.
+  ///
+  /// Optional.
+  AccessRestrictions? accessRestrictions;
+
   /// A user-specified description of the pool.
   ///
   /// Cannot exceed 256 characters.
@@ -7441,6 +7468,7 @@ class WorkforcePool {
   core.String? state;
 
   WorkforcePool({
+    this.accessRestrictions,
     this.description,
     this.disabled,
     this.displayName,
@@ -7453,6 +7481,10 @@ class WorkforcePool {
 
   WorkforcePool.fromJson(core.Map json_)
       : this(
+          accessRestrictions: json_.containsKey('accessRestrictions')
+              ? AccessRestrictions.fromJson(json_['accessRestrictions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
@@ -7477,6 +7509,8 @@ class WorkforcePool {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (accessRestrictions != null)
+          'accessRestrictions': accessRestrictions!,
         if (description != null) 'description': description!,
         if (disabled != null) 'disabled': disabled!,
         if (displayName != null) 'displayName': displayName!,
@@ -7747,7 +7781,7 @@ class WorkforcePoolProviderKey {
       };
 }
 
-/// Represents a collection of external workload identities.
+/// Represents a collection of workload identities.
 ///
 /// You can define IAM policies to grant these identities access to Google Cloud
 /// resources.

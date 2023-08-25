@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230730",
+    "revision": "20231022",
     "rootUrl": "https://recommender.googleapis.com/",
     "servicePath": "",
     "title": "Recommender API",
@@ -455,7 +455,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "Name of the recommendation.",
+                                                    "description": "Required. Name of the recommendation.",
                                                     "location": "path",
                                                     "pattern": "^billingAccounts/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
                                                     "required": true,
@@ -751,7 +751,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "Name of the recommendation.",
+                                                    "description": "Required. Name of the recommendation.",
                                                     "location": "path",
                                                     "pattern": "^folders/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
                                                     "required": true,
@@ -1179,7 +1179,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "Name of the recommendation.",
+                                                    "description": "Required. Name of the recommendation.",
                                                     "location": "path",
                                                     "pattern": "^organizations/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
                                                     "required": true,
@@ -1607,7 +1607,7 @@
                                             ],
                                             "parameters": {
                                                 "name": {
-                                                    "description": "Name of the recommendation.",
+                                                    "description": "Required. Name of the recommendation.",
                                                     "location": "path",
                                                     "pattern": "^projects/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
                                                     "required": true,

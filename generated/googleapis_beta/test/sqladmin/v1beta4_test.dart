@@ -756,6 +756,7 @@ api.DatabaseInstance buildDatabaseInstance() {
     o.name = 'foo';
     o.onPremisesConfiguration = buildOnPremisesConfiguration();
     o.outOfDiskReport = buildSqlOutOfDiskReport();
+    o.primaryDnsName = 'foo';
     o.project = 'foo';
     o.pscServiceAttachmentLink = 'foo';
     o.region = 'foo';
@@ -771,6 +772,7 @@ api.DatabaseInstance buildDatabaseInstance() {
     o.settings = buildSettings();
     o.state = 'foo';
     o.suspensionReason = buildUnnamed6();
+    o.writeEndpoint = 'foo';
   }
   buildCounterDatabaseInstance--;
   return o;
@@ -851,6 +853,10 @@ void checkDatabaseInstance(api.DatabaseInstance o) {
     checkOnPremisesConfiguration(o.onPremisesConfiguration!);
     checkSqlOutOfDiskReport(o.outOfDiskReport!);
     unittest.expect(
+      o.primaryDnsName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.project!,
       unittest.equals('foo'),
     );
@@ -889,6 +895,10 @@ void checkDatabaseInstance(api.DatabaseInstance o) {
       unittest.equals('foo'),
     );
     checkUnnamed6(o.suspensionReason!);
+    unittest.expect(
+      o.writeEndpoint!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterDatabaseInstance--;
 }
@@ -2088,6 +2098,7 @@ api.IpConfiguration buildIpConfiguration() {
     o.privateNetwork = 'foo';
     o.pscConfig = buildPscConfig();
     o.requireSsl = true;
+    o.sslMode = 'foo';
   }
   buildCounterIpConfiguration--;
   return o;
@@ -2110,6 +2121,10 @@ void checkIpConfiguration(api.IpConfiguration o) {
     );
     checkPscConfig(o.pscConfig!);
     unittest.expect(o.requireSsl!, unittest.isTrue);
+    unittest.expect(
+      o.sslMode!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterIpConfiguration--;
 }
@@ -2700,6 +2715,7 @@ api.ReplicaConfiguration buildReplicaConfiguration() {
   final o = api.ReplicaConfiguration();
   buildCounterReplicaConfiguration++;
   if (buildCounterReplicaConfiguration < 3) {
+    o.cascadableReplica = true;
     o.failoverTarget = true;
     o.kind = 'foo';
     o.mysqlReplicaConfiguration = buildMySqlReplicaConfiguration();
@@ -2711,6 +2727,7 @@ api.ReplicaConfiguration buildReplicaConfiguration() {
 void checkReplicaConfiguration(api.ReplicaConfiguration o) {
   buildCounterReplicaConfiguration++;
   if (buildCounterReplicaConfiguration < 3) {
+    unittest.expect(o.cascadableReplica!, unittest.isTrue);
     unittest.expect(o.failoverTarget!, unittest.isTrue);
     unittest.expect(
       o.kind!,
@@ -7005,6 +7022,7 @@ void main() {
       final res = api.SQLAdminApi(mock).instances;
       final arg_project = 'foo';
       final arg_instance = 'foo';
+      final arg_failover_1 = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -7066,6 +7084,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['failover']!.first,
+          unittest.equals('$arg_failover_1'),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -7077,7 +7099,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.promoteReplica(arg_project, arg_instance,
-          $fields: arg_$fields);
+          failover_1: arg_failover_1, $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 
@@ -7663,6 +7685,92 @@ void main() {
       }), true);
       final response = await res.stopReplica(arg_project, arg_instance,
           $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--switchover', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).instances;
+      final arg_project = 'foo';
+      final arg_instance = 'foo';
+      final arg_dbTimeout = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('sql/v1beta4/projects/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/instances/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('/instances/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/switchover', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_instance'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('/switchover'),
+        );
+        pathOffset += 11;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['dbTimeout']!.first,
+          unittest.equals(arg_dbTimeout),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.switchover(arg_project, arg_instance,
+          dbTimeout: arg_dbTimeout, $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 

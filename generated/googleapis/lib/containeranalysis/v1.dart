@@ -4368,23 +4368,23 @@ class PackageOccurrence {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Associates a list of `members`, or principals, with a `role`.
   ///
@@ -5728,6 +5728,9 @@ class VulnerabilityOccurrence {
   /// - "CRITICAL" : Critical severity.
   core.String? effectiveSeverity;
 
+  /// Occurrence-specific extra details about the vulnerability.
+  core.String? extraDetails;
+
   /// Whether at least one of the affected packages has a fix available.
   ///
   /// Output only.
@@ -5777,6 +5780,7 @@ class VulnerabilityOccurrence {
     this.cvssVersion,
     this.cvssv3,
     this.effectiveSeverity,
+    this.extraDetails,
     this.fixAvailable,
     this.longDescription,
     this.packageIssue,
@@ -5805,6 +5809,9 @@ class VulnerabilityOccurrence {
               : null,
           effectiveSeverity: json_.containsKey('effectiveSeverity')
               ? json_['effectiveSeverity'] as core.String
+              : null,
+          extraDetails: json_.containsKey('extraDetails')
+              ? json_['extraDetails'] as core.String
               : null,
           fixAvailable: json_.containsKey('fixAvailable')
               ? json_['fixAvailable'] as core.bool
@@ -5843,6 +5850,7 @@ class VulnerabilityOccurrence {
         if (cvssVersion != null) 'cvssVersion': cvssVersion!,
         if (cvssv3 != null) 'cvssv3': cvssv3!,
         if (effectiveSeverity != null) 'effectiveSeverity': effectiveSeverity!,
+        if (extraDetails != null) 'extraDetails': extraDetails!,
         if (fixAvailable != null) 'fixAvailable': fixAvailable!,
         if (longDescription != null) 'longDescription': longDescription!,
         if (packageIssue != null) 'packageIssue': packageIssue!,

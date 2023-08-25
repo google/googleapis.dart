@@ -169,6 +169,9 @@ class PlatformSummary {
   ///
   /// No longer populated, because there is no longer any semantic difference
   /// between sites in different regions.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? region;
 
   /// A link to the full Ad Experience Report for the site on this platform..

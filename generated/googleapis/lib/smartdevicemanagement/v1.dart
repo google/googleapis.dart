@@ -41,12 +41,13 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Allow select enterprise partners to access, control, and manage Google and
 /// Nest devices programmatically.
 class SmartDeviceManagementApi {
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
+  static const cloudPlatformScope =
+      'https://www.googleapis.com/auth/cloud-platform';
+
   /// See and/or control the devices that you selected
   static const sdmServiceScope = 'https://www.googleapis.com/auth/sdm.service';
-
-  /// See your primary Google Account email address
-  static const userinfoEmailScope =
-      'https://www.googleapis.com/auth/userinfo.email';
 
   final commons.ApiRequester _requester;
 

@@ -11,19 +11,18 @@
 // ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Game Services API - v1
+/// Backup and DR Service API - v1
 ///
-/// Deploy and manage infrastructure for global multiplayer gaming experiences.
+/// For more information, see
+/// <https://cloud.google.com/backup-disaster-recovery>
 ///
-/// For more information, see <https://cloud.google.com/solutions/gaming/>
-///
-/// Create an instance of [GameServicesApi] to access these resources:
+/// Create an instance of [BackupdrApi] to access these resources:
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
-///     - [ProjectsLocationsGameServerDeploymentsResource]
+///     - [ProjectsLocationsManagementServersResource]
 ///     - [ProjectsLocationsOperationsResource]
-library gameservices_v1;
+library backupdr_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -38,8 +37,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// Deploy and manage infrastructure for global multiplayer gaming experiences.
-class GameServicesApi {
+class BackupdrApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
   static const cloudPlatformScope =
@@ -49,8 +47,8 @@ class GameServicesApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  GameServicesApi(http.Client client,
-      {core.String rootUrl = 'https://gameservices.googleapis.com/',
+  BackupdrApi(http.Client client,
+      {core.String rootUrl = 'https://backupdr.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
@@ -68,8 +66,8 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsGameServerDeploymentsResource get gameServerDeployments =>
-      ProjectsLocationsGameServerDeploymentsResource(_requester);
+  ProjectsLocationsManagementServersResource get managementServers =>
+      ProjectsLocationsManagementServersResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
 
@@ -121,9 +119,6 @@ class ProjectsLocationsResource {
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
   ///
-  /// [includeUnrevealedLocations] - If true, the returned list will include
-  /// locations which are not yet revealed.
-  ///
   /// [pageSize] - The maximum number of results to return. If not set, the
   /// service selects a default.
   ///
@@ -143,15 +138,12 @@ class ProjectsLocationsResource {
   async.Future<ListLocationsResponse> list(
     core.String name, {
     core.String? filter,
-    core.bool? includeUnrevealedLocations,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
-      if (includeUnrevealedLocations != null)
-        'includeUnrevealedLocations': ['${includeUnrevealedLocations}'],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -169,11 +161,162 @@ class ProjectsLocationsResource {
   }
 }
 
-class ProjectsLocationsGameServerDeploymentsResource {
+class ProjectsLocationsManagementServersResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsGameServerDeploymentsResource(commons.ApiRequester client)
+  ProjectsLocationsManagementServersResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Creates a new ManagementServer in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The management server project and location in the
+  /// format `projects/{project_id}/locations/{location}`. In Cloud Backup and
+  /// DR locations map to GCP regions, for example **us-central1**.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [managementServerId] - Required. The name of the management server to
+  /// create. The name must be unique for the specified project and location.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    ManagementServer request,
+    core.String parent, {
+    core.String? managementServerId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (managementServerId != null)
+        'managementServerId': [managementServerId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/managementServers';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single ManagementServer.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/managementServers/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single ManagementServer.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the management server resource name, in the
+  /// format
+  /// `projects/{project_id}/locations/{location}/managementServers/{resource_name}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/managementServers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ManagementServer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ManagementServer> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ManagementServer.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Gets the access control policy for a resource.
   ///
@@ -187,7 +330,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
   /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
   /// the appropriate value for this field.
   /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+$`.
+  /// `^projects/\[^/\]+/locations/\[^/\]+/managementServers/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The maximum policy version
   /// that will be used to format the policy. Valid values are 0, 1, and 3.
@@ -232,6 +375,64 @@ class ProjectsLocationsGameServerDeploymentsResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Lists ManagementServers in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location for which to retrieve
+  /// management servers information, in the format
+  /// `projects/{project_id}/locations/{location}`. In Cloud BackupDR, locations
+  /// map to GCP regions, for example **us-central1**. To retrieve management
+  /// servers for all locations, use "-" for the `{location}` value.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results.
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListManagementServersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListManagementServersResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/managementServers';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListManagementServersResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Sets the access control policy on the specified resource.
   ///
   /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
@@ -246,7 +447,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
   /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
   /// the appropriate value for this field.
   /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+$`.
+  /// `^projects/\[^/\]+/locations/\[^/\]+/managementServers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -295,7 +496,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
   /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
   /// the appropriate value for this field.
   /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/gameServerDeployments/\[^/\]+$`.
+  /// `^projects/\[^/\]+/locations/\[^/\]+/managementServers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -574,82 +775,10 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-class AuditLogConfig {
-  /// Specifies the identities that do not cause logging for this type of
-  /// permission.
-  ///
-  /// Follows the same format of Binding.members.
-  core.List<core.String>? exemptedMembers;
-  core.bool? ignoreChildExemptions;
-
-  /// The log type that this config enables.
-  /// Possible string values are:
-  /// - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
-  /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
-  /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
-  /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String? logType;
-
-  AuditLogConfig({
-    this.exemptedMembers,
-    this.ignoreChildExemptions,
-    this.logType,
-  });
-
-  AuditLogConfig.fromJson(core.Map json_)
-      : this(
-          exemptedMembers: json_.containsKey('exemptedMembers')
-              ? (json_['exemptedMembers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          ignoreChildExemptions: json_.containsKey('ignoreChildExemptions')
-              ? json_['ignoreChildExemptions'] as core.bool
-              : null,
-          logType: json_.containsKey('logType')
-              ? json_['logType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
-        if (ignoreChildExemptions != null)
-          'ignoreChildExemptions': ignoreChildExemptions!,
-        if (logType != null) 'logType': logType!,
-      };
-}
-
-/// Authorization-related information used by Cloud Audit Logging.
-class AuthorizationLoggingOptions {
-  /// The type of the permission that was checked.
-  /// Possible string values are:
-  /// - "PERMISSION_TYPE_UNSPECIFIED" : Default. Should not be used.
-  /// - "ADMIN_READ" : A read of admin (meta) data.
-  /// - "ADMIN_WRITE" : A write of admin (meta) data.
-  /// - "DATA_READ" : A read of standard data.
-  /// - "DATA_WRITE" : A write of standard data.
-  core.String? permissionType;
-
-  AuthorizationLoggingOptions({
-    this.permissionType,
-  });
-
-  AuthorizationLoggingOptions.fromJson(core.Map json_)
-      : this(
-          permissionType: json_.containsKey('permissionType')
-              ? json_['permissionType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissionType != null) 'permissionType': permissionType!,
-      };
-}
+typedef AuditLogConfig = $AuditLogConfig;
 
 /// Associates `members`, or principals, with a `role`.
 class Binding {
-  core.String? bindingId;
-
   /// The condition that is associated with this binding.
   ///
   /// If the condition evaluates to `true`, then this binding applies to the
@@ -705,7 +834,6 @@ class Binding {
   core.String? role;
 
   Binding({
-    this.bindingId,
     this.condition,
     this.members,
     this.role,
@@ -713,9 +841,6 @@ class Binding {
 
   Binding.fromJson(core.Map json_)
       : this(
-          bindingId: json_.containsKey('bindingId')
-              ? json_['bindingId'] as core.String
-              : null,
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
@@ -729,7 +854,6 @@ class Binding {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bindingId != null) 'bindingId': bindingId!,
         if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
@@ -738,269 +862,6 @@ class Binding {
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
-
-/// Write a Cloud Audit log
-class CloudAuditOptions {
-  /// Information used by the Cloud Audit Logging pipeline.
-  AuthorizationLoggingOptions? authorizationLoggingOptions;
-
-  /// The log_name to populate in the Cloud Audit Record.
-  /// Possible string values are:
-  /// - "UNSPECIFIED_LOG_NAME" : Default. Should not be used.
-  /// - "ADMIN_ACTIVITY" : Corresponds to "cloudaudit.googleapis.com/activity"
-  /// - "DATA_ACCESS" : Corresponds to "cloudaudit.googleapis.com/data_access"
-  core.String? logName;
-
-  CloudAuditOptions({
-    this.authorizationLoggingOptions,
-    this.logName,
-  });
-
-  CloudAuditOptions.fromJson(core.Map json_)
-      : this(
-          authorizationLoggingOptions:
-              json_.containsKey('authorizationLoggingOptions')
-                  ? AuthorizationLoggingOptions.fromJson(
-                      json_['authorizationLoggingOptions']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          logName: json_.containsKey('logName')
-              ? json_['logName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (authorizationLoggingOptions != null)
-          'authorizationLoggingOptions': authorizationLoggingOptions!,
-        if (logName != null) 'logName': logName!,
-      };
-}
-
-/// A condition to be met.
-class Condition {
-  /// Trusted attributes supplied by the IAM system.
-  /// Possible string values are:
-  /// - "NO_ATTR" : Default non-attribute.
-  /// - "AUTHORITY" : Either principal or (if present) authority selector.
-  /// - "ATTRIBUTION" : The principal (even if an authority selector is
-  /// present), which must only be used for attribution, not authorization.
-  /// - "SECURITY_REALM" : Any of the security realms in the IAMContext
-  /// (go/security-realms). When used with IN, the condition indicates "any of
-  /// the request's realms match one of the given values; with NOT_IN, "none of
-  /// the realms match any of the given values". Note that a value can be: -
-  /// 'self:campus' (i.e., clients that are in the same campus) - 'self:metro'
-  /// (i.e., clients that are in the same metro) - 'self:cloud-region' (i.e.,
-  /// allow connections from clients that are in the same cloud region) -
-  /// 'self:prod-region' (i.e., allow connections from clients that are in the
-  /// same prod region) - 'guardians' (i.e., allow connections from its guardian
-  /// realms. See go/security-realms-glossary#guardian for more information.) -
-  /// 'self' \[DEPRECATED\] (i.e., allow connections from clients that are in
-  /// the same security realm, which is currently but not guaranteed to be
-  /// campus-sized) - a realm (e.g., 'campus-abc') - a realm group (e.g.,
-  /// 'realms-for-borg-cell-xx', see: go/realm-groups) A match is determined by
-  /// a realm group membership check performed by a RealmAclRep object
-  /// (go/realm-acl-howto). It is not permitted to grant access based on the
-  /// *absence* of a realm, so realm conditions can only be used in a "positive"
-  /// context (e.g., ALLOW/IN or DENY/NOT_IN).
-  /// - "APPROVER" : An approver (distinct from the requester) that has
-  /// authorized this request. When used with IN, the condition indicates that
-  /// one of the approvers associated with the request matches the specified
-  /// principal, or is a member of the specified group. Approvers can only grant
-  /// additional access, and are thus only used in a strictly positive context
-  /// (e.g. ALLOW/IN or DENY/NOT_IN).
-  /// - "JUSTIFICATION_TYPE" : What types of justifications have been supplied
-  /// with this request. String values should match enum names from
-  /// security.credentials.JustificationType, e.g. "MANUAL_STRING". It is not
-  /// permitted to grant access based on the *absence* of a justification, so
-  /// justification conditions can only be used in a "positive" context (e.g.,
-  /// ALLOW/IN or DENY/NOT_IN). Multiple justifications, e.g., a Buganizer ID
-  /// and a manually-entered reason, are normal and supported.
-  /// - "CREDENTIALS_TYPE" : What type of credentials have been supplied with
-  /// this request. String values should match enum names from
-  /// security_loas_l2.CredentialsType - currently, only CREDS_TYPE_EMERGENCY is
-  /// supported. It is not permitted to grant access based on the *absence* of a
-  /// credentials type, so the conditions can only be used in a "positive"
-  /// context (e.g., ALLOW/IN or DENY/NOT_IN).
-  /// - "CREDS_ASSERTION" : EXPERIMENTAL -- DO NOT USE. The conditions can only
-  /// be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN).
-  core.String? iam;
-
-  /// An operator to apply the subject with.
-  /// Possible string values are:
-  /// - "NO_OP" : Default no-op.
-  /// - "EQUALS" : DEPRECATED. Use IN instead.
-  /// - "NOT_EQUALS" : DEPRECATED. Use NOT_IN instead.
-  /// - "IN" : The condition is true if the subject (or any element of it if it
-  /// is a set) matches any of the supplied values.
-  /// - "NOT_IN" : The condition is true if the subject (or every element of it
-  /// if it is a set) matches none of the supplied values.
-  /// - "DISCHARGED" : Subject is discharged
-  core.String? op;
-
-  /// Trusted attributes discharged by the service.
-  core.String? svc;
-
-  /// Trusted attributes supplied by any service that owns resources and uses
-  /// the IAM system for access control.
-  /// Possible string values are:
-  /// - "NO_ATTR" : Default non-attribute type
-  /// - "REGION" : Region of the resource
-  /// - "SERVICE" : Service name
-  /// - "NAME" : Resource name
-  /// - "IP" : IP address of the caller
-  core.String? sys;
-
-  /// The objects of the condition.
-  core.List<core.String>? values;
-
-  Condition({
-    this.iam,
-    this.op,
-    this.svc,
-    this.sys,
-    this.values,
-  });
-
-  Condition.fromJson(core.Map json_)
-      : this(
-          iam: json_.containsKey('iam') ? json_['iam'] as core.String : null,
-          op: json_.containsKey('op') ? json_['op'] as core.String : null,
-          svc: json_.containsKey('svc') ? json_['svc'] as core.String : null,
-          sys: json_.containsKey('sys') ? json_['sys'] as core.String : null,
-          values: json_.containsKey('values')
-              ? (json_['values'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (iam != null) 'iam': iam!,
-        if (op != null) 'op': op!,
-        if (svc != null) 'svc': svc!,
-        if (sys != null) 'sys': sys!,
-        if (values != null) 'values': values!,
-      };
-}
-
-/// Increment a streamz counter with the specified metric and field names.
-///
-/// Metric names should start with a '/', generally be lowercase-only, and end
-/// in "_count". Field names should not contain an initial slash. The actual
-/// exported metric names will have "/iam/policy" prepended. Field names
-/// correspond to IAM request parameters and field values are their respective
-/// values. Supported field names: - "authority", which is "\[token\]" if
-/// IAMContext.token is present, otherwise the value of
-/// IAMContext.authority_selector if present, and otherwise a representation of
-/// IAMContext.principal; or - "iam_principal", a representation of
-/// IAMContext.principal even if a token or authority selector is present; or -
-/// "" (empty string), resulting in a counter with no fields. Examples: counter
-/// { metric: "/debug_access_count" field: "iam_principal" } ==\> increment
-/// counter /iam/policy/debug_access_count {iam_principal=\[value of
-/// IAMContext.principal\]}
-class CounterOptions {
-  /// Custom fields.
-  core.List<CustomField>? customFields;
-
-  /// The field value to attribute.
-  core.String? field;
-
-  /// The metric to update.
-  core.String? metric;
-
-  CounterOptions({
-    this.customFields,
-    this.field,
-    this.metric,
-  });
-
-  CounterOptions.fromJson(core.Map json_)
-      : this(
-          customFields: json_.containsKey('customFields')
-              ? (json_['customFields'] as core.List)
-                  .map((value) => CustomField.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          field:
-              json_.containsKey('field') ? json_['field'] as core.String : null,
-          metric: json_.containsKey('metric')
-              ? json_['metric'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customFields != null) 'customFields': customFields!,
-        if (field != null) 'field': field!,
-        if (metric != null) 'metric': metric!,
-      };
-}
-
-/// Custom fields.
-///
-/// These can be used to create a counter with arbitrary field/value pairs. See:
-/// go/rpcsp-custom-fields.
-class CustomField {
-  /// Name is the field name.
-  core.String? name;
-
-  /// Value is the field value.
-  ///
-  /// It is important that in contrast to the CounterOptions.field, the value
-  /// here is a constant that is not derived from the IAMContext.
-  core.String? value;
-
-  CustomField({
-    this.name,
-    this.value,
-  });
-
-  CustomField.fromJson(core.Map json_)
-      : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (value != null) 'value': value!,
-      };
-}
-
-/// Write a Data Access (Gin) log
-class DataAccessOptions {
-  ///
-  /// Possible string values are:
-  /// - "LOG_MODE_UNSPECIFIED" : Client is not required to write a partial Gin
-  /// log immediately after the authorization check. If client chooses to write
-  /// one and it fails, client may either fail open (allow the operation to
-  /// continue) or fail closed (handle as a DENY outcome).
-  /// - "LOG_FAIL_CLOSED" : The application's operation in the context of which
-  /// this authorization check is being made may only be performed if it is
-  /// successfully logged to Gin. For instance, the authorization library may
-  /// satisfy this obligation by emitting a partial log entry at authorization
-  /// check time and only returning ALLOW to the application if it succeeds. If
-  /// a matching Rule has this directive, but the client has not indicated that
-  /// it will honor such requirements, then the IAM check will result in
-  /// authorization failure by setting CheckPolicyResponse.success=false.
-  core.String? logMode;
-
-  DataAccessOptions({
-    this.logMode,
-  });
-
-  DataAccessOptions.fromJson(core.Map json_)
-      : this(
-          logMode: json_.containsKey('logMode')
-              ? json_['logMode'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (logMode != null) 'logMode': logMode!,
-      };
-}
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -1062,6 +923,55 @@ class ListLocationsResponse {
       };
 }
 
+/// Response message for listing management servers.
+class ListManagementServersResponse {
+  /// The list of ManagementServer instances in the project for the specified
+  /// location.
+  ///
+  /// If the `{location}` value in the request is "-", the response contains a
+  /// list of instances from all locations. In case any location is unreachable,
+  /// the response will only return management servers in reachable locations
+  /// and the 'unreachable' field will be populated with a list of unreachable
+  /// locations.
+  core.List<ManagementServer>? managementServers;
+
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListManagementServersResponse({
+    this.managementServers,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListManagementServersResponse.fromJson(core.Map json_)
+      : this(
+          managementServers: json_.containsKey('managementServers')
+              ? (json_['managementServers'] as core.List)
+                  .map((value) => ManagementServer.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (managementServers != null) 'managementServers': managementServers!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
@@ -1097,43 +1007,229 @@ class ListOperationsResponse {
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
-/// Specifies what kind of log the caller must write
-class LogConfig {
-  /// Cloud audit options.
-  CloudAuditOptions? cloudAudit;
+/// ManagementServer describes a single BackupDR ManagementServer instance.
+class ManagementServer {
+  /// The time when the instance was created.
+  ///
+  /// Output only.
+  core.String? createTime;
 
-  /// Counter options.
-  CounterOptions? counter;
+  /// The description of the ManagementServer instance (2048 characters or
+  /// less).
+  ///
+  /// Optional.
+  core.String? description;
 
-  /// Data access options.
-  DataAccessOptions? dataAccess;
+  /// Server specified ETag for the ManagementServer resource to prevent
+  /// simultaneous updates from overwiting each other.
+  ///
+  /// Optional.
+  core.String? etag;
 
-  LogConfig({
-    this.cloudAudit,
-    this.counter,
-    this.dataAccess,
+  /// Resource labels to represent user provided metadata.
+  ///
+  /// Labels currently defined: 1. migrate_from_go= If set to true, the MS is
+  /// created in migration ready mode.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The hostname or ip address of the exposed AGM endpoints, used by clients
+  /// to connect to AGM/RD graphical user interface and APIs.
+  ///
+  /// Output only.
+  ManagementURI? managementUri;
+
+  /// The resource name.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// VPC networks to which the ManagementServer instance is connected.
+  ///
+  /// For this version, only a single network is supported.
+  ///
+  /// Required.
+  core.List<NetworkConfig>? networks;
+
+  /// The OAuth 2.0 client id is required to make API calls to the BackupDR
+  /// instance API of this ManagementServer.
+  ///
+  /// This is the value that should be provided in the ‘aud’ field of the OIDC
+  /// ID Token (see openid specification
+  /// https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
+  ///
+  /// Output only.
+  core.String? oauth2ClientId;
+
+  /// The ManagementServer state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "INSTANCE_STATE_UNSPECIFIED" : State not set.
+  /// - "CREATING" : The instance is being created.
+  /// - "READY" : The instance has been created and is fully usable.
+  /// - "UPDATING" : The instance configuration is being updated. Certain kinds
+  /// of updates may cause the instance to become unusable while the update is
+  /// in progress.
+  /// - "DELETING" : The instance is being deleted.
+  /// - "REPAIRING" : The instance is being repaired and may be unstable.
+  /// - "MAINTENANCE" : Maintenance is being performed on this instance.
+  /// - "ERROR" : The instance is experiencing an issue and might be unusable.
+  /// You can get further details from the statusMessage field of Instance
+  /// resource.
+  core.String? state;
+
+  /// The type of the ManagementServer resource.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "INSTANCE_TYPE_UNSPECIFIED" : Instance type is not mentioned.
+  /// - "BACKUP_RESTORE" : Instance for backup and restore management (i.e.,
+  /// AGM).
+  core.String? type;
+
+  /// The time when the instance was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  ManagementServer({
+    this.createTime,
+    this.description,
+    this.etag,
+    this.labels,
+    this.managementUri,
+    this.name,
+    this.networks,
+    this.oauth2ClientId,
+    this.state,
+    this.type,
+    this.updateTime,
   });
 
-  LogConfig.fromJson(core.Map json_)
+  ManagementServer.fromJson(core.Map json_)
       : this(
-          cloudAudit: json_.containsKey('cloudAudit')
-              ? CloudAuditOptions.fromJson(
-                  json_['cloudAudit'] as core.Map<core.String, core.dynamic>)
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
-          counter: json_.containsKey('counter')
-              ? CounterOptions.fromJson(
-                  json_['counter'] as core.Map<core.String, core.dynamic>)
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
               : null,
-          dataAccess: json_.containsKey('dataAccess')
-              ? DataAccessOptions.fromJson(
-                  json_['dataAccess'] as core.Map<core.String, core.dynamic>)
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          managementUri: json_.containsKey('managementUri')
+              ? ManagementURI.fromJson(
+                  json_['managementUri'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          networks: json_.containsKey('networks')
+              ? (json_['networks'] as core.List)
+                  .map((value) => NetworkConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          oauth2ClientId: json_.containsKey('oauth2ClientId')
+              ? json_['oauth2ClientId'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudAudit != null) 'cloudAudit': cloudAudit!,
-        if (counter != null) 'counter': counter!,
-        if (dataAccess != null) 'dataAccess': dataAccess!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (managementUri != null) 'managementUri': managementUri!,
+        if (name != null) 'name': name!,
+        if (networks != null) 'networks': networks!,
+        if (oauth2ClientId != null) 'oauth2ClientId': oauth2ClientId!,
+        if (state != null) 'state': state!,
+        if (type != null) 'type': type!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// ManagementURI for the Management Server resource.
+class ManagementURI {
+  /// The ManagementServer AGM/RD API URL.
+  ///
+  /// Output only.
+  core.String? api;
+
+  /// The ManagementServer AGM/RD WebUI URL.
+  ///
+  /// Output only.
+  core.String? webUi;
+
+  ManagementURI({
+    this.api,
+    this.webUi,
+  });
+
+  ManagementURI.fromJson(core.Map json_)
+      : this(
+          api: json_.containsKey('api') ? json_['api'] as core.String : null,
+          webUi:
+              json_.containsKey('webUi') ? json_['webUi'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (api != null) 'api': api!,
+        if (webUi != null) 'webUi': webUi!,
+      };
+}
+
+/// Network configuration for ManagementServer instance.
+class NetworkConfig {
+  /// The resource name of the Google Compute Engine VPC network to which the
+  /// ManagementServer instance is connected.
+  ///
+  /// Optional.
+  core.String? network;
+
+  /// The network connect mode of the ManagementServer instance.
+  ///
+  /// For this version, only PRIVATE_SERVICE_ACCESS is supported.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PEERING_MODE_UNSPECIFIED" : Peering mode not set.
+  /// - "PRIVATE_SERVICE_ACCESS" : Connect using Private Service Access to the
+  /// Management Server. Private services access provides an IP address range
+  /// for multiple Google Cloud services, including Cloud BackupDR.
+  core.String? peeringMode;
+
+  NetworkConfig({
+    this.network,
+    this.peeringMode,
+  });
+
+  NetworkConfig.fromJson(core.Map json_)
+      : this(
+          network: json_.containsKey('network')
+              ? json_['network'] as core.String
+              : null,
+          peeringMode: json_.containsKey('peeringMode')
+              ? json_['peeringMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (network != null) 'network': network!,
+        if (peeringMode != null) 'peeringMode': peeringMode!,
       };
 }
 
@@ -1167,7 +1263,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -1227,23 +1323,23 @@ class Operation {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -1280,16 +1376,6 @@ class Policy {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// If more than one rule is specified, the rules are applied in the following
-  /// manner: - All matching LOG rules are always applied.
-  ///
-  /// - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging
-  /// will be applied if one or more matching rule requires logging. -
-  /// Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is
-  /// granted. Logging will be applied if one or more matching rule requires
-  /// logging. - Otherwise, if no rule applies, permission is denied.
-  core.List<Rule>? rules;
-
   /// Specifies the format of the policy.
   ///
   /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
@@ -1313,7 +1399,6 @@ class Policy {
     this.auditConfigs,
     this.bindings,
     this.etag,
-    this.rules,
     this.version,
   });
 
@@ -1332,12 +1417,6 @@ class Policy {
                   .toList()
               : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
-          rules: json_.containsKey('rules')
-              ? (json_['rules'] as core.List)
-                  .map((value) => Rule.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
           version: json_.containsKey('version')
               ? json_['version'] as core.int
               : null,
@@ -1347,109 +1426,7 @@ class Policy {
         if (auditConfigs != null) 'auditConfigs': auditConfigs!,
         if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
-        if (rules != null) 'rules': rules!,
         if (version != null) 'version': version!,
-      };
-}
-
-/// A rule to be applied in a Policy.
-class Rule {
-  /// Required
-  /// Possible string values are:
-  /// - "NO_ACTION" : Default no action.
-  /// - "ALLOW" : Matching 'Entries' grant access.
-  /// - "ALLOW_WITH_LOG" : Matching 'Entries' grant access and the caller
-  /// promises to log the request per the returned log_configs.
-  /// - "DENY" : Matching 'Entries' deny access.
-  /// - "DENY_WITH_LOG" : Matching 'Entries' deny access and the caller promises
-  /// to log the request per the returned log_configs.
-  /// - "LOG" : Matching 'Entries' tell IAM.Check callers to generate logs.
-  core.String? action;
-
-  /// Additional restrictions that must be met.
-  ///
-  /// All conditions must pass for the rule to match.
-  core.List<Condition>? conditions;
-
-  /// Human-readable description of the rule.
-  core.String? description;
-
-  /// If one or more 'in' clauses are specified, the rule matches if the
-  /// PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
-  core.List<core.String>? in_;
-
-  /// The config returned to callers of CheckPolicy for any entries that match
-  /// the LOG action.
-  core.List<LogConfig>? logConfig;
-
-  /// If one or more 'not_in' clauses are specified, the rule matches if the
-  /// PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
-  ///
-  /// The format for in and not_in entries can be found at in the Local IAM
-  /// documentation (see go/local-iam#features).
-  core.List<core.String>? notIn;
-
-  /// A permission is a string of form '..' (e.g., 'storage.buckets.list').
-  ///
-  /// A value of '*' matches all permissions, and a verb part of '*' (e.g.,
-  /// 'storage.buckets.*') matches all verbs.
-  core.List<core.String>? permissions;
-
-  Rule({
-    this.action,
-    this.conditions,
-    this.description,
-    this.in_,
-    this.logConfig,
-    this.notIn,
-    this.permissions,
-  });
-
-  Rule.fromJson(core.Map json_)
-      : this(
-          action: json_.containsKey('action')
-              ? json_['action'] as core.String
-              : null,
-          conditions: json_.containsKey('conditions')
-              ? (json_['conditions'] as core.List)
-                  .map((value) => Condition.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          in_: json_.containsKey('in')
-              ? (json_['in'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          logConfig: json_.containsKey('logConfig')
-              ? (json_['logConfig'] as core.List)
-                  .map((value) => LogConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          notIn: json_.containsKey('notIn')
-              ? (json_['notIn'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          permissions: json_.containsKey('permissions')
-              ? (json_['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!,
-        if (conditions != null) 'conditions': conditions!,
-        if (description != null) 'description': description!,
-        if (in_ != null) 'in': in_!,
-        if (logConfig != null) 'logConfig': logConfig!,
-        if (notIn != null) 'notIn': notIn!,
-        if (permissions != null) 'permissions': permissions!,
       };
 }
 

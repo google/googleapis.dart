@@ -1720,8 +1720,12 @@ class OAuthSettings {
   /// since access behavior is managed by IAM policies.
   core.String? loginHint;
 
+  /// List of client ids allowed to use IAP programmatically.
+  core.List<core.String>? programmaticClients;
+
   OAuthSettings({
     this.loginHint,
+    this.programmaticClients,
   });
 
   OAuthSettings.fromJson(core.Map json_)
@@ -1729,10 +1733,17 @@ class OAuthSettings {
           loginHint: json_.containsKey('loginHint')
               ? json_['loginHint'] as core.String
               : null,
+          programmaticClients: json_.containsKey('programmaticClients')
+              ? (json_['programmaticClients'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (loginHint != null) 'loginHint': loginHint!,
+        if (programmaticClients != null)
+          'programmaticClients': programmaticClients!,
       };
 }
 
@@ -1750,23 +1761,23 @@ class OAuthSettings {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Associates a list of `members`, or principals, with a `role`.
   ///
@@ -1965,7 +1976,7 @@ class ReauthSettings {
   /// - "ENROLLED_SECOND_FACTORS" : User can use any enabled 2nd factor.
   core.String? method;
 
-  /// How IAP determines the effective policy in cases of hierarchial policies.
+  /// How IAP determines the effective policy in cases of hierarchical policies.
   ///
   /// Policies are merged from higher in the hierarchy to lower in the
   /// hierarchy.
@@ -2007,6 +2018,25 @@ class ReauthSettings {
 typedef ResetIdentityAwareProxyClientSecretRequest = $Empty;
 
 class Resource {
+  /// The proto or JSON formatted expected next state of the resource, wrapped
+  /// in a google.protobuf.Any proto, against which the policy rules are
+  /// evaluated.
+  ///
+  /// Services not integrated with custom org policy can omit this field.
+  /// Services integrated with custom org policy must populate this field for
+  /// all requests where the API call changes the state of the resource. Custom
+  /// org policy backend uses these attributes to enforce custom org policies.
+  /// When a proto is wrapped, it is generally the One Platform API proto. When
+  /// a JSON string is wrapped, use `google.protobuf.StringValue` for the inner
+  /// value. It is sufficient to pass just the max set of attributes that are
+  /// allowed for use in custom constraints; other attributes can be omitted.
+  /// See go/custom-constraints-org-policy-integration-guide for additional
+  /// details.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? expectedNextState;
+
   /// The service defined labels of the resource on which the conditions will be
   /// evaluated.
   ///
@@ -2056,6 +2086,7 @@ class Resource {
   core.String? type;
 
   Resource({
+    this.expectedNextState,
     this.labels,
     this.name,
     this.service,
@@ -2064,6 +2095,10 @@ class Resource {
 
   Resource.fromJson(core.Map json_)
       : this(
+          expectedNextState: json_.containsKey('expectedNextState')
+              ? json_['expectedNextState']
+                  as core.Map<core.String, core.dynamic>
+              : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -2080,6 +2115,7 @@ class Resource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (expectedNextState != null) 'expectedNextState': expectedNextState!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (service != null) 'service': service!,

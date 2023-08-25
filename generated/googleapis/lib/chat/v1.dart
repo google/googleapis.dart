@@ -186,10 +186,9 @@ class MediaResource {
   /// For an example, see
   /// [Upload media as a file attachment](https://developers.google.com/chat/api/guides/v1/media-and-attachments/upload).
   /// Requires user
-  /// [authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// and the `chat.messages` or `chat.messages.create` authorization scope. You
-  /// can upload attachments up to 200 MB. Certain file types aren't supported.
-  /// For details, see
+  /// [authentication](https://developers.google.com/chat/api/guides/auth/users).
+  /// You can upload attachments up to 200 MB. Certain file types aren't
+  /// supported. For details, see
   /// [File types blocked by Google Chat](https://support.google.com/chat/answer/7651457?&co=GENIE.Platform%3DDesktop#File%20types%20blocked%20in%20Google%20Chat).
   ///
   /// [request] - The metadata request object.
@@ -266,9 +265,10 @@ class SpacesResource {
   ///
   /// Spaces grouped by topics aren't supported. For an example, see
   /// [Create a space](https://developers.google.com/chat/api/guides/v1/spaces/create).
-  /// Requires
-  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// and the `chat.spaces.create` or `chat.spaces` scope.
+  /// If you receive the error message `ALREADY_EXISTS` when creating a space,
+  /// try a different `displayName`. An existing space within the Google
+  /// Workspace organization might already use this display name. Requires
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
   ///
   /// [request] - The metadata request object.
   ///
@@ -320,8 +320,7 @@ class SpacesResource {
   /// [Delete a space](https://developers.google.com/chat/api/guides/v1/spaces/delete).
   /// Requires
   /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// from a user who has permission to delete the space, and the `chat.delete`
-  /// scope.
+  /// from a user who has permission to delete the space.
   ///
   /// Request parameters:
   ///
@@ -426,8 +425,6 @@ class SpacesResource {
   /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
   /// and
   /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
-  /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// requires the `chat.spaces` or `chat.spaces.readonly` authorization scope.
   ///
   /// Request parameters:
   ///
@@ -473,8 +470,7 @@ class SpacesResource {
   /// Fully supports
   /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
   /// and
-  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// requires the `chat.spaces` or `chat.spaces.readonly` authorization scope.
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
   /// Lists spaces visible to the caller or authenticated user. Group chats and
   /// DMs aren't listed until the first message is sent.
   ///
@@ -545,9 +541,11 @@ class SpacesResource {
   ///
   /// For an example, see
   /// [Update a space](https://developers.google.com/chat/api/guides/v1/spaces/update).
+  /// If you're updating the `displayName` field and receive the error message
+  /// `ALREADY_EXISTS`, try a different display name.. An existing space within
+  /// the Google Workspace organization might already use this display name.
   /// Requires
-  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// and the `chat.spaces` scope.
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
   ///
   /// [request] - The metadata request object.
   ///
@@ -561,7 +559,10 @@ class SpacesResource {
   /// supports changing the display name of a space with the `SPACE` type, or
   /// when also including the `space_type` mask to change a `GROUP_CHAT` space
   /// type to `SPACE`. Trying to update the display name of a `GROUP_CHAT` or a
-  /// `DIRECT_MESSAGE` space results in an invalid argument error.) -
+  /// `DIRECT_MESSAGE` space results in an invalid argument error. If you
+  /// receive the error message `ALREADY_EXISTS` when updating the
+  /// `displayName`, try a different `displayName`. An existing space within the
+  /// Google Workspace organization might already use this display name.) -
   /// `space_type` (Only supports changing a `GROUP_CHAT` space type to `SPACE`.
   /// Include `display_name` together with `space_type` in the update mask and
   /// ensure that the specified space has a non-empty display name and the
@@ -634,9 +635,11 @@ class SpacesResource {
   /// [create a membership](https://developers.google.com/chat/api/guides/v1/members/create).
   /// If a DM already exists between two users, even when one user blocks the
   /// other at the time a request is made, then the existing DM is returned.
-  /// Spaces with threaded replies or guest access aren't supported. Requires
-  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// and the `chat.spaces.create` or `chat.spaces` scope.
+  /// Spaces with threaded replies aren't supported. If you receive the error
+  /// message `ALREADY_EXISTS` when setting up a space, try a different
+  /// `displayName`. An existing space within the Google Workspace organization
+  /// might already use this display name. Requires
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
   ///
   /// [request] - The metadata request object.
   ///
@@ -686,19 +689,17 @@ class SpacesMembersResource {
   /// policy turned off, then they're invited, and must accept the space
   /// invitation before joining. Otherwise, creating a membership adds the
   /// member directly to the specified space. Requires
-  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// and the `chat.memberships` (for human membership) or
-  /// `chat.memberships.app` (for app membership) scope. To specify the member
-  /// to add, set the `membership.member.name` in the `CreateMembershipRequest`:
-  /// - To add the calling app to a space or a direct message between two human
-  /// users, use `users/app`. Unable to add other apps to the space. - To add a
-  /// human user, use `users/{user}`, where `{user}` can be the email address
-  /// for the user. For users in the same Workspace organization `{user}` can
-  /// also be the `{person_id}` for the person from the People API, or the `id`
-  /// for the user in the Directory API. For example, if the People API Person
-  /// `resourceName` for `user@example.com` is `people/123456789`, you can add
-  /// the user to the space by setting the `membership.member.name` to
-  /// `users/user@example.com` or `users/123456789`.
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
+  /// To specify the member to add, set the `membership.member.name` in the
+  /// `CreateMembershipRequest`: - To add the calling app to a space or a direct
+  /// message between two human users, use `users/app`. Unable to add other apps
+  /// to the space. - To add a human user, use `users/{user}`, where `{user}`
+  /// can be the email address for the user. For users in the same Workspace
+  /// organization `{user}` can also be the `{person_id}` for the person from
+  /// the People API, or the `id` for the user in the Directory API. For
+  /// example, if the People API Person `resourceName` for `user@example.com` is
+  /// `people/123456789`, you can add the user to the space by setting the
+  /// `membership.member.name` to `users/user@example.com` or `users/123456789`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -745,8 +746,7 @@ class SpacesMembersResource {
   /// For an example, see
   /// [Delete a membership](https://developers.google.com/chat/api/guides/v1/members/delete).
   /// Requires
-  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// and the `chat.memberships` or `chat.memberships.app` authorization scope.
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
   ///
   /// Request parameters:
   ///
@@ -801,9 +801,6 @@ class SpacesMembersResource {
   /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
   /// and
   /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
-  /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// requires the `chat.memberships` or `chat.memberships.readonly`
-  /// authorization scope.
   ///
   /// Request parameters:
   ///
@@ -862,9 +859,6 @@ class SpacesMembersResource {
   /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
   /// and
   /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
-  /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// requires the `chat.memberships` or `chat.memberships.readonly`
-  /// authorization scope.
   ///
   /// Request parameters:
   ///
@@ -953,24 +947,16 @@ class SpacesMessagesResource {
 
   SpacesMessagesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a message.
+  /// Creates a message in a Google Chat space.
   ///
   /// For an example, see
-  /// [Create a message](https://developers.google.com/chat/api/guides/crudl/messages#create_a_message).
-  /// Requires
-  /// [authentication](https://developers.google.com/chat/api/guides/auth).
-  /// Creating a text message supports both
-  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// and
-  /// [app authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
-  /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// requires the `chat.messages` or `chat.messages.create` authorization
-  /// scope. Creating a card message only supports and requires
-  /// [app authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
-  /// Because Chat provides authentication for
-  /// [webhooks](https://developers.google.com/chat/how-tos/webhooks) as part of
-  /// the URL that's generated when a webhook is registered, webhooks can create
-  /// messages without a service account or user authentication.
+  /// [Create a message](https://developers.google.com/chat/api/guides/v1/messages/create).
+  /// Calling this method requires
+  /// [authentication](https://developers.google.com/chat/api/guides/auth) and
+  /// supports the following authentication types: - For text messages, user
+  /// authentication or app authentication are supported. - For card messages,
+  /// only app authentication is supported. (Only Chat apps can create card
+  /// messages.)
   ///
   /// [request] - The metadata request object.
   ///
@@ -1009,9 +995,10 @@ class SpacesMessagesResource {
   /// an existing request ID returns the message created with that ID instead of
   /// creating a new message.
   ///
-  /// [threadKey] - Optional. Deprecated: Use thread.thread_key instead. Opaque
-  /// thread identifier. To start or add to a thread, create a message and
-  /// specify a `threadKey` or the thread.name. For example usage, see
+  /// [threadKey] - Optional. Deprecated: Use thread.thread_key instead. ID for
+  /// the thread. Supports up to 4000 characters. To start or add to a thread,
+  /// create a message and specify a `threadKey` or the thread.name. For example
+  /// usage, see
   /// [Start or reply to a message thread](https://developers.google.com/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1064,10 +1051,8 @@ class SpacesMessagesResource {
   /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
   /// and
   /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
-  /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// requires the `chat.messages` authorization scope. Requests authenticated
-  /// with service accounts can only delete messages created by the calling Chat
-  /// app.
+  /// Requests authenticated with service accounts can only delete messages
+  /// created by the calling Chat app.
   ///
   /// Request parameters:
   ///
@@ -1123,9 +1108,7 @@ class SpacesMessagesResource {
   /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
   /// and
   /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
-  /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// requires the `chat.messages` or `chat.messages.readonly` authorization
-  /// scope. Note: Might return a message from a blocked member or space.
+  /// Note: Might return a message from a blocked member or space.
   ///
   /// Request parameters:
   ///
@@ -1170,8 +1153,7 @@ class SpacesMessagesResource {
   ///
   /// For an example, see \[List messages\](/chat/api/guides/v1/messages/list).
   /// Requires
-  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// and the `chat.messages` or `chat.messages.readonly` authorization scope.
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
   ///
   /// Request parameters:
   ///
@@ -1271,10 +1253,8 @@ class SpacesMessagesResource {
   /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
   /// and
   /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
-  /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// requires the `chat.messages` authorization scope. Requests authenticated
-  /// with service accounts can only update messages created by the calling Chat
-  /// app.
+  /// Requests authenticated with service accounts can only update messages
+  /// created by the calling Chat app.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1344,10 +1324,8 @@ class SpacesMessagesResource {
   /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
   /// and
   /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
-  /// [User authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// requires the `chat.messages` authorization scope. Requests authenticated
-  /// with service accounts can only update messages created by the calling Chat
-  /// app.
+  /// Requests authenticated with service accounts can only update messages
+  /// created by the calling Chat app.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1469,9 +1447,8 @@ class SpacesMessagesReactionsResource {
   /// For an example, see
   /// [Create a reaction](https://developers.google.com/chat/api/guides/v1/reactions/create).
   /// Requires
-  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// and the `chat.messages`, `chat.messages.reactions`, or
-  /// `chat.messages.reactions.create` scope. Only unicode emoji are supported.
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
+  /// Only unicode emoji are supported.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1517,8 +1494,7 @@ class SpacesMessagesReactionsResource {
   /// For an example, see
   /// [Delete a reaction](https://developers.google.com/chat/api/guides/v1/reactions/delete).
   /// Requires
-  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// and the `chat.messages` or `chat.messages.reactions` scope.
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
   ///
   /// Request parameters:
   ///
@@ -1560,9 +1536,7 @@ class SpacesMessagesReactionsResource {
   /// For an example, see
   /// [List reactions](https://developers.google.com/chat/api/guides/v1/reactions/list).
   /// Requires
-  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
-  /// and `chat.messages`, `chat.messages.readonly`, `chat.messages.reactions`,
-  /// or `chat.messages.reactions.readonly` scope.
+  /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
   ///
   /// Request parameters:
   ///
@@ -1817,12 +1791,16 @@ class ActionStatus {
 
 /// Annotations associated with the plain-text body of the message.
 ///
+/// To add basic formatting to a text message, see
+/// [Format text messages](https://developers.google.com/chat/format-messages).
 /// Example plain-text message body: ``` Hello @FooBot how are you!" ``` The
 /// corresponding annotations metadata: ``` "annotations":[{
 /// "type":"USER_MENTION", "startIndex":6, "length":7, "userMention": { "user":
 /// { "name":"users/{user}", "displayName":"FooBot",
 /// "avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT" }, "type":"MENTION" } }]
 /// ```
+///
+/// Output only.
 class Annotation {
   /// Length of the substring in the plain-text message body this annotation
   /// corresponds to.
@@ -1909,9 +1887,13 @@ class Attachment {
   AttachmentDataRef? attachmentDataRef;
 
   /// The original file name for the content, not the full path.
+  ///
+  /// Output only.
   core.String? contentName;
 
   /// The content type (MIME type) of the file.
+  ///
+  /// Output only.
   core.String? contentType;
 
   /// The download URL which should be used to allow a human user to download
@@ -1922,9 +1904,11 @@ class Attachment {
   /// Output only.
   core.String? downloadUri;
 
-  /// A reference to the drive attachment.
+  /// A reference to the Google Drive attachment.
   ///
-  /// This field is used with the Drive API.
+  /// This field is used with the Google Drive API.
+  ///
+  /// Output only.
   DriveDataRef? driveDataRef;
 
   /// Resource name of the attachment, in the form `spaces / * /messages / *
@@ -1932,6 +1916,8 @@ class Attachment {
   core.String? name;
 
   /// The source of the attachment.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "SOURCE_UNSPECIFIED"
   /// - "DRIVE_FILE"
@@ -2200,18 +2186,21 @@ class CardHeader {
       };
 }
 
-/// Widgets for Chat apps to specify.
+/// A [card](https://developers.google.com/chat/api/reference/rest/v1/cards) in
+/// a Google Chat message.
+///
+/// Only Chat apps can create cards. If your Chat app
+/// [authenticates as a user](https://developers.google.com/chat/api/guides/auth/users),
+/// the message can't contain cards.
 class CardWithId {
-  /// Cards support a defined layout, interactive UI elements like buttons, and
-  /// rich media like images.
+  /// A card.
   ///
-  /// Use this card to present detailed information, gather information from
-  /// users, and guide users to take a next step.
+  /// Maximum size is 32 KB.
   GoogleAppsCardV1Card? card;
 
-  /// Required for `cardsV2` messages.
+  /// Required if the message contains multiple cards.
   ///
-  /// Chat app-specified identifier for this widget. Scoped within a message.
+  /// A unique identifier for a card in a message.
   core.String? cardId;
 
   CardWithId({
@@ -2238,15 +2227,12 @@ class CardWithId {
 
 /// Chat apps only.
 ///
-/// For a `SelectionInput` widget that uses a multi-select menu, a data source
-/// from Google Chat. For example, a list of Google Chat spaces of which the
-/// user is a member.
-/// [Developer Preview](https://developers.google.com/workspace/preview).
+/// For a `SelectionInput` widget that uses a multiselect menu, a data source
+/// from Google Chat. The data source populates selection items for the
+/// multiselect menu. For example, a user can select Google Chat spaces that
+/// they're a member of.
 class ChatClientDataSourceMarkup {
-  /// A data source representing a Google Chat space.
-  ///
-  /// Format: spaces/{space}
-  /// [Developer Preview](https://developers.google.com/workspace/preview).
+  /// Google Chat spaces that the user is a member of.
   SpaceDataSource? spaceDataSource;
 
   ChatClientDataSourceMarkup({
@@ -2621,7 +2607,7 @@ class GoogleAppsCardV1Action {
   /// being processed, set
   /// \[`LoadIndicator`\](https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
   /// to `NONE`. For
-  /// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards)
+  /// [card messages](https://developers.google.com/chat/api/guides/v1/messages/create#create)
   /// in Chat apps, you must also set the action's
   /// \[`ResponseType`\](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages#responsetype)
   /// to `UPDATE_MESSAGE` and use the same
@@ -2842,20 +2828,19 @@ class GoogleAppsCardV1ButtonList {
       };
 }
 
-/// Cards support a defined layout, interactive UI elements like buttons, and
-/// rich media like images.
+/// A card interface displayed in a Google Chat message or Google Workspace
+/// Add-on.
 ///
-/// Use cards to present detailed information, gather information from users,
-/// and guide users to take a next step. In Google Chat, cards appear in several
-/// places: - As stand-alone messages. - Accompanying a text message, just
-/// beneath the text message. - As a
-/// [dialog](https://developers.google.com/chat/how-tos/dialogs). The following
-/// example JSON creates a "contact card" that features: - A header with the
-/// contact's name, job title, and avatar picture. - A section with the contact
-/// information, including formatted text. - Buttons that users can click to
-/// share the contact, or see more or less information. For more examples, see
+/// Cards support a defined layout, interactive UI elements like buttons, and
+/// rich media like images. Use cards to present detailed information, gather
+/// information from users, and guide users to take a next step. To learn how to
+/// build cards, see the following documentation: * For Google Chat apps, see
 /// [Design dynamic, interactive, and consistent UIs with cards](https://developers.google.com/chat/ui).
+/// * For Google Workspace Add-ons, see \[Card-based
+/// interfaces\](https://developers.google.com/apps-script/add-ons/concepts/cards).
+/// **Example: Card message for a Google Chat app**
 /// ![Example contact card](https://developers.google.com/chat/images/card_api_reference.png)
+/// To create the sample card message in Google Chat, use the following JSON:
 /// ``` { "cardsV2": [ { "cardId": "unique-card-id", "card": { "header": {
 /// "title": "Sasha", "subtitle": "Software Engineer", "imageUrl":
 /// "https://developers.google.com/chat/images/quickstart-app-avatar.png",
@@ -2904,7 +2889,7 @@ class GoogleAppsCardV1Card {
   /// `secondaryButton` causes an error. Supported by Google Workspace Add-ons
   /// and Chat apps. For Chat apps, you can use fixed footers in
   /// [dialogs](https://developers.google.com/chat/how-tos/dialogs), but not
-  /// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards).
+  /// [card messages](https://developers.google.com/chat/api/guides/v1/messages/create#create).
   GoogleAppsCardV1CardFixedFooter? fixedFooter;
 
   /// The header of the card.
@@ -3041,7 +3026,7 @@ class GoogleAppsCardV1CardAction {
 /// `secondaryButton` causes an error. Supported by Google Workspace Add-ons and
 /// Chat apps. For Chat apps, you can use fixed footers in
 /// [dialogs](https://developers.google.com/chat/how-tos/dialogs), but not
-/// [card messages](https://developers.google.com/chat/api/guides/message-formats/cards).
+/// [card messages](https://developers.google.com/chat/api/guides/v1/messages/create#create).
 class GoogleAppsCardV1CardFixedFooter {
   /// The primary button of the fixed footer.
   ///
@@ -3366,9 +3351,9 @@ class GoogleAppsCardV1DecoratedText {
   /// An icon displayed after the text.
   ///
   /// Supports
-  /// \[built-in\](https://developers.google.com/chat/api/guides/message-formats/cards#builtinicons)
+  /// \[built-in\](https://developers.google.com/chat/format-messages#builtinicons)
   /// and
-  /// [custom](https://developers.google.com/chat/api/guides/message-formats/cards#customicons)
+  /// [custom](https://developers.google.com/chat/format-messages#customicons)
   /// icons.
   GoogleAppsCardV1Icon? endIcon;
 
@@ -3392,7 +3377,7 @@ class GoogleAppsCardV1DecoratedText {
   ///
   /// Supports simple formatting. For more information about formatting text,
   /// see
-  /// [Formatting text in Google Chat apps](https://developers.google.com/chat/api/guides/message-formats/cards#card-formatting)
+  /// [Formatting text in Google Chat apps](https://developers.google.com/chat/format-messages#card-formatting)
   /// and \[Formatting text in Google Workspace
   /// Add-ons\](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
   ///
@@ -3625,9 +3610,8 @@ class GoogleAppsCardV1GridItem {
 ///
 /// For an example in Google Chat apps, see
 /// [Icon](https://developers.google.com/chat/ui/widgets/icon). Supports
-/// \[built-in\](https://developers.google.com/chat/api/guides/message-formats/cards#builtinicons)
-/// and
-/// [custom](https://developers.google.com/chat/api/guides/message-formats/cards#customicons)
+/// \[built-in\](https://developers.google.com/chat/format-messages#builtinicons)
+/// and [custom](https://developers.google.com/chat/format-messages#customicons)
 /// icons.
 class GoogleAppsCardV1Icon {
   /// A description of the icon used for accessibility.
@@ -3666,7 +3650,7 @@ class GoogleAppsCardV1Icon {
   ///
   /// For example, to display an airplane icon, specify `AIRPLANE`. For a bus,
   /// specify `BUS`. For a full list of supported icons, see \[built-in
-  /// icons\](https://developers.google.com/chat/api/guides/message-formats/cards#builtinicons).
+  /// icons\](https://developers.google.com/chat/format-messages#builtinicons).
   core.String? knownIcon;
 
   GoogleAppsCardV1Icon({
@@ -3839,14 +3823,15 @@ class GoogleAppsCardV1OnClick {
 
   /// A new card is pushed to the card stack after clicking if specified.
   ///
-  /// Supported by Google Workspace Add-ons, but not Chat apps.
+  /// Supported by Google Workspace Add-ons, but not Google Chat apps.
   GoogleAppsCardV1Card? card;
 
   /// An add-on triggers this action when the action needs to open a link.
   ///
   /// This differs from the `open_link` above in that this needs to talk to
   /// server to get the link. Thus some preparation work is required for web
-  /// client to do before the open link action response comes back.
+  /// client to do before the open link action response comes back. Supported by
+  /// Google Workspace Add-ons, but not Google Chat apps.
   GoogleAppsCardV1Action? openDynamicLinkAction;
 
   /// If specified, this `onClick` triggers an open link action.
@@ -3941,31 +3926,19 @@ class GoogleAppsCardV1OpenLink {
 
 /// Chat apps only.
 ///
-/// For a `SelectionInput` widget that uses a multi-select menu, the data from a
-/// [Google Workspace host application](https://developers.google.com/chat/api/reference/rest/v1/HostApp).
-/// Used to populate the items in the multi-select menu.
-/// [Developer Preview](https://developers.google.com/workspace/preview).
+/// For a `SelectionInput` widget that uses a multiselect menu, a data source
+/// from Google Workspace. Used to populate items in a multiselect menu.
 class GoogleAppsCardV1PlatformDataSource {
-  /// For a `SelectionInput` widget that uses a multi-select menu, a data source
-  /// shared by all Google Workspace host applications, such as users in a
-  /// Google Workspace organization.
-  ///
-  /// [Developer Preview](https://developers.google.com/workspace/preview).
+  /// A data source shared by all Google Workspace applications, such as users
+  /// in a Google Workspace organization.
   /// Possible string values are:
   /// - "UNKNOWN" : Default value. Don't use.
-  /// [Developer Preview](https://developers.google.com/workspace/preview).
-  /// - "USER" : A list of users provided by the Google Workspace host
-  /// application. For example, to source users from Google Chat, use the
-  /// resource name of the
-  /// [user](https://developers.google.com/chat/api/reference/rest/v1/User).
-  /// Format: users/{user}
-  /// [Developer Preview](https://developers.google.com/workspace/preview).
+  /// - "USER" : Google Workspace users. The user can only view and select users
+  /// from their Google Workspace organization.
   core.String? commonDataSource;
 
   /// A data source that's unique to a Google Workspace host application, such
-  /// as Gmail emails, Google Calendar events, or Google Chat messages.
-  ///
-  /// [Developer Preview](https://developers.google.com/workspace/preview).
+  /// spaces in Google Chat.
   HostAppDataSourceMarkup? hostAppDataSource;
 
   GoogleAppsCardV1PlatformDataSource({
@@ -4005,7 +3978,7 @@ class GoogleAppsCardV1Section {
   ///
   /// Supports simple HTML formatted text. For more information about formatting
   /// text, see
-  /// [Formatting text in Google Chat apps](https://developers.google.com/chat/api/guides/message-formats/cards#card-formatting)
+  /// [Formatting text in Google Chat apps](https://developers.google.com/chat/format-messages#card-formatting)
   /// and \[Formatting text in Google Workspace
   /// Add-ons\](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
   core.String? header;
@@ -4073,8 +4046,6 @@ class GoogleAppsCardV1Section {
 /// To collect undefined or abstract data from users, use the TextInput widget.
 class GoogleAppsCardV1SelectionInput {
   /// An external data source, such as a relational data base.
-  ///
-  /// [Developer Preview](https://developers.google.com/workspace/preview).
   GoogleAppsCardV1Action? externalDataSource;
 
   /// An array of selectable items.
@@ -4091,20 +4062,17 @@ class GoogleAppsCardV1SelectionInput {
   /// drop-down menu, the label might be "Urgency" or "Select urgency".
   core.String? label;
 
-  /// For multi-select menus, the maximum number of items that a user can
-  /// select.
+  /// For multiselect menus, the maximum number of items that a user can select.
   ///
-  /// Minimum value is 1 item. If unspecified, set to 3 items.
-  /// [Developer Preview](https://developers.google.com/workspace/preview).
+  /// Minimum value is 1 item. If unspecified, defaults to 3 items.
   core.int? multiSelectMaxSelectedItems;
 
-  /// For multi-select menus, the number of text characters that a user inputs
-  /// before the Chat app queries autocomplete and displays suggested items on
-  /// the card.
+  /// For multiselect menus, the number of text characters that a user inputs
+  /// before the Chat app queries autocomplete and displays suggested items in
+  /// the menu.
   ///
-  /// If unspecified, set to 0 characters for static data sources and 3
+  /// If unspecified, defaults to 0 characters for static data sources and 3
   /// characters for external data sources.
-  /// [Developer Preview](https://developers.google.com/workspace/preview).
   core.int? multiSelectMinQueryLength;
 
   /// The name that identifies the selection input in a form input event.
@@ -4120,10 +4088,7 @@ class GoogleAppsCardV1SelectionInput {
   /// [Receive form data](https://developers.google.com/chat/ui/read-form-data).
   GoogleAppsCardV1Action? onChangeAction;
 
-  /// A data source from a
-  /// [Google Workspace host application](https://developers.google.com/chat/api/reference/rest/v1/HostApp).
-  ///
-  /// [Developer Preview](https://developers.google.com/workspace/preview).
+  /// A data source from Google Workspace.
   GoogleAppsCardV1PlatformDataSource? platformDataSource;
 
   /// The type of items that are displayed to users in a `SelectionInput`
@@ -4140,19 +4105,18 @@ class GoogleAppsCardV1SelectionInput {
   /// - "SWITCH" : A set of switches. Users can turn on one or more switches.
   /// - "DROPDOWN" : A dropdown menu. Users can select one item from the menu.
   /// - "MULTI_SELECT" : Supported by Chat apps, but not Google Workspace
-  /// Add-ons. A multi-select menu for static or dynamic data. From the menu
-  /// bar, users select one or more items. Users can also input values to
-  /// populate dynamic data. For example, users can start typing the name of a
-  /// Google Chat space and the widget autosuggests the space. To populate items
-  /// for a multi-select menu, you can use one of the following types of data
-  /// sources: * Static data: Items are specified as `SelectionItem` objects in
-  /// the widget. Up to 100 items. * Google Workspace data: Items are populated
-  /// using data from a Google Workspace application, such as Google Chat users
-  /// or spaces. * External data: Items are populated from a dynamic external
-  /// data source. For examples of how to implement multi-select menus, see the
-  /// \[`SelectionInput` widget
-  /// page\](https://developers.google.com/chat/ui/widgets/selection-input).
-  /// [Developer Preview](https://developers.google.com/workspace/preview).
+  /// Add-ons. A multiselect menu for static or dynamic data. From the menu bar,
+  /// users select one or more items. Users can also input values to populate
+  /// dynamic data. For example, users can start typing the name of a Google
+  /// Chat space and the widget autosuggests the space. To populate items for a
+  /// multiselect menu, you can use one of the following types of data sources:
+  /// * Static data: Items are specified as `SelectionItem` objects in the
+  /// widget. Up to 100 items. * Google Workspace data: Items are populated
+  /// using data from Google Workspace, such as Google Workspace users or Google
+  /// Chat spaces. * External data: Items are populated from an external data
+  /// source outside of Google Workspace. For examples of how to implement
+  /// multiselect menus, see the \[`SelectionInput` widget
+  /// page\](https://developers.google.com/chat/ui/widgets/selection-input#multiselect-menu).
   core.String? type;
 
   GoogleAppsCardV1SelectionInput({
@@ -4222,10 +4186,8 @@ class GoogleAppsCardV1SelectionInput {
 /// An item that users can select in a selection input, such as a checkbox or
 /// switch.
 class GoogleAppsCardV1SelectionItem {
-  /// For multi-select menus, a text description or label that's displayed below
+  /// For multiselect menus, a text description or label that's displayed below
   /// the item's `text` field.
-  ///
-  /// [Developer Preview](https://developers.google.com/workspace/preview).
   core.String? bottomText;
 
   /// Whether the item is selected by default.
@@ -4234,12 +4196,11 @@ class GoogleAppsCardV1SelectionItem {
   /// or a dropdown menu), only set this field for one item.
   core.bool? selected;
 
-  /// For multi-select menus, the URL for the icon displayed next to the item's
+  /// For multiselect menus, the URL for the icon displayed next to the item's
   /// `text` field.
   ///
   /// Supports PNG and JPEG files. Must be an `HTTPS` URL. For example,
   /// `https://developers.google.com/chat/images/quickstart-app-avatar.png`.
-  /// [Developer Preview](https://developers.google.com/workspace/preview).
   core.String? startIconUri;
 
   /// The text that identifies or describes the item to users.
@@ -4424,7 +4385,7 @@ class GoogleAppsCardV1TextInput {
   /// If unspecified, the suggestions are set by `initialSuggestions` and are
   /// processed by the client. If specified, the app takes the action specified
   /// here, such as running a custom function. Supported by Google Workspace
-  /// Add-ons, but not Chat apps.
+  /// Add-ons, but not Google Chat apps.
   ///
   /// Optional.
   GoogleAppsCardV1Action? autoCompleteAction;
@@ -4473,6 +4434,13 @@ class GoogleAppsCardV1TextInput {
   /// Chat.
   GoogleAppsCardV1Action? onChangeAction;
 
+  /// Text that appears in the text input field when the field is empty.
+  ///
+  /// Use this text to prompt users to enter a value. For example, `Enter a
+  /// number from 0 to 100`. Supported by Google Chat apps, but not Google
+  /// Workspace Add-ons.
+  core.String? placeholderText;
+
   /// How a text input field appears in the user interface.
   ///
   /// For example, whether the field is single or multi-line.
@@ -4495,6 +4463,7 @@ class GoogleAppsCardV1TextInput {
     this.label,
     this.name,
     this.onChangeAction,
+    this.placeholderText,
     this.type,
     this.value,
   });
@@ -4519,6 +4488,9 @@ class GoogleAppsCardV1TextInput {
               ? GoogleAppsCardV1Action.fromJson(json_['onChangeAction']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          placeholderText: json_.containsKey('placeholderText')
+              ? json_['placeholderText'] as core.String
+              : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
           value:
               json_.containsKey('value') ? json_['value'] as core.String : null,
@@ -4533,6 +4505,7 @@ class GoogleAppsCardV1TextInput {
         if (label != null) 'label': label!,
         if (name != null) 'name': name!,
         if (onChangeAction != null) 'onChangeAction': onChangeAction!,
+        if (placeholderText != null) 'placeholderText': placeholderText!,
         if (type != null) 'type': type!,
         if (value != null) 'value': value!,
       };
@@ -4543,7 +4516,7 @@ class GoogleAppsCardV1TextInput {
 /// For an example in Google Chat apps, see
 /// [Text paragraph](https://developers.google.com/chat/ui/widgets/text-paragraph).
 /// For more information about formatting text, see
-/// [Formatting text in Google Chat apps](https://developers.google.com/chat/api/guides/message-formats/cards##card-formatting)
+/// [Formatting text in Google Chat apps](https://developers.google.com/chat/format-messages#card-formatting)
 /// and \[Formatting text in Google Workspace
 /// Add-ons\](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
 class GoogleAppsCardV1TextParagraph {
@@ -4676,7 +4649,7 @@ class GoogleAppsCardV1Widget {
   ///
   /// Supports simple HTML formatted text. For more information about formatting
   /// text, see
-  /// [Formatting text in Google Chat apps](https://developers.google.com/chat/api/guides/message-formats/cards#card-formatting)
+  /// [Formatting text in Google Chat apps](https://developers.google.com/chat/format-messages#card-formatting)
   /// and \[Formatting text in Google Workspace
   /// Add-ons\](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
   /// For example, the following JSON creates a bolded text: ```
@@ -4838,13 +4811,11 @@ class GoogleAppsCardV1Widgets {
 
 /// Chat apps only.
 ///
-/// For a `SelectionInput` widget that uses a multi-select menu, a data source
-/// from a Google Workspace host application.
-/// [Developer Preview](https://developers.google.com/workspace/preview).
+/// For a `SelectionInput` widget that uses a multiselect menu, a data source
+/// from a Google Workspace application. The data source populates selection
+/// items for the multiselect menu.
 class HostAppDataSourceMarkup {
-  /// The data source is Google Chat.
-  ///
-  /// [Developer Preview](https://developers.google.com/workspace/preview).
+  /// A data source from Google Chat.
   ChatClientDataSourceMarkup? chatDataSource;
 
   HostAppDataSourceMarkup({
@@ -4990,7 +4961,7 @@ class KeyValue {
   /// The text of the bottom label.
   ///
   /// Formatted text supported. For more information about formatting text, see
-  /// [Formatting text in Google Chat apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting)
+  /// [Formatting text in Google Chat apps](https://developers.google.com/chat/format-messages#card-formatting)
   /// and \[Formatting text in Google Workspace
   /// Add-ons\](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
   core.String? bottomLabel;
@@ -5002,7 +4973,7 @@ class KeyValue {
   ///
   /// Formatted text supported and always required. For more information about
   /// formatting text, see
-  /// [Formatting text in Google Chat apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting)
+  /// [Formatting text in Google Chat apps](https://developers.google.com/chat/format-messages#card-formatting)
   /// and \[Formatting text in Google Workspace
   /// Add-ons\](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
   core.String? content;
@@ -5057,7 +5028,7 @@ class KeyValue {
   /// The text of the top label.
   ///
   /// Formatted text supported. For more information about formatting text, see
-  /// [Formatting text in Google Chat apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting)
+  /// [Formatting text in Google Chat apps](https://developers.google.com/chat/format-messages#card-formatting)
   /// and \[Formatting text in Google Workspace
   /// Add-ons\](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
   core.String? topLabel;
@@ -5299,7 +5270,10 @@ class Membership {
   /// User's role within a Chat space, which determines their permitted actions
   /// in the space.
   ///
-  /// Output only.
+  /// [Developer Preview](https://developers.google.com/workspace/preview): This
+  /// field can only be used as input in `UpdateMembership`.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "MEMBERSHIP_ROLE_UNSPECIFIED" : Default value. For users: they aren't a
   /// member of the space, but can be invited. For Google Groups: they're always
@@ -5316,12 +5290,12 @@ class Membership {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "MEMBERSHIP_STATE_UNSPECIFIED" : Default, don't use.
-  /// - "JOINED" : The user has joined the space.
-  /// - "INVITED" : The user has been invited, is able to join the space, but
-  /// currently hasn't joined.
-  /// - "NOT_A_MEMBER" : The user isn't a member of the space, hasn't been
-  /// invited and isn't able to join the space.
+  /// - "MEMBERSHIP_STATE_UNSPECIFIED" : Default value. Don't use.
+  /// - "JOINED" : The user is added to the space, and can participate in the
+  /// space.
+  /// - "INVITED" : The user is invited to join the space, but hasn't joined it.
+  /// - "NOT_A_MEMBER" : The user doesn't belong to the space and doesn't have a
+  /// pending invitation to join the space.
   core.String? state;
 
   Membership({
@@ -5356,7 +5330,7 @@ class Membership {
       };
 }
 
-/// A message in Google Chat.
+/// A message in a Google Chat space.
 class Message {
   /// Input only.
   ///
@@ -5393,18 +5367,14 @@ class Message {
   )
   core.List<Card>? cards;
 
-  /// Richly formatted and interactive cards that display UI elements and
-  /// editable widgets, such as: - Formatted text - Buttons - Clickable images -
-  /// Checkboxes - Radio buttons - Input widgets.
+  /// An array of
+  /// [cards](https://developers.google.com/chat/api/reference/rest/v1/cards).
   ///
-  /// Cards are usually displayed below the text body of a Chat message, but can
-  /// situationally appear other places, such as
-  /// [dialogs](https://developers.google.com/chat/how-tos/dialogs). Each card
-  /// can have a maximum size of 32 KB. The `cardId` is a unique identifier
-  /// among cards in the same message and for identifying user input values.
-  /// Currently supported widgets include: - `TextParagraph` - `DecoratedText` -
-  /// `Image` - `ButtonList` - `Divider` - `TextInput` - `SelectionInput` -
-  /// `Grid`
+  /// Only Chat apps can create cards. If your Chat app
+  /// [authenticates as a user](https://developers.google.com/chat/api/guides/auth/users),
+  /// the messages can't contain cards. To learn about cards and how to create
+  /// them, see
+  /// [Design dynamic, interactive, and consistent UIs with cards](https://developers.google.com/chat/ui).
   core.List<CardWithId>? cardsV2;
 
   /// A custom name for a Chat message assigned at creation.
@@ -5454,6 +5424,24 @@ class Message {
   /// A plain-text description of the message's cards, used when the actual
   /// cards can't be displayed—for example, mobile notifications.
   core.String? fallbackText;
+
+  /// Contains the message `text` with markups added to communicate formatting.
+  ///
+  /// This field might not capture all formatting visible in the UI, but
+  /// includes the following: *
+  /// [Markup syntax](https://developers.google.com/chat/format-messages) for
+  /// bold, italic, strikethrough, monospace, and monospace block. *
+  /// [User mentions](https://developers.google.com/chat/format-messages#messages-@mention)
+  /// using the format ``. * Custom hyperlinks using the format
+  /// `<{url}|{rendered_text}>` where the first string is the URL and the second
+  /// is the rendered text—for example, ``. * Custom emoji using the format
+  /// `:{emoji_name}:`—for example, `:smile:`. This doesn't apply to Unicode
+  /// emoji, such as `U+1F600` for a grinning face emoji. For more information,
+  /// see
+  /// [View text formatting sent in a message](https://developers.google.com/chat/format-messages#view_text_formatting_sent_in_a_message)
+  ///
+  /// Output only.
+  core.String? formattedText;
 
   /// The time at which the message was last edited by a user.
   ///
@@ -5508,8 +5496,12 @@ class Message {
 
   /// Plain-text body of the message.
   ///
-  /// The first link to an image, video, web page, or other preview-able item
-  /// generates a preview chip.
+  /// The first link to an image, video, or web page generates a
+  /// [preview chip](https://developers.google.com/chat/how-tos/preview-links).
+  /// You can also \[@mention a Google Chat
+  /// user\](https://developers.google.com/chat/format-messages#messages-@mention),
+  /// or everyone in the space. To learn about creating text messages, see
+  /// [Send a text message](https://developers.google.com/chat/api/guides/v1/messages/create#create-text-messages).
   core.String? text;
 
   /// The thread the message belongs to.
@@ -5542,6 +5534,7 @@ class Message {
     this.deletionMetadata,
     this.emojiReactionSummaries,
     this.fallbackText,
+    this.formattedText,
     this.lastUpdateTime,
     this.matchedUrl,
     this.name,
@@ -5615,6 +5608,9 @@ class Message {
           fallbackText: json_.containsKey('fallbackText')
               ? json_['fallbackText'] as core.String
               : null,
+          formattedText: json_.containsKey('formattedText')
+              ? json_['formattedText'] as core.String
+              : null,
           lastUpdateTime: json_.containsKey('lastUpdateTime')
               ? json_['lastUpdateTime'] as core.String
               : null,
@@ -5665,6 +5661,7 @@ class Message {
         if (emojiReactionSummaries != null)
           'emojiReactionSummaries': emojiReactionSummaries!,
         if (fallbackText != null) 'fallbackText': fallbackText!,
+        if (formattedText != null) 'formattedText': formattedText!,
         if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
         if (matchedUrl != null) 'matchedUrl': matchedUrl!,
         if (name != null) 'name': name!,
@@ -5814,7 +5811,7 @@ class Section {
   ///
   /// Formatted text is supported. For more information about formatting text,
   /// see
-  /// [Formatting text in Google Chat apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting)
+  /// [Formatting text in Google Chat apps](https://developers.google.com/chat/format-messages#card-formatting)
   /// and \[Formatting text in Google Workspace
   /// Add-ons\](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
   core.String? header;
@@ -5882,15 +5879,18 @@ class SetUpSpaceRequest {
   /// The `Space.spaceType` field is required.
   ///
   /// To create a space, set `Space.spaceType` to `SPACE` and set
-  /// `Space.displayName`. To create a group chat, set `Space.spaceType` to
-  /// `GROUP_CHAT`. Don't set `Space.displayName`. To create a 1:1 conversation
-  /// between humans, set `Space.spaceType` to `DIRECT_MESSAGE` and set
-  /// `Space.singleUserBotDm` to `false`. Don't set `Space.displayName` or
-  /// `Space.spaceDetails`. To create an 1:1 conversation between a human and
-  /// the calling Chat app, set `Space.spaceType` to `DIRECT_MESSAGE` and
-  /// `Space.singleUserBotDm` to `true`. Don't set `Space.displayName` or
-  /// `Space.spaceDetails`. If a `DIRECT_MESSAGE` space already exists, that
-  /// space is returned instead of creating a new space.
+  /// `Space.displayName`. If you receive the error message `ALREADY_EXISTS`
+  /// when setting up a space, try a different `displayName`. An existing space
+  /// within the Google Workspace organization might already use this display
+  /// name. To create a group chat, set `Space.spaceType` to `GROUP_CHAT`. Don't
+  /// set `Space.displayName`. To create a 1:1 conversation between humans, set
+  /// `Space.spaceType` to `DIRECT_MESSAGE` and set `Space.singleUserBotDm` to
+  /// `false`. Don't set `Space.displayName` or `Space.spaceDetails`. To create
+  /// an 1:1 conversation between a human and the calling Chat app, set
+  /// `Space.spaceType` to `DIRECT_MESSAGE` and `Space.singleUserBotDm` to
+  /// `true`. Don't set `Space.displayName` or `Space.spaceDetails`. If a
+  /// `DIRECT_MESSAGE` space already exists, that space is returned instead of
+  /// creating a new space.
   ///
   /// Required.
   Space? space;
@@ -6022,16 +6022,22 @@ class Space {
   ///
   /// Required when
   /// [creating a space](https://developers.google.com/chat/api/reference/rest/v1/spaces/create).
-  /// For direct messages, this field might be empty. Supports up to 128
-  /// characters.
+  /// If you receive the error message `ALREADY_EXISTS` when creating a space or
+  /// updating the `displayName`, try a different `displayName`. An existing
+  /// space within the Google Workspace organization might already use this
+  /// display name. For direct messages, this field might be empty. Supports up
+  /// to 128 characters.
   core.String? displayName;
 
   /// Whether this space permits any Google Chat user as a member.
   ///
-  /// Input when creating a space in a Google Workspace organization. For Google
-  /// Chat users that use a Google Account, omit this field when creating a
-  /// space (By default, the space permits any Google Chat user). For existing
-  /// spaces, this field is output only.
+  /// Input when creating a space in a Google Workspace organization. Omit this
+  /// field when creating spaces in the following conditions: * The
+  /// authenticated user uses a Google Account. By default, the space permits
+  /// any Google Chat user. * The space is used to
+  /// [import data to Google Chat](https://developers.google.com/chat/api/guides/import-data-overview).
+  /// Import mode spaces must only permit members from the same Google Workspace
+  /// organization. For existing spaces, this field is output only.
   ///
   /// Immutable.
   core.bool? externalUserAllowed;
@@ -6178,15 +6184,13 @@ class Space {
       };
 }
 
-/// A data source representing a Google Chat space.
+/// A data source that populates Google Chat spaces as selection items for a
+/// multiselect menu.
 ///
-/// Format: spaces/{space}
-/// [Developer Preview](https://developers.google.com/workspace/preview).
+/// Only populates spaces that the user is a member of.
 class SpaceDataSource {
-  /// When `true`, uses the card's Google Chat space as the default selection.
-  ///
-  /// The default value is `false`.
-  /// [Developer Preview](https://developers.google.com/workspace/preview).
+  /// If set to `true`, the multiselect menu selects the current Google Chat
+  /// space as an item by default.
   core.bool? defaultToCurrentSpace;
 
   SpaceDataSource({
@@ -6275,7 +6279,7 @@ class TextButton {
 /// A paragraph of text.
 ///
 /// Formatted text supported. For more information about formatting text, see
-/// [Formatting text in Google Chat apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting)
+/// [Formatting text in Google Chat apps](https://developers.google.com/chat/format-messages#card-formatting)
 /// and \[Formatting text in Google Workspace
 /// Add-ons\](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
 class TextParagraph {
@@ -6295,19 +6299,28 @@ class TextParagraph {
       };
 }
 
-/// A thread in Google Chat.
+/// A thread in a Google Chat space.
+///
+/// For example usage, see
+/// [Start or reply to a message thread](https://developers.google.com/chat/api/guides/v1/messages/create#create-message-thread).
+/// If you specify a thread when creating a message, you can set the
+/// \[`messageReplyOption`\](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages/create#messagereplyoption)
+/// field to determine what happens if no matching thread is found.
 class Thread {
   /// Resource name of the thread.
   ///
   /// Example: `spaces/{space}/threads/{thread}`
+  ///
+  /// Output only.
   core.String? name;
 
-  /// Opaque thread identifier.
+  /// Input for creating or updating a thread.
   ///
-  /// To start or add to a thread, create a message and specify a `threadKey` or
-  /// the thread.name. For example usage, see
-  /// [Start or reply to a message thread](https://developers.google.com/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
-  /// For other requests, this is an output only field.
+  /// Otherwise, output only. ID for the thread. Supports up to 4000 characters.
+  /// This ID is unique to the Chat app that sets it. For example, if multiple
+  /// Chat apps create a message using the same thread key, the messages are
+  /// posted in different threads. To reply in a thread created by a person or
+  /// another Chat app, specify the thread `name` field instead.
   ///
   /// Optional.
   core.String? threadKey;
@@ -6404,7 +6417,12 @@ class User {
   /// example, `users/123456789` in Chat API represents the same person as
   /// `people/123456789` in People API. - the `id` for a
   /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users)
-  /// in the Admin SDK Directory API.
+  /// in the Admin SDK Directory API. - the user's email address can be used as
+  /// an alias for `{user}` in API requests. For example, if the People API
+  /// Person `resourceName` for `user@example.com` is `people/123456789`, you
+  /// can use `users/user@example.com` as an alias to reference
+  /// `users/123456789`. Only the canonical resource name (for example
+  /// `users/123456789`) will be returned from the API.
   core.String? name;
 
   /// User type.

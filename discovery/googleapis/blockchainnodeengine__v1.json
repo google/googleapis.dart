@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230712",
+    "revision": "20231025",
     "rootUrl": "https://blockchainnodeengine.googleapis.com/",
     "servicePath": "",
     "title": "Blockchain Node Engine API",
@@ -583,6 +583,11 @@
                     "$ref": "EndpointInfo",
                     "description": "Output only. The endpoint information through which to interact with a blockchain node.",
                     "readOnly": true
+                },
+                "serviceAttachment": {
+                    "description": "Output only. A service attachment that exposes a node, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}",
+                    "readOnly": true,
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -620,6 +625,10 @@
                 "apiEnableDebug": {
                     "description": "Immutable. Enables JSON-RPC access to functions in the `debug` namespace. Defaults to `false`.",
                     "type": "boolean"
+                },
+                "beaconFeeRecipient": {
+                    "description": "An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as \"suggested\", as we run the execution node we can trust the execution node, and therefore this is considered enforced.",
+                    "type": "string"
                 },
                 "consensusClient": {
                     "description": "Immutable. The consensus client.",
@@ -670,7 +679,7 @@
                         "The network has not been specified, but should be.",
                         "The Ethereum Mainnet.",
                         "The Ethereum Testnet based on Goerli protocol.",
-                        "The Ethereum Testnet based on Sepolia/Bepolia protocol."
+                        "The Ethereum Testnet based on Sepolia/Bepolia protocol. See https://github.com/eth-clients/sepolia."
                     ],
                     "type": "string"
                 },
@@ -866,7 +875,7 @@
                         "description": "Properties of the object. Contains field @type with type URL.",
                         "type": "any"
                     },
-                    "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+                    "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
                     "type": "object"
                 }
             },

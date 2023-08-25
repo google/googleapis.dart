@@ -1692,6 +1692,7 @@ api.GoogleAppsCardV1TextInput buildGoogleAppsCardV1TextInput() {
     o.label = 'foo';
     o.name = 'foo';
     o.onChangeAction = buildGoogleAppsCardV1Action();
+    o.placeholderText = 'foo';
     o.type = 'foo';
     o.value = 'foo';
   }
@@ -1717,6 +1718,10 @@ void checkGoogleAppsCardV1TextInput(api.GoogleAppsCardV1TextInput o) {
       unittest.equals('foo'),
     );
     checkGoogleAppsCardV1Action(o.onChangeAction!);
+    unittest.expect(
+      o.placeholderText!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -2261,6 +2266,7 @@ api.Message buildMessage() {
     o.deletionMetadata = buildDeletionMetadata();
     o.emojiReactionSummaries = buildUnnamed22();
     o.fallbackText = 'foo';
+    o.formattedText = 'foo';
     o.lastUpdateTime = 'foo';
     o.matchedUrl = buildMatchedUrl();
     o.name = 'foo';
@@ -2305,6 +2311,10 @@ void checkMessage(api.Message o) {
     checkUnnamed22(o.emojiReactionSummaries!);
     unittest.expect(
       o.fallbackText!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.formattedText!,
       unittest.equals('foo'),
     );
     unittest.expect(

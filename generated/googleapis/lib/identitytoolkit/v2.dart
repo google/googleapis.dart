@@ -433,6 +433,43 @@ class ProjectsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Retrieve a passkey configuration for an Identity Toolkit project.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the config, for example:
+  /// 'projects/my-awesome-project/passkeyConfig'.
+  /// Value must have pattern `^projects/\[^/\]+/passkeyConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIdentitytoolkitAdminV2PasskeyConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIdentitytoolkitAdminV2PasskeyConfig> getPasskeyConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIdentitytoolkitAdminV2PasskeyConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Update an Identity Toolkit project configuration.
   ///
   /// [request] - The metadata request object.
@@ -479,6 +516,55 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudIdentitytoolkitAdminV2Config.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update a passkey configuration for an Identity Toolkit project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the PasskeyConfig resource.
+  /// Value must have pattern `^projects/\[^/\]+/passkeyConfig$`.
+  ///
+  /// [updateMask] - Optional. The update mask applies to the resource. Empty
+  /// update mask will result in updating nothing. For the `FieldMask`
+  /// definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIdentitytoolkitAdminV2PasskeyConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIdentitytoolkitAdminV2PasskeyConfig>
+      updatePasskeyConfig(
+    GoogleCloudIdentitytoolkitAdminV2PasskeyConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIdentitytoolkitAdminV2PasskeyConfig.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1412,6 +1498,44 @@ class ProjectsTenantsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Retrieve a passkey configuration for an Identity Toolkit project.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the config, for example:
+  /// 'projects/my-awesome-project/passkeyConfig'.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/tenants/\[^/\]+/passkeyConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIdentitytoolkitAdminV2PasskeyConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIdentitytoolkitAdminV2PasskeyConfig> getPasskeyConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIdentitytoolkitAdminV2PasskeyConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// List tenants under the given agent project.
   ///
   /// Requires read permission on the Agent project.
@@ -1603,6 +1727,56 @@ class ProjectsTenantsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update a passkey configuration for an Identity Toolkit project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the PasskeyConfig resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/tenants/\[^/\]+/passkeyConfig$`.
+  ///
+  /// [updateMask] - Optional. The update mask applies to the resource. Empty
+  /// update mask will result in updating nothing. For the `FieldMask`
+  /// definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIdentitytoolkitAdminV2PasskeyConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIdentitytoolkitAdminV2PasskeyConfig>
+      updatePasskeyConfig(
+    GoogleCloudIdentitytoolkitAdminV2PasskeyConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIdentitytoolkitAdminV2PasskeyConfig.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -3885,6 +4059,52 @@ class GoogleCloudIdentitytoolkitAdminV2OAuthResponseType {
         if (code != null) 'code': code!,
         if (idToken != null) 'idToken': idToken!,
         if (token != null) 'token': token!,
+      };
+}
+
+/// Configuration for signing in users using passkeys.
+class GoogleCloudIdentitytoolkitAdminV2PasskeyConfig {
+  /// The website or app origins associated with the customer's sites or apps.
+  ///
+  /// Only challenges signed from these origins will be allowed to sign in with
+  /// passkeys.
+  ///
+  /// Required.
+  core.List<core.String>? expectedOrigins;
+
+  /// The name of the PasskeyConfig resource.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The relying party ID for the purpose of passkeys verifications.
+  ///
+  /// This cannot be changed once created.
+  ///
+  /// Required.
+  core.String? rpId;
+
+  GoogleCloudIdentitytoolkitAdminV2PasskeyConfig({
+    this.expectedOrigins,
+    this.name,
+    this.rpId,
+  });
+
+  GoogleCloudIdentitytoolkitAdminV2PasskeyConfig.fromJson(core.Map json_)
+      : this(
+          expectedOrigins: json_.containsKey('expectedOrigins')
+              ? (json_['expectedOrigins'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          rpId: json_.containsKey('rpId') ? json_['rpId'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (expectedOrigins != null) 'expectedOrigins': expectedOrigins!,
+        if (name != null) 'name': name!,
+        if (rpId != null) 'rpId': rpId!,
       };
 }
 
@@ -6197,23 +6417,23 @@ typedef GoogleIamV1GetPolicyOptions = $GetPolicyOptions;
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class GoogleIamV1Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<GoogleIamV1AuditConfig>? auditConfigs;

@@ -1552,17 +1552,16 @@ class EventsResource {
   /// [eventTypes] - Event types to return. Optional. Possible values are:
   /// - "default"
   /// - "focusTime"
-  /// - "outOfOffice"This parameter can be repeated multiple times to return
-  /// events of different types. Currently, this is the only allowed value for
-  /// this field:
-  /// - \["default", "focusTime", "outOfOffice"\] This value is the default.
-  ///
-  /// If you're enrolled in the Working Location developer preview program, in
-  /// addition to the default value above you can also set the "workingLocation"
-  /// event type:
+  /// - "outOfOffice"
+  /// - "workingLocation"This parameter can be repeated multiple times to return
+  /// events of different types. Currently, these are the only allowed values
+  /// for this field:
+  /// - \["default", "focusTime", "outOfOffice"\]
   /// - \["default", "focusTime", "outOfOffice", "workingLocation"\]
-  /// - \["workingLocation"\] Additional combinations of these four event types
-  /// will be made available in later releases. Developer Preview.
+  /// - \["workingLocation"\] The default is \["default", "focusTime",
+  /// "outOfOffice"\].
+  /// Additional combinations of these four event types will be made available
+  /// in later releases.
   ///
   /// [iCalUID] - Specifies an event ID in the iCalendar format to be provided
   /// in the response. Optional. Use this if you want to search for an event by
@@ -2077,17 +2076,16 @@ class EventsResource {
   /// [eventTypes] - Event types to return. Optional. Possible values are:
   /// - "default"
   /// - "focusTime"
-  /// - "outOfOffice"This parameter can be repeated multiple times to return
-  /// events of different types. Currently, this is the only allowed value for
-  /// this field:
-  /// - \["default", "focusTime", "outOfOffice"\] This value is the default.
-  ///
-  /// If you're enrolled in the Working Location developer preview program, in
-  /// addition to the default value above you can also set the "workingLocation"
-  /// event type:
+  /// - "outOfOffice"
+  /// - "workingLocation"This parameter can be repeated multiple times to return
+  /// events of different types. Currently, these are the only allowed values
+  /// for this field:
+  /// - \["default", "focusTime", "outOfOffice"\]
   /// - \["default", "focusTime", "outOfOffice", "workingLocation"\]
-  /// - \["workingLocation"\] Additional combinations of these four event types
-  /// will be made available in later releases. Developer Preview.
+  /// - \["workingLocation"\] The default is \["default", "focusTime",
+  /// "outOfOffice"\].
+  /// Additional combinations of these four event types will be made available
+  /// in later releases.
   ///
   /// [iCalUID] - Specifies an event ID in the iCalendar format to be provided
   /// in the response. Optional. Use this if you want to search for an event by
@@ -4112,11 +4110,13 @@ class Event {
 
   /// Specific type of the event.
   ///
-  /// Read-only. Possible values are:
+  /// This cannot be modified after the event is created. Possible values are:
   /// - "default" - A regular event or not further specified.
   /// - "outOfOffice" - An out-of-office event.
   /// - "focusTime" - A focus-time event.
-  /// - "workingLocation" - A working location event. Developer Preview.
+  /// - "workingLocation" - A working location event. Currently, only "default "
+  /// and "workingLocation" events can be created using the API. Extended
+  /// support for other event types will be made available in later releases.
   core.String? eventType;
 
   /// Extended properties of the event.
@@ -4316,9 +4316,7 @@ class Event {
   /// compatibility reasons.
   core.String? visibility;
 
-  /// Working Location event data.
-  ///
-  /// Developer Preview.
+  /// Working location event data.
   EventWorkingLocationProperties? workingLocationProperties;
 
   Event({
@@ -4841,16 +4839,19 @@ class EventWorkingLocationPropertiesOfficeLocation {
   /// database.
   core.String? buildingId;
 
-  /// An optional arbitrary desk identifier.
+  /// An optional desk identifier.
   core.String? deskId;
 
-  /// An optional arbitrary floor identifier.
+  /// An optional floor identifier.
   core.String? floorId;
 
-  /// An optional arbitrary floor section identifier.
+  /// An optional floor section identifier.
   core.String? floorSectionId;
 
-  /// An optional extra label for additional information.
+  /// The office name that's displayed in Calendar Web and Mobile clients.
+  ///
+  /// We recommend you reference a building name in the organization's Resources
+  /// database.
   core.String? label;
 
   EventWorkingLocationPropertiesOfficeLocation({
@@ -4901,10 +4902,15 @@ class EventWorkingLocationProperties {
   /// If present, specifies that the user is working from an office.
   EventWorkingLocationPropertiesOfficeLocation? officeLocation;
 
-  /// Indicates what kind of location this is.
+  /// Type of the working location.
   ///
-  /// Any details are specified in a sub-field of the specified name (but which
-  /// may be missing if empty). Any other fields are ignored.
+  /// Possible values are:
+  /// - "homeOffice" - The user is working at home.
+  /// - "officeLocation" - The user is working from an office.
+  /// - "customLocation" - The user is working from a custom location. Any
+  /// details are specified in a sub-field of the specified name, but this field
+  /// may be missing if empty. Any other fields are ignored.
+  /// Required when adding working location properties.
   core.String? type;
 
   EventWorkingLocationProperties({

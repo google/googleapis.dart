@@ -2621,6 +2621,9 @@ class AccountsContainersWorkspacesFoldersResource {
 
   /// Moves entities to a GTM Folder.
   ///
+  /// If {folder_id} in the request path equals 0, this will instead move
+  /// entities out of the folder they currently belong to.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -6154,6 +6157,9 @@ class Destination {
 /// A workspace entity that may represent a tag, trigger, variable, or folder in
 /// addition to its status in the workspace.
 class Entity {
+  /// The built in variable being represented by the entity.
+  BuiltInVariable? builtInVariable;
+
   /// Represents how the entity has been changed in the workspace.
   /// Possible string values are:
   /// - "changeStatusUnspecified"
@@ -6166,8 +6172,14 @@ class Entity {
   /// The client being represented by the entity.
   Client? client;
 
+  /// The custom template being represented by the entity.
+  CustomTemplate? customTemplate;
+
   /// The folder being represented by the entity.
   Folder? folder;
+
+  /// The gtag config being represented by the entity.
+  GtagConfig? gtagConfig;
 
   /// The tag being represented by the entity.
   Tag? tag;
@@ -6181,18 +6193,29 @@ class Entity {
   /// The variable being represented by the entity.
   Variable? variable;
 
+  /// The zone being represented by the entity.
+  Zone? zone;
+
   Entity({
+    this.builtInVariable,
     this.changeStatus,
     this.client,
+    this.customTemplate,
     this.folder,
+    this.gtagConfig,
     this.tag,
     this.transformation,
     this.trigger,
     this.variable,
+    this.zone,
   });
 
   Entity.fromJson(core.Map json_)
       : this(
+          builtInVariable: json_.containsKey('builtInVariable')
+              ? BuiltInVariable.fromJson(json_['builtInVariable']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           changeStatus: json_.containsKey('changeStatus')
               ? json_['changeStatus'] as core.String
               : null,
@@ -6200,9 +6223,17 @@ class Entity {
               ? Client.fromJson(
                   json_['client'] as core.Map<core.String, core.dynamic>)
               : null,
+          customTemplate: json_.containsKey('customTemplate')
+              ? CustomTemplate.fromJson(json_['customTemplate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           folder: json_.containsKey('folder')
               ? Folder.fromJson(
                   json_['folder'] as core.Map<core.String, core.dynamic>)
+              : null,
+          gtagConfig: json_.containsKey('gtagConfig')
+              ? GtagConfig.fromJson(
+                  json_['gtagConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           tag: json_.containsKey('tag')
               ? Tag.fromJson(
@@ -6220,16 +6251,24 @@ class Entity {
               ? Variable.fromJson(
                   json_['variable'] as core.Map<core.String, core.dynamic>)
               : null,
+          zone: json_.containsKey('zone')
+              ? Zone.fromJson(
+                  json_['zone'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (builtInVariable != null) 'builtInVariable': builtInVariable!,
         if (changeStatus != null) 'changeStatus': changeStatus!,
         if (client != null) 'client': client!,
+        if (customTemplate != null) 'customTemplate': customTemplate!,
         if (folder != null) 'folder': folder!,
+        if (gtagConfig != null) 'gtagConfig': gtagConfig!,
         if (tag != null) 'tag': tag!,
         if (transformation != null) 'transformation': transformation!,
         if (trigger != null) 'trigger': trigger!,
         if (variable != null) 'variable': variable!,
+        if (zone != null) 'zone': zone!,
       };
 }
 
@@ -7324,6 +7363,14 @@ class MergeConflict {
 
 /// Represents a Google Tag Manager Parameter.
 class Parameter {
+  /// Whether or not a reference type parameter is strongly or weakly
+  /// referenced.
+  ///
+  /// Only used by Transformations. @mutable
+  /// tagmanager.accounts.containers.workspaces.transformations.create @mutable
+  /// tagmanager.accounts.containers.workspaces.transformations.update
+  core.bool? isWeakReference;
+
   /// The named key that uniquely identifies a parameter.
   ///
   /// Required for top-level parameters, as well as map values. Ignored for list
@@ -7395,6 +7442,7 @@ class Parameter {
   core.String? value;
 
   Parameter({
+    this.isWeakReference,
     this.key,
     this.list,
     this.map,
@@ -7404,6 +7452,9 @@ class Parameter {
 
   Parameter.fromJson(core.Map json_)
       : this(
+          isWeakReference: json_.containsKey('isWeakReference')
+              ? json_['isWeakReference'] as core.bool
+              : null,
           key: json_.containsKey('key') ? json_['key'] as core.String : null,
           list: json_.containsKey('list')
               ? (json_['list'] as core.List)
@@ -7423,6 +7474,7 @@ class Parameter {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (isWeakReference != null) 'isWeakReference': isWeakReference!,
         if (key != null) 'key': key!,
         if (list != null) 'list': list!,
         if (map != null) 'map': map!,

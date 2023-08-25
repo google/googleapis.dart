@@ -111,6 +111,13 @@ Train high-quality custom machine learning models with minimal machine learning 
 - [Documentation](https://cloud.google.com/vertex-ai/)
 - [API details](https://pub.dev/documentation/googleapis/11.4.0/aiplatform_v1/aiplatform_v1-library.html)
 
+#### AlloyDB API - `alloydb_v1`
+
+AlloyDB for PostgreSQL is an open source-compatible database service that provides a powerful option for migrating, modernizing, or building commercial-grade applications. It offers full compatibility with standard PostgreSQL, and is more than 4x faster for transactional workloads and up to 100x faster for analytical queries than standard PostgreSQL in our performance tests. AlloyDB for PostgreSQL offers a 99.99 percent availability SLA inclusive of maintenance. AlloyDB is optimized for the most demanding use cases, allowing you to build new applications that require high transaction throughput, large database sizes, or multiple read resources; scale existing PostgreSQL workloads with no application changes; and modernize legacy proprietary databases. 
+
+- [Documentation](https://cloud.google.com/alloydb/)
+- [API details](https://pub.dev/documentation/googleapis/11.4.0/alloydb_v1/alloydb_v1-library.html)
+
 #### ![Logo](https://www.google.com/images/icons/product/analytics-16.png) Google Analytics API - `analytics_v3`
 
 Views and manages your Google Analytics data.
@@ -210,6 +217,11 @@ The Authorized Buyers Marketplace API lets buyers programmatically discover inve
 - [Documentation](https://developers.google.com/authorized-buyers/apis/marketplace/reference/rest/)
 - [API details](https://pub.dev/documentation/googleapis/11.4.0/authorizedbuyersmarketplace_v1/authorizedbuyersmarketplace_v1-library.html)
 
+#### Backup and DR Service API - `backupdr_v1`
+
+- [Documentation](https://cloud.google.com/backup-disaster-recovery)
+- [API details](https://pub.dev/documentation/googleapis/11.4.0/backupdr_v1/backupdr_v1-library.html)
+
 #### Bare Metal Solution API - `baremetalsolution_v2`
 
 Provides ways to manage Bare Metal Solution hardware installed in a regional extension located near a Google Cloud data center.
@@ -230,6 +242,13 @@ Beyondcorp Enterprise provides identity and context aware access controls for en
 
 - [Documentation](https://cloud.google.com/)
 - [API details](https://pub.dev/documentation/googleapis/11.4.0/beyondcorp_v1/beyondcorp_v1-library.html)
+
+#### BigLake API - `biglake_v1`
+
+The BigLake API provides access to BigLake Metastore, a serverless, fully managed, and highly available metastore for open-source data that can be used for querying Apache Iceberg tables in BigQuery.
+
+- [Documentation](https://cloud.google.com/bigquery/)
+- [API details](https://pub.dev/documentation/googleapis/11.4.0/biglake_v1/biglake_v1-library.html)
 
 #### ![Logo](https://www.google.com/images/icons/product/search-16.gif) BigQuery API - `bigquery_v2`
 
@@ -373,6 +392,13 @@ Creates and manages builds on Google Cloud Platform.
 
 - [Documentation](https://cloud.google.com/cloud-build/docs/)
 - [API details](https://pub.dev/documentation/googleapis/11.4.0/cloudbuild_v1/cloudbuild_v1-library.html)
+
+#### Cloud Build API - `cloudbuild_v2`
+
+Creates and manages builds on Google Cloud Platform.
+
+- [Documentation](https://cloud.google.com/cloud-build/docs/)
+- [API details](https://pub.dev/documentation/googleapis/11.4.0/cloudbuild_v2/cloudbuild_v2-library.html)
 
 #### Cloud Channel API - `cloudchannel_v1`
 
@@ -672,6 +698,13 @@ Display & Video 360 API allows users to automate complex Display & Video 360 wor
 - [Documentation](https://developers.google.com/display-video/)
 - [API details](https://pub.dev/documentation/googleapis/11.4.0/displayvideo_v2/displayvideo_v2-library.html)
 
+#### Display & Video 360 API - `displayvideo_v3`
+
+Display & Video 360 API allows users to automate complex Display & Video 360 workflows, such as creating insertion orders and setting targeting options for individual line items.
+
+- [Documentation](https://developers.google.com/display-video/)
+- [API details](https://pub.dev/documentation/googleapis/11.4.0/displayvideo_v3/displayvideo_v3-library.html)
+
 #### Cloud Data Loss Prevention (DLP) - `dlp_v2`
 
 Provides methods for detection, risk analysis, and de-identification of privacy-sensitive fragments in text, images, and Google Cloud Platform storage repositories.
@@ -869,13 +902,6 @@ The Google Play Game Management API allows developers to manage resources from t
 - [Documentation](https://developers.google.com/games/)
 - [API details](https://pub.dev/documentation/googleapis/11.4.0/gamesmanagement_v1management/gamesmanagement_v1management-library.html)
 
-#### Game Services API - `gameservices_v1`
-
-Deploy and manage infrastructure for global multiplayer gaming experiences.
-
-- [Documentation](https://cloud.google.com/solutions/gaming/)
-- [API details](https://pub.dev/documentation/googleapis/11.4.0/gameservices_v1/gameservices_v1-library.html)
-
 #### Backup for GKE API - `gkebackup_v1`
 
 Backup for GKE is a managed Kubernetes workload backup and restore service for GKE clusters.
@@ -989,9 +1015,9 @@ Cloud IDS (Cloud Intrusion Detection System) detects malware, spyware, command-a
 - [Documentation](https://cloud.google.com/)
 - [API details](https://pub.dev/documentation/googleapis/11.4.0/ids_v1/ids_v1-library.html)
 
-#### Indexing API - `indexing_v3`
+#### Web Search Indexing API - `indexing_v3`
 
-Notifies Google when your web pages change.
+Notifies Google Web Search when your web pages change.
 
 - [Documentation](https://developers.google.com/search/apis/indexing-api/)
 - [API details](https://pub.dev/documentation/googleapis/11.4.0/indexing_v3/indexing_v3-library.html)
@@ -1035,6 +1061,13 @@ Provides natural language understanding technologies, such as sentiment analysis
 
 - [Documentation](https://cloud.google.com/natural-language/)
 - [API details](https://pub.dev/documentation/googleapis/11.4.0/language_v1/language_v1-library.html)
+
+#### Cloud Natural Language API - `language_v2`
+
+Provides natural language understanding technologies, such as sentiment analysis, entity recognition, entity sentiment analysis, and other text annotations, to developers.
+
+- [Documentation](https://cloud.google.com/natural-language/)
+- [API details](https://pub.dev/documentation/googleapis/11.4.0/language_v2/language_v2-library.html)
 
 #### Library Agent API - `libraryagent_v1`
 
@@ -1321,6 +1354,13 @@ Provides reliable, many-to-many, asynchronous messaging between applications.
 - [Documentation](https://cloud.google.com/pubsub/lite/docs)
 - [API details](https://pub.dev/documentation/googleapis/11.4.0/pubsublite_v1/pubsublite_v1-library.html)
 
+#### Rapid Migration Assessment API - `rapidmigrationassessment_v1`
+
+The Rapid Migration Assessment service is our first-party migration assessment and planning tool.
+
+- [Documentation](https://cloud.google.com/migration-center)
+- [API details](https://pub.dev/documentation/googleapis/11.4.0/rapidmigrationassessment_v1/rapidmigrationassessment_v1-library.html)
+
 #### Reader Revenue Subscription Linking API - `readerrevenuesubscriptionlinking_v1`
 
 readerrevenuesubscriptionlinking.googleapis.com API.
@@ -1402,6 +1442,13 @@ Enables client applications to check web resources (most commonly URLs) against 
 
 - [Documentation](https://developers.google.com/safe-browsing/)
 - [API details](https://pub.dev/documentation/googleapis/11.4.0/safebrowsing_v4/safebrowsing_v4-library.html)
+
+#### Safe Browsing API - `safebrowsing_v5`
+
+Enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources. The Safe Browsing APIs are for non-commercial use only. If you need to use APIs to detect malicious URLs for commercial purposes – meaning “for sale or revenue-generating purposes” – please refer to the Web Risk API.
+
+- [Documentation](https://developers.google.com/safe-browsing/)
+- [API details](https://pub.dev/documentation/googleapis/11.4.0/safebrowsing_v5/safebrowsing_v5-library.html)
 
 #### Apps Script API - `script_v1`
 
@@ -1611,6 +1658,11 @@ TPU API provides customers with access to Google TPU technology.
 - [Documentation](https://cloud.google.com/traffic-director)
 - [API details](https://pub.dev/documentation/googleapis/11.4.0/trafficdirector_v2/trafficdirector_v2-library.html)
 
+#### Traffic Director API - `trafficdirector_v3`
+
+- [Documentation](https://cloud.google.com/traffic-director)
+- [API details](https://pub.dev/documentation/googleapis/11.4.0/trafficdirector_v3/trafficdirector_v3-library.html)
+
 #### Transcoder API - `transcoder_v1`
 
 This API converts video files into formats suitable for consumer distribution. For more information, see the Transcoder API overview. 
@@ -1681,6 +1733,13 @@ Use the Migrate to Virtual Machines API to programmatically migrate workloads.
 - [Documentation](https://cloud.google.com/migrate/virtual-machines)
 - [API details](https://pub.dev/documentation/googleapis/11.4.0/vmmigration_v1/vmmigration_v1-library.html)
 
+#### VMware Engine API - `vmwareengine_v1`
+
+The Google VMware Engine API lets you programmatically manage VMware environments.
+
+- [Documentation](https://cloud.google.com/solutions/vmware-as-a-service)
+- [API details](https://pub.dev/documentation/googleapis/11.4.0/vmwareengine_v1/vmwareengine_v1-library.html)
+
 #### Serverless VPC Access API - `vpcaccess_v1`
 
 API for managing VPC access connectors.
@@ -1727,6 +1786,13 @@ Workload Manager is a service that provides tooling for enterprise workloads to 
 
 - [Documentation](https://cloud.google.com/workload-manager/docs)
 - [API details](https://pub.dev/documentation/googleapis/11.4.0/workloadmanager_v1/workloadmanager_v1-library.html)
+
+#### Cloud Workstations API - `workstations_v1`
+
+Allows administrators to create managed developer environments in the cloud. 
+
+- [Documentation](https://cloud.google.com/workstations)
+- [API details](https://pub.dev/documentation/googleapis/11.4.0/workstations_v1/workstations_v1-library.html)
 
 #### YouTube Data API v3 - `youtube_v3`
 

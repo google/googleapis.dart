@@ -3735,6 +3735,16 @@ class CloudSqlSettings {
   /// The Cloud SQL default instance level collation.
   core.String? collation;
 
+  /// Data cache is an optional feature available for Cloud SQL for MySQL
+  /// Enterprise Plus edition only.
+  ///
+  /// For more information on data cache, see
+  /// [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache)
+  /// in Cloud SQL documentation.
+  ///
+  /// Optional.
+  DataCacheConfig? dataCacheConfig;
+
   /// The storage capacity available to the database, in GB.
   ///
   /// The minimum (and default) size is 10GB.
@@ -3758,10 +3768,10 @@ class CloudSqlSettings {
   /// - "SQL_DATABASE_VERSION_UNSPECIFIED" : Unspecified version.
   /// - "MYSQL_5_6" : MySQL 5.6.
   /// - "MYSQL_5_7" : MySQL 5.7.
+  /// - "MYSQL_8_0" : MySQL 8.0.
   /// - "POSTGRES_9_6" : PostgreSQL 9.6.
   /// - "POSTGRES_11" : PostgreSQL 11.
   /// - "POSTGRES_10" : PostgreSQL 10.
-  /// - "MYSQL_8_0" : MySQL 8.0.
   /// - "POSTGRES_12" : PostgreSQL 12.
   /// - "POSTGRES_13" : PostgreSQL 13.
   /// - "POSTGRES_14" : PostgreSQL 14.
@@ -3837,6 +3847,7 @@ class CloudSqlSettings {
     this.availabilityType,
     this.cmekKeyName,
     this.collation,
+    this.dataCacheConfig,
     this.dataDiskSizeGb,
     this.dataDiskType,
     this.databaseFlags,
@@ -3869,6 +3880,10 @@ class CloudSqlSettings {
               : null,
           collation: json_.containsKey('collation')
               ? json_['collation'] as core.String
+              : null,
+          dataCacheConfig: json_.containsKey('dataCacheConfig')
+              ? DataCacheConfig.fromJson(json_['dataCacheConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           dataDiskSizeGb: json_.containsKey('dataDiskSizeGb')
               ? json_['dataDiskSizeGb'] as core.String
@@ -3930,6 +3945,7 @@ class CloudSqlSettings {
         if (availabilityType != null) 'availabilityType': availabilityType!,
         if (cmekKeyName != null) 'cmekKeyName': cmekKeyName!,
         if (collation != null) 'collation': collation!,
+        if (dataCacheConfig != null) 'dataCacheConfig': dataCacheConfig!,
         if (dataDiskSizeGb != null) 'dataDiskSizeGb': dataDiskSizeGb!,
         if (dataDiskType != null) 'dataDiskType': dataDiskType!,
         if (databaseFlags != null) 'databaseFlags': databaseFlags!,
@@ -4700,6 +4716,34 @@ class ConvertRowIdToColumn {
       };
 }
 
+/// Data cache is an optional feature available for Cloud SQL for MySQL
+/// Enterprise Plus edition only.
+///
+/// For more information on data cache, see
+/// [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in
+/// Cloud SQL documentation.
+class DataCacheConfig {
+  /// Whether data cache is enabled for the instance.
+  ///
+  /// Optional.
+  core.bool? dataCacheEnabled;
+
+  DataCacheConfig({
+    this.dataCacheEnabled,
+  });
+
+  DataCacheConfig.fromJson(core.Map json_)
+      : this(
+          dataCacheEnabled: json_.containsKey('dataCacheEnabled')
+              ? json_['dataCacheEnabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataCacheEnabled != null) 'dataCacheEnabled': dataCacheEnabled!,
+      };
+}
+
 /// The type and version of a source or destination database.
 class DatabaseEngineInfo {
   /// Engine type.
@@ -4713,7 +4757,7 @@ class DatabaseEngineInfo {
   /// - "ORACLE" : The source engine is Oracle.
   core.String? engine;
 
-  /// Engine named version, for example 12.c.1.
+  /// Engine version, for example "12.c.1".
   ///
   /// Required.
   core.String? version;
@@ -5155,28 +5199,7 @@ typedef Empty = $Empty;
 
 /// EncryptionConfig describes the encryption config of a cluster that is
 /// encrypted with a CMEK (customer-managed encryption key).
-class EncryptionConfig {
-  /// The fully-qualified resource name of the KMS key.
-  ///
-  /// Each Cloud KMS key is regionalized and has the following format:
-  /// projects/\[PROJECT\]/locations/\[REGION\]/keyRings/\[RING\]/cryptoKeys/\[KEY_NAME\]
-  core.String? kmsKeyName;
-
-  EncryptionConfig({
-    this.kmsKeyName,
-  });
-
-  EncryptionConfig.fromJson(core.Map json_)
-      : this(
-          kmsKeyName: json_.containsKey('kmsKeyName')
-              ? json_['kmsKeyName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-      };
-}
+typedef EncryptionConfig = $EncryptionConfig;
 
 /// A single DDL statement for a specific entity
 class EntityDdl {
@@ -6221,25 +6244,7 @@ class ListPrivateConnectionsResponse {
 typedef Location = $Location00;
 
 /// MachineConfig describes the configuration of a machine.
-class MachineConfig {
-  /// The number of CPU's in the VM instance.
-  core.int? cpuCount;
-
-  MachineConfig({
-    this.cpuCount,
-  });
-
-  MachineConfig.fromJson(core.Map json_)
-      : this(
-          cpuCount: json_.containsKey('cpuCount')
-              ? json_['cpuCount'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cpuCount != null) 'cpuCount': cpuCount!,
-      };
-}
+typedef MachineConfig = $MachineConfig;
 
 /// Definition of a transformation that is to be applied to a group of entities
 /// in the source schema.
@@ -7217,7 +7222,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -7468,23 +7473,23 @@ class PerformanceConfig {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;

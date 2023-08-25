@@ -1672,6 +1672,7 @@ api.OracleProfile buildOracleProfile() {
     o.connectionAttributes = buildUnnamed22();
     o.databaseService = 'foo';
     o.hostname = 'foo';
+    o.oracleSslConfig = buildOracleSslConfig();
     o.password = 'foo';
     o.port = 42;
     o.username = 'foo';
@@ -1692,6 +1693,7 @@ void checkOracleProfile(api.OracleProfile o) {
       o.hostname!,
       unittest.equals('foo'),
     );
+    checkOracleSslConfig(o.oracleSslConfig!);
     unittest.expect(
       o.password!,
       unittest.equals('foo'),
@@ -1806,6 +1808,30 @@ void checkOracleSourceConfig(api.OracleSourceConfig o) {
     checkStreamLargeObjects(o.streamLargeObjects!);
   }
   buildCounterOracleSourceConfig--;
+}
+
+core.int buildCounterOracleSslConfig = 0;
+api.OracleSslConfig buildOracleSslConfig() {
+  final o = api.OracleSslConfig();
+  buildCounterOracleSslConfig++;
+  if (buildCounterOracleSslConfig < 3) {
+    o.caCertificate = 'foo';
+    o.caCertificateSet = true;
+  }
+  buildCounterOracleSslConfig--;
+  return o;
+}
+
+void checkOracleSslConfig(api.OracleSslConfig o) {
+  buildCounterOracleSslConfig++;
+  if (buildCounterOracleSslConfig < 3) {
+    unittest.expect(
+      o.caCertificate!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.caCertificateSet!, unittest.isTrue);
+  }
+  buildCounterOracleSslConfig--;
 }
 
 core.List<api.OracleColumn> buildUnnamed25() => [
@@ -2591,6 +2617,7 @@ api.Stream buildStream() {
     o.displayName = 'foo';
     o.errors = buildUnnamed33();
     o.labels = buildUnnamed34();
+    o.lastRecoveryTime = 'foo';
     o.name = 'foo';
     o.sourceConfig = buildSourceConfig();
     o.state = 'foo';
@@ -2620,6 +2647,10 @@ void checkStream(api.Stream o) {
     );
     checkUnnamed33(o.errors!);
     checkUnnamed34(o.labels!);
+    unittest.expect(
+      o.lastRecoveryTime!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -3211,6 +3242,16 @@ void main() {
       final od = api.OracleSourceConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkOracleSourceConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-OracleSslConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildOracleSslConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OracleSslConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkOracleSslConfig(od);
     });
   });
 

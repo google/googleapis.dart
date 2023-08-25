@@ -690,6 +690,28 @@ void checkFairplay(api.Fairplay o) {
   buildCounterFairplay--;
 }
 
+core.int buildCounterFmp4Config = 0;
+api.Fmp4Config buildFmp4Config() {
+  final o = api.Fmp4Config();
+  buildCounterFmp4Config++;
+  if (buildCounterFmp4Config < 3) {
+    o.codecTag = 'foo';
+  }
+  buildCounterFmp4Config--;
+  return o;
+}
+
+void checkFmp4Config(api.Fmp4Config o) {
+  buildCounterFmp4Config++;
+  if (buildCounterFmp4Config < 3) {
+    unittest.expect(
+      o.codecTag!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterFmp4Config--;
+}
+
 core.int buildCounterH264CodecSettings = 0;
 api.H264CodecSettings buildH264CodecSettings() {
   final o = api.H264CodecSettings();
@@ -1444,6 +1466,7 @@ api.MuxStream buildMuxStream() {
     o.elementaryStreams = buildUnnamed19();
     o.encryptionId = 'foo';
     o.fileName = 'foo';
+    o.fmp4 = buildFmp4Config();
     o.key = 'foo';
     o.segmentSettings = buildSegmentSettings();
   }
@@ -1467,6 +1490,7 @@ void checkMuxStream(api.MuxStream o) {
       o.fileName!,
       unittest.equals('foo'),
     );
+    checkFmp4Config(o.fmp4!);
     unittest.expect(
       o.key!,
       unittest.equals('foo'),
@@ -2321,6 +2345,16 @@ void main() {
       final od =
           api.Fairplay.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkFairplay(od);
+    });
+  });
+
+  unittest.group('obj-schema-Fmp4Config', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFmp4Config();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Fmp4Config.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkFmp4Config(od);
     });
   });
 

@@ -3217,10 +3217,16 @@ class AwsSourceVmDetails {
   /// - "BIOS" : The firmware is BIOS.
   core.String? firmware;
 
+  /// Information about VM capabilities needed for some Compute Engine features.
+  ///
+  /// Output only.
+  VmCapabilities? vmCapabilitiesInfo;
+
   AwsSourceVmDetails({
     this.committedStorageBytes,
     this.disks,
     this.firmware,
+    this.vmCapabilitiesInfo,
   });
 
   AwsSourceVmDetails.fromJson(core.Map json_)
@@ -3237,6 +3243,10 @@ class AwsSourceVmDetails {
           firmware: json_.containsKey('firmware')
               ? json_['firmware'] as core.String
               : null,
+          vmCapabilitiesInfo: json_.containsKey('vmCapabilitiesInfo')
+              ? VmCapabilities.fromJson(json_['vmCapabilitiesInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3244,6 +3254,8 @@ class AwsSourceVmDetails {
           'committedStorageBytes': committedStorageBytes!,
         if (disks != null) 'disks': disks!,
         if (firmware != null) 'firmware': firmware!,
+        if (vmCapabilitiesInfo != null)
+          'vmCapabilitiesInfo': vmCapabilitiesInfo!,
       };
 }
 
@@ -3459,6 +3471,444 @@ class AwsVmsDetails {
       };
 }
 
+/// The details of an Azure VM disk.
+class AzureDiskDetails {
+  /// Azure disk ID.
+  core.String? diskId;
+
+  /// The ordinal number of the disk.
+  core.int? diskNumber;
+
+  /// Size in GB.
+  core.String? sizeGb;
+
+  AzureDiskDetails({
+    this.diskId,
+    this.diskNumber,
+    this.sizeGb,
+  });
+
+  AzureDiskDetails.fromJson(core.Map json_)
+      : this(
+          diskId: json_.containsKey('diskId')
+              ? json_['diskId'] as core.String
+              : null,
+          diskNumber: json_.containsKey('diskNumber')
+              ? json_['diskNumber'] as core.int
+              : null,
+          sizeGb: json_.containsKey('sizeGb')
+              ? json_['sizeGb'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (diskId != null) 'diskId': diskId!,
+        if (diskNumber != null) 'diskNumber': diskNumber!,
+        if (sizeGb != null) 'sizeGb': sizeGb!,
+      };
+}
+
+/// AzureSourceDetails message describes a specific source details for the Azure
+/// source type.
+class AzureSourceDetails {
+  /// The Azure location (region) that the source VMs will be migrated from.
+  ///
+  /// Immutable.
+  core.String? azureLocation;
+
+  /// Azure Credentials using tenant ID, client ID and secret.
+  ClientSecretCredentials? clientSecretCreds;
+
+  /// Provides details on the state of the Source in case of an error.
+  ///
+  /// Output only.
+  Status? error;
+
+  /// User specified tags to add to every M2VM generated resource in Azure.
+  ///
+  /// These tags will be set in addition to the default tags that are set as
+  /// part of the migration process. The tags must not begin with the reserved
+  /// prefix `m4ce` or `m2vm`.
+  core.Map<core.String, core.String>? migrationResourcesUserTags;
+
+  /// The ID of the Azure resource group that contains all resources related to
+  /// the migration process of this source.
+  ///
+  /// Output only.
+  core.String? resourceGroupId;
+
+  /// State of the source as determined by the health check.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state is unknown. This is used for API
+  /// compatibility only and is not used by the system.
+  /// - "PENDING" : The state was not sampled by the health checks yet.
+  /// - "FAILED" : The source is available but might not be usable yet due to
+  /// invalid credentials or another reason. The error message will contain
+  /// further details.
+  /// - "ACTIVE" : The source exists and its credentials were verified.
+  core.String? state;
+
+  /// Azure subscription ID.
+  ///
+  /// Immutable.
+  core.String? subscriptionId;
+
+  AzureSourceDetails({
+    this.azureLocation,
+    this.clientSecretCreds,
+    this.error,
+    this.migrationResourcesUserTags,
+    this.resourceGroupId,
+    this.state,
+    this.subscriptionId,
+  });
+
+  AzureSourceDetails.fromJson(core.Map json_)
+      : this(
+          azureLocation: json_.containsKey('azureLocation')
+              ? json_['azureLocation'] as core.String
+              : null,
+          clientSecretCreds: json_.containsKey('clientSecretCreds')
+              ? ClientSecretCredentials.fromJson(json_['clientSecretCreds']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          error: json_.containsKey('error')
+              ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          migrationResourcesUserTags:
+              json_.containsKey('migrationResourcesUserTags')
+                  ? (json_['migrationResourcesUserTags']
+                          as core.Map<core.String, core.dynamic>)
+                      .map(
+                      (key, value) => core.MapEntry(
+                        key,
+                        value as core.String,
+                      ),
+                    )
+                  : null,
+          resourceGroupId: json_.containsKey('resourceGroupId')
+              ? json_['resourceGroupId'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          subscriptionId: json_.containsKey('subscriptionId')
+              ? json_['subscriptionId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (azureLocation != null) 'azureLocation': azureLocation!,
+        if (clientSecretCreds != null) 'clientSecretCreds': clientSecretCreds!,
+        if (error != null) 'error': error!,
+        if (migrationResourcesUserTags != null)
+          'migrationResourcesUserTags': migrationResourcesUserTags!,
+        if (resourceGroupId != null) 'resourceGroupId': resourceGroupId!,
+        if (state != null) 'state': state!,
+        if (subscriptionId != null) 'subscriptionId': subscriptionId!,
+      };
+}
+
+/// Represent the source Azure VM details.
+class AzureSourceVmDetails {
+  /// The total size of the disks being migrated in bytes.
+  core.String? committedStorageBytes;
+
+  /// The disks attached to the source VM.
+  core.List<AzureDiskDetails>? disks;
+
+  /// The firmware type of the source VM.
+  /// Possible string values are:
+  /// - "FIRMWARE_UNSPECIFIED" : The firmware is unknown.
+  /// - "EFI" : The firmware is EFI.
+  /// - "BIOS" : The firmware is BIOS.
+  core.String? firmware;
+
+  /// Information about VM capabilities needed for some Compute Engine features.
+  ///
+  /// Output only.
+  VmCapabilities? vmCapabilitiesInfo;
+
+  AzureSourceVmDetails({
+    this.committedStorageBytes,
+    this.disks,
+    this.firmware,
+    this.vmCapabilitiesInfo,
+  });
+
+  AzureSourceVmDetails.fromJson(core.Map json_)
+      : this(
+          committedStorageBytes: json_.containsKey('committedStorageBytes')
+              ? json_['committedStorageBytes'] as core.String
+              : null,
+          disks: json_.containsKey('disks')
+              ? (json_['disks'] as core.List)
+                  .map((value) => AzureDiskDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          firmware: json_.containsKey('firmware')
+              ? json_['firmware'] as core.String
+              : null,
+          vmCapabilitiesInfo: json_.containsKey('vmCapabilitiesInfo')
+              ? VmCapabilities.fromJson(json_['vmCapabilitiesInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (committedStorageBytes != null)
+          'committedStorageBytes': committedStorageBytes!,
+        if (disks != null) 'disks': disks!,
+        if (firmware != null) 'firmware': firmware!,
+        if (vmCapabilitiesInfo != null)
+          'vmCapabilitiesInfo': vmCapabilitiesInfo!,
+      };
+}
+
+/// AwsVmDetails describes a VM in AWS.
+class AzureVmDetails {
+  /// The VM Boot Option.
+  /// Possible string values are:
+  /// - "BOOT_OPTION_UNSPECIFIED" : The boot option is unknown.
+  /// - "EFI" : The boot option is UEFI.
+  /// - "BIOS" : The boot option is BIOS.
+  core.String? bootOption;
+
+  /// The total size of the storage allocated to the VM in MB.
+  core.String? committedStorageMb;
+
+  /// The VM's ComputerName.
+  core.String? computerName;
+
+  /// The number of cpus the VM has.
+  core.int? cpuCount;
+
+  /// The number of disks the VM has, including OS disk.
+  core.int? diskCount;
+
+  /// Description of the data disks.
+  core.List<Disk>? disks;
+
+  /// The memory size of the VM in MB.
+  core.int? memoryMb;
+
+  /// Description of the OS.
+  OSDescription? osDescription;
+
+  /// Description of the OS disk.
+  OSDisk? osDisk;
+
+  /// The power state of the VM at the moment list was taken.
+  /// Possible string values are:
+  /// - "POWER_STATE_UNSPECIFIED" : Power state is not specified.
+  /// - "STARTING" : The VM is starting.
+  /// - "RUNNING" : The VM is running.
+  /// - "STOPPING" : The VM is stopping.
+  /// - "STOPPED" : The VM is stopped.
+  /// - "DEALLOCATING" : The VM is deallocating.
+  /// - "DEALLOCATED" : The VM is deallocated.
+  /// - "UNKNOWN" : The VM's power state is unknown.
+  core.String? powerState;
+
+  /// The tags of the VM.
+  core.Map<core.String, core.String>? tags;
+
+  /// The VM full path in Azure.
+  core.String? vmId;
+
+  /// VM size as configured in Azure.
+  ///
+  /// Determines the VM's hardware spec.
+  core.String? vmSize;
+
+  AzureVmDetails({
+    this.bootOption,
+    this.committedStorageMb,
+    this.computerName,
+    this.cpuCount,
+    this.diskCount,
+    this.disks,
+    this.memoryMb,
+    this.osDescription,
+    this.osDisk,
+    this.powerState,
+    this.tags,
+    this.vmId,
+    this.vmSize,
+  });
+
+  AzureVmDetails.fromJson(core.Map json_)
+      : this(
+          bootOption: json_.containsKey('bootOption')
+              ? json_['bootOption'] as core.String
+              : null,
+          committedStorageMb: json_.containsKey('committedStorageMb')
+              ? json_['committedStorageMb'] as core.String
+              : null,
+          computerName: json_.containsKey('computerName')
+              ? json_['computerName'] as core.String
+              : null,
+          cpuCount: json_.containsKey('cpuCount')
+              ? json_['cpuCount'] as core.int
+              : null,
+          diskCount: json_.containsKey('diskCount')
+              ? json_['diskCount'] as core.int
+              : null,
+          disks: json_.containsKey('disks')
+              ? (json_['disks'] as core.List)
+                  .map((value) => Disk.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          memoryMb: json_.containsKey('memoryMb')
+              ? json_['memoryMb'] as core.int
+              : null,
+          osDescription: json_.containsKey('osDescription')
+              ? OSDescription.fromJson(
+                  json_['osDescription'] as core.Map<core.String, core.dynamic>)
+              : null,
+          osDisk: json_.containsKey('osDisk')
+              ? OSDisk.fromJson(
+                  json_['osDisk'] as core.Map<core.String, core.dynamic>)
+              : null,
+          powerState: json_.containsKey('powerState')
+              ? json_['powerState'] as core.String
+              : null,
+          tags: json_.containsKey('tags')
+              ? (json_['tags'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          vmId: json_.containsKey('vmId') ? json_['vmId'] as core.String : null,
+          vmSize: json_.containsKey('vmSize')
+              ? json_['vmSize'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bootOption != null) 'bootOption': bootOption!,
+        if (committedStorageMb != null)
+          'committedStorageMb': committedStorageMb!,
+        if (computerName != null) 'computerName': computerName!,
+        if (cpuCount != null) 'cpuCount': cpuCount!,
+        if (diskCount != null) 'diskCount': diskCount!,
+        if (disks != null) 'disks': disks!,
+        if (memoryMb != null) 'memoryMb': memoryMb!,
+        if (osDescription != null) 'osDescription': osDescription!,
+        if (osDisk != null) 'osDisk': osDisk!,
+        if (powerState != null) 'powerState': powerState!,
+        if (tags != null) 'tags': tags!,
+        if (vmId != null) 'vmId': vmId!,
+        if (vmSize != null) 'vmSize': vmSize!,
+      };
+}
+
+/// AzureVmsDetails describes VMs in Azure.
+class AzureVmsDetails {
+  /// The details of the Azure VMs.
+  core.List<AzureVmDetails>? details;
+
+  AzureVmsDetails({
+    this.details,
+  });
+
+  AzureVmsDetails.fromJson(core.Map json_)
+      : this(
+          details: json_.containsKey('details')
+              ? (json_['details'] as core.List)
+                  .map((value) => AzureVmDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (details != null) 'details': details!,
+      };
+}
+
+/// BootDiskDefaults hold information about the boot disk of a VM.
+class BootDiskDefaults {
+  /// Specifies a unique device name of your choice that is reflected into the
+  /// /dev/disk/by-id/google-* tree of a Linux operating system running within
+  /// the instance.
+  ///
+  /// If not specified, the server chooses a default device name to apply to
+  /// this disk, in the form persistent-disk-x, where x is a number assigned by
+  /// Google Compute Engine. This field is only applicable for persistent disks.
+  ///
+  /// Optional.
+  core.String? deviceName;
+
+  /// The name of the disk.
+  ///
+  /// Optional.
+  core.String? diskName;
+
+  /// The type of disk provisioning to use for the VM.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED" : An unspecified disk type. Will
+  /// be used as STANDARD.
+  /// - "COMPUTE_ENGINE_DISK_TYPE_STANDARD" : A Standard disk type.
+  /// - "COMPUTE_ENGINE_DISK_TYPE_SSD" : SSD hard disk type.
+  /// - "COMPUTE_ENGINE_DISK_TYPE_BALANCED" : An alternative to SSD persistent
+  /// disks that balance performance and cost.
+  core.String? diskType;
+
+  /// The encryption to apply to the boot disk.
+  ///
+  /// Optional.
+  Encryption? encryption;
+
+  /// The image to use when creating the disk.
+  DiskImageDefaults? image;
+
+  BootDiskDefaults({
+    this.deviceName,
+    this.diskName,
+    this.diskType,
+    this.encryption,
+    this.image,
+  });
+
+  BootDiskDefaults.fromJson(core.Map json_)
+      : this(
+          deviceName: json_.containsKey('deviceName')
+              ? json_['deviceName'] as core.String
+              : null,
+          diskName: json_.containsKey('diskName')
+              ? json_['diskName'] as core.String
+              : null,
+          diskType: json_.containsKey('diskType')
+              ? json_['diskType'] as core.String
+              : null,
+          encryption: json_.containsKey('encryption')
+              ? Encryption.fromJson(
+                  json_['encryption'] as core.Map<core.String, core.dynamic>)
+              : null,
+          image: json_.containsKey('image')
+              ? DiskImageDefaults.fromJson(
+                  json_['image'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceName != null) 'deviceName': deviceName!,
+        if (diskName != null) 'diskName': diskName!,
+        if (diskType != null) 'diskType': diskType!,
+        if (encryption != null) 'encryption': encryption!,
+        if (image != null) 'image': image!,
+      };
+}
+
 /// Request message for 'CancelCloneJob' request.
 typedef CancelCloneJobRequest = $Empty;
 
@@ -3467,6 +3917,45 @@ typedef CancelCutoverJobRequest = $Empty;
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
+
+/// Message describing Azure Credentials using tenant ID, client ID and secret.
+class ClientSecretCredentials {
+  /// Azure client ID.
+  core.String? clientId;
+
+  /// Input only.
+  ///
+  /// Azure client secret.
+  core.String? clientSecret;
+
+  /// Azure tenant ID.
+  core.String? tenantId;
+
+  ClientSecretCredentials({
+    this.clientId,
+    this.clientSecret,
+    this.tenantId,
+  });
+
+  ClientSecretCredentials.fromJson(core.Map json_)
+      : this(
+          clientId: json_.containsKey('clientId')
+              ? json_['clientId'] as core.String
+              : null,
+          clientSecret: json_.containsKey('clientSecret')
+              ? json_['clientSecret'] as core.String
+              : null,
+          tenantId: json_.containsKey('tenantId')
+              ? json_['tenantId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clientId != null) 'clientId': clientId!,
+        if (clientSecret != null) 'clientSecret': clientSecret!,
+        if (tenantId != null) 'tenantId': tenantId!,
+      };
+}
 
 /// CloneJob describes the process of creating a clone of a MigratingVM to the
 /// requested target based on the latest successful uploaded snapshots.
@@ -3665,16 +4154,24 @@ class ComputeEngineDisksTargetDefaults {
   /// The details of each Persistent Disk to create.
   core.List<PersistentDiskDefaults>? disks;
 
+  /// Details of the disk only migration target.
+  DisksMigrationDisksTargetDefaults? disksTargetDefaults;
+
   /// The full path of the resource of type TargetProject which represents the
   /// Compute Engine project in which to create the Persistent Disks.
   core.String? targetProject;
+
+  /// Details of the VM migration target.
+  DisksMigrationVmTargetDefaults? vmTargetDefaults;
 
   /// The zone in which to create the Persistent Disks.
   core.String? zone;
 
   ComputeEngineDisksTargetDefaults({
     this.disks,
+    this.disksTargetDefaults,
     this.targetProject,
+    this.vmTargetDefaults,
     this.zone,
   });
 
@@ -3686,15 +4183,28 @@ class ComputeEngineDisksTargetDefaults {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          disksTargetDefaults: json_.containsKey('disksTargetDefaults')
+              ? DisksMigrationDisksTargetDefaults.fromJson(
+                  json_['disksTargetDefaults']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           targetProject: json_.containsKey('targetProject')
               ? json_['targetProject'] as core.String
+              : null,
+          vmTargetDefaults: json_.containsKey('vmTargetDefaults')
+              ? DisksMigrationVmTargetDefaults.fromJson(
+                  json_['vmTargetDefaults']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           zone: json_.containsKey('zone') ? json_['zone'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disks != null) 'disks': disks!,
+        if (disksTargetDefaults != null)
+          'disksTargetDefaults': disksTargetDefaults!,
         if (targetProject != null) 'targetProject': targetProject!,
+        if (vmTargetDefaults != null) 'vmTargetDefaults': vmTargetDefaults!,
         if (zone != null) 'zone': zone!,
       };
 }
@@ -3705,8 +4215,16 @@ class ComputeEngineDisksTargetDetails {
   /// The details of each created Persistent Disk.
   core.List<PersistentDisk>? disks;
 
+  /// Details of the disks-only migration target.
+  DisksMigrationDisksTargetDetails? disksTargetDetails;
+
+  /// Details for the VM the migrated data disks are attached to.
+  DisksMigrationVmTargetDetails? vmTargetDetails;
+
   ComputeEngineDisksTargetDetails({
     this.disks,
+    this.disksTargetDetails,
+    this.vmTargetDetails,
   });
 
   ComputeEngineDisksTargetDetails.fromJson(core.Map json_)
@@ -3717,10 +4235,22 @@ class ComputeEngineDisksTargetDetails {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          disksTargetDetails: json_.containsKey('disksTargetDetails')
+              ? DisksMigrationDisksTargetDetails.fromJson(
+                  json_['disksTargetDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          vmTargetDetails: json_.containsKey('vmTargetDetails')
+              ? DisksMigrationVmTargetDetails.fromJson(json_['vmTargetDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (disks != null) 'disks': disks!,
+        if (disksTargetDetails != null)
+          'disksTargetDetails': disksTargetDetails!,
+        if (vmTargetDetails != null) 'vmTargetDetails': vmTargetDetails!,
       };
 }
 
@@ -3756,6 +4286,11 @@ class ComputeEngineTargetDefaults {
   /// - "COMPUTE_ENGINE_DISK_TYPE_BALANCED" : An alternative to SSD persistent
   /// disks that balance performance and cost.
   core.String? diskType;
+
+  /// The encryption to apply to the VM disks.
+  ///
+  /// Optional. Immutable.
+  Encryption? encryption;
 
   /// The hostname to assign to the VM.
   core.String? hostname;
@@ -3812,6 +4347,7 @@ class ComputeEngineTargetDefaults {
     this.bootOption,
     this.computeScheduling,
     this.diskType,
+    this.encryption,
     this.hostname,
     this.labels,
     this.licenseType,
@@ -3847,6 +4383,10 @@ class ComputeEngineTargetDefaults {
               : null,
           diskType: json_.containsKey('diskType')
               ? json_['diskType'] as core.String
+              : null,
+          encryption: json_.containsKey('encryption')
+              ? Encryption.fromJson(
+                  json_['encryption'] as core.Map<core.String, core.dynamic>)
               : null,
           hostname: json_.containsKey('hostname')
               ? json_['hostname'] as core.String
@@ -3909,6 +4449,7 @@ class ComputeEngineTargetDefaults {
         if (bootOption != null) 'bootOption': bootOption!,
         if (computeScheduling != null) 'computeScheduling': computeScheduling!,
         if (diskType != null) 'diskType': diskType!,
+        if (encryption != null) 'encryption': encryption!,
         if (hostname != null) 'hostname': hostname!,
         if (labels != null) 'labels': labels!,
         if (licenseType != null) 'licenseType': licenseType!,
@@ -3953,6 +4494,11 @@ class ComputeEngineTargetDetails {
   /// - "COMPUTE_ENGINE_DISK_TYPE_BALANCED" : An alternative to SSD persistent
   /// disks that balance performance and cost.
   core.String? diskType;
+
+  /// The encryption to apply to the VM disks.
+  ///
+  /// Optional.
+  Encryption? encryption;
 
   /// The hostname to assign to the VM.
   core.String? hostname;
@@ -4008,6 +4554,7 @@ class ComputeEngineTargetDetails {
     this.bootOption,
     this.computeScheduling,
     this.diskType,
+    this.encryption,
     this.hostname,
     this.labels,
     this.licenseType,
@@ -4043,6 +4590,10 @@ class ComputeEngineTargetDetails {
               : null,
           diskType: json_.containsKey('diskType')
               ? json_['diskType'] as core.String
+              : null,
+          encryption: json_.containsKey('encryption')
+              ? Encryption.fromJson(
+                  json_['encryption'] as core.Map<core.String, core.dynamic>)
               : null,
           hostname: json_.containsKey('hostname')
               ? json_['hostname'] as core.String
@@ -4105,6 +4656,7 @@ class ComputeEngineTargetDetails {
         if (bootOption != null) 'bootOption': bootOption!,
         if (computeScheduling != null) 'computeScheduling': computeScheduling!,
         if (diskType != null) 'diskType': diskType!,
+        if (encryption != null) 'encryption': encryption!,
         if (hostname != null) 'hostname': hostname!,
         if (labels != null) 'labels': labels!,
         if (licenseType != null) 'licenseType': licenseType!,
@@ -4686,6 +5238,267 @@ class DatacenterConnector {
       };
 }
 
+/// A message describing a data disk.
+class Disk {
+  /// The disk's Logical Unit Number (LUN).
+  core.int? lun;
+
+  /// The disk name.
+  core.String? name;
+
+  /// The disk size in GB.
+  core.int? sizeGb;
+
+  Disk({
+    this.lun,
+    this.name,
+    this.sizeGb,
+  });
+
+  Disk.fromJson(core.Map json_)
+      : this(
+          lun: json_.containsKey('lun') ? json_['lun'] as core.int : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          sizeGb:
+              json_.containsKey('sizeGb') ? json_['sizeGb'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lun != null) 'lun': lun!,
+        if (name != null) 'name': name!,
+        if (sizeGb != null) 'sizeGb': sizeGb!,
+      };
+}
+
+/// Contains details about the image source used to create the disk.
+class DiskImageDefaults {
+  /// The Image resource used when creating the disk.
+  ///
+  /// Required.
+  core.String? sourceImage;
+
+  DiskImageDefaults({
+    this.sourceImage,
+  });
+
+  DiskImageDefaults.fromJson(core.Map json_)
+      : this(
+          sourceImage: json_.containsKey('sourceImage')
+              ? json_['sourceImage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sourceImage != null) 'sourceImage': sourceImage!,
+      };
+}
+
+/// Details for a disk only migration.
+typedef DisksMigrationDisksTargetDefaults = $Empty;
+
+/// Details for a disks-only migration.
+typedef DisksMigrationDisksTargetDetails = $Empty;
+
+/// Details for creation of a VM that migrated data disks will be attached to.
+class DisksMigrationVmTargetDefaults {
+  /// Additional licenses to assign to the VM.
+  ///
+  /// Optional.
+  core.List<core.String>? additionalLicenses;
+
+  /// Details of the boot disk of the VM.
+  ///
+  /// Optional.
+  BootDiskDefaults? bootDiskDefaults;
+
+  /// Compute instance scheduling information (if empty default is used).
+  ///
+  /// Optional.
+  ComputeScheduling? computeScheduling;
+
+  /// The encryption to apply to the VM.
+  ///
+  /// Optional.
+  Encryption? encryption;
+
+  /// The hostname to assign to the VM.
+  ///
+  /// Optional.
+  core.String? hostname;
+
+  /// A map of labels to associate with the VM.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The machine type to create the VM with.
+  ///
+  /// Required.
+  core.String? machineType;
+
+  /// The machine type series to create the VM with.
+  ///
+  /// For presentation only.
+  ///
+  /// Optional.
+  core.String? machineTypeSeries;
+
+  /// The metadata key/value pairs to assign to the VM.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? metadata;
+
+  /// NICs to attach to the VM.
+  ///
+  /// Optional.
+  core.List<NetworkInterface>? networkInterfaces;
+
+  /// A list of network tags to associate with the VM.
+  ///
+  /// Optional.
+  core.List<core.String>? networkTags;
+
+  /// Defines whether the instance has Secure Boot enabled.
+  ///
+  /// This can be set to true only if the VM boot option is EFI.
+  ///
+  /// Optional.
+  core.bool? secureBoot;
+
+  /// The service account to associate the VM with.
+  ///
+  /// Optional.
+  core.String? serviceAccount;
+
+  /// The name of the VM to create.
+  ///
+  /// Required.
+  core.String? vmName;
+
+  DisksMigrationVmTargetDefaults({
+    this.additionalLicenses,
+    this.bootDiskDefaults,
+    this.computeScheduling,
+    this.encryption,
+    this.hostname,
+    this.labels,
+    this.machineType,
+    this.machineTypeSeries,
+    this.metadata,
+    this.networkInterfaces,
+    this.networkTags,
+    this.secureBoot,
+    this.serviceAccount,
+    this.vmName,
+  });
+
+  DisksMigrationVmTargetDefaults.fromJson(core.Map json_)
+      : this(
+          additionalLicenses: json_.containsKey('additionalLicenses')
+              ? (json_['additionalLicenses'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          bootDiskDefaults: json_.containsKey('bootDiskDefaults')
+              ? BootDiskDefaults.fromJson(json_['bootDiskDefaults']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          computeScheduling: json_.containsKey('computeScheduling')
+              ? ComputeScheduling.fromJson(json_['computeScheduling']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          encryption: json_.containsKey('encryption')
+              ? Encryption.fromJson(
+                  json_['encryption'] as core.Map<core.String, core.dynamic>)
+              : null,
+          hostname: json_.containsKey('hostname')
+              ? json_['hostname'] as core.String
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          machineType: json_.containsKey('machineType')
+              ? json_['machineType'] as core.String
+              : null,
+          machineTypeSeries: json_.containsKey('machineTypeSeries')
+              ? json_['machineTypeSeries'] as core.String
+              : null,
+          metadata: json_.containsKey('metadata')
+              ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          networkInterfaces: json_.containsKey('networkInterfaces')
+              ? (json_['networkInterfaces'] as core.List)
+                  .map((value) => NetworkInterface.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          networkTags: json_.containsKey('networkTags')
+              ? (json_['networkTags'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          secureBoot: json_.containsKey('secureBoot')
+              ? json_['secureBoot'] as core.bool
+              : null,
+          serviceAccount: json_.containsKey('serviceAccount')
+              ? json_['serviceAccount'] as core.String
+              : null,
+          vmName: json_.containsKey('vmName')
+              ? json_['vmName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalLicenses != null)
+          'additionalLicenses': additionalLicenses!,
+        if (bootDiskDefaults != null) 'bootDiskDefaults': bootDiskDefaults!,
+        if (computeScheduling != null) 'computeScheduling': computeScheduling!,
+        if (encryption != null) 'encryption': encryption!,
+        if (hostname != null) 'hostname': hostname!,
+        if (labels != null) 'labels': labels!,
+        if (machineType != null) 'machineType': machineType!,
+        if (machineTypeSeries != null) 'machineTypeSeries': machineTypeSeries!,
+        if (metadata != null) 'metadata': metadata!,
+        if (networkInterfaces != null) 'networkInterfaces': networkInterfaces!,
+        if (networkTags != null) 'networkTags': networkTags!,
+        if (secureBoot != null) 'secureBoot': secureBoot!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (vmName != null) 'vmName': vmName!,
+      };
+}
+
+/// Details for the VM created VM as part of disks migration.
+class DisksMigrationVmTargetDetails {
+  /// The URI of the Compute Engine VM.
+  ///
+  /// Output only.
+  core.String? vmUri;
+
+  DisksMigrationVmTargetDetails({
+    this.vmUri,
+  });
+
+  DisksMigrationVmTargetDetails.fromJson(core.Map json_)
+      : this(
+          vmUri:
+              json_.containsKey('vmUri') ? json_['vmUri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (vmUri != null) 'vmUri': vmUri!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -4694,10 +5507,36 @@ class DatacenterConnector {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// Encryption message describes the details of the applied encryption.
+class Encryption {
+  /// The name of the encryption key that is stored in Google Cloud KMS.
+  ///
+  /// Required.
+  core.String? kmsKey;
+
+  Encryption({
+    this.kmsKey,
+  });
+
+  Encryption.fromJson(core.Map json_)
+      : this(
+          kmsKey: json_.containsKey('kmsKey')
+              ? json_['kmsKey'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kmsKey != null) 'kmsKey': kmsKey!,
+      };
+}
+
 /// Response message for fetchInventory.
 class FetchInventoryResponse {
   /// The description of the VMs in a Source of type AWS.
   AwsVmsDetails? awsVms;
+
+  /// The description of the VMs in a Source of type Azure.
+  AzureVmsDetails? azureVms;
 
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
@@ -4717,6 +5556,7 @@ class FetchInventoryResponse {
 
   FetchInventoryResponse({
     this.awsVms,
+    this.azureVms,
     this.nextPageToken,
     this.updateTime,
     this.vmwareVms,
@@ -4727,6 +5567,10 @@ class FetchInventoryResponse {
           awsVms: json_.containsKey('awsVms')
               ? AwsVmsDetails.fromJson(
                   json_['awsVms'] as core.Map<core.String, core.dynamic>)
+              : null,
+          azureVms: json_.containsKey('azureVms')
+              ? AzureVmsDetails.fromJson(
+                  json_['azureVms'] as core.Map<core.String, core.dynamic>)
               : null,
           nextPageToken: json_.containsKey('nextPageToken')
               ? json_['nextPageToken'] as core.String
@@ -4742,6 +5586,7 @@ class FetchInventoryResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (awsVms != null) 'awsVms': awsVms!,
+        if (azureVms != null) 'azureVms': azureVms!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (vmwareVms != null) 'vmwareVms': vmwareVms!,
@@ -5368,6 +6213,11 @@ class MigratingVm {
   /// Output only.
   AwsSourceVmDetails? awsSourceVmDetails;
 
+  /// Details of the VM from an Azure source.
+  ///
+  /// Output only.
+  AzureSourceVmDetails? azureSourceVmDetails;
+
   /// Details of the target Persistent Disks in Compute Engine.
   ComputeEngineDisksTargetDefaults? computeEngineDisksTargetDefaults;
 
@@ -5500,8 +6350,14 @@ class MigratingVm {
   /// Output only.
   core.String? updateTime;
 
+  /// Details of the VM from a Vmware source.
+  ///
+  /// Output only.
+  VmwareSourceVmDetails? vmwareSourceVmDetails;
+
   MigratingVm({
     this.awsSourceVmDetails,
+    this.azureSourceVmDetails,
     this.computeEngineDisksTargetDefaults,
     this.computeEngineTargetDefaults,
     this.createTime,
@@ -5522,12 +6378,17 @@ class MigratingVm {
     this.state,
     this.stateTime,
     this.updateTime,
+    this.vmwareSourceVmDetails,
   });
 
   MigratingVm.fromJson(core.Map json_)
       : this(
           awsSourceVmDetails: json_.containsKey('awsSourceVmDetails')
               ? AwsSourceVmDetails.fromJson(json_['awsSourceVmDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          azureSourceVmDetails: json_.containsKey('azureSourceVmDetails')
+              ? AzureSourceVmDetails.fromJson(json_['azureSourceVmDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
           computeEngineDisksTargetDefaults:
@@ -5609,11 +6470,17 @@ class MigratingVm {
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
+          vmwareSourceVmDetails: json_.containsKey('vmwareSourceVmDetails')
+              ? VmwareSourceVmDetails.fromJson(json_['vmwareSourceVmDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (awsSourceVmDetails != null)
           'awsSourceVmDetails': awsSourceVmDetails!,
+        if (azureSourceVmDetails != null)
+          'azureSourceVmDetails': azureSourceVmDetails!,
         if (computeEngineDisksTargetDefaults != null)
           'computeEngineDisksTargetDefaults': computeEngineDisksTargetDefaults!,
         if (computeEngineTargetDefaults != null)
@@ -5637,6 +6504,8 @@ class MigratingVm {
         if (state != null) 'state': state!,
         if (stateTime != null) 'stateTime': stateTime!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (vmwareSourceVmDetails != null)
+          'vmwareSourceVmDetails': vmwareSourceVmDetails!,
       };
 }
 
@@ -5751,6 +6620,80 @@ class NetworkInterface {
       };
 }
 
+/// A message describing the VM's OS.
+///
+/// Including OS, Publisher, Offer and Plan if applicable.
+class OSDescription {
+  /// OS offer.
+  core.String? offer;
+
+  /// OS plan.
+  core.String? plan;
+
+  /// OS publisher.
+  core.String? publisher;
+
+  /// OS type.
+  core.String? type;
+
+  OSDescription({
+    this.offer,
+    this.plan,
+    this.publisher,
+    this.type,
+  });
+
+  OSDescription.fromJson(core.Map json_)
+      : this(
+          offer:
+              json_.containsKey('offer') ? json_['offer'] as core.String : null,
+          plan: json_.containsKey('plan') ? json_['plan'] as core.String : null,
+          publisher: json_.containsKey('publisher')
+              ? json_['publisher'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (offer != null) 'offer': offer!,
+        if (plan != null) 'plan': plan!,
+        if (publisher != null) 'publisher': publisher!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// A message describing the OS disk.
+class OSDisk {
+  /// The disk's full name.
+  core.String? name;
+
+  /// The disk's size in GB.
+  core.int? sizeGb;
+
+  /// The disk's type.
+  core.String? type;
+
+  OSDisk({
+    this.name,
+    this.sizeGb,
+    this.type,
+  });
+
+  OSDisk.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          sizeGb:
+              json_.containsKey('sizeGb') ? json_['sizeGb'] as core.int : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (sizeGb != null) 'sizeGb': sizeGb!,
+        if (type != null) 'type': type!,
+      };
+}
+
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
@@ -5781,7 +6724,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -5879,16 +6822,30 @@ class PersistentDiskDefaults {
   /// disks that balance performance and cost.
   core.String? diskType;
 
+  /// The encryption to apply to the disk.
+  ///
+  /// Optional.
+  Encryption? encryption;
+
   /// The ordinal number of the source VM disk.
   ///
   /// Required.
   core.int? sourceDiskNumber;
 
+  /// Details for attachment of the disk to a VM.
+  ///
+  /// Used when the disk is set to be attacked to a target VM.
+  ///
+  /// Optional.
+  VmAttachmentDetails? vmAttachmentDetails;
+
   PersistentDiskDefaults({
     this.additionalLabels,
     this.diskName,
     this.diskType,
+    this.encryption,
     this.sourceDiskNumber,
+    this.vmAttachmentDetails,
   });
 
   PersistentDiskDefaults.fromJson(core.Map json_)
@@ -5909,8 +6866,16 @@ class PersistentDiskDefaults {
           diskType: json_.containsKey('diskType')
               ? json_['diskType'] as core.String
               : null,
+          encryption: json_.containsKey('encryption')
+              ? Encryption.fromJson(
+                  json_['encryption'] as core.Map<core.String, core.dynamic>)
+              : null,
           sourceDiskNumber: json_.containsKey('sourceDiskNumber')
               ? json_['sourceDiskNumber'] as core.int
+              : null,
+          vmAttachmentDetails: json_.containsKey('vmAttachmentDetails')
+              ? VmAttachmentDetails.fromJson(json_['vmAttachmentDetails']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -5918,7 +6883,10 @@ class PersistentDiskDefaults {
         if (additionalLabels != null) 'additionalLabels': additionalLabels!,
         if (diskName != null) 'diskName': diskName!,
         if (diskType != null) 'diskType': diskType!,
+        if (encryption != null) 'encryption': encryption!,
         if (sourceDiskNumber != null) 'sourceDiskNumber': sourceDiskNumber!,
+        if (vmAttachmentDetails != null)
+          'vmAttachmentDetails': vmAttachmentDetails!,
       };
 }
 
@@ -6232,6 +7200,9 @@ class Source {
   /// AWS type source details.
   AwsSourceDetails? aws;
 
+  /// Azure type source details.
+  AzureSourceDetails? azure;
+
   /// The create time timestamp.
   ///
   /// Output only.
@@ -6239,6 +7210,11 @@ class Source {
 
   /// User-provided description of the source.
   core.String? description;
+
+  /// The encryption details of the source data stored by the service.
+  ///
+  /// Optional. Immutable.
+  Encryption? encryption;
 
   /// The labels of the source.
   core.Map<core.String, core.String>? labels;
@@ -6258,8 +7234,10 @@ class Source {
 
   Source({
     this.aws,
+    this.azure,
     this.createTime,
     this.description,
+    this.encryption,
     this.labels,
     this.name,
     this.updateTime,
@@ -6272,11 +7250,19 @@ class Source {
               ? AwsSourceDetails.fromJson(
                   json_['aws'] as core.Map<core.String, core.dynamic>)
               : null,
+          azure: json_.containsKey('azure')
+              ? AzureSourceDetails.fromJson(
+                  json_['azure'] as core.Map<core.String, core.dynamic>)
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
+              : null,
+          encryption: json_.containsKey('encryption')
+              ? Encryption.fromJson(
+                  json_['encryption'] as core.Map<core.String, core.dynamic>)
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -6298,8 +7284,10 @@ class Source {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aws != null) 'aws': aws!,
+        if (azure != null) 'azure': azure!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (encryption != null) 'encryption': encryption!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -6363,6 +7351,8 @@ class TargetProject {
   core.String? name;
 
   /// The target project ID (number) or project name.
+  ///
+  /// Required.
   core.String? project;
 
   /// The last time the target project resource was updated.
@@ -6625,6 +7615,76 @@ class UtilizationReport {
       };
 }
 
+/// Details for attachment of the disk to a VM.
+class VmAttachmentDetails {
+  /// Specifies a unique device name of your choice that is reflected into the
+  /// /dev/disk/by-id/google-* tree of a Linux operating system running within
+  /// the instance.
+  ///
+  /// If not specified, the server chooses a default device name to apply to
+  /// this disk, in the form persistent-disk-x, where x is a number assigned by
+  /// Google Compute Engine. This field is only applicable for persistent disks.
+  ///
+  /// Optional.
+  core.String? deviceName;
+
+  VmAttachmentDetails({
+    this.deviceName,
+  });
+
+  VmAttachmentDetails.fromJson(core.Map json_)
+      : this(
+          deviceName: json_.containsKey('deviceName')
+              ? json_['deviceName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceName != null) 'deviceName': deviceName!,
+      };
+}
+
+/// Migrating VM source information about the VM capabilities needed for some
+/// Compute Engine features.
+class VmCapabilities {
+  /// The last time OS capabilities list was updated.
+  ///
+  /// Output only.
+  core.String? lastOsCapabilitiesUpdateTime;
+
+  /// Unordered list.
+  ///
+  /// List of certain VM OS capabilities needed for some Compute Engine
+  /// features.
+  ///
+  /// Output only.
+  core.List<core.String>? osCapabilities;
+
+  VmCapabilities({
+    this.lastOsCapabilitiesUpdateTime,
+    this.osCapabilities,
+  });
+
+  VmCapabilities.fromJson(core.Map json_)
+      : this(
+          lastOsCapabilitiesUpdateTime:
+              json_.containsKey('lastOsCapabilitiesUpdateTime')
+                  ? json_['lastOsCapabilitiesUpdateTime'] as core.String
+                  : null,
+          osCapabilities: json_.containsKey('osCapabilities')
+              ? (json_['osCapabilities'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lastOsCapabilitiesUpdateTime != null)
+          'lastOsCapabilitiesUpdateTime': lastOsCapabilitiesUpdateTime!,
+        if (osCapabilities != null) 'osCapabilities': osCapabilities!,
+      };
+}
+
 /// Utilization information of a single VM.
 class VmUtilizationInfo {
   /// Utilization metrics for this VM.
@@ -6747,6 +7807,42 @@ class VmUtilizationMetrics {
       };
 }
 
+/// The details of a Vmware VM disk.
+class VmwareDiskDetails {
+  /// The ordinal number of the disk.
+  core.int? diskNumber;
+
+  /// The disk label.
+  core.String? label;
+
+  /// Size in GB.
+  core.String? sizeGb;
+
+  VmwareDiskDetails({
+    this.diskNumber,
+    this.label,
+    this.sizeGb,
+  });
+
+  VmwareDiskDetails.fromJson(core.Map json_)
+      : this(
+          diskNumber: json_.containsKey('diskNumber')
+              ? json_['diskNumber'] as core.int
+              : null,
+          label:
+              json_.containsKey('label') ? json_['label'] as core.String : null,
+          sizeGb: json_.containsKey('sizeGb')
+              ? json_['sizeGb'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (diskNumber != null) 'diskNumber': diskNumber!,
+        if (label != null) 'label': label!,
+        if (sizeGb != null) 'sizeGb': sizeGb!,
+      };
+}
+
 /// VmwareSourceDetails message describes a specific source details for the
 /// vmware source type.
 class VmwareSourceDetails {
@@ -6802,6 +7898,63 @@ class VmwareSourceDetails {
         if (thumbprint != null) 'thumbprint': thumbprint!,
         if (username != null) 'username': username!,
         if (vcenterIp != null) 'vcenterIp': vcenterIp!,
+      };
+}
+
+/// Represent the source Vmware VM details.
+class VmwareSourceVmDetails {
+  /// The total size of the disks being migrated in bytes.
+  core.String? committedStorageBytes;
+
+  /// The disks attached to the source VM.
+  core.List<VmwareDiskDetails>? disks;
+
+  /// The firmware type of the source VM.
+  /// Possible string values are:
+  /// - "FIRMWARE_UNSPECIFIED" : The firmware is unknown.
+  /// - "EFI" : The firmware is EFI.
+  /// - "BIOS" : The firmware is BIOS.
+  core.String? firmware;
+
+  /// Information about VM capabilities needed for some Compute Engine features.
+  ///
+  /// Output only.
+  VmCapabilities? vmCapabilitiesInfo;
+
+  VmwareSourceVmDetails({
+    this.committedStorageBytes,
+    this.disks,
+    this.firmware,
+    this.vmCapabilitiesInfo,
+  });
+
+  VmwareSourceVmDetails.fromJson(core.Map json_)
+      : this(
+          committedStorageBytes: json_.containsKey('committedStorageBytes')
+              ? json_['committedStorageBytes'] as core.String
+              : null,
+          disks: json_.containsKey('disks')
+              ? (json_['disks'] as core.List)
+                  .map((value) => VmwareDiskDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          firmware: json_.containsKey('firmware')
+              ? json_['firmware'] as core.String
+              : null,
+          vmCapabilitiesInfo: json_.containsKey('vmCapabilitiesInfo')
+              ? VmCapabilities.fromJson(json_['vmCapabilitiesInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (committedStorageBytes != null)
+          'committedStorageBytes': committedStorageBytes!,
+        if (disks != null) 'disks': disks!,
+        if (firmware != null) 'firmware': firmware!,
+        if (vmCapabilitiesInfo != null)
+          'vmCapabilitiesInfo': vmCapabilitiesInfo!,
       };
 }
 

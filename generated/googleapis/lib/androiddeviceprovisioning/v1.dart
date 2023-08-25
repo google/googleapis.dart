@@ -978,6 +978,49 @@ class PartnersDevicesResource {
     return Device.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets a device's SIM lock state.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [partnerId] - Required. The ID of the partner.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GetDeviceSimLockStateResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetDeviceSimLockStateResponse> getSimLockState(
+    GetDeviceSimLockStateRequest request,
+    core.String partnerId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/partners/' +
+        core.Uri.encodeFull('$partnerId') +
+        '/devices:getSimLockState';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GetDeviceSimLockStateResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates reseller metadata associated with the device.
   ///
   /// Android devices only.
@@ -1276,6 +1319,12 @@ class PartnersVendorsCustomersResource {
 
 /// Request message to claim a device on behalf of a customer.
 class ClaimDeviceRequest {
+  /// The unique identifier of the configuration (internally known as profile)
+  /// to set for the section.
+  ///
+  /// Optional.
+  core.String? configurationId;
+
   /// The ID of the customer for whom the device is being claimed.
   core.String? customerId;
 
@@ -1306,15 +1355,13 @@ class ClaimDeviceRequest {
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
   core.String? sectionType;
 
-  /// Must and can only be set when DeviceProvisioningSectionType is
-  /// SECTION_TYPE_SIM_LOCK.
   ///
-  /// The unique identifier of the SimLock profile.
   ///
   /// Optional.
   core.String? simlockProfileId;
 
   ClaimDeviceRequest({
+    this.configurationId,
     this.customerId,
     this.deviceIdentifier,
     this.deviceMetadata,
@@ -1326,6 +1373,9 @@ class ClaimDeviceRequest {
 
   ClaimDeviceRequest.fromJson(core.Map json_)
       : this(
+          configurationId: json_.containsKey('configurationId')
+              ? json_['configurationId'] as core.String
+              : null,
           customerId: json_.containsKey('customerId')
               ? json_['customerId'] as core.String
               : null,
@@ -1353,6 +1403,7 @@ class ClaimDeviceRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (configurationId != null) 'configurationId': configurationId!,
         if (customerId != null) 'customerId': customerId!,
         if (deviceIdentifier != null) 'deviceIdentifier': deviceIdentifier!,
         if (deviceMetadata != null) 'deviceMetadata': deviceMetadata!,
@@ -2561,6 +2612,57 @@ class FindDevicesByOwnerResponse {
       };
 }
 
+/// Request to get a device's SIM lock status.
+class GetDeviceSimLockStateRequest {
+  /// The device identifier to search for.
+  ///
+  /// Required.
+  DeviceIdentifier? deviceIdentifier;
+
+  GetDeviceSimLockStateRequest({
+    this.deviceIdentifier,
+  });
+
+  GetDeviceSimLockStateRequest.fromJson(core.Map json_)
+      : this(
+          deviceIdentifier: json_.containsKey('deviceIdentifier')
+              ? DeviceIdentifier.fromJson(json_['deviceIdentifier']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceIdentifier != null) 'deviceIdentifier': deviceIdentifier!,
+      };
+}
+
+/// Response containing a device's SimLock state.
+class GetDeviceSimLockStateResponse {
+  ///
+  /// Possible string values are:
+  /// - "SIM_LOCK_STATE_UNSPECIFIED" : Invalid code. Shouldn't be used.
+  /// - "UNLOCKED" : Device is not SIM locked.
+  /// - "LOCKED_TO_PARTNER" : Device is SIM locked to the partner querying SIM
+  /// lock state.
+  /// - "LOCKED_TO_OTHER_PARTNER" : Device is SIM locked to a different partner.
+  core.String? simLockState;
+
+  GetDeviceSimLockStateResponse({
+    this.simLockState,
+  });
+
+  GetDeviceSimLockStateResponse.fromJson(core.Map json_)
+      : this(
+          simLockState: json_.containsKey('simLockState')
+              ? json_['simLockState'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (simLockState != null) 'simLockState': simLockState!,
+      };
+}
+
 /// A Google Workspace customer.
 class GoogleWorkspaceAccount {
   /// The customer ID.
@@ -2800,6 +2902,12 @@ class Operation {
 
 /// Identifies one claim request.
 class PartnerClaim {
+  /// The unique identifier of the configuration (internally known as profile)
+  /// to set for the section.
+  ///
+  /// Optional.
+  core.String? configurationId;
+
   /// The ID of the customer for whom the device is being claimed.
   core.String? customerId;
 
@@ -2830,15 +2938,13 @@ class PartnerClaim {
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
   core.String? sectionType;
 
-  /// Must and can only be set when DeviceProvisioningSectionType is
-  /// SECTION_TYPE_SIM_LOCK.
   ///
-  /// The unique identifier of the SimLock profile.
   ///
   /// Optional.
   core.String? simlockProfileId;
 
   PartnerClaim({
+    this.configurationId,
     this.customerId,
     this.deviceIdentifier,
     this.deviceMetadata,
@@ -2850,6 +2956,9 @@ class PartnerClaim {
 
   PartnerClaim.fromJson(core.Map json_)
       : this(
+          configurationId: json_.containsKey('configurationId')
+              ? json_['configurationId'] as core.String
+              : null,
           customerId: json_.containsKey('customerId')
               ? json_['customerId'] as core.String
               : null,
@@ -2877,6 +2986,7 @@ class PartnerClaim {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (configurationId != null) 'configurationId': configurationId!,
         if (customerId != null) 'customerId': customerId!,
         if (deviceIdentifier != null) 'deviceIdentifier': deviceIdentifier!,
         if (deviceMetadata != null) 'deviceMetadata': deviceMetadata!,

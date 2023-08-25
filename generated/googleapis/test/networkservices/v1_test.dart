@@ -889,6 +889,7 @@ api.GrpcRouteRouteAction buildGrpcRouteRouteAction() {
     o.destinations = buildUnnamed15();
     o.faultInjectionPolicy = buildGrpcRouteFaultInjectionPolicy();
     o.retryPolicy = buildGrpcRouteRetryPolicy();
+    o.statefulSessionAffinity = buildGrpcRouteStatefulSessionAffinityPolicy();
     o.timeout = 'foo';
   }
   buildCounterGrpcRouteRouteAction--;
@@ -901,6 +902,7 @@ void checkGrpcRouteRouteAction(api.GrpcRouteRouteAction o) {
     checkUnnamed15(o.destinations!);
     checkGrpcRouteFaultInjectionPolicy(o.faultInjectionPolicy!);
     checkGrpcRouteRetryPolicy(o.retryPolicy!);
+    checkGrpcRouteStatefulSessionAffinityPolicy(o.statefulSessionAffinity!);
     unittest.expect(
       o.timeout!,
       unittest.equals('foo'),
@@ -971,6 +973,30 @@ void checkGrpcRouteRouteRule(api.GrpcRouteRouteRule o) {
     checkUnnamed17(o.matches!);
   }
   buildCounterGrpcRouteRouteRule--;
+}
+
+core.int buildCounterGrpcRouteStatefulSessionAffinityPolicy = 0;
+api.GrpcRouteStatefulSessionAffinityPolicy
+    buildGrpcRouteStatefulSessionAffinityPolicy() {
+  final o = api.GrpcRouteStatefulSessionAffinityPolicy();
+  buildCounterGrpcRouteStatefulSessionAffinityPolicy++;
+  if (buildCounterGrpcRouteStatefulSessionAffinityPolicy < 3) {
+    o.cookieTtl = 'foo';
+  }
+  buildCounterGrpcRouteStatefulSessionAffinityPolicy--;
+  return o;
+}
+
+void checkGrpcRouteStatefulSessionAffinityPolicy(
+    api.GrpcRouteStatefulSessionAffinityPolicy o) {
+  buildCounterGrpcRouteStatefulSessionAffinityPolicy++;
+  if (buildCounterGrpcRouteStatefulSessionAffinityPolicy < 3) {
+    unittest.expect(
+      o.cookieTtl!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGrpcRouteStatefulSessionAffinityPolicy--;
 }
 
 core.List<core.String> buildUnnamed18() => [
@@ -1650,6 +1676,7 @@ api.HttpRouteRouteAction buildHttpRouteRouteAction() {
     o.requestMirrorPolicy = buildHttpRouteRequestMirrorPolicy();
     o.responseHeaderModifier = buildHttpRouteHeaderModifier();
     o.retryPolicy = buildHttpRouteRetryPolicy();
+    o.statefulSessionAffinity = buildHttpRouteStatefulSessionAffinityPolicy();
     o.timeout = 'foo';
     o.urlRewrite = buildHttpRouteURLRewrite();
   }
@@ -1668,6 +1695,7 @@ void checkHttpRouteRouteAction(api.HttpRouteRouteAction o) {
     checkHttpRouteRequestMirrorPolicy(o.requestMirrorPolicy!);
     checkHttpRouteHeaderModifier(o.responseHeaderModifier!);
     checkHttpRouteRetryPolicy(o.retryPolicy!);
+    checkHttpRouteStatefulSessionAffinityPolicy(o.statefulSessionAffinity!);
     unittest.expect(
       o.timeout!,
       unittest.equals('foo'),
@@ -1767,6 +1795,30 @@ void checkHttpRouteRouteRule(api.HttpRouteRouteRule o) {
     checkUnnamed35(o.matches!);
   }
   buildCounterHttpRouteRouteRule--;
+}
+
+core.int buildCounterHttpRouteStatefulSessionAffinityPolicy = 0;
+api.HttpRouteStatefulSessionAffinityPolicy
+    buildHttpRouteStatefulSessionAffinityPolicy() {
+  final o = api.HttpRouteStatefulSessionAffinityPolicy();
+  buildCounterHttpRouteStatefulSessionAffinityPolicy++;
+  if (buildCounterHttpRouteStatefulSessionAffinityPolicy < 3) {
+    o.cookieTtl = 'foo';
+  }
+  buildCounterHttpRouteStatefulSessionAffinityPolicy--;
+  return o;
+}
+
+void checkHttpRouteStatefulSessionAffinityPolicy(
+    api.HttpRouteStatefulSessionAffinityPolicy o) {
+  buildCounterHttpRouteStatefulSessionAffinityPolicy++;
+  if (buildCounterHttpRouteStatefulSessionAffinityPolicy < 3) {
+    unittest.expect(
+      o.cookieTtl!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterHttpRouteStatefulSessionAffinityPolicy--;
 }
 
 core.int buildCounterHttpRouteURLRewrite = 0;
@@ -2996,12 +3048,29 @@ void checkUnnamed65(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed66() => [
+core.Map<core.String, core.String> buildUnnamed66() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed66(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed67() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed66(core.List<core.String> o) {
+void checkUnnamed67(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3013,12 +3082,12 @@ void checkUnnamed66(core.List<core.String> o) {
   );
 }
 
-core.List<api.TlsRouteRouteRule> buildUnnamed67() => [
+core.List<api.TlsRouteRouteRule> buildUnnamed68() => [
       buildTlsRouteRouteRule(),
       buildTlsRouteRouteRule(),
     ];
 
-void checkUnnamed67(core.List<api.TlsRouteRouteRule> o) {
+void checkUnnamed68(core.List<api.TlsRouteRouteRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTlsRouteRouteRule(o[0]);
   checkTlsRouteRouteRule(o[1]);
@@ -3032,9 +3101,10 @@ api.TlsRoute buildTlsRoute() {
     o.createTime = 'foo';
     o.description = 'foo';
     o.gateways = buildUnnamed65();
-    o.meshes = buildUnnamed66();
+    o.labels = buildUnnamed66();
+    o.meshes = buildUnnamed67();
     o.name = 'foo';
-    o.rules = buildUnnamed67();
+    o.rules = buildUnnamed68();
     o.selfLink = 'foo';
     o.updateTime = 'foo';
   }
@@ -3054,12 +3124,13 @@ void checkTlsRoute(api.TlsRoute o) {
       unittest.equals('foo'),
     );
     checkUnnamed65(o.gateways!);
-    checkUnnamed66(o.meshes!);
+    checkUnnamed66(o.labels!);
+    checkUnnamed67(o.meshes!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed67(o.rules!);
+    checkUnnamed68(o.rules!);
     unittest.expect(
       o.selfLink!,
       unittest.equals('foo'),
@@ -3072,12 +3143,12 @@ void checkTlsRoute(api.TlsRoute o) {
   buildCounterTlsRoute--;
 }
 
-core.List<api.TlsRouteRouteDestination> buildUnnamed68() => [
+core.List<api.TlsRouteRouteDestination> buildUnnamed69() => [
       buildTlsRouteRouteDestination(),
       buildTlsRouteRouteDestination(),
     ];
 
-void checkUnnamed68(core.List<api.TlsRouteRouteDestination> o) {
+void checkUnnamed69(core.List<api.TlsRouteRouteDestination> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTlsRouteRouteDestination(o[0]);
   checkTlsRouteRouteDestination(o[1]);
@@ -3088,7 +3159,7 @@ api.TlsRouteRouteAction buildTlsRouteRouteAction() {
   final o = api.TlsRouteRouteAction();
   buildCounterTlsRouteRouteAction++;
   if (buildCounterTlsRouteRouteAction < 3) {
-    o.destinations = buildUnnamed68();
+    o.destinations = buildUnnamed69();
   }
   buildCounterTlsRouteRouteAction--;
   return o;
@@ -3097,7 +3168,7 @@ api.TlsRouteRouteAction buildTlsRouteRouteAction() {
 void checkTlsRouteRouteAction(api.TlsRouteRouteAction o) {
   buildCounterTlsRouteRouteAction++;
   if (buildCounterTlsRouteRouteAction < 3) {
-    checkUnnamed68(o.destinations!);
+    checkUnnamed69(o.destinations!);
   }
   buildCounterTlsRouteRouteAction--;
 }
@@ -3129,23 +3200,6 @@ void checkTlsRouteRouteDestination(api.TlsRouteRouteDestination o) {
   buildCounterTlsRouteRouteDestination--;
 }
 
-core.List<core.String> buildUnnamed69() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed69(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.List<core.String> buildUnnamed70() => [
       'foo',
       'foo',
@@ -3163,13 +3217,30 @@ void checkUnnamed70(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed71() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed71(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterTlsRouteRouteMatch = 0;
 api.TlsRouteRouteMatch buildTlsRouteRouteMatch() {
   final o = api.TlsRouteRouteMatch();
   buildCounterTlsRouteRouteMatch++;
   if (buildCounterTlsRouteRouteMatch < 3) {
-    o.alpn = buildUnnamed69();
-    o.sniHost = buildUnnamed70();
+    o.alpn = buildUnnamed70();
+    o.sniHost = buildUnnamed71();
   }
   buildCounterTlsRouteRouteMatch--;
   return o;
@@ -3178,18 +3249,18 @@ api.TlsRouteRouteMatch buildTlsRouteRouteMatch() {
 void checkTlsRouteRouteMatch(api.TlsRouteRouteMatch o) {
   buildCounterTlsRouteRouteMatch++;
   if (buildCounterTlsRouteRouteMatch < 3) {
-    checkUnnamed69(o.alpn!);
-    checkUnnamed70(o.sniHost!);
+    checkUnnamed70(o.alpn!);
+    checkUnnamed71(o.sniHost!);
   }
   buildCounterTlsRouteRouteMatch--;
 }
 
-core.List<api.TlsRouteRouteMatch> buildUnnamed71() => [
+core.List<api.TlsRouteRouteMatch> buildUnnamed72() => [
       buildTlsRouteRouteMatch(),
       buildTlsRouteRouteMatch(),
     ];
 
-void checkUnnamed71(core.List<api.TlsRouteRouteMatch> o) {
+void checkUnnamed72(core.List<api.TlsRouteRouteMatch> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTlsRouteRouteMatch(o[0]);
   checkTlsRouteRouteMatch(o[1]);
@@ -3201,7 +3272,7 @@ api.TlsRouteRouteRule buildTlsRouteRouteRule() {
   buildCounterTlsRouteRouteRule++;
   if (buildCounterTlsRouteRouteRule < 3) {
     o.action = buildTlsRouteRouteAction();
-    o.matches = buildUnnamed71();
+    o.matches = buildUnnamed72();
   }
   buildCounterTlsRouteRouteRule--;
   return o;
@@ -3211,17 +3282,17 @@ void checkTlsRouteRouteRule(api.TlsRouteRouteRule o) {
   buildCounterTlsRouteRouteRule++;
   if (buildCounterTlsRouteRouteRule < 3) {
     checkTlsRouteRouteAction(o.action!);
-    checkUnnamed71(o.matches!);
+    checkUnnamed72(o.matches!);
   }
   buildCounterTlsRouteRouteRule--;
 }
 
-core.List<core.String> buildUnnamed72() => [
+core.List<core.String> buildUnnamed73() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed72(core.List<core.String> o) {
+void checkUnnamed73(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3238,7 +3309,7 @@ api.TrafficPortSelector buildTrafficPortSelector() {
   final o = api.TrafficPortSelector();
   buildCounterTrafficPortSelector++;
   if (buildCounterTrafficPortSelector < 3) {
-    o.ports = buildUnnamed72();
+    o.ports = buildUnnamed73();
   }
   buildCounterTrafficPortSelector--;
   return o;
@@ -3247,7 +3318,7 @@ api.TrafficPortSelector buildTrafficPortSelector() {
 void checkTrafficPortSelector(api.TrafficPortSelector o) {
   buildCounterTrafficPortSelector++;
   if (buildCounterTrafficPortSelector < 3) {
-    checkUnnamed72(o.ports!);
+    checkUnnamed73(o.ports!);
   }
   buildCounterTrafficPortSelector--;
 }
@@ -3474,6 +3545,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GrpcRouteStatefulSessionAffinityPolicy', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGrpcRouteStatefulSessionAffinityPolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GrpcRouteStatefulSessionAffinityPolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGrpcRouteStatefulSessionAffinityPolicy(od);
+    });
+  });
+
   unittest.group('obj-schema-HttpRoute', () {
     unittest.test('to-json--from-json', () async {
       final o = buildHttpRoute();
@@ -3631,6 +3712,16 @@ void main() {
       final od = api.HttpRouteRouteRule.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkHttpRouteRouteRule(od);
+    });
+  });
+
+  unittest.group('obj-schema-HttpRouteStatefulSessionAffinityPolicy', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildHttpRouteStatefulSessionAffinityPolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.HttpRouteStatefulSessionAffinityPolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkHttpRouteStatefulSessionAffinityPolicy(od);
     });
   });
 

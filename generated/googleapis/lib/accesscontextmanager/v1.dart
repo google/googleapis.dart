@@ -2319,6 +2319,12 @@ class Condition {
   /// "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
   core.List<core.String>? requiredAccessLevels;
 
+  /// The request must originate from one of the provided VPC networks in Google
+  /// Cloud.
+  ///
+  /// Cannot specify this field together with `ip_subnetworks`.
+  core.List<VpcNetworkSource>? vpcNetworkSources;
+
   Condition({
     this.devicePolicy,
     this.ipSubnetworks,
@@ -2326,6 +2332,7 @@ class Condition {
     this.negate,
     this.regions,
     this.requiredAccessLevels,
+    this.vpcNetworkSources,
   });
 
   Condition.fromJson(core.Map json_)
@@ -2356,6 +2363,12 @@ class Condition {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          vpcNetworkSources: json_.containsKey('vpcNetworkSources')
+              ? (json_['vpcNetworkSources'] as core.List)
+                  .map((value) => VpcNetworkSource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2366,6 +2379,7 @@ class Condition {
         if (regions != null) 'regions': regions!,
         if (requiredAccessLevels != null)
           'requiredAccessLevels': requiredAccessLevels!,
+        if (vpcNetworkSources != null) 'vpcNetworkSources': vpcNetworkSources!,
       };
 }
 
@@ -2488,7 +2502,83 @@ class DevicePolicy {
 /// if the destination of the request is also protected by a ServicePerimeter,
 /// then that ServicePerimeter must have an IngressPolicy which allows access in
 /// order for this request to succeed.
-typedef EgressFrom = $EgressFrom;
+class EgressFrom {
+  /// A list of identities that are allowed access through this
+  /// \[EgressPolicy\].
+  ///
+  /// Should be in the format of email address. The email address should
+  /// represent individual user or service account only.
+  core.List<core.String>? identities;
+
+  /// Specifies the type of identities that are allowed access to outside the
+  /// perimeter.
+  ///
+  /// If left unspecified, then members of `identities` field will be allowed
+  /// access.
+  /// Possible string values are:
+  /// - "IDENTITY_TYPE_UNSPECIFIED" : No blanket identity group specified.
+  /// - "ANY_IDENTITY" : Authorize access from all identities outside the
+  /// perimeter.
+  /// - "ANY_USER_ACCOUNT" : Authorize access from all human users outside the
+  /// perimeter.
+  /// - "ANY_SERVICE_ACCOUNT" : Authorize access from all service accounts
+  /// outside the perimeter.
+  core.String? identityType;
+
+  /// Whether to enforce traffic restrictions based on `sources` field.
+  ///
+  /// If the `sources` fields is non-empty, then this field must be set to
+  /// `SOURCE_RESTRICTION_ENABLED`.
+  /// Possible string values are:
+  /// - "SOURCE_RESTRICTION_UNSPECIFIED" : Enforcement preference unspecified,
+  /// will not enforce traffic restrictions based on `sources` in EgressFrom.
+  /// - "SOURCE_RESTRICTION_ENABLED" : Enforcement preference enabled, traffic
+  /// restrictions will be enforced based on `sources` in EgressFrom.
+  /// - "SOURCE_RESTRICTION_DISABLED" : Enforcement preference disabled, will
+  /// not enforce traffic restrictions based on `sources` in EgressFrom.
+  core.String? sourceRestriction;
+
+  /// Sources that this EgressPolicy authorizes access from.
+  ///
+  /// If this field is not empty, then `source_restriction` must be set to
+  /// `SOURCE_RESTRICTION_ENABLED`.
+  core.List<EgressSource>? sources;
+
+  EgressFrom({
+    this.identities,
+    this.identityType,
+    this.sourceRestriction,
+    this.sources,
+  });
+
+  EgressFrom.fromJson(core.Map json_)
+      : this(
+          identities: json_.containsKey('identities')
+              ? (json_['identities'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          identityType: json_.containsKey('identityType')
+              ? json_['identityType'] as core.String
+              : null,
+          sourceRestriction: json_.containsKey('sourceRestriction')
+              ? json_['sourceRestriction'] as core.String
+              : null,
+          sources: json_.containsKey('sources')
+              ? (json_['sources'] as core.List)
+                  .map((value) => EgressSource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (identities != null) 'identities': identities!,
+        if (identityType != null) 'identityType': identityType!,
+        if (sourceRestriction != null) 'sourceRestriction': sourceRestriction!,
+        if (sources != null) 'sources': sources!,
+      };
+}
 
 /// Policy for egress from perimeter.
 ///
@@ -2535,6 +2625,10 @@ class EgressPolicy {
         if (egressTo != null) 'egressTo': egressTo!,
       };
 }
+
+/// The source that EgressPolicy authorizes access from inside the
+/// ServicePerimeter to somewhere outside the ServicePerimeter boundaries.
+typedef EgressSource = $EgressSource;
 
 /// Defines the conditions under which an EgressPolicy matches a request.
 ///
@@ -3122,7 +3216,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -3185,23 +3279,23 @@ typedef OsConstraint = $OsConstraint;
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -3657,3 +3751,28 @@ typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// Specifies how APIs are allowed to communicate within the Service Perimeter.
 typedef VpcAccessibleServices = $VpcAccessibleServices;
+
+/// The originating network source in Google Cloud.
+class VpcNetworkSource {
+  /// Sub-segment ranges of a VPC network.
+  VpcSubNetwork? vpcSubnetwork;
+
+  VpcNetworkSource({
+    this.vpcSubnetwork,
+  });
+
+  VpcNetworkSource.fromJson(core.Map json_)
+      : this(
+          vpcSubnetwork: json_.containsKey('vpcSubnetwork')
+              ? VpcSubNetwork.fromJson(
+                  json_['vpcSubnetwork'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (vpcSubnetwork != null) 'vpcSubnetwork': vpcSubnetwork!,
+      };
+}
+
+/// Sub-segment ranges inside of a VPC Network.
+typedef VpcSubNetwork = $VpcSubNetwork;

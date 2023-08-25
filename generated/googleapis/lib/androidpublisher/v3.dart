@@ -4196,7 +4196,7 @@ class OrdersResource {
 
   /// Refunds a user's subscription or in-app purchase order.
   ///
-  /// Orders older than 1 year cannot be refunded.
+  /// Orders older than 3 years cannot be refunded.
   ///
   /// Request parameters:
   ///
@@ -5408,6 +5408,7 @@ class Abi {
   /// - "ARM64_V8A" : ARM64_V8A abi.
   /// - "X86" : X86 abi.
   /// - "X86_64" : X86_64 abi.
+  /// - "RISCV64" : RISCV64 abi.
   core.String? alias;
 
   Abi({
@@ -8779,6 +8780,10 @@ class ManagedProductTaxAndComplianceSettings {
   /// - "WITHDRAWAL_RIGHT_SERVICE"
   core.String? eeaWithdrawalRightType;
 
+  /// Whether this in-app product is declared as a product representing a
+  /// tokenized digital asset.
+  core.bool? isTokenizedDigitalAsset;
+
   /// A mapping from region code to tax rate details.
   ///
   /// The keys are region codes as defined by Unicode's "CLDR".
@@ -8786,6 +8791,7 @@ class ManagedProductTaxAndComplianceSettings {
 
   ManagedProductTaxAndComplianceSettings({
     this.eeaWithdrawalRightType,
+    this.isTokenizedDigitalAsset,
     this.taxRateInfoByRegionCode,
   });
 
@@ -8793,6 +8799,9 @@ class ManagedProductTaxAndComplianceSettings {
       : this(
           eeaWithdrawalRightType: json_.containsKey('eeaWithdrawalRightType')
               ? json_['eeaWithdrawalRightType'] as core.String
+              : null,
+          isTokenizedDigitalAsset: json_.containsKey('isTokenizedDigitalAsset')
+              ? json_['isTokenizedDigitalAsset'] as core.bool
               : null,
           taxRateInfoByRegionCode: json_.containsKey('taxRateInfoByRegionCode')
               ? (json_['taxRateInfoByRegionCode']
@@ -8810,6 +8819,8 @@ class ManagedProductTaxAndComplianceSettings {
   core.Map<core.String, core.dynamic> toJson() => {
         if (eeaWithdrawalRightType != null)
           'eeaWithdrawalRightType': eeaWithdrawalRightType!,
+        if (isTokenizedDigitalAsset != null)
+          'isTokenizedDigitalAsset': isTokenizedDigitalAsset!,
         if (taxRateInfoByRegionCode != null)
           'taxRateInfoByRegionCode': taxRateInfoByRegionCode!,
       };
@@ -9783,8 +9794,9 @@ class RegionalBasePlanConfig {
 class RegionalPriceMigrationConfig {
   /// The cutoff time for historical prices that subscribers can remain paying.
   ///
-  /// Subscribers who are on a price that was created before this cutoff time
-  /// will be migrated to the currently-offered price. These subscribers will
+  /// Subscribers on prices which were available at this cutoff time or later
+  /// will stay on their existing price. Subscribers on older prices will be
+  /// migrated to the currently-offered price. The migrated subscribers will
   /// receive a notification that they will be paying a different price.
   /// Subscribers who do not agree to the new price will have their subscription
   /// ended at the next renewal.
@@ -10671,7 +10683,8 @@ class SubscriptionItemPriceChangeDetails {
   /// user.
   ///
   /// This is subject to change(to a future time) due to cases where the renewal
-  /// time shifts like pause.
+  /// time shifts like pause. This field is only populated if the price change
+  /// has not taken effect.
   core.String? expectedNewPriceChargeTime;
 
   /// New recurring price for the subscription item.
@@ -10684,6 +10697,8 @@ class SubscriptionItemPriceChangeDetails {
   /// - "PRICE_DECREASE" : If the subscription price is decreasing.
   /// - "PRICE_INCREASE" : If the subscription price is increasing and the user
   /// needs to accept it.
+  /// - "OPT_OUT_PRICE_INCREASE" : If the subscription price is increasing with
+  /// opt out mode.
   core.String? priceChangeMode;
 
   /// State the price change is currently in.
@@ -11735,6 +11750,10 @@ class SubscriptionTaxAndComplianceSettings {
   /// - "WITHDRAWAL_RIGHT_SERVICE"
   core.String? eeaWithdrawalRightType;
 
+  /// Whether this subscription is declared as a product representing a
+  /// tokenized digital asset.
+  core.bool? isTokenizedDigitalAsset;
+
   /// A mapping from region code to tax rate details.
   ///
   /// The keys are region codes as defined by Unicode's "CLDR".
@@ -11742,6 +11761,7 @@ class SubscriptionTaxAndComplianceSettings {
 
   SubscriptionTaxAndComplianceSettings({
     this.eeaWithdrawalRightType,
+    this.isTokenizedDigitalAsset,
     this.taxRateInfoByRegionCode,
   });
 
@@ -11749,6 +11769,9 @@ class SubscriptionTaxAndComplianceSettings {
       : this(
           eeaWithdrawalRightType: json_.containsKey('eeaWithdrawalRightType')
               ? json_['eeaWithdrawalRightType'] as core.String
+              : null,
+          isTokenizedDigitalAsset: json_.containsKey('isTokenizedDigitalAsset')
+              ? json_['isTokenizedDigitalAsset'] as core.bool
               : null,
           taxRateInfoByRegionCode: json_.containsKey('taxRateInfoByRegionCode')
               ? (json_['taxRateInfoByRegionCode']
@@ -11766,8 +11789,50 @@ class SubscriptionTaxAndComplianceSettings {
   core.Map<core.String, core.dynamic> toJson() => {
         if (eeaWithdrawalRightType != null)
           'eeaWithdrawalRightType': eeaWithdrawalRightType!,
+        if (isTokenizedDigitalAsset != null)
+          'isTokenizedDigitalAsset': isTokenizedDigitalAsset!,
         if (taxRateInfoByRegionCode != null)
           'taxRateInfoByRegionCode': taxRateInfoByRegionCode!,
+      };
+}
+
+/// Options for system APKs.
+class SystemApkOptions {
+  /// Whether to use the rotated key for signing the system APK.
+  core.bool? rotated;
+
+  /// Whether system APK was generated with uncompressed dex files.
+  core.bool? uncompressedDexFiles;
+
+  /// Whether system APK was generated with uncompressed native libraries.
+  core.bool? uncompressedNativeLibraries;
+
+  SystemApkOptions({
+    this.rotated,
+    this.uncompressedDexFiles,
+    this.uncompressedNativeLibraries,
+  });
+
+  SystemApkOptions.fromJson(core.Map json_)
+      : this(
+          rotated: json_.containsKey('rotated')
+              ? json_['rotated'] as core.bool
+              : null,
+          uncompressedDexFiles: json_.containsKey('uncompressedDexFiles')
+              ? json_['uncompressedDexFiles'] as core.bool
+              : null,
+          uncompressedNativeLibraries:
+              json_.containsKey('uncompressedNativeLibraries')
+                  ? json_['uncompressedNativeLibraries'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rotated != null) 'rotated': rotated!,
+        if (uncompressedDexFiles != null)
+          'uncompressedDexFiles': uncompressedDexFiles!,
+        if (uncompressedNativeLibraries != null)
+          'uncompressedNativeLibraries': uncompressedNativeLibraries!,
       };
 }
 
@@ -12248,7 +12313,7 @@ class TracksListResponse {
   /// The kind of this response ("androidpublisher#tracksListResponse").
   core.String? kind;
 
-  /// All tracks.
+  /// All tracks (including tracks with no releases).
   core.List<Track>? tracks;
 
   TracksListResponse({
@@ -12688,6 +12753,11 @@ class Variant {
   /// The device spec used to generate the APK.
   DeviceSpec? deviceSpec;
 
+  /// Options applied to the generated APK.
+  ///
+  /// Optional.
+  SystemApkOptions? options;
+
   /// The ID of a previously created system APK variant.
   ///
   /// Output only.
@@ -12695,6 +12765,7 @@ class Variant {
 
   Variant({
     this.deviceSpec,
+    this.options,
     this.variantId,
   });
 
@@ -12704,6 +12775,10 @@ class Variant {
               ? DeviceSpec.fromJson(
                   json_['deviceSpec'] as core.Map<core.String, core.dynamic>)
               : null,
+          options: json_.containsKey('options')
+              ? SystemApkOptions.fromJson(
+                  json_['options'] as core.Map<core.String, core.dynamic>)
+              : null,
           variantId: json_.containsKey('variantId')
               ? json_['variantId'] as core.int
               : null,
@@ -12711,6 +12786,7 @@ class Variant {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceSpec != null) 'deviceSpec': deviceSpec!,
+        if (options != null) 'options': options!,
         if (variantId != null) 'variantId': variantId!,
       };
 }

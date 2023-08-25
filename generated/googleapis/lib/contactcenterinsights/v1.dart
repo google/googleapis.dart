@@ -221,6 +221,49 @@ class ProjectsLocationsConversationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deletes multiple conversations in a single request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource to create analyses in. Format:
+  /// projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> bulkDelete(
+    GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/conversations:bulkDelete';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets conversation statistics.
   ///
   /// Request parameters:
@@ -2513,6 +2556,61 @@ class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest {
       };
 }
 
+/// The request to delete conversations in bulk.
+class GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest {
+  /// Filter used to select the subset of conversations to analyze.
+  core.String? filter;
+
+  /// If set to true, all of this conversation's analyses will also be deleted.
+  ///
+  /// Otherwise, the request will only succeed if the conversation has no
+  /// analyses.
+  core.bool? force;
+
+  /// Maximum number of conversations to delete.
+  ///
+  /// The default is 1000. It can be changed by setting the `max_delete_count`
+  /// field.
+  core.int? maxDeleteCount;
+
+  /// The parent resource to create analyses in.
+  ///
+  /// Format: projects/{project}/locations/{location}
+  ///
+  /// Required.
+  core.String? parent;
+
+  GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest({
+    this.filter,
+    this.force,
+    this.maxDeleteCount,
+    this.parent,
+  });
+
+  GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest.fromJson(
+      core.Map json_)
+      : this(
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
+              : null,
+          force:
+              json_.containsKey('force') ? json_['force'] as core.bool : null,
+          maxDeleteCount: json_.containsKey('maxDeleteCount')
+              ? json_['maxDeleteCount'] as core.int
+              : null,
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (filter != null) 'filter': filter!,
+        if (force != null) 'force': force!,
+        if (maxDeleteCount != null) 'maxDeleteCount': maxDeleteCount!,
+        if (parent != null) 'parent': parent!,
+      };
+}
+
 /// Response of querying an issue model's statistics.
 class GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse {
   /// The latest label statistics for the queried issue model.
@@ -3137,7 +3235,8 @@ class GoogleCloudContactcenterinsightsV1ConversationCallMetadata {
       };
 }
 
-/// The conversation source, which is a combination of transcript and audio.
+/// The conversation source, which is a combination of transcript, audio, and
+/// metadata.
 class GoogleCloudContactcenterinsightsV1ConversationDataSource {
   /// The source when the conversation comes from Dialogflow.
   GoogleCloudContactcenterinsightsV1DialogflowSource? dialogflowSource;
@@ -4089,6 +4188,9 @@ class GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
       conversationConfig;
 
   /// A cloud storage bucket source.
+  ///
+  /// Note that any previously ingested objects from the source will be skipped
+  /// to avoid duplication.
   GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource?
       gcsSource;
 
@@ -4096,6 +4198,20 @@ class GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
   ///
   /// Required.
   core.String? parent;
+
+  /// DLP settings for transcript redaction.
+  ///
+  /// Optional, will default to the config specified in Settings.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1RedactionConfig? redactionConfig;
+
+  /// Default Speech-to-Text configuration.
+  ///
+  /// Optional, will default to the config specified in Settings.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1SpeechConfig? speechConfig;
 
   /// Configuration for when `source` contains conversation transcripts.
   GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig?
@@ -4105,6 +4221,8 @@ class GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
     this.conversationConfig,
     this.gcsSource,
     this.parent,
+    this.redactionConfig,
+    this.speechConfig,
     this.transcriptObjectConfig,
   });
 
@@ -4124,6 +4242,15 @@ class GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
           parent: json_.containsKey('parent')
               ? json_['parent'] as core.String
               : null,
+          redactionConfig: json_.containsKey('redactionConfig')
+              ? GoogleCloudContactcenterinsightsV1RedactionConfig.fromJson(
+                  json_['redactionConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          speechConfig: json_.containsKey('speechConfig')
+              ? GoogleCloudContactcenterinsightsV1SpeechConfig.fromJson(
+                  json_['speechConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           transcriptObjectConfig: json_.containsKey('transcriptObjectConfig')
               ? GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig
                   .fromJson(json_['transcriptObjectConfig']
@@ -4136,6 +4263,8 @@ class GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
           'conversationConfig': conversationConfig!,
         if (gcsSource != null) 'gcsSource': gcsSource!,
         if (parent != null) 'parent': parent!,
+        if (redactionConfig != null) 'redactionConfig': redactionConfig!,
+        if (speechConfig != null) 'speechConfig': speechConfig!,
         if (transcriptObjectConfig != null)
           'transcriptObjectConfig': transcriptObjectConfig!,
       };
@@ -4143,47 +4272,90 @@ class GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
 
 /// Configuration that applies to all conversations.
 class GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig {
+  /// For audio conversations, this field indicates which of the channels, 1 or
+  /// 2, contains the agent.
+  ///
+  /// Note that this must be set for audio conversations to be properly
+  /// displayed and analyzed.
+  ///
+  /// Optional.
+  core.int? agentChannel;
+
   /// An opaque, user-specified string representing the human agent who handled
   /// the conversations.
   core.String? agentId;
 
+  /// For audio conversations, this field indicates which of the channels, 1 or
+  /// 2, contains the customer.
+  ///
+  /// Note that this must be set for audio conversations to be properly
+  /// displayed and analyzed.
+  ///
+  /// Optional.
+  core.int? customerChannel;
+
   GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig({
+    this.agentChannel,
     this.agentId,
+    this.customerChannel,
   });
 
   GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig.fromJson(
       core.Map json_)
       : this(
+          agentChannel: json_.containsKey('agentChannel')
+              ? json_['agentChannel'] as core.int
+              : null,
           agentId: json_.containsKey('agentId')
               ? json_['agentId'] as core.String
+              : null,
+          customerChannel: json_.containsKey('customerChannel')
+              ? json_['customerChannel'] as core.int
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (agentChannel != null) 'agentChannel': agentChannel!,
         if (agentId != null) 'agentId': agentId!,
+        if (customerChannel != null) 'customerChannel': customerChannel!,
       };
 }
 
 /// Configuration for Cloud Storage bucket sources.
 class GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource {
+  /// Specifies the type of the objects in `bucket_uri`.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "BUCKET_OBJECT_TYPE_UNSPECIFIED" : The object type is unspecified and
+  /// will default to TRANSCRIPT.
+  /// - "TRANSCRIPT" : The object is a transcript.
+  /// - "AUDIO" : The object is an audio file.
+  core.String? bucketObjectType;
+
   /// The Cloud Storage bucket containing source objects.
   ///
   /// Required.
   core.String? bucketUri;
 
   GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource({
+    this.bucketObjectType,
     this.bucketUri,
   });
 
   GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource.fromJson(
       core.Map json_)
       : this(
+          bucketObjectType: json_.containsKey('bucketObjectType')
+              ? json_['bucketObjectType'] as core.String
+              : null,
           bucketUri: json_.containsKey('bucketUri')
               ? json_['bucketUri'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bucketObjectType != null) 'bucketObjectType': bucketObjectType!,
         if (bucketUri != null) 'bucketUri': bucketUri!,
       };
 }
@@ -5429,6 +5601,13 @@ class GoogleCloudContactcenterinsightsV1Settings {
   /// conversations.
   GoogleCloudContactcenterinsightsV1RedactionConfig? redactionConfig;
 
+  /// Default Speech-to-Text resources to be used while ingesting audio files.
+  ///
+  /// Optional, CCAI Insights will create a default if not provided.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1SpeechConfig? speechConfig;
+
   /// The time at which the settings were last updated.
   ///
   /// Output only.
@@ -5442,6 +5621,7 @@ class GoogleCloudContactcenterinsightsV1Settings {
     this.name,
     this.pubsubNotificationSettings,
     this.redactionConfig,
+    this.speechConfig,
     this.updateTime,
   });
 
@@ -5478,6 +5658,10 @@ class GoogleCloudContactcenterinsightsV1Settings {
                   json_['redactionConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          speechConfig: json_.containsKey('speechConfig')
+              ? GoogleCloudContactcenterinsightsV1SpeechConfig.fromJson(
+                  json_['speechConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -5492,6 +5676,7 @@ class GoogleCloudContactcenterinsightsV1Settings {
         if (pubsubNotificationSettings != null)
           'pubsubNotificationSettings': pubsubNotificationSettings!,
         if (redactionConfig != null) 'redactionConfig': redactionConfig!,
+        if (speechConfig != null) 'speechConfig': speechConfig!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -5663,6 +5848,30 @@ class GoogleCloudContactcenterinsightsV1SmartReplyData {
       };
 }
 
+/// Speech-to-Text configuration.
+class GoogleCloudContactcenterinsightsV1SpeechConfig {
+  /// The fully-qualified Speech Recognizer resource name.
+  ///
+  /// Format:
+  /// `projects/{project_id}/locations/{location}/recognizer/{recognizer}`
+  core.String? speechRecognizer;
+
+  GoogleCloudContactcenterinsightsV1SpeechConfig({
+    this.speechRecognizer,
+  });
+
+  GoogleCloudContactcenterinsightsV1SpeechConfig.fromJson(core.Map json_)
+      : this(
+          speechRecognizer: json_.containsKey('speechRecognizer')
+              ? json_['speechRecognizer'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (speechRecognizer != null) 'speechRecognizer': speechRecognizer!,
+      };
+}
+
 /// The request to undeploy an issue model.
 class GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest {
   /// The issue model to undeploy.
@@ -5714,11 +5923,19 @@ class GoogleCloudContactcenterinsightsV1UploadConversationRequest {
   /// Optional.
   GoogleCloudContactcenterinsightsV1RedactionConfig? redactionConfig;
 
+  /// Default Speech-to-Text configuration.
+  ///
+  /// Optional, will default to the config specified in Settings.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1SpeechConfig? speechConfig;
+
   GoogleCloudContactcenterinsightsV1UploadConversationRequest({
     this.conversation,
     this.conversationId,
     this.parent,
     this.redactionConfig,
+    this.speechConfig,
   });
 
   GoogleCloudContactcenterinsightsV1UploadConversationRequest.fromJson(
@@ -5739,6 +5956,10 @@ class GoogleCloudContactcenterinsightsV1UploadConversationRequest {
                   json_['redactionConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          speechConfig: json_.containsKey('speechConfig')
+              ? GoogleCloudContactcenterinsightsV1SpeechConfig.fromJson(
+                  json_['speechConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5746,6 +5967,7 @@ class GoogleCloudContactcenterinsightsV1UploadConversationRequest {
         if (conversationId != null) 'conversationId': conversationId!,
         if (parent != null) 'parent': parent!,
         if (redactionConfig != null) 'redactionConfig': redactionConfig!,
+        if (speechConfig != null) 'speechConfig': speechConfig!,
       };
 }
 

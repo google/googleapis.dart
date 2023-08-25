@@ -139,6 +139,14 @@ class AppsResource {
   /// [appsId] - Part of `name`. Name of the Application resource to get.
   /// Example: apps/myapp.
   ///
+  /// [includeExtraData] - Options to include extra data
+  /// Possible string values are:
+  /// - "INCLUDE_EXTRA_DATA_UNSPECIFIED" : Unspecified: No extra data will be
+  /// returned
+  /// - "INCLUDE_EXTRA_DATA_NONE" : Do not return any extra data
+  /// - "INCLUDE_GOOGLE_GENERATED_METADATA" : Return GGCM associated with the
+  /// resources
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -151,9 +159,11 @@ class AppsResource {
   /// this method will complete with the same error.
   async.Future<Application> get(
     core.String appsId, {
+    core.String? includeExtraData,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (includeExtraData != null) 'includeExtraData': [includeExtraData],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2221,6 +2231,14 @@ class Application {
   ///
   /// Output only.
   core.String? gcrDomain;
+
+  /// Additional Google Generated Customer Metadata, this field won't be
+  /// provided by default and can be requested by setting the IncludeExtraData
+  /// field in GetApplicationRequest
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? generatedCustomerMetadata;
   IdentityAwareProxy? iap;
 
   /// Identifier of the Application resource.
@@ -2269,6 +2287,7 @@ class Application {
     this.dispatchRules,
     this.featureSettings,
     this.gcrDomain,
+    this.generatedCustomerMetadata,
     this.iap,
     this.id,
     this.locationId,
@@ -2310,6 +2329,11 @@ class Application {
           gcrDomain: json_.containsKey('gcrDomain')
               ? json_['gcrDomain'] as core.String
               : null,
+          generatedCustomerMetadata:
+              json_.containsKey('generatedCustomerMetadata')
+                  ? json_['generatedCustomerMetadata']
+                      as core.Map<core.String, core.dynamic>
+                  : null,
           iap: json_.containsKey('iap')
               ? IdentityAwareProxy.fromJson(
                   json_['iap'] as core.Map<core.String, core.dynamic>)
@@ -2338,6 +2362,8 @@ class Application {
         if (dispatchRules != null) 'dispatchRules': dispatchRules!,
         if (featureSettings != null) 'featureSettings': featureSettings!,
         if (gcrDomain != null) 'gcrDomain': gcrDomain!,
+        if (generatedCustomerMetadata != null)
+          'generatedCustomerMetadata': generatedCustomerMetadata!,
         if (iap != null) 'iap': iap!,
         if (id != null) 'id': id!,
         if (locationId != null) 'locationId': locationId!,
@@ -4420,7 +4446,7 @@ class Operation {
   /// ending with operations/{unique_id}.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as Delete, the
   /// response is google.protobuf.Empty. If the original method is standard
@@ -4690,6 +4716,14 @@ typedef ScriptHandler = $Handler;
 /// define a specific set of code used to implement the functionality of that
 /// service.
 class Service {
+  /// Additional Google Generated Customer Metadata, this field won't be
+  /// provided by default and can be requested by setting the IncludeExtraData
+  /// field in GetServiceRequest
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? generatedCustomerMetadata;
+
   /// Relative name of the service within the application.
   ///
   /// Example: default.@OutputOnly
@@ -4724,6 +4758,7 @@ class Service {
   TrafficSplit? split;
 
   Service({
+    this.generatedCustomerMetadata,
     this.id,
     this.labels,
     this.name,
@@ -4733,6 +4768,11 @@ class Service {
 
   Service.fromJson(core.Map json_)
       : this(
+          generatedCustomerMetadata:
+              json_.containsKey('generatedCustomerMetadata')
+                  ? json_['generatedCustomerMetadata']
+                      as core.Map<core.String, core.dynamic>
+                  : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -4754,6 +4794,8 @@ class Service {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (generatedCustomerMetadata != null)
+          'generatedCustomerMetadata': generatedCustomerMetadata!,
         if (id != null) 'id': id!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
@@ -5226,6 +5268,9 @@ class Version {
   /// Serving configuration for Google Cloud Endpoints
   /// (https://cloud.google.com/endpoints).Only returned in GET requests if
   /// view=FULL is set.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   ApiConfigHandler? apiConfig;
 
   /// Allows App Engine second generation runtimes to access the legacy bundled
@@ -5299,6 +5344,14 @@ class Version {
 
   /// Settings for App Engine flexible runtimes.
   FlexibleRuntimeSettings? flexibleRuntimeSettings;
+
+  /// Additional Google Generated Customer Metadata, this field won't be
+  /// provided by default and can be requested by setting the IncludeExtraData
+  /// field in GetVersionRequest
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? generatedCustomerMetadata;
 
   /// An ordered list of URL-matching patterns that should be applied to
   /// incoming requests.
@@ -5452,6 +5505,7 @@ class Version {
     this.envVariables,
     this.errorHandlers,
     this.flexibleRuntimeSettings,
+    this.generatedCustomerMetadata,
     this.handlers,
     this.healthCheck,
     this.id,
@@ -5559,6 +5613,11 @@ class Version {
                   json_['flexibleRuntimeSettings']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          generatedCustomerMetadata:
+              json_.containsKey('generatedCustomerMetadata')
+                  ? json_['generatedCustomerMetadata']
+                      as core.Map<core.String, core.dynamic>
+                  : null,
           handlers: json_.containsKey('handlers')
               ? (json_['handlers'] as core.List)
                   .map((value) => UrlMap.fromJson(
@@ -5665,6 +5724,8 @@ class Version {
         if (errorHandlers != null) 'errorHandlers': errorHandlers!,
         if (flexibleRuntimeSettings != null)
           'flexibleRuntimeSettings': flexibleRuntimeSettings!,
+        if (generatedCustomerMetadata != null)
+          'generatedCustomerMetadata': generatedCustomerMetadata!,
         if (handlers != null) 'handlers': handlers!,
         if (healthCheck != null) 'healthCheck': healthCheck!,
         if (id != null) 'id': id!,
@@ -5744,7 +5805,7 @@ class VpcAccessConnector {
   core.String? egressSetting;
 
   /// Full Serverless VPC Access Connector name e.g.
-  /// /projects/my-project/locations/us-central1/connectors/c1.
+  /// projects/my-project/locations/us-central1/connectors/c1.
   core.String? name;
 
   VpcAccessConnector({

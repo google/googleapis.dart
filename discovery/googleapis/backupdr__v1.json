@@ -9,26 +9,26 @@
         }
     },
     "basePath": "",
-    "baseUrl": "https://gameservices.googleapis.com/",
+    "baseUrl": "https://backupdr.googleapis.com/",
     "batchPath": "batch",
-    "canonicalName": "Game Services",
-    "description": "Deploy and manage infrastructure for global multiplayer gaming experiences.",
+    "canonicalName": "Backupdr",
+    "description": "",
     "discoveryVersion": "v1",
-    "documentationLink": "https://cloud.google.com/solutions/gaming/",
+    "documentationLink": "https://cloud.google.com/backup-disaster-recovery",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
     },
-    "id": "gameservices:v1",
+    "id": "backupdr:v1",
     "kind": "discovery#restDescription",
-    "name": "gameservices",
+    "name": "backupdr",
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230706",
-    "rootUrl": "https://gameservices.googleapis.com/",
+    "revision": "20231013",
+    "rootUrl": "https://backupdr.googleapis.com/",
     "servicePath": "",
-    "title": "Game Services API",
+    "title": "Backup and DR Service API",
     "version": "v1",
     "version_module": true,
     "parameters": {
@@ -117,7 +117,7 @@
                             "description": "Gets information about a location.",
                             "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
                             "httpMethod": "GET",
-                            "id": "gameservices.projects.locations.get",
+                            "id": "backupdr.projects.locations.get",
                             "parameterOrder": [
                                 "name"
                             ],
@@ -142,7 +142,7 @@
                             "description": "Lists information about the supported locations for this service.",
                             "flatPath": "v1/projects/{projectsId}/locations",
                             "httpMethod": "GET",
-                            "id": "gameservices.projects.locations.list",
+                            "id": "backupdr.projects.locations.list",
                             "parameterOrder": [
                                 "name"
                             ],
@@ -151,11 +151,6 @@
                                     "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
                                     "location": "query",
                                     "type": "string"
-                                },
-                                "includeUnrevealedLocations": {
-                                    "description": "If true, the returned list will include locations which are not yet revealed.",
-                                    "location": "query",
-                                    "type": "boolean"
                                 },
                                 "name": {
                                     "description": "The resource that owns the locations collection, if applicable.",
@@ -186,13 +181,106 @@
                         }
                     },
                     "resources": {
-                        "gameServerDeployments": {
+                        "managementServers": {
                             "methods": {
+                                "create": {
+                                    "description": "Creates a new ManagementServer in a given project and location.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/managementServers",
+                                    "httpMethod": "POST",
+                                    "id": "backupdr.projects.locations.managementServers.create",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "managementServerId": {
+                                            "description": "Required. The name of the management server to create. The name must be unique for the specified project and location.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "description": "Required. The management server project and location in the format `projects/{project_id}/locations/{location}`. In Cloud Backup and DR locations map to GCP regions, for example **us-central1**.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "requestId": {
+                                            "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/managementServers",
+                                    "request": {
+                                        "$ref": "ManagementServer"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "delete": {
+                                    "description": "Deletes a single ManagementServer.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/managementServers/{managementServersId}",
+                                    "httpMethod": "DELETE",
+                                    "id": "backupdr.projects.locations.managementServers.delete",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Name of the resource",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/managementServers/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "requestId": {
+                                            "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "get": {
+                                    "description": "Gets details of a single ManagementServer.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/managementServers/{managementServersId}",
+                                    "httpMethod": "GET",
+                                    "id": "backupdr.projects.locations.managementServers.get",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Name of the management server resource name, in the format `projects/{project_id}/locations/{location}/managementServers/{resource_name}`",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/managementServers/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "response": {
+                                        "$ref": "ManagementServer"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
                                 "getIamPolicy": {
                                     "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
-                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gameServerDeployments/{gameServerDeploymentsId}:getIamPolicy",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/managementServers/{managementServersId}:getIamPolicy",
                                     "httpMethod": "GET",
-                                    "id": "gameservices.projects.locations.gameServerDeployments.getIamPolicy",
+                                    "id": "backupdr.projects.locations.managementServers.getIamPolicy",
                                     "parameterOrder": [
                                         "resource"
                                     ],
@@ -206,7 +294,7 @@
                                         "resource": {
                                             "description": "REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
                                             "location": "path",
-                                            "pattern": "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/managementServers/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
@@ -219,11 +307,57 @@
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
+                                "list": {
+                                    "description": "Lists ManagementServers in a given project and location.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/managementServers",
+                                    "httpMethod": "GET",
+                                    "id": "backupdr.projects.locations.managementServers.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "filter": {
+                                            "description": "Optional. Filtering results.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "orderBy": {
+                                            "description": "Optional. Hint for how to order the results.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "description": "Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "description": "Optional. A token identifying a page of results the server should return.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "description": "Required. The project and location for which to retrieve management servers information, in the format `projects/{project_id}/locations/{location}`. In Cloud BackupDR, locations map to GCP regions, for example **us-central1**. To retrieve management servers for all locations, use \"-\" for the `{location}` value.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/managementServers",
+                                    "response": {
+                                        "$ref": "ListManagementServersResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
                                 "setIamPolicy": {
                                     "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
-                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gameServerDeployments/{gameServerDeploymentsId}:setIamPolicy",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/managementServers/{managementServersId}:setIamPolicy",
                                     "httpMethod": "POST",
-                                    "id": "gameservices.projects.locations.gameServerDeployments.setIamPolicy",
+                                    "id": "backupdr.projects.locations.managementServers.setIamPolicy",
                                     "parameterOrder": [
                                         "resource"
                                     ],
@@ -231,7 +365,7 @@
                                         "resource": {
                                             "description": "REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
                                             "location": "path",
-                                            "pattern": "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/managementServers/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
@@ -249,9 +383,9 @@
                                 },
                                 "testIamPermissions": {
                                     "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
-                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/gameServerDeployments/{gameServerDeploymentsId}:testIamPermissions",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/managementServers/{managementServersId}:testIamPermissions",
                                     "httpMethod": "POST",
-                                    "id": "gameservices.projects.locations.gameServerDeployments.testIamPermissions",
+                                    "id": "backupdr.projects.locations.managementServers.testIamPermissions",
                                     "parameterOrder": [
                                         "resource"
                                     ],
@@ -259,7 +393,7 @@
                                         "resource": {
                                             "description": "REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.",
                                             "location": "path",
-                                            "pattern": "^projects/[^/]+/locations/[^/]+/gameServerDeployments/[^/]+$",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/managementServers/[^/]+$",
                                             "required": true,
                                             "type": "string"
                                         }
@@ -283,7 +417,7 @@
                                     "description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
                                     "httpMethod": "POST",
-                                    "id": "gameservices.projects.locations.operations.cancel",
+                                    "id": "backupdr.projects.locations.operations.cancel",
                                     "parameterOrder": [
                                         "name"
                                     ],
@@ -311,7 +445,7 @@
                                     "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                                     "httpMethod": "DELETE",
-                                    "id": "gameservices.projects.locations.operations.delete",
+                                    "id": "backupdr.projects.locations.operations.delete",
                                     "parameterOrder": [
                                         "name"
                                     ],
@@ -336,7 +470,7 @@
                                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
                                     "httpMethod": "GET",
-                                    "id": "gameservices.projects.locations.operations.get",
+                                    "id": "backupdr.projects.locations.operations.get",
                                     "parameterOrder": [
                                         "name"
                                     ],
@@ -361,7 +495,7 @@
                                     "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
                                     "httpMethod": "GET",
-                                    "id": "gameservices.projects.locations.operations.list",
+                                    "id": "backupdr.projects.locations.operations.list",
                                     "parameterOrder": [
                                         "name"
                                     ],
@@ -435,9 +569,6 @@
                     },
                     "type": "array"
                 },
-                "ignoreChildExemptions": {
-                    "type": "boolean"
-                },
                 "logType": {
                     "description": "The log type that this config enables.",
                     "enum": [
@@ -457,38 +588,10 @@
             },
             "type": "object"
         },
-        "AuthorizationLoggingOptions": {
-            "description": "Authorization-related information used by Cloud Audit Logging.",
-            "id": "AuthorizationLoggingOptions",
-            "properties": {
-                "permissionType": {
-                    "description": "The type of the permission that was checked.",
-                    "enum": [
-                        "PERMISSION_TYPE_UNSPECIFIED",
-                        "ADMIN_READ",
-                        "ADMIN_WRITE",
-                        "DATA_READ",
-                        "DATA_WRITE"
-                    ],
-                    "enumDescriptions": [
-                        "Default. Should not be used.",
-                        "A read of admin (meta) data.",
-                        "A write of admin (meta) data.",
-                        "A read of standard data.",
-                        "A write of standard data."
-                    ],
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "Binding": {
             "description": "Associates `members`, or principals, with a `role`.",
             "id": "Binding",
             "properties": {
-                "bindingId": {
-                    "type": "string"
-                },
                 "condition": {
                     "$ref": "Expr",
                     "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
@@ -511,166 +614,6 @@
             "description": "The request message for Operations.CancelOperation.",
             "id": "CancelOperationRequest",
             "properties": {},
-            "type": "object"
-        },
-        "CloudAuditOptions": {
-            "description": "Write a Cloud Audit log",
-            "id": "CloudAuditOptions",
-            "properties": {
-                "authorizationLoggingOptions": {
-                    "$ref": "AuthorizationLoggingOptions",
-                    "description": "Information used by the Cloud Audit Logging pipeline."
-                },
-                "logName": {
-                    "description": "The log_name to populate in the Cloud Audit Record.",
-                    "enum": [
-                        "UNSPECIFIED_LOG_NAME",
-                        "ADMIN_ACTIVITY",
-                        "DATA_ACCESS"
-                    ],
-                    "enumDescriptions": [
-                        "Default. Should not be used.",
-                        "Corresponds to \"cloudaudit.googleapis.com/activity\"",
-                        "Corresponds to \"cloudaudit.googleapis.com/data_access\""
-                    ],
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Condition": {
-            "description": "A condition to be met.",
-            "id": "Condition",
-            "properties": {
-                "iam": {
-                    "description": "Trusted attributes supplied by the IAM system.",
-                    "enum": [
-                        "NO_ATTR",
-                        "AUTHORITY",
-                        "ATTRIBUTION",
-                        "SECURITY_REALM",
-                        "APPROVER",
-                        "JUSTIFICATION_TYPE",
-                        "CREDENTIALS_TYPE",
-                        "CREDS_ASSERTION"
-                    ],
-                    "enumDescriptions": [
-                        "Default non-attribute.",
-                        "Either principal or (if present) authority selector.",
-                        "The principal (even if an authority selector is present), which must only be used for attribution, not authorization.",
-                        "Any of the security realms in the IAMContext (go/security-realms). When used with IN, the condition indicates \"any of the request's realms match one of the given values; with NOT_IN, \"none of the realms match any of the given values\". Note that a value can be: - 'self:campus' (i.e., clients that are in the same campus) - 'self:metro' (i.e., clients that are in the same metro) - 'self:cloud-region' (i.e., allow connections from clients that are in the same cloud region) - 'self:prod-region' (i.e., allow connections from clients that are in the same prod region) - 'guardians' (i.e., allow connections from its guardian realms. See go/security-realms-glossary#guardian for more information.) - 'self' [DEPRECATED] (i.e., allow connections from clients that are in the same security realm, which is currently but not guaranteed to be campus-sized) - a realm (e.g., 'campus-abc') - a realm group (e.g., 'realms-for-borg-cell-xx', see: go/realm-groups) A match is determined by a realm group membership check performed by a RealmAclRep object (go/realm-acl-howto). It is not permitted to grant access based on the *absence* of a realm, so realm conditions can only be used in a \"positive\" context (e.g., ALLOW/IN or DENY/NOT_IN).",
-                        "An approver (distinct from the requester) that has authorized this request. When used with IN, the condition indicates that one of the approvers associated with the request matches the specified principal, or is a member of the specified group. Approvers can only grant additional access, and are thus only used in a strictly positive context (e.g. ALLOW/IN or DENY/NOT_IN).",
-                        "What types of justifications have been supplied with this request. String values should match enum names from security.credentials.JustificationType, e.g. \"MANUAL_STRING\". It is not permitted to grant access based on the *absence* of a justification, so justification conditions can only be used in a \"positive\" context (e.g., ALLOW/IN or DENY/NOT_IN). Multiple justifications, e.g., a Buganizer ID and a manually-entered reason, are normal and supported.",
-                        "What type of credentials have been supplied with this request. String values should match enum names from security_loas_l2.CredentialsType - currently, only CREDS_TYPE_EMERGENCY is supported. It is not permitted to grant access based on the *absence* of a credentials type, so the conditions can only be used in a \"positive\" context (e.g., ALLOW/IN or DENY/NOT_IN).",
-                        "EXPERIMENTAL -- DO NOT USE. The conditions can only be used in a \"positive\" context (e.g., ALLOW/IN or DENY/NOT_IN)."
-                    ],
-                    "type": "string"
-                },
-                "op": {
-                    "description": "An operator to apply the subject with.",
-                    "enum": [
-                        "NO_OP",
-                        "EQUALS",
-                        "NOT_EQUALS",
-                        "IN",
-                        "NOT_IN",
-                        "DISCHARGED"
-                    ],
-                    "enumDescriptions": [
-                        "Default no-op.",
-                        "DEPRECATED. Use IN instead.",
-                        "DEPRECATED. Use NOT_IN instead.",
-                        "The condition is true if the subject (or any element of it if it is a set) matches any of the supplied values.",
-                        "The condition is true if the subject (or every element of it if it is a set) matches none of the supplied values.",
-                        "Subject is discharged"
-                    ],
-                    "type": "string"
-                },
-                "svc": {
-                    "description": "Trusted attributes discharged by the service.",
-                    "type": "string"
-                },
-                "sys": {
-                    "description": "Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.",
-                    "enum": [
-                        "NO_ATTR",
-                        "REGION",
-                        "SERVICE",
-                        "NAME",
-                        "IP"
-                    ],
-                    "enumDescriptions": [
-                        "Default non-attribute type",
-                        "Region of the resource",
-                        "Service name",
-                        "Resource name",
-                        "IP address of the caller"
-                    ],
-                    "type": "string"
-                },
-                "values": {
-                    "description": "The objects of the condition.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "CounterOptions": {
-            "description": "Increment a streamz counter with the specified metric and field names. Metric names should start with a '/', generally be lowercase-only, and end in \"_count\". Field names should not contain an initial slash. The actual exported metric names will have \"/iam/policy\" prepended. Field names correspond to IAM request parameters and field values are their respective values. Supported field names: - \"authority\", which is \"[token]\" if IAMContext.token is present, otherwise the value of IAMContext.authority_selector if present, and otherwise a representation of IAMContext.principal; or - \"iam_principal\", a representation of IAMContext.principal even if a token or authority selector is present; or - \"\" (empty string), resulting in a counter with no fields. Examples: counter { metric: \"/debug_access_count\" field: \"iam_principal\" } ==> increment counter /iam/policy/debug_access_count {iam_principal=[value of IAMContext.principal]}",
-            "id": "CounterOptions",
-            "properties": {
-                "customFields": {
-                    "description": "Custom fields.",
-                    "items": {
-                        "$ref": "CustomField"
-                    },
-                    "type": "array"
-                },
-                "field": {
-                    "description": "The field value to attribute.",
-                    "type": "string"
-                },
-                "metric": {
-                    "description": "The metric to update.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "CustomField": {
-            "description": "Custom fields. These can be used to create a counter with arbitrary field/value pairs. See: go/rpcsp-custom-fields.",
-            "id": "CustomField",
-            "properties": {
-                "name": {
-                    "description": "Name is the field name.",
-                    "type": "string"
-                },
-                "value": {
-                    "description": "Value is the field value. It is important that in contrast to the CounterOptions.field, the value here is a constant that is not derived from the IAMContext.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "DataAccessOptions": {
-            "description": "Write a Data Access (Gin) log",
-            "id": "DataAccessOptions",
-            "properties": {
-                "logMode": {
-                    "enum": [
-                        "LOG_MODE_UNSPECIFIED",
-                        "LOG_FAIL_CLOSED"
-                    ],
-                    "enumDescriptions": [
-                        "Client is not required to write a partial Gin log immediately after the authorization check. If client chooses to write one and it fails, client may either fail open (allow the operation to continue) or fail closed (handle as a DENY outcome).",
-                        "The application's operation in the context of which this authorization check is being made may only be performed if it is successfully logged to Gin. For instance, the authorization library may satisfy this obligation by emitting a partial log entry at authorization check time and only returning ALLOW to the application if it succeeds. If a matching Rule has this directive, but the client has not indicated that it will honor such requirements, then the IAM check will result in authorization failure by setting CheckPolicyResponse.success=false."
-                    ],
-                    "type": "string"
-                }
-            },
             "type": "object"
         },
         "Empty": {
@@ -716,6 +659,31 @@
                 "nextPageToken": {
                     "description": "The standard List next-page token.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListManagementServersResponse": {
+            "description": "Response message for listing management servers.",
+            "id": "ListManagementServersResponse",
+            "properties": {
+                "managementServers": {
+                    "description": "The list of ManagementServer instances in the project for the specified location. If the `{location}` value in the request is \"-\", the response contains a list of instances from all locations. In case any location is unreachable, the response will only return management servers in reachable locations and the 'unreachable' field will be populated with a list of unreachable locations.",
+                    "items": {
+                        "$ref": "ManagementServer"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "A token identifying a page of results the server should return.",
+                    "type": "string"
+                },
+                "unreachable": {
+                    "description": "Locations that could not be reached.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -772,21 +740,135 @@
             },
             "type": "object"
         },
-        "LogConfig": {
-            "description": "Specifies what kind of log the caller must write",
-            "id": "LogConfig",
+        "ManagementServer": {
+            "description": "ManagementServer describes a single BackupDR ManagementServer instance.",
+            "id": "ManagementServer",
             "properties": {
-                "cloudAudit": {
-                    "$ref": "CloudAuditOptions",
-                    "description": "Cloud audit options."
+                "createTime": {
+                    "description": "Output only. The time when the instance was created.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
                 },
-                "counter": {
-                    "$ref": "CounterOptions",
-                    "description": "Counter options."
+                "description": {
+                    "description": "Optional. The description of the ManagementServer instance (2048 characters or less).",
+                    "type": "string"
                 },
-                "dataAccess": {
-                    "$ref": "DataAccessOptions",
-                    "description": "Data access options."
+                "etag": {
+                    "description": "Optional. Server specified ETag for the ManagementServer resource to prevent simultaneous updates from overwiting each other.",
+                    "type": "string"
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Resource labels to represent user provided metadata. Labels currently defined: 1. migrate_from_go= If set to true, the MS is created in migration ready mode.",
+                    "type": "object"
+                },
+                "managementUri": {
+                    "$ref": "ManagementURI",
+                    "description": "Output only. The hostname or ip address of the exposed AGM endpoints, used by clients to connect to AGM/RD graphical user interface and APIs.",
+                    "readOnly": true
+                },
+                "name": {
+                    "description": "Output only. The resource name.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "networks": {
+                    "description": "Required. VPC networks to which the ManagementServer instance is connected. For this version, only a single network is supported.",
+                    "items": {
+                        "$ref": "NetworkConfig"
+                    },
+                    "type": "array"
+                },
+                "oauth2ClientId": {
+                    "description": "Output only. The OAuth 2.0 client id is required to make API calls to the BackupDR instance API of this ManagementServer. This is the value that should be provided in the ‘aud’ field of the OIDC ID Token (see openid specification https://openid.net/specs/openid-connect-core-1_0.html#IDToken).",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "state": {
+                    "description": "Output only. The ManagementServer state.",
+                    "enum": [
+                        "INSTANCE_STATE_UNSPECIFIED",
+                        "CREATING",
+                        "READY",
+                        "UPDATING",
+                        "DELETING",
+                        "REPAIRING",
+                        "MAINTENANCE",
+                        "ERROR"
+                    ],
+                    "enumDescriptions": [
+                        "State not set.",
+                        "The instance is being created.",
+                        "The instance has been created and is fully usable.",
+                        "The instance configuration is being updated. Certain kinds of updates may cause the instance to become unusable while the update is in progress.",
+                        "The instance is being deleted.",
+                        "The instance is being repaired and may be unstable.",
+                        "Maintenance is being performed on this instance.",
+                        "The instance is experiencing an issue and might be unusable. You can get further details from the statusMessage field of Instance resource."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Required. The type of the ManagementServer resource.",
+                    "enum": [
+                        "INSTANCE_TYPE_UNSPECIFIED",
+                        "BACKUP_RESTORE"
+                    ],
+                    "enumDescriptions": [
+                        "Instance type is not mentioned.",
+                        "Instance for backup and restore management (i.e., AGM)."
+                    ],
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "Output only. The time when the instance was updated.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ManagementURI": {
+            "description": "ManagementURI for the Management Server resource.",
+            "id": "ManagementURI",
+            "properties": {
+                "api": {
+                    "description": "Output only. The ManagementServer AGM/RD API URL.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "webUi": {
+                    "description": "Output only. The ManagementServer AGM/RD WebUI URL.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "NetworkConfig": {
+            "description": "Network configuration for ManagementServer instance.",
+            "id": "NetworkConfig",
+            "properties": {
+                "network": {
+                    "description": "Optional. The resource name of the Google Compute Engine VPC network to which the ManagementServer instance is connected.",
+                    "type": "string"
+                },
+                "peeringMode": {
+                    "description": "Optional. The network connect mode of the ManagementServer instance. For this version, only PRIVATE_SERVICE_ACCESS is supported.",
+                    "enum": [
+                        "PEERING_MODE_UNSPECIFIED",
+                        "PRIVATE_SERVICE_ACCESS"
+                    ],
+                    "enumDescriptions": [
+                        "Peering mode not set.",
+                        "Connect using Private Service Access to the Management Server. Private services access provides an IP address range for multiple Google Cloud services, including Cloud BackupDR."
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -820,14 +902,66 @@
                         "description": "Properties of the object. Contains field @type with type URL.",
                         "type": "any"
                     },
-                    "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+                    "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
                     "type": "object"
                 }
             },
             "type": "object"
         },
+        "OperationMetadata": {
+            "description": "Represents the metadata of the long-running operation.",
+            "id": "OperationMetadata",
+            "properties": {
+                "additionalInfo": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Output only. AdditionalInfo contains additional Info related to backup plan association resource.",
+                    "readOnly": true,
+                    "type": "object"
+                },
+                "apiVersion": {
+                    "description": "Output only. API version used to start the operation.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "Output only. The time the operation was created.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "endTime": {
+                    "description": "Output only. The time the operation finished running.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "requestedCancellation": {
+                    "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "statusMessage": {
+                    "description": "Output only. Human-readable status of the operation, if any.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "target": {
+                    "description": "Output only. Server-defined resource path for the target of the operation.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "verb": {
+                    "description": "Output only. Name of the verb executed by the operation.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Policy": {
-            "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
+            "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
             "id": "Policy",
             "properties": {
                 "auditConfigs": {
@@ -849,83 +983,10 @@
                     "format": "byte",
                     "type": "string"
                 },
-                "rules": {
-                    "description": "If more than one rule is specified, the rules are applied in the following manner: - All matching LOG rules are always applied. - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will be applied if one or more matching rule requires logging. - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is granted. Logging will be applied if one or more matching rule requires logging. - Otherwise, if no rule applies, permission is denied.",
-                    "items": {
-                        "$ref": "Rule"
-                    },
-                    "type": "array"
-                },
                 "version": {
                     "description": "Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
                     "format": "int32",
                     "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "Rule": {
-            "description": "A rule to be applied in a Policy.",
-            "id": "Rule",
-            "properties": {
-                "action": {
-                    "description": "Required",
-                    "enum": [
-                        "NO_ACTION",
-                        "ALLOW",
-                        "ALLOW_WITH_LOG",
-                        "DENY",
-                        "DENY_WITH_LOG",
-                        "LOG"
-                    ],
-                    "enumDescriptions": [
-                        "Default no action.",
-                        "Matching 'Entries' grant access.",
-                        "Matching 'Entries' grant access and the caller promises to log the request per the returned log_configs.",
-                        "Matching 'Entries' deny access.",
-                        "Matching 'Entries' deny access and the caller promises to log the request per the returned log_configs.",
-                        "Matching 'Entries' tell IAM.Check callers to generate logs."
-                    ],
-                    "type": "string"
-                },
-                "conditions": {
-                    "description": "Additional restrictions that must be met. All conditions must pass for the rule to match.",
-                    "items": {
-                        "$ref": "Condition"
-                    },
-                    "type": "array"
-                },
-                "description": {
-                    "description": "Human-readable description of the rule.",
-                    "type": "string"
-                },
-                "in": {
-                    "description": "If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "logConfig": {
-                    "description": "The config returned to callers of CheckPolicy for any entries that match the LOG action.",
-                    "items": {
-                        "$ref": "LogConfig"
-                    },
-                    "type": "array"
-                },
-                "notIn": {
-                    "description": "If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries. The format for in and not_in entries can be found at in the Local IAM documentation (see go/local-iam#features).",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "permissions": {
-                    "description": "A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value of '*' matches all permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
                 }
             },
             "type": "object"

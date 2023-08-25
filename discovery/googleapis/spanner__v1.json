@@ -21,6 +21,13 @@
     "description": "Cloud Spanner is a managed, mission-critical, globally consistent and scalable relational database service.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/spanner/",
+    "endpoints": [
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://spanner.me-central2.rep.googleapis.com/",
+            "location": "me-central2"
+        }
+    ],
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -31,7 +38,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230727",
+    "revision": "20231017",
     "rootUrl": "https://spanner.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Spanner API",
@@ -1834,6 +1841,35 @@
                                                 "https://www.googleapis.com/auth/spanner.data"
                                             ]
                                         },
+                                        "batchWrite": {
+                                            "description": "Batches the supplied mutation groups in a collection of efficient transactions. All mutations in a group are committed atomically. However, mutations across groups can be committed non-atomically in an unspecified order and thus, they must be independent of each other. Partial failure is possible, i.e., some groups may have been committed successfully, while some may have failed. The results of individual batches are streamed into the response as the batches are applied. BatchWrite requests are not replay protected, meaning that each mutation group may be applied more than once. Replays of non-idempotent mutations may have undesirable effects. For example, replays of an insert mutation may produce an already exists error or if you use generated or commit timestamp-based keys, it may result in additional rows being added to the mutation's table. We recommend structuring your mutation groups to be idempotent to avoid this issue.",
+                                            "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}:batchWrite",
+                                            "httpMethod": "POST",
+                                            "id": "spanner.projects.instances.databases.sessions.batchWrite",
+                                            "parameterOrder": [
+                                                "session"
+                                            ],
+                                            "parameters": {
+                                                "session": {
+                                                    "description": "Required. The session in which the batch request is to be run.",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/instances/[^/]+/databases/[^/]+/sessions/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+session}:batchWrite",
+                                            "request": {
+                                                "$ref": "BatchWriteRequest"
+                                            },
+                                            "response": {
+                                                "$ref": "BatchWriteResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform",
+                                                "https://www.googleapis.com/auth/spanner.data"
+                                            ]
+                                        },
                                         "beginTransaction": {
                                             "description": "Begins a new transaction. This step can often be skipped: Read, ExecuteSql and Commit can begin a new transaction as a side-effect.",
                                             "flatPath": "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}:beginTransaction",
@@ -2570,6 +2606,65 @@
         }
     },
     "schemas": {
+        "AutoscalingConfig": {
+            "description": "Autoscaling config for an instance.",
+            "id": "AutoscalingConfig",
+            "properties": {
+                "autoscalingLimits": {
+                    "$ref": "AutoscalingLimits",
+                    "description": "Required. Autoscaling limits for an instance."
+                },
+                "autoscalingTargets": {
+                    "$ref": "AutoscalingTargets",
+                    "description": "Required. The autoscaling targets for an instance."
+                }
+            },
+            "type": "object"
+        },
+        "AutoscalingLimits": {
+            "description": "The autoscaling limits for the instance. Users can define the minimum and maximum compute capacity allocated to the instance, and the autoscaler will only scale within that range. Users can either use nodes or processing units to specify the limits, but should use the same unit to set both the min_limit and max_limit.",
+            "id": "AutoscalingLimits",
+            "properties": {
+                "maxNodes": {
+                    "description": "Maximum number of nodes allocated to the instance. If set, this number should be greater than or equal to min_nodes.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "maxProcessingUnits": {
+                    "description": "Maximum number of processing units allocated to the instance. If set, this number should be multiples of 1000 and be greater than or equal to min_processing_units.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "minNodes": {
+                    "description": "Minimum number of nodes allocated to the instance. If set, this number should be greater than or equal to 1.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "minProcessingUnits": {
+                    "description": "Minimum number of processing units allocated to the instance. If set, this number should be multiples of 1000.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "AutoscalingTargets": {
+            "description": "The autoscaling targets for an instance.",
+            "id": "AutoscalingTargets",
+            "properties": {
+                "highPriorityCpuUtilizationPercent": {
+                    "description": "Required. The target high priority cpu utilization percentage that the autoscaler should be trying to achieve for the instance. This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "storageUtilizationPercent": {
+                    "description": "Required. The target storage utilization percentage that the autoscaler should be trying to achieve for the instance. This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 100] inclusive.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "Backup": {
             "description": "A backup of a Cloud Spanner database.",
             "id": "Backup",
@@ -2715,6 +2810,48 @@
                         "$ref": "Session"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "BatchWriteRequest": {
+            "description": "The request for BatchWrite.",
+            "id": "BatchWriteRequest",
+            "properties": {
+                "mutationGroups": {
+                    "description": "Required. The groups of mutations to be applied.",
+                    "items": {
+                        "$ref": "MutationGroup"
+                    },
+                    "type": "array"
+                },
+                "requestOptions": {
+                    "$ref": "RequestOptions",
+                    "description": "Common options for this request."
+                }
+            },
+            "type": "object"
+        },
+        "BatchWriteResponse": {
+            "description": "The result of applying a batch of mutations.",
+            "id": "BatchWriteResponse",
+            "properties": {
+                "commitTimestamp": {
+                    "description": "The commit timestamp of the transaction that applied this batch. Present if `status` is `OK`, absent otherwise.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "indexes": {
+                    "description": "The mutation groups applied in this batch. The values index into the `mutation_groups` field in the corresponding `BatchWriteRequest`.",
+                    "items": {
+                        "format": "int32",
+                        "type": "integer"
+                    },
+                    "type": "array"
+                },
+                "status": {
+                    "$ref": "Status",
+                    "description": "An `OK` status indicates success. Any other status indicates a failure."
                 }
             },
             "type": "object"
@@ -3589,6 +3726,25 @@
             },
             "type": "object"
         },
+        "IndexAdvice": {
+            "description": "Recommendation to add new indexes to run queries more efficiently.",
+            "id": "IndexAdvice",
+            "properties": {
+                "ddl": {
+                    "description": "Optional. DDL statements to add new indexes that will improve the query.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "improvementFactor": {
+                    "description": "Optional. Estimated latency improvement factor. For example if the query currently takes 500 ms to run and the estimated latency with new indexes is 100 ms this field will be 5.",
+                    "format": "double",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
         "IndexedHotKey": {
             "description": "A message representing a (sparse) collection of hot keys for specific key buckets.",
             "id": "IndexedHotKey",
@@ -3622,6 +3778,10 @@
             "description": "An isolated set of Cloud Spanner resources on which databases can be hosted.",
             "id": "Instance",
             "properties": {
+                "autoscalingConfig": {
+                    "$ref": "AutoscalingConfig",
+                    "description": "Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, node_count and processing_units are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance."
+                },
                 "config": {
                     "description": "Required. The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.",
                     "type": "string"
@@ -4322,6 +4482,20 @@
             },
             "type": "object"
         },
+        "MutationGroup": {
+            "description": "A group of mutations to be committed together. Related mutations should be placed in a group. For example, two mutations inserting rows with the same primary key prefix in both parent and child tables are related.",
+            "id": "MutationGroup",
+            "properties": {
+                "mutations": {
+                    "description": "Required. The mutations in this group.",
+                    "items": {
+                        "$ref": "Mutation"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "Operation": {
             "description": "This resource represents a long-running operation that is the result of a network API call.",
             "id": "Operation",
@@ -4351,7 +4525,7 @@
                         "description": "Properties of the object. Contains field @type with type URL.",
                         "type": "any"
                     },
-                    "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+                    "description": "The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
                     "type": "object"
                 }
             },
@@ -4478,7 +4652,7 @@
                     "description": "Additional options that affect how many partitions are created."
                 },
                 "sql": {
-                    "description": "Required. The query request to generate partitions for. The request will fail if the query is not root partitionable. The query plan of a root partitionable query has a single distributed union operator. A distributed union operator conceptually divides one or more tables into multiple splits, remotely evaluates a subquery independently on each split, and then unions all results. This must not contain DML commands, such as INSERT, UPDATE, or DELETE. Use ExecuteStreamingSql with a PartitionedDml transaction for large, partition-friendly DML operations.",
+                    "description": "Required. The query request to generate partitions for. The request will fail if the query is not root partitionable. For a query to be root partitionable, it needs to satisfy a few conditions. For example, the first operator in the query execution plan must be a distributed union operator. For more information about other conditions, see [Read data in parallel](https://cloud.google.com/spanner/docs/reads#read_data_in_parallel). The query request must not contain DML commands, such as INSERT, UPDATE, or DELETE. Use ExecuteStreamingSql with a PartitionedDml transaction for large, partition-friendly DML operations.",
                     "type": "string"
                 },
                 "transaction": {
@@ -4604,7 +4778,7 @@
             "type": "object"
         },
         "Policy": {
-            "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
+            "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { \"bindings\": [ { \"role\": \"roles/resourcemanager.organizationAdmin\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-project-id@appspot.gserviceaccount.com\" ] }, { \"role\": \"roles/resourcemanager.organizationViewer\", \"members\": [ \"user:eve@example.com\" ], \"condition\": { \"title\": \"expirable access\", \"description\": \"Does not grant access after Sep 2020\", \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\", } } ], \"etag\": \"BwWWja0YfJA=\", \"version\": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).",
             "id": "Policy",
             "properties": {
                 "bindings": {
@@ -4657,6 +4831,20 @@
             },
             "type": "object"
         },
+        "QueryAdvisorResult": {
+            "description": "Output of query advisor analysis.",
+            "id": "QueryAdvisorResult",
+            "properties": {
+                "indexAdvice": {
+                    "description": "Optional. Index Recommendation for a query. This is an optional field and the recommendation will only be available when the recommendation guarantees significant improvement in query performance.",
+                    "items": {
+                        "$ref": "IndexAdvice"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "QueryOptions": {
             "description": "Query optimizer configuration.",
             "id": "QueryOptions",
@@ -4682,6 +4870,10 @@
                         "$ref": "PlanNode"
                     },
                     "type": "array"
+                },
+                "queryAdvice": {
+                    "$ref": "QueryAdvisorResult",
+                    "description": "Optional. The advices/recommendations for a query. Currently this field will be serving index recommendations for a query."
                 }
             },
             "type": "object"

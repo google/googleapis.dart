@@ -1656,7 +1656,15 @@ class Container {
 
   /// Volumes to mount (bind mount) from the host machine files or directories
   /// into the container, formatted to match docker run's --volume option, e.g.
-  /// /foo:/bar, or /foo:/bar:ro
+  /// /foo:/bar, or /foo:/bar:ro If the `TaskSpec.Volumes` field is specified
+  /// but this field is not, Batch will mount each volume from the host machine
+  /// to the container with the same mount path by default.
+  ///
+  /// In this case, the default mount option for containers will be read-only
+  /// (ro) for existing persistent disks and read-write (rw) for other volume
+  /// types, regardless of the original mount options specified in
+  /// `TaskSpec.Volumes`. If you need different mount settings, you can
+  /// explicitly configure them in this field.
   core.List<core.String>? volumes;
 
   Container({
@@ -1723,31 +1731,39 @@ class Container {
 class Disk {
   /// Local SSDs are available through both "SCSI" and "NVMe" interfaces.
   ///
-  /// If not indicated, "NVMe" will be the default one for local ssds. We only
-  /// support "SCSI" for persistent disks now.
+  /// If not indicated, "NVMe" will be the default one for local ssds. This
+  /// field is ignored for persistent disks as the interface is chosen
+  /// automatically. See
+  /// https://cloud.google.com/compute/docs/disks/persistent-disks#choose_an_interface.
   core.String? diskInterface;
 
-  /// Name of an image used as the data source.
+  /// URL for a VM image to use as the data source for this disk.
   ///
   /// For example, the following are all valid URLs: * Specify the image by its
-  /// family name: projects/project/global/images/family/image_family * Specify
-  /// the image version: projects/project/global/images/image_version You can
-  /// also use Batch customized image in short names. The following image values
-  /// are supported for a boot disk: * `batch-debian`: use Batch Debian images.
-  /// * `batch-centos`: use Batch CentOS images. * `batch-cos`: use Batch
+  /// family name: projects/{project}/global/images/family/{image_family} *
+  /// Specify the image version:
+  /// projects/{project}/global/images/{image_version} You can also use Batch
+  /// customized image in short names. The following image values are supported
+  /// for a boot disk: * `batch-debian`: use Batch Debian images. *
+  /// `batch-centos`: use Batch CentOS images. * `batch-cos`: use Batch
   /// Container-Optimized images. * `batch-hpc-centos`: use Batch HPC CentOS
-  /// images.
+  /// images. * `batch-hpc-rocky`: use Batch HPC Rocky Linux images.
   core.String? image;
 
   /// Disk size in GB.
   ///
-  /// For persistent disk, this field is ignored if `data_source` is `image` or
-  /// `snapshot`. For local SSD, size_gb should be a multiple of 375GB,
-  /// otherwise, the final size will be the next greater multiple of 375 GB. For
-  /// boot disk, Batch will calculate the boot disk size based on source image
-  /// and task requirements if you do not speicify the size. If both this field
-  /// and the boot_disk_mib field in task spec's compute_resource are defined,
-  /// Batch will only honor this field.
+  /// **Non-Boot Disk**: If the `type` specifies a persistent disk, this field
+  /// is ignored if `data_source` is set as `image` or `snapshot`. If the `type`
+  /// specifies a local SSD, this field should be a multiple of 375 GB,
+  /// otherwise, the final size will be the next greater multiple of 375 GB.
+  /// **Boot Disk**: Batch will calculate the boot disk size based on source
+  /// image and task requirements if you do not speicify the size. If both this
+  /// field and the `boot_disk_mib` field in task spec's `compute_resource` are
+  /// defined, Batch will only honor this field. Also, this field should be no
+  /// smaller than the source disk's size when the `data_source` is set as
+  /// `snapshot` or `image`. For example, if you set an image as the
+  /// `data_source` field and the image's default disk size 30 GB, you can only
+  /// use this field to make the disk larger or equal to 30 GB.
   core.String? sizeGb;
 
   /// Name of a snapshot used as the data source.
@@ -1894,7 +1910,7 @@ class InstancePolicy {
 
   /// Non-boot disks to be attached for each VM created by this InstancePolicy.
   ///
-  /// New disks will be deleted when the VM is deleted. A non bootable disk is a
+  /// New disks will be deleted when the VM is deleted. A non-boot disk is a
   /// disk that can be of a device with a file system or a raw storage drive
   /// that is not ready for data storage and accessing.
   core.List<AttachedDisk>? disks;
@@ -1920,6 +1936,13 @@ class InstancePolicy {
   /// supported.
   core.String? provisioningModel;
 
+  /// If specified, VMs will consume only the specified reservation.
+  ///
+  /// If not specified (default), VMs will consume any applicable reservation.
+  ///
+  /// Optional.
+  core.String? reservation;
+
   InstancePolicy({
     this.accelerators,
     this.bootDisk,
@@ -1927,6 +1950,7 @@ class InstancePolicy {
     this.machineType,
     this.minCpuPlatform,
     this.provisioningModel,
+    this.reservation,
   });
 
   InstancePolicy.fromJson(core.Map json_)
@@ -1956,6 +1980,9 @@ class InstancePolicy {
           provisioningModel: json_.containsKey('provisioningModel')
               ? json_['provisioningModel'] as core.String
               : null,
+          reservation: json_.containsKey('reservation')
+              ? json_['reservation'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1965,6 +1992,7 @@ class InstancePolicy {
         if (machineType != null) 'machineType': machineType!,
         if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform!,
         if (provisioningModel != null) 'provisioningModel': provisioningModel!,
+        if (reservation != null) 'reservation': reservation!,
       };
 }
 
@@ -2686,9 +2714,9 @@ class NetworkInterface {
   /// The URL of an existing network resource.
   ///
   /// You can specify the network as a full or partial URL. For example, the
-  /// following are all valid URLs:
-  /// https://www.googleapis.com/compute/v1/projects/project/global/networks/network
-  /// projects/project/global/networks/network global/networks/network
+  /// following are all valid URLs: *
+  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+  /// * projects/{project}/global/networks/{network} * global/networks/{network}
   core.String? network;
 
   /// Default is false (with an external IP address).
@@ -2704,10 +2732,10 @@ class NetworkInterface {
   /// The URL of an existing subnetwork resource in the network.
   ///
   /// You can specify the subnetwork as a full or partial URL. For example, the
-  /// following are all valid URLs:
-  /// https://www.googleapis.com/compute/v1/projects/project/regions/region/subnetworks/subnetwork
-  /// projects/project/regions/region/subnetworks/subnetwork
-  /// regions/region/subnetworks/subnetwork
+  /// following are all valid URLs: *
+  /// https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork}
+  /// * projects/{project}/regions/{region}/subnetworks/{subnetwork} *
+  /// regions/{region}/subnetworks/{subnetwork}
   core.String? subnetwork;
 
   NetworkInterface({
@@ -2791,7 +2819,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -2929,10 +2957,16 @@ class ReportAgentStateResponse {
   /// Tasks assigned to the agent
   core.List<AgentTask>? tasks;
 
+  /// If true, the cloud logging for batch agent will use
+  /// batch.googleapis.com/Job as monitored resource for Batch job related
+  /// logging.
+  core.bool? useBatchMonitoredResource;
+
   ReportAgentStateResponse({
     this.defaultReportInterval,
     this.minReportInterval,
     this.tasks,
+    this.useBatchMonitoredResource,
   });
 
   ReportAgentStateResponse.fromJson(core.Map json_)
@@ -2949,6 +2983,10 @@ class ReportAgentStateResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          useBatchMonitoredResource:
+              json_.containsKey('useBatchMonitoredResource')
+                  ? json_['useBatchMonitoredResource'] as core.bool
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2956,6 +2994,8 @@ class ReportAgentStateResponse {
           'defaultReportInterval': defaultReportInterval!,
         if (minReportInterval != null) 'minReportInterval': minReportInterval!,
         if (tasks != null) 'tasks': tasks!,
+        if (useBatchMonitoredResource != null)
+          'useBatchMonitoredResource': useBatchMonitoredResource!,
       };
 }
 
@@ -2984,6 +3024,15 @@ class Runnable {
   /// Container runnable.
   Container? container;
 
+  /// DisplayName is an optional field that can be provided by the caller.
+  ///
+  /// If provided, it will be used in logs and other outputs to identify the
+  /// script, making it easier for users to understand the logs. If not provided
+  /// the index of the runnable will be used for outputs.
+  ///
+  /// Optional.
+  core.String? displayName;
+
   /// Environment variables for this Runnable (overrides variables set for the
   /// whole Task or TaskGroup).
   Environment? environment;
@@ -3007,6 +3056,7 @@ class Runnable {
     this.background,
     this.barrier,
     this.container,
+    this.displayName,
     this.environment,
     this.ignoreExitStatus,
     this.labels,
@@ -3029,6 +3079,9 @@ class Runnable {
           container: json_.containsKey('container')
               ? Container.fromJson(
                   json_['container'] as core.Map<core.String, core.dynamic>)
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
           environment: json_.containsKey('environment')
               ? Environment.fromJson(
@@ -3059,6 +3112,7 @@ class Runnable {
         if (background != null) 'background': background!,
         if (barrier != null) 'barrier': barrier!,
         if (container != null) 'container': container!,
+        if (displayName != null) 'displayName': displayName!,
         if (environment != null) 'environment': environment!,
         if (ignoreExitStatus != null) 'ignoreExitStatus': ignoreExitStatus!,
         if (labels != null) 'labels': labels!,
@@ -3242,8 +3296,9 @@ class TaskGroup {
 
   /// Max number of tasks that can run in parallel.
   ///
-  /// Default to min(task_count, 1000). Field parallelism must be 1 if the
-  /// scheduling_policy is IN_ORDER.
+  /// Default to min(task_count, parallel tasks per job limit). See:
+  /// [Job Limits](https://cloud.google.com/batch/quotas#job_limits). Field
+  /// parallelism must be 1 if the scheduling_policy is IN_ORDER.
   core.String? parallelism;
 
   /// When true, Batch will configure SSH to allow passwordless login between

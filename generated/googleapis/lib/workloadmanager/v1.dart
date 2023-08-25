@@ -1237,13 +1237,13 @@ class Insight {
   /// Required.
   core.String? instanceId;
 
-  /// The insights data for sap system discovery.
+  /// The insights data for SAP system discovery.
   ///
   /// This is a copy of SAP System proto and should get updated whenever that
   /// one changes.
   SapDiscovery? sapDiscovery;
 
-  /// The insights data for the sap workload validation.
+  /// The insights data for the SAP workload validation.
   SapValidation? sapValidation;
 
   /// Create time stamp
@@ -1575,7 +1575,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -1899,22 +1899,32 @@ class RunEvaluationRequest {
       };
 }
 
-/// LINT.IfChange The schema of SAP system discovery data.
+/// The schema of SAP system discovery data.
 class SapDiscovery {
   /// An SAP system may run without an application layer.
+  ///
+  /// Optional.
   SapDiscoveryComponent? applicationLayer;
 
   /// An SAP System must have a database.
+  ///
+  /// Required.
   SapDiscoveryComponent? databaseLayer;
 
   /// The metadata for SAP system discovery data.
+  ///
+  /// Optional.
   SapDiscoveryMetadata? metadata;
 
   /// A combination of database SID, database instance URI and tenant DB name to
   /// make a unique identifier per-system.
+  ///
+  /// Output only.
   core.String? systemId;
 
   /// Unix timestamp this system has been updated last.
+  ///
+  /// Required.
   core.String? updateTime;
 
   SapDiscovery({
@@ -1969,13 +1979,19 @@ class SapDiscoveryComponent {
   SapDiscoveryComponentDatabaseProperties? databaseProperties;
 
   /// Pantheon Project in which the resources reside.
+  ///
+  /// Required.
   core.String? hostProject;
 
   /// The resources in a component.
+  ///
+  /// Optional.
   core.List<SapDiscoveryResource>? resources;
 
-  /// The sap identifier, used by the SAP software and helps differentiate
+  /// The SAP identifier, used by the SAP software and helps differentiate
   /// systems for customers.
+  ///
+  /// Optional.
   core.String? sid;
 
   SapDiscoveryComponent({
@@ -2035,7 +2051,7 @@ class SapDiscoveryComponentApplicationProperties {
 
   /// Resource URI of the recognized ASCS host of the application.
   ///
-  /// Required.
+  /// Optional.
   core.String? ascsUri;
 
   /// Resource URI of the recognized shared NFS of the application.
@@ -2129,15 +2145,23 @@ class SapDiscoveryMetadata {
   /// Customer region string for customer's use.
   ///
   /// Does not represent GCP region.
+  ///
+  /// Optional.
   core.String? customerRegion;
 
   /// Customer defined, something like "E-commerce pre prod"
+  ///
+  /// Optional.
   core.String? definedSystem;
 
   /// Should be "prod", "QA", "dev", "staging", etc.
+  ///
+  /// Optional.
   core.String? environmentType;
 
-  /// This sap product name
+  /// This SAP product name
+  ///
+  /// Optional.
   core.String? sapProduct;
 
   SapDiscoveryMetadata({
@@ -2174,6 +2198,8 @@ class SapDiscoveryMetadata {
 /// Message describing a resource.
 class SapDiscoveryResource {
   /// A list of resource URIs related to this resource.
+  ///
+  /// Optional.
   core.List<core.String>? relatedResources;
 
   /// ComputeInstance, ComputeDisk, VPC, Bare Metal server, etc.
@@ -2205,9 +2231,13 @@ class SapDiscoveryResource {
   core.String? resourceType;
 
   /// URI of the resource, includes project, location, and name.
+  ///
+  /// Required.
   core.String? resourceUri;
 
   /// Unix timestamp of when this resource last had its discovery data updated.
+  ///
+  /// Required.
   core.String? updateTime;
 
   SapDiscoveryResource({
@@ -2253,6 +2283,8 @@ class SapDiscoveryResource {
 /// The schema of SAP workloads validation related data.
 class SapValidation {
   /// A list of SAP validation metrics data.
+  ///
+  /// Optional.
   core.List<SapValidationValidationDetail>? validationDetails;
 
   SapValidation({
@@ -2277,16 +2309,33 @@ class SapValidation {
 /// Message describing the SAP validation metrics.
 class SapValidationValidationDetail {
   /// The pairs of metrics data: field name & field value.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? details;
 
   /// The SAP system that the validation data is from.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "SAP_VALIDATION_TYPE_UNSPECIFIED" : Unspecified type.
-  /// - "SYSTEM" : The SAP system named SYSTEM.
-  /// - "COROSYNC" : The SAP system named COROSYNC.
-  /// - "PACEMAKER" : The SAP system named PACEMAKER.
-  /// - "HANA" : The SAP system named HANA.
-  /// - "NETWEAVER" : The SAP system named NETWEAVER.
+  /// - "SYSTEM" : The SYSTEM validation type collects underlying system data
+  /// from the VM.
+  /// - "COROSYNC" : The COROSYNC validation type collects Corosync
+  /// configuration and runtime data. Corosync enables servers to interact as a
+  /// HA cluster.
+  /// - "PACEMAKER" : The PACEMAKER validation type collects Pacemaker
+  /// configuration data. Pacemaker is a high-availability cluster resource
+  /// manager.
+  /// - "HANA" : The HANA validation type collects HANA configuration data. SAP
+  /// HANA is an in-memory, column-oriented, relational database management
+  /// system.
+  /// - "NETWEAVER" : The NETWEAVER validation type collects NetWeaver
+  /// configuration data. SAP NetWeaver is a software stack for many of SAP SE's
+  /// applications.
+  /// - "HANA_SECURITY" : The HANA_SECURITY validation type collects HANA
+  /// configuration data as it relates to SAP security best practices.
+  /// - "CUSTOM" : The CUSTOM validation type collects any customer-defined data
+  /// that does not fall into any of the other categories of validations.
   core.String? sapValidationType;
 
   SapValidationValidationDetail({
@@ -2341,6 +2390,8 @@ class ScannedResource {
 /// The schema of SqlServer workloads validation related data.
 class SqlserverValidation {
   /// The agent version collected this data point
+  ///
+  /// Optional.
   core.String? agentVersion;
 
   /// The instance_name of the instance that the Insight data comes from.
@@ -2357,6 +2408,8 @@ class SqlserverValidation {
   core.String? projectId;
 
   /// A list of SqlServer validation metrics data.
+  ///
+  /// Optional.
   core.List<SqlserverValidationValidationDetail>? validationDetails;
 
   SqlserverValidation({
@@ -2429,6 +2482,8 @@ class SqlserverValidationValidationDetail {
   core.List<SqlserverValidationDetails>? details;
 
   /// The Sqlserver system that the validation data is from.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "SQLSERVER_VALIDATION_TYPE_UNSPECIFIED" : Unspecified type.
   /// - "OS" : The Sqlserver system named OS.
@@ -2440,6 +2495,9 @@ class SqlserverValidationValidationDetail {
   /// - "DB_BUFFER_POOL_EXTENSION" : The BUFFER_POOL_EXTENSION table.
   /// - "DB_MAX_SERVER_MEMORY" : The MAX_SERVER_MEMORY table.
   /// - "INSTANCE_METRICS" : The INSTANCE_METRICS table.
+  /// - "DB_INDEX_FRAGMENTATION" : The DB_INDEX_FRAGMENTATION table.
+  /// - "DB_TABLE_INDEX_COMPRESSION" : The DB_TABLE_INDEX_COMPRESSION table.
+  /// - "DB_BACKUP_POLICY" : The DB_BACKUP_POLICY table.
   core.String? type;
 
   SqlserverValidationValidationDetail({

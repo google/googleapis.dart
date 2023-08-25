@@ -1621,6 +1621,9 @@ class Company {
   /// keys are returned if any of the values match the search keyword. Custom
   /// field values with parenthesis, brackets and special symbols are not
   /// searchable as-is, and those keyword queries must be surrounded by quotes.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? keywordSearchableJobCustomAttributes;
 
   /// Required during company update.
@@ -2656,6 +2659,9 @@ class Job {
   /// visible to other applications and processes at Google.
   /// - "SHARED_WITH_PUBLIC" : The resource is visible to the owner and may be
   /// visible to all other API clients.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? visibility;
 
   Job({
@@ -3613,7 +3619,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -3830,6 +3836,9 @@ class SearchJobsRequest {
   /// globally matched custom field/attribute string values are needed. Enabling
   /// keyword match improves recall of subsequent search requests. Defaults to
   /// false.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? disableKeywordMatch;
 
   /// Controls whether highly similar jobs are returned next to each other in

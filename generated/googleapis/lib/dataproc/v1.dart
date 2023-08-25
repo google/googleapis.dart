@@ -24,6 +24,8 @@
 ///     - [ProjectsLocationsAutoscalingPoliciesResource]
 ///     - [ProjectsLocationsBatchesResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsSessionTemplatesResource]
+///     - [ProjectsLocationsSessionsResource]
 ///     - [ProjectsLocationsWorkflowTemplatesResource]
 ///   - [ProjectsRegionsResource]
 ///     - [ProjectsRegionsAutoscalingPoliciesResource]
@@ -84,6 +86,10 @@ class ProjectsLocationsResource {
       ProjectsLocationsBatchesResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsSessionTemplatesResource get sessionTemplates =>
+      ProjectsLocationsSessionTemplatesResource(_requester);
+  ProjectsLocationsSessionsResource get sessions =>
+      ProjectsLocationsSessionsResource(_requester);
   ProjectsLocationsWorkflowTemplatesResource get workflowTemplates =>
       ProjectsLocationsWorkflowTemplatesResource(_requester);
 
@@ -871,6 +877,473 @@ class ProjectsLocationsOperationsResource {
     );
     return ListOperationsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsSessionTemplatesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSessionTemplatesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Create a session template synchronously.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this session template will
+  /// be created.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SessionTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SessionTemplate> create(
+    SessionTemplate request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/sessionTemplates';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SessionTemplate.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a session template.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the session template resource to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessionTemplates/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the resource representation for a session template.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the session template to retrieve.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessionTemplates/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SessionTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SessionTemplate> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SessionTemplate.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists session templates.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent that owns this collection of session
+  /// templates.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter for the session templates to return in the
+  /// response. Filters are case sensitive and have the following syntax:field =
+  /// value AND field = value ...
+  ///
+  /// [pageSize] - Optional. The maximum number of sessions to return in each
+  /// response. The service may return fewer than this value.
+  ///
+  /// [pageToken] - Optional. A page token received from a previous ListSessions
+  /// call. Provide this token to retrieve the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSessionTemplatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSessionTemplatesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/sessionTemplates';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSessionTemplatesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the session template synchronously.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the session template.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessionTemplates/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SessionTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SessionTemplate> patch(
+    SessionTemplate request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SessionTemplate.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsSessionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSessionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Create an interactive session asynchronously.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this session will be
+  /// created.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A unique ID used to identify the request. If the
+  /// service receives two CreateSessionRequests
+  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateSessionRequest)s
+  /// with the same ID, the second request is ignored, and the first Session is
+  /// created and stored in the backend.Recommendation: Set this value to a UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value
+  /// must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  ///
+  /// [sessionId] - Required. The ID to use for the session, which becomes the
+  /// final component of the session's resource name.This value must be 4-63
+  /// characters. Valid characters are /a-z-/.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Session request,
+    core.String parent, {
+    core.String? requestId,
+    core.String? sessionId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (sessionId != null) 'sessionId': [sessionId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/sessions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the interactive session resource.
+  ///
+  /// If the session is not in terminal state, it is terminated, and then
+  /// deleted.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the session resource to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A unique ID used to identify the request. If the
+  /// service receives two DeleteSessionRequest
+  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.DeleteSessionRequest)s
+  /// with the same ID, the second request is ignored.Recommendation: Set this
+  /// value to a UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value
+  /// must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the resource representation for an interactive session.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the session to retrieve.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Session].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Session> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Session.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists interactive sessions.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of sessions.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter for the sessions to return in the response.A
+  /// filter is a logical expression constraining the values of various fields
+  /// in each session resource. Filters are case sensitive, and may contain
+  /// multiple clauses combined with logical operators (AND, OR). Supported
+  /// fields are session_id, session_uuid, state, and create_time.Example: state
+  /// = ACTIVE and create_time \< "2023-01-01T00:00:00Z" is a filter for
+  /// sessions in an ACTIVE state that were created before 2023-01-01.See
+  /// https://google.aip.dev/assets/misc/ebnf-filtering.txt for a detailed
+  /// description of the filter syntax and a list of supported comparators.
+  ///
+  /// [pageSize] - Optional. The maximum number of sessions to return in each
+  /// response. The service may return fewer than this value.
+  ///
+  /// [pageToken] - Optional. A page token received from a previous ListSessions
+  /// call. Provide this token to retrieve the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSessionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSessionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/sessions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSessionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Terminates the interactive session.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the session resource to terminate.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> terminate(
+    TerminateSessionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':terminate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1918,6 +2391,15 @@ class ProjectsRegionsClustersResource {
   /// [clusterUuid] - Optional. Specifying the cluster_uuid means the RPC should
   /// fail (with error NOT_FOUND) if cluster with specified UUID does not exist.
   ///
+  /// [gracefulTerminationTimeout] - Optional. The graceful termination timeout
+  /// for the deletion of the cluster. Indicate the time the request will wait
+  /// to complete the running jobs on the cluster before its forceful deletion.
+  /// Default value is 0 indicating that the user has not enabled the graceful
+  /// termination. Value can be between 60 second and 6 Hours, in case the
+  /// graceful termination is enabled. (There is no separate flag to check the
+  /// enabling or disabling of graceful termination, it can be checked by the
+  /// values in the field).
+  ///
   /// [requestId] - Optional. A unique ID used to identify the request. If the
   /// server receives two DeleteClusterRequest
   /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.DeleteClusterRequest)s
@@ -1943,11 +2425,14 @@ class ProjectsRegionsClustersResource {
     core.String region,
     core.String clusterName, {
     core.String? clusterUuid,
+    core.String? gracefulTerminationTimeout,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (clusterUuid != null) 'clusterUuid': [clusterUuid],
+      if (gracefulTerminationTimeout != null)
+        'gracefulTerminationTimeout': [gracefulTerminationTimeout],
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
     };
@@ -2620,6 +3105,9 @@ class ProjectsRegionsClustersNodeGroupsResource {
   /// underscores (_), and hyphens (-). Cannot begin or end with underscore or
   /// hyphen. Must consist of from 3 to 33 characters.
   ///
+  /// [parentOperationId] - Optional. operation id of the parent operation
+  /// sending the create request
+  ///
   /// [requestId] - Optional. A unique ID used to identify the request. If the
   /// server receives two CreateNodeGroupRequest
   /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateNodeGroupRequests)
@@ -2644,12 +3132,14 @@ class ProjectsRegionsClustersNodeGroupsResource {
     NodeGroup request,
     core.String parent, {
     core.String? nodeGroupId,
+    core.String? parentOperationId,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (nodeGroupId != null) 'nodeGroupId': [nodeGroupId],
+      if (parentOperationId != null) 'parentOperationId': [parentOperationId],
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
     };
@@ -5462,6 +5952,14 @@ class DiagnoseClusterRequest {
   /// Optional.
   core.List<core.String>? jobs;
 
+  /// (Optional) The output Cloud Storage directory for the diagnostic tarball.
+  ///
+  /// If not specified, a task-specific directory in the cluster's staging
+  /// bucket will be used.
+  ///
+  /// Optional.
+  core.String? tarballGcsDir;
+
   /// DEPRECATED Specifies the yarn application on which diagnosis is to be
   /// performed.
   ///
@@ -5481,6 +5979,7 @@ class DiagnoseClusterRequest {
     this.diagnosisInterval,
     this.job,
     this.jobs,
+    this.tarballGcsDir,
     this.yarnApplicationId,
     this.yarnApplicationIds,
   });
@@ -5497,6 +5996,9 @@ class DiagnoseClusterRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          tarballGcsDir: json_.containsKey('tarballGcsDir')
+              ? json_['tarballGcsDir'] as core.String
+              : null,
           yarnApplicationId: json_.containsKey('yarnApplicationId')
               ? json_['yarnApplicationId'] as core.String
               : null,
@@ -5511,6 +6013,7 @@ class DiagnoseClusterRequest {
         if (diagnosisInterval != null) 'diagnosisInterval': diagnosisInterval!,
         if (job != null) 'job': job!,
         if (jobs != null) 'jobs': jobs!,
+        if (tarballGcsDir != null) 'tarballGcsDir': tarballGcsDir!,
         if (yarnApplicationId != null) 'yarnApplicationId': yarnApplicationId!,
         if (yarnApplicationIds != null)
           'yarnApplicationIds': yarnApplicationIds!,
@@ -5634,15 +6137,8 @@ class EncryptionConfig {
   /// Optional.
   core.String? gcePdKmsKeyName;
 
-  /// The Cloud KMS key name to use for encrypting customer core content and
-  /// cluster PD disk for all instances in the cluster.
-  ///
-  /// Optional.
-  core.String? kmsKey;
-
   EncryptionConfig({
     this.gcePdKmsKeyName,
-    this.kmsKey,
   });
 
   EncryptionConfig.fromJson(core.Map json_)
@@ -5650,14 +6146,10 @@ class EncryptionConfig {
           gcePdKmsKeyName: json_.containsKey('gcePdKmsKeyName')
               ? json_['gcePdKmsKeyName'] as core.String
               : null,
-          kmsKey: json_.containsKey('kmsKey')
-              ? json_['kmsKey'] as core.String
-              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcePdKmsKeyName != null) 'gcePdKmsKeyName': gcePdKmsKeyName!,
-        if (kmsKey != null) 'kmsKey': kmsKey!,
       };
 }
 
@@ -5749,7 +6241,7 @@ class ExecutionConfig {
   /// batch workload. Minimum value is 10 minutes; maximum value is 14 days (see
   /// JSON representation of Duration
   /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-  /// Defaults to 4 hours if not set. If both ttl and idle_ttl are specified for
+  /// Defaults to 1 hour if not set. If both ttl and idle_ttl are specified for
   /// an interactive session, the conditions are treated as OR conditions: the
   /// workload will be terminated when it has been idle for idle_ttl or when ttl
   /// has been exceeded, whichever occurs first.
@@ -5795,21 +6287,21 @@ class ExecutionConfig {
   /// Optional.
   core.String? subnetworkUri;
 
-  /// The duration after which the workload will be terminated.
+  /// The duration after which the workload will be terminated, specified as the
+  /// JSON representation for Duration
+  /// (https://protobuf.dev/programming-guides/proto3/#json).
   ///
   /// When the workload exceeds this duration, it will be unconditionally
   /// terminated without waiting for ongoing work to finish. If ttl is not
   /// specified for a batch workload, the workload will be allowed to run until
-  /// it exits naturally (or runs forever without exiting). If ttl is not
-  /// specified for an interactive session, it defaults to 24h. If ttl is not
-  /// specified for a batch that uses 2.1+ runtime version, it defaults to 4h.
-  /// Minimum value is 10 minutes; maximum value is 14 days (see JSON
-  /// representation of Duration
-  /// (https://developers.google.com/protocol-buffers/docs/proto3#json)). If
-  /// both ttl and idle_ttl are specified (for an interactive session), the
-  /// conditions are treated as OR conditions: the workload will be terminated
-  /// when it has been idle for idle_ttl or when ttl has been exceeded,
-  /// whichever occurs first.
+  /// it exits naturally (or run forever without exiting). If ttl is not
+  /// specified for an interactive session, it defaults to 24 hours. If ttl is
+  /// not specified for a batch that uses 2.1+ runtime version, it defaults to 4
+  /// hours. Minimum value is 10 minutes; maximum value is 14 days. If both ttl
+  /// and idle_ttl are specified (for an interactive session), the conditions
+  /// are treated as OR conditions: the workload will be terminated when it has
+  /// been idle for idle_ttl or when ttl has been exceeded, whichever occurs
+  /// first.
   ///
   /// Optional.
   core.String? ttl;
@@ -5885,13 +6377,12 @@ class ExecutionConfig {
 /// information.
 typedef Expr = $Expr;
 
-/// A Dataproc job for running Apache Flink (https://flink.apache.org/)
-/// applications on YARN.
+/// A Dataproc job for running Apache Flink applications on YARN.
 class FlinkJob {
   /// The arguments to pass to the driver.
   ///
   /// Do not include arguments, such as --conf, that can be set as job
-  /// properties, since a collision may occur that causes an incorrect job
+  /// properties, since a collision might occur that causes an incorrect job
   /// submission.
   ///
   /// Optional.
@@ -5911,7 +6402,7 @@ class FlinkJob {
   /// The name of the driver's main class.
   ///
   /// The jar file that contains the class must be in the default CLASSPATH or
-  /// specified in jar_file_uris.
+  /// specified in jarFileUris.
   core.String? mainClass;
 
   /// The HCFS URI of the jar file that contains the main class.
@@ -5919,15 +6410,15 @@ class FlinkJob {
 
   /// A mapping of property names to values, used to configure Flink.
   ///
-  /// Properties that conflict with values set by the Dataproc API may
+  /// Properties that conflict with values set by the Dataproc API might
   /// beoverwritten. Can include properties set
   /// in/etc/flink/conf/flink-defaults.conf and classes in user code.
   ///
   /// Optional.
   core.Map<core.String, core.String>? properties;
 
-  /// HCFS URI of the savepoint which contains the last saved progress for this
-  /// job
+  /// HCFS URI of the savepoint, which contains the last saved progress for
+  /// starting the current job.
   ///
   /// Optional.
   core.String? savepointUri;
@@ -6632,6 +7123,31 @@ class GkeNodePoolTarget {
       };
 }
 
+/// Encryption settings for the encrypting customer core content.
+///
+/// NEXT ID: 2
+class GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig {
+  /// The Cloud KMS key name to use for encrypting customer core content.
+  ///
+  /// Optional.
+  core.String? kmsKey;
+
+  GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig({
+    this.kmsKey,
+  });
+
+  GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig.fromJson(core.Map json_)
+      : this(
+          kmsKey: json_.containsKey('kmsKey')
+              ? json_['kmsKey'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kmsKey != null) 'kmsKey': kmsKey!,
+      };
+}
+
 /// A Dataproc job for running Apache Hadoop MapReduce
 /// (https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html)
 /// jobs on Apache Hadoop YARN
@@ -6648,7 +7164,7 @@ class HadoopJob {
   /// The arguments to pass to the driver.
   ///
   /// Do not include arguments, such as -libjars or -Dfoo=bar, that can be set
-  /// as job properties, since a collision may occur that causes an incorrect
+  /// as job properties, since a collision might occur that causes an incorrect
   /// job submission.
   ///
   /// Optional.
@@ -6688,7 +7204,7 @@ class HadoopJob {
 
   /// A mapping of property names to values, used to configure Hadoop.
   ///
-  /// Properties that conflict with values set by the Dataproc API may be
+  /// Properties that conflict with values set by the Dataproc API might be
   /// overwritten. Can include properties set in /etc/hadoop/conf / * -site and
   /// classes in user code.
   ///
@@ -6782,7 +7298,7 @@ class HiveJob {
 
   /// A mapping of property names and values, used to configure Hive.
   ///
-  /// Properties that conflict with values set by the Dataproc API may be
+  /// Properties that conflict with values set by the Dataproc API might be
   /// overwritten. Can include properties set in /etc/hadoop/conf / * -site.xml,
   /// /etc/hive/conf/hive-site.xml, and classes in user code.
   ///
@@ -6928,6 +7444,50 @@ class InjectCredentialsRequest {
       };
 }
 
+/// Instance flexibility Policy allowing a mixture of VM shapes and provisioning
+/// models.
+class InstanceFlexibilityPolicy {
+  /// List of instance selection options that the group will use when creating
+  /// new VMs.
+  ///
+  /// Optional.
+  core.List<InstanceSelection>? instanceSelectionList;
+
+  /// A list of instance selection results in the group.
+  ///
+  /// Output only.
+  core.List<InstanceSelectionResult>? instanceSelectionResults;
+
+  InstanceFlexibilityPolicy({
+    this.instanceSelectionList,
+    this.instanceSelectionResults,
+  });
+
+  InstanceFlexibilityPolicy.fromJson(core.Map json_)
+      : this(
+          instanceSelectionList: json_.containsKey('instanceSelectionList')
+              ? (json_['instanceSelectionList'] as core.List)
+                  .map((value) => InstanceSelection.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          instanceSelectionResults:
+              json_.containsKey('instanceSelectionResults')
+                  ? (json_['instanceSelectionResults'] as core.List)
+                      .map((value) => InstanceSelectionResult.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (instanceSelectionList != null)
+          'instanceSelectionList': instanceSelectionList!,
+        if (instanceSelectionResults != null)
+          'instanceSelectionResults': instanceSelectionResults!,
+      };
+}
+
 /// Configuration for the size bounds of an instance group, including its
 /// proportional size to other groups.
 class InstanceGroupAutoscalingPolicyConfig {
@@ -7022,6 +7582,12 @@ class InstanceGroupConfig {
   /// Optional.
   core.String? imageUri;
 
+  /// Instance flexibility Policy allowing a mixture of VM shapes and
+  /// provisioning models.
+  ///
+  /// Optional.
+  InstanceFlexibilityPolicy? instanceFlexibilityPolicy;
+
   /// The list of instance names.
   ///
   /// Dataproc derives the names from cluster_name, num_instances, and the
@@ -7071,6 +7637,19 @@ class InstanceGroupConfig {
   /// Optional.
   core.String? minCpuPlatform;
 
+  /// The minimum number of primary worker instances to create.
+  ///
+  /// If min_num_instances is set, cluster creation will succeed if the number
+  /// of primary workers created is at least equal to the min_num_instances
+  /// number.Example: Cluster creation request with num_instances = 5 and
+  /// min_num_instances = 3: If 4 VMs are created and 1 instance fails, the
+  /// failed VM is deleted. The cluster is resized to 4 instances and placed in
+  /// a RUNNING state. If 2 instances are created and 3 instances fail, the
+  /// cluster in placed in an ERROR state. The failed VMs are not deleted.
+  ///
+  /// Optional.
+  core.int? minNumInstances;
+
   /// The number of VM instances in the instance group.
   ///
   /// For HA cluster master_config groups, must be set to 3. For standard
@@ -7106,18 +7685,27 @@ class InstanceGroupConfig {
   /// additional features.
   core.String? preemptibility;
 
+  /// Configuration to handle the startup of instances during cluster create and
+  /// update process.
+  ///
+  /// Optional.
+  StartupConfig? startupConfig;
+
   InstanceGroupConfig({
     this.accelerators,
     this.diskConfig,
     this.imageUri,
+    this.instanceFlexibilityPolicy,
     this.instanceNames,
     this.instanceReferences,
     this.isPreemptible,
     this.machineTypeUri,
     this.managedGroupConfig,
     this.minCpuPlatform,
+    this.minNumInstances,
     this.numInstances,
     this.preemptibility,
+    this.startupConfig,
   });
 
   InstanceGroupConfig.fromJson(core.Map json_)
@@ -7135,6 +7723,12 @@ class InstanceGroupConfig {
           imageUri: json_.containsKey('imageUri')
               ? json_['imageUri'] as core.String
               : null,
+          instanceFlexibilityPolicy:
+              json_.containsKey('instanceFlexibilityPolicy')
+                  ? InstanceFlexibilityPolicy.fromJson(
+                      json_['instanceFlexibilityPolicy']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           instanceNames: json_.containsKey('instanceNames')
               ? (json_['instanceNames'] as core.List)
                   .map((value) => value as core.String)
@@ -7159,11 +7753,18 @@ class InstanceGroupConfig {
           minCpuPlatform: json_.containsKey('minCpuPlatform')
               ? json_['minCpuPlatform'] as core.String
               : null,
+          minNumInstances: json_.containsKey('minNumInstances')
+              ? json_['minNumInstances'] as core.int
+              : null,
           numInstances: json_.containsKey('numInstances')
               ? json_['numInstances'] as core.int
               : null,
           preemptibility: json_.containsKey('preemptibility')
               ? json_['preemptibility'] as core.String
+              : null,
+          startupConfig: json_.containsKey('startupConfig')
+              ? StartupConfig.fromJson(
+                  json_['startupConfig'] as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -7171,6 +7772,8 @@ class InstanceGroupConfig {
         if (accelerators != null) 'accelerators': accelerators!,
         if (diskConfig != null) 'diskConfig': diskConfig!,
         if (imageUri != null) 'imageUri': imageUri!,
+        if (instanceFlexibilityPolicy != null)
+          'instanceFlexibilityPolicy': instanceFlexibilityPolicy!,
         if (instanceNames != null) 'instanceNames': instanceNames!,
         if (instanceReferences != null)
           'instanceReferences': instanceReferences!,
@@ -7179,8 +7782,10 @@ class InstanceGroupConfig {
         if (managedGroupConfig != null)
           'managedGroupConfig': managedGroupConfig!,
         if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform!,
+        if (minNumInstances != null) 'minNumInstances': minNumInstances!,
         if (numInstances != null) 'numInstances': numInstances!,
         if (preemptibility != null) 'preemptibility': preemptibility!,
+        if (startupConfig != null) 'startupConfig': startupConfig!,
       };
 }
 
@@ -7226,6 +7831,78 @@ class InstanceReference {
         if (instanceName != null) 'instanceName': instanceName!,
         if (publicEciesKey != null) 'publicEciesKey': publicEciesKey!,
         if (publicKey != null) 'publicKey': publicKey!,
+      };
+}
+
+/// Defines machines types and a rank to which the machines types belong.
+class InstanceSelection {
+  /// Full machine-type names, e.g. "n1-standard-16".
+  ///
+  /// Optional.
+  core.List<core.String>? machineTypes;
+
+  /// Preference of this instance selection.
+  ///
+  /// Lower number means higher preference. Dataproc will first try to create a
+  /// VM based on the machine-type with priority rank and fallback to next rank
+  /// based on availability. Machine types and instance selections with the same
+  /// priority have the same preference.
+  ///
+  /// Optional.
+  core.int? rank;
+
+  InstanceSelection({
+    this.machineTypes,
+    this.rank,
+  });
+
+  InstanceSelection.fromJson(core.Map json_)
+      : this(
+          machineTypes: json_.containsKey('machineTypes')
+              ? (json_['machineTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          rank: json_.containsKey('rank') ? json_['rank'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (machineTypes != null) 'machineTypes': machineTypes!,
+        if (rank != null) 'rank': rank!,
+      };
+}
+
+/// Defines a mapping from machine types to the number of VMs that are created
+/// with each machine type.
+class InstanceSelectionResult {
+  /// Full machine-type names, e.g. "n1-standard-16".
+  ///
+  /// Output only.
+  core.String? machineType;
+
+  /// Number of VM provisioned with the machine_type.
+  ///
+  /// Output only.
+  core.int? vmCount;
+
+  InstanceSelectionResult({
+    this.machineType,
+    this.vmCount,
+  });
+
+  InstanceSelectionResult.fromJson(core.Map json_)
+      : this(
+          machineType: json_.containsKey('machineType')
+              ? json_['machineType'] as core.String
+              : null,
+          vmCount: json_.containsKey('vmCount')
+              ? json_['vmCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (machineType != null) 'machineType': machineType!,
+        if (vmCount != null) 'vmCount': vmCount!,
       };
 }
 
@@ -7342,10 +8019,10 @@ class Job {
   /// Output only.
   core.bool? done;
 
-  /// If present, the location of miscellaneous control files which may be used
+  /// If present, the location of miscellaneous control files which can be used
   /// as part of job setup and handling.
   ///
-  /// If not present, control files may be placed in the same location as
+  /// If not present, control files might be placed in the same location as
   /// driver_output_uri.
   ///
   /// Output only.
@@ -7378,8 +8055,8 @@ class Job {
 
   /// A UUID that uniquely identifies a job within the project over time.
   ///
-  /// This is in contrast to a user-settable reference.job_id that may be reused
-  /// over time.
+  /// This is in contrast to a user-settable reference.job_id that might be
+  /// reused over time.
   ///
   /// Output only.
   core.String? jobUuid;
@@ -7387,7 +8064,7 @@ class Job {
   /// The labels to associate with this job.
   ///
   /// Label keys must contain 1 to 63 characters, and must conform to RFC 1035
-  /// (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if
+  /// (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty, but, if
   /// present, must contain 1 to 63 characters, and must conform to RFC 1035
   /// (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
   /// associated with a job.
@@ -7446,8 +8123,8 @@ class Job {
 
   /// The job status.
   ///
-  /// Additional application-specific status information may be contained in the
-  /// type_job and yarn_applications fields.
+  /// Additional application-specific status information might be contained in
+  /// the type_job and yarn_applications fields.
   ///
   /// Output only.
   JobStatus? status;
@@ -7465,7 +8142,7 @@ class Job {
   /// The collection of YARN applications spun up by this job.Beta Feature: This
   /// report is available for testing purposes only.
   ///
-  /// It may be changed before final release.
+  /// It might be changed before final release.
   ///
   /// Output only.
   core.List<YarnApplication>? yarnApplications;
@@ -7708,17 +8385,17 @@ class JobReference {
 
 /// Job scheduling options.
 class JobScheduling {
-  /// Maximum number of times per hour a driver may be restarted as a result of
-  /// driver exiting with non-zero code before job is reported failed.A job may
-  /// be reported as thrashing if the driver exits with a non-zero code four
-  /// times within a 10-minute window.Maximum value is 10.Note: This restartable
-  /// job option is not supported in Dataproc workflow templates
+  /// Maximum number of times per hour a driver can be restarted as a result of
+  /// driver exiting with non-zero code before job is reported failed.A job
+  /// might be reported as thrashing if the driver exits with a non-zero code
+  /// four times within a 10-minute window.Maximum value is 10.Note: This
+  /// restartable job option is not supported in Dataproc workflow templates
   /// (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
   ///
   /// Optional.
   core.int? maxFailuresPerHour;
 
-  /// Maximum total number of times a driver may be restarted as a result of the
+  /// Maximum total number of times a driver can be restarted as a result of the
   /// driver exiting with a non-zero code.
   ///
   /// After the maximum number is reached, the job will be reported as
@@ -7791,10 +8468,10 @@ class JobStatus {
   /// - "UNSPECIFIED" : The job substate is unknown.
   /// - "SUBMITTED" : The Job is submitted to the agent.Applies to RUNNING
   /// state.
-  /// - "QUEUED" : The Job has been received and is awaiting execution (it may
+  /// - "QUEUED" : The Job has been received and is awaiting execution (it might
   /// be waiting for a condition to be met). See the "details" field for the
   /// reason for the delay.Applies to RUNNING state.
-  /// - "STALE_STATUS" : The agent-reported status is out of date, which may be
+  /// - "STALE_STATUS" : The agent-reported status is out of date, which can be
   /// caused by a loss of communication between the agent and Dataproc. If the
   /// agent does not send a timely update, the job will fail.Applies to RUNNING
   /// state.
@@ -7827,6 +8504,43 @@ class JobStatus {
         if (state != null) 'state': state!,
         if (stateStartTime != null) 'stateStartTime': stateStartTime!,
         if (substate != null) 'substate': substate!,
+      };
+}
+
+/// Jupyter configuration for an interactive session.
+class JupyterConfig {
+  /// Display name, shown in the Jupyter kernelspec card.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// Kernel
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "KERNEL_UNSPECIFIED" : The kernel is unknown.
+  /// - "PYTHON" : Python kernel.
+  /// - "SCALA" : Scala kernel.
+  core.String? kernel;
+
+  JupyterConfig({
+    this.displayName,
+    this.kernel,
+  });
+
+  JupyterConfig.fromJson(core.Map json_)
+      : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          kernel: json_.containsKey('kernel')
+              ? json_['kernel'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (kernel != null) 'kernel': kernel!,
       };
 }
 
@@ -8385,6 +9099,78 @@ class ListOperationsResponse {
       };
 }
 
+/// A list of session templates.
+class ListSessionTemplatesResponse {
+  /// A token, which can be sent as page_token to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Session template list
+  ///
+  /// Output only.
+  core.List<SessionTemplate>? sessionTemplates;
+
+  ListSessionTemplatesResponse({
+    this.nextPageToken,
+    this.sessionTemplates,
+  });
+
+  ListSessionTemplatesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          sessionTemplates: json_.containsKey('sessionTemplates')
+              ? (json_['sessionTemplates'] as core.List)
+                  .map((value) => SessionTemplate.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (sessionTemplates != null) 'sessionTemplates': sessionTemplates!,
+      };
+}
+
+/// A list of interactive sessions.
+class ListSessionsResponse {
+  /// A token, which can be sent as page_token, to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The sessions from the specified collection.
+  ///
+  /// Output only.
+  core.List<Session>? sessions;
+
+  ListSessionsResponse({
+    this.nextPageToken,
+    this.sessions,
+  });
+
+  ListSessionsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          sessions: json_.containsKey('sessions')
+              ? (json_['sessions'] as core.List)
+                  .map((value) => Session.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (sessions != null) 'sessions': sessions!,
+      };
+}
+
 /// A response to a request to list workflow templates in a project.
 class ListWorkflowTemplatesResponse {
   /// This token is included in the response if there are more results to fetch.
@@ -8400,9 +9186,18 @@ class ListWorkflowTemplatesResponse {
   /// Output only.
   core.List<WorkflowTemplate>? templates;
 
+  /// List of workflow templates that could not be included in the response.
+  ///
+  /// Attempting to get one of these resources may indicate why it was not
+  /// included in the list response.
+  ///
+  /// Output only.
+  core.List<core.String>? unreachable;
+
   ListWorkflowTemplatesResponse({
     this.nextPageToken,
     this.templates,
+    this.unreachable,
   });
 
   ListWorkflowTemplatesResponse.fromJson(core.Map json_)
@@ -8416,11 +9211,17 @@ class ListWorkflowTemplatesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (templates != null) 'templates': templates!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -8428,7 +9229,7 @@ class ListWorkflowTemplatesResponse {
 class LoggingConfig {
   /// The per-package log levels for the driver.
   ///
-  /// This may include "root" package name to configure rootLogger. Examples: -
+  /// This can include "root" package name to configure rootLogger. Examples: -
   /// 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
   core.Map<core.String, core.String>? driverLogLevels;
 
@@ -8521,6 +9322,13 @@ class ManagedGroupConfig {
   /// Output only.
   core.String? instanceGroupManagerName;
 
+  /// The partial URI to the instance group manager for this group.
+  ///
+  /// E.g. projects/my-project/regions/us-central1/instanceGroupManagers/my-igm.
+  ///
+  /// Output only.
+  core.String? instanceGroupManagerUri;
+
   /// The name of the Instance Template used for the Managed Instance Group.
   ///
   /// Output only.
@@ -8528,6 +9336,7 @@ class ManagedGroupConfig {
 
   ManagedGroupConfig({
     this.instanceGroupManagerName,
+    this.instanceGroupManagerUri,
     this.instanceTemplateName,
   });
 
@@ -8537,6 +9346,9 @@ class ManagedGroupConfig {
               json_.containsKey('instanceGroupManagerName')
                   ? json_['instanceGroupManagerName'] as core.String
                   : null,
+          instanceGroupManagerUri: json_.containsKey('instanceGroupManagerUri')
+              ? json_['instanceGroupManagerUri'] as core.String
+              : null,
           instanceTemplateName: json_.containsKey('instanceTemplateName')
               ? json_['instanceTemplateName'] as core.String
               : null,
@@ -8545,6 +9357,8 @@ class ManagedGroupConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (instanceGroupManagerName != null)
           'instanceGroupManagerName': instanceGroupManagerName!,
+        if (instanceGroupManagerUri != null)
+          'instanceGroupManagerUri': instanceGroupManagerUri!,
         if (instanceTemplateName != null)
           'instanceTemplateName': instanceTemplateName!,
       };
@@ -8902,7 +9716,7 @@ class Operation {
   /// ending with operations/{unique_id}.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as Delete, the
   /// response is google.protobuf.Empty. If the original method is standard
@@ -8950,6 +9764,11 @@ class Operation {
 
 /// A job executed by the workflow.
 class OrderedJob {
+  /// Job is a Flink job.
+  ///
+  /// Optional.
+  FlinkJob? flinkJob;
+
   /// Job is a Hadoop job.
   ///
   /// Optional.
@@ -9030,6 +9849,7 @@ class OrderedJob {
   TrinoJob? trinoJob;
 
   OrderedJob({
+    this.flinkJob,
     this.hadoopJob,
     this.hiveJob,
     this.labels,
@@ -9047,6 +9867,10 @@ class OrderedJob {
 
   OrderedJob.fromJson(core.Map json_)
       : this(
+          flinkJob: json_.containsKey('flinkJob')
+              ? FlinkJob.fromJson(
+                  json_['flinkJob'] as core.Map<core.String, core.dynamic>)
+              : null,
           hadoopJob: json_.containsKey('hadoopJob')
               ? HadoopJob.fromJson(
                   json_['hadoopJob'] as core.Map<core.String, core.dynamic>)
@@ -9106,6 +9930,7 @@ class OrderedJob {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (flinkJob != null) 'flinkJob': flinkJob!,
         if (hadoopJob != null) 'hadoopJob': hadoopJob!,
         if (hiveJob != null) 'hiveJob': hiveJob!,
         if (labels != null) 'labels': labels!,
@@ -9218,7 +10043,7 @@ class PigJob {
 
   /// A mapping of property names to values, used to configure Pig.
   ///
-  /// Properties that conflict with values set by the Dataproc API may be
+  /// Properties that conflict with values set by the Dataproc API might be
   /// overwritten. Can include properties set in /etc/hadoop/conf / * -site.xml,
   /// /etc/pig/conf/pig.properties, and classes in user code.
   ///
@@ -9510,6 +10335,29 @@ class PrestoJob {
       };
 }
 
+/// Configuration for PyPi repository
+class PyPiRepositoryConfig {
+  /// PyPi repository address
+  ///
+  /// Optional.
+  core.String? pypiRepository;
+
+  PyPiRepositoryConfig({
+    this.pypiRepository,
+  });
+
+  PyPiRepositoryConfig.fromJson(core.Map json_)
+      : this(
+          pypiRepository: json_.containsKey('pypiRepository')
+              ? json_['pypiRepository'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pypiRepository != null) 'pypiRepository': pypiRepository!,
+      };
+}
+
 /// A configuration for running an Apache PySpark
 /// (https://spark.apache.org/docs/latest/api/python/getting_started/quickstart.html)
 /// batch workload.
@@ -9655,7 +10503,7 @@ class PySparkJob {
 
   /// A mapping of property names to values, used to configure PySpark.
   ///
-  /// Properties that conflict with values set by the Dataproc API may be
+  /// Properties that conflict with values set by the Dataproc API might be
   /// overwritten. Can include properties set in
   /// /etc/spark/conf/spark-defaults.conf and classes in user code.
   ///
@@ -9884,6 +10732,31 @@ class RepairClusterRequest {
       };
 }
 
+/// Configuration for dependency repositories
+class RepositoryConfig {
+  /// Configuration for PyPi repository.
+  ///
+  /// Optional.
+  PyPiRepositoryConfig? pypiRepositoryConfig;
+
+  RepositoryConfig({
+    this.pypiRepositoryConfig,
+  });
+
+  RepositoryConfig.fromJson(core.Map json_)
+      : this(
+          pypiRepositoryConfig: json_.containsKey('pypiRepositoryConfig')
+              ? PyPiRepositoryConfig.fromJson(json_['pypiRepositoryConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pypiRepositoryConfig != null)
+          'pypiRepositoryConfig': pypiRepositoryConfig!,
+      };
+}
+
 /// Reservation Affinity for consuming Zonal reservation.
 class ReservationAffinity {
   /// Type of reservation to consume
@@ -9952,6 +10825,11 @@ class ResizeNodeGroupRequest {
   /// Optional.
   core.String? gracefulDecommissionTimeout;
 
+  /// operation id of the parent operation sending the resize request
+  ///
+  /// Optional.
+  core.String? parentOperationId;
+
   /// A unique ID used to identify the request.
   ///
   /// If the server receives two ResizeNodeGroupRequest
@@ -9976,6 +10854,7 @@ class ResizeNodeGroupRequest {
 
   ResizeNodeGroupRequest({
     this.gracefulDecommissionTimeout,
+    this.parentOperationId,
     this.requestId,
     this.size,
   });
@@ -9986,6 +10865,9 @@ class ResizeNodeGroupRequest {
               json_.containsKey('gracefulDecommissionTimeout')
                   ? json_['gracefulDecommissionTimeout'] as core.String
                   : null,
+          parentOperationId: json_.containsKey('parentOperationId')
+              ? json_['parentOperationId'] as core.String
+              : null,
           requestId: json_.containsKey('requestId')
               ? json_['requestId'] as core.String
               : null,
@@ -9995,6 +10877,7 @@ class ResizeNodeGroupRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (gracefulDecommissionTimeout != null)
           'gracefulDecommissionTimeout': gracefulDecommissionTimeout!,
+        if (parentOperationId != null) 'parentOperationId': parentOperationId!,
         if (requestId != null) 'requestId': requestId!,
         if (size != null) 'size': size!,
       };
@@ -10015,6 +10898,11 @@ class RuntimeConfig {
   /// Optional.
   core.Map<core.String, core.String>? properties;
 
+  /// Dependency repository configuration.
+  ///
+  /// Optional.
+  RepositoryConfig? repositoryConfig;
+
   /// Version of the batch runtime.
   ///
   /// Optional.
@@ -10023,6 +10911,7 @@ class RuntimeConfig {
   RuntimeConfig({
     this.containerImage,
     this.properties,
+    this.repositoryConfig,
     this.version,
   });
 
@@ -10040,6 +10929,10 @@ class RuntimeConfig {
                   ),
                 )
               : null,
+          repositoryConfig: json_.containsKey('repositoryConfig')
+              ? RepositoryConfig.fromJson(json_['repositoryConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           version: json_.containsKey('version')
               ? json_['version'] as core.String
               : null,
@@ -10048,6 +10941,7 @@ class RuntimeConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (containerImage != null) 'containerImage': containerImage!,
         if (properties != null) 'properties': properties!,
+        if (repositoryConfig != null) 'repositoryConfig': repositoryConfig!,
         if (version != null) 'version': version!,
       };
 }
@@ -10164,6 +11058,369 @@ class SecurityConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (identityConfig != null) 'identityConfig': identityConfig!,
         if (kerberosConfig != null) 'kerberosConfig': kerberosConfig!,
+      };
+}
+
+/// A representation of a session.
+class Session {
+  /// The time when the session was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The email address of the user who created the session.
+  ///
+  /// Output only.
+  core.String? creator;
+
+  /// Environment configuration for the session execution.
+  ///
+  /// Optional.
+  EnvironmentConfig? environmentConfig;
+
+  /// Jupyter session config.
+  ///
+  /// Optional.
+  JupyterConfig? jupyterSession;
+
+  /// The labels to associate with the session.
+  ///
+  /// Label keys must contain 1 to 63 characters, and must conform to RFC 1035
+  /// (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if
+  /// present, must contain 1 to 63 characters, and must conform to RFC 1035
+  /// (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
+  /// associated with a session.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The resource name of the session.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Runtime configuration for the session execution.
+  ///
+  /// Optional.
+  RuntimeConfig? runtimeConfig;
+
+  /// Runtime information about session execution.
+  ///
+  /// Output only.
+  RuntimeInfo? runtimeInfo;
+
+  /// The session template used by the session.Only resource names, including
+  /// project ID and location, are valid.Example: *
+  /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/locations/\[dataproc_region\]/sessionTemplates/\[template_id\]
+  /// *
+  /// projects/\[project_id\]/locations/\[dataproc_region\]/sessionTemplates/\[template_id\]The
+  /// template must be in the same project and Dataproc region as the session.
+  ///
+  /// Optional.
+  core.String? sessionTemplate;
+
+  /// A state of the session.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The session state is unknown.
+  /// - "CREATING" : The session is created prior to running.
+  /// - "ACTIVE" : The session is running.
+  /// - "TERMINATING" : The session is terminating.
+  /// - "TERMINATED" : The session is terminated successfully.
+  /// - "FAILED" : The session is no longer running due to an error.
+  core.String? state;
+
+  /// Historical state information for the session.
+  ///
+  /// Output only.
+  core.List<SessionStateHistory>? stateHistory;
+
+  /// Session state details, such as the failure description if the state is
+  /// FAILED.
+  ///
+  /// Output only.
+  core.String? stateMessage;
+
+  /// The time when the session entered the current state.
+  ///
+  /// Output only.
+  core.String? stateTime;
+
+  /// The email address of the user who owns the session.
+  ///
+  /// Optional.
+  core.String? user;
+
+  /// A session UUID (Unique Universal Identifier).
+  ///
+  /// The service generates this value when it creates the session.
+  ///
+  /// Output only.
+  core.String? uuid;
+
+  Session({
+    this.createTime,
+    this.creator,
+    this.environmentConfig,
+    this.jupyterSession,
+    this.labels,
+    this.name,
+    this.runtimeConfig,
+    this.runtimeInfo,
+    this.sessionTemplate,
+    this.state,
+    this.stateHistory,
+    this.stateMessage,
+    this.stateTime,
+    this.user,
+    this.uuid,
+  });
+
+  Session.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          creator: json_.containsKey('creator')
+              ? json_['creator'] as core.String
+              : null,
+          environmentConfig: json_.containsKey('environmentConfig')
+              ? EnvironmentConfig.fromJson(json_['environmentConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          jupyterSession: json_.containsKey('jupyterSession')
+              ? JupyterConfig.fromJson(json_['jupyterSession']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          runtimeConfig: json_.containsKey('runtimeConfig')
+              ? RuntimeConfig.fromJson(
+                  json_['runtimeConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          runtimeInfo: json_.containsKey('runtimeInfo')
+              ? RuntimeInfo.fromJson(
+                  json_['runtimeInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sessionTemplate: json_.containsKey('sessionTemplate')
+              ? json_['sessionTemplate'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          stateHistory: json_.containsKey('stateHistory')
+              ? (json_['stateHistory'] as core.List)
+                  .map((value) => SessionStateHistory.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          stateMessage: json_.containsKey('stateMessage')
+              ? json_['stateMessage'] as core.String
+              : null,
+          stateTime: json_.containsKey('stateTime')
+              ? json_['stateTime'] as core.String
+              : null,
+          user: json_.containsKey('user') ? json_['user'] as core.String : null,
+          uuid: json_.containsKey('uuid') ? json_['uuid'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (creator != null) 'creator': creator!,
+        if (environmentConfig != null) 'environmentConfig': environmentConfig!,
+        if (jupyterSession != null) 'jupyterSession': jupyterSession!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (runtimeConfig != null) 'runtimeConfig': runtimeConfig!,
+        if (runtimeInfo != null) 'runtimeInfo': runtimeInfo!,
+        if (sessionTemplate != null) 'sessionTemplate': sessionTemplate!,
+        if (state != null) 'state': state!,
+        if (stateHistory != null) 'stateHistory': stateHistory!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+        if (stateTime != null) 'stateTime': stateTime!,
+        if (user != null) 'user': user!,
+        if (uuid != null) 'uuid': uuid!,
+      };
+}
+
+/// Historical state information.
+class SessionStateHistory {
+  /// The state of the session at this point in the session history.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The session state is unknown.
+  /// - "CREATING" : The session is created prior to running.
+  /// - "ACTIVE" : The session is running.
+  /// - "TERMINATING" : The session is terminating.
+  /// - "TERMINATED" : The session is terminated successfully.
+  /// - "FAILED" : The session is no longer running due to an error.
+  core.String? state;
+
+  /// Details about the state at this point in the session history.
+  ///
+  /// Output only.
+  core.String? stateMessage;
+
+  /// The time when the session entered the historical state.
+  ///
+  /// Output only.
+  core.String? stateStartTime;
+
+  SessionStateHistory({
+    this.state,
+    this.stateMessage,
+    this.stateStartTime,
+  });
+
+  SessionStateHistory.fromJson(core.Map json_)
+      : this(
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          stateMessage: json_.containsKey('stateMessage')
+              ? json_['stateMessage'] as core.String
+              : null,
+          stateStartTime: json_.containsKey('stateStartTime')
+              ? json_['stateStartTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (state != null) 'state': state!,
+        if (stateMessage != null) 'stateMessage': stateMessage!,
+        if (stateStartTime != null) 'stateStartTime': stateStartTime!,
+      };
+}
+
+/// A representation of a session template.
+class SessionTemplate {
+  /// The time when the template was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The email address of the user who created the template.
+  ///
+  /// Output only.
+  core.String? creator;
+
+  /// Brief description of the template.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Environment configuration for session execution.
+  ///
+  /// Optional.
+  EnvironmentConfig? environmentConfig;
+
+  /// Jupyter session config.
+  ///
+  /// Optional.
+  JupyterConfig? jupyterSession;
+
+  /// Labels to associate with sessions created using this template.
+  ///
+  /// Label keys must contain 1 to 63 characters, and must conform to RFC 1035
+  /// (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty, but, if
+  /// present, must contain 1 to 63 characters and conform to RFC 1035
+  /// (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be
+  /// associated with a session.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The resource name of the session template.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Runtime configuration for session execution.
+  ///
+  /// Optional.
+  RuntimeConfig? runtimeConfig;
+
+  /// The time the template was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// A session template UUID (Unique Universal Identifier).
+  ///
+  /// The service generates this value when it creates the session template.
+  ///
+  /// Output only.
+  core.String? uuid;
+
+  SessionTemplate({
+    this.createTime,
+    this.creator,
+    this.description,
+    this.environmentConfig,
+    this.jupyterSession,
+    this.labels,
+    this.name,
+    this.runtimeConfig,
+    this.updateTime,
+    this.uuid,
+  });
+
+  SessionTemplate.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          creator: json_.containsKey('creator')
+              ? json_['creator'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          environmentConfig: json_.containsKey('environmentConfig')
+              ? EnvironmentConfig.fromJson(json_['environmentConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          jupyterSession: json_.containsKey('jupyterSession')
+              ? JupyterConfig.fromJson(json_['jupyterSession']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          runtimeConfig: json_.containsKey('runtimeConfig')
+              ? RuntimeConfig.fromJson(
+                  json_['runtimeConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+          uuid: json_.containsKey('uuid') ? json_['uuid'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (creator != null) 'creator': creator!,
+        if (description != null) 'description': description!,
+        if (environmentConfig != null) 'environmentConfig': environmentConfig!,
+        if (jupyterSession != null) 'jupyterSession': jupyterSession!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (runtimeConfig != null) 'runtimeConfig': runtimeConfig!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (uuid != null) 'uuid': uuid!,
       };
 }
 
@@ -10465,7 +11722,7 @@ class SparkJob {
   /// The name of the driver's main class.
   ///
   /// The jar file that contains the class must be in the default CLASSPATH or
-  /// specified in jar_file_uris.
+  /// specified in SparkJob.jar_file_uris.
   core.String? mainClass;
 
   /// The HCFS URI of the jar file that contains the main class.
@@ -10473,7 +11730,7 @@ class SparkJob {
 
   /// A mapping of property names to values, used to configure Spark.
   ///
-  /// Properties that conflict with values set by the Dataproc API may be
+  /// Properties that conflict with values set by the Dataproc API might be
   /// overwritten. Can include properties set in
   /// /etc/spark/conf/spark-defaults.conf and classes in user code.
   ///
@@ -10656,7 +11913,7 @@ class SparkRJob {
 
   /// A mapping of property names to values, used to configure SparkR.
   ///
-  /// Properties that conflict with values set by the Dataproc API may be
+  /// Properties that conflict with values set by the Dataproc API might be
   /// overwritten. Can include properties set in
   /// /etc/spark/conf/spark-defaults.conf and classes in user code.
   ///
@@ -10786,7 +12043,7 @@ class SparkSqlJob {
   /// A mapping of property names to values, used to configure Spark SQL's
   /// SparkConf.
   ///
-  /// Properties that conflict with values set by the Dataproc API may be
+  /// Properties that conflict with values set by the Dataproc API might be
   /// overwritten.
   ///
   /// Optional.
@@ -10873,6 +12130,11 @@ class SparkStandaloneAutoscalingConfig {
   /// Required.
   core.String? gracefulDecommissionTimeout;
 
+  /// Remove only idle workers when scaling down cluster
+  ///
+  /// Optional.
+  core.bool? removeOnlyIdleWorkers;
+
   /// Fraction of required executors to remove from Spark Serverless clusters.
   ///
   /// A scale-down factor of 1.0 will result in scaling down so that there are
@@ -10917,6 +12179,7 @@ class SparkStandaloneAutoscalingConfig {
 
   SparkStandaloneAutoscalingConfig({
     this.gracefulDecommissionTimeout,
+    this.removeOnlyIdleWorkers,
     this.scaleDownFactor,
     this.scaleDownMinWorkerFraction,
     this.scaleUpFactor,
@@ -10929,6 +12192,9 @@ class SparkStandaloneAutoscalingConfig {
               json_.containsKey('gracefulDecommissionTimeout')
                   ? json_['gracefulDecommissionTimeout'] as core.String
                   : null,
+          removeOnlyIdleWorkers: json_.containsKey('removeOnlyIdleWorkers')
+              ? json_['removeOnlyIdleWorkers'] as core.bool
+              : null,
           scaleDownFactor: json_.containsKey('scaleDownFactor')
               ? (json_['scaleDownFactor'] as core.num).toDouble()
               : null,
@@ -10948,6 +12214,8 @@ class SparkStandaloneAutoscalingConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (gracefulDecommissionTimeout != null)
           'gracefulDecommissionTimeout': gracefulDecommissionTimeout!,
+        if (removeOnlyIdleWorkers != null)
+          'removeOnlyIdleWorkers': removeOnlyIdleWorkers!,
         if (scaleDownFactor != null) 'scaleDownFactor': scaleDownFactor!,
         if (scaleDownMinWorkerFraction != null)
           'scaleDownMinWorkerFraction': scaleDownMinWorkerFraction!,
@@ -10997,6 +12265,38 @@ class StartClusterRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterUuid != null) 'clusterUuid': clusterUuid!,
         if (requestId != null) 'requestId': requestId!,
+      };
+}
+
+/// Configuration to handle the startup of instances during cluster create and
+/// update process.
+class StartupConfig {
+  /// The config setting to enable cluster creation/ updation to be successful
+  /// only after required_registration_fraction of instances are up and running.
+  ///
+  /// This configuration is applicable to only secondary workers for now. The
+  /// cluster will fail if required_registration_fraction of instances are not
+  /// available. This will include instance creation, agent registration, and
+  /// service registration (if enabled).
+  ///
+  /// Optional.
+  core.double? requiredRegistrationFraction;
+
+  StartupConfig({
+    this.requiredRegistrationFraction,
+  });
+
+  StartupConfig.fromJson(core.Map json_)
+      : this(
+          requiredRegistrationFraction: json_
+                  .containsKey('requiredRegistrationFraction')
+              ? (json_['requiredRegistrationFraction'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requiredRegistrationFraction != null)
+          'requiredRegistrationFraction': requiredRegistrationFraction!,
       };
 }
 
@@ -11236,6 +12536,37 @@ class TemplateParameter {
       };
 }
 
+/// A request to terminate an interactive session.
+class TerminateSessionRequest {
+  /// A unique ID used to identify the request.
+  ///
+  /// If the service receives two TerminateSessionRequest
+  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.TerminateSessionRequest)s
+  /// with the same ID, the second request is ignored.Recommendation: Set this
+  /// value to a UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value
+  /// must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  TerminateSessionRequest({
+    this.requestId,
+  });
+
+  TerminateSessionRequest.fromJson(core.Map json_)
+      : this(
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
+      };
+}
+
 /// Request message for TestIamPermissions method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest01;
 
@@ -11346,6 +12677,17 @@ class TrinoJob {
 
 /// Usage metrics represent approximate total resources consumed by a workload.
 class UsageMetrics {
+  /// Accelerator type being used, if any
+  ///
+  /// Optional.
+  core.String? acceleratorType;
+
+  /// Accelerator usage in (milliAccelerator x seconds) (see Dataproc Serverless
+  /// pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+  ///
+  /// Optional.
+  core.String? milliAcceleratorSeconds;
+
   /// DCU (Dataproc Compute Units) usage in (milliDCU x seconds) (see Dataproc
   /// Serverless pricing
   /// (https://cloud.google.com/dataproc-serverless/pricing)).
@@ -11360,12 +12702,20 @@ class UsageMetrics {
   core.String? shuffleStorageGbSeconds;
 
   UsageMetrics({
+    this.acceleratorType,
+    this.milliAcceleratorSeconds,
     this.milliDcuSeconds,
     this.shuffleStorageGbSeconds,
   });
 
   UsageMetrics.fromJson(core.Map json_)
       : this(
+          acceleratorType: json_.containsKey('acceleratorType')
+              ? json_['acceleratorType'] as core.String
+              : null,
+          milliAcceleratorSeconds: json_.containsKey('milliAcceleratorSeconds')
+              ? json_['milliAcceleratorSeconds'] as core.String
+              : null,
           milliDcuSeconds: json_.containsKey('milliDcuSeconds')
               ? json_['milliDcuSeconds'] as core.String
               : null,
@@ -11375,6 +12725,9 @@ class UsageMetrics {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (acceleratorType != null) 'acceleratorType': acceleratorType!,
+        if (milliAcceleratorSeconds != null)
+          'milliAcceleratorSeconds': milliAcceleratorSeconds!,
         if (milliDcuSeconds != null) 'milliDcuSeconds': milliDcuSeconds!,
         if (shuffleStorageGbSeconds != null)
           'shuffleStorageGbSeconds': shuffleStorageGbSeconds!,
@@ -11384,6 +12737,19 @@ class UsageMetrics {
 /// The usage snapshot represents the resources consumed by a workload at a
 /// specified time.
 class UsageSnapshot {
+  /// Accelerator type being used, if any
+  ///
+  /// Optional.
+  core.String? acceleratorType;
+
+  /// Milli (one-thousandth) accelerator.
+  ///
+  /// (see Dataproc Serverless pricing
+  /// (https://cloud.google.com/dataproc-serverless/pricing))
+  ///
+  /// Optional.
+  core.String? milliAccelerator;
+
   /// Milli (one-thousandth) Dataproc Compute Units (DCUs) (see Dataproc
   /// Serverless pricing
   /// (https://cloud.google.com/dataproc-serverless/pricing)).
@@ -11420,6 +12786,8 @@ class UsageSnapshot {
   core.String? snapshotTime;
 
   UsageSnapshot({
+    this.acceleratorType,
+    this.milliAccelerator,
     this.milliDcu,
     this.milliDcuPremium,
     this.shuffleStorageGb,
@@ -11429,6 +12797,12 @@ class UsageSnapshot {
 
   UsageSnapshot.fromJson(core.Map json_)
       : this(
+          acceleratorType: json_.containsKey('acceleratorType')
+              ? json_['acceleratorType'] as core.String
+              : null,
+          milliAccelerator: json_.containsKey('milliAccelerator')
+              ? json_['milliAccelerator'] as core.String
+              : null,
           milliDcu: json_.containsKey('milliDcu')
               ? json_['milliDcu'] as core.String
               : null,
@@ -11447,6 +12821,8 @@ class UsageSnapshot {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (acceleratorType != null) 'acceleratorType': acceleratorType!,
+        if (milliAccelerator != null) 'milliAccelerator': milliAccelerator!,
         if (milliDcu != null) 'milliDcu': milliDcu!,
         if (milliDcuPremium != null) 'milliDcuPremium': milliDcuPremium!,
         if (shuffleStorageGb != null) 'shuffleStorageGb': shuffleStorageGb!,
@@ -11561,6 +12937,11 @@ class WorkflowTemplate {
   ///
   /// Optional.
   core.String? dagTimeout;
+
+  /// Encryption settings for the encrypting customer core content.
+  ///
+  /// Optional.
+  GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig? encryptionConfig;
   core.String? id;
 
   /// The Directed Acyclic Graph of Jobs to submit.
@@ -11626,6 +13007,7 @@ class WorkflowTemplate {
   WorkflowTemplate({
     this.createTime,
     this.dagTimeout,
+    this.encryptionConfig,
     this.id,
     this.jobs,
     this.labels,
@@ -11643,6 +13025,11 @@ class WorkflowTemplate {
               : null,
           dagTimeout: json_.containsKey('dagTimeout')
               ? json_['dagTimeout'] as core.String
+              : null,
+          encryptionConfig: json_.containsKey('encryptionConfig')
+              ? GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig.fromJson(
+                  json_['encryptionConfig']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           jobs: json_.containsKey('jobs')
@@ -11681,6 +13068,7 @@ class WorkflowTemplate {
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (dagTimeout != null) 'dagTimeout': dagTimeout!,
+        if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
         if (id != null) 'id': id!,
         if (jobs != null) 'jobs': jobs!,
         if (labels != null) 'labels': labels!,

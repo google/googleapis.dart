@@ -36,7 +36,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230802",
+    "revision": "20231020",
     "rootUrl": "https://www.googleapis.com/",
     "servicePath": "calendar/v3/",
     "title": "Calendar API",
@@ -1093,7 +1093,7 @@
                             "type": "string"
                         },
                         "eventTypes": {
-                            "description": "Event types to return. Optional. Possible values are: \n- \"default\" \n- \"focusTime\" \n- \"outOfOffice\"This parameter can be repeated multiple times to return events of different types. Currently, this is the only allowed value for this field: \n- [\"default\", \"focusTime\", \"outOfOffice\"] This value is the default.\n\nIf you're enrolled in the Working Location developer preview program, in addition to the default value above you can also set the \"workingLocation\" event type: \n- [\"default\", \"focusTime\", \"outOfOffice\", \"workingLocation\"] \n- [\"workingLocation\"] Additional combinations of these four event types will be made available in later releases. Developer Preview.",
+                            "description": "Event types to return. Optional. Possible values are: \n- \"default\" \n- \"focusTime\" \n- \"outOfOffice\" \n- \"workingLocation\"This parameter can be repeated multiple times to return events of different types. Currently, these are the only allowed values for this field: \n- [\"default\", \"focusTime\", \"outOfOffice\"] \n- [\"default\", \"focusTime\", \"outOfOffice\", \"workingLocation\"] \n- [\"workingLocation\"] The default is [\"default\", \"focusTime\", \"outOfOffice\"].\nAdditional combinations of these four event types will be made available in later releases.",
                             "location": "query",
                             "repeated": true,
                             "type": "string"
@@ -1496,7 +1496,7 @@
                             "type": "string"
                         },
                         "eventTypes": {
-                            "description": "Event types to return. Optional. Possible values are: \n- \"default\" \n- \"focusTime\" \n- \"outOfOffice\"This parameter can be repeated multiple times to return events of different types. Currently, this is the only allowed value for this field: \n- [\"default\", \"focusTime\", \"outOfOffice\"] This value is the default.\n\nIf you're enrolled in the Working Location developer preview program, in addition to the default value above you can also set the \"workingLocation\" event type: \n- [\"default\", \"focusTime\", \"outOfOffice\", \"workingLocation\"] \n- [\"workingLocation\"] Additional combinations of these four event types will be made available in later releases. Developer Preview.",
+                            "description": "Event types to return. Optional. Possible values are: \n- \"default\" \n- \"focusTime\" \n- \"outOfOffice\" \n- \"workingLocation\"This parameter can be repeated multiple times to return events of different types. Currently, these are the only allowed values for this field: \n- [\"default\", \"focusTime\", \"outOfOffice\"] \n- [\"default\", \"focusTime\", \"outOfOffice\", \"workingLocation\"] \n- [\"workingLocation\"] The default is [\"default\", \"focusTime\", \"outOfOffice\"].\nAdditional combinations of these four event types will be made available in later releases.",
                             "location": "query",
                             "repeated": true,
                             "type": "string"
@@ -2395,7 +2395,7 @@
                 },
                 "eventType": {
                     "default": "default",
-                    "description": "Specific type of the event. Read-only. Possible values are:  \n- \"default\" - A regular event or not further specified. \n- \"outOfOffice\" - An out-of-office event. \n- \"focusTime\" - A focus-time event. \n- \"workingLocation\" - A working location event. Developer Preview.",
+                    "description": "Specific type of the event. This cannot be modified after the event is created. Possible values are:  \n- \"default\" - A regular event or not further specified. \n- \"outOfOffice\" - An out-of-office event. \n- \"focusTime\" - A focus-time event. \n- \"workingLocation\" - A working location event.  Currently, only \"default \" and \"workingLocation\" events can be created using the API. Extended support for other event types will be made available in later releases.",
                     "type": "string"
                 },
                 "extendedProperties": {
@@ -2629,7 +2629,7 @@
                 },
                 "workingLocationProperties": {
                     "$ref": "EventWorkingLocationProperties",
-                    "description": "Working Location event data. Developer Preview."
+                    "description": "Working location event data."
                 }
             },
             "type": "object"
@@ -2771,26 +2771,26 @@
                             "type": "string"
                         },
                         "deskId": {
-                            "description": "An optional arbitrary desk identifier.",
+                            "description": "An optional desk identifier.",
                             "type": "string"
                         },
                         "floorId": {
-                            "description": "An optional arbitrary floor identifier.",
+                            "description": "An optional floor identifier.",
                             "type": "string"
                         },
                         "floorSectionId": {
-                            "description": "An optional arbitrary floor section identifier.",
+                            "description": "An optional floor section identifier.",
                             "type": "string"
                         },
                         "label": {
-                            "description": "An optional extra label for additional information.",
+                            "description": "The office name that's displayed in Calendar Web and Mobile clients. We recommend you reference a building name in the organization's Resources database.",
                             "type": "string"
                         }
                     },
                     "type": "object"
                 },
                 "type": {
-                    "description": "Indicates what kind of location this is. Any details are specified in a sub-field of the specified name (but which may be missing if empty). Any other fields are ignored.",
+                    "description": "Type of the working location. Possible values are:  \n- \"homeOffice\" - The user is working at home. \n- \"officeLocation\" - The user is working from an office. \n- \"customLocation\" - The user is working from a custom location.  Any details are specified in a sub-field of the specified name, but this field may be missing if empty. Any other fields are ignored.\nRequired when adding working location properties.",
                     "type": "string"
                 }
             },
