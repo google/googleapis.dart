@@ -71,7 +71,11 @@ extension on RestMethod {
 
     final request = this.request;
     if (request != null) {
-      yield request.P_ref!;
+      if (request.P_ref == null) {
+        print('boo! P_ref is null! ${[id, description, path]}');
+      } else {
+        yield request.P_ref!;
+      }
     }
 
     final response = this.response;
