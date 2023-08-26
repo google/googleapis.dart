@@ -115,6 +115,8 @@ Future<AutoRefreshingAuthClient> clientViaApplicationDefaultCredentials({
 /// {@macro googleapis_auth_close_the_client}
 /// {@macro googleapis_auth_not_close_the_baseClient}
 /// {@macro googleapis_auth_listen_port}
+///
+/// {@macro googleapis_auth_custom_post_auth_page}
 Future<AutoRefreshingAuthClient> clientViaUserConsent(
   ClientId clientId,
   List<String> scopes,
@@ -122,6 +124,7 @@ Future<AutoRefreshingAuthClient> clientViaUserConsent(
   Client? baseClient,
   String? hostedDomain,
   int listenPort = 0,
+  String? customPostAuthPage,
 }) async {
   var closeUnderlyingClient = false;
   if (baseClient == null) {
@@ -136,6 +139,7 @@ Future<AutoRefreshingAuthClient> clientViaUserConsent(
     userPrompt,
     hostedDomain: hostedDomain,
     listenPort: listenPort,
+    customPostAuthPage: customPostAuthPage,
   );
 
   AccessCredentials credentials;
@@ -230,6 +234,8 @@ Future<AutoRefreshingAuthClient> clientViaUserConsentManual(
 ///
 /// Generally you want to specify an explicit port so you can configure it
 /// on the Google Cloud console.
+///
+/// {@macro googleapis_auth_custom_post_auth_page}
 /// {@endtemplate}
 Future<AccessCredentials> obtainAccessCredentialsViaUserConsent(
   ClientId clientId,
@@ -238,6 +244,7 @@ Future<AccessCredentials> obtainAccessCredentialsViaUserConsent(
   PromptUserForConsent userPrompt, {
   String? hostedDomain,
   int listenPort = 0,
+  String? customPostAuthPage,
 }) =>
     AuthorizationCodeGrantServerFlow(
       clientId,
@@ -246,6 +253,7 @@ Future<AccessCredentials> obtainAccessCredentialsViaUserConsent(
       userPrompt,
       hostedDomain: hostedDomain,
       listenPort: listenPort,
+      customPostAuthPage: customPostAuthPage,
     ).run();
 
 /// Obtain oauth2 [AccessCredentials] using the oauth2 authentication code flow.

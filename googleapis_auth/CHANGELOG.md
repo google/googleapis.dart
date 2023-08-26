@@ -1,6 +1,7 @@
-## 1.4.2-wip
+## 1.4.2
 
 - Require Dart 3.0 or later.
+- Added support for custom post-auth html page
 
 ## 1.4.1
 
