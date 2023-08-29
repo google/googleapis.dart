@@ -116,7 +116,10 @@ Future<AutoRefreshingAuthClient> clientViaApplicationDefaultCredentials({
 /// {@macro googleapis_auth_not_close_the_baseClient}
 /// {@macro googleapis_auth_listen_port}
 ///
-/// {@macro googleapis_auth_custom_post_auth_page}
+/// {@template googleapis_auth_custom_post_auth_page}
+/// If provided, default post authentication page is replaced with html code
+/// specified in [customPostAuthPage] variable.
+/// {@endtemplate}
 Future<AutoRefreshingAuthClient> clientViaUserConsent(
   ClientId clientId,
   List<String> scopes,
