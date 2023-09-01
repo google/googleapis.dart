@@ -29,7 +29,7 @@ jobs:
     - uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
       with:
         sdk: dev
-    - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
+    - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744
     - run: |
         pushd discoveryapis_generator
         dart pub upgrade
